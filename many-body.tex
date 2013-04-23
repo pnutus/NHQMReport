@@ -1,0 +1,135 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[swedish]{babel}
+\usepackage{amsmath}
+\usepackage{lmodern}
+\usepackage{units}
+\usepackage{icomma}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{bbm}
+\newcommand{\N}{\ensuremath{\mathbbm{N}}}
+\newcommand{\Z}{\ensuremath{\mathbbm{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbbm{Q}}}
+\newcommand{\R}{\ensuremath{\mathbbm{R}}}
+\newcommand{\C}{\ensuremath{\mathbbm{C}}}
+\newcommand{\rd}{\ensuremath{\mathrm{d}}}
+\newcommand{\id}{\ensuremath{\,\rd}}
+\usepackage{hyperref}
+\usepackage{amssymb}
+
+\begin{document}
+
+
+\section{Three body problem}
+In order to solve the three body problem, we have to introduce some new formalia comparing to the two body problem. For the two body problem we could reduce it to a one body problem by a coordinate transformation, in the case of three or more bodies, this is no longer possible. 
+
+\subsection{Fock space}
+For treating the three body problem we work in Fock space, in which a many body state is described in terms of one body states. Formally this is written as the direct sum of tensor proucts of copies of a single particle hilbert space. 
+
+\begin{equation}
+F_{\nu}(H) =
+\bigoplus_{n=0}^{\infty}S_{\nu}H^{\bigotimes n} =
+\mathbb{C} \bigoplus H \bigoplus(S_{\nu}(H \bigotimes H)) \bigoplus (S_{\nu}(H \bigotimes H \bigotimes H)) ...
+\end{equation}
+
+In the case of bosons $S_{\nu}$ is the operator that symetrize a tensor, and for fermions it is the antisymetrizer.
+Further, we denote product states for N partlicles as
+
+\begin{equation}
+|\alpha_1 \alpha_2 ... \alpha_{N}) =
+|\alpha_1> |\alpha_2>...|\alpha_{N}>
+\end{equation}
+
+with orthogonality
+
+\begin{equation}
+(\alpha_1 \alpha_2 ... \alpha_N | \alpha_1^{'} \alpha_2^{'} ... \alpha_N^{'}) =
+<\alpha_1| \alpha_1^{'}><\alpha_2|\alpha_2^{'}>...<\alpha_N| \alpha_N^{'}> = \delta_{\alpha_1,\alpha_1^{'}} \delta_{\alpha_2,\alpha_2^{'}}...\delta_{\alpha_N,\alpha_N^{'}}
+\end{equation}
+
+Now, with Fock space defined as above, for fermions (we won't disscuss Fock space for bosons, since it is not relevant for this thesis work) it consists of a vacuum state $|0>$ with no particles, the set of all possible one particle states $\{ |\alpha> \} $, the complete set of antisymmetric two-particle states $|\alpha_1 \alpha_2>$ and so on. A creation operator $a^{\dagger}$ is defined by
+
+\begin{equation}
+a_{\alpha}^{\dagger} | \alpha_1 \alpha_2 ... \alpha_N> =
+|\alpha \alpha_1 \alpha_2 ... \alpha_N>
+\end{equation}
+which adds a new particle. The resulting state is now a N+1 particle state. It can be shown that the adjoint of $ a_\alpha^{\dagger} , a_{\alpha}$ removes the particle $\alpha$, and therefore is refered to as a destruction (or removal) operator. The relevant calculation rules for these operators in fermionic Fock space can be summorized as
+
+\begin{align}
+ a_{\alpha}^{\dagger} & | \alpha_1 \alpha_2 ... \alpha_N> &&= |\alpha \alpha_1 \alpha_2 ... \alpha_N> 
+\\ 
+ a_{\alpha}^{\dagger} & |\alpha \alpha_1 \alpha_2 ... \alpha_N> &&= 0 
+\\ 
+ a_{\alpha}  & |\alpha \alpha_1 \alpha_2 ... \alpha_N> &&= |\alpha_1 \alpha_2 ... \alpha_N> 
+\\ 
+ a_{\alpha} & |\alpha_1 \alpha_2 ... \alpha_N> &&= 0\label{eq:annihilation zero}
+\\ 
+a_{\alpha_i}^{\dagger} & |\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_{i+1}...\alpha_{N}> &&= (-1)^{i-1}|\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_i \alpha_{i+1} ... \alpha_{N}> \label{eq:creation sign}
+\\
+\end{align}
+
+\subsection{Hamiltonian}
+It can be shown that the Hamiltonian of a many-particle system in this formulation can be written as
+
+\begin{equation}
+\hat{H} =
+\hat{T} + \hat{V} =
+\sum_{\alpha \beta} <\alpha| T |\beta> a_{\alpha}^{\dagger} a_{\beta} + \frac{1}{2}\sum_{\alpha \beta \gamma \delta} ( \alpha \beta| V | \gamma \delta ) a_{\alpha}^{\dagger} a_{\beta}^{\dagger} a_{\delta} a_{\gamma}
+\end{equation}
+
+where $\hat{T}$ is a one-body operator and $\hat{V}$ is a two-body operator. Typicaly the kinetic energy part of the hamiltonian is a one-body operator while the potential is a two-body operator. In our case we want to use our previous results from the two-body problem ie the interaction between a neutron and an $He^{4}$ nucleus. This problem we reduced to a one body problem. The hamiltonian we calculated for the two body problem therefore is a one-body operator, which we in the three-body problem can use to describe the interaction between the neutrons and the nucleus. What is left as a two-body operator is the neuron-neutron interaction. We can thus write the hamiltonian as
+
+\begin{equation}
+\hat{H} =
+\sum_{\alpha \beta} <\alpha| H_1 |\beta> a_{\alpha}^{\dagger} a_{\beta} + \frac{1}{2}\sum_{\alpha \beta \gamma \delta} ( \alpha \beta| V_{n-n} | \gamma \delta ) a_{\alpha}^{\dagger} a_{\beta}^{\dagger} a_{\delta} a_{\gamma}
+\end{equation}
+
+with $H_1$ as the two body problem hamiltonian and $V_{n-n}$ as the neutron-neutron potential. The strength of this formalism is that it is not constrained to be used in the case of two neutrons, but for an arbitrary number of neutrons. In will thus, in principle, be easy to extend our algorithms to solve many body problems with arbitrary number of particles. 
+
+Earlier we have solved the one body problem
+
+\begin{equation}
+H | \psi_n > = E_n | \psi_n >
+\end{equation}
+We cannot use the solutions $| \psi_n>$ as they are. Earlier we didn't need to consider the $m$ quantum number, but in the many body case, for the solutions $| \psi_n>$ we can have different $m$ quantum numbers. We have to consider the $m$ quantum number because of the pauli principle. We can have both bodies in with energy $E_n$ as long as they have different $m$ quantum numbers. So what we get in our case with a three body system is
+
+\begin{align}
+\hat{H} &= \sum_{k' m' k m } <k'm'| H_1 |km> a_{k'm'}^{\dagger} a_{km} + \\
+& + \sum_{k_1' m_1' k_2' m_2' k_1 m_1 k_2 m_2} ( k_1' m_1' k_2' m_2'| V_{n-n} | k_1 m_1 k_2 m_2 ) a_{k_1' m_1'}^{\dagger} a_{k_2' m_2'}^{\dagger} a_{k_2 m_2} a_{k_1 m_1}\label{two-body op sum}
+\end{align}
+
+The $1/2$-factor before the second summation is obmitted since we in our implementation only take the sum over many body states with the one body states ordered from lower to higher. The many particle states we use are just the tensor product of two one body states
+
+\begin{equation}
+|k_1 m_1 , k_2 m_2 > = |k_1 m_1> \bigotimes |k_2 m_2 >
+\end{equation}
+
+\subsection{n-n interaction}
+The interaction between neutrons is a complex feature. A simple approximation that can be made, although not very realistic, is that the potential is separable. 
+
+\begin{equation}
+V_{n-n}(r_{1} , r_{2}) = V_{0}e^{ \beta (r_1^2 + r_2^2)}
+\end{equation}
+
+where $r_1$ and $r_2$ are the radial part of the neutrons coordinates relative to the core. $\beta$ and $V_{0}$ are parameters need to be fitted. 
+
+An other option is to get the matrix needed from Jimmy.
+
+
+% Figurer inkluderade som eps-filer
+%% \begin{figure}\centering
+%% \includegraphics{filnamn.eps}
+%% \caption{\label{figuren} Perioden $T$ som funktion av pendellängden.}
+%% \end{figure}
+
+% Figurer inkluderade med xfigs postscript+latex
+%% \begin{figure}\centering
+%% \input{filnamn.pstex_t}
+%% \caption{\label{finafiguren} Perioden $T$ som funktion av
+%%   pendellängden.}
+%% \end{figure}
+
+\end{document}

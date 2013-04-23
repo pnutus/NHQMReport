@@ -30,3 +30,8 @@
 *.vrb
 *.xdy
 *.tdo
+
+# Own
+*.pdf
+*.png
+*.jpg

@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[swedish]{babel}
+\usepackage{amsmath}
+\usepackage{lmodern}
+\usepackage{units}
+\usepackage{icomma}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{bbm}
+\newcommand{\N}{\ensuremath{\mathbbm{N}}}
+\newcommand{\Z}{\ensuremath{\mathbbm{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbbm{Q}}}
+\newcommand{\R}{\ensuremath{\mathbbm{R}}}
+\newcommand{\C}{\ensuremath{\mathbbm{C}}}
+\newcommand{\rd}{\ensuremath{\mathrm{d}}}
+\newcommand{\id}{\ensuremath{\,\rd}}
+\usepackage{hyperref}
+\usepackage{amssymb}
+
+\begin{document}
+
+
+\section{Three-Body implementation}
+In order to solve the three body-problem, or rather the He-6 system modeled as a He-4 nucleus with two orbiting neutrons, we had to translate the governing mathematical / physical relations to something better suited for numerical solutions.
+ This Section gives a description of the models and simplifications we used.
+
+\subsection{our special case and simplifications}
+%//core - nucleus
+\subsection{multistep method}
+We have utilized the multistep method to find the solution to a multi-body (mb) problem through solutions of incremental many-body problems.
+ We started out by solving the two body problem of a core (He-4) and a single orbiting particle (sp) (neutron, forming He-5 -there was no bound state, only resonances as can be expected, see ref ref ref) and used these solutions to form mb states out of different combinations of the sp(orbiting neutron in He-5) states; see the fock space section in mb-theory.
+ We have only reached the second step in the multi-step method but this is the greatest (largest?) step, most of the operators that govern any mb problem are needed for a three-particle problem whereas a two-body particle can be reduced to a one- body problem through the use of relative quantities.
+ 
+\subsection{Many-body states}
+The governing theory of mb states is described in \ref{sec:fock_space} so this section will focus on one way of implementing the states. 
+We enumerate the solutions to the He-5 problem as a basis for the mb states and include information about the state's angular momentum.
+Our first simplification is that we only regard states with $\alpha, \beta$, where $\alpha_{sp}$ and $\beta_{sp} $ are sp solutions and $\alpha_{sp} <= \beta_{sp}$ in terms of enumeration so as to avoid oversumming, recall the relation between alpa, beta :: beta, alpha ref ref . 
+This will gives us a smaller matrix between the different mb states and saves us a lot of computation-time.
+
+A many-body state is represented in the computer as a number representing the sign and a list states, each state is a set of numbers signifying the relevant quantum numbers of the state.
+ The state is a pair of numbers one indicates which single-particle solution is represented and the other is the angular momentum which is in the range of $[-3/2,3/2]$.
+ Because our particles are fermions, no many-body state can include two states with identical quantum numbers (k and m).
+ This list is formed by taking a vacuum-state and adding a single particle state along with an angular momentum, and any other quantum number one might want further down the line, as the single particle states are ordered in a rising fashion. An integer is used to represent the sign. 
+ This integer is calculated as in \ref{eq:creation sign} and if one tries to annihilate a state which is not present, as is the case in \ref{eq:annihilation zero}, the sign will be set to 0 and it will be regarded as a vacuum-state in calculations further down the line.
+ The annihilation operator is implemented in a similar fashion but it instead removes a given state (set of quantum numbers) and returns a new FermionState without the given to-be-removed state.
+ 
+ The list of states is ordered in a lexicographic order and we adapt our later calculations to only require one of all posibble permutations of a set of given single-particle states.
+ 
+% To keep track of all the many-body states and to perform sums over all possible many-body states we arrange a list with all the states and signify each many body state as the index representing the state in this list
+ 
+\subsection{Generating many-body Hamiltonian}
+To calculate the Hamilton matrix for the many-body states we generate a list of all possible mb-states and let the (i,j)-th element of the matrix be the hamiltonian contribution from the i-th mb-state as a bra and the j-th mb-state as a ket. 
+ Remember that we only 
+ In the case of two  orbiting particles the two-body operator will work on all combinations of bra's and ket's but in the four or more body problem only some combinations will contribute, to find these one can implement the fock-space relations quite literally. 
+ On the diagonal however there will also be a contribution from the one-body operator.
+ The contributions from the two operators are discussed in detail below.
+
+\subsubsection{One-body opreator}
+The one-body operator is the simple kinetic energy operator that we have known and loved since our first food fight. 
+%Presented on the form of \ref{eq: stans i mb-teori} the one-body operator, \fockop{T} simply yields the kinetic energy of the two particles, but in a matrix representation 
+In our matrix representation in a diagonal-element the bra and the ket will be the same and thus have the same single particle states, this operator returns the kinetic energy of these two single particle states. 
+In our implementation these eigenvalues to the sp-hamilton matrix are already calculated and are easily retrieved.
+
+one body >==< clebsxhgordan???
+\subsubsection{Two-body operator}
+The two-body operator is the contribution from the neutron-neutron interaction and is computationally taxing. Although the potential is (ridiculously) simple this calculation requires sums over all the quantum numbers in both the bra and the ket; the mathematical expression for the hamiltonian is presented in \ref{two-body op sum}. 
+With a simple contour of 15 points this would be a sum over $15^4*4^4 \approx 13$ million elements which is computationaly unfeasible.
+In order to reduce the complexity we instead make use of coupled angular momentum for the many-body states, refer to ref ref ref.
+
+In order to determine the hamilton matrix for the mb-system we generate a list of all possible (non-permutated) mb-states, constructed only from different sp-states we treat the degeneration from the different allowed m-quantum numbers, and for each pair of indexes calculate a matrix element; the (i,j)-th matrix element, $H_{ij}$, would be the interaction between the i-th and j-th mb-state. 
+Thus for a given bra and ket we determine whether the fock-space relations allow for an interaction, in this case with two-orbiting particles this is trivially true, and if that is the case calculate the Clebsch-Gordan coefficients to treat the degeneracy in m-quantum number. 
+Recall that Clebsch-Gordan coefficients was covered in ref ref ref.
+
+The calculation of clebsch gordan coeff (and fock relations) severly reduces the number of elements that actually give any contribution at all. 
+When we know which bra and ket interactions that give a contribtion it is time to calculate it. 
+Mathematically this contribution, from the sepparable n-n potential can be expressed like presented in ref ref
+However this is not a suitable form for the computer, not even with the very powerful Gauss-Legendre contour for the integral; instead we rewrite it as a matrix equation:
+$1+2+3+4+5+6+7+...+226+... = - \frac{1}{12}$ because fuck you that's why\\
+where the matrix is the same for each combination of bra's and ket's and need only be calculated once.
+
+only some (ALL) bra-ket combinations will live, governed by the creation / annihilation relations. 
+n-n separable interaction, clever matrix multiplication scheme
+clebch-gordan coefficients :-()
+
+
+\end{document}

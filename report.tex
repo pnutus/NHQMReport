@@ -1,0 +1,215 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[english]{babel}
+
+\usepackage{NHQM}
+
+\begin{document}
+  
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+
+
+\title{Non-Hermitian Quantum Mechanics\\
+\Large Bachelor Thesis Report}
+\author{Jonathan Bengtsson  \and Ola Embréus \and Vincent Ericsson \and Pontus Granström \and Nils Wireklint}
+\date{\today}
+
+
+
+\maketitle
+
+\newpage
+\begin{abstract}
+This is a bachelor thesis, and we've done some calculations on non-hermitian quantum mechanics 
+\end{abstract}
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\chapter{Introduction}
+this is the introduction. There will be more interesting text here later.
+
+\section{Background}
+
+Quantum mechanics (QM) is a cornerstone of modern physics, as it describes the world on the smallest of scales. One topic often introduced in graduate QM courses is resonance scattering, a phenomenon where a system form so-called \emph{quasi-stationary} states. In contrast to \emph{stationary} (bound) states, in which a system remains indefinitely, these quasi-stationary states decay over time. Describing this process leads naturally to the introduction of complex energy eigenvalues. 
+
+Complex eigenvalues pose a problem in standard QM. This is because observable quantities are regarded as real values and are described by \emph{Hermitian} operators. When working with complex eigenvalues one needs a \emph{non-Hermitian} formulation of the problem. While the idea of using non-Hermitian quantum mechanics (NHQM) has been around for quite some time, the technique is not widely used.
+
+{\Large Helium-family \\ Numerical methods\\ basis expansion}
+
+{\Large Purpose? \\ Method? \\ Reading Guide?}
+
+\begin{itemize}
+  \item resonans. varför är det vårt mål? jämföra med exp. data He-5[nuklidkarta]?
+\end{itemize}
+
+\section{Purpose}
+
+The main purpose of this project is to study resonances in few-body problems using non-Hermitian quantum mechanics and numerical methods. We expand the problems in the Berggren basis, resulting in a non-Hermitian hamiltonian. To calculate and solve the hamiltonian matrix, we use numerical integration and eigensolvers.
+
+\chapter{The Basis Expansion Method} % (fold)
+\label{cha:the_basis_expansion_method}
+
+\begin{itemize}
+  \item Vi vill lösa i datorn ty omöjligt analytiskt
+  \item Skriva som ändlig matrisekvation
+  \item => Basexpansion + Trunkering
+  \item Expansion i allmänna fallet
+  \item HarmOsc
+  \begin{itemize}
+    \item Hatom – för att verifiera
+    \item He5 – vad är det där? Resonans?
+  \end{itemize}
+  \iitem 
+\end{itemize}
+
+\chapter{Discretizing Momentum Space} % (fold)
+\label{cha:discretizing_momentum_space}
+
+\begin{itemize}
+  \item Varför mom-space? 
+  \begin{itemize}
+    \item Naturligare ramverk
+    \item Berggren
+  \end{itemize}
+  \item Skriva om TISE
+  \begin{itemize}
+    \item Resolution of identity
+    \item fouriertransform
+    \item All tråkig matte i appendix
+    \item kan vi förklara bra, inte appendix
+  \end{itemize}
+  \item He5 (perhaps Hatom) in momspace
+  \begin{itemize}
+    \item Compare to harmonic oscillator
+  \end{itemize}
+\end{itemize}
+
+\input{momspace.tex}
+
+\chapter{Non-Hermitian Quantum Mechanics} % (fold)
+\label{cha:non_hermitian_quantum_mechanics}
+
+\begin{itemize}
+  \item varför: analysera resonanser
+  \item resonans? -koppling till radioaktivitet, transienta tillstånd. tid<=>energi heisenberg
+  \item verktyg: komplex kontur. varför? cite bergren, förklara 
+  \item resultatmed dessa verktyg: två-kropp, resonans i he-5 ! jämföra med vedertagna parametrar. 
+  \item berggrenbasen, varför inkludera resonans i basen
+\end{itemize}
+teorin ovan kan lyftas till introduktion
+%har folk läst subatomär?
+
+% chapter non_hermitian_quantum_mechanics (end)
+
+\chapter{Many-Body Theory} % (fold)
+\label{cha:many_body_theory}
+
+
+\begin{itemize}
+  \item allmämnn flerkroppars teori
+  \item implementation, dickhoff - fock space -FermionSTates
+\end{itemize} 
+
+% chapter many_body_theory (end)
+
+\chapter{The Three-Body Problem} % (fold)
+\label{cha:the_three_body_problem}
+
+\begin{itemize}
+  \item teorin i specifik bas, tillåtna förenklingar i konkret fall(ett, flera)
+  \item 
+\end{itemize}
+
+Can't reduce to one dimension.
+
+\section{Many-Body Theory} % (fold)
+\label{sec:many_body_theory}
+
+Or this could be a chapter.
+
+% section many_body_theory (end)
+
+
+\section{The \ce{^6He} Nucleus} % (fold)
+\label{sec:the_^6he_nucleus}
+
+Extending \ce{^5He} example.
+
+% section the_^6he_nucleus (end)
+
+\section{NHQM for three bodies}
+
+
+% chapter the_three_body_problem (end)
+
+\chapter{Four or more bodies} % (fold)
+\label{cha:four_or_more_bodies}
+
+\ce{^7He}, \ce{^8He} ... ?
+
+% chapter four_or_more_bodies (end)
+
+\chapter{Monte Carlo Approach}
+\label{cha:monte_carlo_approach}
+
+Using a statistical approach.
+
+\chapter{Eigensolver Optimization}
+\label{cha: eigensolver}
+
+Adapt eigensolvers to work more efficiently.
+
+\chapter{Discussion}
+\label{discussion}
+
+hello.
+
+\chapter{Division of tasks}
+\label{division}
+This part is for the individual judgement.
+
+\section{Who did what?}
+no one did nothing, except for someone who did a little bit of something.
+\section{Authors}
+no one wrote nothing.
+
+
+\begin{thebibliography}{9}
+
+\bibitem{lamport94}
+  Leslie Lamport,
+  \emph{\LaTeX: A Document Preparation System}.
+  Addison Wesley, Massachusetts,
+  2nd Edition,
+  1994.
+
+\end{thebibliography}
+
+\appendix
+
+\chapter{}
+
+\section{Simplifying the Two-Body Problem} % (fold)
+\label{sec:the_two_body_problem}
+
+Reducing to one dimension.
+
+% section the_two_body_problem (end)
+
+\section{Reduction to a radial problem} % (fold)
+\label{sec:reduction_to_a_radial_problem}
+
+Reducing to one dimension.
+
+% section reduction_to_a_radial_problem (end)
+
+
+\section{Code?} % (fold)
+\label{sec:code}
+
+% section code (end)
+
+\end{document}

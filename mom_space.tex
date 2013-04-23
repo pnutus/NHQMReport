@@ -1,0 +1,123 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[english]{babel}
+
+\usepackage{NHQM}
+
+\begin{document}
+
+
+
+We want to rewrite the Schrödinger equation in momentum basis/space, because yada yada.
+
+This essentially means that we describe a state in terms of its momentum -- or equivalently its wavenumber $\vec{k}$ -- distribution, $\Phi(\vec{k})=\braket{\vec{k}}{\psi} $. In the same way that the squared wavefunction $|\psi(\vec{r})|^2$ describes the probability density of a particle to be found at position $\vec{r}$, the squared momentum space wavefunction describes the probability density of a particle to be found with momentum $\vec{k}$. To find the equations of motion in terms of this wavefunction we simply use the completeness of $\ket\vec{k}$ to expand the TISE.
+
+\begin{eq}
+  H\ket{\psi} &= E\ket{\psi} 
+
+  \\
+  
+  \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}')
+  = 
+  E\Phi(\vec{k})
+\end{eq} 
+
+If we consider a central problem, with $H=\frac{k^2}{2m} + V(r)$, a cumbersome calculation, found in Appendix [XXXXX??], shows that the equation can be written
+\begin{eq} 
+  \frac{k^2}{2m}\phi(k) + \int_0^\infty \rd k' \, k'^2 V(k,k') \phi(k') 
+  &=
+  E\phi(k)
+\end{eq}
+where
+\begin{eq}
+  V(k,k') 
+  &= 
+  \frac{2}{\pi}\int_0^\infty \rd r \, r^2 V(r) j_l(kr) j_l(k'r) 
+\end{eq}
+where $j_l(kr)$ are the spherical bessel functions. The total wavefunction $\Phi(\vec{k}) = \phi(k)Y_l^m(\Omega_{\vec{k}})$, where $\Omega_{\vec{k}}$ denotes the angular coordinates of $\vec{k}$.
+
+\subsection{Numerical solution of the MSTISE}
+The equation is solved numerically by writing it as a matrix equation. This is achieved by approximating the integral with a numerical quadrature, 
+\begin{eq}
+  \int_0^\infty \rd k' \, k'^2 V(k,k')\phi(k') 
+  \approx
+  \sum_{n'=1}^N w(n') k_{n'}^2 V(k,k_{n'})\phi(k_{n'})
+\end{eq}
+where $w(n')$ are the quadrature weights. For the naive rectangular quadrature you would use a constant $w(m')=\Delta k_{n'}$ equal to the step length. However, this quadrature converges slowly to the correct value of the integral, and much better alternatives can be employed. 
+
+With this approximation the Schrödinger equation may be written
+\begin{eq}
+  \sum_{n'} H_{n,n'} \phi_{n'} &= E \phi_n
+\end{eq}
+where $\phi_n=\phi(k_n)$ and 
+\begin{eq}
+  H_{n,n'} &= \frac{k_n^2}{2m}\delta_{n,n'} + w(n')k_{n'}^2 V_{n,n'} \\
+  V_{n,n'} &= \frac{2}{\pi} (-1)^l \int_0^\infty \rd r \, r^2 V(r) j_l(k_n r) j_l(k_{n'} r)
+\end{eq}
+The equation is now written as a matrix equation of order N (the number of k values used). The energy eigenvalues $E$ will be obtained by calculating the matrix elements $H_{n,n'}$ and diagonalizing the resulting matrix. Since there is generally no analytic expression for the terms $V_{n,n'}$, they will need to be evaluated by numerical integration.
+
+
+
+
+\subsection{APPENDIX}
+
+To find the momentum space Schrödinger equation, we need to write an explicit expression for
+\begin{eq}
+  \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}')
+  &= 
+  E\Phi(\vec{k})
+\end{eq}
+To begin with, using the completeness relation for the position basis, we note that
+\begin{eq}
+  \Phi(\vec{k}) &= \braket{\vec{k}}{\psi} 
+  = 
+  \int \rd^3 \braket{\vec{k}}{\vec{r}} \psi(\vec{r})
+\end{eq}
+Standard textbooks on quantum mechanics show 
+\begin{eq}
+  \braket{\vec{k}}{\vec{r}} 
+  &= 
+  \frac{1}{(2\pi)^{\frac{3}{2}}}e^{i\vec{k}\cdot\vec{r}}
+\end{eq}
+For a spherically symmetric problem, eigensolutions can be found on the form $\psi(\vec{r})= R(r)Y_l^m(\Omega_r)$. We can simplify the above integral by using the plane wave expansion \cite{mehrem2011},
+\begin{eq}
+  e^{i\vec{k}\cdot\vec{r}} 
+  &= 
+  4\pi \sum_{l=0}^\infty \sum_{m=-l}^l  i^l j_l(kr)Y_l^m(\Omega_k)Y_l^m(\Omega_r)^*
+\end{eq}
+where you have the freedom of choice to put the complex conjugation on either factor. 
+
+Inserting this and using the orthogonality of the spherical harmonics, you get
+\begin{eq}
+  \Phi(\vec{k}) &= \phi(k)Y_l^m(\Omega_k)
+  =
+  \sqrt{\frac{2}{\pi}} i^l Y_l^m(\Omega_k) \int \rd r \, r^2 R(r) j_l(kr) 
+\end{eq}
+
+In a similar way, we evaluate
+\begin{eq}
+  \bra{\vec{k}}V(r)\ket{\vec{k}'} &= \frac{1}{(2\pi)^3} \int \rd^3 \vec{r} V(r)  e^{i\vec{k}'\cdot\vec{r}} e^{-i\vec{k} \cdot \vec{r}} \\
+  &= \frac{1}{(2\pi)^3} (4\pi)^2 \sum_{l,l'}\sum_{m,m'} 
+  \b{
+    (-1)^l i^{(l+l')} Y_{l'}^{m'}(\Omega_{k'})^*Y_l^m(\Omega_k)* 
+    \\
+    &\p{
+      \int \rd r \, r^2 V(r) j_l(kr)j_{l'}(k'r) \int \rd \Omega_r Y_l'^m'(\Omega_r)Y_l^m(\Omega_r)^*
+       }
+    }
+\end{eq}
+Here, a factor $(-1)^l$ was introduced because of the parity of the spherical harmonics: $Y_l^m(-\Omega_k)=(-1)^lY_l^m(\Omega_k)$. 
+
+Inserting all of this into the Schrödinger equation and again simplifying by using the orthogonality of the spherical harmonics twice, you immediatly obtain the equation given in the text.
+
+\begin{eq}
+  \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}') 
+  &= 
+  \frac{k^2}{2m}\phi(k)Y_l^m(\Omega_k) + \int \rd^3 \vec{k}' \bra{\vec{k}}V(r)\ket{\vec{k}'} \phi(k') Y_l^m(\Omega_{k'}) 
+  
+  \\
+  
+  &=
+  \frac{k^2}{2m}\phi(k)Y_l^m(\Omega_k) + Y_l^m(\Omega_k) \frac{2}{\pi}\int \rd k' \, k'^2 \phi(k') V(k,k') = E\psi(k)Y_l^m(\Omega_k)
+\end{eq}
+
+\end{document}

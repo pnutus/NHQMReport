@@ -1,0 +1,97 @@
+\ProvidesPackage{NHQM}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[]{lmodern}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{ae}
+\usepackage{units}
+\usepackage{icomma}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{bbm}
+\usepackage{siunitx}
+\sisetup{
+	mode = math,
+	output-decimal-marker = {,},
+	exponent-product = \cdot
+}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{cancel}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{amsthm}
+\usepackage{mhchem}
+
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}\kern-.6\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+
+\newcommand{\fint}[1][]{%
+  \def\cmdDefaultA{#1}%
+  \fintNext
+}
+\newcommand{\fintNext}[2][]{%
+  \int_{\cmdDefaultA}^{#1} \rd{#2} \,
+}
+
+
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+\newcommand{\p}[1]{\left(#1\right)}
+\renewcommand{\b}[1]{\left[#1\big.\right]}
+\newcommand{\bigp}[1]{\p{#1\big.}}
+
+\newcommand{\N}{\ensuremath{\mathbbm{N}}}
+\newcommand{\Z}{\ensuremath{\mathbbm{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbbm{Q}}}
+\newcommand{\R}{\ensuremath{\mathbbm{R}}}
+\newcommand{\C}{\ensuremath{\mathbbm{C}}}
+\newcommand{\rd}{\ensuremath{\mathrm{d}}}
+\newcommand{\id}{\ensuremath{\,\rd}}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\renewcommand{\H}{\ensuremath{\mathcal{H}}}
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\left\langle#1\right|}
+\newcommand{\braket}[2]{\langle#1|#2\rangle}
+\newcommand{\norm}[1]{\braket{#1}{#1}}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\comm}[1]{\left[#1\right]}
+\renewcommand{\Re}{\ensuremath{\operatorname{Re}}}
+\renewcommand{\Im}{\ensuremath{\operatorname{Im}}}
+\newcommand{\dd}[2][]{ \frac{ \partial #1}{ \partial #2}}
+\newcommand{\ddsq}[2][]{ \frac{ \partial^2 #1}{ \partial #2^2}}
+\newcommand{\ddt}[1][]{ \frac{ \partial#1}{ \partial t}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\absq}[1]{\abs{#1}^2}
+\newcommand{\mean}[1]{\left\langle #1 \right\rangle}
+\newcommand{\uppg}[1]{\vspace{1em} \noindent\textbf{Uppgift #1}}
+\newcommand{\sub}[1]{_\textup{#1}}
+\newcommand{\ordo}{\ensuremath{\mathcal{O}}}
+\newcommand{\bis}{{\prime\prime}}
+\newcommand{\Res}{\ensuremath{\operatorname{Res}}}
+\renewcommand{\inf}{\infty}
+\newcommand{\minf}{{-\infty}}
+\renewcommand{\d}{\partial}
+\newcommand{\useq}[1]{\stackrel{\eqref{#1}}{=}}
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\newenvironment{eq}
+{\begin{equation}\begin{aligned}}
+{\end{aligned}\end{equation}\ignorespacesafterend}
+\newenvironment{eq*}
+{\begin{equation*}\begin{aligned}}
+{\end{aligned}\end{equation*}\ignorespacesafterend}
