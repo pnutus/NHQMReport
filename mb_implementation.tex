@@ -1,28 +1,3 @@
-\documentclass[12pt,a4paper]{article}
-
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[swedish]{babel}
-\usepackage{amsmath}
-\usepackage{lmodern}
-\usepackage{units}
-\usepackage{icomma}
-\usepackage{color}
-\usepackage{graphicx}
-\usepackage{bbm}
-\newcommand{\N}{\ensuremath{\mathbbm{N}}}
-\newcommand{\Z}{\ensuremath{\mathbbm{Z}}}
-\newcommand{\Q}{\ensuremath{\mathbbm{Q}}}
-\newcommand{\R}{\ensuremath{\mathbbm{R}}}
-\newcommand{\C}{\ensuremath{\mathbbm{C}}}
-\newcommand{\rd}{\ensuremath{\mathrm{d}}}
-\newcommand{\id}{\ensuremath{\,\rd}}
-\usepackage{hyperref}
-\usepackage{amssymb}
-
-\begin{document}
-
-
 \section{Three-Body implementation}
 In order to solve the three body-problem, or rather the He-6 system modeled as a He-4 nucleus with two orbiting neutrons, we had to translate the governing mathematical / physical relations to something better suited for numerical solutions.
  This Section gives a description of the models and simplifications we used.
@@ -84,6 +59,3 @@ where the matrix is the same for each combination of bra's and ket's and need on
 only some (ALL) bra-ket combinations will live, governed by the creation / annihilation relations. 
 n-n separable interaction, clever matrix multiplication scheme
 clebch-gordan coefficients :-()
-
-
-\end{document}

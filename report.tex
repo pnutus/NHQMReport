@@ -28,14 +28,6 @@ This is a bachelor thesis, and we've done some calculations on non-hermitian qua
 
 \newpage
 
-\chapter{Introduction}
-this is the introduction. There will be more interesting text here later.
-
-\section{Background}
-
-Quantum mechanics (QM) is a cornerstone of modern physics, as it describes the world on the smallest of scales. One topic often introduced in graduate QM courses is resonance scattering, a phenomenon where a system form so-called \emph{quasi-stationary} states. In contrast to \emph{stationary} (bound) states, in which a system remains indefinitely, these quasi-stationary states decay over time. Describing this process leads naturally to the introduction of complex energy eigenvalues. 
-
-Complex eigenvalues pose a problem in standard QM. This is because observable quantities are regarded as real values and are described by \emph{Hermitian} operators. When working with complex eigenvalues one needs a \emph{non-Hermitian} formulation of the problem. While the idea of using non-Hermitian quantum mechanics (NHQM) has been around for quite some time, the technique is not widely used.
 
 {\Large Helium-family \\ Numerical methods\\ basis expansion}
 
@@ -45,9 +37,7 @@ Complex eigenvalues pose a problem in standard QM. This is because observable qu
   \item resonans. varför är det vårt mål? jämföra med exp. data He-5[nuklidkarta]?
 \end{itemize}
 
-\section{Purpose}
-
-The main purpose of this project is to study resonances in few-body problems using non-Hermitian quantum mechanics and numerical methods. We expand the problems in the Berggren basis, resulting in a non-Hermitian hamiltonian. To calculate and solve the hamiltonian matrix, we use numerical integration and eigensolvers.
+\input{introduction.tex}
 
 \chapter{The Basis Expansion Method} % (fold)
 \label{cha:the_basis_expansion_method}
@@ -62,8 +52,9 @@ The main purpose of this project is to study resonances in few-body problems usi
     \item Hatom – för att verifiera
     \item He5 – vad är det där? Resonans?
   \end{itemize}
-  \iitem 
 \end{itemize}
+
+\input{basis_expansion.tex}
 
 \chapter{Discretizing Momentum Space} % (fold)
 \label{cha:discretizing_momentum_space}
@@ -87,7 +78,7 @@ The main purpose of this project is to study resonances in few-body problems usi
   \end{itemize}
 \end{itemize}
 
-\input{momspace.tex}
+\input{mom_space.tex}
 
 \chapter{Non-Hermitian Quantum Mechanics} % (fold)
 \label{cha:non_hermitian_quantum_mechanics}
@@ -107,11 +98,13 @@ teorin ovan kan lyftas till introduktion
 \chapter{Many-Body Theory} % (fold)
 \label{cha:many_body_theory}
 
-
 \begin{itemize}
   \item allmämnn flerkroppars teori
   \item implementation, dickhoff - fock space -FermionSTates
 \end{itemize} 
+
+\input{mb_theory.tex}
+\input{mb_implementation.tex}
 
 % chapter many_body_theory (end)
 

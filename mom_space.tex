@@ -1,15 +1,8 @@
-\documentclass[12pt,a4paper]{report}
-\usepackage[english]{babel}
-
-\usepackage{NHQM}
-
-\begin{document}
-
-
-
 We want to rewrite the Schrödinger equation in momentum basis/space, because yada yada.
 
-This essentially means that we describe a state in terms of its momentum -- or equivalently its wavenumber $\vec{k}$ -- distribution, $\Phi(\vec{k})=\braket{\vec{k}}{\psi} $. In the same way that the squared wavefunction $|\psi(\vec{r})|^2$ describes the probability density of a particle to be found at position $\vec{r}$, the squared momentum space wavefunction describes the probability density of a particle to be found with momentum $\vec{k}$. To find the equations of motion in terms of this wavefunction we simply use the completeness of $\ket\vec{k}$ to expand the TISE.
+This essentially means that we describe a state in terms of its momentum -- or equivalently its wavenumber $\vec{k}$ -- distribution, $\Phi(\vec{k}) = \braket{\vec{k}}{\psi}$.
+In the same way that the squared wavefunction $|\psi(\vec{r})|^2$ describes the probability density of a particle to be found at position $\vec{r}$, the squared momentum space wavefunction describes the probability density of a particle to be found with momentum $\vec{k}$. 
+To find the equations of motion in terms of this wavefunction we simply use the completeness of $\ket\vec{k}$ to expand the TISE.
 
 \begin{eq}
   H\ket{\psi} &= E\ket{\psi} 
@@ -119,5 +112,3 @@ Inserting all of this into the Schrödinger equation and again simplifying by us
   &=
   \frac{k^2}{2m}\phi(k)Y_l^m(\Omega_k) + Y_l^m(\Omega_k) \frac{2}{\pi}\int \rd k' \, k'^2 \phi(k') V(k,k') = E\psi(k)Y_l^m(\Omega_k)
 \end{eq}
-
-\end{document}
