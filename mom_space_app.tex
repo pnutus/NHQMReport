@@ -1,0 +1,73 @@
+To find the momentum space Schrödinger equation, we need to write an explicit expression for
+\begin{eq}
+  \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}')
+  &= 
+  E\Phi(\vec{k})
+\end{eq}
+To begin with, using the completeness relation with the position basis, we note that
+\begin{eq}
+  \Phi(\vec{k}) &= \braket{\vec{k}}{\psi} 
+  = 
+  \int \rd^3\vec{r} \braket{\vec{k}}{\vec{r}} \psi(\vec{r})
+\end{eq}
+Standard textbooks on quantum mechanics show 
+\begin{eq}
+  \braket{\vec{k}}{\vec{r}} 
+  &= 
+  \frac{1}{(2\pi)^{\frac{3}{2}}}e^{i\vec{k}\cdot\vec{r}}.
+\end{eq}
+For a spherically symmetric problem, solutions can be found on the form $\psi(\vec{r})= R(r)Y_l^m(\Omega_r)$. We can simplify the above integral by using the plane wave expansion \cite{mehrem2011}
+\begin{eq}
+  e^{i\vec{k}\cdot\vec{r}} 
+  &= 
+  4\pi \sum_{l=0}^\infty \sum_{m=-l}^l  i^l j_l(kr)Y_l^m(\Omega_k)Y_l^m(\Omega_r)^*
+\end{eq}
+where you have the freedom of choice to put the complex conjugation on either factor. 
+
+Inserting this and using the orthogonality of the spherical harmonics
+\begin{eq}
+  \int \rd \Omega_r Y_{l'}^{{m'}^*}(\Omega_r)Y_l^m(\Omega_r)
+  =
+  \delta_{mm'}\delta_{ll'} 
+\end{eq}
+you end up with
+\begin{eq}
+  \Phi(\vec{k}) &= \phi(k)Y_l^m(\Omega_k)
+  =
+  \sqrt{\frac{2}{\pi}} i^l Y_l^m(\Omega_k) \int \rd r \, r^2 R(r) j_l(kr) 
+\end{eq}
+
+In a similar way, we evaluate
+\begin{eq}
+  \bra{\vec{k}}V(r)\ket{\vec{k}'} 
+  &= 
+  \frac{1}{(2\pi)^3} \int \rd^3 \vec{r} V(r)  e^{i\vec{k}'\cdot\vec{r}} e^{-i\vec{k} \cdot \vec{r}} \\
+  &=
+  \frac{1}{(2\pi)^3} (4\pi)^2 \sum_{l,l'}\sum_{m,m'} 
+  (-1)^l i^{(l+l')} Y_{l'}^{{m'}^*}(\Omega_{k'}) Y_l^m(\Omega_k)
+  \\
+  &\times
+  \int \rd r \, 
+    r^2 V(r) j_l(kr)j_{l'}(k'r)
+  \int \rd \Omega_r \, 
+    Y_{l'}^{m'}(\Omega_r)Y_l^{m^*}(\Omega_r)
+\end{eq}
+Here, a factor $(-1)^l$ was introduced because of the parity of the spherical harmonics: $Y_l^m(-\Omega_k)=(-1)^lY_l^m(\Omega_k)$. 
+
+Inserting all of this into the Schrödinger equation and again simplifying by using the orthogonality of the spherical harmonics twice, you immediatly obtain the equation given in the text.
+
+\begin{eq}
+  \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}') 
+  &= 
+  \frac{k^2}{2m}\phi(k)Y_l^m(\Omega_k) + \int \rd^3 \vec{k}' \bra{\vec{k}}V(r)\ket{\vec{k}'} \phi(k') Y_l^m(\Omega_{k'}) 
+  \\
+  &=
+  \frac{k^2}{2m}\phi(k)Y_l^m(\Omega_k) + Y_l^m(\Omega_k) \int \rd k' \, k'^2 \phi(k') V(k,k')
+  \\
+  &=
+  E\phi(k)Y_l^m(\Omega_k)
+\end{eq}
+where
+\begin{eq}
+V(k,k')=\frac{2}{\pi}\int \rd r \, r^2 V(r)j_l(kr)j_l(k'r)
+\end{eq}
