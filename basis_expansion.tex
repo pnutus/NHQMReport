@@ -10,7 +10,11 @@ The TISE is commonly written in the position basis as
 \end{eq}
 since this is the basis where we know how to express the potential operator $V$. 
 
-For the nuclear systems we are looking at, the TISE has no known analytical solutions, we need to use numerical methods to solve it. However, written as in \eqref{eq:TISEpos}, it is not suitable for numerical calculations. We would  like instead to write it as a matrix equation, with a finite matrix $H$ that we can diagonalize to find the eigenvalues $E$.
+For the nuclear systems we are looking at, the TISE has no known analytical solutions, we need to use numerical methods to solve it. However, written as in \eqref{eq:TISEpos}, it is not suitable for numerical calculations. We would  like instead to write it as a matrix equation
+\begin{eq}
+  \sum_j H_{ij}\psi_j = E \psi_i
+\end{eq}
+with a finite matrix $H$ that we can diagonalize to find the eigenvalues $E$.
 
 To write the TISE as a matrix equation we use \emph{basis expansion}. Basis expansion is how we make any sense at all of the abstract Hilbert spaces, operators and state vectors of QM. By expanding these abstract objects in a basis we can relate them to the physical world. Equation \eqref{eq:TISEpos} is the TISE for a particle, expanded in the position basis. This is the only basis in which we can express the potential, so we have to start there, but we can then expand that equation into another basis.
 
