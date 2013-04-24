@@ -8,33 +8,34 @@ The TISE is commonly written in the position basis as
   \label{eq:TISEpos}
   \p{-\frac{\hbar^2}{2m}\nabla^2 + V(\vec{r})}\psi(\vec{r}) = E\psi(\vec{r}),
 \end{eq}
-since this is the basis where we know how to express the potential operator $V$. 
+since this is the only basis where the potential operator $V$ is known.
 
-For the nuclear systems we are looking at, the TISE has no known analytical solutions, we need to use numerical methods to solve it. However, written as in \eqref{eq:TISEpos}, it is not suitable for numerical calculations. We would  like instead to write it as a matrix equation
+For the nuclear systems we are looking at, the TISE has no known analytical solutions, and we need to use numerical methods to solve it. However, written as in \eqref{eq:TISEpos}, it is not suitable for numerical calculations. We would  like instead to write it as a matrix equation
 \begin{eq}
+  \label{eq:matrix equation}
   \sum_j H_{ij}\psi_j = E \psi_i
 \end{eq}
 with a finite matrix $H$ that we can diagonalize to find the eigenvalues $E$.
 
-To write the TISE as a matrix equation we use \emph{basis expansion}. Basis expansion is how we make any sense at all of the abstract Hilbert spaces, operators and state vectors of QM. By expanding these abstract objects in a basis we can relate them to the physical world. Equation \eqref{eq:TISEpos} is the TISE for a particle, expanded in the position basis. This is the only basis in which we can express the potential, so we have to start there, but we can then expand that equation into another basis.
+To write the TISE as a matrix equation we use \emph{basis expansion}. Basis expansion is how we make any sense at all of the abstract Hilbert spaces, operators and state vectors of QM. By expanding these abstract objects in a basis we can relate them to the physical world. For example, equation \eqref{eq:TISEpos} is the TISE for a particle, expanded in the position basis. This is the only basis in which we can express the potential, so we will always have to relate our bases to it.
 
-First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$, which means that any state $\ket\psi$ can be written as a linear combination of the basis states
+Before we begin, we briefly recap some well known QM facts. First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$, which means that any state $\ket\psi$ can be written as a linear combination of the basis states
 \begin{eq}
-  \ket\psi = \sum_n c_n \ket{n}
+  \ket\psi = \sum_n \psi_n \ket{n}
   \quad
   \textup{or}
   \quad
   \ket\psi = \fint{x} \psi(x) \ket{x}.
 \end{eq}
-The complete bases we will use in this report are the \emph{position basis} $\ket{\vec{r}}$, the \emph{momentum basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis}. All these bases are orthonormal, i.e. all the basis vectors satisfy 
+The complete bases we will use in this report are the \emph{position basis} $\ket{\vec{r}}$, the \emph{momentum basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis} \cite{berggren}. All these bases are orthonormal, i.e. all the basis vectors satisfy 
 \begin{eq}
+  \label{eq:lincomb}
   \braket{n}{n'} = \delta_{nn'}
   \quad
   \textup{or}
   \quad
   \braket{x}{x'} = \delta(x - x').
 \end{eq}
-
 With a complete basis $\ket{n}$, we get the very useful \emph{completeness relation}
 \begin{eq}
   I = \sum_n \ket{n} \bra{n}
@@ -43,10 +44,48 @@ With a complete basis $\ket{n}$, we get the very useful \emph{completeness relat
   \quad
   I = \fint{x} \ket{x}\bra{x},
 \end{eq}
-where $I$ is the identity operator. This relation can therefore be inserted anywhere in any equation, and will find frequent use in this report.
+where $I$ is the identity operator. This relation can therefore be inserted anywhere in any equation, and will find frequent use in this report. 
+
+Let's now expand the TISE in the abstract $\ket{n}$ basis. We start by inserting the completeness relation for $\ket{n}$ in \eqref{eq:TISE}
+\begin{eq}
+  \label{eq:begin expand}
+  H
+  \p{
+    \sum_{n'} \ket{n'} \bra{n'}
+  }
+  \ket\psi
+  =
+  \sum_{n'} H \ket{n'} \braket{n'}{\psi}
+  =
+  E \ket\psi.
+\end{eq}
+By closing \eqref{eq:lincomb} with $\bra{n}$ on the left side and using orthonormality, we see that $\braket{n'}{\psi} = \psi_{n'}$. Now we close \eqref{eq:begin expand} with $\bra{n}$ on the left
+\begin{eq}
+  \sum_n \bra{n} H \ket{n'} \psi_{n'}
+  = 
+  E \braket{n}{\psi},
+\end{eq}
+and if we write $H_{nn'} = \bra{n} H \ket{n'}$, we get
+\begin{eq}
+  \sum_n H_{nn'} \psi_{n'} = E \psi_n,
+\end{eq}
+which is equivalent to the matrix \cref{eq:matrix equation}. This is the basic method of expanding the TISE in a basis. Expanding in an abstract basis won't get us very far, though, so let's move on to a physical basis. And what better to begin with than ...
 
 \section{The Spherical Harmonic Oscillator}
 
-We begin by expanding in the basis
+The Helium nuclei we want to expand are, for our intents and purposes, spherically symmetric. A spherically symmetric basis is therfore preferable, and we begin with the spherical harmonic oscillator (HO). The treatment below is adapted from \cite{moshinsky}.
 
+We have for the HO, the Hamiltonian
+\begin{eq}
+  H\sub{HO} = \frac{p^2}{2\mu} + \frac{\mu\omega^2 r^2}{2},
+\end{eq}
+where $\mu$ is the mass of the problem and $\omega$ is the angular frequency of the oscillator. With this Hamiltonian, the TISE has the solutions
+\begin{eq}
+  H\sub{HO}\ket{nlm} = E_n\ket{nlm} % E_{nl}???
+\end{eq}
+with
+\begin{eq}
+  E_n = \hbar\omega(2n + l + \frac{3}{2}).
+\end{eq}
+This means $\ket{nlm}$ is a complete basis, and it is the basis we will expand our TISE in. Because of the spherical symmetry, the $l$ and $m$ commute with the Hamiltonian and will therefore only
 

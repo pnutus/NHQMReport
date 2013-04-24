@@ -6,7 +6,7 @@ Introduction
 
 * Purpose? 
 * Method? 
-* Reading Guide?}
+* Reading Guide?
 
 Resonans
 --------
