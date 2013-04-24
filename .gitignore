@@ -35,3 +35,6 @@
 *.pdf
 *.png
 *.jpg
+
+# OS X
+.DS_Store

@@ -31,79 +31,25 @@ This is a bachelor thesis, and we've done some calculations on non-hermitian qua
 \chapter{Introduction}
 \label{cha:introduktion}
 
-{\Large Helium-family \\ Numerical methods\\ basis expansion}
-
-{\Large Purpose? \\ Method? \\ Reading Guide?}
-
-\begin{itemize}
-  \item resonans. varför är det vårt mål? jämföra med exp. data He-5[nuklidkarta]?
-\end{itemize}
-
 \input{introduction.tex}
 
 \chapter{The Basis Expansion Method} % (fold)
 \label{cha:the_basis_expansion_method}
-
-\begin{itemize}
-  \item Vi vill lösa i datorn ty omöjligt analytiskt
-  \item Skriva som ändlig matrisekvation
-  \item => Basexpansion + Trunkering
-  \item Expansion i allmänna fallet
-  \item HarmOsc
-  \begin{itemize}
-    \item Hatom – för att verifiera
-    \item He5 – vad är det där? Resonans?
-  \end{itemize}
-\end{itemize}
 
 \input{basis_expansion.tex}
 
 \chapter{Discretizing Momentum Space} % (fold)
 \label{cha:discretizing_momentum_space}
 
-\begin{itemize}
-  \item Varför mom-space? 
-  \begin{itemize}
-    \item Naturligare ramverk
-    \item Berggren
-  \end{itemize}
-  \item Skriva om TISE
-  \begin{itemize}
-    \item Resolution of identity
-    \item fouriertransform
-    \item All tråkig matte i appendix
-    \item kan vi förklara bra, inte appendix
-  \end{itemize}
-  \item He5 (perhaps Hatom) in momspace
-  \begin{itemize}
-    \item Compare to harmonic oscillator
-  \end{itemize}
-\end{itemize}
-
 %\input{mom_space.tex}
 
 \chapter{Non-Hermitian Quantum Mechanics} % (fold)
 \label{cha:non_hermitian_quantum_mechanics}
 
-\begin{itemize}
-  \item varför: analysera resonanser
-  \item resonans? -koppling till radioaktivitet, transienta tillstånd. tid<=>energi heisenberg
-  \item verktyg: komplex kontur. varför? cite bergren, förklara 
-  \item resultatmed dessa verktyg: två-kropp, resonans i he-5 ! jämföra med vedertagna parametrar. 
-  \item berggrenbasen, varför inkludera resonans i basen
-\end{itemize}
-teorin ovan kan lyftas till introduktion
-%har folk läst subatomär?
-
 % chapter non_hermitian_quantum_mechanics (end)
 
 \chapter{Many-Body Theory} % (fold)
 \label{cha:many_body_theory}
-
-\begin{itemize}
-  \item allmämnn flerkroppars teori
-  \item implementation, dickhoff - fock space -FermionSTates
-\end{itemize} 
 
 \input{mb_theory.tex}
 \input{mb_implementation.tex}
@@ -112,20 +58,6 @@ teorin ovan kan lyftas till introduktion
 
 \chapter{The Three-Body Problem} % (fold)
 \label{cha:the_three_body_problem}
-
-\begin{itemize}
-  \item teorin i specifik bas, tillåtna förenklingar i konkret fall(ett, flera)
-  \item 
-\end{itemize}
-
-Can't reduce to one dimension.
-
-\section{Many-Body Theory} % (fold)
-\label{sec:many_body_theory}
-
-Or this could be a chapter.
-
-% section many_body_theory (end)
 
 
 \section{The \ce{^6He} Nucleus} % (fold)
@@ -152,25 +84,6 @@ Extending \ce{^5He} example.
 
 Using a statistical approach.
 
-\chapter{Eigensolver Optimization}
-\label{cha: eigensolver}
-
-Adapt eigensolvers to work more efficiently.
-
-\chapter{Discussion}
-\label{discussion}
-
-hello.
-
-\chapter{Division of tasks}
-\label{division}
-This part is for the individual judgement.
-
-\section{Who did what?}
-no one did nothing, except for someone who did a little bit of something.
-\section{Authors}
-no one wrote nothing.
-
 \appendix
 
 \chapter{}
@@ -188,11 +101,5 @@ Reducing to one dimension.
 Reducing to one dimension.
 
 % section reduction_to_a_radial_problem (end)
-
-
-\section{Code?} % (fold)
-\label{sec:code}
-
-% section code (end)
 
 \end{document}
