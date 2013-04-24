@@ -2,9 +2,9 @@ A more natural framework to work in for the systems we are studying is that of m
 
 SPECULATION:
 
-The reason that we want to solve the problem in momentum space is that we are using a short-range potential supporting only a few, if any, bound solutions. This means that we will find multiple unbound solutions, corresponding to free particles of various energies. These are basically already eigenstates of the momentum operator, only slightly disturbed by the small potential well at $r=0$. 
+The reason that we want to solve the problem in momentum space is that we are studying a system with a short-range potential supporting only a few, if any, bound solutions. This means that we will find multiple unbound solutions, corresponding to free particles of various energies. These are basically already eigenstates of the momentum operator, only slightly disturbed by the small potential well at $r=0$. 
 
-Additionally, we want to construct a Berggren basis consisting of complex scattering states, resonances and eventual bound states. Because of the close relation between momentum and energy for scattered states, $E=\frac{k^2}{2m}$, a complex contour in the energy plane will correspond to a complex contour in momentum space. 
+Additionally, we want to construct a Berggren basis consisting of complex scattering states, resonances and eventual bound states. Because of the close relation between momentum and energy for scattered (unbound) states, $E=\frac{k^2}{2m}$, a complex contour in the energy plane will correspond to a complex contour in momentum space. [Perhaps we shouldn't talk about contours until next chapter?]
 
 END OF SPECULATION
 
@@ -26,9 +26,9 @@ END OF LAME
   E\Phi(\vec{k})
 \end{eq} 
 
-If we consider a central problem, with $H=\frac{k^2}{2m} + V(r)$, a cumbersome calculation, found in Appendix [XXXXX??], shows that the equation can be written
+If we consider a central problem, with $H=\frac{k^2}{2m} + V(r)$, a cumbersome calculation, found in \cref{sec:radial_mom_space_TISE}, shows that the Schrödinger equation in this representation can be written
 \begin{eq} 
-  \frac{k^2}{2m}\phi(k) + \int_0^\infty \rd k' \, k'^2 V(k,k') \phi(k') 
+  \frac{k^2}{2\mu}\phi(k) + \int_0^\infty \rd k' \, k'^2 V(k,k') \phi(k') 
   &=
   E\phi(k)
 \end{eq}
@@ -38,32 +38,7 @@ where
   &= 
   \frac{2}{\pi}\int_0^\infty \rd r \, r^2 V(r) j_l(kr) j_l(k'r) 
 \end{eq}
-where $j_l(kr)$ are the spherical bessel functions. The total wavefunction can be written $\Phi(\vec{k}) = \phi(k)Y_l^m(\Omega_{\vec{k}})$, where $\Omega_{\vec{k}}$ denotes the angular coordinates of $\vec{k}$.
-
-
-END OF LAME
-
-\begin{eq}
-  H\ket{\psi} &= E\ket{\psi} 
-  \\
-  \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}')
-  &= 
-  E\Phi(\vec{k})
-\end{eq} 
-
-If we consider a central problem, with $H=\frac{k^2}{2m} + V(r)$, a cumbersome calculation, found in Appendix [XXXXX??], shows that the equation can be written
-\begin{eq} 
-  \frac{k^2}{2m}\phi(k) + \int_0^\infty \rd k' \, k'^2 V(k,k') \phi(k') 
-  &=
-  E\phi(k)
-\end{eq}
-where
-\begin{eq}
-  V(k,k') 
-  &= 
-  \frac{2}{\pi}\int_0^\infty \rd r \, r^2 V(r) j_l(kr) j_l(k'r) 
-\end{eq}
-where $j_l(kr)$ are the spherical bessel functions. The total wavefunction can be written $\Phi(\vec{k}) = \phi(k)Y_l^m(\Omega_{\vec{k}})$, where $\Omega_{\vec{k}}$ denotes the angular coordinates of $\vec{k}$.
+and $j_l(kr)$ are the spherical bessel functions of order $l$. The total wavefunction can be written $\Phi(\vec{k}) = \phi(k)Y_l^m(\Omega_{\vec{k}})$, where $\Omega_{\vec{k}}$ denotes the angular coordinates of $\vec{k}$.
 
 \subsection{Numerical solution in momentum space}
 The equation is solved numerically by writing it as a matrix equation. This is achieved by approximating the integral with a numerical quadrature, 
@@ -80,7 +55,35 @@ With this approximation the Schrödinger equation may be written
 \end{eq}
 where $\phi_i=\phi(k_i)$ and 
 \begin{eq}
-  H_{ij} &= \frac{k_i^2}{2m}\delta_{ij} + w_jk_j^2 V_{ij} \\
+  H_{ij} &= \frac{k_i^2}{2\mu}\delta_{ij} + w_jk_j^2 V_{ij} \\
   V_{ij} &= \frac{2}{\pi} \int_0^\infty \rd r \, r^2 V(r) j_l(k_i r) j_l(k_j r)
 \end{eq}
-The equation is now written as a matrix equation of order N (the number of k values used). The energy eigenvalues $E$ will be obtained by calculating the matrix elements $H_{ij}$ and diagonalizing the resulting matrix. Since there is generally no analytic expression for the terms $V_{ij}$, they will need to be evaluated by numerical integration.
+The equation is now written as a matrix equation of order N -- the number of states included in the basis. The energy eigenvalues $E$ will be obtained by calculating the matrix elements $H_{ij}$ and diagonalizing the resulting matrix. Since there is generally no analytic expression for the terms $V_{ij}$, they will need to be evaluated by numerical integration.
+
+A comparison of performance between HO basis expansion and momentum space for the hydrogen atom and Helium-5 problems is shown in \cref{fig:HO vs mom}. We are using Gauss-Legendre quadrature to approximate the integrals. 
+
+{figure}
+
+\label{fig:HO vs mom}
+{end figure}
+
+However, let us study the obtained solutions closer. If we transform the momentum wavefunctions $\phi(k)$ to radial position wavefunctions $R(r)$ according to \cref{sec:radial_mom_space_TISE},
+\begin{eq}
+R(r)=\sqrt{\frac{2}{\pi}}i^l \int_0^\infty \rd k \, k^2 \phi(k)j_l(kr) \, ,
+\end{eq} 
+we can see the spatial distribution of our solutions. \Cref{fig:momspace solutions} shows the wavefunctions $R(r)$ for a few of the states with lowest energy.
+
+{figure}
+
+\label{fig:momspace solutions}
+{end figure}
+
+ While all of the states we see have energies $E>0$, and thus are unbound, we see that one solution is more localized near the center $r=0$. This is the sign of a quasi-bound state. To confirm this we may vary the depth $V0$ of the potential well and see how this affects the solutions. \Cref{fig:momspace solutions var} shows the solutions obtained with a different $V0$.
+
+{figure}
+
+\label{fig:momspace solutions var}
+{end figure}
+
+We find that the unbound states remained unchanged, and basically correspond to free particles of energies $E_n=\frac{k_n^2}{2\mu}$, where $k_n$ are the momenta that was included in the discretization of the integrals. We will refer to these values of $k$ as our \emph{mesh points}. The quasi-bound state changed, which shows that this solution is a feature of the potential.  
+
