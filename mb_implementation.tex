@@ -42,18 +42,24 @@ To calculate the Hamilton matrix for the many-body states we generate a list of 
 \subsubsection{One-body opreator}
 The one-body operator is the simple kinetic energy operator that we have known and loved since our first food fight. 
 %Presented on the form of \ref{eq: stans i mb-teori} the one-body operator, \fockop{T} simply yields the kinetic energy of the two particles, but in a matrix representation 
-In our matrix representation in a diagonal-element the bra and the ket will be the same and thus have the same single particle states, this operator returns the kinetic energy of these two single particle states. 
-In our implementation these eigenvalues to the sp-hamilton matrix are already calculated and are easily retrieved.
+ In our matrix representation the bra and the ket will be the same in a diagonal-element and thus have the same single particle states.
+ This operator returns the kinetic energy of these two single particle states. 
+ These energies are eigenvalues to the sp-hamilton matrix and have already been calculated and can easily be retrieved.
 
 one body >==< clebsxhgordan???
+
 \subsubsection{Two-body operator}
 The two-body operator is the contribution from the neutron-neutron interaction and is computationally taxing. Although the potential is (ridiculously) simple this calculation requires sums over all the quantum numbers in both the bra and the ket; the mathematical expression for the hamiltonian is presented in \ref{two-body op sum}. 
 With a simple contour of 15 points this would be a sum over $15^4*4^4 \approx 13$ million elements which is computationaly unfeasible.
 In order to reduce the complexity we instead make use of coupled angular momentum for the many-body states, refer to ref ref ref.
 
-In order to determine the hamilton matrix for the mb-system we generate a list of all possible (non-permutated) mb-states, constructed only from different sp-states we treat the degeneration from the different allowed m-quantum numbers, and for each pair of indexes calculate a matrix element; the (i,j)-th matrix element, $H_{ij}$, would be the interaction between the i-th and j-th mb-state. 
-Thus for a given bra and ket we determine whether the fock-space relations allow for an interaction, in this case with two-orbiting particles this is trivially true, and if that is the case calculate the Clebsch-Gordan coefficients to treat the degeneracy in m-quantum number. 
-Recall that Clebsch-Gordan coefficients was covered in ref ref ref.
+%the (i,j)-th matrix element, $H_{ij}$, would be the interaction between the i-th and j-th mb-state. and for each pair of indexes calculate a matrix element; 
+
+
+In order to determine the hamilton matrix for the mb-system we generate a list of all possible (non-permutated) mb-states, constructed only from different sp-states.
+For a given bra and ket we determine whether the fock-space relations allow for an interaction, in this case with two-orbiting particles this is trivially true.
+This is where we introduce the different allowed m-quantum numbers, the original bra and ket are used to generate all possible mb-states with the given sets of sp-states but with an angular momentum for each of the sp-states.
+Thus we can calculate the Clebsch-Gordan coefficients to treat the degeneracy in m-quantum number, recall that Clebsch-Gordan coefficients was covered in ref ref ref.
 
 The calculation of clebsch gordan coeff (and fock relations) severly reduces the number of elements that actually give any contribution at all. 
 When we know which bra and ket interactions that give a contribtion it is time to calculate it. 
