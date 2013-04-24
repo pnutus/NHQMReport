@@ -48,7 +48,7 @@ where $I$ is the identity operator. This relation can therefore be inserted anyw
 
 Let's now expand the TISE in the abstract $\ket{n}$ basis. We start by inserting the completeness relation for $\ket{n}$ in \cref{eq:TISE}
 \begin{eq}
-  \label{eq:begin expand}
+  \label{eq:expand1}
   H
   \p{
     \sum_{n'} \ket{n'} \bra{n'}
@@ -59,14 +59,16 @@ Let's now expand the TISE in the abstract $\ket{n}$ basis. We start by inserting
   =
   E \ket\psi.
 \end{eq}
-By closing \cref{eq:lincomb} with $\bra{n}$ on the left side and using orthonormality, we see that $\braket{n'}{\psi} = \psi_{n'}$. Now we close \cref{eq:begin expand} with $\bra{n}$ on the left
+By closing \cref{eq:lincomb} with $\bra{n}$ on the left side and using orthonormality, we see that $\braket{n'}{\psi} = \psi_{n'}$. Now we close \cref{eq:expand1} with $\bra{n}$ on the left
 \begin{eq}
+  \label{eq:expand2}
   \sum_n \bra{n} H \ket{n'} \psi_{n'}
   = 
   E \braket{n}{\psi},
 \end{eq}
 and if we write $H_{nn'} = \bra{n} H \ket{n'}$, we get
 \begin{eq}
+  \label{eq:expand3}
   \sum_n H_{nn'} \psi_{n'} = E \psi_n,
 \end{eq}
 which is equivalent to the matrix \cref{eq:matrix equation}. This is the basic method of expanding the TISE in a basis. Expanding in an abstract basis won't get us very far, though, so let's move on to a physical basis. And what better to begin with than ...
@@ -77,15 +79,57 @@ The Helium nuclei we want to expand are, for our intents and purposes, spherical
 
 We have for the HO, the Hamiltonian
 \begin{eq}
+  \label{eq:HO hamiltonian}
   H\sub{HO} = \frac{p^2}{2\mu} + \frac{\mu\omega^2 r^2}{2},
 \end{eq}
 where $\mu$ is the mass of the problem and $\omega$ is the angular frequency of the oscillator. With this Hamiltonian, the TISE has the solutions
 \begin{eq}
-  H\sub{HO}\ket{nlm} = E_n\ket{nlm} % E_{nl}???
+  H\sub{HO}\ket{nlm} = E_{nl}\ket{nlm} % E_{nl}???
 \end{eq}
 with
 \begin{eq}
-  E_n = \hbar\omega(2n + l + \frac{3}{2}).
+  E_{nl} = \hbar\omega(2n + l + \frac{3}{2}).
 \end{eq}
-This means $\ket{nlm}$ is a complete basis, and it is the basis we will expand our TISE in. Because of the spherical symmetry, the $l$ and $m$ commute with the Hamiltonian and will therefore only
+This means $\ket{nlm}$ is a complete basis, and it is the basis we will expand our TISE in. The procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and gives us
+\begin{eq}
+  \label{eq:HOexpanded}
+  \sum_{n'l'm'} \bra{nlm} H \ket{n'l'm'} \psi_{n'l'm'} = E \psi_{nlm}\,.
+\end{eq}
+Since we are considering a spherically symmetric Hamiltonian
+\begin{eq}
+  \label{eq:spherical hamiltonian}
+  H = \frac{p^2}{2\mu} + V(r),
+\end{eq}
+the $l$ and $m$ in $\ket{nlm}$ commute with the Hamiltonian and will therefore contribute with a $\delta_{ll'}\delta_{mm'}$ factor. This means we can drop the primes and write \cref{eq:HOexpanded} as
+\begin{eq}
+  \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}
+\end{eq}
+If we see $H_{nn'} = \bra{nlm} H \ket{n'lm}$ as a matrix, this can be expressed as {\it $H$ is diagonal in $l$ and $m$}.
+
+Now we have our matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. First, we combine \cref{eq:HO hamiltonian,eq:spherical hamiltonian} to get
+\begin{eq}
+  H = H\sub{HO} - \frac{\mu\omega^2 r^2}{2} + V(r).
+\end{eq}
+We then close this equation with $\bra{nlm}$ on the left and $\ket{n'lm}$ on the right to get three terms on the RHS, which we consider in turn. The first is just the eigenvalues of $H\sub{HO}$
+\begin{eq}
+  \bra{nlm} H\sub{HO} \ket{n'lm} 
+  = 
+  E_{nl} \braket{nlm}{n'lm} 
+  = 
+  \hbar\omega\p{2n + l + \frac{3}{2}} \delta_{nn'}.
+\end{eq}
+The second follows from the known identity % \cite{moshinsky} eller den moshinsky citear?
+\begin{eq}
+	& \bra{nlm} r^2 \ket{n'lm} 
+	= \\
+	& \frac{\hbar}{\mu\omega}
+  \p{
+  	\p{2n + l + \frac{3}{2}}\delta_{nn'}
+    -
+  	\sqrt{n(n+l+\frac{1}{2})}\delta_{n,n'-1}
+  	-
+  	\sqrt{n'(n'+l+\frac{1}{2})}\delta_{n',n-1}
+  }.
+\end{eq}
+For the third term, $\bra{nlm} V(r) \ket{n'lm}$, a little more work is required. Since the potential has to be
 
