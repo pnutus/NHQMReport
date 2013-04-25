@@ -30,26 +30,27 @@ This is a bachelor thesis, and we've done some calculations on non-hermitian qua
 
 \chapter{Introduction}
 \label{cha:introduction}
-\input{introduction.tex}
+\input{chapters/introduction.tex}
 
 
 \chapter{The Basis Expansion Method}
 \label{cha:basis_expansion}
-\input{basis_expansion.tex}
+\input{chapters/basis_expansion.tex}
 
 
 \chapter{Discretizing Momentum Space}
 \label{cha:mom_space}
-\input{mom_space.tex}
+\input{chapters/mom_space.tex}
 
 \chapter{Non-Hermitian Quantum Mechanics} 
 \label{cha:nhqm}
+\input{chapters/nhqm.tex}
 
 
 \chapter{Many-Body Theory}
 \label{cha:many_body}
-\input{mb_theory.tex}
-\input{mb_implementation.tex}
+\input{chapters/mb_theory.tex}
+\input{chapters/mb_implementation.tex}
 
 
 \chapter{The Three-Body Problem}
@@ -68,12 +69,17 @@ Using a statistical approach.
 
 \appendix
 
-\chapter{}
+\chapter{Derivations}
+
+\section{Harmonic Oscillator Matrix Elements}
+\label{sec:HO matrix elements}
+
+\input{appendices/HO_elements.tex}
 
 \section{Radial Momentum Space TISE}
 \label{sec:radial_mom_space_TISE}
 
-\input{mom_space_app.tex}
+\input{appendices/radial_mom_TISE.tex}
 
 \bibliographystyle{ieeetr}
 \bibliography{nhqm}{}

@@ -1,0 +1,88 @@
+First, we combine \cref{eq:HO hamiltonian,eq:spherical hamiltonian} to get
+\begin{eq}
+  H = H\sub{HO} - \frac{\mu\omega^2 r^2}{2} + V(r).
+\end{eq}
+We then close this equation with $\bra{nlm}$ on the left and $\ket{n'lm}$ on the right to get three terms on the RHS, which we consider in turn. The first is just the eigenvalues of $H\sub{HO}$
+\begin{eq}
+  \bra{nlm} H\sub{HO} \ket{n'lm} 
+  = 
+  E_{nl} \braket{nlm}{n'lm} 
+  = 
+  \hbar\omega\p{2n + l + \frac{3}{2}} \delta_{nn'}.
+\end{eq}
+The second follows from the known identity % \cite{moshinsky} eller den moshinsky citear?
+\begin{eq}
+	& \bra{nlm} r^2 \ket{n'lm} 
+	= \\
+	& \frac{\hbar}{\mu\omega}
+  \p{
+  	\p{2n + l + \frac{3}{2}}\delta_{nn'}
+    -
+  	\sqrt{n(n+l+\frac{1}{2})}\delta_{n,n'-1}
+  	-
+  	\sqrt{n'(n'+l+\frac{1}{2})}\delta_{n',n-1}
+  }.
+\end{eq}
+For the third term, $\bra{nlm} V(r) \ket{n'lm}$, a little more work is required. We begin by inserting a completeness relation on each side of the potential
+\begin{eq}
+  \label{eq:potential element}
+  &\bra{nlm}
+  \p{ 
+    \fint[\R^3]{^3\vec{r}}
+    \ket{\vec{r}}\bra{\vec{r}}
+  }
+  V
+  \p{ 
+    \fint[\R^3]{^3\vec{r}'}
+    \ket{\vec{r}'}\bra{\vec{r}'}
+  }
+  \ket{n'lm}
+  \\ = & 
+  \fint[\R^3]{^3\vec{r}}
+  \fint[\R^3]{^3\vec{r}'}
+  \braket{nlm}{\vec{r}}
+  \bra{\vec{r}} V \ket{\vec{r}'}
+  \braket{\vec{r}'}{n'lm}.
+\end{eq}
+We get the position representation of the potential with
+\begin{eq}
+  \bra{\vec{r}} V \ket{\vec{r}'} = V(r) \delta^3(\vec{r} - \vec{r}')
+\end{eq}
+ $\braket{\vec{r}}{nlm}$ are the HO eigenstates in the position basis, which we know to be
+\begin{eq}
+  \braket{\vec{r}}{nlm} = R_{nl}(r)Y_l^m(\theta, \phi),
+\end{eq}
+where $Y_l^m$ are the spherical harmonics and 
+\begin{eq}
+	R_{nl}(r) 
+	= 
+	N r^l e^{-\gamma r^2 / 2}
+	L_{(n-l) / 2}^{(l+\frac{1}{2})}(\gamma r^2)
+\end{eq}
+with $\gamma = \mu\omega/\hbar$, $L_n^\alpha(x)$ are the generalized Laguerre polynomials and $N$ is a normalization constant,
+\begin{eq}
+	N = 
+  \sqrt{\frac{
+    2^{n+l+2}\gamma^{l+\frac{3}{2}}
+  }{
+    \sqrt{\pi}
+  }}
+  \sqrt{\frac{
+    \p{\frac{1}{2}(n-l)}!
+    \p{\frac{1}{2}(n+l)}!
+  }{
+    (n+l+1)!
+  }}.
+\end{eq}
+Plugging this into \cref{eq:potential element} we get
+\begin{eq}
+  \fint[\R^3]{^3\vec{r}}
+  \fint[\R^3]{^3\vec{r}'}
+  \p{
+    R_{nl}(r) Y_l^m(\theta, \phi)
+  }^*
+  V(r) \delta^3(\vec{r} - \vec{r}')
+  R_{n'l}(r) Y_l^m(\theta, \phi)
+  \braket{\vec{r}'}{n'lm}
+\end{eq}
+

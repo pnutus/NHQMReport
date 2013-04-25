@@ -102,34 +102,24 @@ Since we are considering a spherically symmetric Hamiltonian
 \end{eq}
 the $l$ and $m$ in $\ket{nlm}$ commute with the Hamiltonian and will therefore contribute with a $\delta_{ll'}\delta_{mm'}$ factor. This means we can drop the primes and write \cref{eq:HOexpanded} as
 \begin{eq}
-  \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}
+  \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
 \end{eq}
-If we see $H_{nn'} = \bra{nlm} H \ket{n'lm}$ as a matrix, this can be expressed as {\it $H$ is diagonal in $l$ and $m$}.
+If we see $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix, this can be expressed as {\it $H$ is diagonal in $l$ and $m$}.
 
-Now we have our matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. First, we combine \cref{eq:HO hamiltonian,eq:spherical hamiltonian} to get
+Now we have our matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation, see \cref{sec:HO matrix elements} for the derivation which results in
 \begin{eq}
-  H = H\sub{HO} - \frac{\mu\omega^2 r^2}{2} + V(r).
+  &
+  \bra{nlm} H \ket{n'lm} =
+	\frac{\hbar\omega}{2}
+	\left(
+    \p{2n+l+\frac{3}{2}} \delta_{nn'}
+    +
+		\sqrt{n(n+l+\frac{1}{2})} \delta_{n,n'-1}\right.
+		\\ & + 
+		\left.\sqrt{n'(n'+l+\frac{1}{2})} \delta_{n',n-1} 
+	\right)
+	+
+	\fint[0][\inf]{r} 
+    r^2 R_{nl}(r) V(r) R_{n'l}(r).
 \end{eq}
-We then close this equation with $\bra{nlm}$ on the left and $\ket{n'lm}$ on the right to get three terms on the RHS, which we consider in turn. The first is just the eigenvalues of $H\sub{HO}$
-\begin{eq}
-  \bra{nlm} H\sub{HO} \ket{n'lm} 
-  = 
-  E_{nl} \braket{nlm}{n'lm} 
-  = 
-  \hbar\omega\p{2n + l + \frac{3}{2}} \delta_{nn'}.
-\end{eq}
-The second follows from the known identity % \cite{moshinsky} eller den moshinsky citear?
-\begin{eq}
-	& \bra{nlm} r^2 \ket{n'lm} 
-	= \\
-	& \frac{\hbar}{\mu\omega}
-  \p{
-  	\p{2n + l + \frac{3}{2}}\delta_{nn'}
-    -
-  	\sqrt{n(n+l+\frac{1}{2})}\delta_{n,n'-1}
-  	-
-  	\sqrt{n'(n'+l+\frac{1}{2})}\delta_{n',n-1}
-  }.
-\end{eq}
-For the third term, $\bra{nlm} V(r) \ket{n'lm}$, a little more work is required. Since the potential has to be
 
