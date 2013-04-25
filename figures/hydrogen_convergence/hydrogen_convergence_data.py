@@ -20,8 +20,8 @@ def calc(ordermatrix, overwrite=False):
     abs_resm_file_path = []
     
     for i in xrange(len(ordermatrix)):
-        abs_resho_file_path.append(os.path.join(script_dir, rel_resho_path + str(i)))
-        abs_resm_file_path.append(os.path.join(script_dir, rel_resm_path + str(i)))
+        abs_resho_file_path.append(os.path.join(script_dir, rel_resho_path + str(i)+'.npy'))
+        abs_resm_file_path.append(os.path.join(script_dir, rel_resm_path + str(i)+'.npy'))
     
     
     try:

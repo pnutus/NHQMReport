@@ -9,8 +9,6 @@ import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import hydrogen_convergence_data as data
 
-
-
 def lmin(lista):
     minv = lista[0]
     for i in xrange(len(lista)):
