@@ -70,7 +70,7 @@ with $\gamma = \mu\omega/\hbar$, $L_n^\alpha(x)$ are the generalized Laguerre po
   }}.
 \end{eq}
 
-\section{Implementation}
+\subsection{Implementation}
 
 Since the HO basis is a discrete basis, implementing it in code is straightforward. There are a few considerations, however, and we mention them here. 
 
@@ -86,5 +86,3 @@ or in linear algebra notation
 This matrix equation is solved using a standard eigensolver algorithm, which uses the fact that the matrix is hermitian to solve the equation faster.
 
 We calculate the matrix elements using \cref{eq:HO matrix elements}. The integration is performed using Gauss-Legendre quadrature and setting the upper limit to a finite number.
-
-\section{Expanding the \He{5} Nucleus}

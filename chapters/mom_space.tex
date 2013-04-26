@@ -1,30 +1,18 @@
-A more natural framework to work in for the systems we are studying is that of momentum space. This is made by expanding the Schrödinger equation in momentum basis, demonstrated below. 
-
-SPECULATION:
-
 The reason that we want to solve the problem in momentum space is that we are studying a system with a short-range potential supporting only a few, if any, bound solutions. This means that we will find multiple unbound solutions, corresponding to free particles of various energies. These are basically already eigenstates of the momentum operator, only slightly disturbed by the small potential well at $r=0$. 
 
-I SAY: [NEW START OF SPECULATION SINCE I THINK THE PART ABOVE IS GOOD HERE] /V
-
-Additionally, we want to construct a Berggren basis consisting of complex scattering states, resonances and eventual bound states. Because of the close relation between momentum and energy for scattered (unbound) states, $E=\frac{k^2}{2m}$, a complex contour in the energy plane will correspond to a complex contour in momentum space. [Perhaps we shouldn't talk about contours until next chapter?]
-
-END OF SPECULATION
-
-The expansion is done in a way similar to before:
+The expansion is done in the same way as before, giving us
 \begin{eq}
-  H\ket{\psi} &= E\ket{\psi} 
-  \\
   \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}')
   &= 
   E\Phi(\vec{k}) \, .
-\end{eq} 
-If we consider a central problem, with $H=\frac{k^2}{2m} + V(r)$, a cumbersome calculation, found in \cref{sec:radial_mom_space_TISE}, shows that the Schrödinger equation in this representation can be written as
+\end{eq}
+This three-dimensional equation is practically unsolvable, but we can simplify it using the fact that we have a central problem. A rather involved calculation (see \cref{sec:radial_mom_space_TISE}) shows that the Schrödinger equation can be written as
 \begin{eq} 
   \frac{k^2}{2\mu}\phi(k) + \int_0^\infty \rd k' \, k'^2 V(k,k') \phi(k') 
   &=
   E\phi(k) \, ,
 \end{eq}
-where
+where $\phi(k)$ is the radial part of the momentum space wavefunction, 
 \begin{eq}
   V(k,k') 
   &= 
@@ -32,10 +20,7 @@ where
 \end{eq}
 and $j_l(kr)$ are the spherical bessel functions of order $l$. We see that the transformation turned the differential equation into an integral equation.
 
-The total wavefunction can be written $\Phi(\vec{k}) = \phi(k)Y_l^m(\Omega_{\vec{k}})$, where $\Omega_{\vec{k}}$ denotes the angular coordinates of $\vec{k}$. 
-
-
-\section{Numerical Solution in Momentum Space}
+\subsection{Numerical Considerations}
 As with the harmonic oscillator basis we want to rewrite the equation as a finite matrix equation. An integral equation can be rewritten as a matrix equation by approximating the integral with a numerical quadrature, 
 \begin{eq}
   \label{eq:discrete_momentum}
@@ -112,5 +97,3 @@ R(r)=i^l\sqrt{\frac{2}{\pi}}\sum_{j=1}^N \sqrt{w_j}k_j\phi_j'j_l(k_j r) \, .
   \label{fig:momspace solutions var}
 \end {figure}
 We see that the unbound states remain practically unchanged. This means that they basically correspond to free particles of energies $E_n=\frac{k_n^2}{2\mu}$, where $k_n$ are the momenta that were included in the discretization of the integrals. We will refer to these values of $k$ as our \emph{mesh points}. The quasi-bound state changed dramatically, which shows that this solution is a feature of the system we are studying.  
-
-\section{Results}
