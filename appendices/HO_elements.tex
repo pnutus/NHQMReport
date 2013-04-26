@@ -23,66 +23,31 @@ The second follows from the known identity % \cite{moshinsky} eller den moshinsk
   	\sqrt{n'(n'+l+\frac{1}{2})}\delta_{n',n-1}
   }.
 \end{eq}
-For the third term, $\bra{nlm} V(r) \ket{n'lm}$, a little more work is required. We begin by inserting a completeness relation on each side of the potential
+The third term is calculated in the position basis, with
 \begin{eq}
-  \label{eq:potential element}
-  &\bra{nlm}
-  \p{ 
-    \fint[\R^3]{^3\vec{r}}
-    \ket{\vec{r}}\bra{\vec{r}}
-  }
-  V
-  \p{ 
-    \fint[\R^3]{^3\vec{r}'}
-    \ket{\vec{r}'}\bra{\vec{r}'}
-  }
-  \ket{n'lm}
-  \\ = & 
-  \fint[\R^3]{^3\vec{r}}
-  \fint[\R^3]{^3\vec{r}'}
-  \braket{nlm}{\vec{r}}
-  \bra{\vec{r}} V \ket{\vec{r}'}
-  \braket{\vec{r}'}{n'lm}.
+  \braket{\vec{r}}{nlm} = R_{nl}(r) Y_l^m(\theta, \phi),
 \end{eq}
-We get the position representation of the potential with
+where $R_{nl}$ is the HO radial wavefunctions (see \cref{eq:HO radial wavefunction}) and $Y_l^m$ are the spherical harmonics. Because $V(r)$ is spherically symmetric, the spherical harmonics integrate to 1 and we get
 \begin{eq}
-  \bra{\vec{r}} V \ket{\vec{r}'} = V(r) \delta^3(\vec{r} - \vec{r}')
+	\bra{nlm} V(r) \ket{n'lm} 
+	=
+	\fint[0][\inf]{r} r^2 R_{nl}(r)  V(r) R_{n'l}(r).
 \end{eq}
- $\braket{\vec{r}}{nlm}$ are the HO eigenstates in the position basis, which we know to be
+Putting it all together, we have
 \begin{eq}
-  \braket{\vec{r}}{nlm} = R_{nl}(r)Y_l^m(\theta, \phi),
+  \bra{nlm} H \ket{n'lm} 
+  & =
+  \bra{nlm} H\sub{HO} - \frac{\mu\omega^2 r^2}{2} + V(r) \ket{n'lm}
+  \\ & =
+	\frac{\hbar\omega}{2}
+	\left(
+    \p{2n+l+\frac{3}{2}} \delta_{nn'}
+    +
+		\sqrt{n(n+l+\frac{1}{2})} \delta_{n,n'-1}\right.
+		\\ & + 
+		\left.\sqrt{n'(n'+l+\frac{1}{2})} \delta_{n',n-1} 
+	\right)
+	+
+	\fint[0][\inf]{r} 
+    r^2 R_{nl}(r) V(r) R_{n'l}(r).
 \end{eq}
-where $Y_l^m$ are the spherical harmonics and 
-\begin{eq}
-	R_{nl}(r) 
-	= 
-	N r^l e^{-\gamma r^2 / 2}
-	L_{(n-l) / 2}^{(l+\frac{1}{2})}(\gamma r^2)
-\end{eq}
-with $\gamma = \mu\omega/\hbar$, $L_n^\alpha(x)$ are the generalized Laguerre polynomials and $N$ is a normalization constant,
-\begin{eq}
-	N = 
-  \sqrt{\frac{
-    2^{n+l+2}\gamma^{l+\frac{3}{2}}
-  }{
-    \sqrt{\pi}
-  }}
-  \sqrt{\frac{
-    \p{\frac{1}{2}(n-l)}!
-    \p{\frac{1}{2}(n+l)}!
-  }{
-    (n+l+1)!
-  }}.
-\end{eq}
-Plugging this into \cref{eq:potential element} we get
-\begin{eq}
-  \fint[\R^3]{^3\vec{r}}
-  \fint[\R^3]{^3\vec{r}'}
-  \p{
-    R_{nl}(r) Y_l^m(\theta, \phi)
-  }^*
-  V(r) \delta^3(\vec{r} - \vec{r}')
-  R_{n'l}(r) Y_l^m(\theta, \phi)
-  \braket{\vec{r}'}{n'lm}
-\end{eq}
-

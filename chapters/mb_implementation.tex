@@ -6,16 +6,16 @@ In order to solve the three body-problem, or rather the He-6 system modeled as a
 %//core - nucleus
 \subsection{multistep method}
 We have utilized the multistep method to find the solution to a multi-body (mb) problem through solutions of incremental many-body problems.
- We started out by solving the two body problem of a core (He-4) and a single orbiting particle (sp) (neutron, forming He-5 -there was no bound state, only resonances as can be expected, see ref ref ref) and used these solutions to form mb-states out of different combinations of the sp-states; see the fock space section in mb-theory.
- We have only reached the second step in the multi-step method but this is the greatest (largest?) step, most of the operators that govern any mb-problem are needed for a three-particle problem whereas a two-body particle can be reduced to a one-body-problem through the use of relative quantities.
+ We started out by solving the two body problem of a core (He-4) and a single orbiting particle (sp) (neutron, forming He-5 -there was no bound state, only resonances as can be expected, see ref ref ref) and used these solutions to form mb-states out of different combinations of the sp-states; see fock space section in mb-theory.
+ We have only reached the second step in the multi-step method but this is the largest step, most of the operators that govern any mb-problem are needed for a three-particle problem, whereas a two-body particle can be reduced to a one-body-problem through the use of relative quantities.
  
 \subsection{Many-body states}
-The governing theory of mb-states is covered in \cref{sec:fock space} so this section will focus on one way of implementing the states. 
+The governing theory of mb-states is covered in \cref{sec:fock space}, this section will focus on one way of implementing these states.
 %We enumerate the solutions to the He-5 problem as a basis for the mb states and include information about the state's angular momentum.
 %Our first simplification is that we only regard states with $\alpha, \beta$, where $\alpha_{sp}$ and $\beta_{sp} $ are sp-states and $\alpha_{sp} <= \beta_{sp}$ in terms of enumeration so as to avoid oversumming, recall the relation between alpa, beta :: beta, alpha ref ref . 
 %This will gives us a smaller matrix between the different mb states and saves us a lot of computation-time.
 
-A many-body state is represented as a number representing the sign and a list mb-states.
+A many-body state is represented as a number representing the sign and a list of mb-states (????????).
  The mb-state is a set of sp-states, one for each orbiting particle (represented as the sp-state's k value). 
  The sp-states can also be extended to hold information about other relevant quantum numbers, we will treat states with (coupled) angular momentum in the calculations but the extra information is best supplied when it's used for calculations.
  
@@ -24,11 +24,11 @@ A many-body state is represented as a number representing the sign and a list mb
  
  
 
- The mb-state is formed by taking a vacuum-state, an empty list, and adding a single particle state along with any other quantum number needed for the calculations, this is described mathemtically in \cref{eq:creation}.
- To avoid oversumming the single particle states are ordered in a lexicographic order and our calculations only require one of the permutations of a set of given sp-states, an integer is used to keep track of the sign of a given permutation. 
- Because of the fermionic nature of our paticles we do not allow two sp-states with the same quantum numbers.
- This integer is calculated as in \cref{eq:creation sign} and if one tries to create a state which is already present, as is the case in \cref{eq:creation zero}, the sign will be set to 0 and it will be regarded as a vacuum-state in our calculations.
- The annihilation operator is implemented in a similar fashion but it instead removes a given state (set of quantum numbers) and returns a new FermionState without the given to-be-removed state.
+The mb-state is formed by taking a vacuum-state, an empty list, and adding a single particle state along with any other quantum number needed for the calculations, this is described mathemtically in \cref{eq:creation}.
+To avoid oversummation, the single particle states are ordered in a lexicographic order and our calculations only require one of the permutations of a set of given sp-states, an integer is used to keep track of the sign of a given permutation. 
+This integer is calculated as in \cref{eq:creation sign}.
+Because of the fermionic nature of our particles we do not allow two sp-states with the same quantum numbers and if one tries to create a state which is already present, as is the case in \cref{eq:creation zero}, the sign will be set to 0 and it will be regarded as a vacuum-state in our calculations.
+The annihilation operator is implemented in a similar fashion, it removes a given state (set of quantum numbers) and returns a new FermionState without the given to-be-removed state.
  
 % To keep track of all the many-body states and to perform sums over all possible many-body states we arrange a list with all the states and signify each many body state as the index representing the state in this list
  
@@ -36,19 +36,19 @@ A many-body state is represented as a number representing the sign and a list mb
 To calculate the Hamilton matrix for the many-body states we generate a list of all possible mb-states and let the (i,j)-th element of the matrix be the hamiltonian contribution from the i-th mb-state in a bra and the j-th mb-state in a ket. 
  In the case of two orbiting particles the two-body operator will work on all combinations of bras and kets but in the four or more body problem only some combinations will contribute.
  To find which combinations of bras and kets contribute to the two-body operator one can take a ket and remove two sp-states and iteratively add all possible combinations of two sp-states to the new ket and check whether the bra is the same as the new ket.
- On the diagonal however there will also be a contribution from the one-body operator.
- The contributions from the two operators are discussed in detail below.
+ On the diagonal, however, there will also be a contribution from the one-body operator.
+ The contributions from these two operators are discussed in detail below.
 
-\subsubsection{One-body opreator}
+\subsubsection{The one-body opreator}
 The one-body operator is the simple kinetic energy operator that we have known and loved since our first food fight. 
 %Presented on the form of \cref{eq: stans i mb-teori} the one-body operator, \fockop{T} simply yields the kinetic energy of the two particles, but in a matrix representation 
- In our matrix representation the bra and the ket will be the same in a diagonal-element and thus have the same single particle states.
+ In our matrix representation the bra and the ket will be the same in a diagonal-element and thus have the same single-particle states.
  This operator returns the kinetic energy of these two single particle states. 
- These energies are eigenvalues to the sp-hamilton matrix and have already been calculated and can easily be retrieved.
+ The energies are eigenvalues to the sp-hamilton matrix and have already been calculated and can easily be retrieved.
 
 one body >==< clebsxhgordan???
 
-\subsubsection{Two-body operator}
+\subsubsection{The two-body operator}
 The two-body operator is the contribution from the neutron-neutron interaction and is computationally taxing. Although the potential is (ridiculously) simple this calculation requires sums over all the quantum numbers in both the bra and the ket; the mathematical expression for the hamiltonian is presented in \cref{two-body op sum}. 
 With a simple contour of 15 points this would be a sum over $15^4*4^4 \approx 13$ million elements which is computationaly unfeasible.
 In order to reduce the complexity we instead make use of coupled angular momentum for the many-body states, refer to ref ref ref.
@@ -56,14 +56,14 @@ In order to reduce the complexity we instead make use of coupled angular momentu
 %the (i,j)-th matrix element, $H_{ij}$, would be the interaction between the i-th and j-th mb-state. and for each pair of indexes calculate a matrix element; 
 
 
-In order to determine the hamilton matrix for the mb-system we generate a list of all possible (non-permutated) mb-states, constructed only from different sp-states.
+To determine the hamilton matrix for the mb-system we generate a list of all possible (non-permutated) mb-states, constructed only from different sp-states.
 For a given bra and ket we determine whether the fock-space relations allow for an interaction, in this case with two-orbiting particles this is trivially true.
 This is where we introduce the different allowed m-quantum numbers, the original bra and ket are used to generate all possible mb-states with the given sets of sp-states but with an angular momentum for each of the sp-states.
 Thus we can calculate the Clebsch-Gordan coefficients to treat the degeneracy in m-quantum number, recall that Clebsch-Gordan coefficients was covered in ref ref ref.
 
 The calculation of clebsch gordan coeff (and fock relations) severly reduces the number of elements that actually give any contribution at all. 
 When we know which bra and ket interactions that give a contribtion it is time to calculate it. 
-Mathematically this contribution, from the sepparable n-n potential can be expressed like presented in ref ref
+Mathematically this contribution, from the sepparable n-n potential can be expressed like presented in ref ref.
 However this is not a suitable form for the computer, not even with the very powerful Gauss-Legendre contour for the integral; instead we rewrite it as a matrix equation:
 $1+2+3+4+5+6+7+...+226+... = - \frac{1}{12}$ because fuck you that's why\\
 where the matrix is the same for each combination of bra's and ket's and need only be calculated once.
