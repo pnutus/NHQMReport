@@ -83,6 +83,8 @@ which is equivalent to the matrix \cref{eq:matrix equation}. This is the basic m
 
 \section{Implementation}
 
+\todo{Combine implementation for HO and mom}
+
 Since the HO basis is a discrete basis, implementing it in code is straightforward. There are a few considerations, however, and we mention them here. 
 
 The $\ket{nlm}$ basis is infinite in $n$, but we need a finite matrix, so we truncate the basis at a finite number $N$ giving us an $N \times N$ matrix. Since the matrix is diagonal in $l$ and $m$, we do the calculation separately for each value of $l$ and $m$ to reduce the amount of computation needed to solve for the eigenvalues
@@ -100,15 +102,17 @@ We calculate the matrix elements using \cref{eq:HO matrix elements}. The integra
 
 
 \section{Results}
-A comparison of performance between HO and momentum basis expansion for the hydrogen atom and Helium-5 problems is shown in \cref{fig:HO vs mom}. We are using Gauss-Legendre quadrature to approximate the integrals. 
+A comparison of performance between HO and momentum basis expansion for the hydrogen atom and Helium-5 problems is shown in \cref{fig:HO vs mom}. We are using Gauss-Legendre quadrature to approximate the integrals.
+
 \begin{figure}
   \centering
-    \includegraphics[width = \textwidth]{HOvsMom.pdf}
+    \includegraphics[width = \textwidth]{figures/HOvsMom.pdf}
   \caption{}
   \label{fig:HO vs mom}
 \end{figure}
 
 Let us study the obtained solutions closer. If we transform the momentum wavefunctions $\phi(k)$ to radial position wavefunctions $R(r)$ according to \cref{sec:radial_mom_space_TISE},
+\todo{Maybe wavefunctions are bit too technical for this}
 \begin{eq}
 R(r)=i^l\sqrt{\frac{2}{\pi}} \int_0^\infty \rd k \, k^2 \phi(k)j_l(kr) \, ,
 \end{eq} 
