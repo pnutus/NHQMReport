@@ -1,8 +1,10 @@
-A more natural framework to work in for the systems we are studying is that of momentum space. This is done by expanding the Schrödinger equation in momentum basis, demonstrated below. 
+A more natural framework to work in for the systems we are studying is that of momentum space. This is made by expanding the Schrödinger equation in momentum basis, demonstrated below. 
 
 SPECULATION:
 
 The reason that we want to solve the problem in momentum space is that we are studying a system with a short-range potential supporting only a few, if any, bound solutions. This means that we will find multiple unbound solutions, corresponding to free particles of various energies. These are basically already eigenstates of the momentum operator, only slightly disturbed by the small potential well at $r=0$. 
+
+I SAY: [NEW START OF SPECULATION SINCE I THINK THE PART ABOVE IS GOOD HERE] /V
 
 Additionally, we want to construct a Berggren basis consisting of complex scattering states, resonances and eventual bound states. Because of the close relation between momentum and energy for scattered (unbound) states, $E=\frac{k^2}{2m}$, a complex contour in the energy plane will correspond to a complex contour in momentum space. [Perhaps we shouldn't talk about contours until next chapter?]
 
@@ -25,7 +27,7 @@ END OF LAME
   E\Phi(\vec{k})
 \end{eq} 
 
-If we consider a central problem, with $H=\frac{k^2}{2m} + V(r)$, a cumbersome calculation, found in \cref{sec:radial_mom_space_TISE}, shows that the Schrödinger equation in this representation can be written
+If we consider a central problem, with $H=\frac{k^2}{2m} + V(r)$, a cumbersome calculation, found in \cref{sec:radial_mom_space_TISE}, shows that the Schrödinger equation in this representation can be written as
 \begin{eq} 
   \frac{k^2}{2\mu}\phi(k) + \int_0^\infty \rd k' \, k'^2 V(k,k') \phi(k') 
   &=
@@ -47,7 +49,7 @@ The equation is solved numerically by writing it as a matrix equation. This is a
   \approx
   \sum_{j=1}^N w_j k_j^2 V(k,k_j)\phi(k_j)
 \end{eq}
-where $w_j$ are the quadrature weights. For the naive rectangular quadrature you would use a constant $w_j=\Delta k_j$ equal to the step length. However, this quadrature converges slowly to the correct value of the integral, and much better alternatives can be employed. 
+where $w_j$ are the quadrature weights. For the naive rectangular quadrature you would use a constant $w_j=\Delta k_j$, equal to the step length. However, this quadrature converges slowly to the correct value of the integral, and much better alternatives can be employed. 
 
 With this approximation the Schrödinger equation may be written
 \begin{eq}
