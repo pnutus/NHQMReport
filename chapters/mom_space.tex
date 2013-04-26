@@ -10,28 +10,19 @@ Additionally, we want to construct a Berggren basis consisting of complex scatte
 
 END OF SPECULATION
 
-
-LAME:
- 
-We want to rewrite the Schrödinger equation in momentum basis/space, because yada yada.
-
-This essentially means that we describe a state in terms of its momentum distribution, $\Phi(\vec{k})=\braket{\vec{k}}{\psi} $. In the same way that the squared wavefunction $|\psi(\vec{r})|^2$ describes the probability density of a particle to be found at position $\vec{r}$, the squared momentum space wavefunction describes the probability density of a particle to be found with momentum $\vec{k}$. To find the equations of motion in terms of this wavefunction we simply use the completeness of $\ket{\vec{k}}$ to expand the TISE.
-
-END OF LAME
-
+The expansion is done in a way similar to before:
 \begin{eq}
   H\ket{\psi} &= E\ket{\psi} 
   \\
   \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}')
   &= 
-  E\Phi(\vec{k})
+  E\Phi(\vec{k}) \, .
 \end{eq} 
-
 If we consider a central problem, with $H=\frac{k^2}{2m} + V(r)$, a cumbersome calculation, found in \cref{sec:radial_mom_space_TISE}, shows that the Schrödinger equation in this representation can be written as
 \begin{eq} 
   \frac{k^2}{2\mu}\phi(k) + \int_0^\infty \rd k' \, k'^2 V(k,k') \phi(k') 
   &=
-  E\phi(k)
+  E\phi(k) \, ,
 \end{eq}
 where
 \begin{eq}
@@ -39,17 +30,19 @@ where
   &= 
   \frac{2}{\pi}\int_0^\infty \rd r \, r^2 V(r) j_l(kr) j_l(k'r) 
 \end{eq}
-and $j_l(kr)$ are the spherical bessel functions of order $l$. The total wavefunction can be written $\Phi(\vec{k}) = \phi(k)Y_l^m(\Omega_{\vec{k}})$, where $\Omega_{\vec{k}}$ denotes the angular coordinates of $\vec{k}$.
+and $j_l(kr)$ are the spherical bessel functions of order $l$. We see that the transformation turned the differential equation into an integral equation.
+
+The total wavefunction can be written $\Phi(\vec{k}) = \phi(k)Y_l^m(\Omega_{\vec{k}})$, where $\Omega_{\vec{k}}$ denotes the angular coordinates of $\vec{k}$. 
 
 
-\section{Numerical solution in momentum space}
-The equation is solved numerically by writing it as a matrix equation. This is achieved by approximating the integral with a numerical quadrature, 
+\section{Numerical Solution in Momentum Space}
+As with the harmonic oscillator basis we want to rewrite the equation as a finite matrix equation. An integral equation can be rewritten as a matrix equation by approximating the integral with a numerical quadrature, 
 \begin{eq}
   \int_0^\infty \rd k' \, k'^2 V(k,k')\phi(k') 
   \approx
   \sum_{j=1}^N w_j k_j^2 V(k,k_j)\phi(k_j)
 \end{eq}
-where $w_j$ are the quadrature weights. For the naive rectangular quadrature you would use a constant $w_j=\Delta k_j$, equal to the step length. However, this quadrature converges slowly to the correct value of the integral, and much better alternatives can be employed. 
+where $w_j$ are the quadrature weights. For the naive rectangular quadrature you would use a constant $w_j=\Delta k_j$, equal to the step length. However, this quadrature converges slowly to the correct value of the integral, and much better alternatives can be employed. We are using the G-L quadrature.
 
 With this approximation the Schrödinger equation may be written
 \begin{eq}
@@ -84,9 +77,8 @@ meaning that the eigenvalues could be just as well obtained by diagonalizing the
 \end{eq}
 with $V_{ij}$ defined as above.
 
-A comparison of performance between HO basis expansion and momentum space for the hydrogen atom and Helium-5 problems is shown in \cref{fig:HO vs mom}. We are using Gauss-Legendre quadrature to approximate the integrals. 
-
-
+\section{Results}
+A comparison of performance between HO and momentum basis expansion for the hydrogen atom and Helium-5 problems is shown in \cref{fig:HO vs mom}. We are using Gauss-Legendre quadrature to approximate the integrals. 
 \begin{figure}
   \centering
     \includegraphics[width = \textwidth]{HOvsMom.pdf}
@@ -94,7 +86,7 @@ A comparison of performance between HO basis expansion and momentum space for th
   \label{fig:HO vs mom}
 \end{figure}
 
-However, let us study the obtained solutions closer. If we transform the momentum wavefunctions $\phi(k)$ to radial position wavefunctions $R(r)$ according to \cref{sec:radial_mom_space_TISE},
+Let us study the obtained solutions closer. If we transform the momentum wavefunctions $\phi(k)$ to radial position wavefunctions $R(r)$ according to \cref{sec:radial_mom_space_TISE},
 \begin{eq}
 R(r)=i^l\sqrt{\frac{2}{\pi}} \int_0^\infty \rd k \, k^2 \phi(k)j_l(kr) \, ,
 \end{eq} 
@@ -105,16 +97,18 @@ R(r)=i^l\sqrt{\frac{2}{\pi}}\sum_{j=1}^N \sqrt{w_j}k_j\phi_j'j_l(k_j r) \, .
 \Cref{fig:momspace solutions} shows the wavefunctions $R(r)$ for a few of the states with lowest energy.
 
 \begin{figure}
-\includegraphics[width=1\textwidth]{mom_solutions.pdf}
-\caption{A few solutions to the Woods-Saxon potential with well depth $V0=\SI{-52}{MeV}$. The probability distributions $r^2|R(r)|^2$ are plotted relative to their energies. }
-\label{fig:momspace solutions}
+  \centering
+  \includegraphics[width=1\textwidth]{mom_solutions.pdf}
+  \caption{A few solutions to the Woods-Saxon potential with well depth $V0=\SI{-52}{MeV}$. The probability distributions $r^2|R(r)|^2$ are plotted relative to their energies. }
+  \label{fig:momspace solutions}
 \end{figure}
 
  While all of the states we see have energies $E>0$, and thus are unbound, we see that one solution is more localized near the center $r=0$. This is the sign of a quasi-bound state. To confirm this we may vary the depth $V0$ of the potential well and see how this affects the solutions. \Cref{fig:momspace solutions var} shows the solutions obtained with a different $V0$.
 \begin{figure}
-\includegraphics[width=1\textwidth]{mom_solutions_var.pdf}
-\caption{A few solutions for $V0=\SI{-47}{MeV}$.}
-\label{fig:momspace solutions var}
+  \centering
+  \includegraphics[width=1\textwidth]{mom_solutions_var.pdf}
+  \caption{A few solutions for $V0=\SI{-47}{MeV}$.}
+  \label{fig:momspace solutions var}
 \end {figure}
 We see that the unbound states remain practically unchanged. This means that they basically correspond to free particles of energies $E_n=\frac{k_n^2}{2\mu}$, where $k_n$ are the momenta that were included in the discretization of the integrals. We will refer to these values of $k$ as our \emph{mesh points}. The quasi-bound state changed dramatically, which shows that this solution is a feature of the system we are studying.  
 
