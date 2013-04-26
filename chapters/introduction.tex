@@ -1,5 +1,3 @@
-this is the introduction. There will be more interesting text here later. Hopefully it has started to be later now.
-
 Quantum mechanics is a cornerstone of modern physics, as it describes the world on the smallest of scales.
 On this small level we observe a vast number of interesting phenomena, some wich in our ordinary large-scale world seems completely impossible.
 One of these phenomena is called \emph{resonance} and in this report we will study these resonances in Helium.
@@ -8,7 +6,6 @@ A small nucleus is prefferable since it is easier to make calculations on and th
 Another nucleus often choosen is Lithium, which displays similar behavior.
 To study these resonances we will expand the hamiltonian in a \emph{Berggren basis}, which makes the hamiltonian non-hermitian, leading us into the world of \emph{Non-Hermitian Quantum Mechanics} (NHQM).
 
-\section{Resonances}
 Resonances is a phenomenon with its origins in scattering theory.
 Once upon a time... When phycisists scattered neutrons against various nuclei and observed the obtained particles they found that some neutrons seemed to dissappear for a while, only to be seen again shortly after.
 This was a mystery until (Name of smart scientist, year smart happened) came with an explanation to this problem. (Might not have been a mystery, but the smart phycisist was probably Fermi.)
@@ -22,33 +19,18 @@ This is exactly what happens in the case of quasi-bound states.
 With some statistics one can now see that these particles have a mean life-time similar to that of radioactive deccay.
 This is not a coincidence since they as well are quasi-bound resonance states.
 
-The connection between resonances and NHQM comes from the fact that the barrier width and the mean life-time of the system depends directly on the complex binding momentum.
-To see this, we start by the known fact that the time-dependent solution to the Schrödinger-Equation can be expressed as:
+The connection between resonances and NHQM comes from the fact that the mean life-time of the system depends directly on the complex binding momentum.
+To see this, we start by the known fact that the time-dependent solution to the Schrödinger-Equation can be expressed as
+\begin{eq}
+	\Psi(t)
+	=e^{-iEt}\Psi(0).
+\end{eq}
+One can now clearly se that if the energy $E$ is complex and have a positive imaginary part, we get a solution that decays over time. 
+This comlex energy can be written as
+\begin{eq}
+	E=E_0-\frac{i\Gamma}{2},
+\end{eq}
+where $E_0$ is the binding energy, $\Gamma=\hbar \tau^{-1}$ and $\tau$ is the mean life-time of the resonance.
 
-
-
-\section{NHQM (Nothing of use now...)}
-While the problem of standard, Hermition QM, is widely known among phisicists, the NHQM way of thinking lacks an easy-to-process theoretical foundation.
-In this report we describe how we addressed this issue by calculating the (complex) eigenvalues of some Helium nuclei.
-
-Helium is choosen since it is has a small nucleus whith several interesting isotopes showing different behavior.
-Another nucleus which often is choosen is Lithium, which displays similar behavior.
-
-Since the solution to the schroedinger equation 
-
-
-
-
-
-
-
-
-Quantum mechanics (QM) is a cornerstone of modern physics, as it describes the world on the smallest of scales.
-One topic often introduced in graduate QM courses is resonance scattering, a phenomenon where a system form so-called \emph{quasi-stationary} states.
-In contrast to \emph{stationary} (bound) states, in which a system remains indefinitely, these quasi-stationary states decay over time.
-Describing this process leads naturally to the introduction of complex energy eigenvalues. 
-
-Complex eigenvalues pose a problem in standard QM.
-This since observable quantities are regarded as real values and are described by \emph{Hermitian} operators.
-When working with complex eigenvalues one thus needs a \emph{non-Hermitian} formulation of the problem.
-While the idea of using non-Hermitian quantum mechanics (NHQM) has been around for quite some time, the technique is not widely used.
+This new introduction of NHQM poses some trouble for us since problem of standard, Hermition QM, is widely known among phisicists, but the NHQM way of thinking seriously lacks an easy-to-process theoretical foundation.
+In this report we describe how we addressed this issue by calculating the complex eigenvalues of some Helium nuclei using Non-Hermitian Quantum Mechanics..
