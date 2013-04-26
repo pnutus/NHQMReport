@@ -53,9 +53,7 @@ To speed up calculations we can transform the equation so that the matrix will b
 \end{eq}
 We would then have
 \begin{eq}
-  \sum_j H_{ij}\phi_j &= E\phi_j 
-  \\
-  \sum_j H_{ij}'\phi_j' &= E\phi_j'\,,
+  \sum_j H'_{ij}\phi'_j = E\phi'_i\,,
 \end{eq}
 meaning that the eigenvalues could be just as well obtained by diagonalizing the symmetric $H'$ matrix, thus saving precious time. We have
 \begin{eq}
@@ -63,37 +61,3 @@ meaning that the eigenvalues could be just as well obtained by diagonalizing the
 \end{eq}
 with $V_{ij}$ defined as above.
 
-\section{Results}
-A comparison of performance between HO and momentum basis expansion for the hydrogen atom and Helium-5 problems is shown in \cref{fig:HO vs mom}. We are using Gauss-Legendre quadrature to approximate the integrals. 
-\begin{figure}
-  \centering
-    \includegraphics[width = \textwidth]{HOvsMom.pdf}
-  \caption{}
-  \label{fig:HO vs mom}
-\end{figure}
-
-Let us study the obtained solutions closer. If we transform the momentum wavefunctions $\phi(k)$ to radial position wavefunctions $R(r)$ according to \cref{sec:radial_mom_space_TISE},
-\begin{eq}
-R(r)=i^l\sqrt{\frac{2}{\pi}} \int_0^\infty \rd k \, k^2 \phi(k)j_l(kr) \, ,
-\end{eq} 
-we can see the spatial distribution of our solutions. In our discretized basis this would be written
-\begin{eq}
-R(r)=i^l\sqrt{\frac{2}{\pi}}\sum_{j=1}^N \sqrt{w_j}k_j\phi_j'j_l(k_j r) \, .
-\end{eq}
-\Cref{fig:momspace solutions} shows the wavefunctions $R(r)$ for a few of the states with lowest energy.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=1\textwidth]{mom_solutions.pdf}
-  \caption{A few solutions to the Woods-Saxon potential with well depth $V0=\SI{-52}{MeV}$. The probability distributions $r^2|R(r)|^2$ are plotted relative to their energies. }
-  \label{fig:momspace solutions}
-\end{figure}
-
- While all of the states we see have energies $E>0$, and thus are unbound, we see that one solution is more localized near the center $r=0$. This is the sign of a quasi-bound state. To confirm this we may vary the depth $V0$ of the potential well and see how this affects the solutions. \Cref{fig:momspace solutions var} shows the solutions obtained with a different $V0$.
-\begin{figure}
-  \centering
-  \includegraphics[width=1\textwidth]{mom_solutions_var.pdf}
-  \caption{A few solutions for $V0=\SI{-47}{MeV}$.}
-  \label{fig:momspace solutions var}
-\end {figure}
-We see that the unbound states remain practically unchanged. This means that they basically correspond to free particles of energies $E_n=\frac{k_n^2}{2\mu}$, where $k_n$ are the momenta that were included in the discretization of the integrals. We will refer to these values of $k$ as our \emph{mesh points}. The quasi-bound state changed dramatically, which shows that this solution is a feature of the system we are studying.  

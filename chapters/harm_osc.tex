@@ -69,20 +69,3 @@ with $\gamma = \mu\omega/\hbar$, $L_n^\alpha(x)$ are the generalized Laguerre po
     (n+l+1)!
   }}.
 \end{eq}
-
-\subsection{Implementation}
-
-Since the HO basis is a discrete basis, implementing it in code is straightforward. There are a few considerations, however, and we mention them here. 
-
-The $\ket{nlm}$ basis is infinite in $n$, but we need a finite matrix, so we truncate the basis at a finite number $N$ giving us an $N \times N$ matrix. Since the matrix is diagonal in $l$ and $m$, we do the calculation separately for each value of $l$ and $m$ to reduce the amount of computation needed to solve for the eigenvalues
-The equation we are solving is then, for a given $l$ and $m$,
-\begin{eq}
-  \sum_{n'= 0}^N \bra{n} H \ket{n'} \psi_{n'} = E\psi_{n}
-\end{eq}
-or in linear algebra notation
-\begin{eq}
-  H\psi = E\psi.
-\end{eq}
-This matrix equation is solved using a standard eigensolver algorithm, which uses the fact that the matrix is hermitian to solve the equation faster.
-
-We calculate the matrix elements using \cref{eq:HO matrix elements}. The integration is performed using Gauss-Legendre quadrature and setting the upper limit to a finite number.
