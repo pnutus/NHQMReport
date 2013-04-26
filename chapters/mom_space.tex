@@ -38,6 +38,7 @@ The total wavefunction can be written $\Phi(\vec{k}) = \phi(k)Y_l^m(\Omega_{\vec
 \section{Numerical Solution in Momentum Space}
 As with the harmonic oscillator basis we want to rewrite the equation as a finite matrix equation. An integral equation can be rewritten as a matrix equation by approximating the integral with a numerical quadrature, 
 \begin{eq}
+  \label{eq:discrete_momentum}
   \int_0^\infty \rd k' \, k'^2 V(k,k')\phi(k') 
   \approx
   \sum_{j=1}^N w_j k_j^2 V(k,k_j)\phi(k_j)

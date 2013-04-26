@@ -27,7 +27,13 @@ Their representation as wave-functions do no longer have conjugate signs during 
 %Last, one have to include the resonance pole in the basis for it to be complete \cite{berggren}.
 
 \section{Implementation}
+Implementing the Berggren-basis is pretty straight-forward when momentum-space is made.
+The hardest part to do is to allow for different contours, which is easy if the code is well structured.
 
+One important thing that may severly increase computation time is which points and weights to use.
+Recall \cref{eq:discrete_momentum} from earlier, here we said that we could use equaly distanced points for the calculations.
+If we on the other hand change these equally distanced points to ones described by the Gauss-Legendre approximation to integrals we get a much faster convergence.
+This way of selecting points is used once for each of the three parts of our contour since we not know of any godd way to do this for the whole contour at once.
 
 \section{Results}
 By remodelling our old mom-space solution to allow different contours, we were ready to get som results to see if this new model was correct.
