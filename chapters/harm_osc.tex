@@ -1,0 +1,90 @@
+The Helium nuclei we want to expand are, for our intents and purposes, spherically symmetric. A spherically symmetric basis is therfore preferable, and we begin with the spherical harmonic oscillator (HO). The treatment below is adapted from \cite{moshinsky}.
+
+We have for the HO, the Hamiltonian
+\begin{eq}
+  \label{eq:HO hamiltonian}
+  H\sub{HO} = \frac{p^2}{2\mu} + \frac{\mu\omega^2 r^2}{2},
+\end{eq}
+where $\mu$ is the mass of the problem and $\omega$ is the angular frequency of the oscillator. With this Hamiltonian, the TISE has the solutions
+\begin{eq}
+  H\sub{HO}\ket{nlm} = E_{nl}\ket{nlm} % E_{nl}???
+\end{eq}
+with
+\begin{eq}
+  E_{nl} = \hbar\omega(2n + l + \frac{3}{2}), \quad n = 0, 1, 2, \dots
+\end{eq}
+This means $\ket{nlm}$ is a complete basis, and it is the basis we will expand our TISE in. The procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and gives us
+\begin{eq}
+  \label{eq:HOexpanded}
+  \sum_{n'l'm'} \bra{nlm} H \ket{n'l'm'} \psi_{n'l'm'} = E \psi_{nlm}\,.
+\end{eq}
+Since we are considering a spherically symmetric Hamiltonian
+\begin{eq}
+  \label{eq:spherical hamiltonian}
+  H = \frac{p^2}{2\mu} + V(r),
+\end{eq}
+the $l$ and $m$ in $\ket{nlm}$ commute with the Hamiltonian and will therefore contribute with a $\delta_{ll'}\delta_{mm'}$ factor. This means we can drop the primes and write \cref{eq:HOexpanded} as
+\begin{eq}
+  \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
+\end{eq}
+If we see $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix, this can be expressed as {\it $H$ is diagonal in $l$ and $m$}.
+
+Now we have our matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (see \cref{sec:HO matrix elements} for the details) and the result is
+\begin{eq}
+  \label{eq:HO matrix elements}
+  &
+  \bra{nlm} H \ket{n'lm} =
+	\frac{\hbar\omega}{2}
+	\left(
+    \p{2n+l+\frac{3}{2}} \delta_{nn'}
+    +
+		\sqrt{n(n+l+\frac{1}{2})} \delta_{n,n'-1}\right.
+		\\ & + 
+		\left.\sqrt{n'(n'+l+\frac{1}{2})} \delta_{n',n-1} 
+	\right)
+	+
+	\fint[0][\inf]{r} 
+    r^2 R_{nl}(r) V(r) R_{n'l}(r)
+\end{eq}
+where $R_{nl}$ are the radial wavefunctions of the harmonic oscillator
+\begin{eq}
+  \label{eq:HO radial wavefunction}
+	R_{nl}(r) 
+	= 
+	N r^l e^{-\gamma r^2 / 2}
+	L_{(n-l) / 2}^{(l+\frac{1}{2})}(\gamma r^2)
+\end{eq}
+with $\gamma = \mu\omega/\hbar$, $L_n^\alpha(x)$ are the generalized Laguerre polynomials and $N$ is a normalization constant,
+\begin{eq}
+	N = 
+  \sqrt{\frac{
+    2^{n+l+2}\gamma^{l+\frac{3}{2}}
+  }{
+    \sqrt{\pi}
+  }}
+  \sqrt{\frac{
+    \p{\frac{1}{2}(n-l)}!
+    \p{\frac{1}{2}(n+l)}!
+  }{
+    (n+l+1)!
+  }}.
+\end{eq}
+
+\section{Implementation}
+
+Since the HO basis is a discrete basis, implementing it in code is straightforward. There are a few considerations, however, and we mention them here. 
+
+The $\ket{nlm}$ basis is infinite in $n$, but we need a finite matrix, so we truncate the basis at a finite number $N$ giving us an $N \times N$ matrix. Since the matrix is diagonal in $l$ and $m$, we do the calculation separately for each value of $l$ and $m$ to reduce the amount of computation needed to solve for the eigenvalues
+The equation we are solving is then, for a given $l$ and $m$,
+\begin{eq}
+  \sum_{n'= 0}^N \bra{n} H \ket{n'} \psi_{n'} = E\psi_{n}
+\end{eq}
+or in linear algebra notation
+\begin{eq}
+  H\psi = E\psi.
+\end{eq}
+This matrix equation is solved using a standard eigensolver algorithm, which uses the fact that the matrix is hermitian to solve the equation faster.
+
+The matrix elements are calculated using \cref{eq:HO matrix elements}. The integration is performed using Gauss-Legendre quadrature and setting the upper limit to a finite number.
+
+\section{Expanding the \He{5} Nucleus}
