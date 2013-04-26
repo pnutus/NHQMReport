@@ -10,16 +10,16 @@ The TISE is commonly written in the position basis as
 \end{eq}
 since this is the only basis where the potential operator $V$ is known.
 
-For the nuclear systems we are looking at, the TISE has no known analytical solutions, and we need to use numerical methods to solve it. However, written as in \cref{eq:TISEpos}, it is not suitable for numerical calculations. We would  like instead to write it as a matrix equation
+For the nuclear systems we are looking at, the TISE has no known analytical solutions, and we need to use numerical methods to solve it. However, written as in \cref{eq:TISEpos}, it is not suitable for numerical calculations. Instead, we would  like to write it as a matrix equation
 \begin{eq}
   \label{eq:matrix equation}
   \sum_j H_{ij}\psi_j = E \psi_i
 \end{eq}
 with a finite matrix $H$ that we can diagonalize to find the eigenvalues $E$.
 
-To write the TISE as a matrix equation we use \emph{basis expansion}. Basis expansion is how we make any sense at all of the abstract Hilbert spaces, operators and state vectors of QM. By expanding these abstract objects in a basis we can relate them to the physical world. For example, equation \cref{eq:TISEpos} is the TISE for a particle, expanded in the position basis. This is the only basis in which we can express the potential, so we will always have to relate our bases to it.
+To write the TISE as a matrix equation we use \emph{basis expansion}. Basis expansion is how we make any sense at all of the abstract Hilbert spaces, operators and state vectors of QM. By expanding these abstract objects in a basis, we can relate them to the physical world. For example, equation \cref{eq:TISEpos} is the TISE for a particle, expanded in the position basis. This is the only basis in which we can express the potential, why wel always have to relate our new bases to this one.
 
-Before we begin, we briefly recap some well known QM facts. First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$, which means that any state $\ket\psi$ can be written as a linear combination of the basis states
+Before we begin, we briefly recap some well known QM facts. First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$. A discrete basis means that any state $\ket\psi$ can be written as a linear combination of the basis states
 \begin{eq}
   \label{eq:lincomb}	
   \ket\psi = \sum_n \psi_n \ket{n}
@@ -90,7 +90,7 @@ with
 \begin{eq}
   E_{nl} = \hbar\omega(2n + l + \frac{3}{2}), \quad n = 0, 1, 2, \dots
 \end{eq}
-This means $\ket{nlm}$ is a complete basis, and it is the basis we will expand our TISE in. The procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and gives us
+This means $\ket{nlm}$ is a complete basis (WHY????), and it is the basis we will expand our TISE in. The procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and gives us
 \begin{eq}
   \label{eq:HOexpanded}
   \sum_{n'l'm'} \bra{nlm} H \ket{n'l'm'} \psi_{n'l'm'} = E \psi_{nlm}\,.
@@ -106,7 +106,7 @@ the $l$ and $m$ in $\ket{nlm}$ commute with the Hamiltonian and will therefore c
 \end{eq}
 If we see $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix, this can be expressed as {\it $H$ is diagonal in $l$ and $m$}.
 
-Now we have our matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (see \cref{sec:HO matrix elements} for the details) and the result is
+Now we have our matrix equation, but we need to find the elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (see \cref{sec:HO matrix elements} for the details) and the result is
 \begin{eq}
   \label{eq:HO matrix elements}
   &
@@ -151,7 +151,7 @@ with $\gamma = \mu\omega/\hbar$, $L_n^\alpha(x)$ are the generalized Laguerre po
 
 Since the HO basis is a discrete basis, implementing it in code is straightforward. There are a few considerations, however, and we mention them here. 
 
-The $\ket{nlm}$ basis is infinite in $n$, but we need a finite matrix, so we truncate the basis at a finite number $N$ giving us an $N \times N$ matrix. Since the matrix is diagonal in $l$ and $m$, we do the calculation separately for each value of $l$ and $m$ to reduce the amount of computation needed to solve for the eigenvalues
+The $\ket{nlm}$ basis is infinite in $n$, but we need a finite matrix to carry out calculations on. The solution is to truncate the basis with a finite number $N$, giving us an $N \times N$ matrix. Since the matrix is diagonal in $l$ and $m$, we do the calculation separately for each value of $l$ and $m$ to reduce the amount of computation needed to find the eigenvalues.
 The equation we are solving is then, for a given $l$ and $m$,
 \begin{eq}
   \sum_{n'= 0}^N \bra{n} H \ket{n'} \psi_{n'} = E\psi_{n}
