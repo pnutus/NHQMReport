@@ -1,27 +1,35 @@
-As previously mentioned (depends on where this text is placed.), NHQM sometimes arise when one observes the binding momentum, related to the energy eigenvalues as
+NHQM sometimes arise when one observes the binding momentum, related to the energy eigenvalues as
 \begin{eq}
     p=\sqrt{2mE}.
 \end{eq}
 This energy will be complex if we expand the hamiltonian in a Berggren-basis of a state that includes a resonance. 
 It is now the physics go non-hermitian.
 
-\section{The Berggren basis}
 Previously, we calculated the energy eigenvalues in momentum-space \cref{cha:mom_space}, but now we introduce a generalization of this.
-If we look at our momentum-space expansion, we see that it consists of some discrete momentum-values along the real axis.
+If we look at our momentum-space expansion, we see that it consists of some discrete momentum-values along the positive real axis.
 This is fine as long as the states we observe are bound.
 If they on the other hand are quasi-bound resonance-states, they will appear as poles in the complex momentum-plane.
-With knowledge of Cauchy's Residue theorem, we know that we must integrate around this pole in order to see to it's contribution, which in our case is the resonance's behavior.
+To calculate the behavior of these states we have to change basis to one that uses complex values instead of just using real ones.
+This new basis is called a \emph{Berggren basis} after the Swedish mathematician Tore Berggren.
+We will refer to this new basis as a contour since we could replace our integration path by a closed contour that would give the same result \cite{Berggren}.
 
-The way to do this is to instead of using a strictly real basis introduce a complex one, called a Berggren-basis (Should we cite here?).
-The Berggren-basis is expressed as a contour in the complex plane.
-The one we used, with slight modifications, is seen in \cref{fig:berggren contour}.
-By lowering this contour to contain the pole we include the resonance in the calculations and are thus able to predict its behavior.
-Last, one have to include the resonance pole in the basis for it to be complete \cite{berggren}.
+To do this generalization introduces some strange behaviors.
+First of all we can now aquire complex eigenvalues when solving the Schrödinger-equation, which is the main reason for switching to a Berggren-basis.
+There also happens a strange thing with the bra's in the equations.
+Their representation as wave-functions do no longer have conjugate signs during calculations, this is above our heads to comprehead why this happens, but is explained by Berggren in his paper \cite{Berggren}.
 
-{\Large Should this above move to introduction, or should we have it here?}
+
+
+%The way to do this is to instead of using a strictly real basis introduce a complex one, called a Berggren-basis (Should we cite here?).
+%The Berggren-basis is expressed as a contour in the complex plane.
+%The one we used, with slight modifications, is seen in \cref{fig:berggren contour}.
+%By lowering this contour to contain the pole we include the resonance in the calculations and are thus able to predict its behavior.
+%Last, one have to include the resonance pole in the basis for it to be complete \cite{berggren}.
+
+\section{Implementation}
+
 
 \section{Results}
 By remodelling our old mom-space solution to allow different contours, we were ready to get som results to see if this new model was correct.
 
 {\Large RESULTS!!!!!!!!!!!!!!!}
-Får Ola ordning på plottarna är denna sectionen snart klar, tror jag...
