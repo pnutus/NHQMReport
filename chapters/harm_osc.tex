@@ -13,7 +13,7 @@ with
 \begin{eq}
   E_{nl} = \hbar\omega(2n + l + \frac{3}{2}), \quad n = 0, 1, 2, \dots
 \end{eq}
-This means $\ket{nlm}$ is a complete basis, and it is the basis we will expand our TISE in. The procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and gives us
+Since they are eigenstates of $H\sub{HO}$, $\ket{nlm}$ form a complete basis, and it is this basis we will expand our TISE in. The procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and gives us
 \begin{eq}
   \label{eq:HOexpanded}
   \sum_{n'l'm'} \bra{nlm} H \ket{n'l'm'} \psi_{n'l'm'} = E \psi_{nlm}\,.
@@ -85,6 +85,6 @@ or in linear algebra notation
 \end{eq}
 This matrix equation is solved using a standard eigensolver algorithm, which uses the fact that the matrix is hermitian to solve the equation faster.
 
-The matrix elements are calculated using \cref{eq:HO matrix elements}. The integration is performed using Gauss-Legendre quadrature and setting the upper limit to a finite number.
+We calculate the matrix elements using \cref{eq:HO matrix elements}. The integration is performed using Gauss-Legendre quadrature and setting the upper limit to a finite number.
 
 \section{Expanding the \He{5} Nucleus}
