@@ -1,12 +1,17 @@
-\todo{Where is the theory for \He{5} potential? We should mention Woods-Saxon.}
+When we move on to the problem of the \He{5} nucleus we see it as an alpha core (\He{4}) with a vanence neutron which moves in the potential of the alpha core.
+We model this potential with what is called a Woods-Saxon potential, which is relatively easy to use in numerical calculations and is a sufficient approximation for the strong nuclear force of the nuclei.
+The expression for this potential is
+\begin{eq}
+	V(r)=
+	V_0f(r)-4V_{SO}\{l}\cdot\vec{s}\frac{df}{dr}\frac{1}{r}
+\end{eq}
+where
+\begin{eq}
+	f(r)=\frac{1}{1+e^{\frac{r-r_0}{d}}}.
+\end{eq}
+A visualisation of this potential can be seen in \cref{fig:woods-saxon}.
 
-When moving on to the real problem of \He{5} we no longer have the coulomb potential to work with.
-Instead we have to model the potential of the strong nuclear force in the \He{5} nucleus.
-The strong nuclear force is extremly short ranged and can almost be seen as constant inside the nucleaus and zero outside.
-Even though this sometimes is enough, it is not sufficient for our needs and we have to introduce a more realistic potential.
-The potential we used is called a \emph{Woods-Saxon potential} and see frequent use of describing nuclear potentials.
-
-\todo{Plot and equation of the Woods-Saxon potential.}
+The implementation of \He{5} is the same as for the hydrogen atom except from the new potential and we can solve the problem using either the HO expansion or discretizised momentum space.
 
 A comparison of performance between HO and momentum basis expansion for the hydrogen atom and \He{5} problems is shown in \cref{fig:HO vs mom}.
 \begin{figure}
