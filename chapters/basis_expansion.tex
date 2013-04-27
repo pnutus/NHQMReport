@@ -98,9 +98,12 @@ This matrix equation is solved using a standard eigensolver algorithm, which use
 
 We calculate the matrix elements using \cref{eq:HO matrix elements}. The integration is performed using Gauss-Legendre quadrature and setting the upper limit to a finite number.
 
+\todo{More descriptive title than ``Results'', bitte}
+\todo{Maybe Results is its own chapter: ``\He{5}''?}
+\section{Results} 
 
-\section{Results}
-A comparison of performance between HO and momentum basis expansion for the hydrogen atom and Helium-5 problems is shown in \cref{fig:HO vs mom}.
+\todo{Where is the theory for \He{5} potential? We should mention Woods-Saxon.}
+A comparison of performance between HO and momentum basis expansion for the hydrogen atom and \He{5} problems is shown in \cref{fig:HO vs mom}.
 \begin{figure}
   \centering
     \includegraphics[width = \textwidth]{figures/HOvsMom.pdf}
@@ -132,6 +135,7 @@ R(r)=i^l\sqrt{\frac{2}{\pi}}\sum_{j=1}^N \sqrt{w_j}k_j\phi_j'j_l(k_j r) \, .
   \includegraphics[width=1\textwidth]{mom_solutions_var.pdf}
   \caption{A few solutions for $V0=\SI{-47}{MeV}$.}
   \label{fig:momspace solutions var}
+  \todo{This fig could be combined with previous}
 \end {figure}
 We see that the unbound states remain practically unchanged. This means that they basically correspond to free particles of energies $E_n=\frac{k_n^2}{2\mu}$, where $k_n$ are the momenta that were included in the discretization of the integrals. We will refer to these values of $k$ as our \emph{mesh points}. The quasi-bound state changed dramatically, which shows that this solution is a feature of the system we are studying.  
 \todo{something here should lead to wanting NHQM}
