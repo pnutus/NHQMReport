@@ -62,10 +62,14 @@ where $R_{nl}$ are the radial wavefunctions of the harmonic oscillator
 \end{eq}
 $\gamma = \mu\omega/\hbar$ and $L_\mu^\nu(x)$ are the generalized Laguerre polynomials.
 \todo{Doublecheck normalization constant.}
+The real space wavefunction $R(r)$ for a state will be expressed as a linear combination of the harmonic oscillator radial wavefunctions:
+\begin{eq}
+  R(r) = \sum_n \psi_{nlm} R_{nl}(r).
+\end{eq}
 
-\subsection{Implementation}
+\subsection{Numerical Considerations}
 
-Since the HO basis is a discrete basis, implementing it in code is straightforward. There are a few considerations, however, and we mention them here. 
+Since the HO basis is a discrete basis, adapting the formulas for calculation on a computer is straightforward. There are a few considerations, however, and we mention them here. 
 
 The $\ket{nlm}$ basis is infinite in $n$, but we need a finite matrix, so we truncate the basis at a finite number $N$, giving us an $N \times N$ matrix. Since the matrix is diagonal in $l$ and $m$, we do the calculation separately for each value of $l$ and $m$ to reduce the amount of computation needed to solve for the eigenvalues
 The equation we are solving is then, for a given $l$ and $m$,

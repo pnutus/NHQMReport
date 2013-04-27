@@ -16,16 +16,7 @@ A comparison of performance between HO and momentum basis expansion for the hydr
   \label{fig:HO vs mom}
 \end{figure}
 
-Let us study the obtained solutions closer. If we transform the momentum wavefunctions $\phi(k)$ to radial position wavefunctions $R(r)$ according to \cref{sec:radial_mom_space_TISE},
-\todo{Maybe wavefunctions are bit too technical for this section. Move to numerical section?}
-\begin{eq}
-R(r)=i^l\sqrt{\frac{2}{\pi}} \int_0^\infty \rd k \, k^2 \phi(k)j_l(kr) \, ,
-\end{eq} 
-we can see the spatial distribution of our solutions. In our discretized basis this would be written
-\begin{eq}
-R(r)=i^l\sqrt{\frac{2}{\pi}}\sum_{j=1}^N \sqrt{w_j}k_j\phi_j'j_l(k_j r) \, .
-\end{eq}
-\Cref{fig:momspace solutions} shows the wavefunctions $R(r)$ for a few of the states with lowest energy.
+Let us study the obtained solutions closer. \Cref{fig:momspace solutions} shows the radial wavefunctions $R(r)$ for a few of the states with lowest energy.
 
 \begin{figure}
   \centering

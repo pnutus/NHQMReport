@@ -6,7 +6,7 @@ The expansion is done in the same way as before, giving us
   &= 
   E\Phi(\vec{k}) \, .
 \end{eq}
-This three-dimensional equation is practically unsolvable, but we can simplify it using the fact that we have a central problem. A rather involved calculation (see \cref{sec:radial_mom_space_TISE}) shows that the Schrödinger equation can be written as
+This three-dimensional equation is practically unsolvable, but we can simplify it using the fact that we have a central problem. A rather involved calculation (see \cref{sec:radial mom space TISE}) shows that the Schrödinger equation can be written as
 \begin{eq} 
   \frac{k^2}{2\mu}\phi(k) + \int_0^\infty \rd k' \, k'^2 V(k,k') \phi(k') 
   &=
@@ -19,7 +19,11 @@ where $\phi(k)$ is the radial part of the momentum space wavefunction,
   &= 
   \frac{2}{\pi}\int_0^\infty \rd r \, r^2 V(r) j_l(kr) j_l(k'r) 
 \end{eq}
-and $j_l(kr)$ are the spherical bessel functions of order $l$. We see that the transformation turned the differential equation into an integral equation
+and $j_l(kr)$ are the spherical bessel functions of order $l$. $\phi(k)$ is related to the real space radial wavefunction by
+\begin{eq}
+R(r)=i^l\sqrt{\frac{2}{\pi}} \int_0^\infty \rd k \, k^2 \phi(k)j_l(kr).
+\end{eq} 
+We see that the transformation turned the differential equation into an integral equation
 \begin{eq}
   \fint[0][\inf]{k'} \p{
     \frac{k^2}{2\mu}\delta(k -k') + k'^2 V(k,k')
@@ -29,8 +33,7 @@ and $j_l(kr)$ are the spherical bessel functions of order $l$. We see that the t
   E\phi(k) \, .
 \end{eq}
 
-
-\subsection{Discretization}
+\subsection{Numerical Considerations}
 The integral equation can be rewritten as a matrix equation through discretization, turning the integral into a sum over a finite set of points $k_j$ and $\rd{k}$ into a set of weights $w_j$:
 \todo{Incorrect }
 \begin{eq}
@@ -76,7 +79,14 @@ The Shrödinger equation then becomes
 \begin{eq}
   \sum_j H'_{ij}\phi'_j = E\phi'_i \, ,
 \end{eq}
-with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{ij}$ matrix.
-\todo{mention wave functions here?}
+with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{ij}$ matrix. The real space radial wavefunction $R(r)$ is expressed in terms of $\phi'_j$ as
+\begin{eq}
+  R(r)
+  =
+  i^l 
+  \sqrt{\frac{2}{\pi}}
+  \sum_{j=1}^N 
+    \sqrt{w_j}k_j \phi'_j j_l(k_j r).
+\end{eq}
 
 
