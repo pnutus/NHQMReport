@@ -24,20 +24,24 @@ we get
   =
   e^{-\frac{\Gamma}{\hbar} t} \absq{\psi(0)},
 \end{eq} 
-which describes a resonant state with a half-life $t_{1/2}=\hbar\ln 2/\Gamma$.
+which describes a resonant state with half-life $t_{1/2}=\hbar\ln 2/\Gamma$.
 
 
-\todo{Should we talk something about tunneling here?}
-They can be understood more easily by observing the potential of the nucleus.
+\todo{This paragraph sort of breaks flow}
+Resonances can be understood more easily by observing the potential of the nucleus.
 The potentials for different nuclei look slightly different, but in all nuclei where resonances is observed we find a potential barrier.
 Now combine this with the knowledge of QM and we can explain the previously unexpected behavior with another phenomenon: tunneling.
 Tunneling says that when looking at a QM-system with a potential barrier a particle once found on one side of the barrier later has a probability of being found on the other.
 This is what happens in the case of quasi-stationary states.
 
+This report will study resonances in the Helium isopes \He{5} and \He{6}.
+Helium is chosen since \He{4} is a very stable nucleus and thus can be treated a single (alpha) particle. \He{5} has a known resonance with half-life $t_{1/2} = \SI{700e-24}{s}$. \He{6} is a so-called Boromean nucleus which, because of the interaction between the valence neutrons, has a bound state.
+
 
 \todo{Talk about width of resonance state?}
 
-\todo{Put this Helium stuff somewhere smart.}
-Helium is chosen since it is has a small nucleus\todo{or is it chosen because the alpha core is extremely stable and can easily be treated as 1 particle?} with several isotopes showing interesting behavior.
-A small nucleus is preferable since it is easier to make calculations on and the interesting behaviors are stronger for small nuclei.
-Another nucleus often choosen for this kind of calculations is Lithium, which displays similar behavior.
+\todo{Reading guide? Explain the structure of the report}
+
+\section{Tools}
+
+All calculations were made in the Python programming language using the libraries NumPy and SciPy. We used the matplotlib library to make the figures. The code was managed using Git and is available at \url{https://github.com/pnutus/NHQM}.
