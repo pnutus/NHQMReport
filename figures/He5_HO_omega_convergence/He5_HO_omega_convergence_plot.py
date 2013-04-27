@@ -9,6 +9,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__),'..'))
 import plot_setup as plts
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
+import scipy as sp
 import He5_HO_omega_convergence_data as data
 
 def lmin(lista):
@@ -29,10 +30,10 @@ osc.integration_order = 60
 He5.V0 = -52
 
 #omegalist =[1,2,3,4,5,6,7,8,9,10]
-omegalist= [0.5,1,1.5,2,2.5,3,3.5,4,4.5,5]
+omegalist= sp.linspace(0,5,100)
 
-num_energies=5
-resho_mat = data.calc(omegalist, num_energies, order=20, overwrite=False)
+num_energies=15
+resho_mat = data.calc(omegalist, num_energies, order=20, overwrite=True)
 resho_mat_trans = zip(*resho_mat)
 
 
