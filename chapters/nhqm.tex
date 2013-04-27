@@ -6,7 +6,7 @@ NHQM sometimes arise when one observes the binding momentum, related to the ener
 This energy will be complex if we expand the hamiltonian of a resonance state in a Berggren-basis. 
 It is now the physics go non-hermitian.
 
-\todo{Show the complex plane?}
+
 We will now introduce a generalization of the momentum-space expansion which allows ut to calculate these complex energies.
 First, if we look at our momentum-space expansion, we see that it consists of some discrete momentum-values along the positive real axis.
 This is fine as long as the states we observe are bound.
@@ -17,8 +17,15 @@ This new basis is called a \emph{Berggren basis} after the Swedish mathematician
 
 To do this generalization introduces some strange behaviors.
 First of all we can now aquire complex eigenvalues when solving the Schrödinger-equation, which is the main reason for switching to a Berggren-basis.
-There also happens a strange thing with the bra's in the equations.
+There also happens a strange thing with the bras in the equations.
 Their representation as wave-functions do no longer have conjugate signs during calculations, this is above our heads to comprehead why this happens, but is explained by Berggren in his paper \cite{berggren}.
+
+\begin{figure}
+  \centering
+    \includegraphics[width = \textwidth]{figures/complex_plane.pdf}
+  \caption{The complex $k$-plane. The circles represent bound states and the crosses represent resonant states.}
+  \label{fig:complex plane}
+\end{figure}
 
 
 
@@ -37,6 +44,13 @@ Recall \cref{eq:discrete_momentum} from earlier, here we said that we could use 
 \todo{Repeating benefits of G-L. We should rather mention how we use G-L on the segments of the contour.}
 If we on the other hand change these equally distanced points to ones described by the Gauss-Legendre approximation to integrals we get a much faster convergence.
 This way of selecting points is used once for each of the three parts of our contour since we not know of any godd way to do this for the whole contour at once.
+
+\begin{figure}
+  \centering
+    \includegraphics[width = \textwidth]{figures/complex_contour.pdf}
+  \caption{The complex contour used.}
+  \label{fig:contour}
+\end{figure}
 
 \section{Results}
 By remodelling our old mom-space solution to allow different contours, we were ready to get som results to see if this new model was correct.
