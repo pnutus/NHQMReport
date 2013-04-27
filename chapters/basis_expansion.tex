@@ -81,9 +81,7 @@ which is equivalent to the matrix \cref{eq:matrix equation}. This is the basic m
 \label{sec:mom_space}
 \input{chapters/mom_space.tex}
 
-\section{Implementation}
-
-\todo{Combine implementation for HO and mom}
+\section{Implementation} \todo{Combine implementation for HO and mom}
 
 Since the HO basis is a discrete basis, implementing it in code is straightforward. There are a few considerations, however, and we mention them here. 
 
@@ -102,8 +100,7 @@ We calculate the matrix elements using \cref{eq:HO matrix elements}. The integra
 
 
 \section{Results}
-A comparison of performance between HO and momentum basis expansion for the hydrogen atom and Helium-5 problems is shown in \cref{fig:HO vs mom}. We are using Gauss-Legendre quadrature to approximate the integrals.
-
+A comparison of performance between HO and momentum basis expansion for the hydrogen atom and Helium-5 problems is shown in \cref{fig:HO vs mom}.
 \begin{figure}
   \centering
     \includegraphics[width = \textwidth]{figures/HOvsMom.pdf}
@@ -112,7 +109,7 @@ A comparison of performance between HO and momentum basis expansion for the hydr
 \end{figure}
 
 Let us study the obtained solutions closer. If we transform the momentum wavefunctions $\phi(k)$ to radial position wavefunctions $R(r)$ according to \cref{sec:radial_mom_space_TISE},
-\todo{Maybe wavefunctions are bit too technical for this}
+\todo{Maybe wavefunctions are bit too technical for this section. Move to numerical section?}
 \begin{eq}
 R(r)=i^l\sqrt{\frac{2}{\pi}} \int_0^\infty \rd k \, k^2 \phi(k)j_l(kr) \, ,
 \end{eq} 
@@ -137,4 +134,4 @@ R(r)=i^l\sqrt{\frac{2}{\pi}}\sum_{j=1}^N \sqrt{w_j}k_j\phi_j'j_l(k_j r) \, .
   \label{fig:momspace solutions var}
 \end {figure}
 We see that the unbound states remain practically unchanged. This means that they basically correspond to free particles of energies $E_n=\frac{k_n^2}{2\mu}$, where $k_n$ are the momenta that were included in the discretization of the integrals. We will refer to these values of $k$ as our \emph{mesh points}. The quasi-bound state changed dramatically, which shows that this solution is a feature of the system we are studying.  
-
+\todo{something here should lead to wanting NHQM}

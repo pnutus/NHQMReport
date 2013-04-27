@@ -1,11 +1,12 @@
 \emph{Quantum mechanics} (QM) is a cornerstone of modern physics, as it describes the world on the smallest of scales.
 On this small level we observe a vast number of interesting phenomena, some wich in our ordinary large-scale world seems completely impossible.
-One of these phenomena is called \emph{resonance} and in this report we will study these resonances in some Helium isotopes.
+One of these phenomena is called \emph{resonance} and in this report we will study these resonances in some Helium isotopes. \todo{Talk about resonances before Helium?}
 Helium is choosen since it is has a small nucleus whith several interesting isotopes showing different behaviors.
 A small nucleus is prefferable since it is easier to make calculations on and the interesting behaviors are stronger for small nuclei.
 Another nucleus often choosen for this kind of calculations is Lithium, which displays similar behavior.
 %To study these resonances we will expand the hamiltonian in a \emph{Berggren basis}, which makes the hamiltonian non-hermitian, leading us into the world of \emph{Non-Hermitian Quantum Mechanics} (NHQM).
 
+\todo{Are we sure of the following?}
 Resonances is a phenomenon with its origins in scattering theory.
 Once upon a time... When phycisists scattered neutrons against various nuclei and observed the obtained particles they found that some neutrons seemed to dissappear for a while, only to be seen again shortly after.
 This was a mystery until (Name of smart scientist, year smart happened) came with an explanation to this problem. (Might not have been a mystery, but the smart phycisist was probably Fermi.)
@@ -24,15 +25,16 @@ Resonances can be studied using Non-Hermitian Quantum Mechanics (NHQM).
 The connection between resonances and NHQM stems from the fact that the mean life-time of the system depends directly on the complex binding momentum.
 To see this, we start by the known fact that the time-dependent solution to the Schrödinger-Equation can be expressed as
 \begin{eq}
-	\Psi(t)
-	=e^{-iEt}\Psi(0).
+	\psi(t)
+	=e^{-iEt}\psi(0).
 \end{eq}
-One can now clearly se that if the energy $E$ is complex and have a negative imaginary part, we get a solution that decays over time. 
-This comlex energy is often written onthe form
+One can now clearly see that if the energy $E$ is complex and have a negative imaginary part, we get a solution that decays over time. 
+This complex energy is often written in the form
 \begin{eq}
 	E=E_0-\frac{i\Gamma}{2},
 \end{eq}
-where $E_0$ is the binding energy, $\Gamma=\hbar \tau^{-1}$ and $\tau$ is the mean life-time of the resonance.
+where $E_0$ is the binding energy, $\Gamma=\hbar/\tau$ and $\tau$ is the mean life-time of the resonance.
 
+\todo{NHQM is more opportunity than obstacle, IMO}
 This new introduction of NHQM poses some trouble for us since the problem of standard, Hermition QM, is widely known among phisicists, but the NHQM way of thinking seriously lacks an easy-to-process theoretical foundation.
 In this report we describe how we addressed this issue by calculating the complex eigenvalues of some Helium nuclei using Non-Hermitian Quantum Mechanics..
