@@ -4,6 +4,8 @@ from nhqm.bases import harm_osc as osc, mom_space as mom
 from nhqm.problems import H_atom, He5
 from nhqm.QM_helpers import energies
 from nhqm.bases.gen_contour import gauss_contour
+import sys,os.path
+sys.path.append(os.path.join(os.path.dirname(__file__),'..'))
 import plot_setup as plts
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt

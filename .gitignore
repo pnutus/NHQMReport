@@ -36,6 +36,7 @@
 *.pdf
 *.png
 *.jpg
+*.npy
 
 # OS X
 .DS_Store
