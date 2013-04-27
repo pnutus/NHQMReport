@@ -1,41 +1,49 @@
 \emph{Quantum mechanics} (QM) is a cornerstone of modern physics, as it describes the world on the smallest of scales.
 On this small level we observe a vast number of interesting phenomena, some wich in our ordinary large-scale world seems completely impossible.
-One of these phenomena is called \emph{resonance} and in this report we will study these resonances in some Helium isotopes. \todo{Talk about resonances before Helium?}
-Helium is choosen since it is has a small nucleus whith several interesting isotopes showing different behaviors.
-A small nucleus is prefferable since it is easier to make calculations on and the interesting behaviors are stronger for small nuclei.
-Another nucleus often choosen for this kind of calculations is Lithium, which displays similar behavior.
+One of these phenomena is called \emph{resonance} and in this report we will study these nuclear resonances using \emph{Non-Hermitian Quantum Mechanics} (NHQM).
 %To study these resonances we will expand the hamiltonian in a \emph{Berggren basis}, which makes the hamiltonian non-hermitian, leading us into the world of \emph{Non-Hermitian Quantum Mechanics} (NHQM).
 
-\todo{Are we sure of the following?}
-Resonances is a phenomenon with its origins in scattering theory.
-Once upon a time... When phycisists scattered neutrons against various nuclei and observed the obtained particles they found that some neutrons seemed to dissappear for a while, only to be seen again shortly after.
-This was a mystery until (Name of smart scientist, year smart happened) came with an explanation to this problem. (Might not have been a mystery, but the smart phycisist was probably Fermi.)
-This explanation introduced so called quasi-bound states, states that behaved as a bound state for a while, but then decayed into smaller pieces.
-These quasi-bound states is often reffered to as resonances, even though some phycisists consider resonances only as a peak in scattering cross-section.
+Resonances arises from scattering experiments where neutrons at certain positive energies is seen to have a drastically increased phase shift.
+This can be interpreted as the neutron forming a temporary bond state state that quickly decays.
+These short-lived states are called \emph{quasi-bond} states and are a property of resonances.
+
+The connection between resonances and NHQM stems from the fact that the mean life-time of the system depends directly on the complex binding momentum.
+To see this, we start by the well-known fact that the time-dependent solution to the Schrödinger-Equation for a bound state can be expressed as
+\begin{eq}
+	\psi(t)
+	=e^{-iEt}\psi(0).
+\end{eq}
+We see that the exponential factor in front is just a phase and since the energy $E$ is positive in Hermitian QM, the probability $|\Psi(t)|^2$ is unchanged over time.
+The quasi-bound states on the other hand are observed to decay over time, which would lead us to believe that the probability instead would take the form of
+\begin{eq}
+  |\Psi(t)|^2 
+  = 
+  e^{-\frac{\Gamma}{\hbar}t} |\Psi(0)|^2.
+\end{eq} 
+To get this result we would havve to have a complex energy with negativve imaginary part.
+This is where we have to enter the world of NHQM to be able to describe the physics.
+Here we have a complex energy written as
+\begin{eq}
+	E=E_0-\frac{i\Gamma}{2},
+\end{eq}
+where $E_0$ is the binding energy and $t_{1/2}=\hbar\ln 2/\Gamma$ is the half-life of the resonance. 
+
+
+\todo{Should we talk something about tunneling here?}
 They can be understood more easily by observing the potential of the nucleus.
 The potentials for different nucleus look slightly different, but in all nuclei where resonances is observed we find a potential barrier.
 Now combine this with the knowledge of QM and we can explain the previously unexpected behavior with another phenomenon: tunneling.
 Tunneling says that when looking at a QM-system with a potential barrier a particle once found on one side of the barrier later has a probability of being found on the other.
 This is exactly what happens in the case of quasi-bound states.
-With some statistics one can now see that these particles have a mean life-time similar to that of radioactive deccay.
-This is not a coincidence since they as well are quasi-bound states.
 
 
-Resonances can be studied using Non-Hermitian Quantum Mechanics (NHQM).
-The connection between resonances and NHQM stems from the fact that the mean life-time of the system depends directly on the complex binding momentum.
-To see this, we start by the known fact that the time-dependent solution to the Schrödinger-Equation can be expressed as
-\begin{eq}
-	\psi(t)
-	=e^{-iEt}\psi(0).
-\end{eq}
-One can now clearly see that if the energy $E$ is complex and have a negative imaginary part, we get a solution that decays over time. 
-This complex energy is often written in the form
-\begin{eq}
-	E=E_0-\frac{i\Gamma}{2},
-\end{eq}
-where $E_0$ is the binding energy, $\Gamma=\hbar/\tau$ and $\tau$ is the mean life-time of the resonance. 
 \todo{Talk about width of resonance state?}
 
-This new introduction of NHQM poses some trouble for us since problem of standard, Hermition QM, is widely known among phisicists, but the NHQM way of thinking seriously lacks an easy-to-process theoretical foundation.
-In this report we describe how we addressed this issue by calculating the complex eigenvalues of some Helium nuclei using Non-Hermitian Quantum Mechanics.
+\todo{NHQM is more opportunity than obstacle, IMO}
+This new introduction of NHQM poses some trouble for us since the problem of standard, Hermition QM, is widely known among phisicists, but the NHQM way of thinking seriously lacks an easy-to-process theoretical foundation.
+In this report we describe how we addressed this issue by calculating the complex eigenvalues of some Helium nuclei using Non-Hermitian Quantum Mechanics..
 
+\todo{Put this Helium stuff somewhere smart.}
+Helium is choosen since it is has a small nucleus whith several interesting isotopes showing different behaviors.
+A small nucleus is prefferable since it is easier to make calculations on and the interesting behaviors are stronger for small nuclei.
+Another nucleus often choosen for this kind of calculations is Lithium, which displays similar behavior.
