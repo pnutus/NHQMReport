@@ -1,17 +1,16 @@
-%alternativ introduktion?
-
+%alternative introduction
 In this report we will study the phenomenon of nuclear \emph{resonances}. When the Schrödinger equation is solved for a neutron interacting with an atomic nucleus multiple solutions may be found. Some of these are bound states, physically corresponding to the neutron binding with the nucleus, thus forming a heavier isotope. Additionally you may find states with positive energies, in the 'continuum'. These correspond to unbound states, where the neutron is freely moving outside the nucleus. These can have any positive value of energy, hence the name 'continuum'.
 
 However, there is one more possible solution. There are sometimes discrete solutions where you get one or more states with positive energy values, but that are highly localized near the core. They are not bound states, because the wavefunction will not tend to zero as you move away from the core. However, neither can they be seen as unbound states, because they are discrete solutions depending strongly on the shape of the potential. They have interesting properties that we will investigate throughout this report.
 
 %Speculation:
-It is found in scattering experiments that neutrons at certain positive energies have a drastically increased phase shift. This can be interpreted as the neutron forming a temporary \emph{quasi-bound} state with the nucleus, that quickly decays. This is a property of the resonances that motivates us to move into the formulism of \emph{non-Hermitian quantum mechanics} (NHQM). 
+It is found in scattering experiments that neutrons at certain positive energies have a drastically increased phase shift. This can be interpreted as the neutron forming a temporary \emph{quasi-bound} state with the nucleus, that quickly decays. This is a property of the resonances that motivates us to move into the formalism of \emph{non-Hermitian quantum mechanics} (NHQM). 
 
 Recall from basic quantum mechanics that the eigenstates of a Hermitian operator form a complete basis with real eigenvalues. If we work in a basis in which the Hamiltonian is not Hermitian, we may find solutions with complex energy values.
 
-A somewhat hand-wavy explanation of why this may be wanted when studying resonances is as follow:
+A somewhat hand-wavy explanation of why this may be wanted when studying resonances is as follows:
 
-Recall the time evolution of a energy eigenstate,
+Recall the time evolution of an energy eigenstate,
 \begin{eq}
   \Psi(t) = e^{-iEt}\Psi(0).
 \end{eq}
@@ -19,10 +18,11 @@ The factor in front is just a phase, so the probability $|\Psi(t)|^2$ is unchang
 \begin{eq}
   |\Psi(t)|^2 
   = 
-  e^{-\frac{\Gamma}{\hbar}t} |\Psi(0)|^2 \,
+  e^{-\frac{\Gamma}{\hbar}t} |\Psi(0)|^2 
 \end{eq} 
-which would be achieved by the state having a complex energy
+with a half-life $t_{1/2}=\hbar\ln 2/\Gamma$. This would be achieved by the state having a complex energy
 \begin{eq}
   E = E_0 - i\frac{\Gamma}{2} \, .
 \end{eq}
-Thus a non-Hermitian formulation of the Schrödinger equation may let us quantitatively describe the resonance phenomenon.
+Thus a non-Hermitian (NHQM) formulation of the Schrödinger equation, allowing complex eigenvalues, may let us quantitatively describe the resonance phenomenon.
+
