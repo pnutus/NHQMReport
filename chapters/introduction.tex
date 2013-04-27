@@ -1,5 +1,6 @@
+\todo{Wow, QM is amaaazing, etc. Do we need to say that QM seems impossible? Shorten this?}
 \emph{Quantum mechanics} (QM) is a cornerstone of modern physics, as it describes the world on the smallest of scales.
-On this small level we observe a vast number of interesting phenomena, some of which in our ordinary large-scale world seem completely impossible.
+On this small level we observe a number of interesting phenomena, some of which in our ordinary large-scale world seem completely impossible.
 One of these phenomena is called \emph{resonance} and is the focus of this report.
 %To study these resonances we will expand the hamiltonian in a \emph{Berggren basis}, which makes the hamiltonian non-hermitian, leading us into the world of \emph{Non-Hermitian Quantum Mechanics} (NHQM).
 
@@ -22,12 +23,13 @@ we get
     e^{-\frac{iE_0}{\hbar} t} e^{- \frac{\Gamma}{2\hbar} t} \psi(0)
   }
   =
-  e^{-\frac{\Gamma}{\hbar} t} \absq{\psi(0)},
+  e^{-\frac{\Gamma}{\hbar} t} \absq{\psi(0)}
 \end{eq} 
 which describes a resonant state with half-life $t_{1/2}=\hbar\ln 2/\Gamma$.
 
+It seems, then, that we need complex energies to describe resonant states. However, complex eigenvalues pose a problem in standard QM. This is because observable quantities are regarded as real values and are described by \emph{Hermitian} operators. When working with complex eigenvalues one needs a \emph{non-Hermitian} formulation of the problem. This leads us to \emph{non-Hermitian quantum mechanics} (NHQM), which is what we use to find resonances in this report.
 
-\todo{This paragraph sort of breaks flow}
+\todo{Tunneling is when $E<V\sub{max}$. This is $E>V\sub{max}$. But we can relate them!}
 Resonances can be understood more easily by observing the potential of the nucleus.
 The potentials for different nuclei look slightly different, but in all nuclei where resonances is observed we find a potential barrier.
 Now combine this with the knowledge of QM and we can explain the previously unexpected behavior with another phenomenon: tunneling.
