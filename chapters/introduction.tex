@@ -1,33 +1,30 @@
 \emph{Quantum mechanics} (QM) is a cornerstone of modern physics, as it describes the world on the smallest of scales.
 On this small level we observe a vast number of interesting phenomena, some of which in our ordinary large-scale world seem completely impossible.
-One of these phenomena is called \emph{resonance} and in this report we will study these nuclear resonances using \emph{Non-Hermitian Quantum Mechanics} (NHQM).
+One of these phenomena is called \emph{resonance} and is the focus of this report.
 %To study these resonances we will expand the hamiltonian in a \emph{Berggren basis}, which makes the hamiltonian non-hermitian, leading us into the world of \emph{Non-Hermitian Quantum Mechanics} (NHQM).
 
-Resonances arise from scattering experiments where neutrons of certain positive energies is seen to have a drastically increased phase shift.
-This can be interpreted as the neutron forming a temporary bound state that quickly decays.
-These short-lived states are called \emph{quasi-stationary} states and are a property of resonances.
+Resonances, or \emph{quasi-stationary states}, are states in which a nucleon is bound to a nucleus, but only for a limited time. The probability of the nucleon remaining bound will decay exponentially over time. This can be explained as the state having a complex energy by the following argument:
 
-The connection between resonances and NHQM stems from the fact that the mean life-time of the system depends directly on the complex binding momentum.
-\todo{the concept of 'complex binding momentum/energy' is probably unfamiliar to the reader -- explain/rephrase?}
-To see this, we start by the well-known fact that the time-dependent solution to the Schrödinger equation for a bound state can be expressed as
+The time-dependency of a stationary state $\psi$ is, by the Shrödinger equation,
 \begin{eq}
 	\psi(t)
-	=e^{-iEt}\psi(0).
+	=e^{-\frac{iE}{\hbar}t}\psi(0).
 \end{eq}
-We see that the exponential factor in front is just a phase and since the energy $E$ is real in ordinary (Hermitian) QM, the probability $|\Psi(t)|^2$ is unchanged over time.
-The quasi-bound states on the other hand are observed to decay over time, which would lead us to believe that the probability instead would take the form of
+With the energy $E$ real, the exponential factor in front is just a phase and the probability $|\psi(t)|^2$ is unchanged over time. However, if we let the energy be complex
 \begin{eq}
-  |\Psi(t)|^2 
-  = 
-  e^{-\frac{\Gamma}{\hbar}t} |\Psi(0)|^2.
+	E = E_0 - i\frac{\Gamma}{2},
+\end{eq}
+we get
+\begin{eq}
+  |\psi(t)|^2 
+  =
+  \absq{
+    e^{-\frac{iE_0}{\hbar} t} e^{- \frac{\Gamma}{2\hbar} t} \psi(0)
+  }
+  =
+  e^{-\frac{\Gamma}{\hbar} t} \absq{\psi(0)},
 \end{eq} 
-To get this result we would need to have a complex energy with negative imaginary part.
-This is where we have to enter the world of NHQM to be able to describe the physics.
-In the above case we would have a complex energy written as
-\begin{eq}
-	E=E_0-\frac{i\Gamma}{2},
-\end{eq}
-where $E_0$ is the binding energy and $t_{1/2}=\hbar\ln 2/\Gamma$ is the half-life of the resonance. 
+which describes a resonant state with a half-life $t_{1/2}=\hbar\ln 2/\Gamma$.
 
 
 \todo{Should we talk something about tunneling here?}
@@ -39,10 +36,6 @@ This is what happens in the case of quasi-stationary states.
 
 
 \todo{Talk about width of resonance state?}
-
-\todo{NHQM is more opportunity than obstacle, IMO}
-This new introduction of NHQM poses some trouble for us since the problem of standard, Hermition QM, is widely known among physicists\todo{Is there a problem with standard QM? I think this paragraph is a bit fuzzy}, but the NHQM way of thinking lacks an easy-to-process theoretical foundation.
-In this report we describe how we addressed this issue by calculating the complex eigenvalues of Helium isotopes using Non-Hermitian Quantum Mechanics.
 
 \todo{Put this Helium stuff somewhere smart.}
 Helium is chosen since it is has a small nucleus\todo{or is it chosen because the alpha core is extremely stable and can easily be treated as 1 particle?} with several isotopes showing interesting behavior.
