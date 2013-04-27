@@ -21,9 +21,11 @@ osc.integration_order = 60
 He5.V0 = -52
 
 #omegalist =[1,2,3,4,5,6,7,8,9,10]
-omegalist= sp.linspace(0,5,100)
+a=0
+b=3
+omegalist= sp.linspace(a,b,50)
 
-num_energies=15
+num_energies=7
 resho_mat = data.calc(omegalist, num_energies, order=20, overwrite=True)
 resho_mat_trans = zip(*resho_mat)
 
@@ -47,7 +49,7 @@ for i in xrange(num_energies):
 
 
 
-plt.xlim([lmin(omegalist), lmax(omegalist)])
+plt.xlim([a,b])
 """for i in xrange(len(l)):
     plt.legend( (l[i]),
             ('energy level: ' + str(i)),
