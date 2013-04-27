@@ -21,6 +21,7 @@ where $\phi(k)$ is the radial part of the momentum space wavefunction,
 and $j_l(kr)$ are the spherical bessel functions of order $l$. We see that the transformation turned the differential equation into an integral equation.
 
 \subsection{Numerical Considerations}
+\todo{Rename this section ``Discretization''? Combine with HO stuff}
 As with the harmonic oscillator basis we want to rewrite the equation as a finite matrix equation. An integral equation can be rewritten as a matrix equation by approximating the integral with a numerical quadrature, 
 \begin{eq}
   \label{eq:discrete_momentum}
@@ -28,7 +29,8 @@ As with the harmonic oscillator basis we want to rewrite the equation as a finit
   \approx
   \sum_{j=1}^N w_j k_j^2 V(k,k_j)\phi(k_j)
 \end{eq}
-where $w_j$ are the quadrature weights. For the naive rectangular quadrature you would use a constant $w_j=\Delta k_j$, equal to the step length. However, this quadrature converges slowly to the correct value of the integral, and much better alternatives can be employed. We are using the G-L quadrature.
+where $w_j$ are the quadrature weights. \todo{Explain quadrature in one sentence?} 
+For the na\"{i}ve rectangular quadrature you would use a constant $w_j=\Delta k_j$, equal to the step length. However, this quadrature converges slowly to the correct value of the integral, and much better alternatives can be employed. We are using the G-L quadrature.
 
 With this approximation the Schrödinger equation may be written
 \begin{eq}
@@ -39,6 +41,7 @@ where $\phi_i=\phi(k_i)$ and
   H_{ij} &= \frac{k_i^2}{2\mu}\delta_{ij} + w_jk_j^2 V_{ij} \\
   V_{ij} &= \frac{2}{\pi} \int_0^\infty \rd r \, r^2 V(r) j_l(k_i r) j_l(k_j r)
 \end{eq}
+\todo{This paragraph is a repeat of something else.}
 The equation is now written as a matrix equation of order N -- the number of states included in the basis. The energy eigenvalues $E$ will be obtained by calculating the matrix elements $H_{ij}$ and diagonalizing the resulting matrix. Since there is generally no analytic expression for the terms $V_{ij}$, they will need to be evaluated by numerical integration.
 
 To speed up calculations we can transform the equation so that the matrix will be symmetric. This is achieved by the transformation
