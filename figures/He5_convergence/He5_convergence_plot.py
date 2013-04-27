@@ -61,7 +61,7 @@ plot_title.set_x(0.13)
 
 for i, orderlist in enumerate(ordermatrix):
     ax = ax_list[i]
-    l1, l2 = ax.plot(orderlist, resho[i], 'D-', orderlist, resm[i], 's-')
+    l1, l2 = ax.plot(orderlist, resho[i], 'kd-', orderlist, resm[i], 'ks-')
     ax.set_xlabel('$r^2|R(r)|^2$')
         
 ax_list[1].set_ylim([-24.93, -24.92])
@@ -73,6 +73,7 @@ ax_list[1].legend( (l1, l2),
         ('Harmonic Oscillator', 'Momentun Space'),
         'lower right')
         
-pltset.remove_top_right(ax2)        
+pltset.remove_top_right(ax2)  
+pltset.remove_top_right(ax3)        
     
 plt.show() 
