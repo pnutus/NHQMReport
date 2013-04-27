@@ -52,7 +52,7 @@ ax3 = plt.subplot(gs[1])
 ax_list = [ax2, ax3]
 
 
-ax2.set_ylabel('$r^2|R(r)|^2$')
+ax2.set_ylabel('Energy [MeV]')
 plot_title=plt.title('Convergence of the He5 resonance for HO, mom')
 #ad hoc solutions to title position
 plot_title.set_y(1.03)
@@ -61,8 +61,10 @@ plot_title.set_x(0.13)
 
 for i, orderlist in enumerate(ordermatrix):
     ax = ax_list[i]
-    l1, l2 = ax.plot(orderlist, resho[i], 'kd-', orderlist, resm[i], 'ks-')
-    ax.set_xlabel('$r^2|R(r)|^2$')
+    l1, l2 = ax.plot(orderlist, resho[i], 'kD-', orderlist, resm[i], 'ks-', markersize=7,
+markeredgewidth=1,markeredgecolor='k',
+markerfacecolor='None')
+    ax.set_xlabel('order')
         
 ax_list[1].set_ylim([-24.93, -24.92])
 ax_list[1].get_xaxis().get_major_formatter().set_useOffset(False)

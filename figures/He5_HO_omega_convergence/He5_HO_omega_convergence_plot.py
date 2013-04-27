@@ -1,5 +1,10 @@
 from __future__ import division
 #from imports import *
+
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "/..")
+
 from nhqm.bases import harm_osc as osc, mom_space as mom
 from nhqm.problems import H_atom, He5
 from nhqm.QM_helpers import energies
@@ -12,20 +17,6 @@ import matplotlib.pyplot as plt
 import scipy as sp
 import He5_HO_omega_convergence_data as data
 
-def lmin(lista):
-    minv = lista[0]
-    for i in xrange(len(lista)):
-        if lista[i] < minv:
-            minv = lista[i]
-    return minv 
-    
-def lmax(lista):
-    maxv = lista[0]
-    for i in xrange(len(lista)):
-        if lista[i] > maxv:
-            maxv = lista[i]
-    return maxv   
-
 osc.integration_order = 60
 He5.V0 = -52
 
@@ -37,8 +28,8 @@ resho_mat = data.calc(omegalist, num_energies, order=20, overwrite=True)
 resho_mat_trans = zip(*resho_mat)
 
 
-plts.plot_init(font_size=14,tick_size=11) #set font sizes.
-fig = plt.figure()
+fig = plts.plot_init(font_size=14,tick_size=11) #set font sizes.
+
 
 
 plt.ylabel('energy [MeV]')
