@@ -86,9 +86,15 @@ which is equivalent to the matrix \cref{eq:matrix equation}. This is the basic m
 
 To test our HO and plane-wave bases, we expand the well known and analytically solvable hydrogen atom.
 We compare the results in \cref{fig:ho_mom}.
-Here we have the unit \emph{Hartree} for energy, which makes the sought value \unit{0.5}{H}.
+The sought value is as usual \unit{13.6}{eV} for the Hydrogen atom binding energy.
 We see that the plane-wave expansion converges faster than the harmonic oscillator, but towards the wrong value.
-This is because the momentum space expansion not support the use of non-finite potentials and since the coulomb potentioal of the hydrogen atom is propotional to$\frac{1}{r}$, a small deviation is not unexpected.\todo{is expected or as it is?}
+This is because the momentum space expansion not support the use of non-finite potentials.
+The potetntial of the hydrogen atom is the famous school-book example:
+\begin{eq}
+	V(r)=
+	-\frac{e^2}{4\pi\epsilon_0r}.
+\end{eq}
+This do not converge towars a finite number as $r->0$, which means that a small deviation not surprising.
 
 
 

@@ -4,6 +4,8 @@ from nhqm.bases import harm_osc as osc, mom_space as mom
 from nhqm.problems import H_atom, He5
 from nhqm.QM_helpers import energies
 from nhqm.bases.gen_contour import gauss_contour
+import sys,os.path
+sys.path.append(os.path.join(os.path.dirname(__file__),'..'))
 import plot_setup as plts
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
@@ -57,6 +59,14 @@ plot_title.set_x(0.13)
 for i, orderlist in enumerate(ordermatrix):
     ax = ax_list[i]
     l1, l2 = ax.plot(orderlist, resho[i], 'bo-', orderlist, resm[i], 'go-')
+    l1=ax.plot(orderlist,resho[0], "o", markersize=7,\
+        markeredgewidth=1,markeredgecolor='k',\
+        markerfacecolor='None'\
+        )
+    l2=ax.plot(orderlist,resho[1], "D", markersize=7,\
+        markeredgewidth=1,markeredgecolor='k',\
+        markerfacecolor='None'\
+        )
     ax.set_xlabel('order')
     
     if i==1:
