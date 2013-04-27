@@ -77,30 +77,18 @@ which is equivalent to the matrix \cref{eq:matrix equation}. This is the basic m
 \label{sec:harm_osc}
 \input{chapters/harm_osc.tex}
 
+\todo{Possible name change: Plane Wave Expansion?}
 \section{Discretized Momentum Space}
 \label{sec:mom_space}
 \input{chapters/mom_space.tex}
 
-\section{Implementation} \todo{Combine implementation for HO and mom}
+\section{The Hydrogen Atom} 
 
-Since the HO basis is a discrete basis, implementing it in code is straightforward. There are a few considerations, however, and we mention them here. 
+To test our HO and plane wave bases, we expand the well known and analytically solvable hydrogen atom. We compare the results 
 
-The $\ket{nlm}$ basis is infinite in $n$, but we need a finite matrix, so we truncate the basis at a finite number $N$ giving us an $N \times N$ matrix. Since the matrix is diagonal in $l$ and $m$, we do the calculation separately for each value of $l$ and $m$ to reduce the amount of computation needed to solve for the eigenvalues
-The equation we are solving is then, for a given $l$ and $m$,
-\begin{eq}
-  \sum_{n'= 0}^N \bra{n} H \ket{n'} \psi_{n'} = E\psi_{n}
-\end{eq}
-or in linear algebra notation
-\begin{eq}
-  H\psi = E\psi.
-\end{eq}
-This matrix equation is solved using a standard eigensolver algorithm, which uses the fact that the matrix is hermitian to solve the equation faster.
+\todo{Fixa detta. Figur finns redan tror jag.}
 
-We calculate the matrix elements using \cref{eq:HO matrix elements}. The integration is performed using Gauss-Legendre quadrature and setting the upper limit to a finite number.
-
-\todo{More descriptive title than ``Results'', bitte}
-\todo{Maybe Results is its own chapter: ``\He{5}''?}
-\section{Results} 
+\chapter{The \He{5} Nucleus}
 
 \todo{Where is the theory for \He{5} potential? We should mention Woods-Saxon.}
 A comparison of performance between HO and momentum basis expansion for the hydrogen atom and \He{5} problems is shown in \cref{fig:HO vs mom}.

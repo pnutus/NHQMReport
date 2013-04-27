@@ -12,39 +12,53 @@ This three-dimensional equation is practically unsolvable, but we can simplify i
   &=
   E\phi(k) \, ,
 \end{eq}
+\todo{Put first part inside integral with delta function to show where kronecker delta comes from?}
 where $\phi(k)$ is the radial part of the momentum space wavefunction, 
 \begin{eq}
   V(k,k') 
   &= 
   \frac{2}{\pi}\int_0^\infty \rd r \, r^2 V(r) j_l(kr) j_l(k'r) 
 \end{eq}
-and $j_l(kr)$ are the spherical bessel functions of order $l$. We see that the transformation turned the differential equation into an integral equation.
+and $j_l(kr)$ are the spherical bessel functions of order $l$. We see that the transformation turned the differential equation into an integral equation
+\begin{eq}
+  \fint[0][\inf]{k'} \p{
+    \frac{k^2}{2\mu}\delta(k -k') + k'^2 V(k,k')
+  } 
+  \phi(k')
+  &=
+  E\phi(k) \, ,
+\end{eq}
 
-\subsection{Numerical Considerations}
-\todo{Rename this section ``Discretization''? Combine with HO stuff}
-As with the harmonic oscillator basis we want to rewrite the equation as a finite matrix equation. An integral equation can be rewritten as a matrix equation by approximating the integral with a numerical quadrature, 
+
+\subsection{Discretization}
+The integral equation can be rewritten as a matrix equation through discretization, turning the integral into a sum over a finite set of points $k_j$ and the $\rd{k}$ into a set of weights $w_j$:
+\todo{Incorrect }
 \begin{eq}
   \label{eq:discrete_momentum}
-  \int_0^\infty \rd k' \, k'^2 V(k,k')\phi(k') 
   \approx
-  \sum_{j=1}^N w_j k_j^2 V(k,k_j)\phi(k_j)
+  \sum_{j=1}^N w_j \p{
+    \frac{k_i^2}{2\mu}\delta_{ij}
+    +
+    k_j^2 V(k_i,k_j)
+  } \phi(k_j)
+  =
+  E \phi(k_i)
+  .
 \end{eq}
-where $w_j$ are the quadrature weights. \todo{Explain quadrature in one sentence?} 
-For the na\"{i}ve rectangular quadrature you would use a constant $w_j=\Delta k_j$, equal to the step length. However, this quadrature converges slowly to the correct value of the integral, and much better alternatives can be employed. We are using the G-L quadrature.
+A particular set of points and corresponding weights is called a \emph{quadrature}, and the choice of quadrature greatly impacts the precision of the result. A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used. We use the Gauss-Legendre quadrature \cite{gauss-legendre}.
 
 With this approximation the Schrödinger equation may be written
 \begin{eq}
   \sum_j H_{ij} \phi_j &= E \phi_i
 \end{eq}
 where $\phi_i=\phi(k_i)$ and 
-\begin{eq}
+\begin{align}
+  \label{eq:mom matrix}
   H_{ij} &= \frac{k_i^2}{2\mu}\delta_{ij} + w_jk_j^2 V_{ij} \\
   V_{ij} &= \frac{2}{\pi} \int_0^\infty \rd r \, r^2 V(r) j_l(k_i r) j_l(k_j r)
-\end{eq}
-\todo{This paragraph is a repeat of something else.}
-The equation is now written as a matrix equation of order N -- the number of states included in the basis. The energy eigenvalues $E$ will be obtained by calculating the matrix elements $H_{ij}$ and diagonalizing the resulting matrix. Since there is generally no analytic expression for the terms $V_{ij}$, they will need to be evaluated by numerical integration.
+\end{align}
 
-To speed up calculations we can transform the equation so that the matrix will be symmetric. This is achieved by the transformation
+Because of the $k_j^2$ in the second term of the matrix elements (\cref{eq:mom matrix}), the $H_{ij}$ matrix will not be symmetric. Working with a symmetric matrix will be faster, so we do the transformation
 \begin{eq}
   \phi_i &\mapsto
   \phi_i' =  \sqrt{w_i} k_i \phi_i
@@ -54,13 +68,15 @@ To speed up calculations we can transform the equation so that the matrix will b
   = 
   \sqrt{\frac{w_i}{w_j}} \frac{k_i}{k_j}H_{ij}
 \end{eq}
-We would then have
+which gives us a symmetric matrix
 \begin{eq}
-  \sum_j H'_{ij}\phi'_j = E\phi'_i\,,
+  H_{ij}' = \frac{k_i^2}{2\mu}\delta_{ij} + \sqrt{w_i w_j}k_i k_j V_{ij}.
 \end{eq}
-meaning that the eigenvalues could be just as well obtained by diagonalizing the symmetric $H'$ matrix, thus saving precious time. We have
+The Shrödinger equation becomes
 \begin{eq}
-  H_{ij}' = \frac{k_i^2}{2\mu}\delta_{ij} + \sqrt{w_i w_j}k_i k_j V_{ij}
+  \sum_j H'_{ij}\phi'_j = E\phi'_i \, ,
 \end{eq}
-with $V_{ij}$ defined as above.
+with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{ij}$ matrix.
+\todo{mention wave functions here?}
+
 
