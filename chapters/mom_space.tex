@@ -1,4 +1,6 @@
-The reason that we want to solve the problem in momentum space is that we are studying a system with a short-range potential supporting only a few, if any, bound solutions. This means that we will find multiple unbound solutions, corresponding to free particles of various energies. These are basically already eigenstates of the momentum operator, only slightly disturbed by the small potential well at $r=0$. 
+The reason that we want to solve the problem in momentum space is that we are studying a system with a short-range potential supporting only a few, if any, bound solutions. 
+This means that we will find multiple unbound solutions, corresponding to free particles of various energies.
+ These are almost eigenstates of the momentum operator, only slightly disturbed by the small potential well at $r=0$. 
 
 The expansion is done in the same way as before, giving us
 \begin{eq}
@@ -6,7 +8,8 @@ The expansion is done in the same way as before, giving us
   &= 
   E\Phi(\vec{k}) \, .
 \end{eq}
-This three-dimensional equation is practically unsolvable, but we can simplify it using the fact that we have a central problem. A rather involved calculation (see \cref{sec:radial mom space TISE}) shows that the Schrödinger equation can be written as
+This three-dimensional equation is practically unsolvable, but we can simplify it using the fact that we have a central problem. 
+A rather involved calculation (see \cref{sec:radial mom space TISE}) shows that the Schrödinger equation can be written as
 \begin{eq} 
   \frac{k^2}{2\mu}\phi(k) + \int_0^\infty \rd k' \, k'^2 V(k,k') \phi(k') 
   &=
@@ -23,7 +26,7 @@ and $j_l(kr)$ are the spherical bessel functions of order $l$. $\phi(k)$ is rela
 \begin{eq}
 R(r)=i^l\sqrt{\frac{2}{\pi}} \int_0^\infty \rd k \, k^2 \phi(k)j_l(kr).
 \end{eq} 
-We see that the transformation turned the differential equation into an integral equation
+We have now transformed the differential equation into an integral equation
 \begin{eq}
   \fint[0][\inf]{k'} \p{
     \frac{k^2}{2\mu}\delta(k -k') + k'^2 V(k,k')
@@ -35,7 +38,7 @@ We see that the transformation turned the differential equation into an integral
 
 \subsection{Numerical Considerations}
 The integral equation can be rewritten as a matrix equation through discretization, turning the integral into a sum over a finite set of points $k_j$ and $\rd{k}$ into a set of weights $w_j$:
-\todo{Incorrect }
+\todo{Incorrect , left hand side?}
 \begin{eq}
   \label{eq:discrete_momentum}
   \approx
@@ -48,9 +51,11 @@ The integral equation can be rewritten as a matrix equation through discretizati
   E \phi(k_i)
   .
 \end{eq}
-A particular set of points and corresponding weights is called a \emph{quadrature}, and the choice of quadrature greatly impacts the precision of the result. A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used. We use the Gauss-Legendre quadrature \cite{gauss-legendre}.
+A particular set of points and corresponding weights is called a \emph{quadrature}, and the choice of quadrature greatly impacts the precision of the result. 
+A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used. 
+We instead use the Gauss-Legendre quadrature \cite{gauss-legendre}.
 
-With this approximation the Schrödinger equation may be written
+With this approximation the Schrödinger equation may be written as
 \begin{eq}
   \sum_j H_{ij} \phi_j &= E \phi_i
 \end{eq}
@@ -61,7 +66,8 @@ where $\phi_i=\phi(k_i)$ and
   V_{ij} &= \frac{2}{\pi} \int_0^\infty \rd r \, r^2 V(r) j_l(k_i r) j_l(k_j r)
 \end{align}
 
-Because of the $k_j^2$ in the second term of the matrix elements (\cref{eq:mom matrix}), the $H_{ij}$ matrix will not be symmetric. Working with a symmetric matrix will be faster, why we do the transformation
+Because of the $k_j^2$ in the second term of the matrix elements (\cref{eq:mom matrix}), the $H_{ij}$ matrix will not be symmetric. 
+Working with a symmetric matrix will be faster, hence we do the transformation
 \begin{eq}
   \phi_i &\mapsto
   \phi_i' =  \sqrt{w_i} k_i \phi_i
@@ -79,7 +85,8 @@ The Shrödinger equation then becomes
 \begin{eq}
   \sum_j H'_{ij}\phi'_j = E\phi'_i \, ,
 \end{eq}
-with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{ij}$ matrix. The real space radial wavefunction $R(r)$ is expressed in terms of $\phi'_j$ as
+with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{ij}$ matrix.
+ The real space radial wavefunction $R(r)$ is expressed in terms of $\phi'_j$ as
 \begin{eq}
   R(r)
   =

@@ -1,4 +1,4 @@
-We model the \He{5} nucleus as an alpha core (\He{4}) with a valence neutron which moves in the potential of the core.
+When we move on to the problem of the \He{5} nucleus, we see it as an alpha core (\He{4}) with a valence neutron which moves in the potential of this alpha core.
 The potential is approximated by a Woods-Saxon potential, which is relatively easy to use in numerical calculations and is a sufficient approximation for the strong nuclear force of the nuclei.
 The expression for this potential is
 \begin{eq}
@@ -21,18 +21,17 @@ A comparison of performance between HO and momentum basis expansion for the hydr
   \caption{}
   \label{fig:HO vs mom}
 \end{figure}
-
-Let us study the obtained solutions closer. \Cref{fig:resonance wavefunction} shows the radial wavefunctions $R(r)$ for a few of the states with lowest energy.
-
+\Cref{fig:resonance wavefunction} shows the radial wavefunctions $R(r)$ for a few of the states with lowest energy.
 \begin{figure}
   \centering
   \includegraphics[width = \textwidth]{figures/resonance_wavefunction.pdf}
   \caption{A few solutions to the Woods-Saxon potential with well depth $V0=\SI{-52}{MeV}$.}
   \label{fig:resonance wavefunction}
 \end{figure}
-
 While all of the states we see have energies $E>0$, and thus are unbound, we see that one solution is more localized near the center $r=0$. 
 This is the sign of a quasi-bound state. To confirm this we may vary the depth $V0$ of the potential well and see how this affects the solutions. 
 
-We see that the unbound states remain practically unchanged. This means that they basically correspond to free particles of energies $E_n=\frac{k_n^2}{2\mu}$, where $k_n$ are the momenta that were included in the discretization of the integrals. We will refer to these values of $k$ as our \emph{mesh points}. The quasi-bound state changed dramatically, which shows that this solution is a feature of the system we are studying.  
+We see that the unbound states remain practically unchanged. This means that they basically correspond to free particles of energies $E_n=\frac{k_n^2}{2\mu}$, where $k_n$ are the momentum that were included in the discretization of the integrals. We will refer to these values of $k$ as our \emph{mesh points}. The quasi-bound state, however, changed dramatically, which shows that this solution is a feature of the system we are studying.
+
+To study these resonances more thoroughly we need to move on to a new framework of QM called Non-Hermitian Quantum Mechanics.
 \todo{something here should lead to wanting NHQM}
