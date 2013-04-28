@@ -4,10 +4,18 @@ def plot_init(font_size =12,tick_size =8, tick_pad =6):
     font = {'family' : 'normal',
             'weight' : 'bold',
             'size'   : font_size}
-            
+"""
+TODO
+
+savefig-grapper
+saves file as script filename __file__ .pdf 
+fig//plt.savefig('out.pdf', transparent=True, bbox_inches='tight', pad_inches=0) 
+"""            
 
 
     matplotlib.rcParams['text.usetex']=True
+    matplotlib.rc('font', family='serif')
+    matplotlib.rc('text', usetex=True )
     matplotlib.rcParams['text.latex.unicode']=True
     
     matplotlib.rc('font', **font)

@@ -7,21 +7,12 @@ import scipy as sp
 matplotlib.rc('xtick', color='white')
 matplotlib.rc('ytick', color='white')
 
-def dual_half_circle(center, radius, angle=0, ax=None,
-                     **kwargs):
-    """
-    Add two half circles to the axes *ax* (or the current axes) with the 
-    specified facecolors *colors* rotated at *angle* (in degrees).
-    """
-    if ax is None:
-        ax = plt.gca()
-    theta1, theta2 = angle, angle + 180
-    w1 = Wedge(center, radius, theta1, theta2, fc='b', **kwargs)
-    ax.add_artist(w1)
-    return w1
+matplotlib.rc('text', usetex=True )
+matplotlib.rc('font', family='serif')
+matplotlib.rcParams['text.latex.unicode']=True
     
 fig, ax = plt.subplots()
-dual_half_circle((0.5,0.5), radius=0.4, angle=0, ax=ax)
+
 ax.axis('equal')
 
 fig.set_figheight(4)
@@ -91,7 +82,12 @@ plt.plot([0.5, 0.5],[0.65, 0.58], "o", markersize=7,
 markeredgewidth=1,markeredgecolor='k',
 markerfacecolor='None'
 )
-plt.plot([0.65, 0.35],[0.45, 0.55], 'kx')
+plt.plot([0.65, 0.35],[0.45, 0.45], 'kx')
+
+plt.plot([0.7, 0.3],[0.5, 0.5], "d", markersize=7,
+markeredgewidth=1,markeredgecolor='k',
+markerfacecolor='None'
+)
 
 r = 0.4
 x1 = sp.linspace(0, 0.4, 200)
@@ -107,4 +103,5 @@ for i in xrange(len(x1)):
 plt.plot(x1,y1, color='k', linewidth=2)
 plt.plot(x2,y2, color='k', linewidth=2)
 
-plt.show()
+
+plt.savefig('out.pdf', transparent=True, bbox_inches='tight', pad_inches=0)
