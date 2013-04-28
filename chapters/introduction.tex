@@ -1,19 +1,20 @@
-\todo{Fix short background paragraph}
-\emph{Quantum mechanics} (QM) is a cornerstone of modern physics, as it describes the world on the smallest of scales.
-One of the phenomena that arise on this level is called \emph{resonance} and is the focus of this report.
-%To study these resonances we will expand the hamiltonian in a \emph{Berggren basis}, which makes the hamiltonian non-hermitian, leading us into the world of \emph{Non-Hermitian Quantum Mechanics} (NHQM).
-
-Resonances, or \emph{quasi-stationary states}, are states in which a nucleon is bound to a nucleus, but only for a limited time. 
-The probability of the nucleon remaining bound will decay exponentially over time. 
-This can be explained as the state having a complex energy by the following argument:
+In quantum mechanics, a particle is often said to be either bound or free.
+However, there is a third possibility, where the particle is bound, but
+only for a limited time, after which it escapes. This kind of state is 
+called a \emph{quasi-bound} state, or \emph{resonance}. The 
+probability of a quasi-bound particle remaining bound will decay 
+exponentially over time. This can be explained as the state 
+having a complex energy by the following argument:
 
 The time-dependency of a stationary state $\psi$ is
 \begin{eq}
 	\psi(t)
-	=e^{-\frac{iE}{\hbar}t}\psi(0).
+	= 
+  \exp\p{-\frac{iE}{\hbar}t}\psi(0).
 \end{eq}
-With the energy $E$ real, the exponential factor is just a phase and the probability $|\psi(t)|^2$ is unchanged over time. 
-However, if we let the energy be complex
+With the energy $E$ real, the exponential factor is just a phase 
+and the probability $|\psi(t)|^2$ is unchanged over time. However, 
+if we let the energy be complex
 \begin{eq}
 	E = E_0 - i\frac{\Gamma}{2},
 \end{eq}
@@ -22,50 +23,63 @@ we get
   |\psi(t)|^2 
   =
   \absq{
-    e^{-\frac{iE_0}{\hbar} t} e^{- \frac{\Gamma}{2\hbar} t} \psi(0)
+    \exp\p{-\frac{iE_0}{\hbar} t} \exp\p{- \frac{\Gamma}{2\hbar} t} \psi(0)
   }
   =
-  e^{-\frac{\Gamma}{\hbar} t} \absq{\psi(0)}
+  \exp\p{-\frac{\Gamma}{\hbar} t} \absq{\psi(0)}
 \end{eq} 
-which describes a resonant state with half-life $t_{1/2}=\hbar\ln 2/\Gamma$.
+which describes a resonant state with half-life 
+$t_{1/2}=\hbar\ln 2/\Gamma$.
 
-It seems, then, that we need complex energies to describe resonant states. However, complex eigenvalues pose a problem in standard QM. 
-This is because observable quantities are regarded as real values and are described by \emph{Hermitian} operators. 
-When working with complex eigenvalues one needs a \emph{non-Hermitian} formulation of the problem. This leads us to \emph{non-Hermitian quantum mechanics} (NHQM), which is what we use to find resonances in this report.
+\todo{Is non-hermitian even important?}
+It seems, then, that we need complex energies to describe resonant 
+states. However, complex eigenvalues pose a problem in standard QM. 
+This is because observable quantities are regarded as real values 
+and are described by \emph{Hermitian} operators. When working with 
+complex eigenvalues one needs a \emph{non-Hermitian} formulation of 
+the problem. This leads us to \emph{non-Hermitian quantum mechanics} 
+(NHQM), which is what we use to study resonances in this report.
 
-\todo{Flow here?}
+The systems we have chosen to study by computer calculations
+are the Helium isotopes \He{5} and \He{6}. We chose Helium  
+because \He{4} is a very stable nucleus that can be treated 
+as a single (alpha) particle. \He{5} and \He{6} are then modeled
+as an alpha particle core with one or two valence neutrons. 
 
-This report will study resonances in the Helium isopes \He{5} and \He{6}.
-Helium is chosen since \He{4} is a very stable nucleus and thus can be treated as a single (alpha) particle.
-\He{5} has a known resonance with half-life $t_{1/2} = \SI{700e-24}{s}$. 
-\He{6}, however, is a so-called Boromean nucleus which has a bound state and no resonance because of the interaction between the two valence neutrons.
-
+\He{5} has a known resonance with half-life $t_{1/2} = \SI{700e-24}{s}$,
+which we will study. In addition to resonant states, \He{6} is a 
+so-called Boromean nucleus and has a bound state because of the 
+attraction between the valence neutrons.
 
 \todo{Tunneling is when $E<V\sub{max}$. This is $E>V\sub{max}$. But we can relate them!}
 
 \todo{Where does width stuff go?}
-Heisenberg's uncertainty principle gives a relation between energy and time
-\begin{equation}
-\Delta E \Delta t \ge \frac{\hbar}{2}.
-\end{equation}
-Hence a state with finite life time must have an uncertainty in its energy spectrum, this discrepancy is called the width of a resonant state. It's this width that's measured in experiments.
+% Heisenberg's uncertainty principle gives a relation between energy and time
+% \begin{equation}
+% \Delta E \Delta t \ge \frac{\hbar}{2}.
+% \end{equation}
+% Hence a state with finite life time must have an uncertainty in its energy spectrum, this is called the \emph{width} of a resonant state. It is this width that is measured in experiments.
 
 \section{Tools}
 
-All calculations were made in the Python programming language using the libraries NumPy and SciPy. We used the matplotlib library to make the figures. The code was managed using Git and is available at \url{https://github.com/pnutus/NHQM}.
-
+All calculations were made in the Python programming language 
+using the libraries NumPy and SciPy. We used the matplotlib 
+library to make the figures. The code was managed using Git 
+and is available at
+\begin{quote}
+  \url{https://github.com/pnutus/NHQM}
+\end{quote}
 
 \section{Reading Guide}
-\todo{Rephrase so we don't start every sentence with ``In Chapter X''}
-In Chapter 2 we introduce the concept of basis expansion. 
-This is a mathematical tool that lets us rewrite the Schrödinger equation as a matrix equation.
-A short introduction to the theory is included, followed by an example where we are using the method to find the hydrogen atom ground state.
+We begin in \cref{cha:basis expansion} by introducing the concept of 
+basis expansion, which is the mathematical foundation for all
+following calculations. The basis expansion method is then used in 
+\cref{cha:he5} to study the \He{5} nucleus, looking for a resonance.
+In \cref{cha:nhqm} we extend our methods to the complex plane, which
+lets us quantify the resonance.
 
-In Chapter 3 we introduce the first problem that will be studied in the report: the \He{5} nucleus. We describe the model that is used, and solve the equation. 
-This is followed by a discussion of the solutions.
-
-In Chapter 4 we extend our methods to the complex plane, using this to find the resonance in \He{5}.
-
-In Chapter 5 an introduction to many-body theory is included, focusing on fermionic systems.  
-
-[WIP] In Chapter 6 the solutions of \He{5} is used as single-particle basis to solve the \He{6} problem. 
+\Cref{cha:many-body} is an introduction to many-body theory, focusing 
+on fermionic systems. The theory is then used in \cref{cha:he6} to study
+the \He{6} nucleus, a three-body problem. In \cref{cha:he7} we continue 
+with the four-body \He{7} nucleus, and use a Monte Carlo method in
+\cref{cha:monte carlo} to speed up calculations.

@@ -32,11 +32,13 @@ We now interpret these $k$ as poles, and our integration
 as a contour integration around the upper half plane, 
 see \cref{fig:simple contour}. The result of a contour 
 integration depends on the poles it encircles by the 
-residue theorem, so we expect something to happen if 
-we let the contour encircle the pole of the resonance.
+residue theorem. Therefore, we expect something to happen if 
+we let the contour encircle the pole of the resonance,
+as in \cref{fig:berggren contour}.
 
 \begin{figure}
   \subfloat[]{
+  \label{fig:simple contour}
   \begin{tikzpicture}
     [ scale = 2.5,
       triangle/.style={regular polygon, regular polygon sides=3},
@@ -60,6 +62,7 @@ we let the contour encircle the pole of the resonance.
   \end{tikzpicture}
   }
   \subfloat[]{
+  \label{fig:berggren contour}
   \begin{tikzpicture}
     [ scale = 2.5,
       triangle/.style={regular polygon, regular polygon sides=3},
@@ -86,14 +89,6 @@ we let the contour encircle the pole of the resonance.
                          -- cycle;
   \end{tikzpicture}
   }
-  \caption{}
-  \label{fig:simple contour}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-    \includegraphics[width = \textwidth]{figures/complex_plane.pdf}
-
   \caption{The complex $k$-plane. The circles represent 
   bound states, the diamonds unbound states and the 
   crosses resonant states. Note the mirroring in
@@ -121,7 +116,7 @@ of the segment. An example of a contour is seen in
 
 \begin{figure}[H]
   \centering
-    \includegraphics[width = \textwidth]{figures/complex_contour.pdf}
+    \includegraphics[width = 0.7\textwidth]{figures/complex_contour.pdf}
   \caption{The complex contour used.}
   \label{fig:triangle contour}
 \end{figure}

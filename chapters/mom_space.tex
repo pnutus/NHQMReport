@@ -25,27 +25,18 @@ where $\phi(k)$ is the radial part of the momentum space wavefunction,
 and $j_l(kr)$ are the spherical bessel functions of order $l$. $\phi(k)$ is related to the real space radial wavefunction by
 \begin{eq}
 R(r)=i^l\sqrt{\frac{2}{\pi}} \int_0^\infty \rd k \, k^2 \phi(k)j_l(kr).
-\end{eq} 
-We have now transformed the differential equation into an integral equation
-\begin{eq}
-  \fint[0][\inf]{k'} \p{
-    \frac{k^2}{2\mu}\delta(k -k') + k'^2 V(k,k')
-  } 
-  \phi(k')
-  &=
-  E\phi(k) \, .
 \end{eq}
 
-\subsection{Numerical Considerations}
-The integral equation can be rewritten as a matrix equation through discretization, turning the integral into a sum over a finite set of points $k_j$ and $\rd{k}$ into a set of weights $w_j$:
+\subsection{Discretization}
+The integral equation \cref{eq:radial mom space TISE} can be rewritten as a matrix equation through discretization, turning the integral into a sum over a finite set of points $k_j$ and $\rd{k}$ into a set of weights $w_j$:
 \todo{Maybe this delta trickery is unnecessary. Do it after discretization.}
 \begin{eq}
   \label{eq:discrete_momentum}
-  \sum_{j=1}^N w_j \p{
-    \frac{k_i^2}{2\mu}\frac{\delta_{ij}}{w_j}
-    +
+  \frac{k_i^2}{2\mu} \phi(k_i)
+  +
+  \sum_{j=1}^N w_j
     k_j^2 V(k_i,k_j)
-  } \phi(k_j)
+  \phi(k_j)
   =
   E \phi(k_i)
   .
@@ -53,6 +44,7 @@ The integral equation can be rewritten as a matrix equation through discretizati
 A particular set of points and corresponding weights is called a \emph{quadrature}, and the choice of quadrature greatly impacts the precision of the result. 
 A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used. 
 We instead use the Gauss-Legendre quadrature \cite{gauss-legendre}.
+\todo{Gauss-Legendre appendix?}
 
 With this approximation the Schrödinger equation may be written as
 \begin{eq}

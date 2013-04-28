@@ -7,9 +7,10 @@
   
 \numberwithin{equation}{chapter}
 \numberwithin{figure}{chapter}
-\pagenumbering{roman}
 
+\pagenumbering{gobble}
 \listoftodos
+
 
 \title{Resonances in Helium Isotopes\\ 
 \todo{There is a proper front page somewhere, let's fix that}
@@ -23,22 +24,25 @@
 
 \newpage
 \begin{abstract}
-The basis-expansion method for solving complex versions of the Schrödinger equation is introduced as a way of reaching our goal to study resonances is Helium isotopes.
-The first step for us was the harmonic oscilator expansion, which is easy to work with, but was shown slow to converge and the resonances are significantly less visible than in our other bases.
-A similar base, but one that to some point describes resonances is the discretized momentum space where the resonances are clearly noticeable and calculations are found converge much faster.
-Here we are able to detect resonances in the \He{5} isotope, which is the isotope used to test our methods.
-Last we introduce the Berggren-basis which shows to be the best base to desccribe resonances, but introduce the abstract concept of Non-Hermitian Quantum Mechanics.
-It is not faster than the discretized monentum space, but the non hermitianity gives us a framework more suited for calculations of resonances.
-Armed whith these tools we took up the fight against the \He{6} isotope, which is a three-body problem not easily solved.
-Through the report we display results of the different methods and benchmarks to show our progress.
+This report aims to serve as an introduction to quantum resonance and 
+numerical calculations in quantum mechanics. This is done by studying
+resonances in \He{5} and \He{6} nuclei. We explain the theory of basis
+expansion and expand the \He{5} nucleus in the spherical harmonic oscillator
+and spherical wave bases. To quantify the \He{5} resonance, we extend the
+spherical wave basis into the complex plane according to the 
+theory of Tore Berggren. The Berggren basis is then used as a single particle
+basis for the \He{6} problem. We also explain many-body theory and the second
+quantization formalism, providing details for its implementation. Finally, a
+Monte Carlo approach to reducing computation time for many-body 
+calculations is investigated.
 
 \todo{Read through and correct the abstract.}
 \end{abstract}
 \newpage
 
+\pagenumbering{roman}
+
 \tableofcontents
-
-
 \newpage
 
 \pagenumbering{arabic}
@@ -61,25 +65,20 @@ Through the report we display results of the different methods and benchmarks to
 \label{cha:nhqm}
 \input{chapters/nhqm.tex}
 
-
 \chapter{Many-Body Theory}
 \label{cha:many-body}
 \input{chapters/mb_theory.tex}
 \input{chapters/mb_implementation.tex}
 
-\chapter{The Three-Body Problem}
-\label{cha:three-body}
+\chapter{The \He{6} Nucleus}
+\label{cha:he6}
 
 
-% \chapter{Four or more bodies}
-% \label{cha:four-body}
-% 
-% \ce{^7He}, \ce{^8He} ... ?
-% 
-% \chapter{Monte Carlo Approach}
-% \label{cha:monte_carlo}
-% 
-% Using a statistical approach.
+\chapter{The \He{7} Nucleus}
+\label{cha:he7}
+
+\chapter{Monte Carlo Approach}
+\label{cha:monte carlo}
 
 \appendix
 

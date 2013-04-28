@@ -1,13 +1,24 @@
 \section{Three-Body implementation}
-In order to solve the three body-problem, or rather the He-6 system modeled as a He-4 nucleus with two orbiting neutrons, we had to translate the governing mathematical and physical relations to something better suited for numerical solutions.
- This Section gives a description of the models and simplifications we have used.
+In order to solve the three body-problem, or rather the He-6 system 
+modeled as a He-4 nucleus with two orbiting neutrons, we had to 
+translate the governing mathematical and physical relations to 
+something better suited for numerical solutions. This Section gives a description of the models and simplifications we have used.
 
 %\subsection{our special case and simplifications}
 %//core - nucleus
 %\subsection{multistep method}
-We have utilized the multistep method to find the solution to a multi-body (mb) problem through solutions of incremental many-body problems.
- We started out by solving the two body problem of a core (He-4) and a single orbiting particle (sp) (neutron, forming He-5 -there was no bound state, only resonances as can be expected, see ref ref ref) and used these solutions to form mb-states out of different combinations of the sp-states; see fock space section in mb-theory.
- We have only reached the second step in the multi-step method but this is the largest step, most of the operators that govern any mb-problem are needed for a three-particle problem, whereas a two-body particle can be reduced to a one-body-problem through the use of relative quantities.
+We have utilized the multistep method to find the solution to a 
+multi-body (mb) problem through solutions of incremental many-body 
+problems. We started out by solving the two body problem of a core 
+(\He{4}) and a single orbiting particle (sp) (neutron, forming \He{5}
+---there was no bound state, only resonances as can be expected, 
+see ref ref ref) and used these solutions to form mb-states out of 
+different combinations of the sp-states; see fock space section in 
+mb-theory. We have only reached the second step in the multi-step 
+method but this is the largest step, most of the operators that govern 
+any mb-problem are needed for a three-particle problem, whereas a 
+two-body particle can be reduced to a one-body-problem through the 
+use of relative quantities.
  
 \subsection{Many-body states}
 The governing theory of mb-states is covered in \cref{sec:fock space}, this section will focus on one way of implementing these states.
@@ -17,7 +28,7 @@ The governing theory of mb-states is covered in \cref{sec:fock space}, this sect
 
 A many-body state is represented as a number representing the sign and a list of mb-states (????????).
  The mb-state is a set of sp-states, one for each orbiting particle (represented as the sp-state's k value). 
- The sp-states can also be extended to hold information about other relevant quantum numbers, we will treat states with (coupled) angular momentum in the calculations but the extra information is best supplied when it's used for calculations.
+ The sp-states can also be extended to hold information about other relevant quantum numbers, we will treat states with (coupled) angular momentum in the calculations but the extra information is best supplied when it is used for calculations.
  
 %each state is a set of numbers signifying the relevant quantum numbers of the state.
  %The state is a pair of numbers one indicates: which single-particle solution is represented (we store the k-value of the sp-state) and the other is the angular momentum which is in the range of $[-3/2,3/2]$.

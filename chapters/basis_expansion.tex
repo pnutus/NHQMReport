@@ -78,7 +78,10 @@ and if we write $H_{nn'} = \bra{n} H \ket{n'}$, we get
   \label{eq:expand3}
   \sum_{n'} H_{nn'} \psi_{n'} = E \psi_n,
 \end{eq}
-which is equivalent to the matrix \cref{eq:matrix equation}. This is the basic method of expanding the TISE in a basis. Expanding in an abstract basis will not get us very far, however, so we move on to the epitomic example: the harmonic oscillator.
+which is equivalent to the matrix \cref{eq:matrix equation}. This is 
+the basic method of expanding the TISE in a basis. Expanding in an 
+abstract basis will not get us very far, however, so we move on to 
+the epitomic example: the harmonic oscillator.
 
 \section{The Spherical Harmonic Oscillator}
 \label{sec:harm_osc}
@@ -89,20 +92,26 @@ which is equivalent to the matrix \cref{eq:matrix equation}. This is the basic m
 \label{sec:mom_space}
 \input{chapters/mom_space.tex}
 
-\section{Verfying with the Hydrogen Atom} 
+\section{Verifying with the Hydrogen Atom} 
 
-To test our HO and momentum-space bases, we expand the well-known hydrogen atom. It has the potential
+To test our HO and momentum-space bases, we expand the well-known 
+hydrogen atom. It has the potential
 \begin{eq}
   \label{eq:hydrogen potential}
 	V(r)=
 	-\frac{q_e^2}{4\pi \epsilon_0 r},
 \end{eq}
 \todo{Change to ``Number of basis states in the expansion'' or $N$ in figure.}
-and is analytically solvable with a ground state energy $E_0 = -\SI{13.6}{eV}$.
-In \cref{fig:hydrogen HOvsMom} we plot the convergence of the ground state energy as a function of $N$.
-We see that the plane-wave expansion converges faster than the harmonic oscillator, but toward the wrong value.
+and is analytically solvable with a ground state energy 
+$E_0 = -\SI{13.6}{eV}$. In \cref{fig:hydrogen HOvsMom} we plot 
+the convergence of the ground state energy as a function of $N$.
+We see that the plane-wave expansion converges faster than the 
+harmonic oscillator, but toward the wrong value.
 \todo{verify this and write it in a better fashion}
-This is because the momentum space expansion does not support the use of infinite potentials, and since \cref{eq:hydrogen potential} diverges as $r \to 0$,  a small deviation is not surprising.
+This is because the momentum space expansion does not 
+support the use of infinite potentials, and since 
+\cref{eq:hydrogen potential} diverges as $r \to 0$,  
+a small deviation is not surprising.
 
 \begin{figure}
   \hspace{-2cm}
