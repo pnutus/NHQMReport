@@ -1,37 +1,41 @@
-When we move on to the problem of the \He{5} nucleus, we see it as an alpha core (\He{4}) with a valence neutron which moves in the potential of this alpha core.
-The potential is approximated by a Woods-Saxon potential, which is relatively easy to use in numerical calculations and is a sufficient approximation for the strong nuclear force of the nuclei.
+When we move on to the problem of the \He{5} nucleus, we view it as composed of an alpha particle (\He{4}) interacting with an orbiting valence neutron.
+Since the exact interaction is unknown, we are using the established Woods-Saxon potential to approximate it, which is relatively easy to use in numerical calculations and is a sufficient approximation for the strong nuclear force acting between the particles.
 The expression for this potential is
 \begin{eq}
 	V(r)=
-	V_0f(r)-4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr}
+	V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr}
 \end{eq}
 where
 \begin{eq}
 	f(r)=\frac{1}{1+e^{\frac{r-r_0}{d}}}.
 \end{eq}
-A visualisation of this potential can be seen in \cref{fig:woods-saxon}.
+A visualisation of this potential can be seen in \cref{fig:woods-saxon}. Notice its short range, stemming from the $e^{-r}$ dependence on distance.
 
-The implementation of \He{5} is the same as for the hydrogen atom except from the new potential and we can solve the problem using either the HO expansion or discretizised momentum space.
-\todo{Reduction to effective one-body problem?}
+Since we approximate the problem as a spherically symmetric interaction between two particles, the problem can be reduced to a one-dimensional radial one.\todo{Explicitly describe the reduction to effective one-body problem?} The implementation of \He{5}  will thus be the same as for the hydrogen atom, except for the new potential being drastically different because of its short range. 
 
-A comparison of performance between HO and momentum basis expansion for the hydrogen atom and \He{5} problems is shown in \cref{fig:HO vs mom}.
+We can solve the problem using either the HO expansion or discretizised momentum space. A comparison of performance between HO and momentum basis expansion for the hydrogen atom and \He{5} problems is shown in \cref{fig:HO vs mom}.
 \begin{figure}
   \centering
     \includegraphics[width = \textwidth]{figures/He5_convergence.pdf}
   \caption{}
   \label{fig:HO vs mom}
 \end{figure}
-\Cref{fig:resonance wavefunction} shows the radial wavefunctions $R(r)$ for a few of the states with lowest energy.
+
+\Cref{fig:resonance wavefunction} compares the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied. We see that one solution is basically unchanged as the potential is varied, corresponding to an unbound state in the continuum.  
+
+The other state has an energy $E>0$ meaning that it, too, is unbound. However, its wavefunction is highly localized near the center, hinting at a quasi-stationary state. Additionally, the solution varies dramatically with the potential, meaning that it is a feature of the system. 
+
+However, because we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions, since we expect the resonance to be properly described by complex energies. 
+
 \begin{figure}
   \centering
   \includegraphics[width = \textwidth]{figures/resonance_wavefunction.pdf}
-  \caption{A few solutions to the Woods-Saxon potential with well depth $V0=\SI{-52}{MeV}$.}
+  \caption{Two solutions to the Woods-Saxon potential with well depth $V0=\SI{-52}{MeV}$ and $\SI{-47}{MeV}$, using the momentum space method.}
   \label{fig:resonance wavefunction}
 \end{figure}
-While all of the states we see have energies $E>0$, and thus are unbound, we see that one solution is more localized near the center $r=0$. 
-This is the sign of a quasi-bound state. To confirm this we may vary the depth $V0$ of the potential well and see how this affects the solutions. 
+\todo{Start with a deeper well holding a bound state, and then decrease it to get resonances? Add another subplot? Also, plot unbound state with dashed line?}
 
-We see that the unbound states remain practically unchanged. This means that they basically correspond to free particles of energies $E_n=\frac{k_n^2}{2\mu}$, where $k_n$ are the momentum that were included in the discretization of the integrals. We will refer to these values of $k$ as our \emph{mesh points}. The quasi-bound state, however, changed dramatically, which shows that this solution is a feature of the system we are studying.
+%We see that the unbound states remain practically unchanged. This means that they basically correspond to free particles of energies $E_n=\frac{k_n^2}{2\mu}$, where $k_n$ are the momentum that were included in the discretization of the integrals. We will refer to these values of $k$ as our \emph{mesh points}. The quasi-bound state, however, changed dramatically, which shows that this solution is a feature of the system we are studying.
 
-To study these resonances more thoroughly we need to move on to a new framework of QM called Non-Hermitian Quantum Mechanics.
+%To study these resonances more thoroughly we need to move on to a new framework of QM called Non-Hermitian Quantum Mechanics.
 \todo{something here should lead to wanting NHQM}
