@@ -82,7 +82,12 @@ plt.plot([0.5, 0.5],[0.65, 0.58], "o", markersize=7,
 markeredgewidth=1,markeredgecolor='k',
 markerfacecolor='None'
 )
-plt.plot([0.65, 0.35],[0.45, 0.55], 'kx')
+plt.plot([0.65, 0.35],[0.45, 0.45], 'kx')
+
+plt.plot([0.7, 0.3],[0.5, 0.5], "d", markersize=7,
+markeredgewidth=1,markeredgecolor='k',
+markerfacecolor='None'
+)
 
 r = 0.4
 x1 = sp.linspace(0, 0.4, 200)
@@ -98,4 +103,5 @@ for i in xrange(len(x1)):
 plt.plot(x1,y1, color='k', linewidth=2)
 plt.plot(x2,y2, color='k', linewidth=2)
 
-plt.show()
+
+plt.savefig('out.pdf', transparent=True, bbox_inches='tight', pad_inches=0)
