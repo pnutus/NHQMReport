@@ -4,8 +4,8 @@ resonance state, but we cannot yet quantify its width,
 or half-life. This means we need to find the complex 
 energy of the state. We do this by using the theory of 
 Tore Berggren and his \emph{Berggren basis} \cite{berggren}. 
-The theory will not be fully explained here, instead we 
-present a heuristic argument.
+The theory is involved and will not be fully explained 
+here. Instead we present a heuristic argument.
 
 If we relate the energies $E$ of a system to momenta $k$ as
 \begin{eq}
@@ -44,6 +44,10 @@ contour encircle the pole of the resonance.
   \label{fig:complex plane}
 \end{figure}
 
+\todo{Need to mention completeness of berggren basis. Important here or later?}
+
+\todo{Where to put: "No conjugate on bras"?}
+
 \section{The Complex Contour}
 
 We choose to extend our integration along the real axis to 
@@ -58,7 +62,7 @@ and rescale the Gauss-Legendre points between the
 of the segment. An example of a contour is seen in 
 \cref{fig:triangle contour}.
 
-\begin{figure}
+\begin{figure}[H]
   \centering
     \includegraphics[width = \textwidth]{figures/complex_contour.pdf}
   \caption{The complex contour used.}
@@ -67,52 +71,4 @@ of the segment. An example of a contour is seen in
 
 \section{Studying the Resonance}
 
-
-
-\todo{NHQM doesn't arise, we make it happen?}
-NHQM is a must when you observe the binding momentum, related to the energy eigenvalues as
-\begin{eq}
-    E=\frac{p^2}{2m}.
-\end{eq}
-This energy will be complex if we expand the hamiltonian of a resonance state in a Berggren-basis. 
-It is now the physics go non-hermitian.
-
-
-We will now introduce a generalization of the momentum-space expansion which allows ut to calculate these complex energies.
-First, if we look at our momentum-space expansion, we see that it consists of some discrete momentum-values along the positive real axis.
-This is fine as long as the states we observe are bound.
-If they on the other hand are quasi-bound resonance-states, they will appear as poles in the complex momentum-plane.
-To calculate the behavior of these states we have to introduce a new basis that allows for complex values instead of just real ones.
-This new basis is called a \emph{Berggren basis} after the Swedish mathematician Tore Berggren.
-%We will refer to this new basis as a contour since we could replace our integration path by a closed contour that would give the same result \cite{Berggren}.
-
-To do this generalization introduces some strange behaviors.
-First of all we can now aquire complex eigenvalues when solving the Schrödinger-equation, which is the main reason for switching to a Berggren-basis.
-There also happens a strange thing with the bras in the equations.
-Their representation as wave-functions do no longer have conjugate signs during calculations, this is above our heads to comprehead why this happens, but is explained by Berggren in his paper \cite{berggren}.
-
-
-
-
-
-%The way to do this is to instead of using a strictly real basis introduce a complex one, called a Berggren-basis (Should we cite here?).
-%The Berggren-basis is expressed as a contour in the complex plane.
-%The one we used, with slight modifications, is seen in \cref{fig:berggren contour}.
-%By lowering this contour to contain the pole we include the resonance in the calculations and are thus able to predict its behavior.
-%Last, one have to include the resonance pole in the basis for it to be complete \cite{berggren}.
-
-\section{Implementation}
-Implementing the Berggren-basis is pretty straight-forward when momentum-space is made.
-The hardest part to do is to allow for different contours, which is easy if the code is well structured.
-
-One important thing that may severly increase computation time is which points and weights to use.
-Recall \cref{eq:discrete_momentum} from earlier, here we said that we could use equaly distanced points for the calculations.
-\todo{Repeating benefits of G-L. We should rather mention how we use G-L on the segments of the contour.}
-If we on the other hand change these equally distanced points to ones described by the Gauss-Legendre approximation to integrals we get a much faster convergence.
-This way of selecting points is used once for each of the three parts of our contour since we not know of any godd way to do this for the whole contour at once.
-
-
-
-\section{Results}
-By remodelling our old mom-space solution to allow different contours, we were ready to get som results to see if this new model was correct. The values of our constants was given to us by our supervisors since they are derived from experiments.
-\todo{From where do we get our $V_0$ and $V\sub{so}$}
+\todo{Results and shit here}

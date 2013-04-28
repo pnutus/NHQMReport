@@ -1,11 +1,16 @@
-When we move on to the problem of the \He{5} nucleus, we view it as composed of an alpha particle (\He{4}) interacting with an orbiting valence neutron.
-Since the exact interaction is unknown, we are using the established Woods-Saxon potential to approximate it. % which is relatively easy to use in numerical calculations and is a sufficient approximation for the strong nuclear force acting between the particles.
-The Woods-Saxon potential can be written as
+When we move on to the problem of the \He{5} nucleus, we view it as composed of an alpha particle (\He{4}) interacting with a valence neutron.
+Since the exact interaction is unknown, we are using the established
+Woods-Saxon potential to approximate it. 
+% which is relatively easy to use in numerical calculations and is a sufficient approximation for the strong nuclear force acting between the particles.
+The Woods-Saxon potential is given by
+\todo{What's the 4 for?}
+\todo{From where do we get our $V_0$ and $V\sub{so}$}
 \begin{eq}
 	V(r)=
 	V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr}
 \end{eq}
-where %\todo{exponentiak function, frac is so small ;)}
+where 
+\todo{exponential function? frac is so small ;)}
 \begin{eq}
 	f(r)=\frac{1}{1+e^{\frac{r-r_0}{d}}}.
 \end{eq}
@@ -17,8 +22,10 @@ A visualisation of this potential can be seen in \cref{fig:woods-saxon}. Notice 
     j(j+1)-l(l+1)-s(s+1)
     }
 \end{eq}
-where, for fermions such as neutrons, $j=l-\frac{1}{2}$ or $j=l+\frac{1}{2}$.
-Since we approximate the system as a spherically symmetric interaction between two particles, the problem can be reduced to a one-dimensional radial equation.\todo{Explicitly describe the reduction to effective one-body problem?} The implementation of \He{5} will thus be the same as for the hydrogen atom, except for the new potential being very different because of its short range. 
+where, for spin-$\frac{1}{2}$ particles such as neutrons, $j=l-\frac{1}{2}$ or $j=l+\frac{1}{2}$.
+Since we approximate the system as a spherically symmetric interaction between two particles, the problem can be reduced to a one-dimensional radial equation.\todo{Explicitly describe the reduction to effective one-body problem?} The implementation of \He{5} will thus be the same as for the hydrogen atom, except for the new potential being very different because of its short range.
+
+\section{Convergence}
 
 We can solve the problem using either HO expansion or discretizised momentum space. A comparison of performance between the methods for the hydrogen atom and \He{5} problems is shown in \cref{fig:HO vs mom}.\todo{Now only showing He5 convergence. Merge He5 and H plots into one and skip the zoom?} 
 \begin{figure}
@@ -27,6 +34,8 @@ We can solve the problem using either HO expansion or discretizised momentum spa
   \caption{}
   \label{fig:HO vs mom}
 \end{figure}
+
+\section{Wavefunctions}
 
 \Cref{fig:resonance wavefunction} compares the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied. We see that one solution is basically unchanged under variation of the potential. This can be interpreted as it being an unbound state in the energy continuum. We see that its probability distribution does not decrease for large $r$.
 
@@ -42,3 +51,5 @@ However, because we are working within the realm of real numbers, we can gain no
   \label{fig:resonance wavefunction}
 \end{figure}
 \todo{Start with a deeper well holding a bound state, and then decrease it to get resonances? Add another subplot? Also, plot unbound state with dashed line?}
+
+\section{Varying \omega}
