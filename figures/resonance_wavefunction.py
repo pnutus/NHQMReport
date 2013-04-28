@@ -44,10 +44,10 @@ ax1=fig1.add_subplot(121)
 ax2=fig1.add_subplot(122)
 
 ax1.plot(r, wf1_res, 'k')
-ax1.plot(r, wf1, 'k') 
+ax1.plot(r, wf1, 'k', ls='dashed') 
 
 ax2.plot(r, wf2_res, 'k')
-ax2.plot(r, wf2, 'k') 
+ax2.plot(r, wf2, 'k', ls ='dashed') 
 
 ax1.axis([0, 100, 0, 1.6])
 ax1.set_xlabel(r'$r$ [fm]')
@@ -61,5 +61,4 @@ ax2.axis([0, 100, 0, 1.6])
 ax2.set_xlabel(r'$r$ [fm]')
 fig1.text(0.7, 0.5, r'$V_0 = -47$ MeV')
 
-plt.show()
-
+plt.savefig('out.pdf', transparent=True, bbox_inches='tight', pad_inches=0.1) 

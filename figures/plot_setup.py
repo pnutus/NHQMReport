@@ -1,16 +1,29 @@
 import matplotlib
 
-def plot_init(font_size =12,tick_size =8, tick_pad =6):
+"""
+TODO
+
+
+KNOWLEDGE BASE:
+
+*empty markers:
+    plot( ... , markersize=7,
+    markeredgewidth=1, markeredgecolor='k',
+    markerfacecolor='None')
+
+*arrows:
+    # P.arrow( x, y, dx, dy, **kwargs 
+    f/ec - face/edge color)
+        plt.arrow( 0.8, 0.5, 0.05, 0, fc="k", ec="w",linewidth=1,
+        head_width=0.03, head_length=0.02 )
+
+"""   
+
+def plot_init(font_size =14,tick_size =11, tick_pad =6):
     font = {'family' : 'normal',
             'weight' : 'bold',
             'size'   : font_size}
-    """
-    TODO
-    
-    savefig-grapper
-    saves file as script filename __file__ .pdf 
-    fig//plt.savefig('out.pdf', transparent=True, bbox_inches='tight', pad_inches=0) 
-    """            
+
     matplotlib.rcParams['text.usetex']=True
     matplotlib.rc('font', family='serif')
     matplotlib.rc('text', usetex=True )
@@ -48,3 +61,13 @@ def show_only_bot(ax):
     ax.spines['left'].set_visible(False)
     ax.get_yaxis().set_ticks([])
     ax.get_xaxis().tick_bottom()
+
+   
+def save(figure, name ="output"):
+    filename = name + '.pdf' 
+    try: 
+        figure.savefig(filename, transparent=True, bbox_inches='tight', pad_inches=0.1)
+    except:
+        print "no applicable figure, asking matplotlib for a favor"
+        matplotlib.pyplot.savefig(filename, transparent=True, bbox_inches='tight', pad_inches=0.1)    
+

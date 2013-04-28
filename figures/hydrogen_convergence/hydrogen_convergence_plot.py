@@ -69,4 +69,5 @@ ax_list[1].legend( (l1, l2, l3),
         ('Harmonic Oscillator', 'Momentum Space', 'Theoretical ground state energy'),
         'lower right')
     
-plt.show() 
+#plt.show() 
+plts.save(None, 'hydrogen_convergence2')
