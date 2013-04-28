@@ -20,6 +20,11 @@ mom.integration_order = 20
 mom.integration_range = 10
 osc.integration_order = 60
 
+"""
+TODO
+
+change xlable from order to Number of Basis Size N """
+
 
 ordermatrix=[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], [14,16,18,20,22,24,26,28,30,33,36,39,42,45,48,51,55,59,63,67]]
 
@@ -61,7 +66,7 @@ ax_list[1].set_ylim([-0.505, -0.485])
 
 ax_list[1].set_autoscale_on(False)
 ax_list[1].legend( (l1, l2, l3),
-        ('Harmonic Oscillator', 'Momentun Space', 'Theoretical ground state energy'),
+        ('Harmonic Oscillator', 'Momentum Space', 'Theoretical ground state energy'),
         'lower right')
     
 plt.show() 
