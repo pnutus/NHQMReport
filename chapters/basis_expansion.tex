@@ -89,7 +89,7 @@ which is equivalent to the matrix \cref{eq:matrix equation}. This is the basic m
 \label{sec:mom_space}
 \input{chapters/mom_space.tex}
 
-\section{The Hydrogen Atom} 
+\section{Verfying with the Hydrogen Atom} 
 
 To test our HO and momentum-space bases, we expand the well-known hydrogen atom. It has the potential
 \begin{eq}
@@ -99,7 +99,7 @@ To test our HO and momentum-space bases, we expand the well-known hydrogen atom.
 \end{eq}
 and is analytically solvable with a ground state energy $E_0 = -\SI{13.6}{eV}$.
 In \cref{fig:hydrogen HOvsMom} \todo{N size of basis // numbre of basis states included?}we plot the convergence of the ground state energy as a function of $N$, the size of the basis.
-We see that the plane-wave expansion converges faster than the harmonic oscillator, but towards the wrong value.
+We see that the plane-wave expansion converges faster than the harmonic oscillator, but toward the wrong value.\todo{verify this and write it in a better fashion}
 This is because the momentum space expansion does not support the use of infinite potentials, and since \cref{eq:hydrogen potential} diverges as $r \to 0$,  a small deviation is not surprising.
 
 \begin{figure}
