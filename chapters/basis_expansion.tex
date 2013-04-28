@@ -22,7 +22,7 @@ For example, equation  the TISE for a particle, expanded in the position basis T
   \p{-\frac{\hbar^2}{2m}\nabla^2 + V(\vec{r})}\psi(\vec{r}) = E\psi(\vec{r}),
 \end{eq}
 
-This is the only basis in which we can express the potential, why we will always have to relate our new bases to this one.
+This is the only basis in which we can express the potential, which is why we will always relate our new bases to this one.
 
 Before we begin, we briefly recap some well known QM facts. 
 First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$. 
@@ -97,10 +97,10 @@ To test our HO and momentum-space bases, we expand the well-known hydrogen atom.
 	V(r)=
 	-\frac{q_e^2}{4\pi \epsilon_0 r},
 \end{eq}
-and is analytical solvable with a ground state energy $E_0 = \SI{13.6}{eV}$.
-In \cref{fig:hydrogen HOvsMom} we plot the convergence of the ground state energy as a function of $N$, the size of the basis.
+and is analytically solvable with a ground state energy $E_0 = -\SI{13.6}{eV}$.
+In \cref{fig:hydrogen HOvsMom} \todo{N size of basis // numbre of basis states included?}we plot the convergence of the ground state energy as a function of $N$, the size of the basis.
 We see that the plane-wave expansion converges faster than the harmonic oscillator, but towards the wrong value.
-This is because the momentum space expansion not support the use of infinite potentials, and since \cref{eq:hydrogen potential} diverges as $r \to 0$,  a small deviation is not surprising.
+This is because the momentum space expansion does not support the use of infinite potentials, and since \cref{eq:hydrogen potential} diverges as $r \to 0$,  a small deviation is not surprising.
 
 \begin{figure}
   \hspace{-2cm}
