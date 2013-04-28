@@ -1,3 +1,38 @@
+We have noticed that one of the \He{5} states behaves differently than the others. We suspect this is the resonance state, but we cannot yet quantify its width, or half-life. This means we need to find the complex energy of the state. We do this by using the theory of Tore Berggren and his \emph{Berggren basis} \cite{berggren}. The theory will not be fully explained here, instead we present a heuristic argument.
+
+If we relate the energies $E$ of a system to momenta $k$ as
+\begin{eq}
+  E = \frac{\hbar^2 k^2}{2\mu}
+  \quad\quad
+  \textup{or}
+  \quad\quad
+  k = \frac{\sqrt{2\mu E}}{\hbar},
+\end{eq}
+we can plot the energies as $k$ in the complex plane, see \cref{}. We then expect bound states, with $E<0$, to be represented by $k$ along the imaginary axis---whereas unbound, scattering states, with $E>0$, are found along the real axis. Resonance states, with complex $E$, would by this argument appear in the fourth quadrant with $\Re k > 0, \Im k < 0$.
+
+We now interpret these $k$ as poles, and our integration 
+\begin{eq}
+  \fint[0][\inf]{k} k'^2 V(k,k') \phi(k')
+\end{eq}
+as a contour integration around the upper half plane, mirrored in the imaginary axis.
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width = \textwidth]{figures/complex_plane.pdf}
+  \caption{The complex $k$-plane. The circles represent bound states and the crosses represent resonant states.}
+  \label{fig:complex plane}
+\end{figure}
+
+The idea is to extend the radial momentum component $k$ to be a complex number. Then, instead of integrating from $0 \to \inf$ along the real line, a complex contour is used.
+
+\section{The Complex Contour Implementation}
+
+
+
+\section{Studying the Resonance}
+
+
+
 \todo{NHQM doesn't arise, we make it happen?}
 NHQM sometimes arise when one observes the binding momentum, related to the energy eigenvalues as
 \begin{eq}
@@ -20,12 +55,7 @@ First of all we can now aquire complex eigenvalues when solving the Schrödinger
 There also happens a strange thing with the bras in the equations.
 Their representation as wave-functions do no longer have conjugate signs during calculations, this is above our heads to comprehead why this happens, but is explained by Berggren in his paper \cite{berggren}.
 
-\begin{figure}
-  \centering
-    \includegraphics[width = \textwidth]{figures/complex_plane.pdf}
-  \caption{The complex $k$-plane. The circles represent bound states and the crosses represent resonant states.}
-  \label{fig:complex plane}
-\end{figure}
+
 
 
 
