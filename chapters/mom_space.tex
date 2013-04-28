@@ -11,11 +11,11 @@ The expansion is done in the same way as before, giving us
 This three-dimensional equation is practically unsolvable, but we can simplify it using the fact that we have a central problem. 
 A rather involved calculation (see \cref{sec:radial mom space TISE}) shows that the Schrödinger equation can be written as
 \begin{eq} 
-  \frac{k^2}{2\mu}\phi(k) + \int_0^\infty \rd k' \, k'^2 V(k,k') \phi(k') 
+  \label{eq:radial mom space TISE}
+  \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k} k'^2 V(k,k') \phi(k') 
   &=
   E\phi(k) \, ,
 \end{eq}
-\todo{Put first part inside integral with delta function to show where kronecker delta comes from?}
 where $\phi(k)$ is the radial part of the momentum space wavefunction, 
 \begin{eq}
   V(k,k') 
@@ -38,12 +38,11 @@ We have now transformed the differential equation into an integral equation
 
 \subsection{Numerical Considerations}
 The integral equation can be rewritten as a matrix equation through discretization, turning the integral into a sum over a finite set of points $k_j$ and $\rd{k}$ into a set of weights $w_j$:
-\todo{Incorrect , left hand side?}
+\todo{Maybe this delta trickery is unnecessary. How else show clearly where matrix comes from?}
 \begin{eq}
   \label{eq:discrete_momentum}
-  \approx
   \sum_{j=1}^N w_j \p{
-    \frac{k_i^2}{2\mu}\delta_{ij}
+    \frac{k_i^2}{2\mu}\frac{\delta_{ij}}{w_j}
     +
     k_j^2 V(k_i,k_j)
   } \phi(k_j)
