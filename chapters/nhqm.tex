@@ -1,4 +1,11 @@
-We have noticed that one of the \He{5} states behaves differently than the others. We suspect this is the resonance state, but we cannot yet quantify its width, or half-life. This means we need to find the complex energy of the state. We do this by using the theory of Tore Berggren and his \emph{Berggren basis} \cite{berggren}. The theory will not be fully explained here, instead we present a heuristic argument.
+We have noticed that one of the \He{5} states behaves 
+differently than the others. We suspect this is the 
+resonance state, but we cannot yet quantify its width, 
+or half-life. This means we need to find the complex 
+energy of the state. We do this by using the theory of 
+Tore Berggren and his \emph{Berggren basis} \cite{berggren}. 
+The theory will not be fully explained here, instead we 
+present a heuristic argument.
 
 If we relate the energies $E$ of a system to momenta $k$ as
 \begin{eq}
@@ -8,26 +15,55 @@ If we relate the energies $E$ of a system to momenta $k$ as
   \quad\quad
   k = \frac{\sqrt{2\mu E}}{\hbar},
 \end{eq}
-we can plot the energies as $k$ in the complex plane, see \cref{}. We then expect bound states, with $E<0$, to be represented by $k$ along the imaginary axis---whereas unbound, scattering states, with $E>0$, are found along the real axis. Resonance states, with complex $E$, would by this argument appear in the fourth quadrant with $\Re k > 0, \Im k < 0$.
+we can plot the energies as $k$ in the complex plane, see 
+\cref{fig:complex plane}. We then expect bound states, with 
+$E<0$, to be represented by $k$ along the imaginary axis---
+whereas unbound, scattering states, with $E>0$, are found 
+along the real axis. Resonance states, with complex 
+$E = E_0 - i \Gamma /2$, would by this argument appear 
+in the fourth quadrant.
+
+\todo{Maybe show results before complexifying? We could relate the mesh points to the solutions here.}
 
 We now interpret these $k$ as poles, and our integration 
 \begin{eq}
   \fint[0][\inf]{k} k'^2 V(k,k') \phi(k')
 \end{eq}
-as a contour integration around the upper half plane, mirrored in the imaginary axis.
+as a contour integration around the upper half plane, see \cref{fig:simple contour}. The result of a contour 
+integration depends on the poles it encircles by the residue 
+theorem, so we expect something to happen if we let the 
+contour encircle the pole of the resonance.
 
 \begin{figure}[H]
   \centering
     \includegraphics[width = \textwidth]{figures/complex_plane.pdf}
-  \caption{The complex $k$-plane. The circles represent bound states and the crosses represent resonant states.}
+  \caption{The complex $k$-plane. The circles represent 
+  bound states, the diamonds unbound states and the 
+  crosses resonant states. Note the mirroring in
+  the imaginary axis.}
   \label{fig:complex plane}
 \end{figure}
 
-The idea is to extend the radial momentum component $k$ to be a complex number. Then, instead of integrating from $0 \to \inf$ along the real line, a complex contour is used.
+\section{The Complex Contour}
 
-\section{The Complex Contour Implementation}
+We choose to extend our integration along the real axis to 
+the simplest possible complex contour, a triangle-shaped 
+extrusion downwards. The tip of the triangle is placed directly 
+below the hypothesized resonance pole.
 
+Numerically, we are faced with the problem of how to choose 
+the points and weights, now that the contour is complex. 
+We consider each straight segment of the contour separately, 
+and rescale the Gauss-Legendre points between the 
+of the segment. An example of a contour is seen in 
+\cref{fig:triangle contour}.
 
+\begin{figure}
+  \centering
+    \includegraphics[width = \textwidth]{figures/complex_contour.pdf}
+  \caption{The complex contour used.}
+  \label{fig:triangle contour}
+\end{figure}
 
 \section{Studying the Resonance}
 
@@ -75,12 +111,7 @@ Recall \cref{eq:discrete_momentum} from earlier, here we said that we could use 
 If we on the other hand change these equally distanced points to ones described by the Gauss-Legendre approximation to integrals we get a much faster convergence.
 This way of selecting points is used once for each of the three parts of our contour since we not know of any godd way to do this for the whole contour at once.
 
-\begin{figure}
-  \centering
-    \includegraphics[width = \textwidth]{figures/complex_contour.pdf}
-  \caption{The complex contour used.}
-  \label{fig:contour}
-\end{figure}
+
 
 \section{Results}
 By remodelling our old mom-space solution to allow different contours, we were ready to get som results to see if this new model was correct. The values of our constants was given to us by our supervisors since they are derived from experiments.
