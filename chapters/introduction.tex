@@ -1,19 +1,19 @@
 \todo{Wow, QM is amaaazing, etc. Do we need to say that QM seems impossible? Shorten this?}
 \emph{Quantum mechanics} (QM) is a cornerstone of modern physics, as it describes the world on the smallest of scales.
-On this small level we observe a number of interesting phenomena, some of which in our ordinary large-scale world seem completely impossible.
-One of these phenomena is called \emph{resonance} and is the focus of this report.
+One of the phenomena that arise on this level is called \emph{resonance} and is the focus of this report.
 %To study these resonances we will expand the hamiltonian in a \emph{Berggren basis}, which makes the hamiltonian non-hermitian, leading us into the world of \emph{Non-Hermitian Quantum Mechanics} (NHQM).
 
 Resonances, or \emph{quasi-stationary states}, are states in which a nucleon is bound to a nucleus, but only for a limited time. 
 The probability of the nucleon remaining bound will decay exponentially over time. 
 This can be explained as the state having a complex energy by the following argument:
 
-The time-dependency of a stationary state $\psi$ is, by the Shrödinger equation,
+The time-dependency of a stationary state $\psi$ is
 \begin{eq}
 	\psi(t)
 	=e^{-\frac{iE}{\hbar}t}\psi(0).
 \end{eq}
-With the energy $E$ real, the exponential factor in front is just a phase and the probability $|\psi(t)|^2$ is unchanged over time. However, if we let the energy be complex
+With the energy $E$ real, the exponential factor is just a phase and the probability $|\psi(t)|^2$ is unchanged over time. 
+However, if we let the energy be complex
 \begin{eq}
 	E = E_0 - i\frac{\Gamma}{2},
 \end{eq}
@@ -29,6 +29,12 @@ we get
 \end{eq} 
 which describes a resonant state with half-life $t_{1/2}=\hbar\ln 2/\Gamma$.
 
+Heisenberg's uncertainty principle gives a relation between energy and time
+\begin{equation}
+\Delta E \delta t \ge \frac{\hbar}{2} 	
+\end{equation}.
+Hence a state with finite life time must have an uncertainty in its energy spectrum, this discrepancy is called the width of a resonant state.
+
 It seems, then, that we need complex energies to describe resonant states. However, complex eigenvalues pose a problem in standard QM. 
 This is because observable quantities are regarded as real values and are described by \emph{Hermitian} operators. 
 When working with complex eigenvalues one needs a \emph{non-Hermitian} formulation of the problem. This leads us to \emph{non-Hermitian quantum mechanics} (NHQM), which is what we use to find resonances in this report.
@@ -42,8 +48,8 @@ This is what happens in the case of quasi-stationary states.
 
 This report will study resonances in the Helium isopes \He{5} and \He{6}.
 Helium is chosen since \He{4} is a very stable nucleus and thus can be treated as a single (alpha) particle.
-\He{5} has a known resonance with half-life $t_{1/2} = \SI{700e-24}{s}$.
-\He{6} is a so-called Boromean nucleus which, because of the interaction between the valence neutrons, has a bound state.
+\He{5} has a known resonance with half-life $t_{1/2} = \SI{700e-24}{s}$. 
+\He{6}, however, is a so-called Boromean nucleus which has a bound state and no resonance because of the interaction between the two valence neutrons.
 
 
 \todo{Talk about width of resonance state?}
@@ -54,9 +60,12 @@ All calculations were made in the Python programming language using the librarie
 
 
 \section{Reading Guide}
-In Chapter 2 we introduce the concept of basis expansion. This is a mathematical tool that lets us rewrite the Schrödinger equation as a matrix equation. A short introduction to the theory is included, followed by an example where we are using the method to find the hydrogen atom ground state.
+In Chapter 2 we introduce the concept of basis expansion. 
+This is a mathematical tool that lets us rewrite the Schrödinger equation as a matrix equation.
+A short introduction to the theory is included, followed by an example where we are using the method to find the hydrogen atom ground state.
 
-In Chapter 3 we introduce the first problem that will be studied in the report: the \He{5} nucleus. We describe the model that is used, and solve the equation. This is followed by a discussion of the solutions.
+In Chapter 3 we introduce the first problem that will be studied in the report: the \He{5} nucleus. We describe the model that is used, and solve the equation. 
+This is followed by a discussion of the solutions.
 
 In Chapter 4 we extend our methods to the complex plane, using this to find the resonance in \He{5}.
 
