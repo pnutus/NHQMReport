@@ -2,7 +2,7 @@ The Helium nuclei we want to expand are, for our intents and purposes, spherical
 A spherically symmetric basis is therfore preferable, and we begin with the spherical harmonic oscillator (HO).
 The treatment below is adapted from \cite{moshinsky}.
 
-\todo{Too much detail in this section?}
+\todo{Move major parts of this to appendix?}
 We have for the HO, the Hamiltonian
 \begin{eq}
   \label{eq:HO hamiltonian}
@@ -22,12 +22,11 @@ The procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and give
   \label{eq:HOexpanded}
   \sum_{n'l'm'} \bra{nlm} H \ket{n'l'm'} \psi_{n'l'm'} = E \psi_{nlm}\,.
 \end{eq}
+
+\todo{Spherical symmetry important enough for own section?}
 Since we are considering a spherically symmetric Hamiltonian
-\begin{eq}
-  \label{eq:spherical hamiltonian}
-  H = \frac{p^2}{2\mu} + V(r),
-\end{eq}
-the $l$ and $m$ in $\ket{nlm}$ commute with the Hamiltonian and will therefore contribute with a $\delta_{ll'}\delta_{mm'}$ factor. 
+the $l$ and $m$ in $\ket{nlm}$ commute with $H$
+and will therefore contribute with a $\delta_{ll'}\delta_{mm'}$ factor. 
 This means we can drop the primes and write \cref{eq:HOexpanded} as
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
