@@ -6,15 +6,15 @@ probability of a quasi-bound particle remaining bound will decay
 exponentially over time. This can be explained as the state 
 having a complex energy by the following argument:
 
-The time-dependency of a stationary state $\psi$ is
+The time-dependency of a bound, stationary state $\psi$ is
 \begin{eq}
 	\psi(t)
 	= 
   \exp\p{-\frac{iE}{\hbar}t}\psi(0).
 \end{eq}
 With the energy $E$ real, the exponential factor is just a phase 
-and the probability $|\psi(t)|^2$ is unchanged over time. However, 
-if we let the energy be complex
+and the probability $|\psi(t)|^2$ is unchanged over time (hence the name
+stationary). However, if we let the energy be complex
 \begin{eq}
 	E = E_0 - i\frac{\Gamma}{2},
 \end{eq}
@@ -37,19 +37,18 @@ states. However, complex eigenvalues pose a problem in standard QM.
 This is because observable quantities are regarded as real values 
 and are described by \emph{Hermitian} operators. When working with 
 complex eigenvalues one needs a \emph{non-Hermitian} formulation of 
-the problem. This leads us to \emph{non-Hermitian quantum mechanics} 
-(NHQM), which is what we use to study resonances in this report.
+the problem, which we encounter in \cref{cha:nhqm}.
 
-The systems we have chosen to study by computer calculations
-are the Helium isotopes \He{5} and \He{6}. We chose Helium  
-because \He{4} is a very stable nucleus that can be treated 
+The systems we have chosen to study using numerical calculations
+are the nuclei of the  Helium isotopes \He{5} and \He{6}. We chose Helium  
+because \He{4} has a very stable nucleus that can be treated 
 as a single (alpha) particle. \He{5} and \He{6} are then modeled
-as an alpha particle core with one or two valence neutrons. 
+as an alpha particle core with one and two valence neutrons, 
+respectively. 
 
 \He{5} has a known resonance with half-life $t_{1/2} = \SI{700e-24}{s}$,
-which we will study. In addition to resonant states, \He{6} is a 
-so-called Boromean nucleus and has a bound state because of the 
-attraction between the valence neutrons.
+which we verify. In addition to resonant states, \He{6} has a bound state.
+It is a so-called Boromean nucleus because of the attraction between the valence neutrons.
 
 \todo{Tunneling is when $E<V\sub{max}$. This is $E>V\sub{max}$. But we can relate them!}
 
