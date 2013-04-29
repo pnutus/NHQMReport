@@ -37,62 +37,48 @@ we let the contour encircle the pole of the resonance,
 as in \cref{fig:berggren contour}.
 
 \begin{figure}
+  \tikzset{
+    triangle/.style={regular polygon, regular polygon sides=3},
+    nosep/.style={inner sep=0},
+    bound/.style={circle,draw,minimum size=2mm,nosep},
+    unbound/.style={rectangle,draw,minimum size=2mm,nosep},
+    quasibound/.style={triangle,draw,minimum size=2.5mm,nosep}
+  }
   \subfloat[]{
   \label{fig:simple contour}
-  \begin{tikzpicture}
-    [ scale = 2.5,
-      triangle/.style={regular polygon, regular polygon sides=3},
-      nosep/.style={inner sep=0},
-      bound/.style={circle,draw,minimum size=2mm,nosep},
-      unbound/.style={rectangle,draw,minimum size=2mm,nosep},
-      quasibound/.style={triangle,draw,minimum size=2.5mm,nosep}]
+  \begin{tikzpicture}[scale = 2.5]
     \draw[->] (-1.2, 0) -- (1.2, 0) node[right] {$\Re k$};
     \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
     \foreach \y in {0.1, 0.3}
       \node at (0, \y) [bound] {};
-    \node at (0.25, -0.15) [quasibound] {};
-    \draw[very thick, 
-          decoration={markings,
-            mark=at position 0.17 with {\arrow{latex}},
-            mark=at position 0.47 with {\arrow{latex}},
-            mark=at position 0.72 with {\arrow{latex}},
-            mark=at position 0.92 with {\arrow{latex}}},
-          postaction={decorate}] 
-    (1, 0) arc (0:180:1) -- cycle;
+    \foreach \x in {0.25, -0.25}
+      \node at (\x, -0.15) [quasibound] {};
+    \draw[very thick, mid arrows] (1, 0) arc (0:90:1) arc (90:180:1) 
+                                  -- (0,0) -- cycle;
   \end{tikzpicture}
   }
   \subfloat[]{
   \label{fig:berggren contour}
-  \begin{tikzpicture}
-    [ scale = 2.5,
-      triangle/.style={regular polygon, regular polygon sides=3},
-      nosep/.style={inner sep=0},
-      bound/.style={circle,draw,minimum size=2mm,nosep},
-      unbound/.style={rectangle,draw,minimum size=2mm,nosep},
-      quasibound/.style={triangle,draw,minimum size=2.5mm,nosep}]
+  \begin{tikzpicture}[scale = 2.5]
     \draw[->] (-1.2, 0) -- (1.2, 0) node[right] {$\Re k$};
     \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
     \foreach \y in {0.1, 0.3}
       \node at (0, \y) [bound] {};
-    \node at (0.25, -0.15) [quasibound] {};
-    \draw[very thick, 
-          decoration={markings,
-            mark=at position 0.15 with {\arrow{latex}},
-            mark=at position 0.45 with {\arrow{latex}},
-            mark=at position 0.69 with {\arrow{latex}},
-            mark=at position 0.88 with {\arrow{latex}}},
-          postaction={decorate}] 
-    (1, 0) arc (0:180:1) -- (-0.5, 0) 
-                         -- (-0.25, 0.25) 
-                         -- (0.25, -0.25)
-                         -- (0.5, 0)
-                         -- cycle;
+    \foreach \x in {0.25, -0.25}
+      \node at (\x, -0.15) [quasibound] {};
+    \draw[very thick, mid arrows, radius=1]
+      (1, 0) arc [start angle=0,  end angle=90]
+             arc [start angle=90, end angle=180]
+             -- (-0.5, 0) 
+             -- (-0.25, 0.25) 
+             -- (0.25, -0.25)
+             -- (0.5, 0)
+             -- cycle;
   \end{tikzpicture}
   }
   \caption{The complex $k$-plane. The circles represent 
-  bound states, the diamonds unbound states and the 
-  crosses resonant states. Note the mirroring in
-  the imaginary axis.}
+  bound states and the triangles resonant states. Note the 
+  mirroring of the states in the imaginary axis.}
   \label{fig:complex plane}
 \end{figure}
 
