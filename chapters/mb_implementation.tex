@@ -51,7 +51,7 @@ To calculate the Hamilton matrix for the many-body states we generate a list of 
  The contributions from these two operators are discussed in detail below.
 
 \subsubsection{The one-body opreator}
-The one-body operator is the simple kinetic energy operator that we have known and loved since our first food fight. 
+The one-body operator is the simple kinetic energy operator that we have known and loved since our first food fight. \todo{Too much joke.}
 %Presented on the form of \cref{eq: stans i mb-teori} the one-body operator, \fockop{T} simply yields the kinetic energy of the two particles, but in a matrix representation 
  In our matrix representation the bra and the ket will be the same in a diagonal-element and thus have the same single-particle states.
  This operator returns the kinetic energy of these two single particle states. 
@@ -73,9 +73,9 @@ This is where we introduce the different allowed m-quantum numbers, the original
 Thus we can calculate the Clebsch-Gordan coefficients to treat the degeneracy in m-quantum number, recall that Clebsch-Gordan coefficients was covered in ref ref ref.
 
 The calculation of clebsch gordan coeff (and fock relations) severly reduces the number of elements that actually give any contribution at all. 
-When we know which bra and ket interactions that give a contribtion it is time to calculate it. 
-Mathematically this contribution, from the sepparable n-n potential can be expressed like presented in ref ref.
-However this is not a suitable form for the computer, not even with the very powerful Gauss-Legendre contour for the integral; instead we rewrite it as a matrix equation:
+When we know which bra and ket interactions that give a contribution it is time to calculate it. 
+Mathematically this contribution from the sepparable n-n potential can be expressed like presented in ref ref.
+However, this is not a suitable form for the computer, not even with the very powerful Gauss-Legendre contour for the integral; instead we rewrite it as a matrix equation:
 $1+2+3+4+5+6+7+...+226+... = - \frac{1}{12}$\\
 where the matrix is the same for each combination of bras and kets and need only be calculated once.
 
