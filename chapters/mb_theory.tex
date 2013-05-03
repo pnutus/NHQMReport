@@ -1,8 +1,8 @@
-In order to solve the three body problem, we have to introduce some new formalia comparing it to the two body problem. The two body problem could be reduced to a one body problem by a coordinate transformation. In the case of three or more bodies, this is no longer possible. 
+In order to solve the three-body problem of \He{6}, we have to introduce some new formalia comparing it to the previously calculated two-body problem, which could be reduced to a one-body problem using a coordinate transformation. In the case of three or more bodies, this is no longer possible. 
 
 \section{Fock space}
 \label{sec:fock space}
-To treat the three body problem we work in Fock space, in which a many body state is described in terms of one body states. Formally this is written as the direct sum of tensor proucts of copies of single particle hilbert spaces. 
+To treat the three-body problem we work in Fock space, here many-body states are described in terms of one-body states. Formally this is written as the direct sum of tensor proucts of copies of single-particle hilbert spaces. 
 
 \begin{equation}
 F_{\nu}(H) =
@@ -10,7 +10,7 @@ F_{\nu}(H) =
 \C \oplus H \oplus(S_{\nu}(H \otimes H)) \oplus (S_{\nu}(H \otimes H \otimes H)) \dots
 \end{equation}
 
-In the case of bosons $S_{\nu}$ is the operator that symetrize a tensor and for fermions it is the antisymetrizer.
+In the case of bosons $S_{\nu}$ is the operator that symetrize a tensor, for fermions it is the opposite and called an antisymetrizer.
 Further, we denote product states for N partlicles as
 
 \begin{equation}
@@ -25,13 +25,14 @@ with orthogonality
 \braket{\alpha_1}{ \alpha_1^{'}}\braket{\alpha_2}{\alpha_2^{'}}...\braket{\alpha_N}{\alpha_N^{'}} = \delta_{\alpha_1,\alpha_1^{'}} \delta_{\alpha_2,\alpha_2^{'}}...\delta_{\alpha_N,\alpha_N^{'}}
 \end{equation}
 
-Now, with Fock space defined as above, for fermions (we will not disscuss Fock space for bosons, since it is not relevant for this thesis work) it consists of a vacuum state $\ket{0}$ with no particles, the set of all possible one particle states $\{ \ket{\alpha} \} $, the complete set of antisymmetric two-particle states $\ket{\alpha_1 \alpha_2}$ and so on. A creation operator $a^{\dagger}$ is introduced and defined by
+In this report we will only handle Fock space for fermions, since bosons not are relevant for this thesis.
+Now, with Fock space defined as above, we can think of it to consist of a vacuum state $\ket{0}$ with no particles, the set of all possible one particle states $\{ \ket{\alpha} \} $, the complete set of antisymmetric two-particle states $\ket{\alpha_1 \alpha_2}$ and so on. A creation operator $a^{\dagger}$ is introduced and defined by
 
 \begin{equation}
 a_{\alpha}^{\dagger} \ket{\alpha_1 \alpha_2 ... \alpha_N} =
 \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N}
 \end{equation}
-and adds a new single-particle state to the total many-body state. The result is now a N+1 particle state. It can be shown that the adjoint of $ a_\alpha^{\dagger} ;  a_{\alpha}$, removes the particle $\alpha$ and is therefore refered to as a destruction (or removal) operator. The relevant calculation rules for these operators in fermionic Fock space can be summorized as
+and adds a new single-particle state to the previous N-body state. The result is now a N+1 particle state. It can be shown that the adjoint of $ a_\alpha^{\dagger} ;  a_{\alpha}$, removes the particle $\alpha$ and is therefore refered to as a destruction (or removal) operator. The relevant calculation rules for these operators in fermionic Fock space can be summorized as
 
 \begin{align}
  a_{\alpha}^{\dagger} & \ket{ \alpha_1 \alpha_2 ... \alpha_N} &&= \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N} \label{eq:creation}
@@ -48,30 +49,32 @@ a_{\alpha_i}^{\dagger} & \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_{i+1}...
 
 \section{The Hamiltonian}
 \label{sec:mb hamiltonian}
-It can be shown that the Hamiltonian of a many-particle system in this formulation can be written as
+Utilizing the formulation introduced above we can rewrite the Hamiltonian of a many-body system as
 
 \begin{equation}
 \hat{H} =
 \hat{T} + \hat{V} =
-\sum_{\alpha \beta} \bra{\alpha} T \ket{\beta} a_{\alpha}^{\dagger} a_{\beta} + \frac{1}{2}\sum_{\alpha \beta \gamma \delta} ( \alpha \beta| V | \gamma \delta ) a_{\alpha}^{\dagger} a_{\beta}^{\dagger} a_{\delta} a_{\gamma}
+\sum_{\alpha \beta} \bra{\alpha} T \ket{\beta} a_{\alpha}^{\dagger} a_{\beta} + \frac{1}{2}\sum_{\alpha \beta \gamma \delta} ( \alpha \beta| V | \gamma \delta ) a_{\alpha}^{\dagger} a_{\beta}^{\dagger} a_{\delta} a_{\gamma},
 \end{equation}
 
-where $\hat{T}$ is a one-body operator and $\hat{V}$ is a two-body operator. Typicaly the kinetic energy part of the hamiltonian is a one-body operator while the potential is a two-body operator. In our case we want to use our previous results from the two-body problem, ie the interaction between a neutron and an He-4 nucleus. This problem we reduced to a one body problem. The hamiltonian we calculated for the two body problem therefore is a one-body operator, which we in the three-body problem can use to describe the interaction between the neutrons and the nucleus. What is left as a two-body operator is the neuron-neutron interaction. We can thus write the hamiltonian as
+where $\hat{T}$ is a one-body operator and $\hat{V}$ is a two-body operator. Typicaly, the kinetic energy part of the Hamiltonian is a one-body operator, while the potential is a two-body operator. In our case we want to use our previous results from the \He{5} problem, ie the interaction between a neutron and an He-4 nucleus. This problem could be reduced to a one-dimensional problem. The hamiltonian we calculated for the two-body could therefore be seen as a one-dimensional operator, which we in the three-body problem can use to describe the interaction between the neutrons and the nucleus. What is left is a two-body operator describing the neuron-neutron interaction. This leads us to yet another formulation of the Hamiltonian
 
 \begin{equation}
 \hat{H} =
 \sum_{\alpha \beta} \bra{\alpha} H_1 \ket{\beta} a_{\alpha}^{\dagger} a_{\beta} + \frac{1}{2}\sum_{\alpha \beta \gamma \delta} ( \alpha \beta| V_{n-n} | \gamma \delta ) a_{\alpha}^{\dagger} a_{\beta}^{\dagger} a_{\delta} a_{\gamma}
 \end{equation}
 
-with $H_1$ as the two body problem hamiltonian and $V_{n-n}$ as the neutron-neutron potential. The strength of this formalism is that it is not constrained to be used in the case of two neutrons, but for an arbitrary number of neutrons. In will thus, in principle, be easy to extend our algorithms to solve many body problems with arbitrary number of particles. 
+with $H_1$ as the two body problem hamiltonian and $V_{n-n}$ as the neutron-neutron potential.
+
+The strength of this formalism is that it is not constrained to be used in the case of two neutrons, but for an arbitrary number of particles. It will thus, in principle, be easy to extend our algorithms to solve many body problems with an arbitrary number of particles. In reality however, as we will see later, this will lead to very large matrix dimensions that fast grow too large for modern computers to handle.
 
 \subsection{Some Break here}
 Earlier we solved the one-body problem
 
 \begin{equation}
-H \ket{\psi_n} = E_n \ket{\psi_n}
+H \ket{\psi_n} = E_n \ket{\psi_n}.
 \end{equation}
-We cannot use the solutions $\ket{\psi_n}$ as they are. Earlier we did not need to consider the $m$ quantum number, but in the many body case, the solutions $\ket{\psi_n}$ can have different $m$ quantum numbers. This is a consequence of the pauli principle, which thus also makes it possible to have both bodies in states with energy $E_n$, as long as they have different $m$ quantum numbers. The result we get in this case with a three body system is
+We cannot use these solutions $\ket{\psi_n}$ as they are, since earlier we did not need to consider the $m$ quantum number, but in the many body case, the solutions $\ket{\psi_n}$ can have different $m$ quantum numbers. This is a consequence of the pauli principle, which thus also makes it possible to have both bodies in states with energy $E_n$, as long as they have different $m$ quantum numbers. The result we get in this case with a three body system is
 
 \begin{align}
 \hat{H} &= \sum_{k' m' k m } \bra{k'm'} H_1 \ket{km} a_{k'm'}^{\dagger} a_{km} + \\
@@ -85,7 +88,7 @@ The $1/2$-factor before the second summation is obmitted since we in our impleme
 \end{equation}
 
 \subsection{n-n interaction}
-The interaction between neutrons is a complex feature. A simple approximation that can be made, although not very realistic, is to modell it using a gaussian curve, which makes the potential is separable and thus easy to use.
+The interaction between neutrons is a complex feature. A simple approximation that can be made, although not very realistic, is to modell it using a gaussian curve, which makes the potential separable and easy to use.
 
 \begin{equation}
 V_{n-n}(r_{1} , r_{2}) = V_{0}e^{ \beta (r_1^2 + r_2^2)}
