@@ -61,13 +61,13 @@ one body >==< clebsxhgordan???
 
 \subsubsection{The two-body operator}
 The two-body operator is the contribution from the neutron-neutron interaction and is computationally taxing. Although the potential is (ridiculously) simple this calculation requires sums over all the quantum numbers in both the bra and the ket; the mathematical expression for the hamiltonian is presented in \cref{two-body op sum}. 
-With a simple contour of 15 points this would be a sum over $15^4*4^4 \approx 13$ million elements which is computationaly unfeasible.
+With a simple contour of 15 points this would be a sum over $15^4*4^4 \approx 13$ million elements, which would be computationaly unfeasible.
 In order to reduce the complexity we instead make use of coupled angular momentum for the many-body states, refer to ref ref ref.
 
 %the (i,j)-th matrix element, $H_{ij}$, would be the interaction between the i-th and j-th mb-state. and for each pair of indexes calculate a matrix element; 
 
 
-To determine the hamilton matrix for the mb-system we generate a list of all possible (non-permutated) mb-states, constructed only from different sp-states.
+To determine the hamilton matrix \todo{is it called hamilton matrix or hamiltonian matrix} for the mb-system we generate a list of all possible (non-permutated) mb-states, constructed only from different sp-states.
 For a given bra and ket we determine whether the fock-space relations allow for an interaction, in this case with two-orbiting particles this is trivially true.
 This is where we introduce the different allowed m-quantum numbers, the original bra and ket are used to generate all possible mb-states with the given sets of sp-states but with an angular momentum for each of the sp-states.
 Thus we can calculate the Clebsch-Gordan coefficients to treat the degeneracy in m-quantum number, recall that Clebsch-Gordan coefficients was covered in ref ref ref.

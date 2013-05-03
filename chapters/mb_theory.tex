@@ -1,4 +1,4 @@
-In order to solve the three-body problem of \He{6}, we have to introduce some new formalia comparing it to the previously calculated two-body problem, which could be reduced to a one-body problem using a coordinate transformation. In the case of three or more bodies, this is no longer possible. 
+In order to solve the three-body problem of \He{6}, we have to introduce some new formalia comparing it to the previously calculated two-body problem, which could be reduced to a one-dimensional problem using a coordinate transformation. In the case of three or more bodies, this is no longer possible. 
 
 \section{Fock space}
 \label{sec:fock space}
@@ -26,7 +26,8 @@ with orthogonality
 \end{equation}
 
 In this report we will only handle Fock space for fermions, since bosons not are relevant for this thesis.
-Now, with Fock space defined as above, we can think of it to consist of a vacuum state $\ket{0}$ with no particles, the set of all possible one particle states $\{ \ket{\alpha} \} $, the complete set of antisymmetric two-particle states $\ket{\alpha_1 \alpha_2}$ and so on. A creation operator $a^{\dagger}$ is introduced and defined by
+
+Now, with Fock space defined as above, we can think of it to consist of a vacuum state $\ket{0}$ with no particles, the set of all possible one particle states $\{ \ket{\alpha} \} $, the complete set of antisymmetric two-particle states $\ket{\alpha_n \alpha_{n'}}$ and so on. A creation operator $a^{\dagger}$ is introduced and defined by
 
 \begin{equation}
 a_{\alpha}^{\dagger} \ket{\alpha_1 \alpha_2 ... \alpha_N} =
@@ -45,8 +46,9 @@ and adds a new single-particle state to the previous N-body state. The result is
 \\ 
 a_{\alpha_i}^{\dagger} & \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_{i+1}...\alpha_{N}} &&= (-1)^{i-1} \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_i \alpha_{i+1} ... \alpha_{N}} \label{eq:creation sign}
 \\
-\todo{Describe why a permutation gives a factor -1.}
 \end{align}
+\todo{Describe why a permutation gives a factor -1.}
+\todo{Isn't it one too many numbers to refer to?}
 
 \section{The Hamiltonian}
 \label{sec:mb hamiltonian}
@@ -67,7 +69,7 @@ where $\hat{T}$ is a one-body operator and $\hat{V}$ is a two-body operator. Typ
 
 with $H_1$ as the two body problem hamiltonian and $V_{n-n}$ as the neutron-neutron potential.
 
-The strength of this formalism is that it is not constrained to be used in the case of two neutrons, but for an arbitrary number of particles. It will thus, in principle, be easy to extend our algorithms to solve many body problems with an arbitrary number of particles. In reality however, as we will see later, this will lead to very large matrix dimensions that fast grow too large for modern computers to handle.
+The strength of this formalism is that it is not constrained to be used in the case of two neutrons, but for an arbitrary number of particles. It will thus, in principle, be easy to extend our algorithms to solve many body problems with an arbitrary number of particles. In reality however, as we will see later, this will lead to very large matrix dimensions that quickly grow too large for modern computers to handle.
 
 \subsection{Some Break here}
 Earlier we solved the one-body problem
