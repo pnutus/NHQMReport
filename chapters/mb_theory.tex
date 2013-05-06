@@ -34,7 +34,8 @@ a_{\alpha}^{\dagger} \ket{\alpha_1 \alpha_2 ... \alpha_N} =
 \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N}
 \end{equation}
 and adds a new single-particle state to the previous N-body state. The result is now a N+1 particle state. It can be shown that the adjoint of $ a_\alpha^{\dagger} ;  a_{\alpha}$, removes the particle $\alpha$ and is therefore refered to as a destruction (or removal) operator. The relevant calculation rules for these operators in fermionic Fock space can be summorized as
-
+\begin{subequations}
+\label{eq:fock operations}
 \begin{align}
  a_{\alpha}^{\dagger} & \ket{ \alpha_1 \alpha_2 ... \alpha_N} &&= \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N} \label{eq:creation}
 \\ 
@@ -47,8 +48,10 @@ and adds a new single-particle state to the previous N-body state. The result is
 a_{\alpha_i}^{\dagger} & \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_{i+1}...\alpha_{N}} &&= (-1)^{i-1} \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_i \alpha_{i+1} ... \alpha_{N}} \label{eq:creation sign}
 \\
 \end{align}
+\end{subequations}
 \todo{Describe why a permutation gives a factor -1.}
 \todo{Isn't it one too many numbers to refer to?}
+\todo{maybe we should call them 5.??? a-d since they are so closely related yet we want to refer to them independently}
 
 \section{The Hamiltonian}
 \label{sec:mb hamiltonian}

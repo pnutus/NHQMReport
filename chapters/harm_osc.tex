@@ -16,7 +16,7 @@ with
 \begin{eq}
   E_{nl} = \hbar\omega(2n + l + \frac{3}{2}), \quad n = 0, 1, 2, \dots
 \end{eq}
-Since they are eigenstates of $H\sub{HO}$, $\ket{nlm}$ form a complete basis, and it is this basis we will expand our TISE in. 
+These $\ket{nlm}$ form a complete basis, since they are eigenstates of $H\sub{HO}$, and it is this basis we will expand our TISE in. \todo{jag gillade inte syftningen}
 The procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and gives us
 \begin{eq}
   \label{eq:HOexpanded}
@@ -89,4 +89,4 @@ or in linear algebra notation \todo{Isn't this called matrix-notation in opposit
 This matrix equation is solved using a standard eigensolver algorithm, which uses the fact that the matrix is hermitian to solve the equation faster.
 
 We calculate the matrix elements using \cref{eq:HO matrix elements}. 
-The integration is performed using a Gauss-Legendre quadrature and setting the upper limit to a finite number.
+The integration is performed using a Gauss-Legendre quadrature and setting the upper limit to a finite number. \todo{is this the first mention of GL-int?}
