@@ -17,16 +17,16 @@ import matplotlib.pyplot as plt
 import scipy as sp
 import He5_HO_omega_convergence_data as data
 
-osc.integration_order = 60
+osc.integration_order = 30
 He5.V0 = -52
 
 #omegalist =[1,2,3,4,5,6,7,8,9,10]
 a=0
-b=3
-omegalist= sp.linspace(a,b,50)
+b=50
+omegalist= sp.linspace(a,b,70)
 
-num_energies=7
-resho_mat = data.calc(omegalist, num_energies, order=20, overwrite=True)
+num_energies=10
+resho_mat, res_ind = data.calc(omegalist, num_energies, order=20, overwrite=True)
 resho_mat_trans = zip(*resho_mat)
 
 
@@ -36,9 +36,9 @@ fig = plts.plot_init(font_size=14,tick_size=11) #set font sizes.
 
 plt.ylabel('energy [MeV]')
 plt.xlabel('omega')
-plot_title=plt.title('He5 energies in HO for different omega values')
+#plot_title=plt.title('He5 energies in HO for different omega values')
 #ad hoc solutions to title position
-plot_title.set_y(1.03)
+#plot_title.set_y(1.03)
 #plot_title.set_x(1.13)
 
 
@@ -54,5 +54,4 @@ plt.xlim([a,b])
     plt.legend( (l[i]),
             ('energy level: ' + str(i)),
             'lower right')"""
-    
 plt.show() 

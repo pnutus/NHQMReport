@@ -1,4 +1,5 @@
 from __future__ import division
+
 #from imports import *
 from nhqm.bases import harm_osc as osc, mom_space as mom
 from nhqm.problems import H_atom, He5
@@ -10,8 +11,12 @@ import matplotlib.pyplot as plt
 import os
 import scipy as sp
 
+def res_index(eigvecs):
+    maxes = map(max, abs(eigvecs.T))
+    return maxes.index(min(maxes))
+
 def calc(omegalist, num_energies, order, overwrite=False):
-    
+    ind =[]
     script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
     rel_resho_path = "data/resho_omega"
     
@@ -52,10 +57,12 @@ def calc(omegalist, num_energies, order, overwrite=False):
             H = osc.hamiltonian(order, problem, Q)
             eigvals, eigvecs = energies(H)
             
+            ind.append(res_index(eigvecs))
+            
             for j in xrange(num_energies):
                 energies_for_omega.append(eigvals[j])
                 
             sp.save(abs_resho_file_path[i], energies_for_omega)
             resho_mat.append(energies_for_omega)
-        return resho_mat  
+        return resho_mat, ind  
 
