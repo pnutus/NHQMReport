@@ -53,10 +53,10 @@ ax_list = [ax2, ax3]
 
 
 ax2.set_ylabel('Energy [MeV]')
-plot_title=plt.title('Convergence of the He5 resonance for HO, mom')
+#plot_title=plt.title('Convergence of the He5 resonance for HO, mom')
 #ad hoc solutions to title position
-plot_title.set_y(1.03)
-plot_title.set_x(0.13)
+#plot_title.set_y(1.03)
+#plot_title.set_x(0.13)
 
 
 for i, orderlist in enumerate(ordermatrix):
