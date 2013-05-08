@@ -37,7 +37,7 @@ osc.integration_order = 60
 ordermatrix =[[1,2,3,4,5,6,7,8,9,10], [10,15,20,25,30,40,50]]
 
 
-resho, resm = data.calc(ordermatrix, overwrite=False)
+resho, resm = data.calc(ordermatrix, overwrite=True)
 
 
 fig = pltset.plot_init(font_size=14,tick_size=11) #set font sizes.
@@ -53,10 +53,10 @@ ax_list = [ax2, ax3]
 
 
 ax2.set_ylabel('Energy [MeV]')
-#plot_title=plt.title('Convergence of the He5 resonance for HO, mom')
+plot_title=plt.title('Convergence of the He5 resonance for HO, mom')
 #ad hoc solutions to title position
-#plot_title.set_y(1.03)
-#plot_title.set_x(0.13)
+plot_title.set_y(1.03)
+plot_title.set_x(0.13)
 
 
 for i, orderlist in enumerate(ordermatrix):

@@ -1,0 +1,14 @@
+Another way to determine the ground state energy of the systems at hand is through a statistical Monte Carlo simulation. 
+Instead of a rigorous examination of how all the many particle states interact with each other we strive to take a couple of state at random and see what energy only their interaction give. 
+This proedure is then repeated until we can determine the ground state energy of the system with a statistical confidence.
+
+In practice we generate a set of random points along the contour at hand, usually one per segment with a uniform probability. 
+These points for the contour in the momentum space and we use the tools of \cref{cha:donald duck} to calculate the hamiltonian and find the lowest energy. 
+We then calculate the average of these values (weighed by 0 if they differ by more than 0.5\% from the sought value) and we find that our Monte Carlo simulation quickly conveges to the correct value with a 99.5\% confidence.
+
+Great Success
+Problems: converges slowly and the imaginary part is not vanishing.
+
+Different avenues to explore would be to use another probability density along the segments, more points per segment or 
+
+ maybe something akin the points used in Gauss-Legendre integration
