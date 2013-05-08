@@ -7,8 +7,17 @@ These points for the contour in the momentum space and we use the tools of \cref
 We then calculate the average of these values (weighed by 0 if they differ by more than 0.5\% from the sought value) and we find that our Monte Carlo simulation quickly conveges to the correct value with a 99.5\% confidence.
 
 Great Success
-Problems: converges slowly and the imaginary part is not vanishing.
+Problems: converges slowly and the imaginary part certainly is not vanishing.
 
-Different avenues to explore would be to use another probability density along the segments, more points per segment or 
 
- maybe something akin the points used in Gauss-Legendre integration
+
+However this method does not give the correct result. 
+In figure \cref{fig:mcarlo} we can see only a slow convergence as we introduce more 'samples', and these are computationaly costly. 
+As it stands right now 2000 Monte Carlo runs take about as much time as a fulfledged hamiltonian calculation of order 50, so we would not deem this meto feasible.
+Furthermore, while the real part of the Monte Carlo result is converging the imaginary part is not, in previous calculations, see \cref{w/e: Daisy}, we found that the imaginary part is essentially a rounding error, that is not the case here.
+
+In order to improve the Monte Carlo method there are a few avenues to explore.
+One could instead of choosing the points with a uniform probability use a probability density function akin to the points used in Gauss-Legendre integration. 
+and/or change the weights.
+Another way to modify the simulation would be to use more than one point per segment, maybe there is an optimal (small) number of points per segment that gives the best convergence. 
+Currently we give all the points on the sample contours the weight (used in conjunction with GL-contour and its weights in the calculation of the hamiltonian) 1, regardless of their position on the segment, maybe this should be updated to conform better with the GL weights, but still let the position be uniformly random.
