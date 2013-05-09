@@ -1,4 +1,5 @@
 import matplotlib
+import scipy as sp
 
 """
 TODO
@@ -71,3 +72,17 @@ def save(figure, name ="output"):
         print "no applicable figure, asking matplotlib for a favor"
         matplotlib.pyplot.savefig(filename, transparent=True, bbox_inches='tight', pad_inches=0.1)    
 
+def center_axis(ax):
+    ax.spines['left'].set_position('zero')
+    ax.spines['right'].set_color('none')
+    ax.spines['bottom'].set_position('zero')
+    ax.spines['top'].set_color('none')
+    ax.spines['right'].set_smart_bounds(True)
+    ax.spines['bottom'].set_smart_bounds(True)
+    ax.xaxis.set_ticks_position('bottom')
+    ax.yaxis.set_ticks_position('left')
+    
+def plot_contour(contour, ax=None):
+    points, _ = contour
+    try: ax.plot(sp.real(points), sp.imag(points), 'k*-')   
+    except: matplotlib.pyplot.plot(sp.real(points), sp.imag(points), 'k*-')    
