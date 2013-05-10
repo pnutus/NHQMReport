@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import os
 import scipy as sp
 
-def calc(ordermatrix, overwrite=False):
+def calc(orderlist, overwrite=False):
     
     script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
     rel_resho_path = "data/resho"
@@ -19,62 +19,35 @@ def calc(ordermatrix, overwrite=False):
     abs_resho_file_path = []
     abs_resm_file_path = []
     
-    for i in xrange(len(ordermatrix)):
-        abs_resho_file_path.append(os.path.join(script_dir, rel_resho_path + str(i)+'.npy'))
-        abs_resm_file_path.append(os.path.join(script_dir, rel_resm_path + str(i)+'.npy'))
-    
-    
-    try:
-        for file in abs_resho_file_path + abs_resm_file_path:
-            open(file)
-            if overwrite:
-                raise IOError 
-            
-            resho_mat = []
-            resm_mat = []
-            
-            for i in xrange(len(abs_resm_file_path)):
-                resho_mat.append( sp.load(abs_resho_file_path[i]))
-                resm_mat.append( sp.load(abs_resm_file_path[i]))
-            
-            return resho_mat, resm_mat
-            
-    except IOError:
-        print "calculating"
-    
-        mom.integration_order = 20
-        mom.integration_range = 10
-        osc.integration_order = 60
-        
-        resho_mat =[]
-        resm_mat=[]
 
-        problem = He5
+    
+    mom.integration_order = 20
+    mom.integration_range = 10
+    osc.integration_order = 60
+    
+    resho_mat =[]
+    resm_mat=[]
+
+    problem = He5
 
 
-        for i, orderlist in enumerate(ordermatrix):
-            #print orderlist
-            resho = []
-            resm = []
-            for order in orderlist:
 
-                Q = osc.QNums(l=0, j=.5, n=range(order))
-                H = osc.hamiltonian(order, problem, Q)
-                eigvals, eigvecs = energies(H)
-                #print osc.name, eigvals[0], problem.units
-                resho.append(eigvals[0])
-    
-                contour = gauss_contour([0, 5], order)
-                H = mom.hamiltonian(contour, problem, Q)
-                eigvals, eigvecs = energies(H)
-                #print mom.name, eigvals[0], problem.units
-                resm.append(eigvals[0])
-                
-            sp.save(abs_resho_file_path[i], resho)
-            sp.save(abs_resm_file_path[i], resm)   
-                 
-            resho_mat.append(resho)
-            resm_mat.append(resm)
-     
-        return resho_mat, resm_mat        
+    resho = []
+    resm = []
+    for order in orderlist:
+
+        Q = osc.QNums(l=0, j=.5, n=range(order))
+        H = osc.hamiltonian(order, problem, Q)
+        eigvals, eigvecs = energies(H)
+        #print osc.name, eigvals[0], problem.units
+        resho.append(eigvals[0])
+
+        contour = gauss_contour([0, 5], order)
+        H = mom.hamiltonian(contour, problem, Q)
+        eigvals, eigvecs = energies(H)
+        #print mom.name, eigvals[0], problem.units
+        resm.append(eigvals[0])
+ 
+         
+    return resho, resm        
 
