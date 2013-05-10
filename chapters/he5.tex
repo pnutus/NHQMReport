@@ -13,7 +13,7 @@ where
 \begin{eq}
 	f(r)=\frac{1}{1+e^{\frac{r-r_0}{d}}}.
 \end{eq}
-A visualisation of this potential can be seen in \cref{fig:woods-saxon}. 
+A visualisation of this potential can be seen in \cref{fig:woods-saxon}. \todo{Should we put en extra figure of the potential here?}
 Notice its short range, stemming from the asymptotic $e^{-r}$ dependence 
 on distance. The parameters are $V0$, corresponding to the depth of the potential well, $V\sub{so}$ is spin-orbit coupling strength and $d$ can 
 be seen as the range of the potential. \todo{d, r0? isn't r0 range?} We see that the spin-orbit coupling 
@@ -32,7 +32,7 @@ Since we approximate the system as a spherically symmetric interaction
 between two particles, the problem can be reduced to a one-dimensional 
 radial equation.\todo{Explicitly describe the reduction to effective 
 one-body problem?} The implementation of \He{5} will thus be the same 
-as for the hydrogen atom, except for the new potential being very different because of its short range.
+as for the hydrogen atom, except for the new potential being very different because of its short range.\todo{Hydrogen  atom, if we still have it.}
 
 \section{Convergence}
 \todo{Is convergence even important?}
@@ -51,7 +51,7 @@ We can solve the problem using either HO expansion or discretizised momentum spa
 
 The other state has an energy $E>0$ meaning that it, too, must be unbound. However, its wavefunction is highly localized near the center, suggesting a quasi-stationary state. Additionally, the solution varies dramatically with the potential, meaning that it must be a feature of the system. 
 
-However, because we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet, since we expect the resonance to be properly described only by complex energies. 
+\todo{Remove last however.}However, because we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet, since we expect the resonance to be properly described only by complex energies. 
 
 
 \begin{figure}[H]
