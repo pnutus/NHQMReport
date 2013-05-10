@@ -1,5 +1,4 @@
-\todo{One to threes sentences to lead our way even better.}
-\todo{Alternative introduction, old one is commented out in the source-file. It is not much corrected, but should be read through first.}
+
 In Quantum Mechanics, the dynamics of a system is described by its wave function, given by the Schrödinger equation
 \begin{eq}
 i\hbar\ddt{}\psi=H\psi.
@@ -28,24 +27,38 @@ The probability for these quasi-bound systems of staying localized will decrease
 %exponentially over time. This can be explained as the state 
 %having a complex energy by the following argument:
 
+\newcommand{\axes}[6]{
+  \draw[->] (#2, 0) -- (#3, 0) node[right] {#1};
+  \draw[->] (0, #5) -- (0, #6) node[above] {#4};
+}
+
 \begin{figure}
   \subfloat[]{
-  \label{fig:coloumb}
-  \begin{tikzpicture}[domain=0.2:6, samples=100]
-    \draw[->] (-0.1, 0) -- (6, 0) node[right] {$r$};
-    \draw[->] (0, -5) -- (0, 0.5) node[above] {$V$};
-    \draw plot (\x,{-1/\x});
-  \end{tikzpicture}
+    \label{fig:harmosc}
+    \begin{tikzpicture}[domain=0:4.5, samples=100]
+      %\clip (-0.2, -5.1) rectangle (7, 1);
+      \axes{$r$}{-0.1}{6}{$V$}{-5.1}{0.5}
+      \draw plot (\x, 0.3*\x*\x - 4.8);
+    \end{tikzpicture}
   }
   \subfloat[]{
-  \label{fig:woods-saxon}
-  \begin{tikzpicture}[domain=0:6, samples=100]
-    \draw[->] (-0.1, 0) -- (6, 0) node[right] {$r$};
-    \draw[->] (0, -5) -- (0, 0.5) node[above] {$V$};
-    \draw plot (\x,{-5/(1 + exp((\x - 2)/0.65))});
-  \end{tikzpicture}
+    \label{fig:woods-saxon}
+    \begin{tikzpicture}[domain=0:6, samples=100]
+      \draw[->] (-0.1, 0) -- (6, 0) node[right] {$r$};
+      \draw[->] (0, -5.1) -- (0, 0.5) node[above] {$V$};
+      \draw plot (\x,{-5/(1 + exp((\x - 2)/0.65))});
+    \end{tikzpicture}
   }
-  \caption{The Coulomb (a) and Woods-Saxon (b) potentials.}
+  % \\
+  % \subfloat[]{
+  %   \label{fig:coloumb}
+  %   \begin{tikzpicture}[domain=0.2:6, samples=100]
+  %     \draw[->] (-0.1, 0) -- (6, 0) node[right] {$r$};
+  %     \draw[->] (0, -5) -- (0, 0.5) node[above] {$V$};
+  %     \draw plot (\x,{-1/\x});
+  %   \end{tikzpicture}
+  % }
+  \caption{The Harmonic Oscillator (a) and Woods-Saxon (b) potentials.}
   \label{fig:potentials}
 \end{figure}
 
