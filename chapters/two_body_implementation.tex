@@ -1,0 +1,302 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[english]{babel}
+
+\usepackage{NHQM}
+\usepackage{listings}
+%\usepackage{courier}
+
+
+\lstset{basicstyle=\ttfamily\footnotesize, breaklines=true, 
+        language=Python, tabsize=2, frame=single}
+
+\begin{document}
+
+\title{The two-body interaction}
+\author{Messieurs Escargots}
+\maketitle
+
+We have the two-body potential
+\begin{eq}
+  \hat{H}_2 
+  = 
+  \frac{1}{4}
+  \sum_{\alpha\beta\gamma\delta}
+  \bra{\alpha\beta} V\sub{sep} \ket{\gamma\delta} 
+  a^\dag_\alpha a^\dag_\beta a_\delta a_\gamma
+  =
+  \sum_{\substack{\alpha < \beta \\ \gamma < \delta}}
+  \bra{\alpha\beta} V\sub{sep} \ket{\gamma\delta} 
+  a^\dag_\alpha a^\dag_\beta a_\delta a_\gamma,
+\end{eq}
+where 
+\begin{eq}
+  \bra{ab} V\sub{sep} \ket{cd} 
+  =
+  \pbra{ab} V\sub{sep} \pket{cd}
+  -
+  \pbra{ab} V\sub{sep} \pket{dc}.
+\end{eq}
+(Rounded bras and kets are non-antisymmetrised product states.) \\
+Now consider the matrix element
+\begin{eq}
+  \bra{ab} \hat{H}_2 \ket{cd}
+  = 
+  \sum_{\substack{\alpha < \beta \\ \gamma < \delta}}
+  \bra{\alpha\beta} V\sub{sep} \ket{\gamma\delta}
+  \bra{ab} 
+  a^\dag_\alpha a^\dag_\beta a_\delta a_\gamma
+  \ket{cd}
+  \label{eq:matrix element}
+\end{eq}
+Looking at the operator part, the only combination of $\alpha\beta\gamma\delta$ that doesn't vanish is
+\begin{eq}
+  \bra{ab} 
+  a^\dag_a a^\dag_b a_d a_c
+  \ket{cd}
+  =
+  \bra{ab} 
+  a^\dag_a a^\dag_b
+  \ket{0}
+  = 
+  \braket{ab}{ab} 
+  = 
+  1.
+\end{eq}
+Because all terms in \cref{eq:matrix element} except one vanish, we have
+\begin{eq}
+  \bra{ab} \hat{H}_2 \ket{cd}
+  =
+  \bra{ab} V\sub{sep} \ket{cd}.
+\end{eq}
+Since the potential $V\sub{sep}$ is separable
+\begin{eq}
+  V\sub{sep}(r_1, r_2) 
+  = 
+  V_0 e^{-\beta r_1^2} e^{-\beta r_2^2}
+  =
+  V_0 V(r_1) V(r_2),
+  \quad
+  V(r) = e^{-\beta r^2}
+\end{eq}
+we can write
+\begin{eq}
+  \pbra{ab} V\sub{sep} \pket{cd} 
+  = 
+  V_0 
+  \bra{a} V(r) \ket{c} 
+  \bra{b} V(r) \ket{d}.
+  \label{eq:separable}
+\end{eq}
+In our case the sp states $a, b, c, d$ each consist of the quantum numbers $E$ and $m$, $E$ being the eigenvalues of the sp basis. This gives us
+\begin{eq}
+  \bra{a} V(r) \ket{c} 
+  = 
+  \bra{E m} V(r) \ket{E'm'}
+  =
+  \bra{E} V(r) \ket{E'} \delta_{mm'}
+\end{eq}
+where we have used the fact that a spherically symmetric potential is diagonal in $m$.
+
+In order to evaluate the $\bra{E}V(r)\ket{E'}$ we recall that the coordinate-space wavefunctions can be written in terms of the $k$-space ones
+\begin{eq}
+  R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
+\end{eq}
+We use this fact to write the separable matrix elements
+\begin{eq}
+	\bra{E}V(r)\ket{E'}
+	& =
+	\fint{r} r^2 R^*(r) V(r) R'(r)
+	\\ & =
+	\fint{r} r^2  
+    (-i)^l \sqrt{\frac{2}{\pi}} 
+    \fint{k} k^2 \phi(k) j_l(k r) 
+    V(r) 
+    i^l \sqrt{ \frac{2}{\pi}} 
+    \fint{k'} k'^2 \phi'(k') j_l(k' r)
+	\\ & = 
+  \frac{2}{\pi} 
+  \fint{k} k^2 \phi(k) \fint{k'} k'^2 \phi'(k') 
+  \fint{r} r^2 V(r) j_l(k r) j_l(k' r).
+  \\ & =
+  \frac{2}{\pi} 
+  \fint{k} k^2 \phi(k) \fint{k'} k'^2 \phi'(k')
+  V(k, k')
+\end{eq}
+Discretizing, $k \mapsto k_i, k' \mapsto k_j$, and using the notation $\phi_i = \phi(k_i)$, ${V_{ij}=V(k_i, k_j)}$, this becomes
+\begin{eq}
+	 \frac{2}{\pi} \sum_i w_i k_i^2 \phi_i \sum_j w_j k_j^2 \phi'_j V_{ij}.
+\end{eq}
+Expressed with our symmetrized state vectors $\varphi_i = \sqrt{w_i} k_i \phi_i$
+\begin{eq}
+	 \frac{2}{\pi} \sum_i \sqrt{w_i} k_i \varphi_i \sum_j \sqrt{w_j} k_j \varphi'_j V_{ij} 
+	 =
+	 \frac{2}{\pi} \sum_{ij} u_i V_{ij} v_j \label{eq:matrixeq}
+\end{eq}
+where $u_i = \sqrt{w_i} k_i \varphi_i$ is a row vector, $V_{ij}$ an $n \times n$ matrix and $v_j = \sqrt{w_j} k_j \varphi'_j$ a column vector. Thus the double sum can be expressed as a two matrix multiplications.
+
+The matrix elements are saved as a matrix $M_{EE'} = \bra{E}V(r)\ket{E'}$ so that combinations of them can be evaluated efficiently
+\begin{eq}
+  &\bra{E_1m_1 E_2m_2} V\sub{sep} \ket{E'_1m'_1 E'_2m'_2}
+  \\ = &
+  V_0 M_{E_1E'_1} M_{E_2E'_2} \delta_{m_1m'_1} \delta_{m_2m'_2}
+  -
+  V_0 M_{E_1E'_2} M_{E_2E'_1} \delta_{m_1m'_2} \delta_{m_2m'_1}.
+\end{eq}
+
+
+
+
+
+
+\end{document}
+\newpage
+\section{implementation}
+
+Presented below is our main program that first calculates the single particle hamiltonian and solves for the eigenvalues and eigenvectors. This is tried-and-true and we have already presented the results, we have full confidence in this calculation. This is just to centextualize our neutron-neutron potential and our possible missconception/missunderstandings about the separable potential. If you do not agree with our derivation this would obviously fall flat and should be treated as a humorous satire of your own work.
+
+The super-occupied reader might want to skip the contextualization and jump straight to \ref{sec:imp}, the intermediate code is just a showcase of what you don't pay us to do.
+
+
+\begin{lstlisting}
+### many_body.py, main program			
+order = 5*3 #five points per segment
+problem.V0 = -47.
+peak_x = 0.17
+peak_y = 0.07	
+	
+contour = triangle_contour(peak_x, peak_y, k_max, order/3)
+Q = mom.QNums(l=1, j=1.5, k=range(len(contour[0])))
+H_single_particle = mom.hamiltonian(contour, problem, Q)
+eigvals, eigvecs = energies(H)
+
+Q = mb.QNums(l=1, J=0, M=0, j=1.5, 
+             E=range(len(eigvals)),
+             m=[-1.5, -0.5, 0.5, 1.5])
+
+mb_H = mb.hamiltonian(Q, eigvals, eigvecs, contour, num_particles = 2)
+mb_eigvals, mb_eigvecs = energies(mb_H)
+\end{lstlisting}
+
+
+The important thing is that we have the eigenvectors from the single particle hamiltonian which we need in \ref{eq:matrixeq}.
+
+	
+\begin{lstlisting}
+### many_body.py, this is where we calculate the many body hamiltonian	
+QNums = namedtuple('qnums', 'l J M j E m')
+verbose = False
+
+def hamiltonian(Q, eigvals, eigvecs, contour, 
+                num_particles=2, verbose=False):	
+	
+sep_M = n_n.gen_sep_matrix(eigvecs, contour, Q) #determines the separable potential matrix.
+
+def total_M(mb_state):
+    return Q.M == sum(state.m for state in mb_state)
+mb_states = gen_mb_states(Q, num_particles) #generates uncoupled many body states
+mb_states = filter(total_M, mb_states) #filters them to conform with m1 + m2 = M
+order = len(mb_states)
+
+def H_func(i, j):
+        return H_elem(mb_states[i], mb_states[j], eigvals, sep_M)		
+return matrix_from_function(H_func, order)
+#matrix_from_function is presented below and is basically a nested for loop that calls the
+#provided function for each element, uses symmetry etc etc.
+
+def matrix_from_function(function, order):
+    matrix = sp.empty((order, order), complex)
+    for i in xrange(order):
+        limit = (i + 1)
+        for j in xrange(limit):
+            matrix[i, j] = function(i, j)
+            matrix[j, i] = matrix[i, j]
+    return matrix
+\end{lstlisting}
+
+	
+So far so good, no real logic (which could prove to be incorrect) has been introduced.
+
+\section{important stuff}\label{sec:imp}
+This is where we calculate the separable potential matrix. This is done in two steps, at first we calculate the $V_{ij}$ matrix from \ref{eq:vij} and then the two outer integrals are calculated in the matrix equation. 
+
+
+\begin{lstlisting}
+### neutron_neutron_interaction.py, this is where the two-body-hamiltonian is determined			
+	
+def gen_sep_matrix(eigvecs, contour, Q, verbose=False):
+    order = len(eigvecs)
+    points, weights = contour
+    
+    def V_func(i, j):
+        return V_sep(points[i], points[j], Q)
+    V_matrix = matrix_from_function(V_func, order, symmetric=True)
+    
+    def sep_M_func(i, j):
+        dk = sp.sqrt(weights) * points
+        return V_matrix.dot(eigvecs[j]*dk).dot(eigvecs[i]*dk) #this is the matrix equation
+        
+    sep_M = 2 / sp.pi * matrix_from_function(sep_M_func, order)
+    return sep_M
+	
+def V_sep(k, k_prim, Q):
+    V = potential
+    integral, _ = fixed_quad(integrand, 0, 10, n = 60,
+                                args=(k, k_prim, V, Q.l, Q.j))
+    return integral
+	
+def integrand(r, k, k_prim, V, l, j):
+    return r**2 * j_l(l, k*r) * j_l(l, k_prim*r) * V(r, l, j)	
+	
+\end{lstlisting}
+
+
+We are now equipped to calculate the many body matrix, we present the code for doing so below abd this should be treated as an \emph{epilogue} since this builds upon some funky theory Ola developed that I do not care to cover. (in essence we have a spherically symmetric potential that can be lifted out of the summation which quickly devours mister Clebsch and Mister Gordan, their only legacy is a factor two or something)
+
+
+\begin{lstlisting}
+### many_body.py	
+def H_elem(bra, ket, eigvals, sep_M):
+    # H_1, one-body interaction
+    one_b =0
+    twob_1 =0
+    twob_2 =0
+    if bra == ket:
+        one_b = sum(eigvals[sp.E] for sp in bra)
+  
+    # H_2, two-body interaction
+    bra1, bra2 = bra
+    ket1, ket2 = ket
+    if bra1.m == ket1.m and bra2.m == ket2.m:
+        twob_1 =  n_n.V0 * sep_M[bra1.E, ket1.E] * sep_M[bra2.E, ket2.E]
+    if bra1.m == ket2.m and bra2.m == ket1.m:
+        twob_2 = - n_n.V0 * sep_M[bra1.E, ket2.E] * sep_M[bra2.E, ket1.E]
+		
+    return one_b + twob_2 + twob_1
+\end{lstlisting}
+
+
+
+
+
+
+
+that's all folks
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
