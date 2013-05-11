@@ -103,8 +103,22 @@ An example of a contour is seen in
 
 \begin{figure}[H]
   \centering
-    \includegraphics[width = 0.7\textwidth]{figures/complex_contour.pdf}
-  \caption{The complex contour used.}
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = \textwidth,
+      height = 7cm,
+      xlabel=Re $k$,
+      ylabel=Im $k$,
+		  axis lines = middle,
+      ymax = 0.1,
+      enlargelimits,
+      only marks,
+      ticks = none,
+      ]
+      \addplot table {figures/complex_contours/contour.data};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The complex contour used. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
   \label{fig:triangle contour}
 \end{figure}
 
@@ -113,21 +127,23 @@ An example of a contour is seen in
 \todo{Results and shit here}
 
 \begin{figure}	
-\centering	
-\begin{tikzpicture}
-    \begin{axis}[
-      xlabel=Re $k$,
-      ylabel=Im $k$,
-		  axis lines = middle,
-      xmax=1,
-      enlargelimits,
-      no markers
-      ]
-	
-	\addplot+[very thick, ->] table  {figures/res_pole(V0)/poles.data};
-	    \addlegendentry{Pole position}
-	\addplot+[very thick] table {figures/res_pole(V0)/contour.data};
-    \addlegendentry{Contour}
-    \end{axis}
-\end{tikzpicture}
+  \centering	
+  \begin{tikzpicture}
+      \begin{axis}[
+        xlabel=Re $k$,
+        ylabel=Im $k$,
+  		  axis lines = middle,
+        xmax=1,
+        enlargelimits,
+        no markers,
+        ]
+      	\addplot+[very thick, ->] table  {figures/res_pole(V0)/poles.data};
+      	    \addlegendentry{Pole position}
+      	\addplot+[very thick] table {figures/res_pole(V0)/contour.data};
+          \addlegendentry{Contour}
+      \end{axis}
+  \end{tikzpicture}
+  \caption{The pole position as a function of $V_0$.}
+  \label{fig:pole position}
+
 \end{figure}
