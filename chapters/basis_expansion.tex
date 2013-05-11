@@ -83,47 +83,55 @@ the basic method of expanding the TISE in a basis.
 
 \section{Spherical Symmetry}
 \label{sec:spherical symmetry}
-The Helium nuclei we want to expand are, for our intents and purposes, spherically symmetric. 
 
+We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. This is sufficient for our purposes and, indeed, most common QM problems. If we considered three-dimensional systems with arbitrary potentials, the problem space \todo{is problem space the right term?} would grow very fast and would be infeasible to calculate on a computer.
+
+The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m$
+\begin{eq}
+  \psi(\vec{r}) = R(r) Y_l^m(\theta, \phi).
+\end{eq}
+Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. 
+Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, which means that 
+\todo{Hjälp? Hur skriver vi det här på bästa sätt?}
+
+Since we are considering a spherically symmetric Hamiltonian
+the $l$ and $m$ in $\ket{nlm}$ commute with $H$
+and will therefore contribute with a $\delta_{ll'}\delta_{mm'}$ factor. 
+This means we can drop the primes and write \cref{eq:HOexpanded} as
+\begin{eq}
+  \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
+\end{eq}
+If we see $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix, this can be expressed as {\it $H$ is diagonal in $l$ and $m$}.
+\todo{gammalt stuff för inspiration}
 
 \section{The Harmonic Oscillator Basis}
 \label{sec:harmosc}
 
-The treatment below is adapted from \cite{moshinsky}.
-
-\todo{Move major parts of this to appendix?}
-We have, for the HO, the Hamiltonian
+We now expand the TISE in the spherically symmetric Harmonic Oscillator (HO) basis. The basis consists of the eigenstates $\ket{nlm}$ of the HO Hamiltonian
 \begin{eq}
   \label{eq:HO hamiltonian}
   H\sub{HO} = \frac{p^2}{2\mu} + \frac{\mu\omega^2 r^2}{2},
 \end{eq}
-where $\mu$ is the mass of the problem and $\omega$ is the angular frequency of the oscillator. With this Hamiltonian, the TISE has the solutions
-\begin{eq}
-  H\sub{HO}\ket{nlm} = E_{nl}\ket{nlm}
-\end{eq}
-with
-\begin{eq}
-  E_{nl} = \hbar\omega(2n + l + \frac{3}{2}), \quad n = 0, 1, 2, \dots
-\end{eq}
-The $\ket{nlm}$ form a complete basis, since they are eigenstates of $H\sub{HO}$, and it is this basis we will expand our TISE in.
-The procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and gives us
+where $\mu$ is the mass of the problem and $\omega$ is the angular frequency of the oscillator. 
+The expansion procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and gives us
 \begin{eq}
   \label{eq:HOexpanded}
-  \sum_{n'l'm'} \bra{nlm} H \ket{n'l'm'} \psi_{n'l'm'} = E \psi_{nlm}\,.
+  \sum_{n'l'm'} \bra{nlm} H \ket{n'l'm'} \psi_{n'l'm'} = E \psi_{nlm}
 \end{eq}
+<<<<<<< HEAD
 
 \todo{Spherical symmetry important enough for own section?}
 Since we are considering a spherically symmetric Hamiltonian
 the $l$ and $m$ in $\ket{nlm}$ commute with $H$
 and will thus contribute with a $\delta_{ll'}\delta_{mm'}$ factor. 
 This means we can drop the primes and write \cref{eq:HOexpanded} as
+=======
+and if we use the fact that $H$ is diagonal in $l$ and $m$ we get
+>>>>>>> Streamlined basis expansion chapter.
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
 \end{eq}
-If we see $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix, this can be expressed as {\it $H$ is diagonal in $l$ and $m$}.
-
-Thus we have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. 
-These require some calculation (see \cref{sec:HO matrix elements} for the details) and the result is
+We now have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (see \cref{sec:HO matrix elements} for the details) and the result is
 \begin{eq}
   \label{eq:HO matrix elements}
   &
@@ -184,10 +192,9 @@ The integration is performed using the Gauss-Legendre quadrature and setting the
 \section{The Plane Wave Basis}
 \label{sec:mom_space}
 
-\todo{The reason... is a bad start of this section. One previous sentence can fix this.}
-The reason that we want to solve the problem in momentum space is that we are studying a system with a short-range potential supporting only a few, if any, bound solutions. 
-This means that we will find multiple unbound solutions, corresponding to free particles of various energies.
- These are almost eigenstates of the momentum operator, only slightly disturbed by the small potential well at $r=0$. 
+The plane wave basis $\ket{\vec{k}}$ is of great importance for us since we are studying a system with a short-range potential supporting only a few, if any, bound solutions. 
+This means that we will find multiple unbound solutions, corresponding to free particles with various momenta.
+These are almost eigenstates of the momentum operator, only slightly disturbed by the small potential well at $r=0$. 
 
 The expansion is done in the same way as before, giving us
 \begin{eq}
