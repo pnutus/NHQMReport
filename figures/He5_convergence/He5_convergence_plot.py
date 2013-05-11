@@ -36,7 +36,7 @@ osc.integration_order = 60
 
 #ordermatrix=[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], [14,16,18,20,22,24,26,28,30,33,36,39,42,45,48,51,55,59,63,67]]
 ordermatrix =[[1,2,3,4,5,6,7,8,9,10], [10,15,20,25,30,40,50]]
-orderlist = [1,2,3,4,5,6,7,8,9,10,12,14,16,18,20]
+orderlist = [8,9,10,11,12,13,14,15,16,17,18,19,20,22,24,26,28,30,32,35,38,42,45,49,54,59,64,69,75]
 
 resho, resm = data.calc(orderlist, overwrite=True)
 
@@ -81,8 +81,8 @@ plt.xlabel('order')
 script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
 rel_resho_path = "export_data/dataHO"
 rel_resm_path = "export_data/dataMS"
-abs_resho_file_path = os.path.join(script_dir, rel_resho_path)
-abs_resm_file_path = os.path.join(script_dir, rel_resm_path)
+abs_resho_file_path = os.path.join(script_dir, rel_resho_path + ".txt")
+abs_resm_file_path = os.path.join(script_dir, rel_resm_path + ".txt")
 
 dataho = sp.array([orderlist, resho])
 

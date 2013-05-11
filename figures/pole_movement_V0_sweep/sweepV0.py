@@ -32,11 +32,11 @@ l = 1
 j = 1.5
 args = (problem, l, j)
 k_max=5
-order = 30
+order = 50
 
 peak_x = 0.2
 peak_y = 0.2
-order_nr = 5
+order_nr = 50
 V0s = sp.linspace(-65, -40, order_nr)
 
 rmax=40
@@ -52,11 +52,13 @@ plts.center_axis(ax)
 
 k_res=sp.empty(order_nr, 'complex')
 
+contour = triangle_contour(peak_x, peak_y, k_max, order/3)
+ks, _ = contour
+
 for m, V0 in enumerate(V0s):
     problem.V0=V0
     print order_nr-m, 'to go'
-    contour = triangle_contour(peak_x, peak_y, k_max, order/3)
-    ks, _ = contour
+
     Q = mom.QNums(l=1, j=1.5, k=range(len(contour[0])))
     H = mom.hamiltonian(contour, problem, Q)
     eigvals, eigvecs = energies(H)
@@ -68,6 +70,20 @@ for m, V0 in enumerate(V0s):
     #reswf = calc.gen_wavefunction(eigvecs[:,res], basis_function, contour)
     #reswf = calc.normalize(reswf, 0, 20, weight= lambda r: r**2)
     #absq_wavefunctions_res[:,m] = r**2 * absq(reswf(r))
+    
+data=sp.array([sp.real(k_res), sp.imag(k_res)])
+cont=sp.array([sp.real(ks), sp.imag(ks)])
+
+script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+rel_path = "export_data/data.txt"
+rel_cont_path = "export_data/cont.txt"
+
+abs_file_path = os.path.join(script_dir, rel_path)
+sp.savetxt(abs_file_path, sp.transpose(data))
+abs_cont_file_path = os.path.join(script_dir, rel_cont_path)
+sp.savetxt(abs_cont_file_path, sp.transpose(cont))
+
+"""    
 print 'done'
 ax.plot(sp.real(k_res), sp.imag(k_res), 'kD', markersize=7,
 markeredgewidth=1,markeredgecolor='k',
@@ -86,4 +102,5 @@ k=sp.sqrt(2*problem.mass*eigvals)
 #plt.plot(r, absq_wavefunctions_res[:,0])
 
 
-plt.show()
+#plt.show()
+"""

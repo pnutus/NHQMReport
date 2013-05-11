@@ -1,7 +1,6 @@
-When we move on to the problem of the \He{5} nucleus, we view 
-it as an alpha particle (\He{4}) interacting with a valence neutron.
-Since the exact interaction is unknown, we are using the established
-Woods-Saxon potential to approximate it. The Woods-Saxon potential is given by
+We view the \He{5} nucleus as an alpha particle (\He{4}) interacting with a valence neutron.
+Since the exact nucleon-nucleon interaction is unknown, we use the established
+Woods-Saxon potential as an approximation. The Woods-Saxon potential (\cref{fig:woods-saxons}) is given by
 \todo{What's the 4 for?}
 \todo{From where do we get our $V_0$ and $V\sub{so}$?}
 \begin{eq}
@@ -9,34 +8,53 @@ Woods-Saxon potential to approximate it. The Woods-Saxon potential is given by
 	V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr}
 \end{eq}
 where 
-\todo{exponential function? frac is so small ;)}
 \begin{eq}
-	f(r)=\frac{1}{1+e^{\frac{r-r_0}{d}}}.
+	f(r)=\frac{1}{1+\exp\p{\frac{r-r_0}{d}}}.
 \end{eq}
-A visualisation of this potential can be seen in \cref{fig:woods-saxon}. \todo{Should we put en extra figure of the potential here?}
-Notice its short range, stemming from the asymptotic $e^{-r}$ dependence 
-on distance. The parameters are $V0$, corresponding to the depth of the potential well, $V\sub{so}$ is spin-orbit coupling strength and $d$ can 
-be seen as the range of the potential. \todo{d, r0? isn't r0 range?} We see that the spin-orbit coupling 
-can be either attractive or repulsive depending on how the angular momenta
-couples. Recall that 
+We use the depth $V_0 = \SI{-47}{MeV}$, spin-orbit coupling strength $V\sub{so} = \SI{-7.5}{Mev}$, range $r_0 = \SI{2}{fm}$ and diffuseness $d = \SI{0.65}{fm}$.
+The spin-orbit coupling can be either attractive or repulsive depending on how the angular momenta couples
 \begin{eq}
   \vec{l}\cdot\vec{s} 
   = 
-  \frac{1}{2}\p{
+  \frac{1}{2}
+  \bigp{
     j(j+1)-l(l+1)-s(s+1)
-    }
+  }
+  =
+  \begin{cases}
+    l,    &\text{ if } j = l + \frac{1}{2}\\
+    -l-1, &\text{ if } j = l - \frac{1}{2}\\
+  \end{cases}
+  .
 \end{eq}
-where, for spin-$\frac{1}{2}$ particles such as neutrons, 
-$j=l-\frac{1}{2}$ or $j=l+\frac{1}{2}$.
+
 Since we approximate the system as a spherically symmetric interaction 
-between two particles, the problem can be reduced to a one-dimensional 
-radial equation.\todo{Explicitly describe the reduction to effective 
-one-body problem?} The implementation of \He{5} will thus be the same 
-as for the hydrogen atom, except for the new potential being very different because of its short range.\todo{Hydrogen  atom, if we still have it.}
+between two particles, we can reduce the problem to a one-dimensional equation by using the relative coordinate $r = r_\alpha - r_n$ and introducing the reduced mass
+\begin{eq}
+  \mu = \frac{m_\alpha m_n}{m_\alpha + m_n} \approx .
+\end{eq}
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      domain = 0:5.8, 
+      xmax = 5.9,
+      ymin = -47, ymax = 9,
+      xlabel = $r/\b{\si{fm}}$, ylabel = $V/\b{\si{MeV}}$,
+      axis x line = middle,
+      axis y line = left
+      ]
+      \addplot[black] {-47/(1 + e^((x-2)/0.65))};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The Woods-Saxon potential for $l = 0$, with $V_0 = \SI{-47}{MeV}$, $r_0 = \SI{2}{fm}$ and $d = \SI{0.65}{fm}$}
+  \label{fig:woods-saxons}
+\end{figure}
 
 \section{Convergence}
 \todo{Is convergence even important?}
-We can solve the problem using either HO expansion or discretizised momentum space. A comparison of performance between the methods for the hydrogen atom and \He{5} problems is shown in \cref{fig:HO vs mom}.
+We can solve the problem using either HO expansion or discretizised momentum space. A comparison of convergence is shown in \cref{fig:HO vs mom}.
 \todo{Skip zoom and title of plot.} 
 \begin{figure}
   \centering
@@ -60,6 +78,6 @@ The other state has an energy $E>0$ meaning that it, too, must be unbound. Howev
   \caption{Two solutions to the Woods-Saxon potential with well depth $V0=\SI{-52}{MeV}$ and $\SI{-47}{MeV}$, using the momentum space method.}
   \label{fig:resonance wavefunction}
 \end{figure}
-\todo{Start with a deeper well holding a bound state, and then decrease it to get resonances? Add another subplot? Also, plot unbound state with dashed line?}
+\todo{Start with a deeper well holding a bound state, and then decrease it to get resonances? Add another subplot?}
 
 \section{Varying $\omega$}
