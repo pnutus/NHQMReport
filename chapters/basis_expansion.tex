@@ -308,11 +308,30 @@ support the use of infinite potentials, and since
 \cref{eq:hydrogen potential} diverges as $r \to 0$,  
 a small deviation is not surprising.
 
-\begin{figure}
-  \hspace{-2cm}
-    \includegraphics[width = 1.25\textwidth]{figures/hydrogen_convergence.pdf}
-  \caption{Ground state energy of hydrogen atom as a function of $N$, the number of states included in the basis.}
+\begin{figure}	
+\centering	
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel=Basis size $N$,
+      ylabel=Ground state energy $E_0/\b{\si{MeV}}$,
+		  axis y line=left,
+		  axis x line=bottom,
+      legend style={at={(0.65,0.27)},
+           anchor=north,legend columns=1},
+      xtickmax=60,
+	    xmin=5,
+      thick, no markers]
+	\addplot
+    table[x index = 0, y index = 1]  
+    {figures/hydrogen_convergence/hydrogen_convergence.data};
+	  \addlegendentry{Harmonic Oscillator}
+	\addplot
+    table[x index = 0, y index = 2] 
+    {figures/hydrogen_convergence/hydrogen_convergence.data};
+    \addlegendentry{Plane Wave Expansion}
+    \end{axis}
+\end{tikzpicture}
+  \caption{Ground state energy $E_0$ of the hydrogen atom as a function of $N$, the number of states included in the basis.}
   \label{fig:hydrogen HOvsMom}
 \end{figure}
-
 

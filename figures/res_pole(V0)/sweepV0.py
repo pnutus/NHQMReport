@@ -40,7 +40,7 @@ contour = triangle_contour(peak_x, peak_y, k_max, order/3)
 ks, _ = contour
 
 
-order_nr = 50
+order_nr = 1
 V0s = sp.linspace(-65, -40, order_nr)
 k_res = sp.empty(order_nr, 'complex')
 
@@ -59,7 +59,7 @@ for m, V0 in enumerate(V0s):
 res_pole    = sp.array([sp.real(k_res), sp.imag(k_res)])
 contour     = sp.array([sp.real(ks), sp.imag(ks)])
 
-script_dir = os.path.dirname(os.path.realpath(__file__))
+script_dir = os.path.dirname(os.path.realpath(__file__)) + "/"
 
 sp.savetxt(script_dir + "poles.data", res_pole.T)
 sp.savetxt(script_dir + "contour.data", contour.T)
