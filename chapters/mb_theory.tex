@@ -61,7 +61,7 @@ Utilizing the formulation introduced above we can rewrite the Hamiltonian of a m
 \sum_{\alpha \beta} \bra{\alpha} T \ket{\beta} a_{\alpha}^{\dagger} a_{\beta} + \frac{1}{2}\sum_{\alpha \beta \gamma \delta} ( \alpha \beta| V | \gamma \delta ) a_{\alpha}^{\dagger} a_{\beta}^{\dagger} a_{\delta} a_{\gamma},
 \end{equation}
 
-where $\hat{T}$ is a one-body operator and $\hat{V}$ is a two-body operator.
+where $\hat{T}$, $\hat{V}$ are operators acting on one body and two bodies respectively.
 Typicaly, the kinetic energy part of the Hamiltonian is the one-body operator, while the potential is the two-body operator.
 In our case we want to use our previous results from the \He{5} problem, ie the interaction between a neutron and an He-4 nucleus.
 This was reduced to a one-dimensional problem and were easy to calculate.
@@ -76,7 +76,7 @@ This leads us to yet another formulation of the Hamiltonian
 
 with $H_1$ as the two body problem hamiltonian and $V_{n-n}$ as the neutron-neutron potential.
 
-The strength of this formalism is that it is not constrained to be used in the case of two neutrons, but for an arbitrary number of particles. It will thus, in principle, be easy to extend our algorithms to solve many body problems with an arbitrary number of particles. In reality however, as we will see later, this will lead to very large matrix dimensions that quickly grow too large for modern computers to handle.
+The strength of this formalism is that it is not constrained to be used in the case of two neutrons, but for an arbitrary number of particles. It will thus, in principle, be easy to extend our algorithms to solve many body problems with an arbitrary number of particles. In reality however, as we will see later, this will lead to very large matrix dimensions that quickly grow too large for modern computers to handle.\todo{If we get there...}
 
 \subsection{Some Break here}
 Earlier we solved the one-body problem
@@ -85,7 +85,7 @@ Earlier we solved the one-body problem
 H \ket{\psi_n} = E_n \ket{\psi_n}.
 \end{equation}
 We cannot use these solutions $\ket{\psi_n}$ as they are, since earlier we did not need to consider the $m$ quantum number.
-Iin the many body case, however, the states $\ket{\psi_n}$ can have different $m$ quantum numbers.
+In the many body case, however, the states $\ket{\psi_n}$ can have different $m$ quantum numbers.
 This is a consequence of the pauli principle, which thus also makes it possible to have both bodies in states with energy $E_n$, as long as they have different $m$ quantum numbers.\todo{Rewrite sentence.}
 The result we get in this case with a three body system is
 

@@ -38,7 +38,7 @@ A many-body state is represented as a number representing the sign and a list of
 The mb-state is formed by taking a vacuum-state, an empty list, and adding a single particle state along with any other quantum number needed for the calculations, this is described mathemtically in \cref{eq:creation}.
 To avoid oversummation, the single particle states are ordered in a lexicographic order and our calculations only require one of the permutations of a set of given sp-states, an integer is used to keep track of the sign of a given permutation. 
 This integer is calculated as in \cref{eq:creation sign}.
-Because of the fermionic nature of our particles we do not allow two sp-states with the same quantum numbers and if one tries to create a state which is already present, as is the case in \cref{eq:creation zero}, the sign will be set to 0 and it will be regarded as a vacuum-state in our calculations.
+Because of the fermionic nature of our particles we do not allow two sp-states with the same quantum numbers and if one tries to create a state which is already present, as is the case in \cref{eq:creation zero}, the sign will be set to 0 and it will be regarded as a vacuum-state in further calculations.
 The annihilation operator is implemented in a similar fashion, it removes a given state (set of quantum numbers) and returns a new FermionState without the given to-be-removed state.
  
 % To keep track of all the many-body states and to perform sums over all possible many-body states we arrange a list with all the states and signify each many body state as the index representing the state in this list
@@ -55,7 +55,7 @@ The one-body operator is the simple kinetic energy operator that we have known a
 %Presented on the form of \cref{eq: stans i mb-teori} the one-body operator, \fockop{T} simply yields the kinetic energy of the two particles, but in a matrix representation 
  In our matrix representation the bra and the ket will be the same in a diagonal-element and thus have the same single-particle states.
  This operator returns the kinetic energy of these two single particle states. 
- The energies are eigenvalues to the sp-hamilton matrix and have already been calculated and can easily be retrieved.
+ The energies are eigenvalues to the sp-hamilton matrix and have already been calculated and can be retrieved.
 
 \subsubsection{The two-body operator}
 The two-body operator is the contribution from the neutron-neutron interaction and is computationally taxing. Although the potential is (ridiculously) simple this calculation requires sums over all the quantum numbers in both the bra and the ket; the mathematical expression for the hamiltonian is presented in \cref{two-body op sum}. 
