@@ -16,7 +16,7 @@ osc.integration_order = 60
 problem = H_atom
 problem.HO_omega = 1
 
-orders = range(1,20)
+orders = range(11,20)
 res_HO = []
 res_mom = []
 
@@ -36,3 +36,4 @@ for order in orders:
 script_dir = os.path.dirname(os.path.realpath(__file__)) + "/"
 sp.savetxt(script_dir + "hydrogen_convergence.data", 
             sp.array([orders, res_HO, res_mom]).T)
+            

@@ -318,17 +318,18 @@ a small deviation is not surprising.
 		  axis x line=bottom,
       legend style={at={(0.65,0.27)},
            anchor=north,legend columns=1},
-      xtickmax=60,
-	    xmin=5,
-      thick, no markers]
-	\addplot
-    table[x index = 0, y index = 1]  
-    {figures/hydrogen_convergence/hydrogen_convergence.data};
-	  \addlegendentry{Harmonic Oscillator}
-	\addplot
-    table[x index = 0, y index = 2] 
-    {figures/hydrogen_convergence/hydrogen_convergence.data};
-    \addlegendentry{Plane Wave Expansion}
+      thick, no markers
+      ]
+    	\addplot
+        table[x index = 0, y index = 1]  
+        {figures/hydrogen_convergence/hydrogen_convergence.data};
+    	  \addlegendentry{Harmonic Oscillator}
+    	\addplot
+        table[x index = 0, y index = 2] 
+        {figures/hydrogen_convergence/hydrogen_convergence.data};
+        \addlegendentry{Plane Wave Expansion}
+      \addplot coordinates {(11, -13.6) (19, -13.6)};
+        \addlegendentry{Theoretical value}
     \end{axis}
 \end{tikzpicture}
   \caption{Ground state energy $E_0$ of the hydrogen atom as a function of $N$, the number of states included in the basis.}
