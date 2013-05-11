@@ -73,9 +73,35 @@ The other state has an energy $E>0$ meaning that it, too, must be unbound. Howev
 
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width = \textwidth]{figures/resonance_wavefunction.pdf}
-  \caption{Two solutions to the Woods-Saxon potential with well depth $V0=\SI{-52}{MeV}$ and $\SI{-47}{MeV}$, using the momentum space method.}
+  \pgfplotstableread{figures/wavefunctions/wavefunctions.data}\wavefunctions
+  \centering{
+  \pgfplotsset{
+    width = 0.45\textwidth, height = 7cm,
+    xlabel = $r/\b{\si{fm}}$, ylabel = $r^2\absq{R(r)}$,
+    axis x line = bottom,
+    axis y line = left,
+    no markers,
+    ytick = \empty,
+    ymax = 1.7
+  }
+  \subfloat[$V_0=\SI{-52}{MeV}$]{
+    \begin{tikzpicture}
+      \begin{axis}
+        \addplot          table[x index=0, y index=1] {\wavefunctions};
+        \addplot+[dashed] table[x index=0, y index=2] {\wavefunctions};
+      \end{axis}
+    \end{tikzpicture}
+  }
+  \subfloat[$V_0 = \SI{-47}{MeV}$]{
+    \begin{tikzpicture}
+      \begin{axis}
+        \addplot          table[x index=0, y index=3] {\wavefunctions};
+        \addplot+[dashed] table[x index=0, y index=4] {\wavefunctions};
+      \end{axis}
+    \end{tikzpicture}
+  }
+  }
+  \caption{An unbound and resonant solution to the Woods-Saxon potential for different depths $V_0$, using the plane wave expansion.}
   \label{fig:resonance wavefunction}
 \end{figure}
 \todo{Start with a deeper well holding a bound state, and then decrease it to get resonances? Add another subplot?}

@@ -1,7 +1,5 @@
 from __future__ import division
 import scipy as sp
-import matplotlib.pyplot as plt
-import plot_setup as plts
 from nhqm.bases import mom_space as mom
 from nhqm.problems import He5
 from nhqm.bases.gen_contour import gauss_contour
@@ -38,6 +36,12 @@ wf1 = sqrd_wf(eigvecs_1[:,17])
 wf2_res = sqrd_wf(eigvecs_2[:,13])
 wf2 = sqrd_wf(eigvecs_2[:,17])
 
+wavefunctiondata = sp.array([r, wf1_res, wf1, wf2_res, wf2])
+import os
+script_dir = os.path.dirname(os.path.realpath(__file__)) + "/"
+sp.savetxt(script_dir + "wavefunctions.data", wavefunctiondata.T)
+
+"""
 fig1 = plts.plot_init()
 fig1.clf()
 ax1=fig1.add_subplot(121)
@@ -62,3 +66,4 @@ ax2.set_xlabel(r'$r$ [fm]')
 fig1.text(0.7, 0.5, r'$V_0 = -47$ MeV')
 
 plt.savefig('out.pdf', transparent=True, bbox_inches='tight', pad_inches=0.1) 
+"""
