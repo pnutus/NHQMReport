@@ -92,8 +92,15 @@ The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a 
   \psi(\vec{r}) = R(r) Y_l^m(\theta, \phi).
 \end{eq}
 Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. \todo{$j$ in here somewhere?}
-Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, which means that 
-\todo{Hjälp? Hur skriver vi det här på bästa sätt?}
+Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, which will result in a factor of $\delta_{ll'}\delta_{mm'}$.
+This delta factor put the restraint $l=l'$ and $m=m'$ on the SE, giving us
+\begin{eq}
+  \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
+\end{eq}
+If we now think of $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
+we notice that the "diagonals"  of this matrix have the same $l$ and $m$ throughout,
+which can be expressed as {\emph $H$ is diagonal in $l$ and $m$}
+\todo{Hjälp? Hur skriver vi det här på bästa sätt? || Fungerar detta?}
 
 
 Since we are considering a spherically symmetric Hamiltonian
