@@ -111,3 +111,23 @@ An example of a contour is seen in
 \section{Studying the Resonance}
 
 \todo{Results and shit here}
+
+\begin{figure}	
+\centering	
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel=Re $k$,
+      ylabel=Im $k$,
+		  axis lines = middle,
+      xmax=1,
+      enlargelimits,
+      no markers
+      ]
+	
+	\addplot+[very thick, ->] table  {figures/res_pole(V0)/poles.data};
+	    \addlegendentry{Pole position}
+	\addplot+[very thick] table {figures/res_pole(V0)/contour.data};
+    \addlegendentry{Contour}
+    \end{axis}
+\end{tikzpicture}
+\end{figure}
