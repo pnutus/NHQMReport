@@ -1,0 +1,36 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\begin{document}
+\pgfkeys{/pgfplots/MyAxisStyle/.style={width=0.9\linewidth,scale only axis}}
+%\pgfkeys{/pgfplots/MyLineStyle/.style={samples=50, smooth, ultra thick}}
+
+remember to restrict Mom to order >= 11
+
+\begin{figure}	
+\centering	
+\begin{tikzpicture}
+    \begin{axis}[
+		MyAxisStyle,
+        xlabel=Order,
+        ylabel=Energy ($eV$),
+		axis y line=left,
+		axis x line=bottom,
+        legend style={at={(0.65,0.27)},
+           anchor=north,legend columns=1}]
+	
+	\addplot +[thick, no markers] table  {export_data/dataHO};
+	    \addlegendentry{Harmonic Oscillator}
+	\addplot +[thick, no markers] table {export_data/DataMS};
+    \addlegendentry{Plane Wave Expansion}
+
+
+
+    \end{axis}
+\end{tikzpicture}
+\end{figure}
+
+
+\end{document}
