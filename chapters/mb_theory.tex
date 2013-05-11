@@ -2,7 +2,7 @@ In order to solve the three-body problem of \He{6}, we have to introduce some ne
 
 \section{Fock space}
 \label{sec:fock space}
-To treat the three-body problem we work in Fock space, here many-body states are described in terms of one-body states. Formally this is written as the direct sum of tensor proucts of copies of single-particle hilbert spaces. 
+To treat the three-body problem we work in \emph{Fock space}, here many-body states are described in terms of one-body states. Formally this is written as the direct sum of tensor proucts of copies of single-particle hilbert spaces. 
 
 \begin{equation}
 F_{\nu}(H) =
@@ -10,7 +10,7 @@ F_{\nu}(H) =
 \C \oplus H \oplus(S_{\nu}(H \otimes H)) \oplus (S_{\nu}(H \otimes H \otimes H)) \oplus \dots
 \end{equation}
 
-In the case of bosons $S_{\nu}$ is the operator that symetrize a tensor, for fermions it is the opposite and called an antisymetrizer.
+In the case of bosons, $S_{\nu}$ is the operator that symetrize a tensor, for fermions it is the opposite and called an antisymetrizer.
 Further, we denote product states for N partlicles as
 
 \begin{equation}
@@ -27,7 +27,7 @@ with orthogonality
 
 In this report we will only handle Fock space for fermions, since bosons not are relevant for this thesis.
 
-Now, with Fock space defined as above, we can think of it to consist of a vacuum state $\ket{0}$ with no particles, the set of all possible one particle states $\{ \ket{\alpha} \} $, the complete set of antisymmetric two-particle states $\ket{\alpha_n \alpha_{n'}}$ and so on. A creation operator $a^{\dagger}$ is introduced and defined by
+Now, with Fock space defined as above, we can think of it to consist of a vacuum state $\ket{0}$ with no particles, the set of all possible one-particle states $\{ \ket{\alpha} \} $, the complete set of antisymmetric two-particle states $\ket{\alpha_n \alpha_{n'}}$ and so on. A creation operator $a^{\dagger}$ is introduced and defined by
 
 \begin{equation}
 a_{\alpha}^{\dagger} \ket{\alpha_1 \alpha_2 ... \alpha_N} =
@@ -74,7 +74,7 @@ This leads us to yet another formulation of the Hamiltonian
 \sum_{\alpha \beta} \bra{\alpha} H_1 \ket{\beta} a_{\alpha}^{\dagger} a_{\beta} + \frac{1}{2}\sum_{\alpha \beta \gamma \delta} ( \alpha \beta| V_{n-n} | \gamma \delta ) a_{\alpha}^{\dagger} a_{\beta}^{\dagger} a_{\delta} a_{\gamma}
 \end{equation}
 
-with $H_1$ as the two body problem hamiltonian and $V_{n-n}$ as the neutron-neutron potential.
+with $H_1$ as the two-body problem hamiltonian and $V_{n-n}$ as the neutron-neutron potential.
 
 The strength of this formalism is that it is not constrained to be used in the case of two neutrons, but for an arbitrary number of particles. It will thus, in principle, be easy to extend our algorithms to solve many body problems with an arbitrary number of particles. In reality however, as we will see later, this will lead to very large matrix dimensions that quickly grow too large for modern computers to handle.\todo{If we get there...}
 
