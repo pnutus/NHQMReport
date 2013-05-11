@@ -3,7 +3,7 @@ We want to study the nuclei of Helium isotopes by solving the \emph{Time Indepen
   \label{eq:TISE}
   H \ket\psi = E \ket\psi,
 \end{eq}
-commonly written in the position basis as
+commonly written in the position basis as \todo{Position or coordinate?}
 \begin{eq}
   \label{eq:TISEpos}
   \p{-\frac{\hbar^2}{2m}\nabla^2 + V(\vec{r})}\psi(\vec{r}) = E\psi(\vec{r}).
@@ -66,7 +66,7 @@ Let us now expand the TISE in the abstract $\ket{n}$ basis. We start by insertin
   =
   E \ket\psi.
 \end{eq}
-By closing \cref{eq:lincomb} with $\bra{n}$ on the left side and using orthonormality, we see that $\braket{n'}{\psi} = \psi_{n'}$. Now we close \cref{eq:expand1} with $\bra{n}$ on the left
+By closing \cref{eq:lincomb} with $\bra{n}$ on the left side and use orthonormality, we see that $\braket{n'}{\psi} = \psi_{n'}$. Now we close \cref{eq:expand1} with $\bra{n}$ on the left
 \begin{eq}
   \label{eq:expand2}
   \sum_{n'} \bra{n} H \ket{n'} \psi_{n'}
@@ -115,7 +115,7 @@ The procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and give
 \todo{Spherical symmetry important enough for own section?}
 Since we are considering a spherically symmetric Hamiltonian
 the $l$ and $m$ in $\ket{nlm}$ commute with $H$
-and will therefore contribute with a $\delta_{ll'}\delta_{mm'}$ factor. 
+and will thus contribute with a $\delta_{ll'}\delta_{mm'}$ factor. 
 This means we can drop the primes and write \cref{eq:HOexpanded} as
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
