@@ -19,11 +19,13 @@ remember to restrict Mom to order >= 11
 		axis y line=left,
 		axis x line=bottom,
         legend style={at={(0.65,0.27)},
-           anchor=north,legend columns=1}]
+           anchor=north,legend columns=1},
+    xtickmax=60,
+	xmin=5]
 	
-	\addplot +[thick, no markers] table  {export_data/dataHO};
+	\addplot +[thick, no markers] table  {export_data/dataHO.txt};
 	    \addlegendentry{Harmonic Oscillator}
-	\addplot +[thick, no markers] table {export_data/DataMS};
+	\addplot +[thick, no markers] table {export_data/DataMS.txt};
     \addlegendentry{Plane Wave Expansion}
 
 
