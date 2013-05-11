@@ -25,8 +25,8 @@
 \usetikzlibrary{decorations.pathreplacing,
                 decorations.markings, 
                 shapes.geometric}
-\tikzset{>=stealth}
 \tikzset{
+  > = stealth,
   % style to apply some styles to each segment of a path
   on each segment/.style={
     decorate,
@@ -57,7 +57,9 @@
       }}},
   mid arrows/.style={postaction={on each segment={->-}}},
 }
-
+\usepackage{pgfplots}
+\pgfplotsset{
+  samples = 200}
 
 \usepackage{hyperref}
 \usepackage{cleveref}

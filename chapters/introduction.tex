@@ -1,8 +1,5 @@
-In Quantum Mechanics (QM), the dynamics of a system is described by the Schrödinger equation
-\begin{eq}
-i\hbar\ddt\ket\psi=H\ket\psi.
-\end{eq}
-Depending on the potential of a system, the solutions to the Shrödinger equation can be either discrete or continuous, corresponding to bound and unbound states. 
+The properties of a quantum mechanical system is largely determined by its potential. 
+Depending on the shape of the potential, a system can give rise to bound states, unbound states or both.
 A \emph{closed} quantum system with an infinite potential well, such as the harmonic oscillator, has only bound solutions. 
 Bound means that the wavefunction stays localized indefinitely inside the potential well. 
 An \emph{open} quantum system, on the other hand, has unbound solutions, where the wavefunction passes through the system only slightly perturbed. 
@@ -15,18 +12,30 @@ The potentials of an open and a closed system can be seen in \cref{fig:potential
   }
   \subfloat[]{
     \label{fig:harmosc}
-    \begin{tikzpicture}[domain=0:4.5, samples=100]
-      %\clip (-0.2, -5.1) rectangle (7, 1);
-      \axes{$r$}{-0.1}{6}{$V$}{-5.1}{0.5}
-      \draw plot (\x, 0.3*\x*\x - 4.8);
+    \begin{tikzpicture}
+      \begin{axis}[
+        xlabel = $r$,
+        ylabel = $V$,
+        axis lines = middle,
+        ymin = -5.1, ymax = 2,
+        ticks = none
+        ]
+        \addplot[black] {x^2 - 5};
+      \end{axis}
     \end{tikzpicture}
   }
   \subfloat[]{
     \label{fig:woods-saxon}
-    \begin{tikzpicture}[domain=0:6, samples=100]
-      \draw[->] (-0.1, 0) -- (6, 0) node[right] {$r$};
-      \draw[->] (0, -5.1) -- (0, 0.5) node[above] {$V$};
-      \draw plot (\x,{-5/(1 + exp((\x - 2)/0.65))});
+    \begin{tikzpicture}
+      \begin{axis}[
+        xlabel = $r$,
+        ylabel = $V$,
+        axis lines = middle,
+        ymin = -5.1, ymax = 2,
+        ticks = none
+        ]
+        \addplot[black] {-5/(1+e^((abs(x)-2)/0.65))};
+      \end{axis}
     \end{tikzpicture}
   }
   % \\
