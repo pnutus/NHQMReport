@@ -90,9 +90,10 @@ The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a 
 \begin{eq}
   \psi(\vec{r}) = R(r) Y_l^m(\theta, \phi).
 \end{eq}
-Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. 
+Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. \todo{$j$ in here somewhere?}
 Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, which means that 
 \todo{Hjälp? Hur skriver vi det här på bästa sätt?}
+
 
 Since we are considering a spherically symmetric Hamiltonian
 the $l$ and $m$ in $\ket{nlm}$ commute with $H$
@@ -102,7 +103,7 @@ This means we can drop the primes and write \cref{eq:HOexpanded} as
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
 \end{eq}
 If we see $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix, this can be expressed as {\it $H$ is diagonal in $l$ and $m$}.
-\todo{gammalt stuff för inspiration}
+\todo{Old stuff for inspiration}
 
 \section{The Harmonic Oscillator Basis}
 \label{sec:harmosc}
@@ -273,6 +274,20 @@ with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{
   \sum_{j=1}^N 
     \sqrt{w_j}k_j \phi'_j j_l(k_j r).
 \end{eq}
+
+\section{Numerical Considerations}
+\todo{Structure suggestion}
+
+In order to implement the basis expansion methods
+
+\begin{itemize}
+  \item truncation
+  \item integration, G-L quadrature
+  \item consider each $l$, $j$ separately
+\end{itemize}
+
+\subsection{Discretization and symmetrization of the plane wave basis}
+
 
 \section{Verifying with the Hydrogen Atom} \todo{Did we decide to not have this? Maybe in appendix?}
 
