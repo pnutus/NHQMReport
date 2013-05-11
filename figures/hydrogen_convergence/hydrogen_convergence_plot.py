@@ -16,6 +16,8 @@ import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import hydrogen_convergence_data as data
 
+import scipy as sp
+
 mom.integration_order = 20
 mom.integration_range = 10
 osc.integration_order = 60
@@ -26,7 +28,7 @@ TODO
 change xlable from order to Number of Basis Size N """
 
 
-ordermatrix=[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], [14,16,18,20,22,24,26,28,30,33,36,39,42,45,48,51,55,59,63,67]]
+ordermatrix=[[8,9,10,11,12,14,15,16,17,18,19,20, 22,24,26,28,30,33,36,39,42,45,49,53,57,61,65,70], [14]]
 
 
 
@@ -70,4 +72,18 @@ ax_list[1].legend( (l1, l2, l3),
         'lower right')
     
 #plt.show() 
-plts.save(None, 'hydrogen_convergence2')
+plts.save(fig, 'hydrogen_convergence3')
+
+script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+rel_resho_path = "export_data/dataHO"
+rel_resm_path = "export_data/dataMS"
+abs_resho_file_path = os.path.join(script_dir, rel_resho_path + ".txt")
+abs_resm_file_path = os.path.join(script_dir, rel_resm_path + ".txt")
+
+print ordermatrix[0], resm[0]
+dataho = sp.array([ordermatrix[0], resho[0]])
+
+datam = sp.array([ordermatrix[0], resm[0]])
+
+sp.savetxt(abs_resm_file_path, sp.transpose(datam))
+sp.savetxt(abs_resho_file_path, sp.transpose(dataho))

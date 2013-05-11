@@ -53,7 +53,6 @@ def calc(ordermatrix, overwrite=False):
         omega =1
         problem.HO_omega = omega
 
-
         for i, orderlist in enumerate(ordermatrix):
             #print orderlist
             resho = []
@@ -64,13 +63,13 @@ def calc(ordermatrix, overwrite=False):
                 H = osc.hamiltonian(order, problem, Q)
                 eigvals, eigvecs = energies(H)
                 #print osc.name, eigvals[0], problem.units
-                resho.append(eigvals[0])
+                resho.append(eigvals[0]*problem.eV_factor)
     
                 contour = gauss_contour([0, 5], order)
                 H = mom.hamiltonian(contour, problem, Q)
                 eigvals, eigvecs = energies(H)
                 #print mom.name, eigvals[0], problem.units
-                resm.append(eigvals[0])
+                resm.append(eigvals[0]*problem.eV_factor)
                 
             sp.save(abs_resho_file_path[i], resho)
             sp.save(abs_resm_file_path[i], resm)   
