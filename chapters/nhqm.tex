@@ -145,12 +145,21 @@ We also noticed that it was no longer the state with lowest (real) energy that w
   \centering	
   \begin{tikzpicture}
       \begin{axis}[
-        xlabel=Re $k$,
-        ylabel=Im $k$,
+        xlabel=Re $k/\b{\si{fm^{-1}}}$,
+        ylabel=Im $k/\b{\si{fm^{-1}}}$,
   		  axis x line = middle,
         axis y line = left,
+        every axis y label/.style={
+          at = {(current axis.above origin)},
+          anchor = north west,
+        },
+        every axis x label/.style={
+          at = {(current axis.right of origin)},
+          anchor = north east,
+        },
+        every x tick label/.append style = {anchor = south, yshift = 3pt},
         xmax=1,
-        ytickmax = 0.3,
+        ytickmax = 0.3, xtickmax = 0.9,
         enlarge y limits,
         no markers,
         ]
