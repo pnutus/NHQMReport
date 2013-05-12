@@ -267,7 +267,14 @@ with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{
 
 \section{Numerical Considerations}
 
-In order to use basis expansion on a computer, some 
+In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. This includes truncation of the basis eigensolver algorithms, numerical integration and reducing the size of the matrix.
+
+We truncate the infinite $\ket{nlm}$ and $\ket{k}$ bases, i.e. we only include a finite number $N$ of states in the basis
+\begin{eq}
+  \sum_{n'=0}^N H_{nn'} \psi_{n'} = E \psi_n.
+\end{eq}
+This gives us an $N \times N$ matrix 
+
 
 \begin{itemize}
   \item truncation
@@ -316,6 +323,7 @@ support the use of infinite potentials, and since
 a small deviation is not surprising.
 
 \tikzset{external/remake next}
+%\tikzset{external/remake next}
 \tikzsetnextfilename{hydrogen_convergence}
 \begin{figure}
 \centering	

@@ -47,7 +47,8 @@ as in \cref{fig:berggren contour}.
   }
   \subfloat[]{
   \label{fig:simple contour}
-  \tikzsetnextfilename{simple_contour}
+  %\tikzset{external/remake next}
+\tikzsetnextfilename{simple_contour}
   \begin{tikzpicture}[scale = 2.5]
     \draw[->] (-1.2, 0) -- (1.2, 0) node[right] {$\Re k$};
     \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
@@ -61,7 +62,8 @@ as in \cref{fig:berggren contour}.
   }
   \subfloat[]{
   \label{fig:berggren contour}
-  \tikzsetnextfilename{berggren_contour}
+  %\tikzset{external/remake next}
+\tikzsetnextfilename{berggren_contour}
   \begin{tikzpicture}[scale = 2.5]
     \draw[->] (-1.2, 0) -- (1.2, 0) node[right] {$\Re k$};
     \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
@@ -103,6 +105,7 @@ and rescale the Gauss-Legendre points to each of the different segments.
 An example of a contour is seen in 
 \cref{fig:triangle contour}.
 
+%\tikzset{external/remake next}
 \tikzsetnextfilename{triangle_contour}
 \begin{figure}[H]
   \centering
@@ -129,16 +132,19 @@ An example of a contour is seen in
 
 \todo{Results and shit here}
 
-\tikzsetnextfilename{pole_position}
+%\tikzset{external/remake next}
+\tikzsetnextfilename{pole(V0)}
 \begin{figure}
   \centering	
   \begin{tikzpicture}
       \begin{axis}[
         xlabel=Re $k$,
         ylabel=Im $k$,
-  		  axis lines = middle,
+  		  axis x line = middle,
+        axis y line = left,
         xmax=1,
-        enlargelimits,
+        ytickmax = 0.3,
+        enlarge y limits,
         no markers,
         ]
       	\addplot+[very thick, ->] table  {figures/res_pole(V0)/poles.data};
@@ -148,6 +154,6 @@ An example of a contour is seen in
       \end{axis}
   \end{tikzpicture}
   \caption{The pole position as a function of $V_0$.}
-  \label{fig:pole position}
+  \label{fig:pole(V0)}
 
 \end{figure}
