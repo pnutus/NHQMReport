@@ -168,9 +168,6 @@ The real space wavefunction $R(r)$ for a state will be expressed as a linear com
   R_l(r) = \sum_n \psi_{nl} R_{nl}(r).
 \end{eq}
 
-
-
-
 \section{The Plane Wave Basis}
 \label{sec:mom_space}
 
@@ -203,7 +200,32 @@ and $j_l(kr)$ are the spherical bessel functions of order $l$. $\phi(k)$ is rela
 R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
 \end{eq}
 
-\subsection{Discretization}
+
+\section{Numerical Considerations}
+
+In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. This includes truncation of the bases, matrix size reduction, numerical integration and eigensolver optimizations. The plane wave basis is continuous and thus requires special treatment.
+
+The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
+The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo{Questionable?}
+This gives us an $N \times N$ hamiltonian matrix $H$.
+Since $H$ is diagonal in $l$ and $m$, we can consider each value of $l$ and $m$ separately, reducing the size of the matrix and thus the amount of computation needed to solve for the eigenvalues.
+The equation is then, for a given $l$ and $m$,
+\begin{eq}
+  \sum_{n'= 0}^N \bra{n} H \ket{n'} \psi_{n'} = E\psi_{n},
+\end{eq}
+or in matrix notation
+\begin{eq}
+  \label{eq:matrix eq}
+  H\psi = E\psi.
+\end{eq}
+
+We calculate the matrix elements $H_{ij}$ with \cref{eq:HO matrix elements,eq:plane wave matrix elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (\cref{app:gauss-legendre}) and setting the upper limit to a finite number.
+If the matrix is hermitian or symmetric, we only need to calculate the elements above the diagonal, reducing the number of elements we need calculate by about half. 
+
+When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a specialized algorithm, which is faster.
+
+
+\subsection{Discretization and symmetrization of the plane wave basis}
 The integral equation \cref{eq:radial mom space TISE} can be rewritten as a matrix equation through discretization, turning the integral into a sum over a finite set of points $k_j$ and $\rd{k}$ into a set of weights $w_j$:
 \todo{Maybe this delta trickery is unnecessary. Do it after discretization.}
 \begin{eq}
@@ -235,7 +257,7 @@ where $\phi_i=\phi(k_i)$ and
 
 Because of the $k_j^2$ in the second term of the matrix elements 
 (\cref{eq:mom matrix}), the $H_{ij}$ matrix will not be symmetric. 
-Working with a symmetric matrix will be faster, hence we perform 
+Working with a symmetric matrix is be faster, hence we perform 
 the transformation
 \begin{eq}
   \phi_i &\mapsto
@@ -248,6 +270,7 @@ the transformation
 \end{eq}
 which gives us a symmetric matrix
 \begin{eq}
+  \label{eq:plane wave matrix elements}
   H_{ij}' = \frac{k_i^2}{2\mu}\delta_{ij} + \sqrt{w_i w_j}k_i k_j V_{ij}.
 \end{eq}
 The Shrödinger equation then becomes
@@ -264,41 +287,6 @@ with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{
   \sum_{j=1}^N 
     \sqrt{w_j}k_j \phi'_j j_l(k_j r).
 \end{eq}
-
-\section{Numerical Considerations}
-
-In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. This includes truncation of the basis eigensolver algorithms, numerical integration and reducing the size of the matrix.
-
-We truncate the infinite $\ket{nlm}$ and $\ket{k}$ bases, i.e. we only include a finite number $N$ of states in the basis
-\begin{eq}
-  \sum_{n'=0}^N H_{nn'} \psi_{n'} = E \psi_n.
-\end{eq}
-This gives us an $N \times N$ matrix 
-
-
-\begin{itemize}
-  \item truncation
-  \item integration, G-L quadrature
-  \item consider each $l$, $j$ separately
-\end{itemize}
-
-
-The $\ket{nlm}$ basis is infinite in $n$, but we need a finite matrix, we thus truncate the basis to $N$ basis states, giving us an $N \times N$ matrix.
-Since the matrix is diagonal in $l$ and $m$, we do the calculation separately for each value of $l$ and $m$ to reduce the amount of computation needed to solve for the eigenvalues.
-The equation we are solving is then, for a given $l$ and $m$,
-\begin{eq}
-  \sum_{n'= 0}^N \bra{n} H \ket{n'} \psi_{n'} = E\psi_{n},
-\end{eq}
-or in matrix notation
-\begin{eq}
-  H\psi = E\psi.
-\end{eq}
-This matrix equation is solved using a standard eigensolver algorithm, which uses the fact that the matrix is hermitian to solve the equation faster.
-
-We calculate the matrix elements using \cref{eq:HO matrix elements}. 
-The integration is performed using the Gauss-Legendre quadrature and setting the upper limit to a finite number. \todo{is this the first mention of GL-int? yes. yes it is.}
-
-\subsection{Discretization and symmetrization of the plane wave basis}
 
 
 \section{Verifying with the Hydrogen Atom} \todo{Did we decide to not have this here? Maybe in appendix?}
