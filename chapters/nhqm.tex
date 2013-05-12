@@ -47,6 +47,7 @@ as in \cref{fig:berggren contour}.
   }
   \subfloat[]{
   \label{fig:simple contour}
+  \tikzsetnextfilename{simple_contour}
   \begin{tikzpicture}[scale = 2.5]
     \draw[->] (-1.2, 0) -- (1.2, 0) node[right] {$\Re k$};
     \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
@@ -60,6 +61,7 @@ as in \cref{fig:berggren contour}.
   }
   \subfloat[]{
   \label{fig:berggren contour}
+  \tikzsetnextfilename{berggren_contour}
   \begin{tikzpicture}[scale = 2.5]
     \draw[->] (-1.2, 0) -- (1.2, 0) node[right] {$\Re k$};
     \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
@@ -101,6 +103,7 @@ and rescale the Gauss-Legendre points to each of the different segments.
 An example of a contour is seen in 
 \cref{fig:triangle contour}.
 
+\tikzsetnextfilename{triangle_contour}
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
@@ -126,6 +129,7 @@ An example of a contour is seen in
 
 \todo{Results and shit here}
 
+\tikzsetnextfilename{pole_position}
 \begin{figure}
   \centering	
   \begin{tikzpicture}

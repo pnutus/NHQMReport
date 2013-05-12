@@ -34,6 +34,7 @@ between two particles, we can reduce the problem to a one-dimensional equation b
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
 
+\tikzsetnextfilename{woods-saxons}
 \begin{figure}
   \centering
   \begin{tikzpicture}
@@ -58,8 +59,7 @@ We can solve the problem using either HO expansion or discretizised momentum spa
 \todo{Skip zoom and title of plot.} 
 \begin{figure}
   \centering
-    \includegraphics[width = \textwidth]{figures/He5_convergence.pdf}
-  \caption{}
+  \caption{IS THIS EVEN NEEEEED}
   \label{fig:HO vs mom}
 \end{figure}
 
@@ -85,6 +85,7 @@ The other state has an energy $E>0$ meaning that it, too, must be unbound. Howev
     ymax = 1.7,
   }
   \subfloat[$V_0=\SI{-52}{MeV}$]{
+    \tikzsetnextfilename{wavefunction-52MeV}
     \begin{tikzpicture}
       \begin{axis}
         \addplot          table[x index=0, y index=1] {\wavefunctions};
@@ -93,6 +94,7 @@ The other state has an energy $E>0$ meaning that it, too, must be unbound. Howev
     \end{tikzpicture}
   }
   \subfloat[$V_0 = \SI{-47}{MeV}$]{
+    \tikzsetnextfilename{wavefunction-47MeV}
     \begin{tikzpicture}
       \begin{axis}
         \addplot          table[x index=0, y index=3] {\wavefunctions};

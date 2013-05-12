@@ -98,8 +98,8 @@ This delta factor put the restraint $l=l'$ and $m=m'$ on the SE, giving us
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
 \end{eq}
 If we now think of $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
-we notice that the "diagonals"  of this matrix have the same $l$ and $m$ throughout,
-which can be expressed as {\emph $H$ is diagonal in $l$ and $m$}
+we notice that the ``diagonals''  of this matrix have the same $l$ and $m$ throughout,
+which can be expressed as \emph{$H$ is diagonal in $l$ and $m$}
 \todo{Hjälp? Hur skriver vi det här på bästa sätt? || Fungerar detta?}
 
 
@@ -165,7 +165,7 @@ $\gamma = \mu\omega/\hbar$ and $L_\mu^\nu(x)$ are the generalized Laguerre polyn
 \todo{Doublecheck normalization constant.}
 The real space wavefunction $R(r)$ for a state will be expressed as a linear combination of the harmonic oscillator radial wavefunctions:
 \begin{eq}
-  R(r) = \sum_n \psi_{nlm} R_{nl}(r).
+  R_l(r) = \sum_n \psi_{nl} R_{nl}(r).
 \end{eq}
 
 
@@ -315,7 +315,9 @@ support the use of infinite potentials, and since
 \cref{eq:hydrogen potential} diverges as $r \to 0$,  
 a small deviation is not surprising.
 
-\begin{figure}	
+\tikzset{external/remake next}
+\tikzsetnextfilename{hydrogen_convergence}
+\begin{figure}
 \centering	
 \begin{tikzpicture}
     \begin{axis}[
@@ -323,19 +325,18 @@ a small deviation is not surprising.
       ylabel=Ground state energy $E_0/\b{\si{MeV}}$,
 		  axis y line=left,
 		  axis x line=bottom,
-      legend style={at={(0.65,0.27)},
-           anchor=north,legend columns=1},
-      thick, no markers
+      legend pos = south east,
+      thick,
       ]
     	\addplot
         table[x index = 0, y index = 1]  
         {figures/hydrogen_convergence/hydrogen_convergence.data};
-    	  \addlegendentry{Harmonic Oscillator}
+    	  \addlegendentry{Harmonic oscillator basis}
     	\addplot
         table[x index = 0, y index = 2] 
         {figures/hydrogen_convergence/hydrogen_convergence.data};
-        \addlegendentry{Plane Wave Expansion}
-      \addplot coordinates {(11, -13.6) (19, -13.6)};
+        \addlegendentry{Plane wave basis}
+      \addplot+[no markers, domain=11:20] {-13.6};
         \addlegendentry{Theoretical value}
     \end{axis}
 \end{tikzpicture}
