@@ -66,9 +66,13 @@ We can solve the problem using either HO expansion or discretizised momentum spa
 
 \section{Wavefunctions}
 
-\Cref{fig:resonance wavefunction} compares the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied. We see that one solution is basically unchanged under variation of the potential. This can be interpreted as it being an unbound state in the energy continuum. We see that its probability distribution does not decrease for large $r$.
+\Cref{fig:resonance wavefunction} compares the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied.
+ We see that one solution is basically unchanged under variation of the potential. 
+This can be interpreted as it being an unbound state in the energy continuum. We see that its probability distribution does not decrease for large $r$.
 
-The other state has an energy $E>0$ meaning that it, too, must be unbound. However, its wavefunction is highly localized near the center, suggesting a quasi-stationary state. Additionally, the solution varies dramatically with the potential, meaning that it must be a feature of the system. 
+The other state has an energy $E>0$ meaning that it, too, must be unbound. 
+However, its wavefunction is highly localized near the center, suggesting a quasi-stationary state. 
+Additionally, the solution varies dramatically with the potential, meaning that it must be a feature of the system. 
 
 \todo{Check sentence.}Since we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet. We do not expect the resonance to be properly described until complex energies are introduced.
 
@@ -104,11 +108,16 @@ The other state has an energy $E>0$ meaning that it, too, must be unbound. Howev
         \addplot+[dashed] table[x index=0, y index=4] {\wavefunctions};
       \end{axis}
     \end{tikzpicture}
+  	}
   }
-  }
-  \caption{An unbound and resonant solution to the Woods-Saxon potential for different depths $V_0$, using the plane wave expansion.}
+  \caption{An unbound and resonant solution to the Woods-Saxon potential for different depths $V_0$, using the plane wave expansion.} 
   \label{fig:resonance wavefunction}
 \end{figure}
 \todo{Start with a deeper well holding a bound state, and then decrease it to get resonances? Add another subplot?}
+\todo{specify which is which with a legend, ther's a lot of ws in the pot, maybe the enumeration and V0 could be moved there to make it more condensed.}
 
 \section{Varying $\omega$}
+Theory suggests that the HO solutions will hint at the existance of a pole as omega is varried. 
+Supposedly \cite{Dolan} one wavefunction will enter a plateau as omega is increased while the other wavefunctions will continue to grow unabatedly. 
+Our results from investigating this is presented in \cref{fig:Dolan pls}.
+It is clear that no such behaviour was observed.

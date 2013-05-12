@@ -1,0 +1,25 @@
+One quickly notices that conventional integrals are computationally taxing. 
+A conventional integral approximation is to evaluate the function in a lot of evenly spaced points and give weight a homogenous weight based on the step length. 
+This, however requires a lot of points, and thus calculations, to converge and quickly becomes unwieldly. 
+
+That is why one should use the Gauss-Legendre quadrature; through a clever choice of points and weights the integral will converge with less points. 
+The theory behind this approximation is invloved \cite{Gauss magazine nr 17 millenium edition 1800} and is not covered here. 
+The idea is to pick points on the -1 to 1 interval that are roots of the Legendre polynomial of a certain degree n and after some rescaling the integral can be written as
+\[
+\int_{-1}^1 f(x)\,dx \approx \sum_{i=1}^n w_i f(x_i)
+\].
+with the weights given by
+\[ 
+w_i = \frac{2}{\left( 1-x_i^2 \right) [P'_n(x_i)]^2}
+\] 
+with $P_n$ the Legendre polynomial of degree $n$.
+It can be shown that this quadrature gives the correct value for all polynomials of degree up to $2n-1$. 
+The only requirement for convergence is then that we need to approximate the integrand with a polynomial.
+In some cases, as with singular functions, that is not possible but for the functions encountered in this work it is a safe approximation.
+
+
+
+referens: http://people.math.sfu.ca/~cbm/aands/frameindex.htm
+pp 887, 888 Abramowitz and Stegun. Handbook of Mathematical Functions 
+se wikipedia
+
