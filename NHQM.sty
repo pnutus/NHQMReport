@@ -22,9 +22,13 @@
 \usepackage{mhchem}
 
 \usepackage{tikz}
-\usetikzlibrary{decorations.pathreplacing,
-                decorations.markings, 
-                shapes.geometric}
+\usetikzlibrary{
+  decorations.pathreplacing,
+  decorations.markings, 
+  shapes.geometric,
+  external,
+}
+\tikzexternalize[prefix = figures/]
 \tikzset{>=stealth}
 \tikzset{
   % style to apply some styles to each segment of a path
@@ -71,6 +75,9 @@
 \reversemarginpar
 
 \DeclareUnicodeCharacter{00A0}{ }
+\makeatletter
+\renewcommand{\todo}[2][]{\tikzexternaldisable\@todo[#1]{#2}\tikzexternalenable}
+\makeatother
 
 
 \newcommand{\fint}[1][]{%

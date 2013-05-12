@@ -34,7 +34,8 @@ The probability for these quasi-bound systems of staying localized will decrease
 
 \begin{figure}
   \subfloat[]{
-    \label{fig:harmosc}
+    %\tikzset{external/remake next}
+\tikzsetnextfilename{harmosc_potential}
     \begin{tikzpicture}[domain=0:4.5, samples=100]
       %\clip (-0.2, -5.1) rectangle (7, 1);
       \axes{$r$}{-0.1}{6}{$V$}{-5.1}{0.5}
@@ -42,7 +43,8 @@ The probability for these quasi-bound systems of staying localized will decrease
     \end{tikzpicture}
   }
   \subfloat[]{
-    \label{fig:woods-saxon}
+    %\tikzset{external/remake next}
+\tikzsetnextfilename{woods-saxon_potential}
     \begin{tikzpicture}[domain=0:6, samples=100]
       \draw[->] (-0.1, 0) -- (6, 0) node[right] {$r$};
       \draw[->] (0, -5.1) -- (0, 0.5) node[above] {$V$};

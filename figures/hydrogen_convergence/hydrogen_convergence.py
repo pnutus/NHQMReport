@@ -5,18 +5,16 @@ from nhqm.bases import harm_osc as osc, mom_space as mom
 from nhqm.problems import H_atom, He5
 from nhqm.QM_helpers import energies
 from nhqm.bases.gen_contour import gauss_contour
-
-
-
     
-mom.integration_order = 20
+mom.integration_order = 60
 mom.integration_range = 10
 osc.integration_order = 60
+osc.integration_range = 20
 
 problem = H_atom
 problem.HO_omega = 1
 
-orders = range(11,20)
+orders = range(11,21)
 res_HO = []
 res_mom = []
 
