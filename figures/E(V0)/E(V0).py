@@ -10,9 +10,9 @@ import matplotlib.pyplot as plt
 
 order=25
 problem = He5
-Q = osc.QNums(l=0, j=.5, n=range(order))
+Q = osc.QNums(l=1, j=1.5, n=range(order))
 order_nr = 40
-V0s = sp.linspace(-40, 40, order_nr)
+V0s = sp.linspace(-65, -40, order_nr)
 res_mom = []
 
 print len(V0s)
@@ -23,8 +23,8 @@ for V0 in V0s:
     contour = gauss_contour([0, 5], order)
     H = mom.hamiltonian(contour, problem, Q)
     eigvals, eigvecs = energies(H)
-    res_mom.append(eigvals[0:10]*problem.eV_factor) 
-    print "  ", eigvals[0]*problem.eV_factor
+    res_mom.append(eigvals[0:10]) 
+    print "  ", eigvals[0:3]
 
 plt.plot(V0s,res_mom)
 plt.show()
