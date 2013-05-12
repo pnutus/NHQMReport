@@ -1,0 +1,92 @@
+
+We have the two-body potential
+\begin{eq}
+  \hat{H}_2 
+  = 
+  \frac{1}{4}
+  \sum_{\alpha\beta\gamma\delta}
+  \bra{\alpha\beta} V\sub{sep} \ket{\gamma\delta} 
+  a^\dag_\alpha a^\dag_\beta a_\delta a_\gamma
+  =
+  \sum_{\substack{\alpha < \beta \\ \gamma < \delta}}
+  \bra{\alpha\beta} V\sub{sep} \ket{\gamma\delta} 
+  a^\dag_\alpha a^\dag_\beta a_\delta a_\gamma,
+\end{eq}
+where 
+\begin{eq}
+  \bra{ab} V\sub{sep} \ket{cd} 
+  =
+  \pbra{ab} V\sub{sep} \pket{cd}
+  -
+  \pbra{ab} V\sub{sep} \pket{dc}.
+\end{eq}
+(Rounded bras and kets are non-antisymmetrised product states.)
+Because of the spherical symmetry of the potential this expression can be sepparated into
+\begin{eq}
+  \bra{ab} V\sub{sep} \ket{cd}  
+  =	
+  \bra{a} V\sub{sep} \ket{c} * \bra{b} V\sub{sep} \ket{d}
+  -
+  \bra{b} V\sub{sep} \ket{d}* \bra{b} V\sub{sep} \ket{c}
+\end{eq}
+
+If we expand the position space wavefunctions in the momentum-spaces wave function, see \cref{app: n_n_pot}, this can be expressed as
+%whatup med alignen?
+\begin{eq}
+\bra{E_1m_1 E_2m_2} V\sub{sep} \ket{E'_1m'_1 E'_2m'_2}
+  \\ =
+    \bra{E_1m_1} V\sub{sep} \ket{E_3m_3} * \bra{E_2m_2} V\sub{sep} \ket{E_4m_4}\\
+    -
+    \bra{E_2m_2} V\sub{sep} \ket{E_4m_4}* \bra{E_2m_2} V\sub{sep} \ket{E_3m_3}
+\\ =
+  V_0 M_{E_1E'_1} M_{E_2E'_2} \delta_{m_1m'_1} \delta_{m_2m'_2}
+  -
+  V_0 M_{E_1E'_2} M_{E_2E'_1} \delta_{m_1m'_2} \delta_{m_2m'_1}.
+\end{eq}
+
+Where the states $a,b,c,d$ are represented by their quantum numbers $E_i m_i$. Here $M_{EE'} = \bra{E}V(r)\ket{E'}$ is the matrix that represents the the energy contributions from the separable interaction. For the plane wave expansion these matrix elements are given by \ref{eq: 5 in app: n_n_pot} and are restated here
+\begin{eq}
+	\bra{E}V(r)\ket{E'}\sub{k}
+	=
+	 \frac{2}{\pi} \sum_i \sqrt{w_i} k_i \varphi_i \sum_j \sqrt{w_j} k_j \varphi'_j V_{ij} 
+	 =
+	 \frac{2}{\pi} \sum_{ij} u_i V_{ij} v_j \label{eq:matrixeq}
+\end{eq}.
+with
+\begin{eq}
+	V_{ij} = \fint[0][\inf]{r}r^2 j_l(k r) j_l(k' r) V(r)
+\end{eq}
+
+
+Where $\varphi_i$ is the $i$:th \He{5} wavefunction in the PW-basis, $u_i = \sqrt{w_i} k_i \varphi_i$ is a row vector, $V_{ij}$ an $n \times n$ matrix and $v_j = \sqrt{w_j} k_j \varphi'_j$ a column vector. 
+
+Similarily, the Harmonic oscilator basis these are give, \ref{???}, the following matrix elements
+\begin{eq}
+
+	\bra{E}V(r)\ket{E'}\sub{HO}
+	=
+	\sum_i \varphi_i \sum_j \varphi'_j V_{ij} 
+	 =
+	 \sum_{ij} u_i V_{ij} v_j \label{eq:matrixeq}
+\end{eq}
+with
+\begin{eq}
+	V_{ij} = \fint[0][\inf]{r}r^2 R_nl(r) V(r) R_nl(r')
+\end{eq}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
