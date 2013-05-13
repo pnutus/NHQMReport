@@ -105,22 +105,71 @@ with
 	V_{ij} = \fint[0][\inf]{r}r^2 R_nl(r) V(r) R_nl(r')
 \end{eq}
 
+\section{One Body hamiltonian...}
+\begin{eq}
+	\op{H_1} = 
+	\sum_{\alpha \beta} \bra{\alpha}H_1\ket{\beta} a_{\alpha}^{\dagger} a_{\beta}
+\end{eq}	 
+where 
+\[
+\bra{\alpha}H_1\ket{\beta} 
+= 
+\bra{E m}H_1\ket{E' m'}
+\\=
+\bra{E}H_1\ket{E'} \delta_{m m'}
+= 
+\bra{E}E'\ket{E'} \delta_{m m'}
+=
+E \delta_{E E'}\delta_{m m'}
+\]
+We have
+\begin{eq}
+	\bra{a b}\op{H_1}\ket{c d} 
+	=
+\bra{a b} \sum_{\alpha} E_{\alpha} a_{\alpha}^{\dagger} a_{\alpha} \ket{c d} 	
+	\\=
+	\bra{a b}E_c + E_d \ket{cd}
+	=
+	(E_c + E_d)\bra{a b}\ket{c d}
+	=
+	(E_c + E_d)\delta_{a c}\delta{b d}
+\end{eq}
+\begin{eq}
+\bra{E_1 E_2}\op{H_1}\ket{E_1' E_2'}
+	=
+\frac{1}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}} \sum_{\substack{m_1 m_2 \\ m_1' m_2'}}c_{m_1 m_2}c_{m_1' m_2'}^{*} \bra{a b}\op{H_1}\ket{c d} 
+	\\=
+\frac{1}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}} \sum_{\substack{m_1 m_2 \\ m_1' m_2'}} (E_1 +E_2) c_{m_1 m_2}c_{m_1' m_2'}^{*} \delta_{E_1 E_1'} \delta_{m_1 m_1'} \delta_{E_2 E_2'} \delta_{m_2 m_2'}
+\\=
+(E_1 + E_2 )\frac{\delta_{E_1 E_1'} \delta_{E_2 E_2'}}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}} \sum |c_{m_1 m_2}|^2
+\\=
+(E_1 + E_2 )\frac{\delta_{E_1 E_1'} \delta_{E_2 E_2'}}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}}	
+
+\section{mb Hamiltonian}
+We have now developed the tools we need to determine the mb Hamiltonian. The \He{6} nucleus can be solved in two ways, either we couple the angular momenta of the two sp states to reduce the amount of calculations needed or we generate all mb states to get calculations that are more straight-forward. 
+We solve the problem using both schemes, the coupled scheme because that's what we want to use but we also solved in the uncoupled scheme to verify the answer. 
+Both schemes can be used together with the HO basis or the k basis. 
+We will cover all four approaches in this chapter.
+
+\subsection{Uncoupled Scheme}
+
+\subsection{Coupled Scheme}
+
+\end{eq}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
