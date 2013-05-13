@@ -1,5 +1,34 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[english]{babel}
 
-We have the two-body potential
+\usepackage{NHQM}
+\usepackage{listings}
+%\usepackage{courier}
+
+
+\lstset{basicstyle=\ttfamily\footnotesize, breaklines=true, 
+        language=Python, tabsize=2, frame=single}
+
+\begin{document}
+Equipped with the Fock-space theory and the solutions to the \He{5} nucleous we are ready to solve the \He{6} nucleus. To calculate the \He{6} Hamiltonian we use the Multi-Step Method, MSM. 
+...
+We introduce basis states for \He{6} which consist of a set of single particle states from the previously solved \He{5} nucleus. 
+...
+For the underlying theory see \cref{sec:fock}
+
+%fermion state implementation here?
+	
+\section{Neutron to Neutron Interaction}
+The interaction between neutrons is a complex feature. A simple approximation that can be made, although not very realistic, is to modell it using a gaussian curve, which makes the potential separable and easy to use.
+
+\begin{equation}
+V_{n-n}(r_{1} , r_{2}) = V_{0}e^{ \beta (r_1^2 + r_2^2)},
+\end{equation}
+
+where $r_1$ and $r_2$ are the radial part of the neutrons coordinates relative to the core. $\beta$ and $V_{0}$ are parameters that are unknown and hence have to be fitted after experimential data. 
+
+The next step in the solution is to determine what contribution the n-n interaction give to the mb Hamiltonian. We present below the key points in this derivation, for the elaborate steps see \cref{app: n-n}. 
+
 \begin{eq}
   \hat{H}_2 
   = 
@@ -25,19 +54,21 @@ Because of the spherical symmetry of the potential this expression can be seppar
 \begin{eq}
   \bra{ab} V\sub{sep} \ket{cd}  
   =	
-  \bra{a} V\sub{sep} \ket{c} * \bra{b} V\sub{sep} \ket{d}
+  \bra{a} V\sub{sep} \ket{c} \bra{b} V\sub{sep} \ket{d}
   -
-  \bra{b} V\sub{sep} \ket{d}* \bra{b} V\sub{sep} \ket{c}
+  \bra{b} V\sub{sep} \ket{d} \bra{b} V\sub{sep} \ket{c}
 \end{eq}
 
-If we expand the position space wavefunctions in the momentum-spaces wave function, see \cref{app: n_n_pot}, this can be expressed as
+If we expand the position space wavefunctions in the momentum-space wave functions, see \cref{app: n_n_pot}, this can be expressed as
+
 %whatup med alignen?
+
 \begin{eq}
 \bra{E_1m_1 E_2m_2} V\sub{sep} \ket{E'_1m'_1 E'_2m'_2}
   \\ =
-    \bra{E_1m_1} V\sub{sep} \ket{E_3m_3} * \bra{E_2m_2} V\sub{sep} \ket{E_4m_4}\\
+    \bra{E_1m_1} V\sub{sep} \ket{E_3m_3} \bra{E_2m_2} V\sub{sep} \ket{E_4m_4}\\
     -
-    \bra{E_2m_2} V\sub{sep} \ket{E_4m_4}* \bra{E_2m_2} V\sub{sep} \ket{E_3m_3}
+    \bra{E_2m_2} V\sub{sep} \ket{E_4m_4} \bra{E_2m_2} V\sub{sep} \ket{E_3m_3}
 \\ =
   V_0 M_{E_1E'_1} M_{E_2E'_2} \delta_{m_1m'_1} \delta_{m_2m'_2}
   -
@@ -73,6 +104,9 @@ with
 \begin{eq}
 	V_{ij} = \fint[0][\inf]{r}r^2 R_nl(r) V(r) R_nl(r')
 \end{eq}
+
+
+\end{document}
 
 
 
