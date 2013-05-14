@@ -77,11 +77,7 @@ Additionally, the solution varies dramatically with the potential, meaning that 
 
 \todo{Check sentence.}Since we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet. We do not expect the resonance to be properly described until complex energies are introduced.
 
-
-%energies:
-%-70 -4.84844400401
-%-52 4.78395615966e-06
-%-50 4.78395565443e-06
+%%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION FIGURE
 
 \begin{figure}[H]
   \pgfplotstableread{figures/wavefunctions/wavefunctions.data}\wavefunctions
@@ -138,9 +134,12 @@ Additionally, the solution varies dramatically with the potential, meaning that 
   }
   \caption{An unbound and resonant solution to the Woods-Saxon potential for different depths $V_0$, using the plane wave expansion.} 
   \label{fig:resonance wavefunction}
-  
   \end{figure}
-  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION end
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%V0 (CONTOUR) FIGURE
   
 \begin{figure}[H]
    \centering{
@@ -151,10 +150,9 @@ Additionally, the solution varies dramatically with the potential, meaning that 
        xmax = 0.5,
 	   xmin = -0.01,
 	   xtickmin = 0.15,
-	   ymax = 0.07
 	   max space between ticks=60pt
        enlargelimits,
-       ylabel=Im $k/\b{\si{fm^{-1}}}$,
+	   ylabel=Im $k/\b{\si{fm^{-1}}}$,
        every axis y label/.style={
          at = {(current axis.above origin)},
          anchor = north west,
@@ -203,12 +201,65 @@ Additionally, the solution varies dramatically with the potential, meaning that 
    }
   \caption{yadayoda} 
    \label{fig:fag}  
- 
-  
 \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%V0 (CONTOUR) end
+
+  \todo{add labels for the resonannance coordinates}
 
 \todo{Start with a deeper well holding a bound state, and then decrease it to get resonances? Add another subplot?}
 \todo{specify which is which with a legend, ther's a lot of ws in the pot, maybe the enumeration and V0 could be moved there to make it more condensed.}
+
+
+%%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE
+
+\begin{figure}[H]
+   \centering{
+   \pgfplotsset{
+          width = \textwidth,
+      height = 7cm,
+ 	  axis lines = middle,
+       xmax = 0.5,
+	   ymax = 0.5,
+	   xmin = -0.01,
+	   xtickmin = 0.15,
+	   max space between ticks=60pt
+       enlargelimits,
+       ylabel=Im $k/\b{\si{fm^{-1}}}$,
+       every axis y label/.style={
+         at = {(current axis.above origin)},
+         anchor = north west,
+       },
+	   yticklabel style={/pgf/number format/fixed,
+	                     /pgf/number format/precision=2},
+       every axis x label/.style={
+         at = {(current axis.right of origin)},
+         anchor = north,
+       },
+       every x tick label/.append style = {anchor = south, yshift = 3pt},
+   }
+   \subfloat[Real Contour]{
+     \tikzset{external/remake next}
+ \tikzsetnextfilename{realcont}
+     \begin{tikzpicture}
+       \begin{axis}[
+		   legend style={at={(0.8,0.5)}, anchor=north,legend columns=1},
+		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
+         	\addplot+[only marks, very thick] table [x index =0, y index =1] {figures/poles(realcontour)/poles.data};
+         	    \addlegendentry{Pole position}
+         	\addplot+[no marks, very thick] table [x index =0, y index =1] {figures/poles(realcontour)/contour.data};
+			             \addlegendentry{Contour}
+
+       \end{axis}
+     \end{tikzpicture}
+   }
+   }
+  \caption{yadayadahadayadayoda} 
+   \label{fig:realfag}  
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE end
+
 
 \section{Varying $\omega$}
 Theory suggests that the HO solutions will hint at the existance of a pole as omega is varried. 
