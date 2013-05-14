@@ -198,7 +198,8 @@ where $\phi(k)$ is the radial part of the momentum space wavefunction,
 \end{eq}
 and $j_l(kr)$ are the spherical bessel functions of order $l$. $\phi(k)$ is related to the real space radial wavefunction by
 \begin{eq}
-R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
+  R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
+  \label{eq:radial wavefunction}
 \end{eq}
 
 
@@ -227,6 +228,7 @@ When the matrix elements have been calculated, the matrix is diagonalized using 
 
 
 \subsection{Discretization and symmetrization of the plane wave basis}
+\label{sec:mom discretization}
 The integral equation \cref{eq:radial mom space TISE} can be rewritten as a matrix equation through discretization, turning the integral into a sum over a finite set of points $k_j$ and $\rd{k}$ into a set of weights $w_j$:
 \todo{Maybe this delta trickery is unnecessary. Do it after discretization.}
 \begin{eq}
