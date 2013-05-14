@@ -1,72 +1,50 @@
+Abstract
+--------
+* Sammanfatta
+
 Introduction
 ------------
-* Helium-family 
-* Numerical methods
-* basis expansion
-
-* Purpose? 
-* Method? 
-* Reading Guide?
-
-Resonans
---------
-* Ett eget kapitel?
-* varför är det vårt mål? 
-* jämföra med exp. data He-5[nuklidkarta]?
+* Förklara resonanser med bilder?
 
 Basis expansion
 ---------------
-* Vi vill lösa i datorn ty omöjligt analytiskt
-* Skriva som ändlig matrisekvation
-* => Basexpansion + Trunkering
-* Expansion i allmänna fallet
-* HarmOsc
-    - Hatom – för att verifiera
-    - He5 – vad är det där? Resonans?
+* Är ordningen på de numeriska aspekterna bra?
 
-
-Discretized momentum space
---------------------------
-* Varför mom-space? 
-    - Naturligare ramverk
-    - Berggren
-* Skriva om TISE
-    - Resolution of identity
-    - fouriertransform
-    - All tråkig matte i appendix
-    - kan vi förklara bra, inte appendix
-* He5 (perhaps Hatom) in momspace
-    - Compare to harmonic oscillator
+He5 Nucleus/Two-Body problem
+----------------------------
+* Vilka resultat ska med?
+* Diskussion/tolkning av figurer
+* Motivera resonansstudie
+* He5(omega) ???
 
 
 Non-Hermitian Quantum Mechanics
 -------------------------------
-* varför: analysera resonanser
-* resonans? 
-    - koppling till radioaktivitet
-    - transienta tillstånd
-    - tid<=>energi heisenberg
-* verktyg: komplex kontur. varför? cite bergren, förklara 
-* resultatmed dessa verktyg
-    - två-kropp, resonans i he-5 ! 
-    - jämföra med vedertagna parametrar. 
-* berggrenbasen, varför inkludera resonans i basen
-* teorin ovan kan lyftas till introduktion
-* har folk läst subatomär?
+* Få med Berggren completeness relation
+* Få med att det inte är något konjugat på bran
+* Resultat
+    - Stabilitet
 
 Many-Body Theory
 ----------------
-* allmän flerkroppars teori
-* implementation 
-    - fock space 
-    - FermionSTates
+* Allmän flerkropparsteori
+    - för fermioner, men nämna bosoner
+* Implementation
+    - fermion_state
     
-The Three-Body Problem
-----------------------
+He6 Nucleus/The Three-Body Problem
+----------------------------------
+* Vår modell
+    - Bygger på He5
+    - Separabel interaktion
+* Förenkling av flerkropparsteorin
+    - Vi behöver inte fermion_state
+* Okopplat (m-scheme) 
+* Kopplingen
+* Både harm_osc och mom_space
+* Resultat ???
 
-* Förenklingar av flerkropparsteorin
-* Koppling av ang.mom.
-* He6
-* Harmosc och NHQM
-
-
+Monte Carlo
+-----------
+* Beskriv metoden
+* Resultat, fungerar den?
