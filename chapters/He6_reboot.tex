@@ -1,4 +1,34 @@
-We have the two-body potential
+\documentclass[12pt,a4paper]{article}
+\usepackage[english]{babel}
+
+\usepackage{NHQM}
+\usepackage{listings}
+%\usepackage{courier}
+
+
+\lstset{basicstyle=\ttfamily\footnotesize, breaklines=true, 
+        language=Python, tabsize=2, frame=single}
+
+\begin{document}
+Equipped with the Fock-space theory and the solutions to the \He{5} nucleous we are ready to solve the \He{6} nucleus. To calculate the \He{6} Hamiltonian we use the Multi-Step Method, MSM. 
+...
+We introduce basis states for \He{6} which consist of a set of single particle states from the previously solved \He{5} nucleus. 
+...
+For the underlying theory see \cref{sec:fock}
+
+%fermion state implementation here?
+	
+\section{Neutron to Neutron Interaction}
+The interaction between neutrons is a complex feature. A simple approximation that can be made, although not very realistic, is to modell it using a gaussian curve, which makes the potential separable and easy to use.
+
+\begin{equation}
+V_{n-n}(r_{1} , r_{2}) = V_{0}e^{ \beta (r_1^2 + r_2^2)},
+\end{equation}
+
+where $r_1$ and $r_2$ are the radial part of the neutrons coordinates relative to the core. $\beta$ and $V_{0}$ are parameters that are unknown and hence have to be fitted after experimential data. 
+
+The next step in the solution is to determine what contribution the n-n interaction give to the mb Hamiltonian. We present below the key points in this derivation, for the elaborate steps see \cref{app: n-n}. 
+
 \begin{eq}
   \hat{H}_2 
   = 
@@ -22,43 +52,126 @@ where
 (Rounded bras and kets are non-antisymmetrised product states.)
 Because of the spherical symmetry of the potential this expression can be sepparated into
 \begin{eq}
-  \bra{a} V\sub{sep} \ket{c} * \bra{b} V\sub{sep} \ket{d}
+  \bra{ab} V\sub{sep} \ket{cd}  
+  =	
+  \bra{a} V\sub{sep} \ket{c} \bra{b} V\sub{sep} \ket{d}
   -
-  \bra{b} V\sub{sep} \ket{d}* \bra{b} V\sub{sep} \ket{c}
+  \bra{b} V\sub{sep} \ket{d} \bra{b} V\sub{sep} \ket{c}
 \end{eq}
 
-If we expand the position space wavefunctions in the momentum-spaces wave function this can be expressed as
+If we expand the position space wavefunctions in the momentum-space wave functions, see \cref{app: n_n_pot}, this can be expressed as
+
+%whatup med alignen?
 
 \begin{eq}
-  &\bra{E_1m_1 E_2m_2} V\sub{sep} \ket{E'_1m'_1 E'_2m'_2}
-  \\ = &
-    \bra{E_1m_1} V\sub{sep} \ket{E_3m_3} * \bra{E_2m_2} V\sub{sep} \ket{E_4m_4}
+\bra{E_1m_1 E_2m_2} V\sub{sep} \ket{E'_1m'_1 E'_2m'_2}
+  \\ =
+    \bra{E_1m_1} V\sub{sep} \ket{E_3m_3} \bra{E_2m_2} V\sub{sep} \ket{E_4m_4}\\
     -
-    \bra{E_2m_2} V\sub{sep} \ket{E_4m_4}* \bra{E_2m_2} V\sub{sep} \ket{E_3m_3}
+    \bra{E_2m_2} V\sub{sep} \ket{E_4m_4} \bra{E_2m_2} V\sub{sep} \ket{E_3m_3}
 \\ =
   V_0 M_{E_1E'_1} M_{E_2E'_2} \delta_{m_1m'_1} \delta_{m_2m'_2}
   -
   V_0 M_{E_1E'_2} M_{E_2E'_1} \delta_{m_1m'_2} \delta_{m_2m'_1}.
 \end{eq}
 
-Where the states $a,b,c,d$ are represented by their quantum numbers $E_i m_i$.
-Discretizing, $k \mapsto k_i, k' \mapsto k_j$, and using the notation $\phi_i = \phi(k_i)$, ${V_{ij}=V(k_i, k_j)}$, this becomes
+Where the states $a,b,c,d$ are represented by their quantum numbers $E_i m_i$. Here $M_{EE'} = \bra{E}V(r)\ket{E'}$ is the matrix that represents the the energy contributions from the separable interaction. For the plane wave expansion these matrix elements are given by \ref{eq: 5 in app: n_n_pot} and are restated here
 \begin{eq}
-	 \frac{2}{\pi} \sum_i w_i k_i^2 \phi_i \sum_j w_j k_j^2 \phi'_j V_{ij}.
-\end{eq}
-Expressed with our symmetrized state vectors $\varphi_i = \sqrt{w_i} k_i \phi_i$
-\begin{eq}
+	\bra{E}V(r)\ket{E'}\sub{k}
+	=
 	 \frac{2}{\pi} \sum_i \sqrt{w_i} k_i \varphi_i \sum_j \sqrt{w_j} k_j \varphi'_j V_{ij} 
 	 =
 	 \frac{2}{\pi} \sum_{ij} u_i V_{ij} v_j \label{eq:matrixeq}
-\end{eq}
-where $u_i = \sqrt{w_i} k_i \varphi_i$ is a row vector, $V_{ij}$ an $n \times n$ matrix and $v_j = \sqrt{w_j} k_j \varphi'_j$ a column vector. Thus the double sum can be expressed as a two matrix multiplications.
-
-The matrix elements are saved as a matrix $M_{EE'} = \bra{E}V(r)\ket{E'}$ so that combinations of them can be evaluated efficiently
+\end{eq}.
+with
 \begin{eq}
-  &\bra{E_1m_1 E_2m_2} V\sub{sep} \ket{E'_1m'_1 E'_2m'_2}
-  \\ = &
-  V_0 M_{E_1E'_1} M_{E_2E'_2} \delta_{m_1m'_1} \delta_{m_2m'_2}
-  -
-  V_0 M_{E_1E'_2} M_{E_2E'_1} \delta_{m_1m'_2} \delta_{m_2m'_1}.
+	V_{ij} = \fint[0][\inf]{r}r^2 j_l(k r) j_l(k' r) V(r)
 \end{eq}
+
+
+Where $\varphi_i$ is the $i$:th \He{5} wavefunction in the PW-basis, $u_i = \sqrt{w_i} k_i \varphi_i$ is a row vector, $V_{ij}$ an $n \times n$ matrix and $v_j = \sqrt{w_j} k_j \varphi'_j$ a column vector. 
+
+Similarily, the Harmonic oscilator basis these are give, \ref{???}, the following matrix elements
+\begin{eq}
+
+	\bra{E}V(r)\ket{E'}\sub{HO}
+	=
+	\sum_i \varphi_i \sum_j \varphi'_j V_{ij} 
+	 =
+	 \sum_{ij} u_i V_{ij} v_j \label{eq:matrixeq}
+\end{eq}
+with
+\begin{eq}
+	V_{ij} = \fint[0][\inf]{r}r^2 R_nl(r) V(r) R_nl(r')
+\end{eq}
+
+\section{One Body hamiltonian...}
+\begin{eq}
+	\op{H_1} = 
+	\sum_{\alpha \beta} \bra{\alpha}H_1\ket{\beta} a_{\alpha}^{\dagger} a_{\beta}
+\end{eq}	 
+where 
+\[
+\bra{\alpha}H_1\ket{\beta} 
+= 
+\bra{E m}H_1\ket{E' m'}
+\\=
+\bra{E}H_1\ket{E'} \delta_{m m'}
+= 
+\bra{E}E'\ket{E'} \delta_{m m'}
+=
+E \delta_{E E'}\delta_{m m'}
+\]
+We have
+\begin{eq}
+	\bra{a b}\op{H_1}\ket{c d} 
+	=
+\bra{a b} \sum_{\alpha} E_{\alpha} a_{\alpha}^{\dagger} a_{\alpha} \ket{c d} 	
+	\\=
+	\bra{a b}E_c + E_d \ket{cd}
+	=
+	(E_c + E_d)\bra{a b}\ket{c d}
+	=
+	(E_c + E_d)\delta_{a c}\delta{b d}
+\end{eq}
+\begin{eq}
+\bra{E_1 E_2}\op{H_1}\ket{E_1' E_2'}
+	=
+\frac{1}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}} \sum_{\substack{m_1 m_2 \\ m_1' m_2'}}c_{m_1 m_2}c_{m_1' m_2'}^{*} \bra{a b}\op{H_1}\ket{c d} 
+	\\=
+\frac{1}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}} \sum_{\substack{m_1 m_2 \\ m_1' m_2'}} (E_1 +E_2) c_{m_1 m_2}c_{m_1' m_2'}^{*} \delta_{E_1 E_1'} \delta_{m_1 m_1'} \delta_{E_2 E_2'} \delta_{m_2 m_2'}
+\\=
+(E_1 + E_2 )\frac{\delta_{E_1 E_1'} \delta_{E_2 E_2'}}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}} \sum |c_{m_1 m_2}|^2
+\\=
+(E_1 + E_2 )\frac{\delta_{E_1 E_1'} \delta_{E_2 E_2'}}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}}	
+
+\section{mb Hamiltonian}
+We have now developed the tools we need to determine the mb Hamiltonian. 
+The \He{6} nucleus can be solved in two ways, either we couple the angular momenta of the two sp states to reduce the amount of calculations needed or we generate all mb states to get calculations that are more straight-forward. 
+We solve the problem using both schemes, the coupled scheme because that's what we want to use but we also solve - in the uncoupled scheme to verify the answer. 
+Both schemes can be used together with the HO basis or the k basis. 
+We will cover all four approaches in this chapter.
+
+\subsection{Uncoupled Scheme}
+In the uncoupled scheme we use a mb basis, $\alpha$, formed from two sp solutions, $a,b$, and give each sp state a m quantum number. In order to reduce the calculatins needed we filter the mb states so the sum of m numbers equals M.
+
+\subsection{Coupled Scheme}
+
+\end{eq}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
