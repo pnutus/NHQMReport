@@ -67,15 +67,25 @@ We can solve the problem using either HO expansion or discretizised momentum spa
 
 \section{Wavefunctions}
 
-\Cref{fig:resonance wavefunction} compares the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied.
- We see that one solution is basically unchanged under variation of the potential. 
+\Cref{fig:resonance wavefunction} compares the radial probability distributions $r^2|R(r)^2|$ for three states as the potential is varied.
+ We see that one solution (filled line) displays different behaviour for diffrent potentials. This is the state with the lowest energy and with a very strong potential, $V_0 =$ \SI{-70}{MeV} this is a bound state, $E<0$. In the two weeker potentials, though, this state has an energy $E>0$ meaning that it, too, must be unbound. 
+However, its wavefunction is highly localized near the center, suggesting a quasi-stationary state. 
+Additionally, the fact that the solution varies dramatically with the potential, meaning that it must be a feature of the system.
+ 
+The other (dashed line) solution however in each plot is essentially unchanged under variation of the potential. 
 This can be interpreted as it being an unbound state in the energy continuum. We see that its probability distribution does not decrease for large $r$.
 
-The other state has an energy $E>0$ meaning that it, too, must be unbound. 
-However, its wavefunction is highly localized near the center, suggesting a quasi-stationary state. 
-Additionally, the solution varies dramatically with the potential, meaning that it must be a feature of the system. 
 
-\todo{Check sentence.}Since we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet. We do not expect the resonance to be properly described until complex energies are introduced.
+\todo{Check sentence.}
+We cannot find this resonant state using hermitian methods though.
+\cref{fig: pole real cont} shows an attempt at finding this plot by calculating the energies in a plane wave expansion in position space.
+For a strong potential $V_0 =$ \SI{-70}{MeV} we find the bound solution, $E= $ \SI{-4.84}{MeV}, and the basis momenta, which is what we expected.
+For a weaker $V_0 =$ \SI{-50}{MeV} potential, on the other hand, we expect to find no bound solution but instead a resonant state. 
+That is not the case, we instead only find the basis momenta.
+
+In order to find the resonances we need to extend our basis momenta into the complex plane according to \cite{C F Gauss}.
+
+%Since we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet. We do not expect the resonance to be properly described until complex energies are introduced.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION FIGURE
 
@@ -132,12 +142,77 @@ Additionally, the solution varies dramatically with the potential, meaning that 
   	}
 
   }
-  \caption{An unbound and resonant solution to the Woods-Saxon potential for different depths $V_0$, using the plane wave expansion.} 
+  \caption{A bound (a) / resonant (b, c) and an unbound solution to the Woods-Saxon potential for different depths $V_0$, using the plane wave expansion.} 
   \label{fig:resonance wavefunction}
   \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION end
 
+
+
+
+  \todo{add labels for the resonannance coordinates}
+
+\todo{Start with a deeper well holding a bound state, and then decrease it to get resonances? Add another subplot?}
+\todo{specify which is which with a legend, ther's a lot of ws in the pot, maybe the enumeration and V0 could be moved there to make it more condensed.}
+
+
+%%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE
+
+\begin{figure}[H]
+   \centering{
+   \pgfplotsset{
+          width = \textwidth,
+      height = 7cm,
+ 	  axis lines = middle,
+       xmax = 0.5,
+	   ymax = 0.5,
+	   xmin = -0.01,
+	   xtickmin = 0.15,
+	   max space between ticks=60pt
+       enlargelimits,
+       ylabel=Im $k/\b{\si{fm^{-1}}}$,
+       every axis y label/.style={
+         at = {(current axis.above origin)},
+         anchor = north west,
+       },
+	   yticklabel style={/pgf/number format/fixed,
+	                     /pgf/number format/precision=2},
+       every axis x label/.style={
+         at = {(current axis.right of origin)},
+         anchor = north,
+       },
+       every x tick label/.append style = {anchor = south, yshift = 3pt},
+   }
+   \subfloat[Real Contour]{
+     \tikzset{external/remake next}
+ \tikzsetnextfilename{realcont}
+     \begin{tikzpicture}
+       \begin{axis}[
+		   legend style={at={(0.8,0.5)}, anchor=north,legend columns=1},
+		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
+         	\addplot+[only marks, very thick] table [x index =0, y index =1] {figures/poles(realcontour)/poles.data};
+         	    \addlegendentry{Pole position}
+         	\addplot+[no marks, very thick] table [x index =0, y index =1] {figures/poles(realcontour)/contour.data};
+			             \addlegendentry{Contour}
+
+       \end{axis}
+     \end{tikzpicture}
+   }
+   }
+  \caption{momentum solutions to the Shrödinger equation expanded along the real axis for \he{5} with a potential of $V_0 =$ \SI{-70}{MeV}. ska vi visa "flatland panoramat" som vi får för -50mev?} 
+   \label{fig:pole real contour}  
+\end{figure}
+\todo{define pole - momentum solution}
+%%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE end
+
+
+\section{Varying $\omega$}
+%this kinda breaks the flow \o/
+Theory suggests that the HO solutions will hint at the existance of a pole as omega is varried. 
+Supposedly \cite{Dolan} one wavefunction will enter a plateau as omega is increased while the other wavefunctions will continue to grow unabatedly. 
+Our results from investigating this is presented in \cref{fig:Dolan pls}.
+It is clear that no such behaviour was observed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%V0 (CONTOUR) FIGURE
   
@@ -204,65 +279,3 @@ Additionally, the solution varies dramatically with the potential, meaning that 
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%V0 (CONTOUR) end
-
-  \todo{add labels for the resonannance coordinates}
-
-\todo{Start with a deeper well holding a bound state, and then decrease it to get resonances? Add another subplot?}
-\todo{specify which is which with a legend, ther's a lot of ws in the pot, maybe the enumeration and V0 could be moved there to make it more condensed.}
-
-
-%%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE
-
-\begin{figure}[H]
-   \centering{
-   \pgfplotsset{
-          width = \textwidth,
-      height = 7cm,
- 	  axis lines = middle,
-       xmax = 0.5,
-	   ymax = 0.5,
-	   xmin = -0.01,
-	   xtickmin = 0.15,
-	   max space between ticks=60pt
-       enlargelimits,
-       ylabel=Im $k/\b{\si{fm^{-1}}}$,
-       every axis y label/.style={
-         at = {(current axis.above origin)},
-         anchor = north west,
-       },
-	   yticklabel style={/pgf/number format/fixed,
-	                     /pgf/number format/precision=2},
-       every axis x label/.style={
-         at = {(current axis.right of origin)},
-         anchor = north,
-       },
-       every x tick label/.append style = {anchor = south, yshift = 3pt},
-   }
-   \subfloat[Real Contour]{
-     \tikzset{external/remake next}
- \tikzsetnextfilename{realcont}
-     \begin{tikzpicture}
-       \begin{axis}[
-		   legend style={at={(0.8,0.5)}, anchor=north,legend columns=1},
-		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
-         	\addplot+[only marks, very thick] table [x index =0, y index =1] {figures/poles(realcontour)/poles.data};
-         	    \addlegendentry{Pole position}
-         	\addplot+[no marks, very thick] table [x index =0, y index =1] {figures/poles(realcontour)/contour.data};
-			             \addlegendentry{Contour}
-
-       \end{axis}
-     \end{tikzpicture}
-   }
-   }
-  \caption{yadayadahadayadayoda} 
-   \label{fig:realfag}  
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE end
-
-
-\section{Varying $\omega$}
-Theory suggests that the HO solutions will hint at the existance of a pole as omega is varried. 
-Supposedly \cite{Dolan} one wavefunction will enter a plateau as omega is increased while the other wavefunctions will continue to grow unabatedly. 
-Our results from investigating this is presented in \cref{fig:Dolan pls}.
-It is clear that no such behaviour was observed.
