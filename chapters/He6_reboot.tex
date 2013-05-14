@@ -1,0 +1,64 @@
+We have the two-body potential
+\begin{eq}
+  \hat{H}_2 
+  = 
+  \frac{1}{4}
+  \sum_{\alpha\beta\gamma\delta}
+  \bra{\alpha\beta} V\sub{sep} \ket{\gamma\delta} 
+  a^\dag_\alpha a^\dag_\beta a_\delta a_\gamma
+  =
+  \sum_{\substack{\alpha < \beta \\ \gamma < \delta}}
+  \bra{\alpha\beta} V\sub{sep} \ket{\gamma\delta} 
+  a^\dag_\alpha a^\dag_\beta a_\delta a_\gamma,
+\end{eq}
+where 
+\begin{eq}
+  \bra{ab} V\sub{sep} \ket{cd} 
+  =
+  \pbra{ab} V\sub{sep} \pket{cd}
+  -
+  \pbra{ab} V\sub{sep} \pket{dc}.
+\end{eq}
+(Rounded bras and kets are non-antisymmetrised product states.)
+Because of the spherical symmetry of the potential this expression can be sepparated into
+\begin{eq}
+  \bra{a} V\sub{sep} \ket{c} * \bra{b} V\sub{sep} \ket{d}
+  -
+  \bra{b} V\sub{sep} \ket{d}* \bra{b} V\sub{sep} \ket{c}
+\end{eq}
+
+If we expand the position space wavefunctions in the momentum-spaces wave function this can be expressed as
+
+\begin{eq}
+  &\bra{E_1m_1 E_2m_2} V\sub{sep} \ket{E'_1m'_1 E'_2m'_2}
+  \\ = &
+    \bra{E_1m_1} V\sub{sep} \ket{E_3m_3} * \bra{E_2m_2} V\sub{sep} \ket{E_4m_4}
+    -
+    \bra{E_2m_2} V\sub{sep} \ket{E_4m_4}* \bra{E_2m_2} V\sub{sep} \ket{E_3m_3}
+\\ =
+  V_0 M_{E_1E'_1} M_{E_2E'_2} \delta_{m_1m'_1} \delta_{m_2m'_2}
+  -
+  V_0 M_{E_1E'_2} M_{E_2E'_1} \delta_{m_1m'_2} \delta_{m_2m'_1}.
+\end{eq}
+
+Where the states $a,b,c,d$ are represented by their quantum numbers $E_i m_i$.
+Discretizing, $k \mapsto k_i, k' \mapsto k_j$, and using the notation $\phi_i = \phi(k_i)$, ${V_{ij}=V(k_i, k_j)}$, this becomes
+\begin{eq}
+	 \frac{2}{\pi} \sum_i w_i k_i^2 \phi_i \sum_j w_j k_j^2 \phi'_j V_{ij}.
+\end{eq}
+Expressed with our symmetrized state vectors $\varphi_i = \sqrt{w_i} k_i \phi_i$
+\begin{eq}
+	 \frac{2}{\pi} \sum_i \sqrt{w_i} k_i \varphi_i \sum_j \sqrt{w_j} k_j \varphi'_j V_{ij} 
+	 =
+	 \frac{2}{\pi} \sum_{ij} u_i V_{ij} v_j \label{eq:matrixeq}
+\end{eq}
+where $u_i = \sqrt{w_i} k_i \varphi_i$ is a row vector, $V_{ij}$ an $n \times n$ matrix and $v_j = \sqrt{w_j} k_j \varphi'_j$ a column vector. Thus the double sum can be expressed as a two matrix multiplications.
+
+The matrix elements are saved as a matrix $M_{EE'} = \bra{E}V(r)\ket{E'}$ so that combinations of them can be evaluated efficiently
+\begin{eq}
+  &\bra{E_1m_1 E_2m_2} V\sub{sep} \ket{E'_1m'_1 E'_2m'_2}
+  \\ = &
+  V_0 M_{E_1E'_1} M_{E_2E'_2} \delta_{m_1m'_1} \delta_{m_2m'_2}
+  -
+  V_0 M_{E_1E'_2} M_{E_2E'_1} \delta_{m_1m'_2} \delta_{m_2m'_1}.
+\end{eq}
