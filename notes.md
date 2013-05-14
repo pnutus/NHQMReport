@@ -9,6 +9,7 @@ Introduction
 Basis expansion
 ---------------
 * Är ordningen på de numeriska aspekterna bra?
+    - ok / v
 
 He5 Nucleus/Two-Body problem
 ----------------------------
@@ -31,7 +32,7 @@ Many-Body Theory
     - för fermioner, men nämna bosoner
 * Implementation
     - fermion_state
-    
+
 He6 Nucleus/The Three-Body Problem
 ----------------------------------
 * Vår modell
