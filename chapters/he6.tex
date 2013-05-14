@@ -214,18 +214,18 @@ meaning that we have to normalize these states with an additional factor $\frac{
 Let us explicitly write out the matrix elements in the total angular momentum basis for our situation. The notation $\ket{E_1 E_2} = \ket{E_1 E_2; JM}$ will be employed. We want to find the elements
 \todo{Find better solution for crazy summation indices}
 \begin{eq}
-  \bra{E_1 E_2}\hat{H}\ket{E_1' E_2'} =\frac{1}{\sqrt{(1+\delta_{E_1E_2})(1+\delta_{E_1'E_2'})}} \sum_{{}_{m_1', \,m_2'}^{m_1, \,m_2} } \conj{c}_{m_1 m_2} c_{m_1'm_2'} \bra{E_1m_1 E_2m_2}\hat{H}\ket{E_1'm_1' E_2'm_2'}
+  \bra{E_1 E_2}\hat{H}\ket{E_1' E_2'} =\frac{1}{\sqrt{1+\delta_{E_1E_2}}\sqrt{1+\delta_{E_1'E_2'}}}} \sum_{{}_{m_1', \,m_2'}^{m_1, \,m_2} } \conj{c}_{m_1 m_2} c_{m_1'm_2'} \bra{E_1m_1 E_2m_2}\hat{H}\ket{E_1'm_1' E_2'm_2'}
 \end{eq}
 For the n-n interaction we may simply insert \cref{eq:n-n interaction} and obtain
 \begin{eq}
-  \bra{E_1 E_2}\hat{H}_2\ket{E_1' E_2'} 
-  &= 
-  \frac{V_0}{\sqrt{(1+\delta_{E_1E_2})(1+\delta_{E_1'E_2'})}} \\
-  &\bigp{
+  &\bra{E_1 E_2}\hat{H}_2\ket{E_1' E_2'} 
+  = 
+  \frac{V_0}{\sqrt{1+\delta_{E_1E_2}}\sqrt{1+\delta_{E_1'E_2'}}}} \\
+  &\times\bigp{
     V(E_1, E_1')V(E_2, E_2')\sum_{m_1, m_2} |c_{m_1 m_2}|^2 + (-1)^J V(E_1, E_2') V(E_2, E_1') \sum_{m_1, m_2} |c_{m_1 m_2}|^2
   }\\
   &=
-  \frac{V_0}{\sqrt{(1+\delta_{E_1E_2})(1+\delta_{E_1'E_2'})}}\bigp{
+  \frac{V_0}{\sqrt{1+\delta_{E_1E_2}}\sqrt{1+\delta_{E_1'E_2'}}}}\bigp{
     V(E_1, E_1')V(E_2, E_2')+ (-1)^J V(E_1, E_2') V(E_2, E_1')
   }
 \end{eq}
@@ -239,5 +239,5 @@ Similarly, the one-body n-$\alpha$ interaction gives
 \begin{eq}
   \bra{E_1 E_2}\hat{H}_1\ket{E_1' E_2'} 
   =
-  \frac{\delta_{E_1 E_1'}\delta_{E_2 E_2'}}{\sqrt{(1+\delta_{E_1E_2})(1+\delta_{E_1'E_2'})}}(E_1+E_2)
+  \frac{\delta_{E_1 E_1'}\delta_{E_2 E_2'}}{\sqrt{1+\delta_{E_1E_2}}\sqrt{1+\delta_{E_1'E_2'}}}}(E_1+E_2)
 \end{eq}
