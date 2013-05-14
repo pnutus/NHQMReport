@@ -1,0 +1,257 @@
+The resonant state has a complex energy and we need to extend our basis into the complex plan to study it. We do this by using the theory of Tore Berggren and his \emph{Berggren basis} \cite{berggren}. This allows us to determine the energy of the state which allows us to charcterize its width and half-life.
+
+Another reason for moving to the complex energy plane is the fact that when we later move to more than two bodies we want to use a basis consisting of our two-body states.
+A basis consisting of all bound, free and resonant complex states forms a complete set  after the \emph{Berggren Comleteness Relation}, this theory is also described by Tore Berggren.
+
+comment on why all free states can be approximated by a few free states along a contour with low energy. 
+
+The theory is involved and will not be fully explained 
+here. Instead we present a heuristic argument.
+
+If we relate the energies $E$ of a system to momenta $k$ as
+\begin{eq}
+  E = \frac{\hbar^2 k^2}{2\mu}
+  \quad\quad
+  \textup{or}
+  \quad\quad
+  k = \frac{\sqrt{2\mu E}}{\hbar},
+\end{eq}
+we can plot the energies as $k$ in the complex plane, see 
+\cref{fig:complex plane}. We then expect bound states, with \todo{introduce k - momenta, basis mom here?}
+$E<0$, to be represented by $k$ along the imaginary axis---
+whereas unbound, scattering states, with $E>0$, are found 
+along the real axis. Resonance states, with complex 
+$E = E_0 - i \Gamma /2$, would by this argument appear somewhere
+in the fourth quadrant.
+
+\todo{Maybe show results before complexifying? We could relate the mesh points to the solutions here.}
+
+We now interpret these $k$ as poles, and our integration \todo{are all k poles or only the rsonant binding momentum?}
+\begin{eq}
+  \fint[0][\inf]{k} k'^2 V(k,k') \phi(k')
+\end{eq}
+\todo{Should we write the integral as a path integral rather than one along the real axis?}
+is evaluated as a contour integration around the upper half plane, 
+see \cref{fig:simple contour}. The result of a contour 
+integration depends on the poles it encircles by the 
+residue theorem. Therefore, we expect something to happen if 
+we let the contour encircle the pole of the resonance,
+as in \cref{fig:berggren contour}.
+\todo{I'm not entirely happy with this formulation}
+An interesting thing seen when moving to a complex contour is the fact that we no longer use a conjugate on the bra when computing the matrix elements.
+This is a confusing piece of theory stemming, again, from Berggren.
+
+
+\begin{figure}
+  \tikzset{
+    triangle/.style={regular polygon, regular polygon sides=3},
+    nosep/.style={inner sep=0},
+    bound/.style={circle,draw,minimum size=2mm,nosep},
+    unbound/.style={rectangle,draw,minimum size=2mm,nosep},
+    quasibound/.style={triangle,draw,minimum size=2.5mm,nosep}
+  }
+  \subfloat[]{
+  \label{fig:simple contour}
+  %\tikzset{external/remake next}
+\tikzsetnextfilename{simple_contour}
+  \begin{tikzpicture}[scale = 2.5]
+    \draw[->] (-1.2, 0) -- (1.2, 0) node[right] {$\Re k$};
+    \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
+    \foreach \y in {0.1, 0.3}
+      \node at (0, \y) [bound] {};
+    \foreach \x in {0.25, -0.25}
+      \node at (\x, -0.15) [quasibound] {};
+    \draw[very thick, mid arrows] (1, 0) arc (0:90:1) arc (90:180:1) 
+                                  -- (0,0) -- cycle;
+  \end{tikzpicture}
+  }
+  \subfloat[]{
+  \label{fig:berggren contour}
+  %\tikzset{external/remake next}
+\tikzsetnextfilename{berggren_contour}
+  \begin{tikzpicture}[scale = 2.5]
+    \draw[->] (-1.2, 0) -- (1.2, 0) node[right] {$\Re k$};
+    \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
+    \foreach \y in {0.1, 0.3}
+      \node at (0, \y) [bound] {};
+    \foreach \x in {0.25, -0.25}
+      \node at (\x, -0.15) [quasibound] {};
+    \draw[very thick, mid arrows, radius=1]
+      (1, 0) arc [start angle=0,  end angle=90]
+             arc [start angle=90, end angle=180]
+             -- (-0.5, 0) 
+             -- (-0.25, 0.25) 
+             -- (0.25, -0.25)
+             -- (0.5, 0)
+             -- cycle;
+  \end{tikzpicture}
+  }
+  \caption{The complex $k$-plane. The circles represent 
+  bound states and the triangles resonant states. Note the 
+  mirroring of the states in the imaginary axis.}
+  \label{fig:complex plane}
+\end{figure}
+
+\todo{Need to mention completeness of berggren basis. Important here or later?}
+
+\todo{Where to put: "No conjugate on bras"?}
+
+\section{The Complex Contour}
+
+We choose to extend our integration along the real axis to 
+the simplest possible complex contour, a triangle-shaped 
+extrusion downwards. The tip of the triangle is placed directly 
+below the hypothesized resonance pole.
+
+Numerically, we are faced with the problem of how to choose 
+the points and weights, now that the contour is complex. 
+We consider each straight segment of the contour separately, 
+and rescale the Gauss-Legendre points to each of the different segments.
+An example of a contour is seen in \todo{introduce GL points somewhere?}
+\cref{fig:triangle contour}, note the concentration of the points around the ends of each segment, the points near the center are given more weight though.
+
+%\tikzset{external/remake next}
+\tikzsetnextfilename{triangle_contour}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = \textwidth,
+      height = 7cm,
+      xlabel=Re $k$,
+      ylabel=Im $k$,
+		  axis lines = middle,
+      ymax = 0.1,
+      enlargelimits,
+      only marks,
+      ticks = none,
+      ]
+      \addplot table {figures/numerical_contour/numerical_contour.data};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The complex contour used. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
+  \label{fig:triangle contour}
+\end{figure}
+
+\section{Studying the Resonance}
+Armed with the tools listed above we can now continue our study of the resonances in a better way.
+Especially the fact that we now are able to localize the resonance is appreciable.
+We can now vary our potential depth and width, which changes the position of the pole.
+This is used to fit the pole after experimental data, we have thus fixed our basis.
+
+One problem that arises is to determine which solution corresponds to the resonnance. It is not so simple as picking the solution with the lowest energy or norm. Instead we need to consider the solution in momentum space.
+Bound and unbound solutions would be dominated by a single momentum, i e, their probability density would closely resemble sine waves in position space. 
+Whereas a resonant state would consist of a linear combination of basis momenta, which in turn would describe a more complex function in position space.
+
+We also noticed some interesting behavior of this pole by playing around with our different parameters.
+This gave way to some nice looking convergence patterns which can be seen in \cref{fig:some_fig}.
+\todo{This paragraph we might want to remove.}
+
+\todo{At another place?} As a measure of strength of the Gauss-Legendre quadrature we compared it to a normal, evenly spaced quadrature and found that the convergence rate was significanly faster for Gauss-Legendre.
+We could use only a fraction of the evenly spaced points and we still got better results.
+\todo{Results and shit here}
+
+%\tikzset{external/remake next}
+\tikzsetnextfilename{pole(V0)}
+\begin{figure} %why isn't this plot big?
+  \centering
+  \pgfplotsset{
+         width = \textwidth,
+     height = 7cm,}
+  \begin{tikzpicture}
+      \begin{axis}[
+        xlabel=Re $k/\b{\si{fm^{-1}}}$,
+        ylabel=Im $k/\b{\si{fm^{-1}}}$,
+  		  axis x line = middle,
+        axis y line = left,
+        every axis y label/.style={
+          at = {(current axis.above origin)},
+          anchor = north west,
+        },
+        every axis x label/.style={
+          at = {(current axis.right of origin)},
+          anchor = north east,
+        },
+        every x tick label/.append style = {anchor = south, yshift = 3pt},
+        xmax=1,
+        ytickmax = 0.3, xtickmax = 0.9,
+        enlarge y limits,
+        no markers,
+        ]
+      	\addplot+[very thick, ->] table  {figures/res_pole(V0)/poles.data};
+      	    \addlegendentry{Pole position}
+      	\addplot+[very thick] table {figures/res_pole(V0)/contour.data};
+          \addlegendentry{Contour}
+      \end{axis}
+  \end{tikzpicture}
+  \caption{The pole position as a function of $V_0$.}
+  \label{fig:pole(V0)}
+
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%V0 (CONTOUR) FIGURE
+  
+\begin{figure}[H]
+   \centering{
+   \pgfplotsset{
+          width = \textwidth,
+      height = 7cm,
+ 	  axis lines = middle,
+       xmax = 0.5,
+	   xmin = -0.01,
+	   xtickmin = 0.15,
+	   max space between ticks=60pt
+       enlargelimits,
+	   ylabel=Im $k/\b{\si{fm^{-1}}}$,
+       every axis y label/.style={
+         at = {(current axis.above origin)},
+         anchor = north west,
+       },
+	   yticklabel style={/pgf/number format/fixed,
+	                     /pgf/number format/precision=2},
+       every axis x label/.style={
+         at = {(current axis.right of origin)},
+         anchor = north,
+       },
+       every x tick label/.append style = {anchor = south, yshift = 3pt},
+   }
+     \subfloat[Square Contour]{
+       \tikzset{external/remake next}
+   \tikzsetnextfilename{sqrcont}
+       \begin{tikzpicture}
+         \begin{axis}[
+			 ymax = 0.04,
+			 legend style={at={(0.6,0.4)}, anchor=north,legend columns=1},
+			 xlabel=Re $k/\b{\si{fm^{-1}}}$]
+         	\addplot+[only marks,very thick] table [x index =2, y index =3] {figures/poles(contour)/poles.data};
+         	    \addlegendentry{Pole position}
+         	\addplot+[no marks, very thick] table [x index =2, y index =3] {figures/poles(contour)/contours.data};
+             \addlegendentry{Contour}
+ 
+         \end{axis}
+       \end{tikzpicture}
+     }
+ 
+   \subfloat[Triangle Contour]{
+     \tikzset{external/remake next}
+ \tikzsetnextfilename{trigcont}
+     \begin{tikzpicture}
+       \begin{axis}[
+		   ymax = 0.04,
+		   legend style={at={(0.8,0.2)}, anchor=north,legend columns=1},
+		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
+         	\addplot+[only marks, very thick] table [x index =0, y index =1] {figures/poles(contour)/poles.data};
+         	    \addlegendentry{Pole position}
+         	\addplot+[no marks, very thick] table [x index =0, y index =1] {figures/poles(contour)/contours.data};
+			             \addlegendentry{Contour}
+
+       \end{axis}
+     \end{tikzpicture}
+   }
+   }
+  \caption{yadayoda} 
+   \label{fig:fag}  
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%V0 (CONTOUR) end
+
