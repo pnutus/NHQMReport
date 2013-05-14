@@ -6,7 +6,7 @@ To calculate the \He{6} Hamilton matrix we will use the eigensolutions $\ket{\ph
 \end{eq}
 where $H_1$ is the interaction between neutron and core. Since we are only considering valence neutrons in the $p$ orbitals ($l=1$), it has been shown\cite{suzuki} that one may use the same reduced mass as in the two-body problem. Because of this, $H_1$ is the Hamiltonian that was used in the solution of \He{5}. This means that our basis states will be eigensolutions to this component, and it will only give diagonal contributions to the hamilton matrix. The non-diagonal part of the matrix will come from the two-body interaction $H_2$.
 
-\section{Neutron - Neutron Interaction}
+\section{n-n Interaction}
 The interaction between neutrons is a complex feature. This is because it arises from the strong interaction between the quarks constituting the neutrons. It depends on both relative coordinates and momenta, and does not have a known analytical expression. In numerical calculations various approximations are used. To make the calculations more managable, we will use a separable interaction:
 \begin{equation}
 V\sub{n-n}(r_{1} , r_{2}) = V_{0}e^{ - \beta (r_1^2 + r_2^2)},
@@ -52,7 +52,7 @@ We have here denoted single-particle states $a,\, b,...$ etc. for simplicity. Fo
 \begin{eq}
 \ket{a} = \ket{E l s j m} .
 \end{eq}
-We will only be using $p_{3/2}$ states in our expansion, meaning that $(lsj)$ will be common for all states and will not be written out explicitly, so single-particle states will be written as $\ket{Em}$. 
+We will only be using $p_{3/2}$ states in our expansion, meaning that $(lsj)$ will be common for all states and will not be written out explicitly, so single-particle states can be written $\ket{Em}$. 
 
 We can now appreciate the benefits of choosing a spherically symmetric separable potential. To calculate the hamilton matrix we need only evaluate the interaction matrix $V_{ij} = \bra{E_i m_i}V\sub{sep}\ket{E_j m_j}$. Since we are solving the \He{5} problem in some basis expansion, we generally do not know the wavefunctions in coordinate space. Instead we transform the integral to the representation that is currently used. For plane wave expansion we could do it explicitly by inserting \cref{eq:radial wavefunction} twice:
 \begin{eq}
@@ -76,56 +76,74 @@ Putting it all together, we have
   V_0 \bigp{ V(E_1, E'_1)V(E_2, E'_2) \delta_{m_1 m'_1} \delta_{m_2 m'_2}
   -
   V(E_1, E'_2)V(E_2, E'_1) \delta_{m_1 m'_2} \delta_{m_2 m'_1} }.
+\label{eq:n-n interaction}
 \end{eq}
 where
 \begin{eq}
 V(E, E') = \int \rd k \, k^2 \phi(k) \int \rd k' \, k'^2 \phi'(k') V\sub{sep}(k,k').
 \end{eq}
-$\phi$ and $\phi'$ are the eigenfunctions with eigenvalues $E$ and $E'$ respectively. To evaluate the integral numerically it is discretized as
+$\phi$ and $\phi'$ are the \He{5} eigenfunctions corresponding to the eigenvalues $E$ and $E'$ respectively. To evaluate the integral numerically it is discretized as
 \begin{eq}
-V(E_1, E_2) = \sum_i \sqrt{w_i}k_i \phi_i \sum_j \sqrt{w_j}k_j \phi'_j V\sub{sep}(k_i, k_j)
+V(E, E') = \sum_i \sqrt{w_i}k_i \phi_i \sum_j \sqrt{w_j}k_j \phi'_j V\sub{sep}(k_i, k_j)
 \end{eq}
 where part of the quadrature weight is baked into the eigenvectors (see \cref{sec:mom discretization}) obtained from solving the single-particle problem.
 
-\section{One Body hamiltonian...}
+\section{n-\alpha Interaction}}
+Consider the one-body part of the interaction
 \begin{eq}
-	\op{H_1} = 
+	\hat{H_1} = 
 	\sum_{\alpha \beta} \bra{\alpha}H_1\ket{\beta} a_{\alpha}^{\dagger} a_{\beta}
 \end{eq}	 
-where 
-\[
-\bra{\alpha}H_1\ket{\beta} 
-= 
-\bra{E m}H_1\ket{E' m'}
-\\=
-\bra{E}H_1\ket{E'} \delta_{m m'}
-= 
-\bra{E}E'\ket{E'} \delta_{m m'}
-=
-E \delta_{E E'}\delta_{m m'}
-\]
-We have
+Because $H_1$ is the \He{5} hamiltonian and we are using its eigensolutions as basis states, we trivially have
 \begin{eq}
-	\bra{a b}\op{H_1}\ket{c d} 
-	=
-\bra{a b} \sum_{\alpha} E_{\alpha} a_{\alpha}^{\dagger} a_{\alpha} \ket{c d} 	
-	\\=
-	\bra{a b}E_c + E_d \ket{cd}
-	=
-	(E_c + E_d)\bra{a b}\ket{c d}
-	=
-	(E_c + E_d)\delta_{a c}\delta{b d}
+  \bra{\alpha}H_1\ket{\beta} = E_\alpha \delta_{\alpha \beta}
 \end{eq}
+hence the matrix elements are
 \begin{eq}
-\bra{E_1 E_2}\op{H_1}\ket{E_1' E_2'}
-	=
-\frac{1}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}} \sum_{\substack{m_1 m_2 \\ m_1' m_2'}}c_{m_1 m_2}c_{m_1' m_2'}^{*} \bra{a b}\op{H_1}\ket{c d} 
-	\\=
-\frac{1}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}} \sum_{\substack{m_1 m_2 \\ m_1' m_2'}} (E_1 +E_2) c_{m_1 m_2}c_{m_1' m_2'}^{*} \delta_{E_1 E_1'} \delta_{m_1 m_1'} \delta_{E_2 E_2'} \delta_{m_2 m_2'}
-\\=
-(E_1 + E_2 )\frac{\delta_{E_1 E_1'} \delta_{E_2 E_2'}}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}} \sum |c_{m_1 m_2}|^2
-\\=
-(E_1 + E_2 )\frac{\delta_{E_1 E_1'} \delta_{E_2 E_2'}}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}}	
+  \bra{ab}\hat{H_1}\ket{cd} 
+  &= 
+  \sum_\alpha E_\alpha \bra{ab}a^\dag_\alpha a_\alpha\ket{cd} \\
+  &=
+  (E_a + E_b)\delta_{ac}\delta_{bd}
+\label{eq:n-a interaction}
+\end{eq}
+
+%\[
+%\bra{\alpha}H_1\ket{\beta} 
+%= 
+%\bra{E m}H_1\ket{E' m'}
+%\\=
+%\bra{E}H_1\ket{E'} \delta_{m m'}
+%= 
+%\bra{E}E'\ket{E'} \delta_{m m'}
+%=
+%E \delta_{E E'}\delta_{m m'}
+%\]
+%We have
+% %\begin{eq}
+% 	\bra{a b}\op{H_1}\ket{c d} 
+% 	=
+% \bra{a b} \sum_{\alpha} E_{\alpha} a_{\alpha}^{\dagger} a_{\alpha} \ket{c d} 	
+% 	\\=
+% 	\bra{a b}E_c + E_d \ket{cd}
+% 	=
+% 	(E_c + E_d)\bra{a b}\ket{c d}
+% 	=
+% 	(E_c + E_d)\delta_{a c}\delta{b d}
+%\end{eq}
+
+%KOPPLADE ELEMENT
+% \begin{eq}
+% \bra{E_1 E_2}\op{H_1}\ket{E_1' E_2'}
+% 	=
+% \frac{1}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}} \sum_{\substack{m_1 m_2 \\ m_1' m_2'}}c_{m_1 m_2}c_{m_1' m_2'}^{*} \bra{a b}\op{H_1}\ket{c d} 
+% 	\\=
+% \frac{1}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}} \sum_{\substack{m_1 m_2 \\ m_1' m_2'}} (E_1 +E_2) c_{m_1 m_2}c_{m_1' m_2'}^{*} \delta_{E_1 E_1'} \delta_{m_1 m_1'} \delta_{E_2 E_2'} \delta_{m_2 m_2'}
+% \\=
+% (E_1 + E_2 )\frac{\delta_{E_1 E_1'} \delta_{E_2 E_2'}}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}} \sum |c_{m_1 m_2}|^2
+% \\=
+
+% (E_1 + E_2 )\frac{\delta_{E_1 E_1'} \delta_{E_2 E_2'}}{\sqrt{(1+\delta_{E_1 E_2})(1+\delta_{E_1' E_2'})}}	
 
 \section{mb Hamiltonian}
 We have now developed the tools we need to determine the mb Hamiltonian. 
@@ -138,9 +156,72 @@ We will cover all four approaches in this chapter.
 In the uncoupled scheme we use a mb basis, $\alpha$, formed from two sp solutions, $a,b$, and give each sp state a m quantum number. In order to reduce the calculatins needed we filter the mb states so the sum of m numbers equals M.
 
 \subsection{Coupled Scheme}
-
+So far we have used basis states 
+\begin{eq}
+  \pket{E_1m_1, E_2m_2} = \ket{E_1j_1m_1}\otimes\ket{E_2j_2m_2}
 \end{eq}
+that are eigenvectors to the \He{5} hamiltonian (with eigenvalues $E_1+E_2$). However, they are also constructed so that they are eigenvectors to the operators $\vec{J}_1^2$ and $\vec{J}_2^2$ with eigenvalues $j_1(j_1+1)$ and $j_2(j_2+1)$ respectively, and the operators $\vec{J}_{1z}$ and $\vec{J}_{2z}$ with eigenvalues $m_1$ and $m_2$. 
 
+Often you are studying systems where the total angular momentum $\vec{J} = \vec{J}_1 + \vec{J}_2$ is conserved, but the individual angular momenta $\vec{J}_1$ and $\vec{J}_2$ are not. Then it is convenient to switch to a basis $\pket{E_1, E_2; JM}$ where the total angular momentum is well defined, but the individual momenta are not. You may then significantly reduce the size of the Hamilton matrix by considering systems of various $J$ and $M$ separately. 
 
+The reader may confirm that $\vec{J}^2$, $\vec{J}_z$, $\vec{J}_1^2$ and $\vec{J}_2^2$ commute with each other. This means that one may choose a basis where $J$, $M$, $j_1$ and $j_2$ are simultanously well-defined. However, this is not the case with $m_1$ and $m_2$, and you neccesarily have
+\begin{eq}
+  \pket{E_1, E_2; JM} = \sum_{m_1, m_2} c_{m_1 m_2} \pket{E_1m_1, E_2m_2}
+\end{eq}
+where the $j$'s are no longer explicitly written out since we will only consider situation where they take on one value. The transformation is done with the coefficients $c_{m_1 m_2}$, formally written as
+\begin{eq}
+  c_{m_1 m_2} = \pbraket{j_1 m_1, j_2 m_2}{JM}
+\end{eq}
+known as the \emph{Clebsch-Gordan coefficients}. There are known expressions for these, and values can be found in standard tables. 
 
-
+Since we are studying fermions, we need to use basis states that are antisymmetric with respect to exchange of all quantum numbers. Using the symmetry property of the Clebsch-Gordan coefficients,
+\begin{eq}
+  c_{m_2 m_1} = (-1)^{j_1 + j_2 - J} c_{m_1 m_2} 
+\end{eq}
+we can see that
+\begin{eq}
+  \pket{E_2, E_1; JM} = \sum_{m_1, m_2} c_{m_1 m_2} \pket{E_2 m_1, E_1 m_2} 
+  = (-1)^{j_1+j_2-J}\sum_{m_1, m_2} c_{m_1 m_2} \pket{E_2 m_2, E_1 m_1}
+\end{eq}
+Thus you may form the antisymmetric basis vector
+\begin{eq}
+  \ket{E_1 E_2; JM} &= \frac{1}{\sqrt{2}}\bigp{\pket{E_1 E_2;JM} - (-1)^{j_1+j_2-J}\pket{E_2 E_1;JM}} \\
+  &= \sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 m_1, E_2 m_2}.
+\end{eq}
+Now consider the case where both particles are in the same orbital, $E_1 j_1 = E_2 j_2 = E j$. Since $j$ is half-numbered for fermions, we will have $(-1)^{j_1+j_2 - J} = - (-1)^J$, and we get
+\begin{eq}
+  \ket{E^2; JM} = \frac{1+(-1)^J}{\sqrt{2}}\pket{E^2; JM} .
+\end{eq} 
+We see that this state is equal to the vacuum state for $J$ odd. However, for $J$ even, we find that the norm
+\begin{eq}
+  \braket{E^2; JM}{E^2; JM} = 2
+\end{eq}
+meaning that we have to normalize these states with an additional factor $\frac{1}{\sqrt{2}}$. This can formally be written
+\begin{eq}
+  \ket{E_1 E_2; JM} 
+  = 
+  \frac{1}{\sqrt{1+\delta_{E_1 E_2}}}\sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 m_1, E_2 m_2}
+\end{eq}
+\subsection{Matrix elements in coupled scheme}
+Let us explicitly write out the matrix elements in the total angular momentum basis for our situation. The notation $\ket{E_1 E_2} = \ket{E_1 E_2; JM}$ will be employed. We want to find the elements
+\todo{Find better solution for crazy summation indices}
+\begin{eq}
+  \bra{E_1 E_2}\hat{H}\ket{E_1' E_2'} = \sum_{{}_{m_1', \,m_2'}^{m_1, \,m_2} } \conj{c}_{m_1 m_2} c_{m_1'm_2'} \bra{E_1m_1 E_2m_2}\hat{H}\ket{E_1'm_1' E_2'm_2'}
+\end{eq}
+For the n-n interaction we may simply insert \cref{eq:n-n interaction} and obtain
+\begin{eq}
+  \bra{E_1 E_2}\hat{H}_2\ket{E_1' E_2'} 
+  = 
+  \frac{V_0}{\sqrt{(1+\delta_{E_1E_2})(1+\delta{E_1'E_2'})}}\bigp{
+    V(E_1, E_1')V(E_2, E_2')\sum_{m_1, m_2} |c_{m_1 m_2}|^2 + (-1)^J V(E_1, E_2') V(E_2, E_1') \sum_{m_1, m_2} |c_{m_1 m_2}|^2
+  }\\
+  &=
+  \frac{V_0}{\sqrt{(1+\delta_{E_1E_2})(1+\delta{E_1'E_2'})}}\bigp{
+    V(E_1, E_1')V(E_2, E_2')+ (-1)^J V(E_1, E_2') V(E_2, E_1')
+  }
+\end{eq}
+because of the relation
+\begin{eq}
+  \sum_{m_1, m_2} |c_{m_1 m_2}|^2 = 1
+\end{eq}
+when summing over all ($m_1,\, m_2$).
