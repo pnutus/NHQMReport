@@ -1,6 +1,7 @@
 We view the \He{5} nucleus as an alpha particle (\He{4}) interacting with a valence neutron.
 Since the exact nucleon-nucleon interaction is unknown, we use the established
-Woods-Saxon potential as an approximation. The Woods-Saxon potential (\cref{fig:woods-saxons}) is given by
+Woods-Saxon potential as an approximation. 
+The Woods-Saxon potential (\cref{fig:woods-saxons}) is given by
 \todo{What's the 4 for?}
 \todo{From where do we get our $V_0$ and $V\sub{so}$?}
 \begin{eq}
@@ -137,7 +138,75 @@ Additionally, the solution varies dramatically with the potential, meaning that 
   }
   \caption{An unbound and resonant solution to the Woods-Saxon potential for different depths $V_0$, using the plane wave expansion.} 
   \label{fig:resonance wavefunction}
+  
+  \end{figure}
+  
+  
+\begin{figure}[H]
+   \centering{
+   \pgfplotsset{
+          width = \textwidth,
+      height = 7cm,
+ 	  axis lines = middle,
+       xmax = 0.5,
+	   xmin = -0.01,
+	   xtickmin = 0.15,
+	   ymax = 0.07
+	   max space between ticks=60pt
+       enlargelimits,
+       ylabel=Im $k/\b{\si{fm^{-1}}}$,
+       every axis y label/.style={
+         at = {(current axis.above origin)},
+         anchor = north west,
+       },
+	   yticklabel style={/pgf/number format/fixed,
+	                     /pgf/number format/precision=2},
+       every axis x label/.style={
+         at = {(current axis.right of origin)},
+         anchor = north,
+       },
+       every x tick label/.append style = {anchor = south, yshift = 3pt},
+   }
+     \subfloat[Square Contour]{
+       \tikzset{external/remake next}
+   \tikzsetnextfilename{sqrcont}
+       \begin{tikzpicture}
+         \begin{axis}[
+			 ymax = 0.04,
+			 legend style={at={(0.6,0.4)}, anchor=north,legend columns=1},
+			 xlabel=Re $k/\b{\si{fm^{-1}}}$]
+         	\addplot+[only marks,very thick] table [x index =2, y index =3] {figures/poles(contour)/poles.data};
+         	    \addlegendentry{Pole position}
+         	\addplot+[no marks, very thick] table [x index =2, y index =3] {figures/poles(contour)/contours.data};
+             \addlegendentry{Contour}
+ 
+         \end{axis}
+       \end{tikzpicture}
+     }
+ 
+   \subfloat[Triangle Contour]{
+     \tikzset{external/remake next}
+ \tikzsetnextfilename{trigcont}
+     \begin{tikzpicture}
+       \begin{axis}[
+		   ymax = 0.04,
+		   legend style={at={(0.8,0.2)}, anchor=north,legend columns=1},
+		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
+         	\addplot+[only marks, very thick] table [x index =0, y index =1] {figures/poles(contour)/poles.data};
+         	    \addlegendentry{Pole position}
+         	\addplot+[no marks, very thick] table [x index =0, y index =1] {figures/poles(contour)/contours.data};
+			             \addlegendentry{Contour}
+
+       \end{axis}
+     \end{tikzpicture}
+   }
+   }
+  \caption{yadayoda} 
+   \label{fig:fag}  
+ 
+  
 \end{figure}
+
 \todo{Start with a deeper well holding a bound state, and then decrease it to get resonances? Add another subplot?}
 \todo{specify which is which with a legend, ther's a lot of ws in the pot, maybe the enumeration and V0 could be moved there to make it more condensed.}
 
