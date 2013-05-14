@@ -22,6 +22,10 @@ problem.V0=-50
 H = mom.hamiltonian(contour, problem, Q)
 eigvals_2, eigvecs_2 = energies(H)
 
+problem.V0=-70
+H = mom.hamiltonian(contour, problem, Q)
+eigvals_3, eigvecs_3 = energies(H)
+
 rmax = 100
 r_order = 500
 r = sp.linspace(1e-1, rmax, r_order)
