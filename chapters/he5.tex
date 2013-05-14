@@ -77,6 +77,11 @@ Additionally, the solution varies dramatically with the potential, meaning that 
 \todo{Check sentence.}Since we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet. We do not expect the resonance to be properly described until complex energies are introduced.
 
 
+%energies:
+%-70 -4.84844400401
+%-52 4.78395615966e-06
+%-50 4.78395565443e-06
+
 \begin{figure}[H]
   \pgfplotstableread{figures/wavefunctions/wavefunctions.data}\wavefunctions
   \centering{
@@ -88,27 +93,47 @@ Additionally, the solution varies dramatically with the potential, meaning that 
     no markers,
     ytick = \empty,
     ymax = 1.7,
+	legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
   }
+    \subfloat[$V_0=\SI{-70}{MeV}$]{
+      \tikzset{external/remake next}
+  \tikzsetnextfilename{wavefunction-70MeV}
+      \begin{tikzpicture}
+        \begin{axis}
+          \addplot          table[x index=0, y index=5] {\wavefunctions};
+						  	\addlegendentry{E = \SI{-4.84}{MeV}}
+							
+          \addplot+[dashed] table[x index=0, y index=6] {\wavefunctions};
+		  						  	\addlegendentry{E = \SI{1.06}{MeV}}
+        \end{axis}
+      \end{tikzpicture}
+    }
+
   \subfloat[$V_0=\SI{-52}{MeV}$]{
-    %\tikzset{external/remake next}
+    \tikzset{external/remake next}
 \tikzsetnextfilename{wavefunction-52MeV}
     \begin{tikzpicture}
       \begin{axis}
         \addplot          table[x index=0, y index=1] {\wavefunctions};
+						  	\addlegendentry{E = \SI{0.41}{MeV}}
         \addplot+[dashed] table[x index=0, y index=2] {\wavefunctions};
+								  	\addlegendentry{E = \SI{1.10}{MeV}}
       \end{axis}
     \end{tikzpicture}
   }
-  \subfloat[$V_0 = \SI{-47}{MeV}$]{
-    %\tikzset{external/remake next}
-\tikzsetnextfilename{wavefunction-47MeV}
+  \subfloat[$V_0 = \SI{-50}{MeV}$]{
+    \tikzset{external/remake next}
+\tikzsetnextfilename{wavefunction-50MeV}
     \begin{tikzpicture}
       \begin{axis}
         \addplot          table[x index=0, y index=3] {\wavefunctions};
+						  	\addlegendentry{E = \SI{0.061}{MeV}}
         \addplot+[dashed] table[x index=0, y index=4] {\wavefunctions};
+								  	\addlegendentry{E = \SI{1.09}{MeV}}
       \end{axis}
     \end{tikzpicture}
   	}
+
   }
   \caption{An unbound and resonant solution to the Woods-Saxon potential for different depths $V_0$, using the plane wave expansion.} 
   \label{fig:resonance wavefunction}
