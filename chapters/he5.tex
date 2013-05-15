@@ -103,7 +103,7 @@ That is not the case, we instead only find the basis momenta.
 	legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
   }
     \subfloat[$V_0=\SI{-70}{MeV}$]{
-      \tikzset{external/remake next}
+      %\tikzset{external/remake next}
   \tikzsetnextfilename{wavefunction-70MeV}
       \begin{tikzpicture}
         \begin{axis}
@@ -117,7 +117,7 @@ That is not the case, we instead only find the basis momenta.
     }
 
   \subfloat[$V_0=\SI{-52}{MeV}$]{
-    \tikzset{external/remake next}
+    %\tikzset{external/remake next}
 \tikzsetnextfilename{wavefunction-52MeV}
     \begin{tikzpicture}
       \begin{axis}
@@ -129,7 +129,7 @@ That is not the case, we instead only find the basis momenta.
     \end{tikzpicture}
   }
   \subfloat[$V_0 = \SI{-50}{MeV}$]{
-    \tikzset{external/remake next}
+    %\tikzset{external/remake next}
 \tikzsetnextfilename{wavefunction-50MeV}
     \begin{tikzpicture}
       \begin{axis}
@@ -184,7 +184,7 @@ That is not the case, we instead only find the basis momenta.
        every x tick label/.append style = {anchor = south, yshift = 3pt},
    }
      \subfloat[Real Contour 70]{
-       \tikzset{external/remake next}
+       %\tikzset{external/remake next}
    \tikzsetnextfilename{realcont70}
        \begin{tikzpicture}
          \begin{axis}[
@@ -199,7 +199,7 @@ That is not the case, we instead only find the basis momenta.
        \end{tikzpicture}
      }
      \subfloat[Real Contour 50]{
-       \tikzset{external/remake next}
+       %\tikzset{external/remake next}
    \tikzsetnextfilename{realcont50}
        \begin{tikzpicture}
          \begin{axis}[
@@ -215,7 +215,7 @@ That is not the case, we instead only find the basis momenta.
      }
    
    }
-  \caption{momentum solutions to the Shrödinger equation "along" the real axis for \he{5} with a potential of $V_0 =$ \SI{-70}{MeV} (a) and $V_0 =$ \SI{-50}{MeV} (b).} 
+  \caption{momentum solutions to the Shrödinger equation ``along'' the real axis for \He{5} with a potential of $V_0 =$ \SI{-70}{MeV} (a) and $V_0 =$ \SI{-50}{MeV} (b).} 
    \label{fig:pole real contour}  
 \end{figure}
 \todo{define pole - momentum solution}
@@ -225,7 +225,7 @@ That is not the case, we instead only find the basis momenta.
 \section{Varying $\omega$}
 %sentiment: last ditch effort to find the resonnance using hermitian QM. this doesn't / almost work. need to tackle the problem from a diffrent (Non-H) angle
 Theory suggests that the HO solutions will hint at the existance of a pole as omega is varried. 
-Supposedly \cite{Dolan} one wavefunction will enter a plateau as omega is increased while the other wavefunctions will continue to grow unabatedly. 
-Our results from investigating this is presented in \cref{fig:Dolan pls}.
+Supposedly \cite{dolan} one wavefunction will enter a plateau as omega is increased while the other wavefunctions will continue to grow unabatedly. 
+Our results from investigating this is presented in \cref{fig:energies(omega)}.
 It is clear that no such behaviour was observed.
 

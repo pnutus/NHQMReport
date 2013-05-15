@@ -143,10 +143,6 @@ We can now vary our potential depth and width, which changes the position of the
 This is used to fit the pole after experimental data.
 When this is made we have fixed our basis, meaning that we are fairly shure that our description of \He{5} is good.
 
-One thing to think of when locating a resonance is that it is not the energy eigenvalue with lowest real part or norm.
-The easiest way to find it is to plot the wavefunctions in momentum or position space where they show different behavior than the bond and free ones.
-An example of this is shown in \cref{????????????} and \cref{???????????????????????}.
-
 We also noticed some interesting behavior of this pole by playing around with our different parameters.
 This gave way to some nice looking convergence patterns which can be seen in \cref{fig:some_fig}.
 \todo{This paragraph we might want to remove.}
@@ -155,7 +151,7 @@ This gave way to some nice looking convergence patterns which can be seen in \cr
 We could use only a fraction of the evenly spaced points and we still got better results.
 \todo{Results and shit here}
 
-\tikzset{external/remake next}
+%\tikzset{external/remake next}
 \tikzsetnextfilename{pole(V0)}
 \begin{figure}
   \centering
@@ -175,12 +171,13 @@ We could use only a fraction of the evenly spaced points and we still got better
           at = {(current axis.right of origin)},
           anchor = north east,
         },
- 	   yticklabel style={/pgf/number format/fixed,
+ 	      yticklabel style={/pgf/number format/fixed,
  	                     /pgf/number format/precision=3},
         every x tick label/.append style = {anchor = south, yshift = 3pt},
-        xmax=0.5,
+        xmax=0.8,
         ytickmax = 0.3, xtickmax = 0.9,
         enlarge y limits,
+        enlarge x limits = upper,
         no markers,
         ]
       	\addplot+[very thick, ->] table  {figures/res_pole(V0)/poles.data};
@@ -199,47 +196,47 @@ We could use only a fraction of the evenly spaced points and we still got better
 \begin{figure}
    \centering{
    \pgfplotsset{
-          width = \textwidth,
-      height = 7cm,
- 	  axis lines = middle,
-       xmax = 0.5,
-	   xmin = -0.01,
-	   xtickmin = 0.15,
-	   max space between ticks=60pt
-       enlargelimits,
-	   ylabel=Im $k/\b{\si{fm^{-1}}}$,
-       every axis y label/.style={
-         at = {(current axis.above origin)},
-         anchor = north west,
-       },
-	   yticklabel style={/pgf/number format/fixed,
-	                     /pgf/number format/precision=2},
-       every axis x label/.style={
-         at = {(current axis.right of origin)},
-         anchor = north,
-       },
-       every x tick label/.append style = {anchor = south, yshift = 3pt},
+     width = \textwidth,
+     height = 7cm,
+     axis lines = middle,
+     xmax = 0.5,
+     xmin = -0.01,
+     xtickmin = 0.15,
+     max space between ticks=60pt
+     enlargelimits,
+     ylabel=Im $k/\b{\si{fm^{-1}}}$,
+     every axis y label/.style={
+     at = {(current axis.above origin)},
+       anchor = north west,
+     },
+     yticklabel style={/pgf/number format/fixed,
+     /pgf/number format/precision=2},
+     every axis x label/.style={
+     at = {(current axis.right of origin)},
+     anchor = north,
+     },
+     every x tick label/.append style = {anchor = south, yshift = 3pt},
    }
-     \subfloat[Square Contour]{
-       \tikzset{external/remake next}
-   \tikzsetnextfilename{sqrcont}
+   \subfloat[Square Contour]{
+     %\tikzset{external/remake next}
+     \tikzsetnextfilename{sqrcont}
        \begin{tikzpicture}
          \begin{axis}[
-			 ymax = 0.04,
-			 legend style={at={(0.6,0.4)}, anchor=north,legend columns=1},
-			 xlabel=Re $k/\b{\si{fm^{-1}}}$]
+  		 ymax = 0.04,
+  		 legend style={at={(0.6,0.4)}, anchor=north,legend columns=1},
+  		 xlabel=Re $k/\b{\si{fm^{-1}}}$]
          	\addplot+[only marks,very thick] table [x index =2, y index =3] {figures/poles(contour)/poles.data};
          	    \addlegendentry{Pole position}
          	\addplot+[no marks, very thick] table [x index =2, y index =3] {figures/poles(contour)/contours.data};
              \addlegendentry{Contour}
- 
+
          \end{axis}
        \end{tikzpicture}
      }
  
    \subfloat[Triangle Contour]{
-     \tikzset{external/remake next}
- \tikzsetnextfilename{trigcont}
+     %\tikzset{external/remake next}
+     \tikzsetnextfilename{trigcont}
      \begin{tikzpicture}
        \begin{axis}[
 		   ymax = 0.04,
