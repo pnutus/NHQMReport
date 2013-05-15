@@ -75,11 +75,13 @@
 \usepackage[disable]{todonotes}
 \setlength{\marginparwidth}{3cm}
 \reversemarginpar
-
-\DeclareUnicodeCharacter{00A0}{ }
 \makeatletter
 \renewcommand{\todo}[2][]{\tikzexternaldisable\@todo[#1]{#2}\tikzexternalenable}
 \makeatother
+
+
+\DeclareUnicodeCharacter{00A0}{ }
+
 
 
 \newcommand{\fint}[1][]{%
