@@ -1,9 +1,11 @@
-The resonant state has a complex energy and we need to extend our basis into the complex plan to study it. We do this by using the theory of Tore Berggren and his \emph{Berggren basis} \cite{berggren}. This allows us to determine the energy of the state which allows us to charcterize its width and half-life.
+The resonant state has a complex energy and we need to extend our basis into the complex plane to study it. 
+We do this by using the theory of Tore Berggren and his \emph{Berggren basis} \cite{berggren}.
+This allows us to determine the energy of the state which charcterizes its width and half-life.
 
 Another reason for moving to the complex energy plane is the fact that when we later move to more than two bodies we want to use a basis consisting of our two-body states.
 A basis consisting of all bound, free and resonant complex states forms a complete set  after the \emph{Berggren Comleteness Relation}, this theory is also described by Tore Berggren.
 
-comment on why all free states can be approximated by a few free states along a contour with low energy. 
+\dodo{comment on why all free states can be approximated by a few free states along a contour with low energy.}
 
 The theory is involved and will not be fully explained 
 here. Instead we present a heuristic argument.
@@ -26,7 +28,8 @@ in the fourth quadrant.
 
 \todo{Maybe show results before complexifying? We could relate the mesh points to the solutions here.}
 
-We now interpret these $k$ as poles, and our integration \todo{are all k poles or only the rsonant binding momentum?}
+We now interpret these complex momenta, $k$, as poles and our integration 
+
 \begin{eq}
   \fint[0][\inf]{k} k'^2 V(k,k') \phi(k')
 \end{eq}
@@ -99,12 +102,11 @@ This is a confusing piece of theory stemming, again, from Berggren.
 \section{The Complex Contour}
 
 We choose to extend our integration along the real axis to 
-the simplest possible complex contour, a triangle-shaped 
-extrusion downwards. The tip of the triangle is placed directly 
+the simplest possible complex contour, a triangle-shaped downward extrusion. The tip of the triangle is placed directly 
 below the hypothesized resonance pole.
 
 Numerically, we are faced with the problem of how to choose 
-the points and weights, now that the contour is complex. 
+the points and weights. 
 We consider each straight segment of the contour separately, 
 and rescale the Gauss-Legendre points to each of the different segments.
 An example of a contour is seen in \todo{introduce GL points somewhere?}
@@ -134,20 +136,20 @@ An example of a contour is seen in \todo{introduce GL points somewhere?}
 \end{figure}
 
 \section{Studying the Resonance}
-Armed with the tools listed above we can now continue our study of the resonances in a better way.
+Armed with the tools listed above we can now continue our study of the resonances.
 We now need a way to determine which solution corresponds to the resonnance. 
 It is not as simple as picking the solution with the lowest energy or norm. 
 Instead we need to consider the solutions in momentum space.
 Bound states have negative energy and can easily be identified, that leaves unbound and resonant states. 
 The unbound solutions would be dominated by a single momentum, i e, their probability density would closely resemble sine waves in position space. 
 \todo{we have a paper discussing this in detail, would that be interesting?}
-Whereas a more localized resonant state would have a greater uncertainty in its momentum by the Heisenberg relation, and can thus be identified by picking the fuzziest solution.
+Whereas a more localized resonant state would have a greater uncertainty in its momentum by the Heisenberg relation, and can thus be identified by picking the most diffuse solution.
 
 We can now proceed to fit our models to experimental data provided by \cite{inte jimmy i alla fall}. 
-We also found it worthwhile to plot the resonnance position as a function of the strength of the potential. 
+We also found it worthwhile to plot the resonnance momentum as a function of the strength of the potential. 
 In the \He{5} system no resonant state can co-exist with a bound state for a given potential strength, \cite{spill?}.
-Hence we could single out the least localized solution in momentum space, this allows us to study how the bound system becommes weaker and gradually dissipates into a resonance. 
-The result is presented in \cref{fig:pole(V0)}, in this figure the potential was varried from -70, bound, to -50, resonant.
+Hence we could single out the least localized solution in momentum space, this allows us to study how the bound system becomes weaker and gradually dissipates into a resonance. 
+The result is presented in \cref{fig:pole(V0)}, in this figure the potential was varried from \SI{-70}{MeV}, bound, to \SI{-50}{MeV}, resonant.
 
 \Cref{fig:pole(cont)} on the other hand depicts the pole's stability with respect to different complex contours. And that's about it 
 
