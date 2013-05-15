@@ -1,3 +1,9 @@
+\documentclass[../main/report.tex]{subfiles}
+\begin{document}
+
+\chapter{The \He{5} Nucleus}
+\label{cha:he5}
+
 We view the \He{5} nucleus as an alpha particle (\He{4}) interacting with a valence neutron.
 Since the exact nucleon-nucleon interaction is unknown, we use the established
 Woods-Saxon potential as an approximation. 
@@ -90,7 +96,7 @@ That is not the case, we instead only find the basis momenta.
 %%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION FIGURE
 
 \begin{figure}[H]
-  \pgfplotstableread{figures/wavefunctions/wavefunctions.data}\wavefunctions
+  \pgfplotstableread{../figures/wavefunctions/wavefunctions.data}\wavefunctions
   \centering{
   \pgfplotsset{
     width = 0.45\textwidth, height = 7cm,
@@ -190,9 +196,9 @@ That is not the case, we instead only find the basis momenta.
          \begin{axis}[
   		   legend style={at={(0.8,0.5)}, anchor=north,legend columns=1},
   		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
-           	\addplot+[only marks, very thick] table [x index =0, y index =1] {figures/poles(realcontour)/poles.data};
+           	\addplot+[only marks, very thick] table [x index =0, y index =1] {../figures/poles(realcontour)/poles.data};
            	    \addlegendentry{Pole position}
-           	\addplot+[no marks, very thick] table [x index =0, y index =1] {figures/poles(realcontour)/contour.data};
+           	\addplot+[no marks, very thick] table [x index =0, y index =1] {../figures/poles(realcontour)/contour.data};
   			             \addlegendentry{Contour}
 
          \end{axis}
@@ -205,9 +211,9 @@ That is not the case, we instead only find the basis momenta.
          \begin{axis}[
   		   legend style={at={(0.8,0.5)}, anchor=north,legend columns=1},
   		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
-           	\addplot+[only marks, very thick] table [x index =2, y index =3] {figures/poles(realcontour)/poles.data};
+           	\addplot+[only marks, very thick] table [x index =2, y index =3] {../figures/poles(realcontour)/poles.data};
            	    \addlegendentry{Pole position}
-           	\addplot+[no marks, very thick] table [x index =0, y index =1] {figures/poles(realcontour)/contour.data};
+           	\addplot+[no marks, very thick] table [x index =0, y index =1] {../figures/poles(realcontour)/contour.data};
   			             \addlegendentry{Contour}
 
          \end{axis}
@@ -229,3 +235,4 @@ Supposedly \cite{dolan} one wavefunction will enter a plateau as omega is increa
 Our results from investigating this is presented in \cref{fig:energies(omega)}.
 It is clear that no such behaviour was observed.
 
+\end{document}

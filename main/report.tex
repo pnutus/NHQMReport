@@ -1,14 +1,14 @@
 \documentclass[12pt,a4paper]{report}
 \usepackage[english]{babel}
 
-\usepackage{NHQM}
+\usepackage{../main/NHQM}
 
 \begin{document}
   
 \numberwithin{equation}{chapter}
 \numberwithin{figure}{chapter}
 
-\pagenumbering{gobble}
+%\pagenumbering{gobble}
 \listoftodos
 
 
@@ -17,12 +17,9 @@
 \Large Bachelor Thesis in Physics}
 \author{Jonathan Bengtsson \and Ola Embréus \and Vincent Ericsson \and Pontus Granström \and Nils Wireklint}
 \date{\today}
-
-
-
 \maketitle
 
-\newpage
+
 \begin{abstract}
 \todo{Begin the first sentence by other thing than This thesis, this report, etc.}
 \todo{Alternative sencences in parentheses.}
@@ -47,51 +44,24 @@ Finally, a Monte Carlo approach to reduce computation time for many-body calcula
 \todo{We have -ing form on five places in abstract, that is too many.}
 \todo{Read through and correct the abstract.}
 \end{abstract}
-\newpage
-
-\pagenumbering{roman}
 
 \tableofcontents
-\newpage
 
-\pagenumbering{arabic}
-\setcounter{page}{1}
+\subfile{../chapters/introduction.tex}
 
-\chapter{Introduction}
-\label{cha:introduction}
-\subfile{chapters/introduction.tex}
+\subfile{../chapters/basis_expansion.tex}
 
+\subfile{../chapters/he5.tex}
 
-\chapter{Basis Expansion}
-\label{cha:basis expansion}
-\subfile{chapters/basis_expansion.tex}
+\subfile{../chapters/nhqm.tex}
 
-\chapter{The \He{5} Nucleus}
-\label{cha:he5}
-\subfile{chapters/he5.tex}
+\subfile{../chapters/mb_theory.tex}
 
-\chapter{Non-Hermitian Quantum Mechanics} \todo{Discuss whether to use NHQM as chapter name.}
-\label{cha:nhqm}
-\subfile{chapters/nhqm_alt.tex}
+\subfile{../chapters/he6.tex}
 
-\chapter{Many-Body Theory}
-\label{cha:many-body}
-\subfile{chapters/mb_theory.tex}
+\subfile{../chapters/monte_carlo.tex}
 
-\chapter{The \He{6} Nucleus}
-\label{cha:he6}
-\subfile{chapters/he6.tex}
-
-\chapter{The \He{7} Nucleus}
-\label{cha:he7}
-
-\chapter{Monte Carlo Approach}
-\label{cha:monte carlo}
-\subfile{chapters/monte_carlo.tex}
-
-\chapter{Discussion}
-\label{cha:disc}
-\subfile{chapters/discussion.tex}
+\subfile{../chapters/outlook.tex}
 
 \appendix
 
@@ -102,12 +72,16 @@ Finally, a Monte Carlo approach to reduce computation time for many-body calcula
 \section{Harmonic Oscillator Matrix Elements}
 \label{sec:HO matrix elements}
 
-\subfile{appendices/HO_elements.tex}
+\subfile{../appendices/HO_elements.tex}
 
 \section{Radial Momentum Space TISE}
 \label{sec:radial mom space TISE}
 
-\subfile{appendices/radial_mom_TISE.tex}
+\subfile{../appendices/radial_mom_TISE.tex}
+
+\chapter{Numerical Integration}
+
+\subfile{../appendices/gauss_legendre.tex}
 
 \chapter{Tools}
 

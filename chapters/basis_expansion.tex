@@ -1,3 +1,9 @@
+\documentclass[../main/report.tex]{subfiles}
+\begin{document}
+
+\chapter{Basis Expansion}
+\label{cha:basis expansion}
+
 We want to study the nuclei of Helium isotopes by solving the \emph{Time Independent Schrödinger Equation} (TISE)
 \begin{eq}
   \label{eq:TISE}
@@ -329,11 +335,11 @@ a small deviation is not surprising.
       ]
     	\addplot
         table[x index = 0, y index = 1]  
-        {figures/hydrogen_convergence/hydrogen_convergence.data};
+        {../figures/hydrogen_convergence/hydrogen_convergence.data};
     	  \addlegendentry{Harmonic oscillator basis}
     	\addplot
         table[x index = 0, y index = 2] 
-        {figures/hydrogen_convergence/hydrogen_convergence.data};
+        {../figures/hydrogen_convergence/hydrogen_convergence.data};
         \addlegendentry{Plane wave basis}
       \addplot+[no markers, domain=11:20] {-13.6};
         \addlegendentry{Theoretical value}
@@ -343,3 +349,4 @@ a small deviation is not surprising.
   \label{fig:hydrogen HOvsMom}
 \end{figure}
 
+\end{document}
