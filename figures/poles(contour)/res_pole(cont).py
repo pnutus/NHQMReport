@@ -35,11 +35,26 @@ l = 1
 j = 1.5
 args = (problem, l, j)
 k_max=5
-order = 60
+order = 36
 
 peak_x = 0.2
 peak_y = 0.2
-contours = [triangle_contour(peak_x, peak_y, k_max, order/3), gauss_contour([0, 0 -peak_y*1j, 2*peak_x -peak_y*1j, 2*peak_x, k_max], order/4)]
+
+sierp_x = 0.1
+sierp_y = -0.04j
+sierpa = 0.99*sierp_x
+sierpb = 2*sierp_y
+sierpc = 0.99*sierp_x + 2*sierp_y
+sierpd = 0.51*sierp_x + sierp_y
+sierpe = 1.49*sierp_x + sierp_y
+sierpf = 2*sierp_x + 2*sierp_y
+sierpg = 1.01*sierp_x + 2*sierp_y
+sierph = 1.01*sierp_x
+
+
+sierpinski = gauss_contour([0, sierpa, sierpb, sierpc, sierpd, sierpe, sierpf, sierpg, sierph, k_max], order/9)
+
+contours = [triangle_contour(peak_x, peak_y, k_max, order/3), gauss_contour([0, 0 -peak_y*1j, 2*peak_x -peak_y*1j, 2*peak_x, k_max], order/4), sierpinski]
 
 V0 = -47
 k_res = sp.empty((len(contours), order), 'complex')
