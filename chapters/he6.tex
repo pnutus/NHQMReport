@@ -13,48 +13,85 @@ To calculate the \He{6} Hamilton matrix we will use the eigensolutions $\ket{\ph
 where $H_1$ is the interaction between neutron and core. Since we are only considering valence neutrons in the $p$ orbitals ($l=1$), it has been shown\cite{suzuki} that one may use the same reduced mass as in the two-body problem. Because of this, $H_1$ is the Hamiltonian that was used in the solution of \He{5}. This means that our basis states will be eigensolutions to this component, and it will only give diagonal contributions to the hamilton matrix. The non-diagonal part of the matrix will come from the two-body interaction $H_2$.
 
 \section{n-n Interaction}
-The interaction between neutrons is a complex feature. This is because it arises from the strong interaction between the quarks constituting the neutrons. It depends on both relative coordinates and momenta, and does not have a known analytical expression. In numerical calculations various approximations are used. To make the calculations more managable, we will use a separable interaction:
-\begin{equation}
-V\sub{n-n}(r_{1} , r_{2}) = V_{0}e^{ - \beta (r_1^2 + r_2^2)},
-\end{equation}
-where $r_1$ and $r_2$ are the radial coordinates of the neutrons relative to the core. $\beta$ (range) and $V_{0}$ (strength) are parameters that have to be fitted after experimential data. 
+The interaction between neutrons is a complex feature. This is because it arises from the strong interaction between the quarks constituting the neutrons. 
+It depends on both relative coordinates and momenta, and does not have a known analytical expression. 
+In numerical calculations various approximations are used. 
+To make the calculations more managable, we will use a separable interaction.
 
-To solve the problem we need to determine what contribution the n-n interaction give to the Hamiltonian. We present below the key points in this derivation. Details can be found in \cref{app: n-n}. 
+\subsection{Gaussian Interaction}
+A simple, separable interaction is the following gaussian
 \begin{eq}
-  \hat{H}_2 
+  V(r_1 , r_2) 
   = 
-  \frac{1}{4}
-  \sum_{\alpha\beta\gamma\delta}
-  \bra{\alpha\beta} V\sub{n-n} \ket{\gamma\delta} 
-  a^\dag_\alpha a^\dag_\beta a_\delta a_\gamma
-  =
-  \sum_{\substack{\alpha < \beta \\ \gamma < \delta}}
-  \bra{\alpha\beta} V\sub{n-n} \ket{\gamma\delta} 
-  a^\dag_\alpha a^\dag_\beta a_\delta a_\gamma,
+  V\sub{GI} \exp\p{-\frac{r_1^2}{R^2}} \exp\p{-\frac{r_1^2}{R^2}},
 \end{eq}
-where
-\begin{eq}
-  \bra{ab} V\sub{n-n} \ket{cd} 
-  =
-  \pbra{ab} V\sub{n-n} \pket{cd}
-  -
-  \pbra{ab} V\sub{n-n} \pket{dc}.
-\end{eq}
-%(Rounded bras and kets are non-antisymmetrised product states.)
-We have
-\begin{eq}
-  \pbra{ab} V\sub{n-n} \pket{cd}  
-  &=
-  V_0 \pbra{ab} e^{-\beta(r_1^2+r_2^2)}\pket{cd} \\
-  &=
-  V_0 \bra{a}V\sub{sep}\ket{c}\bra{b}V\sub{sep}\ket{d}
-  %V_0 \int \rd^3 \vec{r}_1 \int \rd^3 \vec{r}_2 \conj{\psi_a}(\vec{r}_1)\conj{\psi_b}(\vec{r}_2) e^{-\beta r_1^2}e^{-\beta r_2^2}  \psi_c(\vec{r_1})\psi_d(\vec{r_2}) \\
-  %&=
-  %V_0 \int \rd^3 \vec{r} \conj{\psi_a}(\vec{r})e^{-\beta r^2} \psi_c(\vec{r}) \cdot \int \rd^3 \vec{r} \conj{\psi_b}(\vec{r})e^{-\beta r^2} \psi_d(\vec{r}) \\
-\end{eq}
-where $V\sub{sep} = e^{-\beta r^2}$. 
+where $r_1$ and $r_2$ are the radial coordinates of the neutrons relative to the core. The range $R$ and strength $V\sub{GI}$ are parameters that have to be fitted to experimential data.
 
-We have here denoted single-particle states $a,\, b,...$ etc. for simplicity. For the \He{5} eigensolutions these consist of the quantum numbers
+Because the potential is separable
+\begin{eq}
+  V(r_1, r_2) 
+  = 
+  V\sub{GI} e^{-\beta r_1^2} e^{-\beta r_2^2}
+  =
+  V\sub{GI} V\sub{sep}(r_1) V\sub{sep}(r_2),
+  \quad
+  V\sub{sep}(r) = e^{-\beta r^2}
+\end{eq}
+we can write the two-body matrix elements as
+\begin{eq}
+  \pbra{ab} V \pket{cd}
+  =
+  V\sub{GI} 
+  \bra{a} V\sub{sep}(r) \ket{c} 
+  \bra{b} V\sub{sep}(r) \ket{d}.
+\end{eq}
+The $\bra{\alpha} V\sub{sep}(r) \ket{\beta}$ are then calculated by expanding $V\sub{sep}$ in the same basis as the sp states. In the harmonic oscillator basis, this is
+\begin{eq}
+  \bra{\alpha} V\sub{sep}(r) \ket{\alpha'}
+  =
+  \sum_n \psi_n
+  \sum_{n'} \psi_{n'}
+  \delta_{m_a m_c}\delta_{m_b m_d}
+  \fint[0][\inf]{r} r^2 R_{nl}(r) V\sub{sep}(r) R_{n'l}^\beta(r)
+\end{eq}
+and in the plane wave basis
+\begin{eq}
+  \bra{\alpha} V\sub{sep}(r) \ket{\alpha'}
+  =
+  \sum_i \sqrt{w_i}k_i \phi_i \sum_j \sqrt{w_j}k_j \phi'_j V\sub{sep}(k,k'),
+\end{eq}
+with
+\begin{eq}
+  V\sub{sep}(k,k') 
+  = 
+  \frac{2}{\pi} \fint[0][\inf]{r} r^2 V(r) j_l(kr)j_l(k'r),
+\end{eq}
+as before.
+
+\subsection{Surface Delta Interaction}
+
+Another possible, simple interaction is the surface delta interaction
+\begin{eq}
+  V(\vec{r}_1, \vec{r}_2) 
+  = 
+  V\sub{SDI} 
+  \delta(\vec{r}_1 - \vec{r}_2) 
+  \delta(r_2 - r_0)
+\end{eq}
+where $V\sub{SDI}$ is the strength and $r_0$ is the range of the Woods-Saxon potential. 
+With this potential, the two-body matrix elements become (for calculation, see \cref{app:delta_interaction})
+\begin{eq}
+  \pbra{ab} V \pket{cd}
+  =
+  V\sub{SDI} r_0^2
+  \delta_{m_a m_c}\delta_{m_b m_d}   
+  R^*_a(r_0) R^*_b(r_0) R_c(r_0) R_d(r_0),
+\end{eq}
+Here $R(r)$ are the radial wavefunctions of the sp states.
+
+\subsection{Herp}
+
+For the \He{5} eigensolutions these consist of the quantum numbers
 \begin{eq}
 \ket{a} = \ket{E l s j m} .
 \end{eq}
@@ -102,7 +139,7 @@ V(E, E') = \sum_i \sqrt{w_i}k_i \phi_i \sum_j \sqrt{w_j}k_j \phi'_j V\sub{sep}(k
 \end{eq}
 where part of the quadrature weight is included in eigenvectors (see \cref{sec:mom discretization}) ... obtained from solving the single-particle problem.
 
-\section{n-$\alpha$ Interaction}
+\section{$n\mhyphen\alpha$ Interaction}
 \todo{This paragraph might be redundant, as this result is in mb theory chapter}
 Consider the one-body part of the interaction
 \begin{eq}

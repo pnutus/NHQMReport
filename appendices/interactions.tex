@@ -1,0 +1,54 @@
+\documentclass[../main/report.tex]{subfiles}
+\begin{document}
+
+\section{Two-body interactions}
+\label{app:interactions}
+
+Here we derive expressions for the two-body interaction matrix elements, to be used in computer calculations. 
+
+\subsection{Surface Delta Interaction}
+
+The matrix elements are calculated by first expanding in the position basis, and then entering the expressions for the 
+\begin{eq}
+  & \pbra{ab} V \pket{cd}
+  \\ & =
+  \fint[\R^3]{^3\vec{r}_2}
+  \fint[\R^3]{^3\vec{r}_1}
+  \psi^*_a(\vec{r}_1) \psi^*_b(\vec{r}_2) 
+  V\sub{SDI} 
+  \delta(\vec{r}_1 - \vec{r}_2) 
+  \delta(r_2 - r_0)
+  \psi_c(\vec{r}_1) \psi_d(\vec{r}_2)
+  \\ & =
+  V\sub{SDI}
+  \fint[\R^3]{^3\vec{r}_2}
+  \psi^*_a(\vec{r}_2) \psi^*_b(\vec{r}_2) 
+  \delta(r_2 - r_0)
+  \psi_c(\vec{r}_2) \psi_d(\vec{r}_2)
+  \\ & =
+  V\sub{SDI}
+  \delta_{m_a m_c}\delta_{m_b m_d}
+  \fint[0][\inf]{r_2} r_2^2
+  R^*_a(r_2) R^*_b(r_2) R_c(r_2) R_d(r_2)
+  \delta(r_2 - r_0)
+  \\ & =
+  V\sub{SDI}
+  \delta_{m_a m_c}\delta_{m_b m_d} r_0^2
+  R^*_a(r_0) R^*_b(r_0) R_c(r_0) R_d(r_0)
+\end{eq}
+For the plane wave basis we have
+\begin{eq}
+  R_\alpha = \sqrt\frac{2}{\pi}\sum_i \sqrt{w_i} \phi_\alpha(k_i)j_l(k_i r_0)
+\end{eq}
+and for the harmonic oscillator
+\begin{eq}
+\end{eq}
+\begin{eq}
+  \pbra{ab} V \pket{cd}
+  =
+  V\sub{SDI} r_0^2
+  \delta_{m_a m_c}\delta_{m_b m_d}   
+  R^*_a(r_0) R^*_b(r_0) R_c(r_0) R_d(r_0).
+\end{eq}
+
+\end{document}
