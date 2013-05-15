@@ -1,117 +1,245 @@
-In order to solve the three-body problem of \He{6}, we have to introduce some new formalia comparing it to the previously calculated two-body problem, which could be reduced to a one dimension using a coordinate transformation. This since in the case of three or more bodies, we can no longer do this kind of simplification.
+\documentclass[../main/report.tex]{subfiles}
+\begin{document}
+A basic fact of quantum mechanics is that particles that look identical \emph{are} identical. It is also known that there are only two types of particles, bosons and fermions, and that systems of many bosons and fermions behave differently. When exhanging the coordinates of two particles, the wavefunction of a bosonic system is unchanged, whereas a fermionic wavefunction changes sign. We say that the bosonic wavefunction is \emph{symmetric} and that the fermionic wavefunction is antisymmetric. 
 
-\section{Fock space}
-\label{sec:fock space}
-To treat the three-body problem we work in \emph{Fock space}, here many-body states are described in terms of one-body states. Formally this is written as the direct sum of tensor proucts of copies of single-particle hilbert spaces. 
+The Schrödinger equation for a system of $N$ identical particles can be expressed as
+\begin{eq}
+  \p{
+    \sum_{i} \frac{1}{2m}\nabla^2_i + \sum_{i < j} V(\vec{r}_i, \vec{r}_j)
+  } \psi(\vec{r}_1, \vec{r}_2, ..., \vec{r}_N)
+  =
+  E \psi(\vec{r}_1, \vec{r}_2, ..., \vec{r}_N),
+\end{eq}
+but this is not a particularly convenient form for many-body manipulation. It is especially inconvenient when working with systems that do not have a fixed number of particles. This form is called the first quantization.
 
-\begin{equation}
-F_{\nu}(H) =
-\bigoplus_{n=0}^\inf S_{\nu}H^{\otimes n} =
-\C \oplus H \oplus(S_{\nu}(H \otimes H)) \oplus (S_{\nu}(H \otimes H \otimes H)) \oplus \dots
-\end{equation}
+We would instead like to describe the system as a combination of single particle (sp) states and particles that occupy these states. The operators can then be expressed using creation and annihilation operators that allow us to work with an arbitrary number of particles.
 
-In the case of bosons, $S_{\nu}$ is the operator that symetrize a tensor, for fermions it is the opposite and called an antisymetrizer.
-Further, we denote product states for N partlicles as
+\todo{We should mention there is something similar for bosons.}
+\section{Fermionic states}
 
-\begin{equation}
-|\alpha_1 \alpha_2 ... \alpha_{N}) =
-\ket{\alpha_1} \ket{\alpha_2}...\ket{\alpha_{N}}
-\end{equation}
+\todo{Use $\alpha$ or something else?}
+We begin with an orthonormal single particle (sp) basis $\ket\alpha$, where $\alpha$ represents all the quantum numbers that describe the state. Next, consider $N$ identical particles, expressed in this basis. We form a product state
+\begin{eq}
+  \pket{\alpha_1\alpha_2\dots\alpha_N} 
+  \equiv
+  \ket{\alpha_1} \otimes \ket{\alpha_2} \otimes \dots \otimes \ket{\alpha_N}
+  =
+  \ket{\alpha_1}\ket{\alpha_2}\dots\ket{\alpha_N},
+\end{eq}
+which, by the orthonormality of the $\ket\alpha$, will be orthonormal as well
+\begin{eq}
+  \pbraket{\alpha_1\alpha_2\dots\alpha_N}{\alpha'_1\alpha'_2\dots\alpha'_N}
+  =
+  \braket{\alpha_1}{\alpha'_1}
+  \braket{\alpha_2}{\alpha'_2}
+  \dots
+  \braket{\alpha_N}{\alpha'_N}.
+\end{eq}
+These states span the Hilbert space of the $N$-body problem, but do not incorporate the right symmetry for fermions. 
+To obey the pauli principle, fermionic states need to be antisymmetric, i.e. change sign under exchange of quantum numbers for two particles 
+\begin{eq}
+  \ket{\alpha_1\alpha_2\dots\alpha_i\dots\alpha_j\dots\alpha_N} 
+  = 
+  - \ket{\alpha_1\alpha_2\dots\alpha_j\dots\alpha_i\dots\alpha_N}.
+\end{eq}
+Fermionic, antisymmetrized states can be expressed as a linear combination of the product states. 
+For example, in the case of two particles, the correctly normalized antisymmetric state is
+\begin{eq}
+  \ket{\alpha_1\alpha_2} 
+  = 
+  \frac{1}{\sqrt{2}}
+  \bigp{
+    \pket{\alpha_1\alpha_2} - \pket{\alpha_2\alpha_1}
+  }.
+\end{eq}
+Note the use of angular ket notation $\ket\dots$ for antisymmetric states, as opposed to $\pket\dots$ for product states.
 
-with orthogonality
+Because the antisymmetric states change sign on exchange of two particles, should two particles be in the same state, the state will become 0. Thus, no particles can occupy the same state and the Pauli principle is satisfied.
 
-\begin{equation}
-(\alpha_1 \alpha_2 ... \alpha_N | \alpha'_1 \alpha_2^{'} ... \alpha'_N) =
-\braket{\alpha_1}{ \alpha'_1}\braket{\alpha_2}{\alpha'_2}...\braket{\alpha_N}{\alpha'_N} = \delta_{\alpha_1,\alpha'_1} \delta_{\alpha_2,\alpha'_2}...\delta_{\alpha_N,\alpha'_N}
-\end{equation}
+Important to note is that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
+This means that we have to make sure not to double count these states. 
+We can do this by requiring the sp states to always appear in the same order in the ket. If they aren't, we permute two sp states at a time until the correct ordering is reached
+\begin{eq}
+  \ket{\alpha_i\alpha_1\dots\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
+  & =
+  - \ket{\alpha_1\alpha_i\dots\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
+  \\ & =
+  (-1)^{i-2} 
+  \ket{\alpha_1\dots\alpha_i\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
+  \\ & =
+  (-1)^{i-1} 
+  \ket{\alpha_1\dots\alpha_{i-1}\alpha_i\alpha_{i+1}\dots\alpha_N}.
+\end{eq}
 
-In this report we will only handle Fock space for fermions, since bosons not are relevant for this thesis.
+\section{Fock Space}
+\todo{Call chapter ``Creation and annihilation operators''?}
 
-Now, with Fock space defined as above, we can think of it to consist of a vacuum state $\ket{0}$ with no particles, the set of all possible one-particle states $\{ \ket{\alpha} \} $, the complete set of antisymmetric two-particle states $\ket{\alpha_n \alpha_{n'}}$ and so on. A creation operator $a^{\dagger}$ is introduced and defined by
+\todo{Should mention second quantization here somewhere}
+So far we've looked at a system with a fixed number of particles, but we want to work with a system with an arbitrary number of identical particles. The construction that lets us do this is called the \emph{Fock space}. A state in Fock space, a \emph{Fock state}, can contain any number of particles. States with different number of particles are orthogonal to each other.
 
-\begin{equation}
-a_{\alpha}^{\dagger} \ket{\alpha_1 \alpha_2 ... \alpha_N} =
-\ket{\alpha \alpha_1 \alpha_2 ... \alpha_N}
-\end{equation}
-and adds a new single-particle state to the previous N-body state. The result is now a N+1 particle state. It can be shown that the adjoint of $ a_\alpha^{\dagger} ;  a_{\alpha}$, removes the particle $\alpha$ and is therefore refered to as a destruction (or removal) operator. The relevant calculation rules for these operators in fermionic Fock space can be summorized as
-\begin{subequations}
-\label{eq:fock operations}
-\begin{align}
- a_{\alpha}^{\dagger} & \ket{ \alpha_1 \alpha_2 ... \alpha_N} &&= \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N} \label{eq:creation}
-\\ 
- a_{\alpha}^{\dagger} & \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N} &&= 0 \label{eq:creation zero}
-\\ 
- a_{\alpha}  & \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N} &&= \ket{\alpha_1 \alpha_2 ... \alpha_N} 
-\\ 
- a_{\alpha} & \ket{\alpha_1 \alpha_2 ... \alpha_N} &&= 0\label{eq:annihilation zero}
-\\ 
-a_{\alpha_i}^{\dagger} & \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_{i+1}...\alpha_{N}} &&= (-1)^{i-1} \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_i \alpha_{i+1} ... \alpha_{N}} \label{eq:creation sign}
-\end{align}
-\end{subequations}
-\todo{Describe why a permutation gives a factor -1.}
-\todo{maybe we should call them 5.??? a-d since they are so closely related yet we want to refer to them independently}
+\todo{particle addition/removal operators?}
+The simplest Fock state is the \emph{vacuum state} $\ket{0}$, which describes a system with no particles. 
+All other states can be created from the vacuum state using the \emph{creation operator} $a_\alpha^\dag$, which adds a particle with quantum numbers $\alpha$ to a state
+\begin{eq}
+  a_{\alpha}^{\dagger} \ket{\alpha_1 \alpha_2 ... \alpha_N} 
+  =
+  \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N}.
+\end{eq}
+The resulting state will not necessarily be ordered, and the ordering might contribute a sign:
+\begin{eq}
+  a_{\alpha_i}^{\dagger} 
+  \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_{i+1}...\alpha_{N}} 
+  =
+  (-1)^{i-1} 
+  \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_i \alpha_{i+1} ... \alpha_{N}}.
+\end{eq}
+Note that when $a_\alpha^\dag$ acts on a state that already contains a particle with quantum numbers $\alpha$, the result is 0, because of antisymmetry
+\begin{eq}
+  a_{\alpha}^{\dagger} \ket{\alpha\alpha_1 \alpha_2 ... \alpha_N} 
+  =
+  0.
+  \label{eq:creation_zero}
+\end{eq}
 
-\section{The Hamiltonian}
-\label{sec:mb hamiltonian}
-Utilizing the formulation introduced above we can rewrite the Hamiltonian of a many-body system as
+The adjoint of the creation operator is called the \emph{annihilation operator} $a_\alpha$. 
+It can be shown to have the opposite effect, removing a particle, when acting on a state
+\begin{eq}
+  a_{\alpha} \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N}
+  =
+  \ket{\alpha_1 \alpha_2 ... \alpha_N}.
+\end{eq}
+Here, too, a sign might appear from the ordering
+\begin{eq}
+  a_{\alpha_i}
+  \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_i \alpha_{i+1} ... \alpha_N}
+  =
+  (-1)^{i-1}
+  \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_{i+1}...\alpha_N}.
+\end{eq}
+Analogous to $a_\alpha^\dag$, when $a_\alpha$ acts on a state that does not contain a particle with the quantum numbers $\alpha$, the result is 0
+\begin{eq}
+  a_\alpha \ket{\alpha_1 \alpha_2 ... \alpha_N} 
+  =
+  0.
+  \label{eq:annihilation_zero}
+\end{eq}
 
-\begin{equation}
-\hat{H} =
-\hat{T} + \hat{V} =
-\sum_{\alpha \beta} \bra{\alpha} T \ket{\beta} a_{\alpha}^{\dagger} a_{\beta} + \frac{1}{2}\sum_{\alpha \beta \gamma \delta} ( \alpha \beta| V | \gamma \delta ) a_{\alpha}^{\dagger} a_{\beta}^{\dagger} a_{\delta} a_{\gamma},
-\end{equation}
 
-where $\hat{T}$, $\hat{V}$ are operators acting on one body and two bodies respectively.
-Typicaly, the kinetic energy part of the Hamiltonian is the one-body operator, while the potential is the two-body operator.
-In our case we want to use our previous results from the \He{5} problem, ie the interaction between a neutron and an He-4 nucleus.
-This was reduced to a one-dimensional problem and were easy to calculate.
-The hamiltonian from the two-body problem could thus be seen as a one-dimensional operator, which we in the three-body problem can use to describe the interaction between the neutrons and the nucleus.
-What is left is a two-body operator describing the neuron-neutron interaction.
-This leads us to yet another formulation of the Hamiltonian
+\section{Operators in Fock Space}
 
-\begin{equation}
-\hat{H} =
-\sum_{\alpha \beta} \bra{\alpha} H_1 \ket{\beta} a_{\alpha}^{\dagger} a_{\beta} + \frac{1}{2}\sum_{\alpha \beta \gamma \delta} ( \alpha \beta| V_{n-n} | \gamma \delta ) a_{\alpha}^{\dagger} a_{\beta}^{\dagger} a_{\delta} a_{\gamma}
-\end{equation}
+We can now express the state of any number of particles, but in order to do something with the states we also need to express operators in the Fock space formalism. It turns out that operators involving any number of particles can be expressed using the creation and annihilation operators. The operators can then act on a state with an arbitrary number of particles. We will only treat one- and two-body operators here, as they are all we need in this report.
 
-with $H_1$ as the two-body problem hamiltonian and $V_{n-n}$ as the neutron-neutron potential.
+\subsection{One-body operators}
 
-The strength of this formalism is that it is not constrained to be used in the case of two neutrons, but for an arbitrary number of particles. It will thus, in principle, be easy to extend our algorithms to solve many body problems with an arbitrary number of particles. In reality however, as we will see later, this will lead to very large matrix dimensions that quickly grow too large for modern computers to handle.\todo{If we get there...}
+A one-body operator $H_1$ which acts on a single sp state, is represented by the Fock space operator
+\begin{eq}
+  \hat{H}_1
+  =
+  \sum_{\alpha \beta} 
+  \bra\alpha H_1 \ket\beta 
+  a_\alpha^\dag a_\beta.
+\end{eq}
+Important to note is that, while the sum runs over the complete set of sp states twice, only a few terms will be non-zero, because of the operator rules in \cref{eq:creation_zero,eq:annihilation_zero}. 
 
-\subsection{Some Break here}
-Earlier we solved the one-body problem
+\todo{$\alpha$ bad notation?}
+If the sp-states are eigenstates to the one-body operator
+\begin{eq}
+  H_1 \ket{\alpha_i} = h_i \ket{\alpha_i}
+\end{eq}
+the matrix elements only exist on the diagonal, when $\alpha = \beta$, and we get
+\begin{eq}
+  \hat{H}_1
+  =
+  \sum_{\alpha} 
+  \bra\alpha H_1 \ket\alpha
+  a_\alpha^\dag a_\alpha.
+\end{eq}
+Sandwiched between a bra and a ket, this becomes
+\begin{eq}
+  \bra{\alpha_1\dots\alpha_N} \hat{H}_1 \ket{\alpha'_1\dots\alpha'_N}
+  & =
+  \sum_{\alpha} 
+  \bra\alpha H_1 \ket\alpha
+  \bra{\alpha_1\dots\alpha_N} 
+  a_\alpha^\dag a_\alpha
+  \ket{\alpha'_1\dots\alpha'_N}
+  \\ & =
+  \sum_{i = 1}^N 
+  \bra{\alpha_i} H_1 \ket{\alpha_i}
+  \braket{\alpha_1\dots\alpha_N}{\alpha'_1\dots\alpha'_N}
+  \\ & =
+  \p{
+    h_1 + \dots + h_N
+  }
+  \delta_{\alpha_1\alpha'_1} \dots \delta_{\alpha_N\alpha'_N},
+\end{eq}
+the sum of the eigenvalues of the sp states in the bra and ket, but only if the bra and ket are the same. The Fock space operator $\hat{H}_1$ is thus also diagonal.
 
-\begin{equation}
-H \ket{\psi_n} = E_n \ket{\psi_n}.
-\end{equation}
-We can not use these solutions $\ket{\psi_n}$ as they are since they not consider the quantum number $m$.
-Taking it into account we see that the three-body solution may contain two bodies with the same energy (same $n$), but with different $m$-number.\todo{New paragraph, is it better? (top one is new.)}
+\subsection{Two-body operators}
 
-We cannot use these solutions $\ket{\psi_n}$ as they are, since earlier we did not need to consider the $m$ quantum number.
-In the many body case, however, the states $\ket{\psi_n}$ can have different $m$ quantum numbers.
-This is a consequence of the pauli principle, which thus also makes it possible to have both bodies in states with energy $E_n$, as long as they have different $m$ quantum numbers.\todo{Rewrite sentence.}
-The result we get in this case with a three body system is
+A two-body operator in Fock space becomes
+\begin{eq}
+  \hat{H}_2
+  =
+  \frac{1}{2}\sum_{\alpha \beta \gamma \delta} 
+  \pbra{\alpha \beta} H_2 \pket{\gamma \delta} 
+  a_\alpha^\dag a_\beta^\dag a_\delta a_\gamma.
+\end{eq}
+Note that the ordering of the $\gamma$ and $\delta$ is different for the product states and the operators, so-called \emph{normal ordering}.
+The factor \nicefrac{1}{2} stems from the fact that
+\begin{eq}
+  \pbra{\alpha \beta} H_2 \pket{\gamma \delta} 
+  = 
+  \pbra{\beta \alpha} H_2 \pket{\delta \gamma}
+\end{eq}
+and we are counting both.
 
-\begin{align}
-\hat{H} &= \sum_{k' m' k m } \bra{k'm'} H_1 \ket{km} a_{k'm'}^{\dagger} a_{km} + \\
-& + \sum_{k_1' m_1' k_2' m_2' k_1 m_1 k_2 m_2} ( k_1' m_1' k_2' m_2'| V_{n-n} | k_1 m_1 k_2 m_2 ) a_{k_1' m_1'}^{\dagger} a_{k_2' m_2'}^{\dagger} a_{k_2 m_2} a_{k_1 m_1}\label{two-body op sum}
-\end{align}
+We can also express $\hat{H}_2$ using matrix elements between antisymmetric states
+\begin{eq}
+  \bra{\alpha\beta} H_2 \ket{\gamma\delta} 
+  = 
+  \pbra{\alpha\beta} H_2 \pket{\gamma\delta}
+  -
+  \pbra{\alpha\beta} H_2 \pket{\delta\gamma},
+\end{eq}
+but we will have to add another factor \nicefrac{1}{2} to compensate for double counting
+\begin{eq}
+  \hat{H}_2
+  =
+  \frac{1}{4}\sum_{\alpha \beta \gamma \delta} 
+  \bra{\alpha \beta} H_2 \ket{\gamma \delta} 
+  a_\alpha^\dag a_\beta^\dag a_\delta a_\gamma.
+\end{eq}
+The double counting can be avoided by taking into account the ordering of the states
+\begin{eq}
+  \hat{H}_2
+  =
+  \sum_{\substack{\alpha < \beta \\ \gamma < \delta}} 
+  \bra{\alpha \beta} H_2 \ket{\gamma \delta} 
+  a_\alpha^\dag a_\beta^\dag a_\delta a_\gamma.
+\end{eq}
 
-The $1/2$-factor before the second summation is obmitted since we in our implementation only take the sum over our many-body states with the one-body states ordered from lower to higher.
+For the case of two particles we have
+\begin{eq}
+  \bra{\alpha_1\alpha_2} \hat{H}_2 \ket{\alpha'_1\alpha'_2}
+  & =
+  \sum_{\substack{\alpha < \beta \\ \gamma < \delta}} 
+  \bra{\alpha \beta} H_2 \ket{\gamma \delta} 
+  \bra{\alpha_1\alpha_2} 
+  a_\alpha^\dag a_\beta^\dag a_\delta a_\gamma
+  \ket{\alpha'_1\alpha'_2}
+  \\ & =
+  \sum_{\substack{\alpha < \beta \\ \gamma < \delta}} 
+  \bra{\alpha \beta} H_2 \ket{\gamma \delta}
+  \delta_{\alpha\alpha_1}\delta_{\beta\alpha_2}
+  \delta_{\gamma\alpha'_1}\delta_{\delta\alpha'_2}
+  \\ & =
+  \bra{\alpha_1\alpha_2} H_2 \ket{\alpha'_1\alpha'_2},
+\end{eq}
+as expected.
 
-The many-particle states we use are just the tensor products of two one-body states
+\section{Implementation}
 
-\begin{equation}
-\ket{k_1 m_1 , k_2 m_2 } = \ket{k_1 m_1} \bigotimes \ket{k_2 m_2}
-\end{equation}
+In order to use the fock space formalism in numerical calculations
 
-\subsection{n-n interaction}
-The interaction between neutrons is a complex feature. A simple approximation that can be made, although not very realistic, is to modell it using a gaussian curve, which makes the potential separable and easy to use.
-
-\begin{equation}
-V_{n-n}(r_{1} , r_{2}) = V_{0}e^{ \beta (r_1^2 + r_2^2)},
-\end{equation}
-
-where $r_1$ and $r_2$ are the radial part of the neutrons coordinates relative to the core. $\beta$ and $V_{0}$ are parameters that are unknown and hence have to be fitted after experimential data. 
-
-Another option is to get the matrix-generation code needed from our supervisor Jimmy.\todo{We might not want to refer to Jimmy in this way...}
+\end{document}
