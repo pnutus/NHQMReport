@@ -221,7 +221,7 @@ We could use only a fraction of the evenly spaced points and we still got better
      anchor = north west,
      },
      yticklabel style={/pgf/number format/fixed,
-     /pgf/number format/precision=2},
+     /pgf/number format/precision=3},
      every axis x label/.style={
      at = {(current axis.right of origin)},
      anchor = north,
@@ -229,16 +229,16 @@ We could use only a fraction of the evenly spaced points and we still got better
      every x tick label/.append style = {anchor = south, yshift = 3pt},
    }
      \subfloat[Square Contour]{
-       %\tikzset{external/remake next}
+       \tikzset{external/remake next}
    \tikzsetnextfilename{sqrcont}
        \begin{tikzpicture}
          \begin{axis}[
 			 ymax = 0.04,
 			 legend style={at={(0.6,0.4)}, anchor=north,legend columns=1},
 			 xlabel=Re $k/\b{\si{fm^{-1}}}$]
-         	\addplot+[only marks,very thick] table [x index =2, y index =3] {../figures/poles(contour)/poles.data};
+         	\addplot+[only marks,very thick] table [x index =2, y index =3] {../figures/poles(contour)/square.data};
          	    \addlegendentry{Pole position}
-         	\addplot+[no marks, very thick] table [x index =2, y index =3] {../figures/poles(contour)/contours.data};
+         	\addplot+[no marks, very thick] table [x index =0, y index =1] {../figures/poles(contour)/square.data};
              \addlegendentry{Contour}
  
          \end{axis}
@@ -246,16 +246,33 @@ We could use only a fraction of the evenly spaced points and we still got better
      }
  
    \subfloat[Triangle Contour]{
-     %\tikzset{external/remake next}
+     \tikzset{external/remake next}
  \tikzsetnextfilename{trigcont}
      \begin{tikzpicture}
        \begin{axis}[
 		   ymax = 0.04,
 		   legend style={at={(0.8,0.2)}, anchor=north,legend columns=1},
 		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
-         	\addplot+[only marks, very thick] table [x index =0, y index =1] {../figures/poles(contour)/poles.data};
+         	\addplot+[only marks, very thick] table [x index =2, y index =3] {../figures/poles(contour)/triangle.data};
          	    \addlegendentry{Pole position}
-         	\addplot+[no marks, very thick] table [x index =0, y index =1] {../figures/poles(contour)/contours.data};
+         	\addplot+[no marks, very thick] table [x index =0, y index =1] {../figures/poles(contour)/triangle.data};
+			             \addlegendentry{Contour}
+
+       \end{axis}
+     \end{tikzpicture}
+   }
+   
+   \subfloat[Sierpinski Contour]{
+     \tikzset{external/remake next}
+ \tikzsetnextfilename{sierpcont}
+     \begin{tikzpicture}
+       \begin{axis}[
+		   ymax = 0.04,
+		   legend style={at={(0.8,0.2)}, anchor=north,legend columns=1},
+		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
+         	\addplot+[only marks, very thick] table [x index =2, y index =3] {../figures/poles(contour)/sierpinski.data};
+         	    \addlegendentry{Pole position}
+         	\addplot+[no marks, very thick] table [x index =0, y index =1] {../figures/poles(contour)/sierpinski.data};
 			             \addlegendentry{Contour}
 
        \end{axis}
