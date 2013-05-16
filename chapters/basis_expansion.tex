@@ -216,7 +216,8 @@ and $j_l(kr)$ are the spherical bessel functions of order $l$. $\phi(k)$ is rela
 In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. This includes truncation of the bases, matrix size reduction, numerical integration and eigensolver optimizations. The plane wave basis is continuous and thus requires special treatment.
 
 The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
-The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo{Questionable? OLA}
+The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo[inline]{Questionable? OLA}
+\todo[inline]{Convergence plots here?}
 This gives us an $N \times N$ hamiltonian matrix $H$.
 Since $H$ is diagonal in $l$ and $m$, we can consider each value of $l$ and $m$ separately, reducing the size of the matrix and thus the amount of computation needed to solve for the eigenvalues.
 The equation is then, for a given $l$ and $m$,
@@ -252,7 +253,6 @@ The integral equation \cref{eq:radial mom space TISE} can be rewritten as a matr
 A particular set of points and corresponding weights is called a \emph{quadrature}, and the choice of quadrature greatly impacts the precision of the result. 
 A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used.
 We instead use the Gauss-Legendre quadrature, for details see \cref{app:gauss-legendre}.
-\todo{Gauss-Legendre appendix?}
 
 With this approximation the Schrödinger equation may be written as
 \begin{eq}
