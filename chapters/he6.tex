@@ -262,18 +262,29 @@ because of the relation
 \end{eq}
 when summing over all ($m_1,\, m_2$).
 
-Similarly, the one-body n-$\alpha$ interaction gives
+The one-body n-$\alpha$ interaction gives
 \begin{eq}
   \bra{E_1 E_2}\hat{H}_1\ket{E_1' E_2'} 
   =
-  \frac{
-    (E_1+E_2)
-    \delta_{E_1 E_1'}
-    \delta_{E_2E_2'}
-  }{
-    \sqrt{1+\delta_{E_1E_2}}
-    \sqrt{1+\delta_{E_1'E_2'}}
-  }.
+  \frac{1}{\sqrt{1+\delta_{E_1E_2}}
+  \sqrt{1+\delta_{E_1'E_2'}}}
+  \sum_{\substack{m_1',m_2' \\ m_1,m_2}} 
+  \conj{c_{m_1 m_2}} c_{m_1'm_2'} H_1
 \end{eq}
-
+where $H_1$ denotes the result from \cref{eq:one-body interaction}:
+\begin{eq}
+  H_1 &= (E_1 + E_2)\braket{E_1m_1 E_2m_2}{E_1'm_1' E_2' m_2'} \\
+  &= 
+  (E_1 + E_2) \p{
+    \delta_{E_1E_1'}\delta_{E_2E_2'}\delta_{m_1 m_1'}\delta_{m_2 m_2'} 
+   -\delta_{E_1E_2'}\delta_{E_2E_1'}\delta_{m_1 m_2'}\delta_{m_2 m_1'}
+  }
+\end{eq}
+Since we are ordering our states in $E$, we only get contributions from the first term, except for when $E_1=E_2$ or $E_1'=E_2'$, which would allow both terms to be satisfied. When inserting this above and performing the summations, we end up with
+\begin{eq}
+  \bra{E_1 E_2}\hat{H}_1\ket{E_1' E_2'} 
+  =
+  \frac{1+(-1)^J\delta_{E_1 E_2}}{1+\delta_{E_1E_2}}\delta_{E_1E_1'}\delta_{E_2 E_2'}(E_1 + E_2)
+\end{eq}  
+which is basically saying that we get contributions $E_1 + E_2$ along the diagonal, except for when $J$ is odd and $E_1=E_2$, where the contribution is $0$.
 \end{document}
