@@ -41,7 +41,7 @@ A discrete basis means that any state $\ket\psi$ can be written as a linear comb
   \quad
   \ket\psi = \fint{x} \psi(x) \ket{x}.
 \end{eq}
-The complete bases we will use in this report are the \emph{position basis} $\ket{\vec{r}}$, the \emph{plane wave basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis} \cite{berggren}. 
+The  complete bases we will use in this report are the \emph{position basis} $\ket{\vec{r}}$, the\todo{could \emph{plane wave basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis} \cite{berggren}. 
 All these bases are orthonormal, i.e. all the basis vectors satisfy 
 \begin{eq}
   \braket{n}{n'} = \delta_{nn'}
@@ -94,7 +94,7 @@ the basic method of expanding the TISE in a basis.
 
 We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. 
 This is sufficient for our purposes and, indeed, most common QM problems. 
-If we considered three-dimensional systems with arbitrary potentials, the matrix size would grow very fast and would be infeasible to calculate.
+If we considered three-dimensional systems with arbitrary potentials, the matrix size would grow very fast and the problem would be infeasible to calculate.
 
 The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m$
 \begin{eq}
@@ -231,9 +231,9 @@ or in matrix notation
 \end{eq}
 
 We calculate the matrix elements $H_{ij}$ with \cref{eq:HO matrix elements,eq:plane wave matrix elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (\cref{app:gauss-legendre}) and setting the upper limit to a finite number.
-If the matrix is hermitian or symmetric, we only need to calculate the diagonal and the elements above the diagonal, reducing the number of elements we need calculate by about half. 
+If the matrix is hermitian or symmetric, we only need to calculate the elements in the upper triangle including the diagonal, roughly halving the the number of elements we need calculate. 
 
-When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a specialized algorithm, which is faster.
+When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a specialized algorithm, that is faster.
 
 
 \subsection{Discretization and symmetrization of the plane wave basis}
@@ -313,9 +313,8 @@ $E_0 = -\SI{13.6}{eV}$. In \cref{fig:hydrogen HOvsMom} we plot
 the convergence of the ground state energy as a function of the number, $N$ of basis states in the expansion
 We can see that the plane-wave expansion converges faster than the 
 harmonic oscillator.
-\todo{fix plot, more $k_max$ change text, yo}
+\todo{fix plot, larger $k_max$}
 
-%\tikzset{external/remake next}
 %\tikzset{external/remake next}
 \tikzsetnextfilename{hydrogen_convergence}
 \begin{figure}
