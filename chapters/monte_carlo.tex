@@ -2,23 +2,26 @@
 \label{cha:monte carlo}
 
 Another way to determine the ground state energy of the systems at hand is through a statistical Monte Carlo simulation. 
-Instead of a rigorous examination of how all the many particle states interact with each other we strive to take a couple of state at random and see what energy only their interaction give. 
-This proedure is then repeated until we can determine the ground state energy of the system with a statistical confidence.
+Instead of a rigorous examination of how all the many particle states interact with each other we strive to take a couple of state at random and see what energy their interaction give. 
+This procedure is then repeated until we can determine the ground state energy of the system with a statistical confidence.
 
-In practice we generate a set of random points along the contour at hand, usually one per segment with a uniform probability. 
-These points for the contour in the momentum space and we use the tools of \cref{cha:donald duck} to calculate the hamiltonian and find the lowest energy. 
-We then calculate the average of these values (weighed by 0 if they differ by more than 0.5\% from the sought value) and we find that our Monte Carlo simulation quickly conveges to the correct value with a 99.5\% confidence.
+\section{Monte Carlo \He{5}}
+When trying to solve the \He{5} problem using a Monte Carlo simulation we choose a couple of states along each line segment as basis, we then calculate the energies for theese with the hope that we should find the resonance state.
+The calculation of the energies is done in the same way as before, only with fewer points in the basis.
 
-Great Success
-Problems: converges slowly and the imaginary part certainly is not vanishing.
+We started of with placing one point per segment at random.
+We got energies following the contour to a large degree for the first two segments, but the tail went mad \cref{fig:mc_one}.
+The resonance was nowhere to be found.
+
+Since we obviously had no luck with one point per segment we tried with two.
+The solutions where now spread out and we did not feel for average over theese since the place where the resonance should be were the area whith the least amount of solutions.
+
+\section{Monte Carlo \He{6}}
+Even though we had no success with the Monte Carlo method in the case of \He{5} we decided to try it with \He{6}.
+Here we generated a solution to the \He{5} problem the usual way, but picked only some of these one-body states for the calculations of the energies.
 
 
-
-However this method does not give the correct result. 
-In figure \cref{fig:mcarlo} we can see only a slow convergence as we introduce more 'samples', and these are computationaly costly. 
-As it stands right now 2000 Monte Carlo runs take about as much time as a fulfledged hamiltonian calculation of order 50, so we would not deem this meto feasible.
-Furthermore, while the real part of the Monte Carlo result is converging the imaginary part is not, in previous calculations, see \cref{w/e: Daisy}, we found that the imaginary part is essentially a rounding error, that is not the case here.
-
+\section{Evolution?}
 In order to improve the Monte Carlo method there are a few avenues to explore.
 One could instead of choosing the points with a uniform probability use a probability density function akin to the points used in Gauss-Legendre integration. 
 and/or change the weights.
