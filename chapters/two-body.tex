@@ -1,9 +1,7 @@
 \documentclass[../main/report.tex]{subfiles}
 \begin{document}
-\todo{main scope two body nuclear problem, use he5 as concrete example}
-\chapter{The Nuclear Two-Body Problem}
-\label{cha:two-body}
-
+\chapter{Two Particle Nuclear System}
+\label{cha:he5}
 In this section we seek to investigate the basic properties of a simple nuclear two particle system.  
 This will allow us to to get acquainted with the basis expansion methods and will give us information about the single particle states that we will need later on when we tackle the three particle problem.
 We want to investigate the behaviour of the states as the potential strength is varied
@@ -46,6 +44,7 @@ between two particles, we can reduce the problem to a one-dimensional equation b
 \begin{eq}
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
+We can now proceed to solve the Schrödinger Equation with the given potential.
 
 %\tikzset{external/remake next}
 \tikzsetnextfilename{woods-saxons}
@@ -67,9 +66,9 @@ between two particles, we can reduce the problem to a one-dimensional equation b
   \label{fig:woods-saxons}
 \end{figure}
 
-\section{Wavefunctions}
+\section{Solutions to the Schrödinger Equation}
 
-\todo{review wf section.}
+\todo{review wf //this// section.}
 The best metric of a potential or Hamiltonian are the wave functions it harbors, we present below the wavefunctions that solve the two particle system for different potential strengths.
 In \Cref{fig:resonance wavefunction} we can see the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied.
  We see that one solution (filled line) displays different behaviour for diffrent potentials.
@@ -81,20 +80,10 @@ Additionally, the fact that the solution varies dramatically with the potential 
 The other (dashed line) solution, however, in each plot is essentially unchanged under variation of the potential. 
 This can be interpreted as it being an unbound state in the energy continuum. We see that its probability distribution does not decrease for large $r$.
 
-We cannot find this resonant state using hermitian methods though.
-\cref{fig:pole real contour} shows an attempt at finding this plot by calculating the energies in a plane wave expansion in position space.
-For a strong potential (a) we find the bound solution, and the basis momenta, which is what we expected.
-For a weaker, (b) on the other hand, we expect to find no bound solution but instead a resonant state. 
-That is not the case, we only find the basis momenta.
-
-%In order to find the resonances we need to extend our basis momenta into the complex plane according to \cite{C F Gauss}.
 
 %Since we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet. We do not expect the resonance to be properly described until complex energies are introduced.
 
-\todo{kalla det inte resonans, information hiding, vi kommer på det sen för vi är smarta, OLA}
-
-
-
+\todo{kalla det inte resonans, information hiding, vi kommer på det sen för vi är smarta. OLA}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION FIGURE
 
@@ -151,79 +140,13 @@ That is not the case, we only find the basis momenta.
   	}
 
   }
-  \caption{Two solutions to the Woods-Saxon potential that display different behavior for different depths $V_0$, using the plane wave expansion.} 
+  \caption{A bound (a) / resonant (b, c) and an unbound solution to the Woods-Saxon potential for different depths $V_0$, using the plane wave expansion.} 
   \label{fig:resonance wavefunction}
   \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION end
 
 
-%%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE
-
-\todo{Move real contour to next chapter}
-
-\begin{figure}[H] %this figure needs to be ndged a little bit to the left
-   \centering{
-   \pgfplotsset{
-          width = 0.45\textwidth,
-      height = 7cm,
- 	  axis lines = middle,
-       xmax = 0.5,
-	   ymax = 0.5,
-	   xmin = -0.01,
-	   xtickmin = 0.15,
-	   max space between ticks=60pt
-       enlargelimits,
-       ylabel=Im $k/\b{\si{fm^{-1}}}$,
-       every axis y label/.style={
-         at = {(current axis.above origin)},
-         anchor = north west,
-       },
-	   yticklabel style={/pgf/number format/fixed,
-	                     /pgf/number format/precision=2},
-       every axis x label/.style={
-         at = {(current axis.right of origin)},
-         anchor = north,
-       },
-       every x tick label/.append style = {anchor = south, yshift = 3pt},
-   }
-     \subfloat[Real Contour \SI{-70}{MeV}]{
-       %\tikzset{external/remake next}
-   \tikzsetnextfilename{realcont70}
-       \begin{tikzpicture}
-         \begin{axis}[
-  		   legend style={at={(0.8,0.5)}, anchor=north,legend columns=1},
-  		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
-           	\addplot+[only marks, very thick] table [x index =0, y index =1] {../figures/poles(realcontour)/poles.data};
-           	    \addlegendentry{Pole position}
-           	\addplot+[no marks, very thick] table [x index =0, y index =1] {../figures/poles(realcontour)/contour.data};
-  			             \addlegendentry{Contour}
-
-         \end{axis}
-       \end{tikzpicture}
-     }
-     \subfloat[Real Contour \SI{-50}{MeV}]{
-       %\tikzset{external/remake next}
-   \tikzsetnextfilename{realcont50}
-       \begin{tikzpicture}
-         \begin{axis}[
-  		   legend style={at={(0.8,0.5)}, anchor=north,legend columns=1},
-  		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
-           	\addplot+[only marks, very thick] table [x index =2, y index =3] {../figures/poles(realcontour)/poles.data};
-           	    \addlegendentry{Pole position}
-           	\addplot+[no marks, very thick] table [x index =0, y index =1] {../figures/poles(realcontour)/contour.data};
-  			             \addlegendentry{Contour}
-
-         \end{axis}
-       \end{tikzpicture}
-     }
-   
-   }
-  \caption{momentum solutions to the Shrödinger equation ``along'' the real axis for \He{5} with a potential of $V_0 =$ \SI{-70}{MeV} (a) and $V_0 =$ \SI{-50}{MeV} (b).} 
-   \label{fig:pole real contour}  
-\end{figure}
-\todo{define pole - momentum solution}
-%%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE end
 
 
 \section{Varying $\omega$}
