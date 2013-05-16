@@ -4,7 +4,7 @@
 \chapter{Basis Expansion}
 \label{cha:basis_expansion}
 
-We want to study the nuclei of Helium isotopes by solving the \emph{Time Independent Schrödinger Equation} (TISE)
+We want to study loosely bound quantum systems by solving the \emph{Time Independent Schrödinger Equation} (TISE)
 \begin{eq}
   \label{eq:TISE}
   H \ket\psi = E \ket\psi,
@@ -92,7 +92,9 @@ the basic method of expanding the TISE in a basis.
 \section{Spherical Symmetry}
 \label{sec:spherical symmetry}
 
-We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. This is sufficient for our purposes and, indeed, most common QM problems. If we considered three-dimensional systems with arbitrary potentials, the problem space \todo{is problem space the right term? Rename to size?} would grow very fast and would be infeasible to calculate. \todo{redundant " on a computer"}
+We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. 
+This is sufficient for our purposes and, indeed, most common QM problems. 
+If we considered three-dimensional systems with arbitrary potentials, the matrix size would grow very fast and would be infeasible to calculate.
 
 The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m$
 \begin{eq}
@@ -106,19 +108,19 @@ This delta factor put the restraint $l=l'$ and $m=m'$ on the SE, giving us
 \end{eq}
 If we now think of $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
 we notice that the ``diagonals''  of this matrix have the same $l$ and $m$,
-which can be expressed as \emph{$H$ is diagonal in $l$ and $m$}
+which can be expressed as \emph{$H$ is diagonal in $l$ and $m$}.
 \todo{Hjälp? Hur skriver vi det här på bästa sätt? || Fungerar detta?}
 
 
-Since we are considering a spherically symmetric Hamiltonian
-the $l$ and $m$ in $\ket{nlm}$ commute with $H$
-and will therefore contribute with a $\delta_{ll'}\delta_{mm'}$ factor. 
-This means we can drop the primes and write \cref{eq:HOexpanded} as
-\begin{eq}
-  \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
-\end{eq}
-If we see $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix, this can be expressed as {\it $H$ is diagonal in $l$ and $m$}.
-\todo{Old stuff for inspiration}
+% Since we are considering a spherically symmetric Hamiltonian
+% the $l$ and $m$ in $\ket{nlm}$ commute with $H$
+% and will therefore contribute with a $\delta_{ll'}\delta_{mm'}$ factor. 
+% This means we can drop the primes and write \cref{eq:HOexpanded} as
+% \begin{eq}
+%   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
+% \end{eq}
+% If we see $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix, this can be expressed as {\it $H$ is diagonal in $l$ and $m$}.
+% \todo{Old stuff for inspiration}
 
 \section{The Harmonic Oscillator Basis}
 \label{sec:harmosc}
@@ -175,10 +177,9 @@ The real space wavefunction $R(r)$ for a state will be expressed as a linear com
   R_l(r) = \sum_n \psi_{nl} R_{nl}(r).
 \end{eq}
 
-\section{The Plane Wave Basis (In Momentum Space?)}
+\section{The Plane Wave Basis}
 \label{sec:mom_space}
-
-\todo{We must mention that we move to momentum space.}
+\todo{mention that we move to momentum space?}
 The plane wave basis $\ket{\vec{k}}$ is of great importance for us since we are studying a system with a short-range potential supporting only a few, if any, bound solutions. 
 This means that we will find multiple unbound solutions, corresponding to free particles with various momenta.
 These are almost eigenstates of the momentum operator, only slightly disturbed by the small potential well at $r=0$. 
@@ -190,7 +191,7 @@ The expansion is done in the same way as before, giving us
   E\Phi(\vec{k}) \, .
 \end{eq}
 This three-dimensional equation is practically unsolvable, but we can simplify it using the fact that we have a central problem. 
-A rather involved calculation (see \cref{sec:radial mom space TISE}) shows that the Schrödinger equation can be written as
+A rather involved calculation (see \cref{app:plane_wave_TISE}) shows that the Schrödinger equation can be written as
 \begin{eq} 
   \label{eq:radial mom space TISE}
   \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k} k'^2 V(k,k') \phi(k') 
@@ -215,7 +216,7 @@ and $j_l(kr)$ are the spherical bessel functions of order $l$. $\phi(k)$ is rela
 In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. This includes truncation of the bases, matrix size reduction, numerical integration and eigensolver optimizations. The plane wave basis is continuous and thus requires special treatment.
 
 The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
-The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo{Questionable?}
+The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo{Questionable? OLA}
 This gives us an $N \times N$ hamiltonian matrix $H$.
 Since $H$ is diagonal in $l$ and $m$, we can consider each value of $l$ and $m$ separately, reducing the size of the matrix and thus the amount of computation needed to solve for the eigenvalues.
 The equation is then, for a given $l$ and $m$,
@@ -237,7 +238,6 @@ When the matrix elements have been calculated, the matrix is diagonalized using 
 \subsection{Discretization and symmetrization of the plane wave basis}
 \label{sec:mom discretization}
 The integral equation \cref{eq:radial mom space TISE} can be rewritten as a matrix equation through discretization, turning the integral into a sum over a finite set of points $k_j$ and $\rd{k}$ into a set of weights $w_j$:
-\todo{Maybe this delta trickery is unnecessary. Do it after discretization.}
 \begin{eq}
   \label{eq:discrete_momentum}
   \frac{k_i^2}{2\mu} \phi(k_i)
@@ -250,8 +250,8 @@ The integral equation \cref{eq:radial mom space TISE} can be rewritten as a matr
   .
 \end{eq}
 A particular set of points and corresponding weights is called a \emph{quadrature}, and the choice of quadrature greatly impacts the precision of the result. 
-A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used. 
-We instead use the Gauss-Legendre quadrature \cite{gauss-legendre}.
+A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used.
+We instead use the Gauss-Legendre quadrature, for details see \cref{app:gauss-legendre}.
 \todo{Gauss-Legendre appendix?}
 
 With this approximation the Schrödinger equation may be written as
@@ -299,7 +299,7 @@ with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{
 \end{eq}
 
 
-\section{Verifying with the Hydrogen Atom} \todo{Did we decide to not have this here? Maybe in appendix?}
+\section{Verifying with the Hydrogen Atom} \todo{where to put this?}
 
 To test our HO and momentum-space bases, we expand the well-known 
 hydrogen atom. It has the potential
@@ -308,17 +308,11 @@ hydrogen atom. It has the potential
 	V(r)=
 	-\frac{q_e^2}{4\pi \epsilon_0 r},
 \end{eq}
-\todo{Change to ``Number of basis states in the expansion'' or $N$ in figure.}
 and is analytically solvable with a ground state energy 
 $E_0 = -\SI{13.6}{eV}$. In \cref{fig:hydrogen HOvsMom} we plot 
-the convergence of the ground state energy as a function of $N$.
-We see that the plane-wave expansion converges faster than the 
-harmonic oscillator, but toward the wrong value.
-\todo{verify this and write it in a better fashion}
-This is because the momentum space expansion does not 
-support the use of unbounded potentials, and since 
-\cref{eq:hydrogen potential} diverges as $r \to 0$,  
-a small deviation is not surprising.
+the convergence of the ground state energy as a function of the number, $N$ of basis states in the expansion
+We can see that the plane-wave expansion converges faster than the 
+harmonic oscillator.
 \todo{fix plot, more $k_max$ change text, yo}
 
 %\tikzset{external/remake next}
