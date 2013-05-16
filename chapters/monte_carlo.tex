@@ -13,13 +13,28 @@ We started of with placing one point per segment at random.
 We got energies following the contour to a large degree for the first two segments, but the tail went mad \cref{fig:mc_one}.
 The resonance was nowhere to be found.
 
-Since we obviously had no luck with one point per segment we tried with two.
+Since we obviously had no luck with only one point per segment we tried with two.
 The solutions where now spread out and we did not feel for average over theese since the place where the resonance should be were the area whith the least amount of solutions.
 
 \section{Monte Carlo \He{6}}
 Even though we had no success with the Monte Carlo method in the case of \He{5} we decided to try it with \He{6}.
 Here we generated a solution to the \He{5} problem the usual way, but picked only some of these one-body states for the calculations of the energies.
+The way we chose theese were one free basis state corresponding to each of the segments and the resonant state.
+This made our basis contain four states, the resonant state were selected by hand from the \He{5} system.
+Sadly, this gave us as much information about resonant and bound states as from the \He{5}.
+Which was nothing.
 
+We also tried with choosing two states per segment, but did not get any wiser by doing this.
+If anything the point gotten told us even less.
+
+Observant readers may notice that we not have averaged over the points in the figures.
+This comes from the fact that we do seek a bound state, which would be placed somewhear along the positive imaginary axis.
+The same readers may now notice that no states are placed here, which is why we believe this method useless for our needs.
+
+\section{Conclusion}
+In our case we can conclude that the Mone Carlo method did not work as we hoped.
+We did not find any bound or resonant states as we wished and it was not as fast as the original methods.
+Why we fell that these Monte Carlo simulations mayby belongs better in other places than simulating heavy helium nuclei.
 
 \section{Evolution?}
 In order to improve the Monte Carlo method there are a few avenues to explore.

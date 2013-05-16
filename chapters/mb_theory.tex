@@ -4,7 +4,7 @@
 \chapter{Many-Body Theory}
 \label{cha:many-body}
   
-A basic fact of quantum mechanics is that particles that look identical \emph{are} identical. It is also known that there are only two types of particles, bosons and fermions, and that systems of many bosons and fermions behave differently. When exhanging the coordinates of two particles, the wavefunction of a bosonic system is unchanged, whereas a fermionic wavefunction changes sign. We say that the bosonic wavefunction is \emph{symmetric} and that the fermionic wavefunction is antisymmetric. 
+A basic fact of quantum mechanics is that particles that look identical \emph{are} identical. It is also known that there are only two types of particles, bosons and fermions, and that systems of many bosons and fermions behave differently. When exhanging the coordinates of two particles, the wavefunction of a bosonic system is unchanged, whereas a fermionic wavefunction changes sign. We say that the bosonic wavefunction is \emph{symmetric} and that the fermionic wavefunction is \emph{antisymmetric}. 
 
 The Schrödinger equation for a system of $N$ identical particles can be expressed as
 \begin{eq}
@@ -62,7 +62,7 @@ Because the antisymmetric states change sign on exchange of two particles, shoul
 
 Important to note is that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
 This means that we have to make sure not to double count these states. 
-We can do this by requiring the sp states to always appear in the same order in the ket. If they aren't, we permute two sp states at a time until the correct ordering is reached
+We can do this by requiring the sp states to always appear in the same order in the ket. If they aren't, we permute two sp states at a time until the correct ordering is reached \todo{"double count"?}
 \begin{eq}
   \ket{\alpha_i\alpha_1\dots\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
   & =
@@ -143,7 +143,7 @@ A one-body operator $H_1$ which acts on a single sp state, is represented by the
   \bra\alpha H_1 \ket\beta 
   a_\alpha^\dag a_\beta.
 \end{eq}
-Important to note is that, while the sum runs over the complete set of sp states twice, only a few terms will be non-zero, because of the operator rules in \cref{eq:creation_zero,eq:annihilation_zero}. 
+It is important to note that, while the sum runs over the complete set of sp states twice, only a few terms will be non-zero, because of the operator rules in \cref{eq:creation_zero,eq:annihilation_zero}. 
 
 \todo{$\alpha$ bad notation?}
 If the sp-states are eigenstates to the one-body operator

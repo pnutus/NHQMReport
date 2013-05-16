@@ -1,61 +1,56 @@
 \documentclass[../main/report.tex]{subfiles}
 \begin{document}
 
-\chapter{Introduction}
-\label{cha:introduction}
-
-In Quantum Mechanics, the dynamics of a system is described by its wave function, given by the Schrödinger equation
-\begin{eq}
-i\hbar\ddt{}\psi=H\psi.
-\end{eq}
-The solutions here are dependent on the potential of the Hamiltonian and can be observed to have different behaviors.
-Normaly they are either a set of discrete, bound, solutions as in the case of the harmonic oscillator or a set of continous eigenvalues which describes free particles.
-It is also common to observe a combination of these two where some states are descrete and bound and some free in the continuum.
-This behavior is known since the Hydrogen atom.
-Sometimes, however, indications towards a third type of solutions are noticed.
-These solutions shows a complex energy, describing a particle whose wavefunction is temporary localized, but quickly becomes ``unlocalized'' (free).
-A system with this  property is said to be \emph{quasi-bound} state, or a \emph{resonance}.
-The probability for these quasi-bound systems of staying localized will decrease exponentially over time, which follows through the following argument using a complex energy.
-
-\newcommand{\axes}[6]{
-  \draw[->] (#2, 0) -- (#3, 0) node[right] {#1};
-  \draw[->] (0, #5) -- (0, #6) node[above] {#4};
-}
+The properties of a quantum mechanical system is largely determined by its potential. 
+Depending on the shape of the potential, a system can give rise to bound states, unbound states or both.
+A \emph{closed} quantum system with an infinite potential well, such as the harmonic oscillator, has only bound solutions. 
+Bound means that the wavefunction stays localized indefinitely inside the potential well. 
+An \emph{open} quantum system, on the other hand, has unbound solutions, where the wavefunction passes through the system only slightly perturbed. 
+The potentials of an open and a closed system can be seen in \cref{fig:potentials}.
 
 \begin{figure}
+  \newcommand{\axes}[6]{
+    \draw[->] (#2, 0) -- (#3, 0) node[right] {#1};
+    \draw[->] (0, #5) -- (0, #6) node[above] {#4};
+  }
   \subfloat[]{
-    %\tikzset{external/remake next}
-\tikzsetnextfilename{harmosc_potential}
-    \begin{tikzpicture}[domain=0:4.5, samples=100]
-      %\clip (-0.2, -5.1) rectangle (7, 1);
-      \axes{$r$}{-0.1}{6}{$V$}{-5.1}{0.5}
-      \draw plot (\x, 0.3*\x*\x - 4.8);
+    \label{fig:harmosc}
+    \begin{tikzpicture}
+      \begin{axis}[
+        xlabel = $r$,
+        ylabel = $V$,
+        axis lines = middle,
+        ymin = -5.1, ymax = 2,
+        ticks = none
+        ]
+        \addplot[black] {x^2 - 5};
+      \end{axis}
     \end{tikzpicture}
   }
   \subfloat[]{
-    %\tikzset{external/remake next}
-\tikzsetnextfilename{woods-saxon_potential}
-    \begin{tikzpicture}[domain=0:6, samples=100]
-      \draw[->] (-0.1, 0) -- (6, 0) node[right] {$r$};
-      \draw[->] (0, -5.1) -- (0, 0.5) node[above] {$V$};
-      \draw plot (\x,{-5/(1 + exp((\x - 2)/0.65))});
+    \label{fig:woods-saxon}
+    \begin{tikzpicture}
+      \begin{axis}[
+        xlabel = $r$,
+        ylabel = $V$,
+        axis lines = middle,
+        ymin = -5.1, ymax = 2,
+        ticks = none
+        ]
+        \addplot[black] {-5/(1+e^((abs(x)-2)/0.65))};
+      \end{axis}
     \end{tikzpicture}
   }
-  % \\
-  % \subfloat[]{
-  %   \label{fig:coloumb}
-  %   \begin{tikzpicture}[domain=0.2:6, samples=100]
-  %     \draw[->] (-0.1, 0) -- (6, 0) node[right] {$r$};
-  %     \draw[->] (0, -5) -- (0, 0.5) node[above] {$V$};
-  %     \draw plot (\x,{-1/\x});
-  %   \end{tikzpicture}
-  % }
-  \caption{The Harmonic Oscillator (a) and Woods-Saxon (b) potentials.}
+  \caption{The harmonic oscillator (a) and Woods-Saxon (b) potentials. The harmonic oscillator is a closed system, with an infinitely high potential well. It has a discrete spectrum with only bound solutions. The Woods-Saxon potential describes an open system, with a continuous spectrum of unbound states as well as possible bound states and quasi-bound resonances.}
   \label{fig:potentials}
 \end{figure}
 
+We are interested in a third kind of solution to the equation, so-called \emph{resonances}. 
+These are \emph{quasi-bound} states which exhibit properties of both bound and unbound states. 
+A resonance wavefunction is localized, but will escape the potential well after a short time.
+This can be expressed mathematically by letting the resonance have a complex energy.
 
-The time-dependency of a bound, stationary state $\psi$ is
+The time-dependency of a bound state $\psi$ with a energy $E$ in the discrete spectrum is
 \begin{eq}
 	\psi(t)
 	= 
@@ -95,11 +90,13 @@ as a single (alpha) particle. \He{5} and \He{6} are then modeled
 as an alpha particle core with one or two valence neutrons, 
 respectively. 
 
-\todo{Rewrite to correctness.}
 \He{5} has a known resonance with half-life $t_{1/2} = \SI{700e-24}{s}$,
-which we use to fix our two-body basis. In addition to resonant states, \He{6} has a bound state because of the attraction between the valence neutrons. Our goal is to find these resonances using the bound state to verify the methods used.
+which we verify. \todo{which we verify ... which we seek to verify} In addition to resonant states, \He{6} has a bound state because of the attraction between the valence neutrons. Our goal is to find these resonances and bound states to verify the methods used.
+
 \todo{Should we have results in the introduction.}
+
 \todo{Tunneling is when $E<V\sub{max}$. This is $E>V\sub{max}$. But we can relate them!}
+
 \todo{Where does width stuff go?}
 % Heisenberg's uncertainty principle gives a relation between energy and time
 % \begin{equation}
@@ -111,7 +108,7 @@ The report is full of surprises. In \cref{cha:basis expansion} the mathematical 
 The basis expansion method is then used in \cref{cha:he5} to study a loosely bound nuclear system, the \He{5} nucleus.
 In \Cref{cha:nhqm} we use the Berggren basis to reproduce the resonance in \He{5}.
 
-\Cref{cha:many-body} is an introduction to many-body theory, focusing 
+
 on fermionic systems. 
 The many-body theory is then utilized in \cref{cha:he6} 
 to study a three-body problem, specifically the \He{6} nucleus.  
