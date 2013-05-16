@@ -1,15 +1,18 @@
 \documentclass[../main/report.tex]{subfiles}
 \begin{document}
 \todo{main scope two body nuclear problem, use he5 as concrete example}
-\chapter{The \He{5} Nucleus}
+\chapter{Two Particle Nuclear System}
 \label{cha:he5}
+In this section we seek to investigate the basic properties of a simple nuclear two particle system.  
+This will allow us to to get acquainted with the basis expansion methods and will give us information about the single particle states that we will need later on when we tackle the three particle problem.
+We want to investigate the behaviour of the states as the potential strength is varied
 
-We model the \He{5} nucleus as an alpha particle (\He{4}) interacting with a valence neutron.
-Since the exact nucleon-nucleon interaction is unknown, we use the established
-Woods-Saxon potential as an approximation. 
+We choose the \He{5} nucleus as a concrete example because it can be modeled as an alpha particle, that is a very stable double magic nucleus, with an orbitting neutron. 
+This is common practice and is a corner stone of the nuclear shell model.
+Since the exact nucleon-nucleon interaction is unknown, we use the established Woods-Saxon potential as an approximation. 
 The Woods-Saxon potential (\cref{fig:woods-saxons}) is given by
 \todo{What's the 4 for?}
-\todo{From where do we get our $V_0$ and $V\sub{so}$? Souhonen}
+\todo{From where do we get our $V_0$ and $V\sub{so}$? Souhonen?}
 \begin{eq}
 	V(r)=
 	V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr}
@@ -18,7 +21,8 @@ where
 \begin{eq}
 	f(r)=\frac{1}{1+\exp\p{\frac{r-r_0}{d}}}.
 \end{eq}
-We use the depth $V_0 = \SI{-47}{MeV}$, spin-orbit coupling strength $V\sub{so} = \SI{-7.5}{Mev}$, range $r_0 = \SI{2}{fm}$ and diffuseness $d = \SI{0.65}{fm}$.
+We seek to optimize the parameters for our bases to give results that match experimental values but we start off with common values given by \cite{Suhonen}. 
+These are: potential strength $V_0 = \SI{-47}{MeV}$, spin-orbit coupling strength $V\sub{so} = \SI{-7.5}{Mev}$, range $r_0 = \SI{2}{fm}$ and diffuseness $d = \SI{0.65}{fm}$.
 The spin-orbit coupling can be either attractive or repulsive depending on how the angular momenta couples
 \begin{eq}
   \vec{l}\cdot\vec{s} 
@@ -61,20 +65,11 @@ between two particles, we can reduce the problem to a one-dimensional equation b
   \label{fig:woods-saxons}
 \end{figure}
 
-\section{Convergence}
-\todo{Is convergence even important?}
-We can solve the problem using either HO expansion or discretized momentum space. A comparison of convergence is shown in \cref{fig:HO vs mom}.
-\begin{figure}
-  \centering
-  \caption{IS THIS EVEN NEEEEED}
-  \label{fig:HO vs mom}
-\end{figure}
-
 \section{Wavefunctions}
 
 \todo{review wf section.}
-
-\Cref{fig:resonance wavefunction} compares the radial probability distributions $r^2|R(r)^2|$ for three states as the potential is varied.
+The best metric of a potential or Hamiltonian are the wave functions it harbors, we present below the wavefunctions that solve the two particle system for different potential strengths.
+In \Cref{fig:resonance wavefunction} we can see the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied.
  We see that one solution (filled line) displays different behaviour for diffrent potentials.
  This is the state with the lowest energy and with a very strong potential, $V_0 =$ \SI{-70}{MeV} this is a bound state, $E<0$. 
 In the two weaker potentials, though, this state has an energy $E>0$ meaning that it, too, must be unbound. 
