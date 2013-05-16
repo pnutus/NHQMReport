@@ -1,6 +1,6 @@
 \documentclass[../main/report.tex]{subfiles}
 \begin{document}
-
+\todo{main scope two body nuclear problem, use he5 as concrete example}
 \chapter{The \He{5} Nucleus}
 \label{cha:he5}
 
@@ -9,7 +9,7 @@ Since the exact nucleon-nucleon interaction is unknown, we use the established
 Woods-Saxon potential as an approximation. 
 The Woods-Saxon potential (\cref{fig:woods-saxons}) is given by
 \todo{What's the 4 for?}
-\todo{From where do we get our $V_0$ and $V\sub{so}$?}
+\todo{From where do we get our $V_0$ and $V\sub{so}$? Souhonen}
 \begin{eq}
 	V(r)=
 	V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr}
@@ -64,7 +64,6 @@ between two particles, we can reduce the problem to a one-dimensional equation b
 \section{Convergence}
 \todo{Is convergence even important?}
 We can solve the problem using either HO expansion or discretized momentum space. A comparison of convergence is shown in \cref{fig:HO vs mom}.
-\todo{Skip zoom and title of plot.} 
 \begin{figure}
   \centering
   \caption{IS THIS EVEN NEEEEED}
@@ -72,6 +71,8 @@ We can solve the problem using either HO expansion or discretized momentum space
 \end{figure}
 
 \section{Wavefunctions}
+
+\todo{review wf section.}
 
 \Cref{fig:resonance wavefunction} compares the radial probability distributions $r^2|R(r)^2|$ for three states as the potential is varied.
  We see that one solution (filled line) displays different behaviour for diffrent potentials.
@@ -83,17 +84,20 @@ Additionally, the fact that the solution varies dramatically with the potential 
 The other (dashed line) solution, however, in each plot is essentially unchanged under variation of the potential. 
 This can be interpreted as it being an unbound state in the energy continuum. We see that its probability distribution does not decrease for large $r$.
 
-
-\todo{Check sentence.}
 We cannot find this resonant state using hermitian methods though.
 \cref{fig:pole real contour} shows an attempt at finding this plot by calculating the energies in a plane wave expansion in position space.
-For a strong potential (a) $V_0 =$ \SI{-70}{MeV} we find the bound solution, $E= $ \SI{-4.84}{MeV}, and the basis momenta, which is what we expected.
-For a weaker (b) $V_0 =$ \SI{-50}{MeV} potential, on the other hand, we expect to find no bound solution but instead a resonant state. 
-That is not the case, we instead only find the basis momenta.
+For a strong potential (a) we find the bound solution, and the basis momenta, which is what we expected.
+For a weaker, (b) on the other hand, we expect to find no bound solution but instead a resonant state. 
+That is not the case, we only find the basis momenta.
 
 %In order to find the resonances we need to extend our basis momenta into the complex plane according to \cite{C F Gauss}.
 
 %Since we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet. We do not expect the resonance to be properly described until complex energies are introduced.
+
+\todo{kalla det inte resonans, information hiding, vi kommer på det sen för v  är smarta OLA}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION FIGURE
 
@@ -155,13 +159,6 @@ That is not the case, we instead only find the basis momenta.
   \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION end
-
-
-
-\todo{add labels for the resonannance coordinates}
-
-\todo{Start with a deeper well holding a bound state, and then decrease it to get resonances? Add another subplot?}
-\todo{specify which is which with a legend, ther's a lot of ws in the pot, maybe the enumeration and V0 could be moved there to make it more condensed.}
 
 
 %%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE

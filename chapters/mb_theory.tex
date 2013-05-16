@@ -3,7 +3,7 @@
   
 \chapter{Many-Body Theory}
 \label{cha:many-body}
-  
+\todo{mer röd tråd}  
 A basic fact of quantum mechanics is that particles that look identical \emph{are} identical. It is also known that there are only two types of particles, bosons and fermions, and that systems of many bosons and fermions behave differently. When exhanging the coordinates of two particles, the wavefunction of a bosonic system is unchanged, whereas a fermionic wavefunction changes sign. We say that the bosonic wavefunction is \emph{symmetric} and that the fermionic wavefunction is \emph{antisymmetric}. 
 
 The Schrödinger equation for a system of $N$ identical particles can be expressed as
@@ -58,7 +58,7 @@ For example, in the case of two particles, the correctly normalized antisymmetri
 \end{eq}
 Note the use of angular ket notation $\ket\dots$ for antisymmetric states, as opposed to $\pket\dots$ for product states.
 
-Because the antisymmetric states change sign on exchange of two particles, should two particles be in the same state, the state will become 0. Thus, no particles can occupy the same state and the Pauli principle is satisfied.
+Because the antisymmetric states change sign on exchange of two particles, should two particles be in the same state, the state will become 0. \todo{Is this really why?} Thus, no particles can occupy the same state and the Pauli principle is satisfied.
 
 Important to note is that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
 This means that we have to make sure not to double count these states. 
@@ -78,7 +78,7 @@ We can do this by requiring the sp states to always appear in the same order in 
 \section{Fock Space}
 \todo{Call chapter ``Creation and annihilation operators''?}
 
-\todo{Should mention second quantization here somewhere}
+\todo{Fock space/second quantization/occupation number representation?}
 So far we've looked at a system with a fixed number of particles, but we want to work with a system with an arbitrary number of identical particles. The construction that lets us do this is called the \emph{Fock space}. A state in Fock space, a \emph{Fock state}, can contain any number of particles. States with different number of particles are orthogonal to each other.
 
 \todo{particle addition/removal operators?}
@@ -176,6 +176,7 @@ Sandwiched between a bra and a ket, this becomes
     h_1 + \dots + h_N
   }
   \delta_{\alpha_1\alpha'_1} \dots \delta_{\alpha_N\alpha'_N},
+\label{eq:one-body interaction}
 \end{eq}
 the sum of the eigenvalues of the sp states in the bra and ket, but only if the bra and ket are the same. The Fock space operator $\hat{H}_1$ is thus also diagonal.
 
