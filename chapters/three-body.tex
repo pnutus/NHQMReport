@@ -198,7 +198,8 @@ We have now developed the tools we need to create the Hamiltonian matrix and sol
 %We will cover all four approaches in this chapter.
 
 %\subsection{Uncoupled Scheme}
-%In the uncoupled scheme we use a mb basis, $\alpha$, formed from two sp solutions, $a,b$, and give each sp state a m quantum number. In order to reduce the calculatins needed we filter the mb states so the sum of m numbers equals M.
+%In the uncoupled scheme we use a mb basis, $\alpha$, formed from two sp solutions, $a,b$, and give each sp state an m quantum number. In order to reduce the calculatins needed we filter the mb states so the sum of m numbers equals M.
+
 
 \subsection{Coupled Scheme}
 So far we have used basis states 
@@ -213,11 +214,11 @@ The reader may confirm that $J^2$, $J_z$, $J_1^2$ and $J_2^2$ commute with each 
 \begin{eq}
   \pket{E_1, E_2; JM} = \sum_{m_1, m_2} c_{m_1 m_2} \pket{E_1m_1, E_2m_2}
 \end{eq}
-where the $j$'s are no longer explicitly written out since we will only consider situation where they take on one value. The transformation is done with the coefficients $c_{m_1 m_2}$, formally written as %take on one value???????????????
+where the $j$'s are no longer explicitly written out since we will only consider situation where they take on one value. The transformation is done with the coefficients $c_{m_1 m_2}$, formally written as \todo{take on one value? please elaborate}
 \begin{eq}
   c_{m_1 m_2} = \pbraket{j_1 m_1, j_2 m_2}{JM}
 \end{eq}
-known as the \emph{Clebsch-Gordan coefficients}. There are known expressions for these, and values can be found in standard tables. 
+known as the \emph{Clebsch-Gordan coefficients}. There are known expressions for these, and values can be found in standard tables. \todo{citation or at least explain what we do}
 
 Since we are studying fermions, we need to use basis states that are antisymmetric with respect to exchange of all quantum numbers. Using the symmetry property of the Clebsch-Gordan coefficients,
 \begin{eq}
@@ -253,6 +254,7 @@ meaning that we have to normalize these states with an additional factor $\nicef
 \subsection{Matrix elements in coupled scheme}
 Let us explicitly write out the matrix elements in the total angular momentum basis for our situation. The notation $\ket{E_1 E_2} = \ket{E_1 E_2; JM}$ will be employed. We want to find the elements
 \todo{Find better solution for crazy summation indices}
+\todo{situation, ordval}
 \begin{eq}
   \bra{E_1 E_2}\hat{H}\ket{E_1' E_2'}     
   =
@@ -264,7 +266,7 @@ Let us explicitly write out the matrix elements in the total angular momentum ba
   \conj{c_{m_1 m_2}} c_{m_1'm_2'} 
   \bra{E_1m_1 E_2m_2} \hat{H} \ket{E_1'm_1' E_2'm_2'}
 \end{eq}
-For the n-n interaction we may simply insert \cref{eq:n-n interaction} and obtain
+For the neutron-neutron interaction we may simply insert \cref{eq:n-n interaction} and obtain
 \begin{eq}
   &\bra{E_1 E_2}\hat{H}_2\ket{E_1' E_2'} 
   = 
@@ -292,7 +294,7 @@ because of the relation
 \end{eq}
 when summing over all ($m_1,\, m_2$).
 
-The one-body n-$\alpha$ interaction gives
+The one-body neutron-core interaction gives
 \begin{eq}
   \bra{E_1 E_2}\hat{H}_1\ket{E_1' E_2'} 
   =
@@ -310,7 +312,7 @@ where $H_1$ denotes the result from \cref{eq:one-body interaction}:
    -\delta_{E_1E_2'}\delta_{E_2E_1'}\delta_{m_1 m_2'}\delta_{m_2 m_1'}
   }
 \end{eq}
-Since we are ordering our states in $E$, we only get contributions from the first term, except for when $E_1=E_2$ or $E_1'=E_2'$, which would allow both terms to be satisfied. When inserting this above and performing the summations, we end up with
+Since we are ordering our states in $E$, we only get contributions from the first term, except for when $E_1=E_2$ or $E_1'=E_2'$, which would allow both terms to be satisfied. When inserting this in the relation above and performing the summations, we end up with \todo{"end up with" informal?}
 \begin{eq}
   \bra{E_1 E_2}\hat{H}_1\ket{E_1' E_2'} 
   =
