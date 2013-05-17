@@ -10,7 +10,7 @@ To calculate the \He{6} hamilton matrix we will use the eigensolutions $\ket{\ph
 \begin{eq}
 \hat{H} = \hat{H_1} + \hat{H_2}
 \end{eq}
-where $H_1$ is the single-particle interaction between neutron and core. Since we are only considering valence neutrons in the $p$ orbitals ($l=1$), it has been shown\cite{suzuki} that one may use the same reduced mass as in the two-body problem (in a system with particles of like parity there will be no recoil of the core \todo{Verify this statement. Jimmy?}). Because of this, $H_1$ is the same Hamiltonian that was used in the solution of \He{5}. This means that our basis states will be eigensolutions to this component, and it will only give diagonal contributions to the hamilton matrix. The non-diagonal part of the matrix will come from the two-body interaction $H_2$.
+where $H_1$ is the single-particle interaction between neutron and core. Since we are only considering valence neutrons in the $p$ orbitals ($l=1$), it has been shown\cite{suzuki} that one may use the same reduced mass as in the two-body problem (in a system with particles of like parity there will be no recoil of the core\todo{Verify this statement. Jimmy?}). Because of this, $H_1$ is the same Hamiltonian that was used in the solution of \He{5}. This means that our basis states will be eigensolutions to this component, and it will only give diagonal contributions to the hamilton matrix. The non-diagonal part of the matrix will come from the two-body interaction $H_2$.
 
 \section{n-n Interaction}
 The interaction between neutrons is a complex feature. This is because it arises from the strong interaction between the quarks constituting the neutrons. 
@@ -18,7 +18,7 @@ It depends on both relative coordinates and momenta, and does not have a known a
 In numerical calculations various approximations are used. In calculations it is common to use an interaction potential on the form
 \begin{eq}
 V\sub{n-n} = V(\vec{r}_1 - \vec{r}_2)
-\end{eq} 
+\end{eq} \todo{Stop calling every interaction 'V'?}
 To make the calculations more managable, one often wants to use a so-called separable interaction. An arbitrary function $V=V(\vec{r}_1 - \vec{r}_2)$ can be expanded in a \emph{multipole expansion},
 \begin{eq}
   V(\vec{r}_1 - \vec{r}_2) 
@@ -30,23 +30,23 @@ using the symmetry around the axis connecting the two particles. A separable int
 \begin{eq}
   V_l(r_1,\, r_2) = v_l(r_1)v_l(r_2)
 \end{eq}
-We will study two different types of two-body interactions. 
+We will study two different types of separable two-body interactions. 
 \subsection{Gaussian Interaction}
 First we will investigate the simplest form of separable interaction, only including the zero'th term of the multipole expansion,
 \begin{eq}
   V(r_1 , r_2) 
   = 
-  V\sub{GI} \exp\p{-\frac{r_1^2}{R^2}} \exp\p{-\frac{r_1^2}{R^2}},
+  -V\sub{GI} \exp\p{-\frac{r_1^2}{R^2}} \exp\p{-\frac{r_1^2}{R^2}},
 \end{eq}
 where $r_1$ and $r_2$ are the radial coordinates of the neutrons relative to the core. The range $R$ and strength $V\sub{GI}$ are parameters that will be fitted to experimential data.
 
-With a negative $V\sub{GI}$, we see that the potential in a rough sense satisfies the expected properties of the interactions. If at least one neutron is far from the core, the other will experience little attraction. If both neutrons are in the vicinity of the core, they will experience a stronger attraction. 
+We see that the potential in a rough sense satisfies the expected properties of the interaction. If at least one neutron is far from the core, the other will experience little attraction. If both neutrons are in the vicinity of the core, they will experience a stronger attraction. 
 
 Because the potential is separable
 \begin{eq}
   V(r_1, r_2) 
   = 
-  V\sub{GI} V\sub{sep}(r_1) V\sub{sep}(r_2),
+  -V\sub{GI} V\sub{sep}(r_1) V\sub{sep}(r_2),
   \quad
   V\sub{sep}(r) = e^{- \frac{r^2}{R^2}}
 \end{eq}
@@ -54,24 +54,24 @@ we can write the two-body matrix elements as
 \begin{eq}
   \pbra{ab} V \pket{cd}
   =
-  V\sub{GI} 
+  -V\sub{GI} 
   \bra{a} V\sub{sep}(r) \ket{c} 
   \bra{b} V\sub{sep}(r) \ket{d}.
 \end{eq}
 The $\bra{\alpha} V\sub{sep}(r) \ket{\beta}$ are then calculated by expanding $V\sub{sep}$ in the same basis as the sp states. In the harmonic oscillator basis, this is
 \begin{eq}
-  \bra{\alpha} V\sub{sep}(r) \ket{\alpha'}
+  \bra{a} V\sub{sep}(r) \ket{c}
   =
-  \sum_n \psi_n
-  \sum_{n'} \psi_{n'}
-  \delta_{m_a m_c}\delta_{m_b m_d}
-  \fint[0][\inf]{r} r^2 R_{nl}(r) V\sub{sep}(r) R_{n'l}^\beta(r)
+  \sum_n \psi^{(a)}_n
+  \sum_{n'} \psi^{(c)}_{n'}
+  \delta_{m_a m_c}
+  \fint[0][\inf]{r} r^2 R_{nl}(r) V\sub{sep}(r) R_{n'l}(r)
 \end{eq}
 and in the plane wave basis
 \begin{eq}
-  \bra{\alpha} V\sub{sep}(r) \ket{\alpha'}
+  \bra{a} V\sub{sep}(r) \ket{c}
   =
-  \sum_i \sqrt{w_i}k_i \phi_i \sum_j \sqrt{w_j}k_j \phi'_j V\sub{sep}(k,k'),
+  \sum_i \sqrt{w_i}k_i \phi^(a)_i \sum_j \sqrt{w_j}k_j \phi^(c)_j V\sub{sep}(k,k'),
 \end{eq}
 with
 \begin{eq}
@@ -86,7 +86,7 @@ Another separable interaction one may use is the surface delta interaction
 \begin{eq}
   V(\vec{r}_1, \vec{r}_2) 
   = 
-  V\sub{SDI} 
+  -V\sub{SDI} 
   \delta(\vec{r}_1 - \vec{r}_2) 
   \delta(r_2 - r_0)
 \end{eq}
@@ -180,15 +180,16 @@ hence the matrix elements are
 \label{eq:n-a interaction}
 \end{eq}
 
-\section{Many-Body Hamiltonian}
-We have now developed the tools we need to determine the mb Hamiltonian. 
-The \He{6} nucleus can be solved in two ways, either we couple the angular momenta of the two sp states to reduce the amount of calculations needed or we generate all mb states to get calculations that are more straight-forward. 
-We solve the problem using both schemes, the coupled scheme because is is the one we want to use, but we also solve it using the uncoupled scheme to verify the answer.
-Both schemes can be used together when solving in both the HO basis and the k basis. 
-We will cover all four approaches in this chapter.
+\section{Constructing the Hamiltonian Matrix}
+We have now developed the tools we need to create the Hamiltonian matrix and solve the problem. First, however, we will discuss the concept of angular momentum coupling. This corresponds to making a change of basis, using the rotational symmetry of the problem to significantly reduce the size of the matrix. In principle this is not neccesary to solve the problem, but it is a neat trick to make the computations more managable. The following section introduces the concept of angular momentum coupling.
+ 
+%The \He{6} nucleus can be solved in two ways, either we couple the angular momenta of the two sp states to reduce the amount of calculations needed or we generate all mb states to get calculations that are more straight-forward. 
+%We solve the problem using both schemes, the coupled scheme because is is the one we want to use, but we also solve it using the uncoupled scheme to verify the answer.
+%Both schemes can be used together when solving in both the HO basis and the k basis. 
+%We will cover all four approaches in this chapter.
 
-\subsection{Uncoupled Scheme}
-In the uncoupled scheme we use a mb basis, $\alpha$, formed from two sp solutions, $a,b$, and give each sp state a m quantum number. In order to reduce the calculatins needed we filter the mb states so the sum of m numbers equals M.
+%\subsection{Uncoupled Scheme}
+%In the uncoupled scheme we use a mb basis, $\alpha$, formed from two sp solutions, $a,b$, and give each sp state a m quantum number. In order to reduce the calculatins needed we filter the mb states so the sum of m numbers equals M.
 
 \subsection{Coupled Scheme}
 So far we have used basis states 
