@@ -3,20 +3,7 @@
 
 \chapter{The Complex Berggren Basis}
 \label{cha:berggren}
-
-The resonant state has a complex energy and we need to extend our basis into the complex plane to study it. 
-We do this by using the theory of Tore Berggren and his \emph{Berggren basis} \cite{berggren}.
-This allows us to determine the energy of the state which charcterizes its width and half-life.
-
-Another reason for moving to the complex energy plane is the fact that when we later move to more than two bodies we want to use a basis consisting of our two-body states.
-A basis consisting of all bound, free and resonant complex states forms a complete set  after the \emph{Berggren Comleteness Relation}, this theory is also described by Tore Berggren.
-
-\todo{comment on why all free states can be approximated by a few free states along a contour with low energy.}
-
-The theory is involved and will not be fully explained 
-here. Instead we present a heuristic argument.
-
-If we relate the energies $E$ of a system to momenta $k$ as
+As we argued in the introduction, resonances can be properly described with a complex energy, $E=E_0-i\frac{\Gamma}{2}$. We may relate the energy of a system to a momentum, according to
 \begin{eq}
   E = \frac{\hbar^2 k^2}{2\mu}
   \quad\quad
@@ -24,31 +11,69 @@ If we relate the energies $E$ of a system to momenta $k$ as
   \quad\quad
   k = \frac{\sqrt{2\mu E}}{\hbar},
 \end{eq}
-we can plot the energies as $k$ in the complex plane, see 
-\cref{fig:complex plane}. We then expect bound states, with \todo{introduce k - momenta, basis mom here?}
-$E<0$, to be represented by $k$ along the imaginary axis---
-whereas unbound, scattering states, with $E>0$, are found 
-along the real axis. Resonance states, with complex 
-$E = E_0 - i \Gamma /2$, would by this argument appear somewhere
-in the fourth quadrant.
-
-\todo{maybe show real conour before complex for comparison, röd tråd, mycket figurer för att förstå}
-
-We now interpret these complex momenta, $k$, as poles and our integration 
-
+Having a complex energy is in this sense equivalent to being described with complex momenta. Because of this, if we want to explicitly find the resonant states we need to extend the plane wave basis into the complex momentum plane. To clarify what this means, consider again the momentum space Schrödinger equation, \cref{eq:radial mom space TISE}:\todo{Momentum space Schrödinger equation? Plane wave SE? Spherical wave SE?}
 \begin{eq}
-  \fint[0][\inf]{k} k'^2 V(k,k') \phi(k')
+  \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k} k'^2 V(k,k') \phi(k') 
+  &=
+  E\phi(k) \, .
 \end{eq}
-\todo{resiidy stycke, integration behöver kärlek}
-is evaluated as a contour integration around the upper half plane, 
-see \cref{fig:simple contour}. The result of a contour 
-integration depends on the poles it encircles by the 
-residue theorem. Therefore, we expect something to happen if 
-we let the contour encircle the pole of the resonance,
-as in \cref{fig:berggren contour}.
-\todo{tydligare förankring av beggren teoris}
-An interesting thing seen when moving to a complex contour is the fact that we no longer use a conjugate on the bra when computing the matrix elements.
-This is a confusing piece of theory stemming, again, from Berggren.
+By using a complex momentum basis it is effectively meant that we evaluate the integral along a complex contour. In 1968, Berggren\cite{berggren} first showed that the solutions that are obtained using this scheme -- bound states, resonant states and the non-resonant continuum -- form a complete orthonormal basis. This is a major result, meaning that resonances are included as proper solutions to open quantum systems. This is of importance later, where we consider systems of multiple particles interacting. In this Chapter, we will instead focus on using complex momentum contours to find the resonances of \He{5}. 
+
+We will start by mentioning some of the key features of the theory behind the complex momentum representation. However, we will in no way attempt to give a comprehensive or rigorous introduction to it, since the mathematical nature of the theory is beyond the scope of this report.
+
+It is known\cite{Some source supporting this statement. Probably not berggren?} that bound state solutions correspond to poles on the positive imaginary axis, $k=i\kappa$, related to them having negative energies and
+\begin{eq}
+  E = \frac{\hbar^2(i\kappa)^2}{2\mu} = -\frac{\hbar^2 \kappa^2}{2\mu} \, ,
+\end{eq} 
+while resonances, with energies on the form $E=E_0 - i \Gamma /2$, correspond to poles in the fourth quadrant. 
+%The resonant state has a complex energy and we need to extend our basis into the complex plane to study it. 
+%We do this by using the theory of Tore Berggren and his \emph{Berggren basis} \cite{berggren}.
+%This allows us to determine the energy of the state which charcterizes its width and half-life.
+
+%Another reason for moving to the complex energy plane is the fact that when we later move to more than two bodies we want to use a basis consisting of our two-body states.
+%A basis consisting of all bound, free and resonant complex states forms a complete set  after the \emph{Berggren Comleteness Relation}, this theory is also described by Tore Berggren.
+
+%\todo{comment on why all free states can be approximated by a few free states along a contour with low energy.}
+
+%The theory is involved and will not be fully explained 
+%here. Instead we present a heuristic argument.
+
+%If we relate the energies $E$ of a system to momenta $k$ as
+%\begin{eq}
+%  E = \frac{\hbar^2 k^2}{2\mu}
+%  \quad\quad
+%  \textup{or}
+%  \quad\quad
+%  k = \frac{\sqrt{2\mu E}}{\hbar},
+%\end{eq}
+%we can plot the energies as $k$ in the complex plane, see 
+%\cref{fig:complex plane}. We then expect bound states, with \todo{introduce k - momenta, basis mom here?}
+%$E<0$, to be represented by $k$ along the imaginary axis---
+%whereas unbound, scattering states, with $E>0$, are found 
+%along the real axis. Resonance states, with complex 
+%$E = E_0 - i \Gamma /2$, would by this argument appear somewhere
+%in the fourth quadrant.
+
+%\todo{maybe show real conour before complex for comparison, röd tråd, mycket figurer för att förstå}
+
+%We now interpret these complex momenta, $k$, as poles and our integration 
+
+To find the resonance, a mathematical quirk requires that the complex $k$ contour passes below the pole corresponding to the resonance. A contour like this is visualized in \cref{fig:berggren contour}. Note that the right hand side of the plane is mirrored on the left. Solutions on the right side are to be interpreted as 'ingoing' solutions, while solutions on the left side can be interpreted as 'outgoing'. However, use of this closed contour is mostly a mathematical technique to prove the completeness relation. In fact, symmetry in the situation lets us restrict ourselves to the segment between $k=0$ and $k=+\infty$. Note that our original momentum space equation corresponded to a contour along the real line, $k \in [0,\, \infty]$.
+
+
+%\begin{eq}
+%  \fint[0][\inf]{k} k'^2 V(k,k') \phi(k')
+%\end{eq}
+%\todo{resiidy stycke, integration behöver kärlek}
+%is evaluated as a contour integration around the upper half plane, 
+%see \cref{fig:simple contour}. The result of a contour 
+%integration depends on the poles it encircles by the 
+%residue theorem. Therefore, we expect something to happen if 
+%we let the contour encircle the pole of the resonance,
+%as in \cref{fig:berggren contour}.
+%\todo{tydligare förankring av beggren teoris}
+%An interesting thing seen when moving to a complex contour is the fact that we no longer use a conjugate on the bra when computing the matrix elements.
+%This is a confusing piece of theory stemming, again, from Berggren.
 
 
 \begin{figure}
@@ -106,7 +131,7 @@ This is a confusing piece of theory stemming, again, from Berggren.
 \todo{Where to put: "No conjugate on bras"?}
 
 \section{The Complex Contour}
-
+\todo{In this section I will add additional context and connect it better with previous section}
 We choose to extend our integration along the real axis to 
 the simplest possible complex contour, a triangle-shaped downward extrusion. The tip of the triangle is placed directly 
 below the hypothesized resonance pole.
