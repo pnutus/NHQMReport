@@ -15,8 +15,8 @@ commonly written in the position basis as
   \p{-\frac{\hbar^2}{2m}\nabla^2 + V(\vec{r})}\psi(\vec{r}) = E\psi(\vec{r}).
 \end{eq}
 
-For the nuclear systems we are looking at, the TISE has no known analytical solutions, and we need to use numerical methods to solve it.
-However, the Hamiltonian written as in \cref{eq:TISEpos}, it is not suitable for numerical calculations.
+For the nuclear systems to be treated, the TISE has no known analytical solutions, and we need to use numerical methods to solve it.
+However, the Hamiltonian written as in \cref{eq:TISEpos}, it is not suitable for numerical calculations. \todo{cite/explain}
 Instead, we would like to write it as a matrix equation
 \begin{eq}
   \label{eq:matrix equation}
@@ -28,7 +28,7 @@ To write the TISE as a matrix equation we use \emph{basis expansion}.
 Basis expansion is how we make sense of the abstract Hilbert spaces, operators and state vectors of Quantum Mechanics (QM). 
 By expanding these abstract objects in a basis, we can relate them to the physical world. 
 For example, \cref{eq:TISEpos} is the TISE for a single particle, expanded in the position basis. 
-We will not expand in the position basis, but it will still be important, since it is the only basis in which we can express the potential.
+We will not expand our problems in the position basis, but it will still be important, since it is the only basis in which we can express the potentials.
 
 Before we begin, we briefly recap some well known QM facts. 
 First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$. 
@@ -41,7 +41,7 @@ A discrete basis means that any state $\ket\psi$ can be written as a linear comb
   \quad
   \ket\psi = \fint{x} \psi(x) \ket{x}.
 \end{eq}
-The  complete bases we will use in this report are the \emph{position basis} $\ket{\vec{r}}$, the\todo{could \emph{plane wave basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis} \cite{berggren}. 
+The  complete bases we will use in this report are the \emph{position basis} $\ket{\vec{r}}$, the \emph{plane wave basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis} \cite{berggren}. 
 All these bases are orthonormal, i.e. all the basis vectors satisfy 
 \begin{eq}
   \braket{n}{n'} = \delta_{nn'}
@@ -59,7 +59,7 @@ With a complete basis $\ket{n}$, we get the very useful \emph{completeness relat
   \quad
   I = \fint{x} \ket{x}\bra{x},
 \end{eq}
-where $I$ is the identity operator. This relation can thus be inserted anywhere in any equation, and will find frequent use in this report. 
+where $I$ is the identity operator. This relation can thus be inserted anywhere in any equation, and will find frequent use in this report.
 
 Let us now expand the TISE in the abstract $\ket{n}$ basis. We start by inserting the completeness relation for $\ket{n}$ in \cref{eq:TISE}
 \begin{eq}
@@ -89,11 +89,11 @@ and if we write $H_{nn'} = \bra{n} H \ket{n'}$, we get
 which is equivalent to the matrix \cref{eq:matrix equation}. This is 
 the basic method of expanding the TISE in a basis.
 
-\section{Spherical Symmetry}
+\section{Spherical Symmetry} \todo{up to date with SDI?}
 \label{sec:spherical symmetry}
 
 We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. 
-This is sufficient for our purposes and, indeed, most common QM problems. 
+This is sufficient for our purposes and, indeed, most common QM problems. \todo{why?/cite/explain}
 If we considered three-dimensional systems with arbitrary potentials, the matrix size would grow very fast and the problem would be infeasible to calculate.
 
 The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m$
@@ -102,12 +102,12 @@ The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a 
 \end{eq}
 Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. \todo{$j$ in here somewhere?}
 Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, which will result in a factor of $\delta_{ll'}\delta_{mm'}$.
-This delta factor put the restraint $l=l'$ and $m=m'$ on the SE, giving us
+This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
 \end{eq}
 If we now think of $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
-we notice that the ``diagonals''  of this matrix have the same $l$ and $m$,
+we notice that the diagonal elements of this matrix have the same $l$ and $m$,
 which can be expressed as \emph{$H$ is diagonal in $l$ and $m$}.
 \todo{Hjälp? Hur skriver vi det här på bästa sätt? || Fungerar detta?}
 
@@ -140,7 +140,7 @@ and if we use the fact that $H$ is diagonal in $l$ and $m$ we get
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
 \end{eq}
-We now have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (see \cref{sec:HO matrix elements} for the details) and the result is
+We now have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (see \cref{sec:HO matrix elements} for the details) and the result is \todo{are we stringent in the use of compute, calculate?}
 \begin{eq}
   \label{eq:HO matrix elements}
   &
@@ -182,7 +182,7 @@ The real space wavefunction $R(r)$ for a state will be expressed as a linear com
 \todo{mention that we move to momentum space?}
 The plane wave basis $\ket{\vec{k}}$ is of great importance for us since we are studying a system with a short-range potential supporting only a few, if any, bound solutions.
 This means that we will find multiple unbound solutions, corresponding to free particles with various momenta.
-These are almost eigenstates of the momentum operator, only slightly disturbed by the small potential well at $r=0$. 
+These are almost eigenstates of the momentum operator, only slightly perturbed by the small potential well at $r=0$. 
 
 The expansion is done in the same way as before, giving us
 \begin{eq}
@@ -190,7 +190,7 @@ The expansion is done in the same way as before, giving us
   &= 
   E\Phi(\vec{k}) \, .
 \end{eq}
-This three-dimensional equation is practically unsolvable, but we can simplify it using the fact that we have a central problem. 
+This three-dimensional equation is generally unsolvable in practice, but we can simplify it using the fact that we have a central problem.
 A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Schrödinger equation can be written as
 \begin{eq} 
   \label{eq:radial mom space TISE}
@@ -204,16 +204,17 @@ where $\phi(k)$ is the radial part of the momentum space wavefunction,
   &= 
   \frac{2}{\pi}\int_0^\infty \rd r \, r^2 V(r) j_l(kr) j_l(k'r) 
 \end{eq}
-and $j_l(kr)$ are the spherical bessel functions of order $l$. $\phi(k)$ is related to the real space radial wavefunction by
+and $j_l(kr)$ are the spherical bessel functions of order $l$. \todo{start a sentance with a variable?} $\phi(k)$ is related to the real space radial wavefunction by
 \begin{eq}
   R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
   \label{eq:radial wavefunction}
 \end{eq}
-
+\todo{no mention of H?}
 
 \section{Numerical Considerations}
 
-In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. This includes truncation of the bases, matrix size reduction, numerical integration and eigensolver optimizations. The plane wave basis is continuous and thus requires special treatment.
+In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. This includes truncation of the bases, matrix size reduction, numerical integration and eigensolver optimizations. \todo{bases/basis? we truncate the base(s) by only using so many basis states. syftning}
+ The plane wave basis is continuous and thus requires special treatment.
 
 The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
 The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo[inline]{Questionable? OLA}
@@ -230,10 +231,10 @@ or in matrix notation
   H\psi = E\psi.
 \end{eq}
 
-We calculate the matrix elements $H_{ij}$ with \cref{eq:HO matrix elements,eq:plane wave matrix elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (\cref{app:gauss-legendre}) and setting the upper limit to a finite number.
+We calculate the matrix elements $H_{ij}$ with \cref{eq:HO matrix elements,eq:plane wave matrix elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
 If the matrix is hermitian or symmetric, we only need to calculate the elements in the upper triangle including the diagonal, roughly halving the the number of elements we need calculate. 
 
-When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a specialized algorithm, that is faster.
+When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
 
 
 \subsection{Discretization and symmetrization of the plane wave basis}
@@ -267,7 +268,7 @@ where $\phi_i=\phi(k_i)$ and
 
 Because of the $k_j^2$ in the second term of the matrix elements 
 (\cref{eq:mom matrix}), the $H_{ij}$ matrix will not be symmetric. 
-Working with a symmetric matrix will be faster, hence we perform 
+Working with a symmetric matrix will be faster, hence we perform \todo{why?/explain more}
 the transformation
 \begin{eq}
   \phi_i &\mapsto

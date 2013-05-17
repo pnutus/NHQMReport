@@ -3,26 +3,26 @@
 \chapter{Two Particle Nuclear System}
 \label{cha:he5}
 In this section we seek to investigate the basic properties of a simple nuclear two particle system.  
-This will allow us to to get acquainted with the basis expansion methods and will give us information about the single particle states that we will need later on when we tackle the three particle problem.
-We want to investigate the behaviour of the states as the potential strength is varied
+This allows us to to get acquainted with the basis expansion methods and will give us information about the single particle states that we will need later on when we solve the three particle problem.
+We want to investigate the behavior of the states as the potential strength is varied
 \todo{hint at 3b or just cut it out?}
 
 We choose the \He{5} nucleus as a concrete example because it can be modeled as an alpha particle, that is a very stable double magic nucleus, with an orbiting neutron. 
-This is common practice and is a corner stone of the nuclear shell model. \todo{maybe a citation here? OLA PONTUS OLA}
+This is common practice and is a corner stone of the nuclear shell model. \todo{maybe a citation here? OLA PONTUS OLA} \todo{why?/cite/explain}
 Since the exact nucleon-nucleon interaction is unknown, we use the established Woods-Saxon potential as an approximation. 
 The Woods-Saxon potential (\cref{fig:woods-saxons}) is given by
 \todo{What's the 4 for?}
 \todo{From where do we get our $V_0$ and $V\sub{so}$? Souhonen?}
 \begin{eq}
 	V(r)=
-	V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr}
+	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr}
 \end{eq}
 where 
 \begin{eq}
 	f(r)=\frac{1}{1+\exp\p{\frac{r-r_0}{d}}}.
 \end{eq}
-We seek to optimize the parameters for our bases to give results that match experimental values but we initially use common values given by \cite{Suhonen}. 
-These are: potential strength $V_0 = \SI{-47}{MeV}$, spin-orbit coupling strength $V\sub{so} = \SI{-7.5}{Mev}$, range $r_0 = \SI{2}{fm}$ and diffuseness $d = \SI{0.65}{fm}$.
+We seek to optimize the parameters for our bases to give results that match experimental values but we initially use common values given by \cite{Suhonen}. \todo{why?/cite/explain}
+These are: potential strength $V_0 = \SI{47}{MeV}$, spin-orbit coupling strength $V\sub{so} = \SI{-7.5}{Mev}$, range $r_0 = \SI{2}{fm}$ and diffuseness $d = \SI{0.65}{fm}$.
 The spin-orbit coupling can be either attractive or repulsive depending on how the angular momenta couples
 \begin{eq}
   \vec{l}\cdot\vec{s} 
@@ -40,7 +40,7 @@ The spin-orbit coupling can be either attractive or repulsive depending on how t
 \end{eq}
 
 Since we approximate the system as a spherically symmetric interaction 
-between two particles, we can reduce the problem to a one-dimensional equation by using the relative coordinate $r = r_\alpha - r_n$ and introducing the reduced mass
+between two particles, we can reduce the problem to a one-dimensional equation by using the relative coordinate $r = r_\alpha - r_n$ and introducing the reduced mass \todo{why?/cite/explain}
 \begin{eq}
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
@@ -62,7 +62,7 @@ We can now proceed to solve the Schrödinger Equation with the given potential.
       \addplot[black] {-47/(1 + e^((x-2)/0.65))};
     \end{axis}
   \end{tikzpicture}
-  \caption{The Woods-Saxon potential for $l = 0$, with $V_0 = \SI{-47}{MeV}$, $r_0 = \SI{2}{fm}$ and $d = \SI{0.65}{fm}$}
+  \caption{The Woods-Saxon potential for $l = 0$, with $V_0 = \SI{47}{MeV}$, $r_0 = \SI{2}{fm}$ and $d = \SI{0.65}{fm}$}
   \label{fig:woods-saxons}
 \end{figure}
 
@@ -71,14 +71,14 @@ We can now proceed to solve the Schrödinger Equation with the given potential.
 \todo{review wf //this// section.}
 The best metric of a potential or Hamiltonian are the wave functions it harbors, we present below the wavefunctions that solve the two particle system for different potential strengths.
 In \Cref{fig:resonance wavefunction} we can see the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied.
- We see that one solution (filled line) displays different behaviour for diffrent potentials.
- This is the state with the lowest energy and with a very strong potential, $V_0 =$ \SI{-70}{MeV} this is a bound state, $E<0$. 
+ We see that one solution (filled line) displays different behavior for diffrent potentials.
+ This is the state with the lowest energy and with a very strong potential, $V_0 =$ \SI{70}{MeV} this is a bound state, $E<0$. \todo{lowest energy?}
 In the two weaker potentials, though, this state has an energy $E>0$ meaning that it, too, must be unbound. 
-However, its wavefunction is highly localized near the center, suggesting a quasi-stationary state. 
+However, its wavefunction is highly localized near the center, suggesting a quasi-bound state. 
 Additionally, the fact that the solution varies dramatically with the potential implies that it must be a feature of the system.
  
 The other (dashed line) solution, however, is essentially unchanged under variation of the potential. 
-This can be interpreted as it being an unbound state in the energy continuum. We see that its probability distribution does not decrease for large $r$.
+This can be interpreted as it being an unbound state in the energy continuum. We see that its probability distribution does not decrease for large $r$. \todo{what's the expected bahvior in the continuum? reflect and compare.}
 
 
 %Since we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet. We do not expect the resonance to be properly described until complex energies are introduced.
@@ -100,7 +100,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
     ymax = 1.7,
 	legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
   }
-    \subfloat[$V_0=\SI{-70}{MeV}$]{
+    \subfloat[$V_0=\SI{70}{MeV}$]{
       %\tikzset{external/remake next}
   \tikzsetnextfilename{wavefunction-70MeV}
       \begin{tikzpicture}
@@ -114,7 +114,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
       \end{tikzpicture}
     }
 
-  \subfloat[$V_0=\SI{-52}{MeV}$]{
+  \subfloat[$V_0=\SI{52}{MeV}$]{
     %\tikzset{external/remake next}
 \tikzsetnextfilename{wavefunction-52MeV}
     \begin{tikzpicture}
@@ -126,7 +126,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
       \end{axis}
     \end{tikzpicture}
   }
-  \subfloat[$V_0 = \SI{-50}{MeV}$]{
+  \subfloat[$V_0 = \SI{50}{MeV}$]{
     %\tikzset{external/remake next}
 \tikzsetnextfilename{wavefunction-50MeV}
     \begin{tikzpicture}
@@ -143,8 +143,60 @@ This can be interpreted as it being an unbound state in the energy continuum. We
   \caption{A bound (a) / resonant (b, c) and an unbound solution to the Woods-Saxon potential for different depths $V_0$, using the plane wave expansion.} 
   \label{fig:resonance wavefunction}
   \end{figure}
-
+\todo{SPILL, typo in the legend of last figure? The resonance for V0=50 must have a higher energy than the resonance for V0=52. Mixed up momentum and energy?}
 %%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION end
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%EIGVECS FIGURE
+
+\begin{figure}[H]
+  \centering{
+  \pgfplotsset{
+    width = \textwidth, height = 7cm,
+    xlabel = abs($k$), 
+    axis x line = bottom,
+	xmin = 0.12,
+	xmax=0.3,
+    axis y line = left,
+    no markers,
+    ytick = \empty,
+	legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
+  }
+  \subfloat[Squared absolute value of the eigenvectors to the hamiltonian]{
+  %\tikzset{external/remake next}
+  \tikzsetnextfilename{eigvecs}
+      \begin{tikzpicture}
+        \begin{axis}[	ylabel = $|\phi_i|^2$,]
+ \foreach \yindex in {1,...,20}
+            {   
+			\addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/physical_eigvecs.data};
+			}
+        \end{axis}
+      \end{tikzpicture}
+    }
+	
+     \subfloat[Squared absolute value weighted by k squared and integration weights of the eigenvectors to the hamiltonian]{
+     % \tikzset{external/remake next}
+     \tikzsetnextfilename{symmvecs}
+         \begin{tikzpicture}
+           \begin{axis}[	ylabel = $k^2 w |\phi_i|^2$,]
+    \foreach \yindex in {1,2,...,20}
+               {   
+   			\addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/symmetric_eigvecs.data};
+   			}
+           \end{axis}
+         \end{tikzpicture}
+       }
+	
+	}
+
+
+
+  \caption{yada} 
+  \label{fig:he5_eigvecs}
+  \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%EIGVECS end
 
 
 
@@ -154,6 +206,6 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 Theory suggests that the HO solutions will hint at the existance of a pole as omega is varried. 
 Supposedly \cite{dolan} one wavefunction will enter a plateau as omega is increased while the other wavefunctions will continue to grow unabatedly. 
 Our results from investigating this is presented in \cref{fig:energies(omega)}.
-It is clear that no such behaviour was observed.
+It is clear that no such behavior was observed.
 
 \end{document}
