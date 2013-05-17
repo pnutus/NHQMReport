@@ -47,7 +47,7 @@ The annihilation operator is implemented in a similar fashion, it removes a give
 % To keep track of all the many-body states and to perform sums over all possible many-body states we arrange a list with all the states and signify each many body state as the index representing the state in this list
  
 \subsection{Generating many-body Hamiltonian}
-To calculate the Hamilton matrix for the many-body states we generate a list of all possible mb-states and let the (i,j)-th element of the matrix be the hamiltonian contribution from the i-th mb-state in a bra and the j-th mb-state in a ket. 
+To calculate the Hamiltonian matrix for the many-body states we generate a list of all possible mb-states and let the (i,j)-th element of the matrix be the Hamiltonian contribution from the i-th mb-state in a bra and the j-th mb-state in a ket. 
  In the case of two orbiting particles the two-body operator will work on all combinations of bras and kets but in the four or more body problem only some combinations will contribute.
  To find which combinations of bras and kets contribute to the two-body operator one can take a ket and remove two sp-states and iteratively add all possible combinations of two sp-states to the new ket and check whether the bra is the same as the new ket.
  On the diagonal, however, there will also be a contribution from the one-body operator.
@@ -58,17 +58,17 @@ The one-body operator is the simple kinetic energy operator that we have known a
 %Presented on the form of \cref{eq: stans i mb-teori} the one-body operator, \fockop{T} simply yields the kinetic energy of the two particles, but in a matrix representation 
  In our matrix representation the bra and the ket will be the same in a diagonal-element and thus have the same single-particle states.
  This operator returns the kinetic energy of these two single particle states. 
- The energies are eigenvalues to the sp-hamilton matrix and have already been calculated and can be retrieved.
+ The energies are eigenvalues to the sp-Hamiltonian matrix and have already been calculated and can be retrieved.
 
 \subsubsection{The two-body operator}
-The two-body operator is the contribution from the neutron-neutron interaction and is computationally taxing. Although the potential is (ridiculously) simple this calculation requires sums over all the quantum numbers in both the bra and the ket; the mathematical expression for the hamiltonian is presented in \cref{two-body op sum}. 
+The two-body operator is the contribution from the neutron-neutron interaction and is computationally taxing. Although the potential is (ridiculously) simple this calculation requires sums over all the quantum numbers in both the bra and the ket; the mathematical expression for the Hamiltonian is presented in \cref{two-body op sum}. 
 With a simple contour of 15 points this would be a sum over $15^4*4^4 \approx 13$ million elements, which would be computationaly unfeasible.
 In order to reduce the complexity we instead make use of coupled angular momentum for the many-body states, refer to ref ref ref.
 
 %the (i,j)-th matrix element, $H_{ij}$, would be the interaction between the i-th and j-th mb-state. and for each pair of indexes calculate a matrix element; 
 
 
-To determine the hamilton matrix \todo{is it called hamilton matrix or hamiltonian matrix} for the mb-system we generate a list of all possible (non-permutated) mb-states, constructed only from different sp-states.
+To determine the Hamiltonian matrix \todo{is it called Hamiltonian matrix or Hamiltonian matrix} for the mb-system we generate a list of all possible (non-permutated) mb-states, constructed only from different sp-states.
 For a given bra and ket we determine whether the fock-space relations allow for an interaction, in this case with two-orbiting particles this is trivially true.
 This is where we introduce the different allowed m-quantum numbers, the original bra and ket are used to generate all possible mb-states with the given sets of sp-states but with an angular momentum for each of the sp-states.
 Thus we can calculate the Clebsch-Gordan coefficients to treat the degeneracy in m-quantum number, recall that Clebsch-Gordan coefficients was covered in ref ref ref.

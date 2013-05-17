@@ -127,7 +127,7 @@ which can be expressed as \emph{$H$ is diagonal in $l$ and $m$}.
 
 We now expand the TISE in the spherically symmetric Harmonic Oscillator (HO) basis. The basis consists of the eigenstates $\ket{nlm}$ of the HO Hamiltonian
 \begin{eq}
-  \label{eq:HO hamiltonian}
+  \label{eq:HO_hamiltonian}
   H\sub{HO} = \frac{p^2}{2\mu} + \frac{\mu\omega^2 r^2}{2},
 \end{eq}
 where $\mu$ is the mass of the problem and $\omega$ is the angular frequency of the oscillator. 
@@ -218,7 +218,7 @@ In order to perform basis expansion on a computer, we need to consider the numer
 The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
 The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo[inline]{Questionable? OLA}
 \todo[inline]{Convergence plots here?}
-This gives us an $N \times N$ hamiltonian matrix $H$.
+This gives us an $N \times N$ Hamiltonian matrix $H$.
 Since $H$ is diagonal in $l$ and $m$, we can consider each value of $l$ and $m$ separately, reducing the size of the matrix and thus the amount of computation needed to solve for the eigenvalues.
 The equation is then, for a given $l$ and $m$,
 \begin{eq}

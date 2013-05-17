@@ -41,7 +41,7 @@ In order to improve the Monte Carlo method there are a few avenues to explore.
 One could instead of choosing the points with a uniform probability use a probability density function akin to the points used in Gauss-Legendre integration. 
 and/or change the weights.
 Another way to modify the simulation would be to use more than one point per segment, maybe there is an optimal (small) number of points per segment that gives the best convergence. 
-Currently we give all the points on the sample contours the weight (used in conjunction with GL-contour and its weights in the calculation of the hamiltonian) 1, regardless of their position on the segment, maybe this should be updated to conform better with the GL weights, but still let the position be uniformly random.
+Currently we give all the points on the sample contours the weight (used in conjunction with GL-contour and its weights in the calculation of the Hamiltonian) 1, regardless of their position on the segment, maybe this should be updated to conform better with the GL weights, but still let the position be uniformly random.
 
 delta trickery! it might be bad if we 'miss' the resonance.
 
