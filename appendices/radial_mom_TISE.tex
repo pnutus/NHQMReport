@@ -19,13 +19,14 @@ Standard textbooks on quantum mechanics show
   &= 
   \frac{1}{(2\pi)^{\frac{3}{2}}}e^{i\vec{k}\cdot\vec{r}}.
 \end{eq}
-For a spherically symmetric problem, solutions can be found on the form $\psi(\vec{r})= R(r)Y_l^m(\Omega_r)$. We can simplify the above integral by using the plane wave expansion \cite{mehrem}
+For a spherically symmetric problem, solutions can be found on the form $\psi(\vec{r})=  R(r)Y_l^m(\Omega_r)$. \todo{why?/cite/explain}
+We can simplify the above integral by using the plane wave expansion \cite{mehrem}
 \begin{eq}
   e^{i\vec{k}\cdot\vec{r}} 
   &= 
   4\pi \sum_{l=0}^\infty \sum_{m=-l}^l  i^l j_l(kr)Y_l^m(\Omega_k)Y_l^m(\Omega_r)^*
 \end{eq}
-where you have the freedom of choice to put the complex conjugation on either factor. 
+where you can choose either factor to conjugate. \todo{"complex" necessary?}
 
 Inserting this and using the orthogonality of the spherical harmonics
 \begin{eq}
@@ -33,7 +34,7 @@ Inserting this and using the orthogonality of the spherical harmonics
   =
   \delta_{mm'}\delta_{ll'} 
 \end{eq}
-you end up with
+you end up with \todo{ordval}
 \begin{eq}
   \Phi(\vec{k}) &= \phi(k)Y_l^m(\Omega_k)
   =
@@ -57,7 +58,7 @@ In a similar manner, we evaluate
 \end{eq}
 Here, a factor $(-1)^l$ was introduced because of the parity of the spherical harmonics: $Y_l^m(-\Omega_k)=(-1)^lY_l^m(\Omega_k)$. 
 
-Inserting all of this into the Schrödinger equation and again simplifying by using the orthogonality of the spherical harmonics twice, you immediatly obtain the equation given in the text.
+Inserting all of this into the Schrödinger equation and again simplifying by using the orthogonality of the spherical harmonics twice, you immediatly obtain the equation given in the text. \todo{akta så att vi inte får en loop i att texten ger att bilagan ger att texten ger... ar stringent med var saken ges och var den återberättas}
 
 \begin{eq}
   \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}') 
