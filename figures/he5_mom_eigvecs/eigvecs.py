@@ -35,7 +35,7 @@ def un_symmetrize(eigvec):
 # print eigvecs[:,0]
 # print un_symmetrize(eigvecs[:,0])     
     
-for i in xrange(num_wfs):   
+for i in xrange(order):   
     temp_vec = eigvecs[:,i]
     symm_vec = sp.absolute(temp_vec)**2  
     result_symmvec.append(symm_vec)  
@@ -43,19 +43,27 @@ for i in xrange(num_wfs):
     temp_phys_vec = un_symmetrize(temp_vec)
     phys_vec = sp.absolute(temp_phys_vec)**2
   
-    
     result_physvec.append(phys_vec)
+    
+    lim=0
+    mid=53
+    if i>= mid -lim and i <= mid+lim:
+        plt.plot(momenta, symm_vec)
+        plt.plot(momenta, phys_vec)
+            
+
 
     
 
 physdata = sp.array(result_physvec).T
-print physdata
-
 symmdata = sp.array(result_symmvec).T
-print symmdata
 
 import os
 script_dir = os.path.dirname(os.path.realpath(__file__)) + "/"
 sp.savetxt(script_dir + "physical_eigvecs.data", physdata)
 sp.savetxt(script_dir + "symmetric_eigvecs.data", symmdata)
+
+plt.show()
+
+
 

@@ -155,8 +155,8 @@ This can be interpreted as it being an unbound state in the energy continuum. We
     width = \textwidth, height = 7cm,
     xlabel = abs($k$), 
     axis x line = bottom,
-	xmin = 0.12,
-	xmax=0.3,
+	xmin = 0,
+	xmax=1,
     axis y line = left,
     no markers,
     ytick = \empty,
@@ -167,7 +167,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
   \tikzsetnextfilename{eigvecs}
       \begin{tikzpicture}
         \begin{axis}[	ylabel = $|\phi_i|^2$,]
- \foreach \yindex in {1,...,20}
+ \foreach \yindex in {1,15,8,54}
             {   
 			\addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/physical_eigvecs.data};
 			}
@@ -180,7 +180,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
      \tikzsetnextfilename{symmvecs}
          \begin{tikzpicture}
            \begin{axis}[	ylabel = $k^2 w |\phi_i|^2$,]
-    \foreach \yindex in {1,2,...,20}
+    \foreach \yindex in {1,15,8,54}
                {   
    			\addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/symmetric_eigvecs.data};
    			}
