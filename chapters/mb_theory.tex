@@ -4,7 +4,10 @@
 \chapter{Many-Body Theory}
 \label{cha:many-body}
 \todo{mer röd tråd}  
-A basic fact of quantum mechanics is that particles that look identical \emph{are} identical. It is also known that there are only two types of particles, bosons and fermions, and that systems of many bosons and fermions behave differently. When exhanging the coordinates of two particles, the wavefunction of a bosonic system is unchanged, whereas a fermionic wavefunction changes sign. We say that the bosonic wavefunction is \emph{symmetric} and that the fermionic wavefunction is \emph{antisymmetric}. 
+A basic fact of quantum mechanics is that particles that look identical \emph{are} identical. 
+It is also known that there are only two types of particles, bosons and fermions, and that systems of many bosons and fermions behave differently. 
+When exhanging the coordinates of two particles, the wavefunction of a bosonic system is unchanged, whereas a fermionic wavefunction changes sign. 
+We say that the bosonic wavefunction is \emph{symmetric} and that the fermionic wavefunction is \emph{antisymmetric}. 
 
 The Schrödinger equation for a system of $N$ identical particles can be expressed as
 \begin{eq}
@@ -16,13 +19,15 @@ The Schrödinger equation for a system of $N$ identical particles can be express
 \end{eq}
 but this is not a particularly convenient form for many-body manipulation. It is especially inconvenient when working with systems that do not have a fixed number of particles. This form is called the first quantization.
 
-We would instead like to describe the system as a combination of single particle (sp) states and particles that occupy these states. The operators can then be expressed using creation and annihilation operators that allow us to work with an arbitrary number of particles.
-
+We would instead like to describe the system as a combination of single particle (sp) states and particles that occupy these states. 
+The operators can then be expressed using creation and annihilation operators that allow us to work with an arbitrary number of particles.
+\todo{first - second quantization. no follow up}
 \todo{We should mention there is something similar for bosons.}
 \section{Fermionic states}
 
 \todo{Use $\alpha$ or something else?}
-We begin with an orthonormal single particle (sp) basis $\ket\alpha$, where $\alpha$ represents all the quantum numbers that describe the state. Next, consider $N$ identical particles, expressed in this basis. We form a product state
+We begin with an orthonormal single particle (sp) basis $\ket\alpha$, where $\alpha$ represents all the quantum numbers that describe the state.
+Next, consider $N$ identical particles, expressed in this basis. We form a product state
 \begin{eq}
   \pket{\alpha_1\alpha_2\dots\alpha_N} 
   \equiv
@@ -58,11 +63,13 @@ For example, in the case of two particles, the correctly normalized antisymmetri
 \end{eq}
 Note the use of angular ket notation $\ket\dots$ for antisymmetric states, as opposed to $\pket\dots$ for product states.
 
-Because the antisymmetric states change sign on exchange of two particles, should two particles be in the same state, the state will become 0. \todo{Is this really why?} Thus, no particles can occupy the same state and the Pauli principle is satisfied.
+Because the antisymmetric states change sign on exchange of two particles, should two particles be in the same state, the state will become 0. \todo{Is this really why?} 
+Thus, no particles can occupy the same state and the Pauli principle is satisfied.
 
 Important to note is that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
 This means that we have to make sure not to double count these states. 
-We can do this by requiring the sp states to always appear in the same order in the ket. If they aren't, we permute two sp states at a time until the correct ordering is reached \todo{"double count"?}
+We can do this by requiring the sp states to always appear in the same order in the ket. 
+If they are not, we permute two sp states at a time until the correct ordering is reached \todo{"double count"?} \todo{achieved }
 \begin{eq}
   \ket{\alpha_i\alpha_1\dots\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
   & =
@@ -75,11 +82,15 @@ We can do this by requiring the sp states to always appear in the same order in 
   \ket{\alpha_1\dots\alpha_{i-1}\alpha_i\alpha_{i+1}\dots\alpha_N}.
 \end{eq}
 
-\section{Fock Space}
-\todo{Call chapter ``Creation and annihilation operators''?}
+\section{Creation and Annihilation Operators in Fock Space}
+\todo{chapter name okay?}
+\todo{how do we denote the ops? a? c?}
 
 \todo{Fock space/second quantization/occupation number representation?}
-So far we've looked at a system with a fixed number of particles, but we want to work with a system with an arbitrary number of identical particles. The construction that lets us do this is called the \emph{Fock space}. A state in Fock space, a \emph{Fock state}, can contain any number of particles. States with different number of particles are orthogonal to each other.
+So far we've looked at a system with a fixed number of particles, but we want to work with a system with an arbitrary number of identical particles. 
+The construction that lets us do this is called the \emph{Fock space}, as defibed by \cite{dickhoff}. \todo{why?/cite/explain}
+ A state in Fock space, a \emph{Fock state}, can contain any number of particles. 
+ States with different number of particles are orthogonal to each other.
 
 \todo{particle addition/removal operators?}
 The simplest Fock state is the \emph{vacuum state} $\ket{0}$, which describes a system with no particles. 
@@ -129,9 +140,9 @@ Analogous to $a_\alpha^\dag$, when $a_\alpha$ acts on a state that does not cont
 \end{eq}
 
 
-\section{Operators in Fock Space}
+\section{General Operators in Fock Space}\todo{hamiltonian is the only relevant?}
 
-We can now express the state of any number of particles, but in order to do something with the states we also need to express operators in the Fock space formalism. It turns out that operators involving any number of particles can be expressed using the creation and annihilation operators. The operators can then act on a state with an arbitrary number of particles. We will only treat one- and two-body operators here, as they are all we need in this report.
+We can now express the state of any number of particles, but in order to do something with the states we also need to express operators in the Fock space formalism. It turns out that operators involving any number of particles can be expressed using the creation and annihilation operators. The operators can then act on a state with an arbitrary number of particles. We will only treat one- and two-body operators here, as they are all we need in this report. \todo{why?/cite/explain}
 
 \subsection{One-body operators}
 
@@ -181,7 +192,7 @@ Sandwiched between a bra and a ket, this becomes
 the sum of the eigenvalues of the sp states in the bra and ket, but only if the bra and ket are the same. The Fock space operator $\hat{H}_1$ is thus also diagonal.
 
 \subsection{Two-body operators}
-
+\todo{notations}
 A two-body operator in Fock space becomes
 \begin{eq}
   \hat{H}_2
