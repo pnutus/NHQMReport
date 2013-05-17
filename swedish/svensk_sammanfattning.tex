@@ -12,20 +12,25 @@
 
 
 \title{Resonanser i löst bundna kvantsystem\\ 
-\Large Kandidatrapport i fysik sammanfattning}
+\Large Kandidatrapport i fysik, sammanfattning}
 \author{Jonathan Bengtsson \and Ola Embréus \and Vincent Ericsson \and Pontus Granström \and Nils Wireklint}
 \date{\today}
 \maketitle
 
-\todo{Snabbt utkast, många fel, men någonting iallafall...}
+\todo[inline]{Snabbt utkast, många fel, men någonting iallafall...}
+
+Detta är ett sammandrag av vår ``Resonances in loosely bound quantum systems''.
+\todo[inline]{Var skriva \^i detta?}
+
+\todo[inline]{Börjar på samma sätt som introduktionen nu bra/dåligt?}
 
 Beteendet hos ett kvantmekaniskt system beror till en stor del på dess potential.
 Vi vet att beroende på dess utseende kan systemet ge upphov till både bundna och obundna tillstånd.
 Dock finns det en tredje typ av lösning som kallas för kvasibundet, eller resonant tillstånd.
 Dessa tillstånd delar effekter med både bundna och obundna tillstånd och kan beskrivas med hjälp av komplexa energier.
-\todo{Ta med mer saker, detta är gjort kort just nu...}
+\todo[inline]{Ta med mer saker, detta är gjort kort just nu...}
 
-För att undersöka dessa resonanstillstånd måste vi använda flera nya typer utav verktyg. \todo{Formulera om.}
+För att undersöka dessa resonanstillstånd måste vi använda flera nya typer utav verktyg. \todo[inline]{Formulera om.}
 
 Först vill vi skriva om Schrödingerekvationen på en form som är lösbar utav datorn, då den saknar analytiska lösningar för de potentialer vi kommer att använda.
 Detta görs genom att använda så kallad \emph{basexpansion}, vilket går ut på att en bas kan skrivas som en linjär kombination av en annan.
@@ -43,17 +48,35 @@ Den bas vi börjar med att använda består av harmoniska oscillatorer, vilket g
 2.15, ev 2.16 också.
 \end{eq}
 Det visade sig snart dock att denna bas inte räckte till när vi ville betrakta resonanser, även om den fungerade bra till bundna tillstånd.
-Istället introducerar vi en planvågsexpansion som går ut på att vi väljer vissa diskreta punkter i rörelsemängdsrummet och utvecklar problemet i denna basen. \todo{Är detta någolunda rätt förklarat.}
+Istället introducerar vi en planvågsexpansion som går ut på att vi väljer vissa diskreta punkter i rörelsemängdsrummet och utvecklar problemet i denna basen. \todo[inline]{Är detta någolunda rätt förklarat.}
 Efter detta kunde vi nu se tendenser till en resonans hos \He{5}, men hade inget sätt att bestämma dess komplexa delar.
 
 För att beskriva resonansen på ett bra sätt behöver vi dock inte göra några större ändringar mer än att vi utökar basen till att befinna sig i det komplexa planet.
 Istället för att låta våra planvågspunkter ligga längs den reella axeln låter vi konturen gå ner i den fjärde kvadranten  och runt en pol som svarar mot resonansen.
 
 \subsection{Flerkroppssaker}
+När vi hittat resonanseen i \He{5} har vi löst det vi vill åt i tvåkropparsfallet och vi kan nu börja lösa problemet med tre partiklar.
+Detta är svårare då vi inte längre kan reducera problemet till en dimension.
+
+Det trekropparssystem vi vill undersöka är \He{6}, vilket är en naturlig övergång ifrån \He{5}.
+Denna kärna moddelerar vi som en alfapartikel med två valensneutroner.
+Skulle dessa inte växelvärka med varandra hade problemet endast varit det av \He{5}, men så är inte fallet.
+Istället bygger vi upp en bas utav energierna och vågfunktionerna vi fann i tvåkropparssystemet och avänder dessa till att lösa trekropparssystemet.
+Våra valensneutroner interagerar med kärnan på precis samma sätt som förut, men de kommer även att växelvärka med varandra.
+Denna växelvärkan är extremt komplicerad och är inte heller helt känd, istället använder vi oss utav grova förenklingar genom att använda dels gaussisk interaktion, samt en något mer fysikalisk deltainteraktion.
+
+\todo[inline]{kopplingar, hur mycket skriva?}
+
+\subsection{Monte Carlo}
+Vi har även testat att använda Monte-Carlo-metoden för att reducera beräkningstiden för simuleringarna.
+Detta har visat sig vara ofördelaktigt och vi fick inte ut några vettiga resultat utav det.\todo[inline]{hittills...}
+
+\subsection{saker}
+\todo[inline]{Ska något mer vara med? Det är två sidor nu, vi kan typ dubbla mängden text.}
 
 \subsection{Tankar}
 Eftersom detta ska vara en sammanfattning av hela rapporten på fyra sidor tänker jag mig att vi inte gör några djupdykningar i teorin, utan vi istället nämner allt grundläggande. Sedan kan det vara en idé att blanda in \He{5} redan när vi introducerar basexpansion för att dra ner på antalet ``steg''. Detta har jag gjort i mitt första förslag här ovan, men jag märker att jag missat många saker som bara hoppar upp just nu, dessa måste introduceras på något vis. Exempel på detta är at pole svarar mot resonanser. Detta bör inte bara hoppa fram.
 
-Vill påpeka att detta är ett grovt utkast med dålig svenska och många missar, men det är iallafall en början.
+Vill påpeka att detta är ett grovt utkast med dålig svenska, många missar och upprepningar, men det är iallafall en början.
 
 \end{document}
