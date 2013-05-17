@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[english]{babel}
+
+\usepackage{../main/NHQM}
+
+\begin{document}
+  
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+
+\listoftodos
+
+
+\title{Resonanser i löst bundna kvantsystem\\ 
+\Large Kandidatrapport i fysik sammanfattning}
+\author{Jonathan Bengtsson \and Ola Embréus \and Vincent Ericsson \and Pontus Granström \and Nils Wireklint}
+\date{\today}
+\maketitle
+
+\todo{Snabbt utkast, många fel, men någonting iallafall...}
+
+Beteendet hos ett kvantmekaniskt system beror till en stor del på dess potential.
+Vi vet att beroende på dess utseende kan systemet ge upphov till både bundna och obundna tillstånd.
+Dock finns det en tredje typ av lösning som kallas för kvasibundet, eller resonant tillstånd.
+Dessa tillstånd delar effekter med både bundna och obundna tillstånd och kan beskrivas med hjälp av komplexa energier.
+\todo{Ta med mer saker, detta är gjort kort just nu...}
+
+För att undersöka dessa resonanstillstånd måste vi använda flera nya typer utav verktyg. \todo{Formulera om.}
+
+Först vill vi skriva om Schrödingerekvationen på en form som är lösbar utav datorn, då den saknar analytiska lösningar för de potentialer vi kommer att använda.
+Detta görs genom att använda så kallad \emph{basexpansion}, vilket går ut på att en bas kan skrivas som en linjär kombination av en annan.
+En viktig sak att komma ihåg när man gör detta är att basen måste vara komplett.
+Genom teori förklarad i huvudrapporten får vi då att vi kan skriva vårt problem på formen
+\begin{eq}
+	2.9 i rapporten.
+\end{eq}
+Som vi ser nu har vi ett egenvärdesproblem vi kan lösa med datorns hjälp.
+
+För att göra våra beräkningar kortare och enklare inskränker vi oss till fallet av ett sfäriskt symmetriskt problem, vilket drar ner komplexitet och därigenom beräkningstid betydligt.
+
+Den bas vi börjar med att använda består av harmoniska oscillatorer, vilket ger oss matriselement på formen
+\begin{eq}
+2.15, ev 2.16 också.
+\end{eq}
+Det visade sig snart dock att denna bas inte räckte till när vi ville betrakta resonanser, även om den fungerade bra till bundna tillstånd.
+Istället introducerar vi en planvågsexpansion som går ut på att vi väljer vissa diskreta punkter i rörelsemängdsrummet och utvecklar problemet i denna basen. \todo{Är detta någolunda rätt förklarat.}
+Efter detta kunde vi nu se tendenser till en resonans hos \He{5}, men hade inget sätt att bestämma dess komplexa delar.
+
+För att beskriva resonansen på ett bra sätt behöver vi dock inte göra några större ändringar mer än att vi utökar basen till att befinna sig i det komplexa planet.
+Istället för att låta våra planvågspunkter ligga längs den reella axeln låter vi konturen gå ner i den fjärde kvadranten  och runt en pol som svarar mot resonansen.
+
+\subsection{Flerkroppssaker}
+
+\subsection{Tankar}
+Eftersom detta ska vara en sammanfattning av hela rapporten på fyra sidor tänker jag mig att vi inte gör några djupdykningar i teorin, utan vi istället nämner allt grundläggande. Sedan kan det vara en idé att blanda in \He{5} redan när vi introducerar basexpansion för att dra ner på antalet ``steg''. Detta har jag gjort i mitt första förslag här ovan, men jag märker att jag missat många saker som bara hoppar upp just nu, dessa måste introduceras på något vis. Exempel på detta är at pole svarar mot resonanser. Detta bör inte bara hoppa fram.
+
+Vill påpeka att detta är ett grovt utkast med dålig svenska och många missar, men det är iallafall en början.
+
+\end{document}
