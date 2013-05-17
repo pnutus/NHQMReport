@@ -147,6 +147,58 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 %%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION end
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%EIGVECS FIGURE
+
+\begin{figure}[H]
+  \centering{
+  \pgfplotsset{
+    width = \textwidth, height = 7cm,
+    xlabel = abs($k$), 
+    axis x line = bottom,
+	xmin = 0.12,
+	xmax=0.3,
+    axis y line = left,
+    no markers,
+    ytick = \empty,
+	legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
+  }
+  \subfloat[Squared absolute value of the eigenvectors to the hamiltonian]{
+  %\tikzset{external/remake next}
+  \tikzsetnextfilename{eigvecs}
+      \begin{tikzpicture}
+        \begin{axis}[	ylabel = $|\phi_i|^2$,]
+ \foreach \yindex in {1,...,20}
+            {   
+			\addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/physical_eigvecs.data};
+			}
+        \end{axis}
+      \end{tikzpicture}
+    }
+	
+     \subfloat[Squared absolute value weighted by k squared and integration weights of the eigenvectors to the hamiltonian]{
+     % \tikzset{external/remake next}
+     \tikzsetnextfilename{symmvecs}
+         \begin{tikzpicture}
+           \begin{axis}[	ylabel = $k^2 w |\phi_i|^2$,]
+    \foreach \yindex in {1,2,...,20}
+               {   
+   			\addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/symmetric_eigvecs.data};
+   			}
+           \end{axis}
+         \end{tikzpicture}
+       }
+	
+	}
+
+
+
+  \caption{yada} 
+  \label{fig:he5_eigvecs}
+  \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%EIGVECS end
+
+
 
 
 \section{Varying $\omega$} \todo{the black sheep section}
