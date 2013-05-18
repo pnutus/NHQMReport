@@ -237,7 +237,7 @@ If the matrix is hermitian or symmetric, we only need to calculate the elements 
 When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
 
 
-\subsection{Discretization and symmetrization of the plane wave basis}
+\subsection{Plane Wave Basis Discretization and Symmetrization}
 \label{sec:mom discretization}
 The integral equation \cref{eq:radial mom space TISE} can be rewritten as a matrix equation through discretization, turning the integral into a sum over a finite set of points $k_j$ and $\rd{k}$ into a set of weights $w_j$:
 \begin{eq}
@@ -265,6 +265,7 @@ where $\phi_i=\phi(k_i)$ and
   H_{ij} &= \frac{k_i^2}{2\mu}\delta_{ij} + w_jk_j^2 V_{ij} \\
   V_{ij} &= \frac{2}{\pi} \int_0^\infty \rd r \, r^2 V(r) j_l(k_i r) j_l(k_j r)
 \end{align}
+\todo{$\phi_i$ notation might be bad... use $\phi{k_i}$ instead to free up indexes}
 
 Because of the $k_j^2$ in the second term of the matrix elements 
 (\cref{eq:mom matrix}), the $H_{ij}$ matrix will not be symmetric. 

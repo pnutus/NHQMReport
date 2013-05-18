@@ -27,12 +27,14 @@
 \usetikzlibrary{
   decorations.pathreplacing,
   decorations.markings, 
+  decorations.pathmorphing,
   shapes.geometric,
   external,
+  calc,
 }
 %\tikzexternalize[prefix = figures/]
-\tikzset{>=stealth}
 \tikzset{
+  >=stealth,
   % style to apply some styles to each segment of a path
   on each segment/.style={
     decorate,
@@ -80,7 +82,7 @@
 
 
 \usepackage{hyperref}
-\usepackage{cleveref}
+\usepackage[capitalize]{cleveref}
 
 \newcommand{\fint}[1][]{%
   \def\cmdDefaultA{#1}%
