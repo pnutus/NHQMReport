@@ -303,22 +303,22 @@ The result is presented in \cref{fig:pole(V0)}, in this figure the potential was
      \end{tikzpicture}
    }
    
-   \subfloat[Sierpinski Contour]{
-     \tikzset{external/remake next}
- \tikzsetnextfilename{sierpcont}
-     \begin{tikzpicture}
-       \begin{axis}[
-		   ymax = 0.04,
-		   legend style={at={(0.8,0.2)}, anchor=north,legend columns=1},
-		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
-         	\addplot+[only marks, very thick] table [x index =2, y index =3] {../figures/poles(contour)/sierpinski.data};
-         	    \addlegendentry{Pole position}
-         	\addplot+[no marks, very thick] table [x index =0, y index =1] {../figures/poles(contour)/sierpinski.data};
-			             \addlegendentry{Contour}
-
-       \end{axis}
-     \end{tikzpicture}
-   }
+ %   \subfloat[Sierpinski Contour]{
+ %     \tikzset{external/remake next}
+ % \tikzsetnextfilename{sierpcont}
+ %     \begin{tikzpicture}
+ %       \begin{axis}[
+ % 		   ymax = 0.04,
+ % 		   legend style={at={(0.8,0.2)}, anchor=north,legend columns=1},
+ % 		   xlabel=Re $k/\b{\si{fm^{-1}}}$]
+ %         	\addplot+[only marks, very thick] table [x index =2, y index =3] {../figures/poles(contour)/sierpinski.data};
+ %         	    \addlegendentry{Pole position}
+ %         	\addplot+[no marks, very thick] table [x index =0, y index =1] {../figures/poles(contour)/sierpinski.data};
+ % 			             \addlegendentry{Contour}
+ % 
+ %       \end{axis}
+ %     \end{tikzpicture}
+ %   }
    }
   \caption{yadayoda} 
    \label{fig:pole(cont)}  

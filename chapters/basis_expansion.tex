@@ -16,7 +16,7 @@ commonly written in the position basis as
 \end{eq}
 
 For the nuclear systems to be treated, the TISE has no known analytical solutions, and we need to use numerical methods to solve it.
-However, the Hamiltonian written as in \cref{eq:TISEpos}, it is not suitable for numerical calculations. \todo{cite/explain}
+However, the Hamiltonian written as in \cref{eq:TISEpos}, is not suitable for numerical calculations. \todo{cite/explain}
 Instead, we would like to write it as a matrix equation
 \begin{eq}
   \label{eq:matrix equation}
@@ -25,7 +25,7 @@ Instead, we would like to write it as a matrix equation
 with a finite matrix $H$ that we can diagonalize to find the eigenvalues $E$.
 
 To write the TISE as a matrix equation we use \emph{basis expansion}. 
-Basis expansion is how we make sense of the abstract Hilbert spaces, operators and state vectors of Quantum Mechanics (QM). 
+Basis expansion is how we make sense of the abstract Hilbert spaces, operators and state vectors of Quantum Mechanics (QM). \todo{is this the only place where we mention Hilbert space?}
 By expanding these abstract objects in a basis, we can relate them to the physical world. 
 For example, \cref{eq:TISEpos} is the TISE for a single particle, expanded in the position basis. 
 We will not expand our problems in the position basis, but it will still be important, since it is the only basis in which we can express the potentials.
@@ -42,7 +42,7 @@ A discrete basis means that any state $\ket\psi$ can be written as a linear comb
   \ket\psi = \fint{x} \psi(x) \ket{x}.
 \end{eq}
 The  complete bases we will use in this report are the \emph{position basis} $\ket{\vec{r}}$, the \emph{plane wave basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis} \cite{berggren}. 
-All these bases are orthonormal, i.e. all the basis vectors satisfy 
+All these bases are orthonormal, i.e.~all the basis vectors satisfy 
 \begin{eq}
   \braket{n}{n'} = \delta_{nn'}
   \quad
@@ -74,7 +74,7 @@ Let us now expand the TISE in the abstract $\ket{n}$ basis. We start by insertin
   =
   E \ket\psi.
 \end{eq}
-By closing \cref{eq:lincomb} with $\bra{n}$ on the left side and use orthonormality, we see that $\braket{n'}{\psi} = \psi_{n'}$. Now we close \cref{eq:expand1} with $\bra{n}$ on the left
+By closing \cref{eq:lincomb} with $\bra{n}$ on the left side and use orthonormality, we see that $\braket{n'}{\psi} = \psi_{n'}$. Now we close \cref{eq:expand1} with $\bra{n}$ on the left \todo{passive clause -> active. :S}
 \begin{eq}
   \label{eq:expand2}
   \sum_{n'} \bra{n} H \ket{n'} \psi_{n'}
@@ -106,7 +106,7 @@ This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
 \end{eq}
-If we now think of $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
+If we now treat $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
 we notice that the diagonal elements of this matrix have the same $l$ and $m$,
 which can be expressed as \emph{$H$ is diagonal in $l$ and $m$}.
 \todo{Hjälp? Hur skriver vi det här på bästa sätt? || Fungerar detta?}
@@ -190,7 +190,7 @@ The expansion is done in the same way as before, giving us
   &= 
   E\Phi(\vec{k}) \, .
 \end{eq}
-This three-dimensional equation is generally unsolvable in practice, but we can simplify it using the fact that we have a central problem.
+This three-dimensional equation is generally unsolvable in practice, but we can simplify it using the fact that we have a central problem. \todo{in practice}
 A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Schrödinger equation can be written as
 \begin{eq} 
   \label{eq:radial mom space TISE}
@@ -231,8 +231,8 @@ or in matrix notation
   H\psi = E\psi.
 \end{eq}
 
-We calculate the matrix elements $H_{ij}$ with \cref{eq:HO matrix elements,eq:plane wave matrix elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
-If the matrix is hermitian or symmetric, we only need to calculate the elements in the upper triangle including the diagonal, roughly halving the the number of elements we need calculate. 
+We calculate the matrix elements $H_{ij}$ with \cref{eq:HO matrix elements,eq:plane wave matrix elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.\todo{refer to future eqs without comment?}
+If the matrix is hermitian or symmetric, we only need to calculate the elements in the upper triangle including the diagonal, roughly halving the number of elements we need calculate. 
 
 When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
 
@@ -255,7 +255,7 @@ A particular set of points and corresponding weights is called a \emph{quadratur
 A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used.
 We instead use the Gauss-Legendre quadrature, for details see \cref{app:gauss-legendre}.
 
-With this approximation the Schrödinger equation may be written as
+With this approximation the Schrödinger equation may be written as \todo{approximation? discretization?}
 \begin{eq}
   \sum_j H_{ij} \phi_j &= E \phi_i
 \end{eq}
@@ -269,7 +269,7 @@ where $\phi_i=\phi(k_i)$ and
 
 Because of the $k_j^2$ in the second term of the matrix elements 
 (\cref{eq:mom matrix}), the $H_{ij}$ matrix will not be symmetric. 
-Working with a symmetric matrix will be faster, hence we perform \todo{why?/explain more}
+Working with a symmetric matrix will be faster, hence we perform \todo{why?/explain more}\todo{where do we mention the need for symmetrized matrix in he6?}
 the transformation
 \begin{eq}
   \phi_i &\mapsto
