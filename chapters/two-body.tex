@@ -4,6 +4,23 @@
 \chapter{The Two-Body Nuclear System}
 \label{cha:two-body}
 
+Every day I'm funneling:
+\begin{itemize}
+  \item Some kinda summary permaybehaps
+  \item We want to apply our basis exp method
+  \item Nuclear system
+  \item Shell model
+  \item Woods-Saxon
+  \item Two-body stuff
+  \item Solutions
+  \begin{itemize}
+    \item \He{5} specifics
+    \item HO, vary $\omega$
+    \item Wavefunctions
+    \item k-space wavefuncs
+  \end{itemize}
+\end{itemize}
+
 In this section we seek to investigate the basic properties of a simple nuclear two particle system.  
 This allows us to to get acquainted with the basis expansion methods and will give us information about the single particle states that we will need later on when we solve the three particle problem.
 We want to investigate the behavior of the states as the potential strength is varied
@@ -131,60 +148,67 @@ This can be interpreted as it being an unbound state in the energy continuum. We
     no markers,
     ytick = \empty,
     ymax = 1.7,
-	legend style={anchor=north east,legend columns=1},
+	  legend style={anchor=north east},
+    legend cell align=left,
   }
     \subfloat[$V_0=\SI{70}{MeV}$]{
-      %\tikzset{external/remake next}
-  \tikzsetnextfilename{wavefunction-70MeV}
+      \tikzset{external/remake next}
+      \tikzsetnextfilename{wavefunction-70MeV}
       \begin{tikzpicture}
         \begin{axis}
           \addplot          table[x index=0, y index=1] {\wavefunctions};
-						  	\addlegendentry{E = \SI{-4.85}{MeV}}
+					  \addlegendentry{$E = \SI{-4.85}{MeV}$}
 							
-          \addplot+[densely dotted] table[x index=0, y index=2] {\wavefunctions};
-		  						  	\addlegendentry{E = \SI{5.63}{MeV}}
+          \addplot+[densely dashed] table[x index=0, y index=2] {\wavefunctions};
+		  		  \addlegendentry{$E = \phantom{+}\SI{5.63}{MeV}$}
         \end{axis}
       \end{tikzpicture}
     }
   \subfloat[$V_0=\SI{52}{MeV}$]{
-    %\tikzset{external/remake next}
-\tikzsetnextfilename{wavefunction-60MeV}
+    \tikzset{external/remake next}
+    \tikzsetnextfilename{wavefunction-60MeV}
     \begin{tikzpicture}
       \begin{axis}
         \addplot          table[x index=0, y index=3] {\wavefunctions};
-						  	\addlegendentry{E = \SI{0.062}{MeV}}
-        \addplot+[densely dotted] table[x index=0, y index=4] {\wavefunctions};
-								  	\addlegendentry{E = \SI{5.75}{MeV}}
+				  \addlegendentry{$E = \SI{0.062}{MeV}$}
+        \addplot+[densely dashed] table[x index=0, y index=4] {\wavefunctions};
+				  \addlegendentry{$E = \phantom{0}\SI{5.75}{MeV}$}
       \end{axis}
     \end{tikzpicture}
   } \\
   \subfloat[$V_0 = \SI{47}{MeV}$]{
-    %\tikzset{external/remake next}
-\tikzsetnextfilename{wavefunction-52MeV}
+	\tikzset{external/remake next}
+    \tikzsetnextfilename{wavefunction-52MeV}
     \begin{tikzpicture}
       \begin{axis}
-        \addplot          table[x index=0, y index=5] {\wavefunctions};
-						  	\addlegendentry{E = \SI{0.94}{MeV}}
-        \addplot+[densely dotted] table[x index=0, y index=6] {\wavefunctions};
-								  	\addlegendentry{E = \SI{5.80}{MeV}}
+        \addplot table[x index=0, y index=5] {\wavefunctions};
+				  \addlegendentry{$E = \SI{0.94}{MeV}$}
+        \addplot+[densely dashed] table[x index=0, y index=6] {\wavefunctions};
+				  \addlegendentry{$E = \SI{5.80}{MeV}$}
       \end{axis}
     \end{tikzpicture}
   	}
   \subfloat[$V_0 = \SI{40}{MeV}$]{
     \tikzset{external/remake next}
-\tikzsetnextfilename{wavefunction-47MeV}
+    \tikzsetnextfilename{wavefunction-47MeV}
     \begin{tikzpicture}
       \begin{axis}
-        \addplot          table[x index=0, y index=7] {\wavefunctions};
-						  	\addlegendentry{E = \SI{1.02}{MeV}}
-        \addplot+[densely dotted] table[x index=0, y index=8] {\wavefunctions};
-								  	\addlegendentry{E = \SI{5.89}{MeV}}
+        \addplot table[x index=0, y index=7] {\wavefunctions};
+				  \addlegendentry{$E = \SI{1.02}{MeV}$}
+        \addplot+[densely dashed] table[x index=0, y index=8] {\wavefunctions};
+				  \addlegendentry{$E = \SI{5.89}{MeV}$}
       \end{axis}
     \end{tikzpicture}
   	}
 
   }
-  \caption{Displayed above are the wavefunctions of the one localized solution (solid) and and an arbitrary continuum solution (dashed).} 
+  \caption{
+    \He{5} wavefunctions for varying potential depth. 
+    Plotted are the unique localized solution (solid) and, for comparison, an arbitrary continuum solution (dashed).
+    With a deep potential $V_0 = \SI{70}{MeV}$ there is a strongly bound state, which gets weaker as the potential depth is decreased.
+    At $V_0 = \SI{52}{MeV}$ the wavefunction is highly localized, yet the energy value is in the continuum, a sign of resonance.
+    There is still a clearly localized state with $V_0 = \SI{47}{MeV}$, but at $V_0 = \SI{40}{MeV}$ it is practically indistinguishable from the other states.
+  } 
   \label{fig:resonance wavefunction}
   \end{figure}
 
