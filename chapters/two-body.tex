@@ -48,23 +48,54 @@ between two particles, we can reduce the problem to a one-dimensional equation b
 \end{eq}
 We can now proceed to solve the Schrödinger Equation with the given potential.
 
-%\tikzset{external/remake next}
-\tikzsetnextfilename{woods-saxons}
+
+
 \begin{figure}
-  \centering
-  \begin{tikzpicture}
-    \begin{axis}[
-      domain = 0:5.8, 
-      xmax = 5.9,
-      ymin = -47, ymax = 9,
-      xlabel = $r/\b{\si{fm}}$, ylabel = $V/\b{\si{MeV}}$,
-      axis x line = middle,
-      axis y line = left
-      ]
-      \addplot[black] {-47/(1 + e^((x-2)/0.65))};
-    \end{axis}
-  \end{tikzpicture}
-  \caption{The Woods-Saxon potential for $l = 0$, with $V_0 = \SI{47}{MeV}$, $r_0 = \SI{2}{fm}$ and $d = \SI{0.65}{fm}$}
+	\newcommand{\diff}{0.65}
+	\newcommand{\ro}{2}
+	\newcommand{\vo}{47}
+	\newcommand{\func}{1/(1 + e^((x-\ro)/\diff))}
+	\newcommand{\mass}{0.1}
+	  \centering{
+	  \pgfplotsset{
+	    width = 0.45\textwidth, height = 7cm,
+        domain = 0.1:9.8, 
+        ymin = -47, 
+		ymax = 9,
+        xlabel = $r/\b{\si{fm}}$,
+        axis x line = middle,
+        axis y line = left
+		% 	    xlabel = $r/\b{\si{fm}}$, ylabel = $r^2\absq{R(r)}$,
+		% 	    axis x line = bottom,
+		% 	    axis y line = left,
+		% 	    no markers,
+		% 	    ytick = \empty,
+		% 	    ymax = 1.7,
+		% legend style={anchor=north east,legend columns=1},
+	  }
+	    \subfloat[$p_\frac{1}{2}$]{
+	      \tikzset{external/remake next}
+	  \tikzsetnextfilename{p12}
+	      \begin{tikzpicture}
+		    \begin{axis}[
+				ylabel = $V/\b{\si{MeV}}$,
+				xmax = 5.9,]
+		      \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * 7.5 * -2 * (\func -1) / (\diff * x )) };
+		    \end{axis}
+	      \end{tikzpicture}
+	    }
+	  \subfloat[$p_\frac{3}{2}$]{
+	    \tikzset{external/remake next}
+	\tikzsetnextfilename{p32}
+	    \begin{tikzpicture}
+	      \begin{axis}[
+			  xmax = 7.9,]
+	        \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * 7.5 * 1 * (\func -1) / (\diff * x ))};
+	      \end{axis}
+	    \end{tikzpicture}
+	  }
+	  }
+  \caption{The Woods-Saxon potential for different waves, with $V_0 = \SI{47}{MeV}$, $r_0 = \SI{2}{fm}$ and $d = \SI{0.65}{fm}$}
   \label{fig:woods-saxons}
 \end{figure}
 
@@ -103,7 +134,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 	legend style={anchor=north east,legend columns=1},
   }
     \subfloat[$V_0=\SI{70}{MeV}$]{
-      \tikzset{external/remake next}
+      %\tikzset{external/remake next}
   \tikzsetnextfilename{wavefunction-70MeV}
       \begin{tikzpicture}
         \begin{axis}
@@ -116,7 +147,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
       \end{tikzpicture}
     }
   \subfloat[$V_0=\SI{52}{MeV}$]{
-    \tikzset{external/remake next}
+    %\tikzset{external/remake next}
 \tikzsetnextfilename{wavefunction-60MeV}
     \begin{tikzpicture}
       \begin{axis}
@@ -128,7 +159,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
     \end{tikzpicture}
   } \\
   \subfloat[$V_0 = \SI{47}{MeV}$]{
-    \tikzset{external/remake next}
+    %\tikzset{external/remake next}
 \tikzsetnextfilename{wavefunction-52MeV}
     \begin{tikzpicture}
       \begin{axis}
