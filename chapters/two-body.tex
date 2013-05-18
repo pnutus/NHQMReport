@@ -4,34 +4,26 @@
 \chapter{The Two-Body Nuclear System}
 \label{cha:two-body}
 
-Every day I'm funneling:
+In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
+We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}. 
+The \He{5} Shrödinger equation is then solved in the HO and plane wave bases.
+The solutions are then studied by looking at the energies and wavefunctions while varying parameters.
+
+\section{The Shell Model}
+
 \begin{itemize}
-  \item Some kinda summary permaybehaps
-  \item We want to apply our basis exp method
-  \item Nuclear system
-  \item Shell model
-  \item Woods-Saxon
-  \item Two-body stuff
-  \item Solutions
-  \begin{itemize}
-    \item \He{5} specifics
-    \item HO, vary $\omega$
-    \item Wavefunctions
-    \item k-space wavefuncs
-  \end{itemize}
+  \item shell model
+  \item core/valence nucleons
+  \item woods-saxon
+  \item doubly magic nuclei are good
+  \item we can choose O or He, we chose He
+  \item \He{5} specifics (parameters)
 \end{itemize}
 
-In this section we seek to investigate the basic properties of a simple nuclear two particle system.  
-This allows us to to get acquainted with the basis expansion methods and will give us information about the single particle states that we will need later on when we solve the three particle problem.
-We want to investigate the behavior of the states as the potential strength is varied
-\todo{hint at 3b or just cut it out?}
-
-We choose the \He{5} nucleus as a concrete example because it can be modeled as an alpha particle, that is a very stable double magic nucleus, with an orbiting neutron. 
+We choose the \He{5} nucleus as a concrete example because it can be modeled as an alpha particle, a very stable doubly magic nucleus, with an orbiting neutron. We could also have chosen \ce{^16O} as our core, another doubly magic nucleus.
 This is common practice and is a corner stone of the nuclear shell model. \todo{maybe a citation here? OLA PONTUS OLA} \todo{why?/cite/explain}
 Since the exact nucleon-nucleon interaction is unknown, we use the established Woods-Saxon potential as an approximation. 
 The Woods-Saxon potential (\cref{fig:woods-saxons}) is given by
-\todo{What's the 4 for?}
-\todo{From where do we get our $V_0$ and $V\sub{so}$? Souhonen?}
 \begin{eq}
 	V(r)=
 	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr}
@@ -116,11 +108,18 @@ We can now proceed to solve the Schrödinger Equation with the given potential.
   \label{fig:woods-saxons}
 \end{figure}
 
-\section{Solutions to the Schrödinger Equation}
+\section{Solutions to the \He{5} Schrödinger equation}
+
+  \begin{itemize}
+    \item Short method recap, like one equation
+    \item HO, vary $\omega$
+    \item Wavefunctions
+    \item k-space wavefunction
+  \end{itemize}
 
 \todo{review wf //this// section.}
 The best metric of a potential or Hamiltonian are the wave functions it harbors, we present below the wavefunctions that solve the two particle system for different potential strengths.
-In \Cref{fig:resonance wavefunction} we can see the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied.
+In \cref{fig:resonance wavefunction} we can see the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied.
  We see that one solution (filled line) displays different behavior for diffrent potentials.
  This is the state with the lowest energy and with a very strong potential, $V_0 =$ \SI{70}{MeV} this is a bound state, $E<0$. \todo{lowest energy?}
 In the two weaker potentials, though, this state has an energy $E>0$ meaning that it, too, must be unbound. 
