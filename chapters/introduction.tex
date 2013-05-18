@@ -2,20 +2,31 @@
 \begin{document}
 \chapter{Introduction}
 
-The dynamics of a quantum mechanical system is governed by the Shrödinger equation
-\begin{eq}
-  i\hbar\ddt\ket\psi = H \ket\psi.
-\end{eq}
-The energy eigenvalues, or spectrum, of the Hamiltonian $H$ is what determines 
-
-Of interest are states with well-defined energy $E$, i.e. the eigenstates of the Hamiltonian
-\begin{eq}
-  H \ket\psi = E \ket\psi
-\end{eq}
-
-A quantum mechanical system can be either closed or open. A closed system, such as the harmonic oscillator, is characterized by a potential well that is infinitely high. \Cref{fig:harmosc} 
+% The dynamics of a quantum mechanical system is governed by the Shrödinger equation
+% \begin{eq}
+%   \label{eq:schrödinger}
+%   i\hbar\ddt\ket\psi = H \ket\psi.
+% \end{eq}
+% Of interest are states with well-defined energy $E$, i.e. the eigenstates, or \emph{spectrum}, of the Hamiltonian $H$
+% \begin{eq}
+%   H \ket\psi = E \ket\psi.
+% \end{eq}
+% The spectrum can be discrete, continuous or both. States with energy values in the discrete part of the spectrum correspond to bound states, whereas states in the continuum are unbound. The type of spectrum depends largely on the form of the potential. 
+% 
+% \Cref{fig:harmosc} displays the potential of a \emph{closed} system, in this case the harmonic oscillator. It has an infinitely high potential well from which nothing can escape, thus a particle in the well will be bound
+% and the spectrum only consists of discrete states. 
 
 The properties of a quantum mechanical system is largely determined by its potential. 
+A particle in a potential well with infinitely high walls is completely bound and cannot leave the potential well.
+Such a system is a called a \emph{closed} quantum system, examples of which are a particle in a box and the harmonic oscillator.
+The energy of a closed quantum system can only take on discrete values, as illustrated in \cref{fig:harmosc}.
+The wavefunction of a closed quantum system is localized inside the potential well.
+
+The polar opposite of an infinitely high potential is no potential at all, i.e. a free particle (\cref{fig:free_particle}).
+A free particle is not restricted to discrete energy values, in fact, it can take on any energy value, continuously.
+
+
+
 Depending on the shape of the potential, a system can give rise to bound states, unbound states or both.
 A \emph{closed} quantum system with an infinite potential well, such as that of the harmonic oscillator, has only bound solutions. 
 Bound means that the wavefunction stays localized indefinitely inside the potential well. 
@@ -24,36 +35,51 @@ The potentials of an open and a closed system can be seen in \cref{fig:potential
 
 \begin{figure}[H]
   \newcommand{\depth}{3}
-  \subfloat[]{
+  \subfloat[Closed quantum system]{
     \label{fig:harmosc}
     \begin{tikzpicture}[
-      scale=1.2,
-      xscale=1,
-      domain=-2.2:2.2,
+      scale=1.6,
+      domain=-2:2,
       samples=200,
       ]
-      \draw[->] (-3, 0) -- (3, 0) node[above] {$r$};
-      \draw[->] (0, -3.1) -- (0, 2) node[right] {$V$};
-      \draw plot (\x, \x*\x - \depth);
-      \foreach \y in {-2.3, -1.4, ..., 2}
-        \draw ($ ({-sqrt(\y + \depth)} , \y) $) 
-           -- ($ ({ sqrt(\y + \depth)} , \y) $);
+      %\draw[->] (-3, 0) -- (3, 0) node[above] {$r$};
+      \draw[->] (0, 0) -- (0, 4) node[right] {$V$};
+      \draw plot (\x, \x*\x);
+      \foreach \y in {0.7, 1.4, ..., 4}
+        \draw ($ ({-sqrt(\y)} , \y) $) 
+           -- ($ ({ sqrt(\y)} , \y) $);
+        \node[above] at (-0.04, 2.1) {Bound states};
     \end{tikzpicture}
   }
-  \subfloat[]{
+  \subfloat[Free particle]{
+    \label{fig:free_particle}
+    \begin{tikzpicture}[
+      scale=1.6
+      ]
+      %\draw[->] (-3, 0) -- (3, 0) node[above] {$r$};
+      \draw[->] (0, -2) -- (0, 2) node[right] {$V$};
+      \draw[->, decorate, decoration={snake, post length=1mm}] 
+        (-2, 0) -- (2, 0) node[above left, yshift=1mm] {Unbound};
+    \end{tikzpicture}
+  }
+  \\
+  \subfloat[Open quantum system]{
     \label{fig:woods-saxon}
     \begin{tikzpicture}[
-      scale=1.2,
+      scale=2,
       xscale=0.5, 
       domain=-6:6,
       samples=200,
       ]
-      \draw[->] (-6, 0) -- (6, 0) node[above] {$r$};
+      %\draw[->] (-6, 0) -- (6, 0) node[above] {$r$};
+      \draw[dashed] (-6, 0) -- (6, 0);
       \draw[->] (0, -3.1) -- (0, 2) node[right] {$V$};
       \draw plot (\x,{-\depth/(1 + exp((abs(\x) - 2)/0.65))});
-      \draw (-2, {-1.5}) -- ++(4,0) node[pos=0.5, above] {Bound};
-      \draw[->, decorate, decoration=snake] 
-        (-5, 1) -- (5, 1) node[above left] {Unbound scattering states};
+      \draw (-2, {-1.5}) -- ++(4,0) node[midway, above left] {Bound};
+      \draw[->, decorate, decoration={snake, post length=1mm}] 
+        (-6, 1) -- (6, 1) node[above left] {Unbound scattering states};
+      \draw[decorate, decoration={brace}] 
+        (-6.1,0) -- +(0,2) node[midway, xshift=-0.4cm, rotate=90] {Continuum};
     \end{tikzpicture}
   }
   \caption{The harmonic oscillator (a) and Woods-Saxon (b) potentials. The harmonic oscillator is a closed system, with an infinitely high potential well. It has a discrete spectrum with only bound solutions. The Woods-Saxon potential describes an open system, with a continuous spectrum of unbound states as well as possible bound states and quasi-bound resonances.}
