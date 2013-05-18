@@ -1,7 +1,7 @@
 \documentclass[../main/report.tex]{subfiles}
 \begin{document}
   
-\chapter{Two Particle Nuclear System}
+\chapter{The Two-Body Nuclear System}
 \label{cha:two-body}
 
 In this section we seek to investigate the basic properties of a simple nuclear two particle system.  
@@ -21,7 +21,7 @@ The Woods-Saxon potential (\cref{fig:woods-saxons}) is given by
 \end{eq}
 where 
 \begin{eq}
-	f(r)=\frac{1}{1+\exp\p{\frac{r-r_0}{d}}}.
+	f(r)=\b{1+\exp\p{\frac{r-r_0}{d}}}^{-1}.
 \end{eq}
 We seek to optimize the parameters for our bases to give results that match experimental values but we initially use common values given by \cite{suhonen,dickhoff}. \todo{why?/cite/explain}
 These are: potential strength $V_0 = \SI{47}{MeV}$, spin-orbit coupling strength $V\sub{so} = \SI{-7.5}{Mev}$, range $r_0 = \SI{2}{fm}$ and diffuseness $d = \SI{0.65}{fm}$.
@@ -42,7 +42,7 @@ The spin-orbit coupling can be either attractive or repulsive depending on how t
 \end{eq}
 
 Since we approximate the system as a spherically symmetric interaction 
-between two particles, we can reduce the problem to a one-dimensional equation by using the relative coordinate $r = r_\alpha - r_n$ and introducing the reduced mass \todo{why?/cite/explain}
+between two particles, we can reduce the problem to a one-dimensional equation by using the relative coordinate $\vec{r} = \vec{r}_\alpha - \vec{r}_n$ and introducing the reduced mass \todo{why?/cite/explain}
 \begin{eq}
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
@@ -87,13 +87,15 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 
 \todo{kalla det inte resonans, information hiding, vi kommer på det sen för vi är smarta. OLA}
 
+\todo{Jag skulle vilja ha fyra figurer här, och en av dem med $V_0 = \SI{47}{MeV}$. Kanske 70}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION FIGURE
 
-\begin{figure}[H]
+\begin{figure}
   \pgfplotstableread{../figures/wavefunctions/wavefunctions.data}\wavefunctions
   \centering{
   \pgfplotsset{
-    width = 0.45\textwidth, height = 7cm,
+    width = 0.49\textwidth, height = 7cm,
     xlabel = $r/\b{\si{fm}}$, ylabel = $r^2\absq{R(r)}$,
     axis x line = bottom,
     axis y line = left,
@@ -142,7 +144,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
   	}
 
   }
-  \caption{A bound (a) / resonant (b, c) and an unbound solution to the Woods-Saxon potential for different depths $V_0$, using the plane wave expansion.} 
+  \caption{Displayed above are the wavefunctions of the one localized solution (solid) and and an arbitrary continuum solution (dashed).} 
   \label{fig:resonance wavefunction}
   \end{figure}
 \todo{SPILL, typo in the legend of last figure? The resonance for V0=50 must have a higher energy than the resonance for V0=52. Mixed up momentum and energy?}
@@ -155,48 +157,48 @@ This can be interpreted as it being an unbound state in the energy continuum. We
   \centering{
   \pgfplotsset{
     width = \textwidth, height = 7cm,
-    xlabel = abs($k$), 
+    xlabel = $k$, 
     axis x line = bottom,
-	xmin = 0,
-	xmax=1,
+    xmin = 0,
+    xmax=1,
     axis y line = left,
     no markers,
     ytick = \empty,
-	legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
+    legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
   }
   \subfloat[Squared absolute value of the eigenvectors to the hamiltonian]{
-  %\tikzset{external/remake next}
-  \tikzsetnextfilename{eigvecs}
-      \begin{tikzpicture}
-        \begin{axis}[	ylabel = $|\phi_i|^2$,]
- \foreach \yindex in {1,15,8,54}
-            {   
-			\addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/physical_eigvecs.data};
-			}
-        \end{axis}
-      \end{tikzpicture}
-    }
+    %\tikzset{external/remake next}
+    \tikzsetnextfilename{eigvecs}
+    \begin{tikzpicture}
+      \begin{axis}[	ylabel = $|\phi_i|^2$,]
+        \foreach \yindex in {1,15,8,54}
+        {   
+        \addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/physical_eigvecs.data};
+        }
+      \end{axis}
+    \end{tikzpicture}
+  }
 	
-     \subfloat[Squared absolute value weighted by k squared and integration weights of the eigenvectors to the hamiltonian]{
-     % \tikzset{external/remake next}
-     \tikzsetnextfilename{symmvecs}
-         \begin{tikzpicture}
-           \begin{axis}[	ylabel = $k^2 w |\phi_i|^2$,]
-    \foreach \yindex in {1,15,8,54}
-               {   
-   			\addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/symmetric_eigvecs.data};
-   			}
-           \end{axis}
-         \end{tikzpicture}
-       }
+  \subfloat[Squared absolute value weighted by k squared and integration weights of the eigenvectors to the hamiltonian]{
+    % \tikzset{external/remake next}
+    \tikzsetnextfilename{symmvecs}
+    \begin{tikzpicture}
+      \begin{axis}[	ylabel = $k^2 w |\phi_i|^2$,]
+        \foreach \yindex in {1,15,8,54}
+        {   
+        \addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/symmetric_eigvecs.data};
+        }
+      \end{axis}
+    \end{tikzpicture}
+  }
 	
-	}
+}
 
 
 
-  \caption{yada} 
-  \label{fig:he5_eigvecs}
-  \end{figure}
+\caption{yada} 
+\label{fig:he5_eigvecs}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%EIGVECS end
 

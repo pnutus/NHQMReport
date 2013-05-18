@@ -17,26 +17,35 @@
 % and the spectrum only consists of discrete states. 
 
 The properties of a quantum mechanical system is largely determined by its potential. 
+Depending on the type of potential, a system can give rise to bound states, unbound states or both.
+
 A particle in a potential well with infinitely high walls is completely bound and cannot leave the potential well.
-Such a system is a called a \emph{closed} quantum system, examples of which are a particle in a box and the harmonic oscillator.
-The energy of a closed quantum system can only take on discrete values, as illustrated in \cref{fig:harmosc}.
-The wavefunction of a closed quantum system is localized inside the potential well.
+Such a system is a called a \emph{closed} quantum system, since it does not interact with the environment. 
+The energy of a closed quantum system can only take on discrete values, as illustrated in \cref{fig:closed_quantum_system} with the harmonic oscillator potential.
+The wavefunction of a bound state is localized inside the potential well.
 
-The polar opposite of an infinitely high potential is no potential at all, i.e. a free particle (\cref{fig:free_particle}).
-A free particle is not restricted to discrete energy values, in fact, it can take on any energy value, continuously.
+The polar opposite of a system with an infinitely high potential is no potential at all, i.e.~a free particle propagating through space (\cref{fig:free_particle}).
+This system is not restricted to discrete energy values.
+In fact, it can take on a any energy value, continuously.
+An unbound, free state is is therefore said to be \emph{in the continuum}.
+The wavefunction of an unbound state is unlocalized and has infinite range.
+
+Between the closed and completely free systems is the \emph{open} quantum system, portrayed in \cref{fig:open_quantum_system}. 
+Here the potential has a finite range, i.e. it levels off toward zero.
+Thus, particles can enter and exit the system and, consequently, there are unbound states. 
+In addition to the unbound states, the open system can have a finite number of bound states, but not necessarily.
 
 
 
-Depending on the shape of the potential, a system can give rise to bound states, unbound states or both.
-A \emph{closed} quantum system with an infinite potential well, such as that of the harmonic oscillator, has only bound solutions. 
-Bound means that the wavefunction stays localized indefinitely inside the potential well. 
-An \emph{open} quantum system, on the other hand, has unbound solutions, where the wavefunction passes through the system only slightly perturbed. 
-The potentials of an open and a closed system can be seen in \cref{fig:potentials}.
+We are interested in a third kind of state, that is neither bound nor unbound, a so-called \emph{resonances}. 
+These are \emph{quasi-bound} states that exhibit properties of both bound and unbound states. 
+A resonance wavefunction is localized, but will escape the potential well after a short time.
+This can be expressed mathematically by letting the resonance have a complex energy.
 
-\begin{figure}[H]
+\begin{figure}
   \newcommand{\depth}{3}
   \subfloat[Closed quantum system]{
-    \label{fig:harmosc}
+    \label{fig:closed_quantum_system}
     \begin{tikzpicture}[
       scale=1.6,
       domain=-2:2,
@@ -64,7 +73,7 @@ The potentials of an open and a closed system can be seen in \cref{fig:potential
   }
   \\
   \subfloat[Open quantum system]{
-    \label{fig:woods-saxon}
+    \label{fig:open_quantum_system}
     \begin{tikzpicture}[
       scale=2,
       xscale=0.5, 
@@ -72,24 +81,31 @@ The potentials of an open and a closed system can be seen in \cref{fig:potential
       samples=200,
       ]
       %\draw[->] (-6, 0) -- (6, 0) node[above] {$r$};
-      \draw[dashed] (-6, 0) -- (6, 0);
+      \draw (-6, 0) -- (6, 0)
+        node[right] {$V = 0$};
       \draw[->] (0, -3.1) -- (0, 2) node[right] {$V$};
-      \draw plot (\x,{-\depth/(1 + exp((abs(\x) - 2)/0.65))});
-      \draw (-2, {-1.5}) -- ++(4,0) node[midway, above left] {Bound};
-      \draw[->, decorate, decoration={snake, post length=1mm}] 
-        (-6, 1) -- (6, 1) node[above left] {Unbound scattering states};
+      \draw plot (\x,{-\depth*exp(- \x*\x/6)});
+      \foreach \y in {-2.3, -1.7, -1}
+      \draw ($ ({sqrt(-6*ln(-\y/\depth))}, \y)$)
+         -- ($ ({-sqrt(-6*ln(-\y/\depth))}, \y)$);
+      \draw[densely dashed] 
+        (-6,0.5) -- (6,0.5)
+        node[midway, above right] {Resonance state};
+      \begin{scope}
+        [->, decoration={snake, post length=1mm}, gray]
+        \draw[decorate] (-6, 1) -- (6, 1) 
+          node[black, above left] {Unbound scattering states};
+        \draw[decorate] (-6, 1.4) -- (5.5, 1.4);
+      \end{scope} 
       \draw[decorate, decoration={brace}] 
         (-6.1,0) -- +(0,2) node[midway, xshift=-0.4cm, rotate=90] {Continuum};
     \end{tikzpicture}
   }
-  \caption{The harmonic oscillator (a) and Woods-Saxon (b) potentials. The harmonic oscillator is a closed system, with an infinitely high potential well. It has a discrete spectrum with only bound solutions. The Woods-Saxon potential describes an open system, with a continuous spectrum of unbound states as well as possible bound states and quasi-bound resonances.}
+  \caption{}
   \label{fig:potentials}
 \end{figure}
 
-We are interested in a third kind of solution to the equation, so-called \emph{resonances}. 
-These are \emph{quasi-bound} states that exhibit properties of both bound and unbound states. 
-A resonance wavefunction is localized, but will escape the potential well after a short time.
-This can be expressed mathematically by letting the resonance have a complex energy.
+
 
 The time-dependency of a bound state $\psi$ with a energy $E$ in the discrete spectrum is
 \begin{eq}
