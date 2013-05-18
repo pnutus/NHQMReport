@@ -24,6 +24,8 @@ Such a system is a called a \emph{closed} quantum system, since it does not inte
 The energy of a closed quantum system can only take on discrete values, as illustrated in \cref{fig:closed_quantum_system} with the harmonic oscillator potential.
 The wavefunction of a bound state is localized inside the potential well.
 
+\todo{Talk about positive/negative energy?}
+
 The polar opposite of a system with an infinitely high potential is no potential at all, i.e.~a free particle propagating through space (\cref{fig:free_particle}).
 This system is not restricted to discrete energy values.
 In fact, it can take on a any energy value, continuously.
@@ -33,14 +35,7 @@ The wavefunction of an unbound state is unlocalized and has infinite range.
 Between the closed and completely free systems is the \emph{open} quantum system, portrayed in \cref{fig:open_quantum_system}. 
 Here the potential has a finite range, i.e. it levels off toward zero.
 Thus, particles can enter and exit the system and, consequently, there are unbound states. 
-In addition to the unbound states, the open system can have a finite number of bound states, but not necessarily.
-
-
-
-We are interested in a third kind of state, that is neither bound nor unbound, a so-called \emph{resonances}. 
-These are \emph{quasi-bound} states that exhibit properties of both bound and unbound states. 
-A resonance wavefunction is localized, but will escape the potential well after a short time.
-This can be expressed mathematically by letting the resonance have a complex energy.
+An open system can also have bound states, but not necessarily.
 
 \begin{figure}
   \newcommand{\depth}{3}
@@ -105,17 +100,28 @@ This can be expressed mathematically by letting the resonance have a complex ene
   \label{fig:potentials}
 \end{figure}
 
+In addition to the bound and unbound states, an open quantum system can harbor \emph{resonances}. 
+These are \emph{quasi-bound} states that are neither bound nor unbound, but exhibit properties of both. 
+It appears in the continuum, like an unbound state, but its wavefunction is localized, like that of a bound state.
+Perhaps most curious is that the norm of the resonance state decreases exponentially with time. 
+This can be expressed mathematically if we let the resonance have a complex energy, as the following argument suggests.
 
+\newpage
 
-The time-dependency of a bound state $\psi$ with a energy $E$ in the discrete spectrum is
+The time evolution of a quantum system is governed by the Shrödinger equation
+\begin{eq}
+  \label{eq:schrödinger}
+  i\hbar\ddt\ket\psi = H \ket\psi.
+\end{eq}
+The time-dependency of a bound state $\psi$ with energy $E$ in the discrete spectrum is
 \begin{eq}
 	\psi(t)
 	= 
   \exp\p{-\frac{iE}{\hbar}t}\psi(0).
 \end{eq}
 With the energy $E$ real, the exponential factor is just a phase 
-and the probability $|\psi(t)|^2$ is unchanged over time (hence the name
-stationary). However, if we let the energy be complex
+and the norm $|\psi(t)|^2$ is unchanged over time. 
+However, if we let the energy be complex
 \begin{eq}
 	E = E_0 - i\frac{\Gamma}{2},
 \end{eq}
@@ -129,35 +135,24 @@ we get
   =
   \exp\p{-\frac{\Gamma}{\hbar} t} \absq{\psi(0)}
 \end{eq} 
-which describes a resonant state with half-life 
-$t_{1/2}=\hbar\ln 2/\Gamma$ and so-called \emph{width} $\Gamma$. \todo{Too many so-called in introduction.}
+which describes a resonant state that decays exponentially with half-life 
+$t_{1/2}=\hbar\ln 2/\Gamma$. $\Gamma$ is called the \emph{width} of the resonance.
 
-\todo{Is non-hermitian even important?}
-It seems, then, that we need complex energies to describe resonant 
-states. However, complex eigenvalues pose a problem in standard QM. 
-This since observable quantities are regarded as real values \todo{"this since"?}
-and are described by \emph{Hermitian} operators. When working with 
-complex eigenvalues one needs a \emph{non-Hermitian} formulation of 
-the problem, which we encounter in \cref{cha:nhqm}.
+\todo[inline]{Talk about width here? Needs to be better. Figure of experimental resonance?}
+ % Heisenberg's uncertainty principle gives a relation between energy and time
+ % \begin{equation}
+ %    \Delta E \Delta t \ge \frac{\hbar}{2}.
+ % \end{equation}
+ % Hence a state with finite life time must have an uncertainty in its energy spectrum, called the \emph{width} of a resonant state. It is this width that is measured in experiments.
 
-The systems we have chosen to study using numerical calculations
-are the nuclei of the  Helium isotopes \He{5} and \He{6}. We chose Helium  
-because \He{4} is a very stable nucleus that can be treated 
-as a single (alpha) particle. \He{5} and \He{6} are then modeled
-as an alpha particle core with one or two valence neutrons, 
-respectively. 
+It seems, then, that we need complex energies to describe resonances. 
+However, complex eigenvalues pose a problem in standard quantum mechanics, since it postulates that operators be Hermitian. 
+Hermitian operators can only have real eigenvalues, and are thus insufficient for treating resonances.
 
-\He{5} has a known resonance with half-life $t_{1/2} = \SI{700e-24}{s}$,
-that we use to set the problem parameters. \todo{We don't verify it, we use it to fix our basis.} In addition to resonant states, \He{6} has a bound state because of the attraction between the valence neutrons. Our goal is to find these resonances and bound states to verify the methods used.
+The aim of this thesis is to present methods for dealing with the complex energies that describe resonances. To demonstrate the methods, we will use 
+the simple nuclear systems \He{5} and \He{6}, which are both known to have resonances.
 
-\todo{Where does width stuff go?}
- Heisenberg's uncertainty principle gives a relation between energy and time
- \begin{equation}
-	 \Delta E \Delta t \ge \frac{\hbar}{2}.
- \end{equation}
- Hence a state with finite life time must have an uncertainty in its energy spectrum, this is called the \emph{width} of a resonant state. It is this width that is measured in experiments.
-
-This report can be thought of as divided into two parts, the first covering resonances in a simple two-body problem and the second part covering the first steps toward more complicated many-body systems. 
+The thesis can be thought of as divided into two parts, the first covering resonances in a simple two-body problem and the second part covering the first steps toward more complicated many-body systems. 
 In \cref{cha:basis_expansion} the mathematical foundation for the calculations in this thesis, \emph{basis expansion}, is introduced.
 The basis expansion method is then used in \cref{cha:two-body} to study a loosely bound nuclear system, the \He{5} nucleus.
 In \Cref{cha:berggren} we use the Berggren basis to reproduce the resonance in \He{5}.
