@@ -92,8 +92,8 @@ the simplest possible complex contour, a triangle-shaped downward extrusion.
 The tip of the triangle is placed below the hypothesized resonance.
 
 We are faced with the problem of evaluating this contour integral numerically. 
-We can solve this by considering each straight segment of the contour separately, 
-and substitute the integration variable so that they are written as integrals along the real line.
+We can solve this by considering each straight segment of the contour separately 
+and rescale the integration variable so that they are written as integrals along the real line.
 We may then use the standard Gauss-Legendre quadrature to calculate the contributions from each segment.
 An example of a contour is seen in
 \cref{fig:triangle contour}, marking each point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the GL-quadrature.
@@ -128,19 +128,42 @@ but now with complex $k$ and $w$.
 \end{figure}
 
 \section{Studying the Resonance}
-Armed with this we can continue our study of the \He{5} spectrum. Diagonalizing the matrix given by \cref{eq:nhqm matrix element} using a complex contour with vertices $k_0 = 0$, $k_1 = 0.2 - i0.1$, $k_2 = 2.5$ with 5 points on each segment, yields the result shown in \cref{fig:simple resonance}\todo{Create this figure.}. The same Woods-Saxon parameters have been used as before, and we represent the solutions by their momenta, $k=\sqrt{2\mu E}$, corresponding to the eigenvalues. We can see that we obtain solutions almost corresponding to the $k$-values used in the discretization, similar to what was found in the real case. These are once again interpreted as unbound solutions, not interacting strongly with the potential. 
+Armed with this we can continue our study of the \He{5} spectrum. 
+Diagonalizing the matrix given by \cref{eq:nhqm matrix element} using a complex contour with vertices $k_0 = 0$, $k_1 = 0.2 - i0.1$, $k_2 = 2.5$ 
+with 5 points on each segment, yields the result shown in \cref{fig:simple resonance}\todo{Create this figure.}. 
+The same Woods-Saxon parameters have been used as before, and we represent the solutions by their momenta, $k=\sqrt{2\mu E}$, corresponding to the eigenvalues. 
+We can see that we obtain solutions almost corresponding to the $k$-values used in the discretization, similar to what was found in the real case. 
+These are once again interpreted as unbound solutions, not interacting strongly with the potential. 
 
 The interesting solution is however the one not lying on the contour. If this solution is the resonance, we expect it to be unchanged when the contour is varied. Indeed, any contour passing below the resonance should give this solution. Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstrating that this is the case.
 
-In addition we can investigate the wavefunctions of these solutions. \Cref{fig:mom wavefunctions}\todo{Create this figure. SPILL?} shows the momentum distribution of an arbitrary unbound solution and the resonance. As is expected, the unbound solution basically correspond to one definite momentum. On the other hand, the resonance has a broad distribution, reflecting the localized nature of the solution (remember Heisenberg -- a broad momentum wavefunction allows a localized position wavefunction). In principle, this feature also gives us a way to automatically find the resonance among a large set of solutions: simply single out the one with the broadest wavefunction, or equivalently after normalization, with the lowest maximum value.\todo{Perhaps this should only be in the two-body chapter} 
+In addition we can investigate the wavefunctions of these solutions. 
+\Cref{fig:mom wavefunctions}\todo{Create this figure. SPILL?} shows the momentum distribution of an arbitrary unbound solution and the resonance. 
+As is expected, the unbound solution basically correspond to one definite momentum. 
+On the other hand, the resonance has a broad distribution, reflecting the localized nature of the solution 
+(remember Heisenberg -- a broad momentum wavefunction allows a localized position wavefunction). 
+In principle, this feature also gives us a way to automatically find the resonance among a large set of solutions: 
+simply single out the one with the broadest wavefunction, or equivalently after normalization, with the lowest maximum value.
+\todo{Perhaps this should only be in the two-body chapter} 
 
-We can now proceed to fit our models to experimental data provided by \cite{inte jimmy i alla fall}. 
-We also found it worthwhile to plot the resonnance momentum as a function of the strength of the potential. 
-In the \He{5} system no resonant state can co-exist with a bound state for a given potential strength, \cite{spill?}. \todo{rewrite this paragraph}
-Hence we could single out the least localized solution in momentum space, this allows us to study how the bound system becomes weaker and gradually dissipates into a resonance. 
-The result is presented in \cref{fig:pole(V0)}, in this figure the potential was varried from \SI{-70}{MeV}, bound, to \SI{-50}{MeV}, resonant.
+We can now properly investigate how the solutions change as the potential is varied. \Cref{fig:pole(V0)} shows how the solutions vary as $V_0$ 
+is successively changed from \SI{70}{MeV}, where the potential well can contain a bound state, to \SI{50}{MeV} where no bound states exist. 
+As the potential well grows less attractive, we see that the imaginary part $\Gamma$ of the resonance energy increases, and thus the half-time of the quasi-bound state becomes shorter.  
 
-\Cref{fig:pole(cont)} on the other hand depicts the pole's stability with respect to different complex contours. And that's about it 
+We may now proceed to fit our model of \He{5} to experimental data of the $p_{3/2}$ and  $p_{1/2}$ resonance provided by \cite{inte jimmy i alla fall}, giving values 
+
+\todo{Make tables? One table showing all?}
+$p_{3/2}: E_0 = bla bla, \Gamma = bla bla$
+
+$p_{1/2}: E_0 = bla bla, \Gamma = bla bla$ 
+
+Fitting the parameters $V_0$ and $V\sub{so}$ to these four data points give a best fit when
+
+$V_0 = bla$
+
+$V\sub{so} = bla$
+
+where we get the calculated values $bla bla$ for the $p_{3/2}$ resonance and $bla bla$ for the $p_{1/2}$ resonance.
 
 %\tikzset{external/remake next}
 \tikzsetnextfilename{pole(V0)}
