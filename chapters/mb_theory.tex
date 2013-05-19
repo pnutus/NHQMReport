@@ -12,12 +12,14 @@ Instead, we need to use a single particle (sp) basis to construct many-body stat
 This chapter covers the construction of such states.
 
 First, the mathematical consequences of identical, indistinguishable particles is presented, focusing on fermions.
-This is followed by a short introduction fo the second quantization formalism, which allows calculations with an arbitrary number of particles.
-Finally, we discuss the practical usage of second quantization and present a simple implementation for fermions.
+This is followed by a short introduction to the second quantization formalism, which allows calculations with an arbitrary number of particles.
+Finally, we discuss the practical usage of second quantization and present a simple implementation for fermions.\todo[inline]{"practical usage"}
 
 \section{Identical Particles}
 
-A quirk of quantum mechanics is that particles that look identical \emph{are} identical, for all intents and purposes. For example, in the case of the two neutrons orbiting the core, the neutrons are impossible to distinguish from one another. This has to be taken into consideration when dealing with many-body states of identical particles, as we will see.
+A quirk of quantum mechanics is that particles that look identical \emph{are} identical, for all intents and purposes. \todo[inline]{the sentence would be more powerful without "for all intents and purposes"}
+For example, in the case of the two neutrons orbiting the core, the neutrons are impossible to distinguish from one another. 
+This has to be taken into consideration when dealing with many-body states of identical particles, as we will see.
 
 We begin with an orthonormal single particle (sp) basis $\ket{\alpha_i}$, where $\alpha_i$ represents all the quantum numbers that describe the state.
 Next, consider $N$ identical particles, expressed in this basis. We form a product state
@@ -28,7 +30,7 @@ Next, consider $N$ identical particles, expressed in this basis. We form a produ
   =
   \ket{\alpha_1}\ket{\alpha_2}\dots\ket{\alpha_N},
 \end{eq}
-which, by the orthonormality of the $\ket\alpha$, will be orthonormal as well
+which, by the orthonormality of the $\ket\alpha$, will also be orthonormal
 \begin{eq}
   \pbraket{\alpha_1\alpha_2\dots\alpha_N}{\alpha'_1\alpha'_2\dots\alpha'_N}
   =
@@ -73,7 +75,7 @@ We will henceforth use the angular ket notation $\ket\dots$ for antisymmetric st
 
 \todo[inline]{completeness relation? Orthonormality?}
 
-Important to note is that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
+It is important to note that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
 This means that we have to make sure not to double count these states. 
 We can do this by requiring the sp states to always appear in the same order in the ket. 
 If they are not, we permute two sp states at a time until the correct ordering is reached \todo{"double count"?}
@@ -151,7 +153,10 @@ Analogous to $a_\alpha^\dag$, when $a_\alpha$ acts on a state that does not cont
 
 \subsection{General Operators in Fock Space}
 
-We can now express the state of any number of particles, but in order to do something with the states we also need to express operators in the Fock space formalism. It turns out that operators involving any number of particles can be expressed using the creation and annihilation operators. The operators can then act on a state with an arbitrary number of particles. We will only treat one- and two-body operators here, as they are all we need in this report.
+We can now express the state of any number of particles, but in order to do something with the states we also need to express operators in the Fock space formalism. 
+It turns out that operators involving any number of particles can be expressed using the creation and annihilation operators. \todo[inline]{what a pleasant surprise}
+The operators can then act on a state with an arbitrary number of particles. 
+We will only treat one- and two-body operators here, as they are all we need in this report.
 
 \subsubsection{One-Body Operators}
 

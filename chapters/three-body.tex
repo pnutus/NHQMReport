@@ -7,7 +7,7 @@ Equipped with the Fock-space theory we are now ready to study an open three-body
 The natural way to proceed is to add another neutron to our Helium model. 
 We will thus solve the \He{6} problem, describing it as an alpha particle core with two valence neutrons ($\alpha + n + n$).
 \todo{Core resonemang}
-We now have to take into account the attractive two-body interaction between neutrons, which will allow for bound states in \He{6} where there were none in \He{5}. 
+We now have to take into account the attractive two-body interaction between neutrons, which will allow for bound states in \He{6} where there were none in \He{5}. \todo[inline]{were or was, wre or was}
 This is a curious phenomenon --- these types of systems are called \emph{Borromean systems}, after the Borromean rings. 
 The Borromean rings are three rings interlocked in such a way, that if any one is removed, the other two will fall apart as well.  
 
@@ -112,14 +112,17 @@ Another separable interaction one may use is the surface delta interaction
   \delta(\vec{r}_1 - \vec{r}_2) 
   \delta(r_2 - r_0)
 \end{eq}
-where $V\sub{SDI}$ is the strength and $r_0$ is chosen as the range of the Woods-Saxon potential. We are thus approximating the short-range force as a point interaction. The physical motivation of the $\delta(r-r_0)$ term is the experimental fact that the scattering cross-section between neutrons is inversely proportional to their kinetic energy. Since the kinetic energy has a minimum near the surface of the nucleus (at the range $r_0$ of the Woods-Saxon potential), we can approximate the interaction as focused entirely in that shell. 
+where $V\sub{SDI}$ is the strength and $r_0$ is chosen as the range of the Woods-Saxon potential. 
+We are thus approximating the short-range force as a point interaction. 
+The physical motivation of the $\delta(r-r_0)$ term is the experimental fact that the scattering cross-section between neutrons is inversely proportional to their kinetic energy. \todo[inline]{maybe a citation here?}
+Since the kinetic energy has a minimum near the surface of the nucleus (at the range $r_0$ of the Woods-Saxon potential), we can approximate the interaction as focused entirely in that shell. 
 
 It is found that this is indeed a separable interaction, with multipole radial components
 \begin{eq}
   v_l(r) = \frac{\delta(r-r_0)}{r}
 \end{eq} 
 
-Because we now also have the spherical harmonics components, the interaction matrix elements are cumbersome to calculate and beyond the scope of this report. Instead we will simply cite the result. 
+Because we now also have the spherical harmonics components, the interaction matrix elements are cumbersome to calculate and beyond the scope of this report. Instead we will simply cite the result. \todo[inline]{fron where?}
 
 %With this potential, the two-body matrix elements become (for calculation, see \cref{app:SDI})
 %\begin{eq}
@@ -233,7 +236,7 @@ Then it is convenient to switch to a basis $\pket{E_1, E_2; JM}$ where the total
 You may then significantly reduce the size of the Hamiltonian matrix by considering systems of various $J$ and $M$ separately. 
 
 The reader may confirm that $J^2$, $J_z$, $J_1^2$ and $J_2^2$ commute with each other. 
-This means that one may choose a basis where $J$, $M$, $j_1$ and $j_2$ are simultanously well-defined. However, this is not the case with $m_1$ and $m_2$, and you neccesarily have \todo{trivialt? eller citera?}
+This means that one may choose a basis where $J$, $M$, $j_1$ and $j_2$ are simultanously well-defined. However, this is not the case with $m_1$ and $m_2$, and you neccesarily have \todo[inline]{such as ours?}\todo{trivialt? eller citera?}
 \begin{eq}
   \pket{E_1, E_2; JM} = \sum_{m_1, m_2} c_{m_1 m_2} \pket{E_1m_1, E_2m_2}
 \end{eq}
@@ -255,7 +258,7 @@ we can see that
   \\ & = 
   (-1)^{j_1+j_2-J}\sum_{m_1, m_2} c_{m_1 m_2} \pket{E_2 m_2, E_1 m_1}
 \end{eq}
-Thus you may form the antisymmetric basis vector
+Thus you may form the antisymmetric basis vector\todo[inline]{först vi, sen du?}
 \begin{eq}
   \ket{E_1 E_2; JM} &= \frac{1}{\sqrt{2}}\bigp{\pket{E_1 E_2;JM} - (-1)^{j_1+j_2-J}\pket{E_2 E_1;JM}} \\
   &= \sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 m_1, E_2 m_2}.
