@@ -25,7 +25,7 @@ Instead, we would like to write it as a matrix equation
 with a finite matrix $H$ that we can diagonalize to find the eigenvalues $E$.
 
 To write the TISE as a matrix equation we use \emph{basis expansion}. 
-Basis expansion is how we make sense of the abstract Hilbert spaces, operators and state vectors of Quantum Mechanics (QM). \todo{is this the only place where we mention Hilbert space?}
+Basis expansion is how we make sense of the abstract Hilbert spaces, operators and state vectors of Quantum Mechanics (QM).
 By expanding these abstract objects in a basis, we can relate them to the physical world. 
 For example, \cref{eq:TISEpos} is the TISE for a single particle, expanded in the position basis. 
 We will not expand our problems in the position basis, but it will still be important, since it is the only basis in which we can express the potentials.
@@ -74,26 +74,27 @@ Let us now expand the TISE in the abstract $\ket{n}$ basis. We start by insertin
   =
   E \ket\psi.
 \end{eq}
-By closing \cref{eq:lincomb} with $\bra{n}$ on the left side and use orthonormality, we see that $\braket{n'}{\psi} = \psi_{n'}$. Now we close \cref{eq:expand1} with $\bra{n}$ on the left \todo{passive clause -> active. :S}
+Multiplying \cref{eq:lincomb} with $\bra{n}$ from the left and using orthonormality, we see that $\braket{n'}{\psi} = \psi_{n'}$. If we now close \cref{eq:expand1} with $\bra{n}$ on the left
 \begin{eq}
   \label{eq:expand2}
   \sum_{n'} \bra{n} H \ket{n'} \psi_{n'}
   = 
   E \braket{n}{\psi},
 \end{eq}
-and if we write $H_{nn'} = \bra{n} H \ket{n'}$, we get
+and write $H_{nn'} = \bra{n} H \ket{n'}$, we get
 \begin{eq}
   \label{eq:expand3}
   \sum_{n'} H_{nn'} \psi_{n'} = E \psi_n,
 \end{eq}
-which is equivalent to the matrix \cref{eq:matrix equation}. This is 
+which is equivalent to the matrix equation \cref{eq:matrix equation}. This is 
 the basic method of expanding the TISE in a basis.
+\todo{Only (1.4) for equations?}
 
-\section{Spherical Symmetry} \todo{up to date with SDI?}
+\section{Spherical Symmetry}
 \label{sec:spherical symmetry}
 
 We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. 
-This is sufficient for our purposes and, indeed, most common QM problems. \todo{why?/cite/explain}
+This is sufficient for our purposes and, indeed, most common QM problems. \todo[inline]{why?/cite/explain}
 If we considered three-dimensional systems with arbitrary potentials, the matrix size would grow very fast and the problem would be infeasible to calculate.
 
 The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m$
@@ -109,7 +110,7 @@ This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
 If we now treat $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
 we notice that the diagonal elements of this matrix have the same $l$ and $m$,
 which can be expressed as \emph{$H$ is diagonal in $l$ and $m$}.
-\todo{Hjälp? Hur skriver vi det här på bästa sätt? || Fungerar detta?}
+\todo{OLA KOLLA}
 
 
 % Since we are considering a spherically symmetric Hamiltonian
@@ -179,7 +180,7 @@ The real space wavefunction $R(r)$ for a state will be expressed as a linear com
 
 \section{The Plane Wave Basis}
 \label{sec:mom_space}
-\todo{mention that we move to momentum space?}
+\todo{Relation to momentum space $p = \hbar k$}
 The plane wave basis $\ket{\vec{k}}$ is of great importance for us since we are studying a system with a short-range potential supporting only a few, if any, bound solutions.
 This means that we will find multiple unbound solutions, corresponding to free particles with various momenta.
 These are almost eigenstates of the momentum operator, only slightly perturbed by the small potential well at $r=0$. 
@@ -190,12 +191,15 @@ The expansion is done in the same way as before, giving us
   &= 
   E\Phi(\vec{k}) \, .
 \end{eq}
-This three-dimensional equation is generally unsolvable in practice, but we can simplify it using the fact that we have a central problem. \todo{in practice}
+This three-dimensional equation is practically unsolvable in general, but we can simplify it using the fact that we have a central problem. 
+\todo[inline]{Redundant? same stuff in sphere symm section}
 A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Schrödinger equation can be written as
 \begin{eq} 
   \label{eq:radial mom space TISE}
+  H\phi(k)
+  =
   \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k} k'^2 V(k,k') \phi(k') 
-  &=
+  =
   E\phi(k) \, ,
 \end{eq}
 where $\phi(k)$ is the radial part of the momentum space wavefunction, 
@@ -204,40 +208,14 @@ where $\phi(k)$ is the radial part of the momentum space wavefunction,
   &= 
   \frac{2}{\pi}\int_0^\infty \rd r \, r^2 V(r) j_l(kr) j_l(k'r) 
 \end{eq}
-and $j_l(kr)$ are the spherical bessel functions of order $l$. \todo{start a sentance with a variable?} $\phi(k)$ is related to the real space radial wavefunction by
+and $j_l(kr)$ are the spherical bessel functions of order $l$. 
+The momentum space radial wavefunction $\phi(k)$ is related to the position space radial wavefunction by
 \begin{eq}
   R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
   \label{eq:radial wavefunction}
 \end{eq}
-\todo{no mention of H?}
 
-\section{Numerical Considerations}
-
-In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. This includes truncation of the bases, matrix size reduction, numerical integration and eigensolver optimizations. \todo{bases/basis? we truncate the base(s) by only using so many basis states. syftning}
- The plane wave basis is continuous and thus requires special treatment.
-
-The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
-The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo[inline]{Questionable? OLA}
-\todo[inline]{Convergence plots here?}
-This gives us an $N \times N$ Hamiltonian matrix $H$.
-Since $H$ is diagonal in $l$ and $m$, we can consider each value of $l$ and $m$ separately, reducing the size of the matrix and thus the amount of computation needed to solve for the eigenvalues.
-The equation is then, for a given $l$ and $m$,
-\begin{eq}
-  \sum_{n'= 0}^N \bra{n} H \ket{n'} \psi_{n'} = E\psi_{n},
-\end{eq}
-or in matrix notation
-\begin{eq}
-  \label{eq:matrix eq}
-  H\psi = E\psi.
-\end{eq}
-
-We calculate the matrix elements $H_{ij}$ with \cref{eq:HO matrix elements,eq:plane wave matrix elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.\todo{refer to future eqs without comment?}
-If the matrix is hermitian or symmetric, we only need to calculate the elements in the upper triangle including the diagonal, roughly halving the number of elements we need calculate. 
-
-When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
-
-
-\subsection{Plane Wave Basis Discretization and Symmetrization}
+\subsection{Discretization and Symmetrization}
 \label{sec:mom discretization}
 The integral equation \cref{eq:radial mom space TISE} can be rewritten as a matrix equation through discretization, turning the integral into a sum over a finite set of points $k_j$ and $\rd{k}$ into a set of weights $w_j$:
 \begin{eq}
@@ -300,6 +278,32 @@ with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{
     \sqrt{w_j}k_j \phi'_j j_l(k_j r).
 \end{eq}
 
+\section{Numerical Considerations}
+
+In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. 
+This includes truncation of the basis, matrix size reduction, numerical integration and eigensolver optimizations.
+The plane wave basis is continuous and thus requires special treatment.
+
+The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
+The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo[inline]{Questionable? OLA}
+\todo[inline]{Convergence plots here?}
+This gives us an $N \times N$ Hamiltonian matrix $H$.
+Since $H$ is diagonal in $l$ and $m$, we can consider each value of $l$ and $m$ separately, reducing the size of the matrix and thus the amount of computation needed to solve for the eigenvalues.
+The equation is then, for a given $l$ and $m$,
+\begin{eq}
+  \sum_{n'= 0}^N \bra{n} H \ket{n'} \psi_{n'} = E\psi_{n},
+\end{eq}
+or in matrix notation
+\begin{eq}
+  \label{eq:matrix eq}
+  H\psi = E\psi.
+\end{eq}
+
+We calculate the matrix elements $H_{ij}$ with \cref{eq:HO matrix elements,eq:plane wave matrix elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
+\todo{Gauss-Legendre in many places, where is canon?}
+If the matrix is hermitian or symmetric, we only need to calculate the elements in the upper triangle including the diagonal, roughly halving the number of elements we need calculate. 
+
+When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
 
 \section{Verifying with the Hydrogen Atom} \todo{where to put this?}
 
