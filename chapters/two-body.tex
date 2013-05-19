@@ -220,6 +220,8 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 %%%%%%%%%%%%%%%%%%%%%%%%%EIGVECS FIGURE
 
 \begin{figure}[H]
+	  \pgfplotstableread{../figures/he5_mom_eigvecs/physical_eigvecs.data}\phys
+	    \pgfplotstableread{../figures/he5_mom_eigvecs/symmetric_eigvecs.data}\symm
   \centering{
   \pgfplotsset{
     width = \textwidth, height = 7cm,
@@ -239,7 +241,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
       \begin{axis}[	ylabel = $|\phi_i|^2$,]
         \foreach \yindex in {1,15,8,54}
         {   
-        \addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/physical_eigvecs.data};
+        \addplot table [x index= 0, y index = \yindex] {\phys};
         }
       \end{axis}
     \end{tikzpicture}
@@ -252,7 +254,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
       \begin{axis}[	ylabel = $k^2 w |\phi_i|^2$,]
         \foreach \yindex in {1,15,8,54}
         {   
-        \addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/symmetric_eigvecs.data};
+        \addplot table [x index= 0, y index = \yindex] {\symm};
         }
       \end{axis}
     \end{tikzpicture}
@@ -267,6 +269,75 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%EIGVECS end
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
+
+\begin{figure}[H]
+	    \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_real.data}\wfs
+  \centering{
+  \pgfplotsset{
+    width = \textwidth, height = 7cm,
+ xlabel = $k/\b{\si{fm^{-1}}}$, ylabel = $k^2 \absq{\Phi(k)}$,
+    axis x line = bottom,
+    xmin = 0,
+    xmax=0.5,
+    axis y line = left,
+    no markers,
+    %ytick = \empty,
+    legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
+  }
+  \subfloat[Wavefunctions in momentum space for solutions along real-axis]{
+    \tikzset{external/remake next}
+    \tikzsetnextfilename{wfs-real}
+    \begin{tikzpicture}
+      \begin{axis}[xmax=3]
+		  
+  		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
+  		 \addlegendentry{Resonance}
+
+        \foreach \yindex in {1,...,60}
+        {   
+        \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
+        }
+		\addlegendentry{Continuum state}
+		
+		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
+
+
+      \end{axis}
+    \end{tikzpicture}
+  }
+	
+  \subfloat[Wavefunctions in momentum space for solutions along the complex berggren contour]{
+     \tikzset{external/remake next}
+    \tikzsetnextfilename{wfs-comp}
+    \begin{tikzpicture}
+					  \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_complex.data}\wfs
+      \begin{axis}[xmax=3]
+ 		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
+ 		 \addlegendentry{Resonance}
+        \foreach \yindex in {1,...,60}
+        {   
+        \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
+		
+        }
+		\addlegendentry{Continuum state}
+ 		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
+
+      \end{axis}
+    \end{tikzpicture}
+  }
+	
+}
+
+
+
+\caption{yada} 
+\label{fig:he5_eigvecs}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
 
 

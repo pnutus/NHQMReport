@@ -31,6 +31,11 @@ def un_symmetrize(eigvec):
     for i in xrange(len(eigvec)):
         eigvec[i] = eigvec[i] / sp.sqrt(weights[i]) / points[i]
     return eigvec   
+
+def un_weight(eigvec):
+    for i in xrange(len(eigvec)):
+        eigvec[i] = eigvec[i] / sp.sqrt(weights[i])
+    return eigvec
     
 # print eigvecs[:,0]
 # print un_symmetrize(eigvecs[:,0])     
@@ -51,10 +56,6 @@ for i in xrange(order):
         plt.plot(momenta, symm_vec)
         plt.plot(momenta, phys_vec)
             
-
-
-    
-
 physdata = sp.array(result_physvec).T
 symmdata = sp.array(result_symmvec).T
 
