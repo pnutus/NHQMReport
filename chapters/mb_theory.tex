@@ -17,7 +17,7 @@ Finally, we discuss the practical usage of second quantization and present a sim
 
 \section{Identical Particles}
 
-A fact of quantum mechanics is that particles that look identical \emph{are} identical. In our case there is no way to distinguish two neutrons orbiting the core from one another. This has to be taken into consideration when dealing with the states, as we will soon see.
+A quirk of quantum mechanics is that particles that look identical \emph{are} identical, for all intents and purposes. For example, in the case of the two neutrons orbiting the core, the neutrons are impossible to distinguish from one another. This has to be taken into consideration when dealing with many-body states of identical particles, as we will see.
 
 We begin with an orthonormal single particle (sp) basis $\ket{\alpha_i}$, where $\alpha_i$ represents all the quantum numbers that describe the state.
 Next, consider $N$ identical particles, expressed in this basis. We form a product state
@@ -52,6 +52,14 @@ These states can therefore only differ in phase $e^{i\phi}$, and since another s
 Symmetric states with no phase change describe \emph{bosons}, whereas antisymmetric states that change sign describe \emph{fermions}.
 In this report all our sp states will be fermionic, hence we do not treat the bosonic case.
 \todo[inline]{tappade röda tråden här}
+\subsection{Antisymmetric Fermion states}
+
+We have now established that our fermion many-body states are a linear combination of product states that satisfy
+\begin{eq}
+  \ket{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N}
+  =
+  -\ket{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}.
+\end{eq}
 For example, in the case of two particles, the correctly normalized antisymmetric state is
 \begin{eq}
   \ket{\alpha_1\alpha_2} 
@@ -61,15 +69,14 @@ For example, in the case of two particles, the correctly normalized antisymmetri
     \pket{\alpha_1\alpha_2} - \pket{\alpha_2\alpha_1}
   }.
 \end{eq}
-Note the use of angular ket notation $\ket\dots$ for antisymmetric states, as opposed to $\pket\dots$ for product states.
+We will henceforth use the angular ket notation $\ket\dots$ for antisymmetric states, as opposed to $\pket\dots$ for product states.
 
-Because the antisymmetric states change sign on exchange of two particles, should two particles be in the same state, the state will become 0. \todo{Is this really why?} 
-Thus, no particles can occupy the same state and the Pauli principle is satisfied.
+\todo[inline]{completeness relation? Orthonormality?}
 
 Important to note is that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
 This means that we have to make sure not to double count these states. 
 We can do this by requiring the sp states to always appear in the same order in the ket. 
-If they are not, we permute two sp states at a time until the correct ordering is reached \todo{"double count"?} \todo{achieved }
+If they are not, we permute two sp states at a time until the correct ordering is reached \todo{"double count"?}
 \begin{eq}
   \ket{\alpha_i\alpha_1\dots\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
   & =
@@ -238,22 +245,21 @@ The double counting can be avoided, however, by taking into account the ordering
 \end{eq}
 
 For the case of two particles we have
-\todo[inline]{Use $a, b, c, d$ instead of $\alpha_i$?}
 \begin{eq}
-  \bra{\alpha_1\alpha_2} \hat{H}_2 \ket{\alpha'_1\alpha'_2}
+  \bra{ab} \hat{H}_2 \ket{cd}
   & =
   \sum_{\substack{\alpha < \beta \\ \gamma < \delta}} 
   \bra{\alpha \beta} H_2 \ket{\gamma \delta} 
-  \bra{\alpha_1\alpha_2} 
+  \bra{ab} 
   a_\alpha^\dag a_\beta^\dag a_\delta a_\gamma
-  \ket{\alpha'_1\alpha'_2}
+  \ket{cd}
   \\ & =
   \sum_{\substack{\alpha < \beta \\ \gamma < \delta}} 
   \bra{\alpha \beta} H_2 \ket{\gamma \delta}
-  \delta_{\alpha\alpha_1}\delta_{\beta\alpha_2}
-  \delta_{\gamma\alpha'_1}\delta_{\delta\alpha'_2}
+  \delta_{\alpha a}\delta_{\beta b}
+  \delta_{\gamma c}\delta_{\delta d}
   \\ & =
-  \bra{\alpha_1\alpha_2} H_2 \ket{\alpha'_1\alpha'_2},
+  \bra{ab} H_2 \ket{cd},
 \end{eq}
 as expected.
 
