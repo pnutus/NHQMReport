@@ -2,7 +2,6 @@
 \begin{document}
 
 \chapter{The Complex Berggren Basis}
-%\todo{I would like an argument akin to "Since we are only treating momenta in the fourth quadrant in the complex plane the square root can be regarded as injective (except in the case of a bound state with zero real part, but these are easy to identify and treat sepparately). Our states can thus be described by energy or momentum and we will use both in the following sections." somewhere}
 \label{cha:berggren}
 As was argued in the introduction, resonances can only be properly described by a complex energy, $E=E_0-i\frac{\Gamma}{2}$. 
 We may relate the energy of a system to a momentum, according to
@@ -29,77 +28,8 @@ In 1968, Berggren\cite{berggren} first showed that the solutions --- bound state
 This is a major result, meaning that resonances are included as proper solutions to open quantum systems. This will be of importance later, when we consider systems of multiple interacting particles. 
 In this Chapter, we will instead focus on using contours in the complex momentum plane to find the resonances of \He{5}.
 
-%We will start by mentioning some of the key features of the theory behind the complex momentum representation. 
-%However, we will not give a comprehensive or rigorous introduction to it, since the mathematical nature of the theory is beyond the scope of this report.
-
-%It is known\footnote{For details, see standard textbooks treating scattering theory, i.e. Sakurai\cite{sakurai}} that bound state solutions correspond to poles on the positive imaginary axis, $k=i\kappa$, related to the fact that they have negative energy, and
-%\begin{eq}
-%  E = \frac{\hbar^2(i\kappa)^2}{2\mu} = -\frac{\hbar^2 \kappa^2}{2\mu} \, ,
-%\end{eq} 
-%while resonances, with energies on the form $E=E_0 - i \Gamma /2$, correspond to poles in the fourth quadrant. 
-
-
-
-%This allows us to use the energy and momentum interchangealy to describe a state, since the square root is injective when restricted to a single quadrant. 
-%This will not apply to bound states however, but these are easy to identified and can be treated separately to avoid confusion. 
-%We will primarily use the energy of a state in our mathematical expressions, but the momentum is better suited to present a state graphically.
-
-%The resonant state has a complex energy and we need to extend our basis into the complex plane to study it. 
-%We do this by using the theory of Tore Berggren and his \emph{Berggren basis} \cite{berggren}.
-%This allows us to determine the energy of the state which charcterizes its width and half-life.
-
-%Another reason for moving to the complex energy plane is the fact that when we later move to more than two bodies we want to use a basis consisting of our two-body states.
-%A basis consisting of all bound, free and resonant complex states forms a complete set  after the \emph{Berggren Comleteness Relation}, this theory is also described by Tore Berggren.
-
-%\todo{comment on why all free states can be approximated by a few free states along a contour with low energy.}
-
-%The theory is involved and will not be fully explained 
-%here. Instead we present a heuristic argument.
-
-%If we relate the energies $E$ of a system to momenta $k$ as
-%\begin{eq}
-%  E = \frac{\hbar^2 k^2}{2\mu}
-%  \quad\quad
-%  \textup{or}
-%  \quad\quad
-%  k = \frac{\sqrt{2\mu E}}{\hbar},
-%\end{eq}
-%we can plot the energies as $k$ in the complex plane, see 
-%\cref{fig:complex plane}. We then expect bound states, with \todo{introduce k - momenta, basis mom here?}
-%$E<0$, to be represented by $k$ along the imaginary axis---
-%whereas unbound, scattering states, with $E>0$, are found 
-%along the real axis. Resonance states, with complex 
-%$E = E_0 - i \Gamma /2$, would by this argument appear somewhere
-%in the fourth quadrant.
-
-%\todo{maybe show real conour before complex for comparison, röd tråd, mycket figurer för att förstå}
-
-%We now interpret these complex momenta, $k$, as poles and our integration 
-
-
-
 To find the resonance, the contour is required to pass below the pole corresponding to the resonance. \todo{Should we say that it is required, or just investigate different contours and find out?}
 A sample contour that could be used is visualized in \cref{fig:berggren contour}. %Note that the solutions in the complex plane are mirrored in the y-axis. \todo{why is this important? elaborate further?}
-%Solutions along or near the real axis are to be interpreted as 'ingoing' scattering solutions, while solutions on the left side can be interpreted as 'outgoing'. \todo{be more elaborate on the scattering theory?}
-%However, use of this closed contour is mainly a mathematical technique used to prove the completeness relation. 
-%In practice on the other hand, symmetry in our specific problems lets us restrict ourselves to the segment between $k=0$ and $k=+\infty$. 
-%Note that our original momentum space equation corresponded to a contour along the real axis, $k \in [0,\, \infty]$.
-
-
-%\begin{eq}
-%  \fint[0][\inf]{k} k'^2 V(k,k') \phi(k')
-%\end{eq}
-%\todo{resiidy stycke, integration behöver kärlek}
-%is evaluated as a contour integration around the upper half plane, 
-%see \cref{fig:simple contour}. The result of a contour 
-%integration depends on the poles it encircles by the 
-%residue theorem. Therefore, we expect something to happen if 
-%we let the contour encircle the pole of the resonance,
-%as in \cref{fig:berggren contour}.
-%\todo{tydligare förankring av beggren teoris}
-%An interesting thing seen when moving to a complex contour is the fact that we no longer use a conjugate on the bra when computing the matrix elements.
-%This is a confusing piece of theory stemming, again, from Berggren.
-
 
 \begin{figure}
   \tikzset{
@@ -202,16 +132,7 @@ Armed with this we can continue our study of the \He{5} spectrum. Diagonalizing 
 
 The interesting solution is however the one not lying on the contour. If this solution is the resonance, we expect it to be unchanged when the contour is varied. Indeed, any contour passing below the resonance should give this solution. Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstrating that this is the case.
 
-In addition we can investigate the wavefunctions of these solutions. \Cref{fig:mom wavefunctions}\todo{Create this figure. SPILL?} shows the momentum distribution of an arbitrary unbound solution and the resonance. As is expected, the unbound solution basically correspond to one definite momentum. On the other hand, the resonance has a broad distribution, reflecting the localized nature of the solution (remember Heisenberg -- a broad momentum wavefunction allows a localized position wavefunction). In principle, this feature also gives us a way to automatically find the resonance among a large set of solutions: simply single out the one with the broadest wavefunction, or equivalently after normalization, with the lowest maximum value.
-
-THE FOLLOWING IS NOT REVISED YET.
-
-%We now need a way to determine which solution corresponds to the resonnance. 
-%It is not as simple as picking the solution with the lowest energy or norm. 
-%Instead we need to consider the solutions in momentum space.
-%Bound states have negative energy and can easily be identified, that leaves unbound and resonant states. 
-%The unbound solutions would be dominated by a single momentum, i e, their probability density would closely resemble sine waves in position space. 
-%Whereas a more localized resonant state would have a greater uncertainty in its momentum by the Heisenberg relation, and can thus be identified by picking the most diffuse solution.
+In addition we can investigate the wavefunctions of these solutions. \Cref{fig:mom wavefunctions}\todo{Create this figure. SPILL?} shows the momentum distribution of an arbitrary unbound solution and the resonance. As is expected, the unbound solution basically correspond to one definite momentum. On the other hand, the resonance has a broad distribution, reflecting the localized nature of the solution (remember Heisenberg -- a broad momentum wavefunction allows a localized position wavefunction). In principle, this feature also gives us a way to automatically find the resonance among a large set of solutions: simply single out the one with the broadest wavefunction, or equivalently after normalization, with the lowest maximum value.\todo{Perhaps this should only be in the two-body chapter} 
 
 We can now proceed to fit our models to experimental data provided by \cite{inte jimmy i alla fall}. 
 We also found it worthwhile to plot the resonnance momentum as a function of the strength of the potential. 
