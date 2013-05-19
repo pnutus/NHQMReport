@@ -1,7 +1,7 @@
 \documentclass[../main/report.tex]{subfiles}
 \begin{document}
   
-\chapter{Many-Body Theory}
+\chapter{Many-Body Theory and Implementation}
 \label{cha:many-body}
 \todo{mer röd tråd}  
 
@@ -76,7 +76,7 @@ We will henceforth use the angular ket notation $\ket\dots$ for antisymmetric st
 Important to note is that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
 This means that we have to make sure not to double count these states. 
 We can do this by requiring the sp states to always appear in the same order in the ket. 
-If they are not, we permute two sp states at a time until the correct ordering is reached \todo{"double count"?}
+If they are not, we permute two sp states at a time until the correct ordering is reached
 \begin{eq}
   \ket{\alpha_i\alpha_1\dots\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
   & =
@@ -105,12 +105,14 @@ States with different number of particles are orthogonal to each other.
 The simplest Fock state is the \emph{vacuum state} $\ket{0}$, which describes a system with no particles. 
 All other states can be created from the vacuum state using the \emph{creation operator} $a_\alpha^\dag$, which adds a particle with quantum numbers $\alpha$ to a state
 \begin{eq}
+  \label{eq:create}
   a_{\alpha}^{\dagger} \ket{\alpha_1 \alpha_2 ... \alpha_N} 
   =
   \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N}.
 \end{eq}
 The resulting state will not necessarily be ordered, and the ordering might contribute a sign:
 \begin{eq}
+  \label{eq:create_ordered}
   a_{\alpha_i}^{\dagger} 
   \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_{i+1}...\alpha_{N}} 
   =
@@ -119,21 +121,23 @@ The resulting state will not necessarily be ordered, and the ordering might cont
 \end{eq}
 Note that when $a_\alpha^\dag$ acts on a state that already contains a particle with quantum numbers $\alpha$, the result is 0, because of antisymmetry
 \begin{eq}
+  \label{eq:create_zero}
   a_{\alpha}^{\dagger} \ket{\alpha\alpha_1 \alpha_2 ... \alpha_N} 
   =
   0.
-  \label{eq:creation_zero}
 \end{eq}
 
 The adjoint of the creation operator is called the \emph{annihilation operator} $a_\alpha$. 
 It can be shown to have the opposite effect, removing a particle, when acting on a state
 \begin{eq}
+  \label{eq:annihilate}
   a_{\alpha} \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N}
   =
   \ket{\alpha_1 \alpha_2 ... \alpha_N}.
 \end{eq}
 Here, too, a sign might appear from the ordering
 \begin{eq}
+  \label{eq:annihilate_ordered}
   a_{\alpha_i}
   \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_i \alpha_{i+1} ... \alpha_N}
   =
@@ -142,10 +146,10 @@ Here, too, a sign might appear from the ordering
 \end{eq}
 Analogous to $a_\alpha^\dag$, when $a_\alpha$ acts on a state that does not contain a particle with the quantum numbers $\alpha$, the result is 0
 \begin{eq}
+  \label{eq:annihilate_zero}
   a_\alpha \ket{\alpha_1 \alpha_2 ... \alpha_N} 
   =
   0.
-  \label{eq:annihilation_zero}
 \end{eq}
 
 
@@ -263,8 +267,39 @@ For the case of two particles we have
 \end{eq}
 as expected.
 
+
+
 \section{Implementation}
 
-In order to use the fock space formalism in numerical calculations
+To use the fock space formalism in numerical calculations we have to represent the quantum states using available data structures. 
+We construct sp states and use them to form antisymmetric Fock states.
+The creation and annihilation operators become functions that take the Fock states as arguments, and are used to create the Fock operators. 
+Furthermore, the sum in the expression of the Fock operators can be optimized by only evaluating the non-zero terms.
+
+\subsection{Single-Particle-State Objects}
+
+We represent a single particle state with a record, i.e. an object with named fields that can be assigned values. It is natural to let each quantum number, such as $l$ and $j$ be a field. 
+Moreover, we can include other information about the state, information that is taken for granted in the mathematical formulation.
+This includes a unique id number for each state, the eigenvector holding information about the wavefunction, the basis of the eigenvector and, in the case of the plane wave basis, the contour used.
+Much of this extra information is redundant, as many states share the same information.
+Nevertheless, we found that this representation significantly simplifies the structure of the program and makes it easier to understand.
+
+\subsection{Fock State Objects and Operator Functions}
+
+An antisymmetric many-body state $\ket{\alpha_1\dots}$ is represented by an ordered list of single particle objects and a sign. 
+Since the sp state objects have a unique id, there is a well-defined sorting order. 
+The sign can be $1$, $-1$ or $0$, representing $\ket{\alpha_1\dots}$, $-\ket{\alpha_1\dots}$ and $0$, respectively. 
+
+The creation and annihilation operators are implemented as functions on the Fock state objects, obeying
+\cref{eq:create,eq:create_ordered,eq:create_zero,eq:annihilate,eq:annihilate_ordered,eq:annihilate_zero}.
+The creation operator function steps through the list, flipping the sign at each step, until the correct place for the new particle is found. 
+If the particle is already part of the Fock state, the sign is set to 0.
+The annihilation operator searches for a state, saves its index $k$ in the list, annihilates it and set the sign to $(-1)^k$. If the state does not exist the sign is set to 0.
+
+\subsection{Matrix Element Calculations}
+
+When calculating the matrix elements, we do do not
+
+\todo{Write about matrix elements}
 
 \end{document}
