@@ -4,29 +4,22 @@
 \chapter{Many-Body Theory}
 \label{cha:many-body}
 \todo{mer röd tråd}  
-A basic fact of quantum mechanics is that particles that look identical \emph{are} identical. 
-It is also known that there are only two types of particles, bosons and fermions, and that systems of many bosons and fermions behave differently. 
-When exhanging the coordinates of two particles, the wavefunction of a bosonic system is unchanged, whereas a fermionic wavefunction changes sign. 
-We say that the bosonic wavefunction is \emph{symmetric} and that the fermionic wavefunction is \emph{antisymmetric}. 
 
-The Schrödinger equation for a system of $N$ identical particles can be expressed as
-\begin{eq}
-  \p{
-    \sum_{i} \frac{1}{2m}\nabla^2_i + \sum_{i < j} V(\vec{r}_i, \vec{r}_j)
-  } \psi(\vec{r}_1, \vec{r}_2, ..., \vec{r}_N)
-  =
-  E \psi(\vec{r}_1, \vec{r}_2, ..., \vec{r}_N),
-\end{eq}
-but this is not a particularly convenient form for many-body manipulation. It is especially inconvenient when working with systems that do not have a fixed number of particles. This form is called the first quantization.
+We have solved the nuclear two-body problem and studied its resonances.
+The next step is to add another particle and subsequently solve the three-body problem. 
+However, while the two-body problem is reducible to a radial one-dimensional problem, the general many-body problem is not.
+Instead, we need to use a single particle (sp) basis to construct many-body states.
+This chapter covers the construction of such states.
 
-We would instead like to describe the system as a combination of single particle (sp) states and particles that occupy these states. 
-The operators can then be expressed using creation and annihilation operators that allow us to work with an arbitrary number of particles.
-\todo{first - second quantization. no follow up}
-\todo{We should mention there is something similar for bosons.}
-\section{Fermionic states}
+First, the mathematical consequences of identical, indistinguishable particles is presented, focusing on fermions.
+This is followed by a short introduction fo the second quantization formalism, which allows calculations with an arbitrary number of particles.
+Finally, we discuss the practical usage of second quantization and present a simple implementation for fermions.
 
-\todo{Use $\alpha$ or something else?}
-We begin with an orthonormal single particle (sp) basis $\ket\alpha$, where $\alpha$ represents all the quantum numbers that describe the state.
+\section{Identical Particles}
+
+A fact of quantum mechanics is that particles that look identical \emph{are} identical. In our case there is no way to distinguish two neutrons orbiting the core from one another. This has to be taken into consideration when dealing with the states, as we will soon see.
+
+We begin with an orthonormal single particle (sp) basis $\ket{\alpha_i}$, where $\alpha_i$ represents all the quantum numbers that describe the state.
 Next, consider $N$ identical particles, expressed in this basis. We form a product state
 \begin{eq}
   \pket{\alpha_1\alpha_2\dots\alpha_N} 
@@ -44,14 +37,21 @@ which, by the orthonormality of the $\ket\alpha$, will be orthonormal as well
   \dots
   \braket{\alpha_N}{\alpha'_N}.
 \end{eq}
-These states span the Hilbert space of the $N$-body problem, but do not incorporate the right symmetry for fermions. 
-To obey the pauli principle, fermionic states need to be antisymmetric, i.e. change sign under exchange of quantum numbers for two particles 
+
+Let us now create an arbitrary linear combination of the product states, denoted by an angled ket
 \begin{eq}
-  \ket{\alpha_1\alpha_2\dots\alpha_i\dots\alpha_j\dots\alpha_N} 
-  = 
-  - \ket{\alpha_1\alpha_2\dots\alpha_j\dots\alpha_i\dots\alpha_N}.
+  \ket{\alpha_1\alpha_2\dots\alpha_N}.
 \end{eq}
-Fermionic, antisymmetrized states can be expressed as a linear combination of the product states. 
+Since the particles are identical, and thus indistinguishable, we require the norm of the state to be unchanged when swapping the quantum numbers of two particles $i$ and $j$
+\begin{eq}
+  \absq{\big.\ket{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N}}
+  =
+  \absq{\big.\ket{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}}.
+\end{eq}
+These states can therefore only differ in phase $e^{i\phi}$, and since another swap will bring us back to the original state, the phase has to be either $e^{i\phi} = 1$ or $e^{i\phi} = -1$.
+Symmetric states with no phase change describe \emph{bosons}, whereas antisymmetric states that change sign describe \emph{fermions}.
+In this report all our sp states will be fermionic, hence we do not treat the bosonic case.
+\todo[inline]{tappade röda tråden här}
 For example, in the case of two particles, the correctly normalized antisymmetric state is
 \begin{eq}
   \ket{\alpha_1\alpha_2} 
@@ -82,16 +82,17 @@ If they are not, we permute two sp states at a time until the correct ordering i
   \ket{\alpha_1\dots\alpha_{i-1}\alpha_i\alpha_{i+1}\dots\alpha_N}.
 \end{eq}
 
-\section{Creation and Annihilation Operators in Fock Space}
-\todo{chapter name okay?}
-\todo{how do we denote the ops? a? c?}
+\section{Second quantization and Fock Space}
 
-\todo{Fock space/second quantization/occupation number representation?}
 So far we've looked at a system with a fixed number of particles, but we want to work with a system with an arbitrary number of identical particles. 
 The construction that lets us do this is called the \emph{Fock space}. 
 \todo{why?/cite/explain citation at start of chapter, covering all our bases :)}
 A state in Fock space, a \emph{Fock state}, can contain any number of particles. 
- States with different number of particles are orthogonal to each other.
+States with different number of particles are orthogonal to each other.
+
+\subsection{Creation and Annihilation Operators}
+\todo{how do we denote the ops? a? c?}
+
 
 \todo{particle addition/removal operators?}
 The simplest Fock state is the \emph{vacuum state} $\ket{0}$, which describes a system with no particles. 
@@ -141,11 +142,11 @@ Analogous to $a_\alpha^\dag$, when $a_\alpha$ acts on a state that does not cont
 \end{eq}
 
 
-\section{General Operators in Fock Space}
+\subsection{General Operators in Fock Space}
 
 We can now express the state of any number of particles, but in order to do something with the states we also need to express operators in the Fock space formalism. It turns out that operators involving any number of particles can be expressed using the creation and annihilation operators. The operators can then act on a state with an arbitrary number of particles. We will only treat one- and two-body operators here, as they are all we need in this report.
 
-\subsection{One-body operators}
+\subsubsection{One-Body Operators}
 
 A one-body operator $H_1$ which acts on a single sp state, is represented by the Fock space operator
 \begin{eq}
@@ -192,7 +193,7 @@ Sandwiched between a bra and a ket, this becomes
 \end{eq}
 the sum of the eigenvalues of the sp states in the bra and ket, but only if the bra and ket are the same. The Fock space operator $\hat{H}_1$ is thus also diagonal.
 
-\subsection{Two-body operators}
+\subsubsection{Two-Body Operators}
 \todo{notations}
 A two-body operator in Fock space becomes
 \begin{eq}
