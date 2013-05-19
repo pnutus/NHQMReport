@@ -16,7 +16,7 @@ commonly written in the position basis as
 \end{eq}
 
 For the nuclear systems to be treated, the TISE has no known analytical solutions, and we need to use numerical methods to solve it.
-However, the Hamiltonian written as in \cref{eq:TISEpos}, is not suitable for numerical calculations. \todo{cite/explain}
+However, the Hamiltonian written as in \cref{eq:TISEpos}, is not suitable for numerical calculations. \todo[inline]{cite/explain}
 Instead, we would like to write it as a matrix equation
 \begin{eq}
   \label{eq:matrix equation}
@@ -33,6 +33,7 @@ We will not expand our problems in the position basis, but it will still be impo
 Before we begin, we briefly recap some well known QM facts. 
 First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$. 
 A discrete basis means that any state $\ket\psi$ can be written as a linear combination of the basis states
+\todo[inline]{discrete basis? shouldn't this be complte basis?}
 \begin{eq}
   \label{eq:lincomb}	
   \ket\psi = \sum_n \psi_n \ket{n}
@@ -50,7 +51,7 @@ All these bases are orthonormal, i.e.~all the basis vectors satisfy
   \quad
   \braket{x}{x'} = \delta(x - x')
 \end{eq}
-depending on if the base is continuus or discrete.
+depending on if the base is discrete or continuous.
 With a complete basis $\ket{n}$, we get the very useful \emph{completeness relation}
 \begin{eq}
   I = \sum_n \ket{n} \bra{n}
@@ -174,6 +175,7 @@ where $R_{nl}$ are the radial wavefunctions of the harmonic oscillator
 $\gamma = \mu\omega/\hbar$ and $L_\mu^\nu(x)$ are the generalized Laguerre polynomials.
 \todo{Doublecheck normalization constant.}
 The real space wavefunction $R(r)$ for a state will be expressed as a linear combination of the harmonic oscillator radial wavefunctions:
+\todo[inline]{"real space"?}
 \begin{eq}
   R_l(r) = \sum_n \psi_{nl} R_{nl}(r).
 \end{eq}
@@ -202,7 +204,7 @@ A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Sc
   =
   E\phi(k) \, ,
 \end{eq}
-where $\phi(k)$ is the radial part of the momentum space wavefunction, 
+where $\phi(k)$ is the radial part of the momentum space wavefunction, \todo[inline]{textlimmet saknas här, flödet blir konstigt}
 \begin{eq}
   V(k,k') 
   &= 

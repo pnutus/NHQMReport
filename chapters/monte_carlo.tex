@@ -1,3 +1,6 @@
+\documentclass[../main/report.tex]{subfiles}
+\begin{document}
+
 \chapter{Monte Carlo Method}
 \label{cha:monte_carlo}
 
@@ -10,11 +13,11 @@ When trying to solve the \He{5} problem using a Monte Carlo simulation we choose
 The calculation of the energies is done in the same way as before, only with fewer points in the basis.
 
 We started of with placing one point per segment at random.
-We got energies following the contour to a large degree for the first two segments, but the tail went mad \cref{fig:mc_one}.
+We got energies following the contour to a large degree for the first two segments, but the ``tail'' did not seem to converge \cref{fig:mc_one}.
 The resonance was nowhere to be found.
 
 Since we obviously had no luck with only one point per segment we tried with two.
-The solutions where now spread out and we did not feel for average over theese since the place where the resonance should be were the area whith the least amount of solutions.
+The solutions where now much more spread out and we did not feel for average over theese since the place where the resonance should be were the area whith the least amount of solutions.
 
 \section{Monte Carlo \He{6}}
 Even though we had no success with the Monte Carlo method in the case of \He{5} we decided to try it with \He{6}.
@@ -25,7 +28,7 @@ Sadly, this gave us as much information about resonant and bound states as from 
 Which was nothing.
 
 We also tried with choosing two states per segment, but did not get any wiser by doing this.
-If anything the point gotten told us even less.
+If anything the points gotten told us even less.
 
 Observant readers may notice that we not have averaged over the points in the figures.
 This comes from the fact that we do seek a bound state, which would be placed somewhear along the positive imaginary axis.
@@ -34,7 +37,7 @@ The same readers may now notice that no states are placed here, which is why we 
 \section{Conclusion}
 In our case we can conclude that the Mone Carlo method did not work as we hoped.
 We did not find any bound or resonant states as we wished and it was not as fast as the original methods.
-Why we fell that these Monte Carlo simulations mayby belongs better in other places than simulating heavy helium nuclei.
+Why we feel that these Monte Carlo simulations maybe belongs better in other places than simulations of heavy helium nuclei.
 
 \section{Evolution?}
 In order to improve the Monte Carlo method there are a few avenues to explore.
@@ -46,3 +49,5 @@ Currently we give all the points on the sample contours the weight (used in conj
 delta trickery! it might be bad if we 'miss' the resonance.
 
 determine the resonance first and include it in the basis for mb
+
+\end{document}

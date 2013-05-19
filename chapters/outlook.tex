@@ -4,42 +4,33 @@
 \chapter{Outlook}
 \label{cha:outlook}
 
-\begin{itemize}
-  \item Recap/discussion (very short, mostly for red thread)
-  \item In this report we have studied resonance phenomena in heavy Helium isotopes and explained the procedure surrounding it.
-  This was made by expanding the wavefunctions of \He{5} and \He{6} in a basis.
-  We started by using the harmonic oscillator basis on \He{5}, but found that it was of no use when examining resonances, which made us move on to a plane wave expansion.
-  The plane wave expansion, which could be expressed as a discretization of momentum space, was able to detect the resonances, but failed to reveal its position.
-  To do this we extended momentum space into the complex plane, where we finally could find our resonance.
-  When we had the solutions for \He{5} we evolved the thery to include many bodies and used the solutions as a basis for the \He{6} expansion.
-  In \He{6} we were able to locate the bound state and later also the resonance, albeit not very well.
-  To speed up calculations we investigated the use a Monte-Carlo approach to the \He{6}, but we found this to not work well at all, since it not allowed us to find neither the resonances in \ce{^{5,6} He} nor the bound state in \He{6}.
-  
-  \begin{itemize}
-    \item We have been able to find resonances (albeit not very well)
-    \item We have explained the procedure
-    \item (We have debunked the monte carlo myth)
-  \end{itemize}
-  \item Renormalization
+\section{Recap}
+In this report we have studied resonance phenomena in heavy Helium isotopes and explained the procedure surrounding it.
+The study was made by expanding the wavefunctions of \He{5} and \He{6} in a basis after modelling them as an alpha particle with one and two valence neutrons respectively.
+We started by using the harmonic oscillator basis on \He{5}, but found that it was of no use when examining resonances, which made us move on to a plane wave expansion.
+The plane wave expansion, which could be expressed as a discretization of momentum space, was able to detect the resonances, but failed to reveal its position.
+To do this we extended momentum space into the complex plane, where we finally could find our resonance.
+We now evolved the theory to include many bodies and used the solutions from \He{5} as a basis for the \He{6} expansion.
+In \He{6} we were able to locate the bound state and later also the resonance, albeit not very well.
+To speed up calculations we investigated the use a Monte-Carlo approach to the \He{6}, but we found this to not work well at all, since it not allowed us to find neither the resonances in \ce{^{5,6} He} nor the bound state in \He{6}.
+
+
+\section{Ways to expand}
+Here we present a list of som interesting aspects that would have possible paths to take on after our current work.
+\todo[inline]{or something else.}
+\subsection{Renormalization}
   \begin{itemize}
     \item Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis \cite{jimmy}.
     This can be done in several different ways and there exists some different algoritms, two of them are similarity renormalization and kdkfl density ekdlks.
     \todo[inline]{Don't remember what it's called.}
     The point with only selecting a few of the single-particle states is that it reduces the size of the matrix, hence the decreased computational time.
     \todo[inline]{Cite Jimmy...}
-    \item Reducing the size of the many-body matrices by only keeping the most important states in the sp basis
-    \begin{itemize}
-      \item cite jimmy
-    \end{itemize}
     \item Another way to decrease computational time is the Monte-Carlo simulations we did in \cref{cha:monte-carlo}.
     The problem is to get it to work.
     In our simulations we did not see neither the resonances in \ce{^{5,6} He} nor did we find the bound state in \He{6}.
-    One theory is that it would show results in larger systems or if we would include more basis states in each iteration, but in our case. this would not be faster than the original algorithm.
-    \item Other ways of using monte carlo.
-    \item Monte Carlo for larger systems.
+    One theory is that it would show results in larger systems or if we would include more basis states in each iteration, but in our case, this would not be faster than the original algorithm.
   \end{itemize}
-
-  \item More nucleons
+\subsection{More nucleons}
   \begin{itemize}
     \item We have confined ourselves to the nuclei of \He{5} and \He{6} in this report.
     Which would make the most natural way to proceed the addition of more neutrons to the alpha particle.
@@ -61,12 +52,11 @@
    This is probably a good reason to use a core and just add neutrons to it since this vastly reduces the size of the problem.
   \end{itemize}
 
-  \item More realistic interaction
+\subsection{More realistic interaction}
   \begin{itemize}
    \item We could also get a better result by using a more realistic potential, this would then be ............... which describes ... in a better way since ... .
     \item Cite stuff, maybe ask jimmy/christian
   \end{itemize}
-\end{itemize}
 
 
 \end{document}

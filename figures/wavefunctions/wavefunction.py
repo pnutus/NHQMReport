@@ -40,7 +40,7 @@ H = mom.hamiltonian(contour, problem, Q)
 eigvals_5, eigvecs_5 = energies(H)
 
 rmax = 100
-r_order = 500
+r_order = 200
 r = sp.linspace(1e-1, rmax, r_order)
 
 

@@ -6,24 +6,26 @@
 
 In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
 We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}. 
-The \He{5} Shrödinger equation is then solved in the HO and plane wave bases.
+The Shrödinger equation is then solved in the HO and plane wave bases.
 The solutions are studied by looking at the energies and wavefunctions while varying parameters.
 
-\section{The Shell Model}
+\section{Model system -- the \He{5} Nucleus}
+%\begin{itemize}
+%  \item shell model
+%  \item core/valence nucleons
+%  \item woods-saxon
+%  \item doubly magic nuclei are good
+%  \item we can choose O or He, we chose He
+%  \item \He{5} specifics (parameters)
+%\end{itemize}
+We will choose to study the \He{5} nucleus as a concrete\todo{Concrete <=> betong confusion?} example because its solutions have physical significance, and it is a system that can effectively be treated as a two-body system, consisting of the \He{4} nucleus (subsequently referred to as the $\alpha$-particle) and a valence neutron. This is a good approximation, because the $\alpha$ is a tightly bound doubly magic nucleus, where both the neutrons and protons form filled shells, consisting of 2 $s_{1/2}$-neutrons and 2 $s_{1/2}$-protons. The ground state of \He{5} will thus consist of a valence $p_{3/2}$-neutron, with an excited $p_{1/2}$-state. 
 
-\begin{itemize}
-  \item shell model
-  \item core/valence nucleons
-  \item woods-saxon
-  \item doubly magic nuclei are good
-  \item we can choose O or He, we chose He
-  \item \He{5} specifics (parameters)
-\end{itemize}
+Other doubly magic nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow shell model 2008}, but we will focus on the light Helium nuclei.
+%This is common practice and is a corner stone of the nuclear shell model. \todo{maybe a citation here? OLA PONTUS OLA} \todo{why?/cite/explain}
 
-We choose the \He{5} nucleus as a concrete example because it can be modeled as an alpha particle, a very stable doubly magic nucleus, with an orbiting neutron. We could also have chosen \ce{^16O} as our core, another doubly magic nucleus.
-This is common practice and is a corner stone of the nuclear shell model. \todo{maybe a citation here? OLA PONTUS OLA} \todo{why?/cite/explain}
-Since the exact nucleon-nucleon interaction is unknown, we use the established Woods-Saxon potential as an approximation. 
-The Woods-Saxon potential (\cref{fig:woods-saxons}) is given by
+The \He{5} consists of five nucleons, each consisting of three quarks, all interacting with the strong force. The exact interaction of this system is in fact unknown, and we will have to use an effective \emph{mean-field} potential to describe it. These are potentials constructed to approximate the real behavior, with a set of parameters fitted to reproduce experimental data. Throughout this report, we will use the established Woods-Saxon potential to model our systems.
+ 
+The Woods-Saxon potential (shown in \cref{fig:woods-saxons}) is given by
 \begin{eq}
 	V(r)=
 	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr}
@@ -32,9 +34,17 @@ where
 \begin{eq}
 	f(r)=\b{1+\exp\p{\frac{r-r_0}{d}}}^{-1}.
 \end{eq}
-We seek to optimize the parameters for our bases to give results that match experimental values but we initially use common values given by \cite{suhonen,dickhoff}. \todo{why?/cite/explain}
-These are: potential strength $V_0 = \SI{47}{MeV}$, spin-orbit coupling strength $V\sub{so} = \SI{-7.5}{Mev}$, range $r_0 = \SI{2}{fm}$ and diffuseness $d = \SI{0.65}{fm}$.
-The spin-orbit coupling can be either attractive or repulsive depending on how the angular momenta couples
+We will eventually optimize the parameters to match experimentally determined energy levels for \He{5}, but we will begin with using standard values given by \cite{suhonen,dickhoff} to investigate the general behavior of the solutions. 
+These parameters are: 
+\begin{align*}
+  & \text{Interaction strength}         & V_0       &= \SI{47}{MeV}   \\
+  & \text{Spin-orbit coupling strength} & V\sub{so} &= \SI{-7.5}{Mev} \\
+  & \text{Range}                        & r_0       &= \SI{2}{fm}     \\
+  & \text{Diffuseness}                  & d         &= \SI{0.65}{fm}  \\ 
+\end{align*}
+where the names of the parameters should be self-explaining. 
+
+Note that the spin-orbit coupling term can give either attractive or repulsive contributions, depending on how the angular momenta couples
 \begin{eq}
   \vec{l}\cdot\vec{s} 
   = 
@@ -51,12 +61,11 @@ The spin-orbit coupling can be either attractive or repulsive depending on how t
 \end{eq}
 
 Since we approximate the system as a spherically symmetric interaction 
-between two particles, we can reduce the problem to a one-dimensional equation by using the relative coordinate $\vec{r} = \vec{r}_\alpha - \vec{r}_n$ and introducing the reduced mass \todo{why?/cite/explain}
+between two particles, we can by standard procedure reduce the problem to a one-dimensional equation by using the relative coordinate $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass \todo{why?/cite/explain}
 \begin{eq}
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
-We can now proceed to solve the Schrödinger Equation with the given potential.
-
+We can now proceed to solve the Schrödinger equation with the specified potential.
 
 
 \begin{figure}
@@ -220,6 +229,8 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 %%%%%%%%%%%%%%%%%%%%%%%%%EIGVECS FIGURE
 
 \begin{figure}[H]
+	  \pgfplotstableread{../figures/he5_mom_eigvecs/physical_eigvecs.data}\phys
+	    \pgfplotstableread{../figures/he5_mom_eigvecs/symmetric_eigvecs.data}\symm
   \centering{
   \pgfplotsset{
     width = \textwidth, height = 7cm,
@@ -239,7 +250,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
       \begin{axis}[	ylabel = $|\phi_i|^2$,]
         \foreach \yindex in {1,15,8,54}
         {   
-        \addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/physical_eigvecs.data};
+        \addplot table [x index= 0, y index = \yindex] {\phys};
         }
       \end{axis}
     \end{tikzpicture}
@@ -252,7 +263,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
       \begin{axis}[	ylabel = $k^2 w |\phi_i|^2$,]
         \foreach \yindex in {1,15,8,54}
         {   
-        \addplot table [x index= 0, y index = \yindex] {../figures/he5_mom_eigvecs/symmetric_eigvecs.data};
+        \addplot table [x index= 0, y index = \yindex] {\symm};
         }
       \end{axis}
     \end{tikzpicture}
@@ -267,6 +278,75 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%EIGVECS end
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
+
+\begin{figure}[H]
+	    \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_real.data}\wfs
+  \centering{
+  \pgfplotsset{
+    width = \textwidth, height = 7cm,
+ xlabel = $k/\b{\si{fm^{-1}}}$, ylabel = $k^2 \absq{\Phi(k)}$,
+    axis x line = bottom,
+    xmin = 0,
+    xmax=0.5,
+    axis y line = left,
+    no markers,
+    %ytick = \empty,
+    legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
+  }
+  \subfloat[Wavefunctions in momentum space for solutions along real-axis]{
+    \tikzset{external/remake next}
+    \tikzsetnextfilename{wfs-real}
+    \begin{tikzpicture}
+      \begin{axis}[xmax=3]
+		  
+  		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
+  		 \addlegendentry{Resonance}
+
+        \foreach \yindex in {1,...,60}
+        {   
+        \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
+        }
+		\addlegendentry{Continuum state}
+		
+		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
+
+
+      \end{axis}
+    \end{tikzpicture}
+  }
+	
+  \subfloat[Wavefunctions in momentum space for solutions along the complex berggren contour]{
+     \tikzset{external/remake next}
+    \tikzsetnextfilename{wfs-comp}
+    \begin{tikzpicture}
+					  \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_complex.data}\wfs
+      \begin{axis}[xmax=3]
+ 		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
+ 		 \addlegendentry{Resonance}
+        \foreach \yindex in {1,...,60}
+        {   
+        \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
+		
+        }
+		\addlegendentry{Continuum state}
+ 		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
+
+      \end{axis}
+    \end{tikzpicture}
+  }
+	
+}
+
+
+
+\caption{yada} 
+\label{fig:he5_eigvecs}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
 
 
