@@ -13,27 +13,42 @@
   \end{itemize}
   \item Renormalization
   \begin{itemize}
-    \item Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis \cite{jimmy}. This can be done in several different ways, some more advanced than others. By only selecting a few of the single-particle states we can reduce the size of the matrix, hence the decreased computational time.
+    \item Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis \cite{jimmy}.
+    This can be done in several different ways and there exists some different algoritms.
+    The point with only selecting a few of the single-particle states is that it reduces the size of the matrix, hence the decreased computational time.
     \todo[inline]{Cite Jimmy...}
     \item Reducing the size of the many-body matrices by only keeping the most important states in the sp basis
     \begin{itemize}
       \item cite jimmy
     \end{itemize}
-    \item Another way to decrease computational time is the Monte-Carlo simulations we did in \cref{cha:monte-carlo}. The problem is to get it to work. In our simulations we did not see neither the resonances in \ce{^{5,6} He} nor the bound state in \He{6}. One theory is that it would show results in larger systems or if we would use more states in each iteration, but then it would not be faster than the original algorithm in our case.
+    \item Another way to decrease computational time is the Monte-Carlo simulations we did in \cref{cha:monte-carlo}.
+    The problem is to get it to work.
+    In our simulations we did not see neither the resonances in \ce{^{5,6} He} nor did we find the bound state in \He{6}.
+    One theory is that it would show results in larger systems or if we would include more basis states in each iteration, but in our case. this would not be faster than the original algorithm.
     \item Other ways of using monte carlo.
     \item Monte Carlo for larger systems.
   \end{itemize}
 
   \item More nucleons
   \begin{itemize}
-    \item We have confined us to the nuclea \He{5} and \He{6} in this report and one natural way to proceed is to continuously add more neutrons to the alpha particle. This would primarily mean the \He{7} and \He{8}. Heavier cores than theese would probably need a significantly faster computer than those we have access to.
+    \item We have confined ourselves to the nuclei of \He{5} and \He{6} in this report.
+    Which would make the most natural way to proceed the addition of more neutrons to the alpha particle.
+    This since neither the code nor the theory changes much when adding a fourth or fifth neutron, as in the case with \He{7} and \He{8}.
+    Heavier cores than these could pose trouble since they probably would need a faster computer than those we have access to.
 
-   \item There are of course more interesting nuclei than Helium to study, which makes the study of other cores an interesting way to continue. One core that also is interesting is \ce{^{16} O} since it also has a doubly magical core that can be treated as a fixed point. Other than that we could study Li or Be since they displays several interesting boromean and resonance phenomena.
+   \item Of course there exists other interesting nuclei than Helium to study, which makes the study of other cores another interesting path to explore.
+   One of these cores is \ce{^{16} O} since it also is doubly magical, which makes it suitable to add more neutrons to.
+   Other than Oxygen, we could study Li or Be since they displays several interesting boromean and resonance phenomena.
    \todo[inline]{Not shure of last sentence.}
 
-   \item Our method for describing \He{6} is currently consisting of only $p_{1/2}$ and $p_{3/2}$ waves, but we believe that in order to study it more carefully or to study different cores we must increase which waves we include in our expansion. This would be waves in the s, p, d, f, ... shells.
+   \item Our method for describing \He{6} is currently consisting of only $p_{1/2}$ and $p_{3/2}$ waves, but we believe that in order to study it more carefully or to study different cores we may have to include more waves in our expansion.
+   This would be waves in the s, p, d, f, ... shells.
+   The reason to why we might need these is that the states we are interested in could have large dependencies on these other waves.
 
-   \item Another way of describing different cores would be to start with only nucleons, ie only use protons and neutrons as base elements. We do not know if this is a good approach, but it would be interesting to try and see if the result is the same, better or worse. It would in either case demand a lot of computational power. This is probably a good reason to use a core and just add neutrons to it since this reduces the size of the problem.
+   \item Another way of describing different cores would be to start with only nucleons, ie only use protons and neutrons as base elements, instead of how we do now with an alpha core interacting with valence neutrons.
+   We do not know if this is a good approach, but it would be interesting to try and see if the result is the same, better or worse.
+   It would in either case demand a lot of computational power.
+   This is probably a good reason to use a core and just add neutrons to it since this vastly reduces the size of the problem.
   \end{itemize}
 
   \item More realistic interaction
