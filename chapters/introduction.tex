@@ -3,13 +3,12 @@
 \chapter{Introduction}
 
 The properties of a quantum mechanical system is largely determined by its potential. 
-Depending on the type of potential, a system can give rise to bound states, unbound states or both.
+Depending on the type\todo{structure of the,kind of, nature of the} of potential, a system can give rise to bound states, unbound states or both.
 
 A particle in a potential well with infinitely high walls is completely bound and cannot leave the potential well.
 Such a system is a called a \emph{closed} quantum system, since it does not interact with the environment. 
 The energy of a closed quantum system can only take on discrete values, as illustrated in \cref{fig:closed_quantum_system} with the harmonic oscillator potential.
 The wavefunction of a bound state is localized inside the potential well.
-
 \todo{Talk about positive/negative energy?}
 
 The polar opposite of a system with an infinitely high potential is no potential at all, i.e.~a free particle propagating through space (\cref{fig:free_particle}).
@@ -18,7 +17,7 @@ An unbound, free state is therefore said to be \emph{in the continuum}.
 The wavefunction of an unbound state is unlocalized and has infinite range.
 
 Between the closed and completely free systems is the \emph{open} quantum system, portrayed in \cref{fig:open_quantum_system}. 
-Here the potential has a finite range, i.e. it levels off toward zero.
+Here, the potential has a finite range, i.e. it levels off toward zero.
 Thus, particles can enter and exit the system and, consequently, there are unbound states. 
 Depending on the depth of the potential well of the open system, there can be a finite number of bound states.
 
@@ -90,14 +89,23 @@ This can be expressed mathematically if we let the resonance have a complex ener
   \caption{Three types of quantum systems: closed, completely free and open.}
   \label{fig:potentials}
 \end{figure}
+\todo[inline]{bound state in last figure?}
+\todo[inline]{Colored energy levels? y-axis to the left of the potentials? add x-axis specifying position?}
+In addition to the bound and unbound states, an open quantum system can harbor \emph{resonances}. 
+These are \emph{quasi-bound} states that are neither bound nor unbound, but exhibit properties of both. 
+It appears in the continuum, like an unbound state, but its wavefunction is localized, like that of a bound state.
+Perhaps most curious is that the norm of the resonance state decreases exponentially with time. 
+This can be expressed mathematically if we let the resonance have\todo{correspond to.} a complex energy, as the following argument suggests.
+
+\newpage
 \todo{fixa klart figuren}
 
-The time evolution of a quantum system is governed by the Shrödinger equation
+The time evolution of a quantum system is governed by the Schrödinger equation
 \begin{eq}
   \label{eq:schrödinger}
   i\hbar\ddt\ket\psi = H \ket\psi.
 \end{eq}
-The time-dependency of a bound state $\psi$ with energy $E$ in the discrete spectrum is \todo[inline]{only in the discrete spectrum?}
+The time-dependency of an eigenstate to the Hamiltonian with energy $E$ is 
 \begin{eq}
 	\psi(t)
 	= 
@@ -119,7 +127,7 @@ we get
   =
   \exp\p{-\frac{\Gamma}{\hbar} t} \absq{\psi(0)}
 \end{eq} 
-which describes a resonant state that decays exponentially with half-life 
+which describes a state that decays exponentially with half-life 
 $t_{1/2}=\hbar\ln 2/\Gamma$. $\Gamma$ is called the \emph{width} of the resonance.
 
 \todo[inline]{Talk about width here? Needs to be better. Figure of experimental resonance?}
@@ -137,16 +145,17 @@ Hermitian operators can only have real eigenvalues, and are thus insufficient fo
 
 The aim of this thesis is to present methods for dealing with the complex energies that describe resonances. To demonstrate the methods, we will use 
 the simple nuclear systems \He{5} and \He{6}, which are both known to have resonances.
+\todo[inline]{Many ``this thesis'' in last and next paragraph.}
 
 The thesis can be thought of as divided into two parts, the first covering resonances in a simple two-body problem and the second part covering the first steps toward more complicated many-body systems. 
 In \cref{cha:basis_expansion} the mathematical foundation for the calculations in this thesis, \emph{basis expansion}, is introduced.
-The basis expansion method is then used in \cref{cha:two-body} to study a loosely bound nuclear system, the \He{5} nucleus.
+The basis expansion method is then used in \cref{cha:two-body} to study a loosely bound two-body nuclear system, the \He{5} nucleus.
 In \Cref{cha:berggren} we use the Berggren basis to reproduce the resonance in \He{5}.
 
 \Cref{cha:many-body} is an introduction to many-body theory, focusing on fermionic systems. 
 The many-body theory is then utilized in \cref{cha:three-body} 
 to study a three-body problem, specifically the \He{6} nucleus.  
-In \cref{cha:monte_carlo} a Monte Carlo method for reducing the basis size is investigated. 
+In \cref{cha:monte_carlo} a Monte Carlo method for reducing the basis size\todo{and reducing calculation time?} is investigated. 
 Finally, \cref{cha:outlook} discusses the methods and results, and suggests further avenues of inquiry.
 
 \end{document}

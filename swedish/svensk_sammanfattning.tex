@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass[12pt,a4paper]{article}
 \usepackage[english]{babel}
 
 \usepackage{../main/NHQM}
@@ -16,6 +16,7 @@
 \author{Jonathan Bengtsson \and Ola Embréus \and Vincent Ericsson \and Pontus Granström \and Nils Wireklint}
 \date{\today}
 \maketitle
+\newpage
 
 \todo[inline]{Snabbt utkast, många fel, men någonting iallafall...}
 
@@ -26,34 +27,34 @@ Detta är ett sammandrag av vår ``Resonances in loosely bound quantum systems''
 
 Beteendet hos ett kvantmekaniskt system beror till en stor del på dess potential.
 Vi vet att beroende på potentialens utseende kan systemet ge upphov till bundna och obundna (fria) tillstånd.
-Dock har vi undersökt en tredje typ av lösning, vilket kallas för ett kvasibundet, eller resonant tillstånd.
+Men det finns en tredje typ av lösning, vilket kallas för ett kvasibundet, eller resonant tillstånd.
 \todo[inline]{Kan man säga resonanta tillstånd?}
-Dessa tillstånd delar effekter med både bundna och obundna tillstånd och kan beskrivas med hjälp av komplexa energier.
+Dessa tillstånd delar egenskaper med både bundna och obundna tillstånd och kan beskrivas med hjälp av komplexa energier.
 
-Vi har i vår rapport undersökt resonansfenomen i \He{5} och \He{6}, vilka är problem med två respektive tre kroppar.
-Dock behöver vi ett antal nya redskap för att kunna undersöka dessa resonanser.
+Vi har i vår rapport undersökt olika sätt att modelera resonansfenomen i flerkropparssystem. Specifikt har vi betraktat \He{5} och \He{6}, vilka an beskrivas som problem med två respektive tre kroppar.
+För att göra detta hr vi behövt använda olika redskap som basexpansion och ... .
 
-Det första vi vill göra är att skriva om Schrödingerekvationen på en form som är lösbar utav datorn, då den saknar analytiska lösningar för de potentialer vi kommer att använda.
+Det första vi vill göra är att skriva om Schrödingerekvationen på en form som är lösbar utav datorn, då den saknar analytiska lösningar för de potentialer vi kommer att använda (wppds-saxon, gausiskt två kropparsinteraktion och \emph{surfase delta interaction}).
 Detta görs genom att använda så kallad \emph{basexpansion}, vilket går ut på att en bas kan skrivas som en linjär kombination av en annan.
 En viktig sak att komma ihåg när man gör detta är att basen måste vara komplett.
-Genom teori förklarad i huvudrapporten får vi då att vi kan skriva vårt problem på formen
+Genom teori förklarad i huvudrapporten kan vi skriva vårt problem på formen
 \begin{eq}
 	2.9 i rapporten.
 \end{eq}
-Som vi ser nu har vi ett egenvärdesproblem vi kan lösa med datorns hjälp.
+Vi har alltså skrivit om Schrödinger Ekvationn till en matris ekvation som löses med en egenvärdes lösare i dator.
 
-För att göra våra beräkningar kortare och enklare inskränker vi oss till fallet av ett sfäriskt symmetriskt problem, vilket drar ner komplexitet och därigenom beräkningstid betydligt.
+För att göra våra beräkningar kortare och enklare inskränker vi oss till sfäriskt symmetriska problem, vilket drar ner komplexitet och därigenom beräkningstid betydligt.
 
 Den bas vi börjar med att använda består av harmoniska oscillatorer, vilket ger oss matriselement på formen
 \begin{eq}
 2.15, ev 2.16 också.
 \end{eq}
 Det visade sig snart dock att denna bas inte räckte till när vi ville betrakta resonanser, även om den fungerade bra till bundna tillstånd.
-Istället introducerar vi en planvågsexpansion som går ut på att vi väljer vissa diskreta punkter i rörelsemängdsrummet och utvecklar problemet i denna basen. \todo[inline]{Är detta någolunda rätt förklarat.}
+Istället introducerar vi en planvågsexpansion som går ut på att vi väljer vissa diskreta punkter i rörelsemängdsrummet och utvecklar problemet i denna bas. \todo[inline]{Är detta någolunda rätt förklarat.}
 Efter detta kunde vi nu se tendenser till en resonans hos \He{5}, men hade inget sätt att bestämma dess komplexa delar.
 
-För att beskriva resonansen på ett bra sätt behöver vi dock inte göra några större ändringar, mer än att utöka basen till att befinna sig i det komplexa planet.
-Detta betyder att vi istället för att låta våra planvågspunkter ligga längs den reella axeln låter de gå ner i den fjärde kvadranten  och runt den pol som svarar mot resonansen.
+För att beskriva resonansen på ett bra sätt använder vi Tore \emph{Berggren}s teori och utökar basen till att även innehålla komplexa rörelsemängdsmoment.
+Detta betyder att vi istället för att låta våra planvågspunkter ligga längs den reella axeln låter de gå ner i den fjärde kvadranten och runt den pol som svarar mot resonansen.
 
 \subsection{Flerkroppssaker}
 Nu när vi har hittat resonansen i \He{5} kan vi anse oss ha löst tvåkropparsfallet och vill då naturligtvis gå vidare med tre.
@@ -61,10 +62,20 @@ Detta är svårare då vi inte längre kan reducera problemet till en dimension 
 
 Det trekropparssystem vi vill undersöka är \He{6}, vilket är vår naturliga övergång ifrån \He{5}.
 Denna kärna moddelerar vi som en alfapartikel med två valensneutroner.
-Skulle dessa inte växelvärka med varandra hade problemet endast varit det av \He{5}, men så är inte fallet.
-Istället bygger vi upp en bas utav energierna och vågfunktionerna vi fann i tvåkropparssystemet och avänder dessa till att lösa trekropparssystemet.
-Våra valensneutroner interagerar med kärnan på precis samma sätt som förut, men de kommer även att växelvärka med varandra.
-Denna växelvärkan är extremt komplicerad och är inte heller helt känd, istället använder vi oss utav grova förenklingar genom att använda dels gaussisk interaktion, samt en något mer fysikalisk deltainteraktion.
+Det går att visa att vi kan modellera detta som en kärna med två neutroner som endast kan finnas i lösningarna till \He{5} med den extra inskränkingen att de är fermioner och inte kan vara i samma tillstånd, utöver detta låter vi de interagera med en grovt approximerad svärisk potential.
+
+I ett första steg bygger vi upp en bas utav energierna och vågfunktionerna vi fann i tvåkropparssystemet och avänder dessa för att konstruera möjliga simultana tillstånd för de två neutronerna.
+För att beskriva flerkroppars tillstånden kan vi antingen koppla de två enpartikeltillståndens rörelsemängsmoment eller räkna på en större uppsättning okopplade tillstånd. För att koppla rörelsemängdsmomenten utnyttjar vi ... 
+\begin{eq}
+	1+2+... = -\frac{1}{12}
+\end{eq}
+Vi får då kravet att den totala rörelsemängden ... 
+Detta för att undvika att i onödan behadla kombinationer som inte ger bidrag till hamiltonianen.
+Medan i det okopplade fallet testas alla möjligheter och inkluderar snävare krav i vilka tillstånd som ger bidrag till hamiltonianen. Beräkningstekniskt är det den kopplade konfigurationen som de facto används.
+
+När vi sedan beräknar hamiltonianen kommer neutronerna växelvärka med kärnan på samma sätt som förut, men de kommer även att växelvärka med varandra. Vi delar upp hamiltonianen i två delar, den ena är den kinetiska energi operatorn och behandlar en partikeltillstånden oberoende av varandra, den andra delen beskriver växelvärkan mellan de två neutronerna.
+Denna växelvärkan är extremt komplicerad och är inte heller helt känd, istället använder vi oss utav grova förenklingar genom att använda först en gaussisk interaktion och sedan en mer fysikalisk deltainteraktion.
+
 
 \todo[inline]{kopplingar, hur mycket skriva?}
 

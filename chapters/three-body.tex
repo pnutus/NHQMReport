@@ -6,7 +6,7 @@
 
 Equipped with the many-body theory of \cref{cha:many-body} we are now ready to study an open three-body system.
 The natural way to proceed is to add another neutron to our two-body \He{5} system and end up with \He{6}, seen as an alpha particle core with two valence neutrons ($\alpha + n + n$).
-We now have to take into account the attractive two-body interaction between the neutrons, which allows for bound states in \He{6} where there were none in \He{5}.\todo[inline]{were none or was none?}
+We now have to take into account the attractive two-body interaction between the neutrons, which allows for bound states in \He{6} where there were none in \He{5}.\todo[inline]{were none or was none? where there in \He{5} was none.}
 Nuclei with this property are called \emph{Borromean}, after the Borromean rings (\cref{fig:borromean}). 
 The Borromean rings are three rings interlocked in such a way that, if any one ring is removed, the other two will fall apart, as is the case with the core and the neutrons.
 
@@ -47,6 +47,7 @@ where $\hat{H}_1$ is the Hamiltonian of the two-body problem and $\hat{V}\sub{re
 To compute the Hamiltonian matrix we will use the eigensolutions $\ket{\psi_i}$ from the previous two-body problem as single-particle basis states. 
 The neutron-core pairs are fermions, so we form antisymmetric two-particle Fock states $\ket{\psi_i,\, \psi_j}$.
 Because our basis consists of the eigenstates of $\hat{H}_1$, we can use \cref{eq:one-body_matrix_elements,eq:two-body_matrix_elements} to write the matrix elements as
+\todo[inline]{Last paragraph needs cleanup, but I don't see how atm.}
 \begin{eq}
   \bra{ab} \hat{H} \ket{cd} 
   = 
@@ -80,7 +81,12 @@ A commonly used approximation is an interaction on the form
 \begin{eq}
   V = V(\vec{r}_1 - \vec{r}_2).
 \end{eq}
-To make the calculations more managable, a \emph{separable} interaction can be chosen. An arbitrary function $V = V(\vec{r}_1 - \vec{r}_2)$ can be expanded in a \emph{multipole expansion},\todo{cite souhonen somewhere}
+To make the calculations more managable, a \emph{separable} interaction are preferrable since we can write it as
+\begin{eq}
+  V_l(r_1, r_2) = v_l(r_1)v_l(r_2).
+\end{eq}
+
+An arbitrary function $V = V(\vec{r}_1 - \vec{r}_2)$ can be expanded in a \emph{multipole expansion},\todo{cite souhonen somewhere}
 \todo[inline]{what conj?}
 \begin{eq}
   V(\vec{r}_1 - \vec{r}_2) 
@@ -88,10 +94,9 @@ To make the calculations more managable, a \emph{separable} interaction can be c
   \sum_{lm} v_l(r_1, r_2) 
   Y_l^m(\Omega_{r_1})\conj{Y_l^m}(\Omega_{r_2})
 \end{eq}
-using the symmetry around the axis connecting the two particles. A separable interaction is one where 
-\begin{eq}
-  V_l(r_1, r_2) = v_l(r_1)v_l(r_2)
-\end{eq}
+using the symmetry around the axis connecting the two particles.
+\todo[inline]{This paragraph needs to know why it's here.}
+
 We study two different types of separable two-body interactions, a trivially separable gaussian interaction and a surface delta interaction.
 
 

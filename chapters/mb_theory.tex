@@ -123,7 +123,7 @@ The resulting state will not necessarily be ordered, and the ordering might cont
   (-1)^{i-1} 
   \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_i \alpha_{i+1} ... \alpha_{N}}.
 \end{eq}
-Note that when $a_\alpha^\dag$ acts on a state that already contains a particle with quantum numbers $\alpha$, the result is 0, because of antisymmetry
+Note that when $a_\alpha^\dag$ acts on a state that already contains a particle with quantum numbers $\alpha$, the result is 0, because of antisymmetry\todo{is it really antisymmetry? what about pauli?}
 \begin{eq}
   \label{eq:create_zero}
   a_{\alpha}^{\dagger} \ket{\alpha\alpha_1 \alpha_2 ... \alpha_N} 
@@ -163,6 +163,7 @@ We can now express the state of any number of particles, but in order to do some
 It turns out that operators involving any number of particles can be expressed using the creation and annihilation operators. \todo[inline]{what a pleasant surprise}
 The operators can then act on a state with an arbitrary number of particles. 
 We will only treat one- and two-body operators here, as they are sufficient for our purposes.
+\todo[inline]{There are many operators here...}
 
 \subsubsection{One-Body Operators}
 
@@ -302,7 +303,7 @@ The creation and annihilation operators are implemented as functions on the Fock
 \cref{eq:create,eq:create_ordered,eq:create_zero,eq:annihilate,eq:annihilate_ordered,eq:annihilate_zero}.
 The creation operator function steps through the list, flipping the sign at each step, until the correct place for the new particle is found. 
 If the particle is already part of the Fock state, the sign is set to 0.
-The annihilation operator searches for a state, saves its index $k$ in the list, annihilates it and set the sign to $(-1)^k$. If the state does not exist the sign is set to 0.
+The annihilation operator searches for a state, saves its index $k$ in the list, annihilates it and set the sign to $(-1)^k$. If the state not exists, the sign is set to 0.
 
 \subsection{Matrix Element Computations}
 
@@ -330,7 +331,7 @@ The following section introduces the concept of angular momentum coupling. \todo
 
 
 \subsection{Coupled Scheme}
-So far we have used basis states 
+So far we have used the basis states 
 \begin{eq}
   \pket{E_1m_1, E_2m_2} = \ket{E_1j_1m_1}\otimes\ket{E_2j_2m_2}
 \end{eq}
@@ -350,7 +351,7 @@ This means that one may choose a basis where $J$, $M$, $j_1$ and $j_2$ are simul
 \end{eq}
 where the $j$'s are no longer explicitly written out since they are fixed for any given calculation. The transformation is done with the coefficients $c_{m_1 m_2}$, formally written as \todo{take on one value? please elaborate}
 \begin{eq}
-  c_{m_1 m_2} = \pbraket{j_1 m_1, j_2 m_2}{JM}
+  c_{m_1 m_2} = \pbraket{j_1 m_1, j_2 m_2}{JM},
 \end{eq}
 known as the \emph{Clebsch-Gordan coefficients}. There are known expressions for these, and values can be found in standard tables. \todo{citation or at least explain what we do}
 

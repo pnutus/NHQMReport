@@ -5,14 +5,14 @@
 \label{cha:two-body}
 
 In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
-We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}. 
+We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}. \todo{is it called model system?}
 The Shrödinger equation is then solved in the HO and plane wave bases.
 The solutions are studied by looking at the energies and wavefunctions while varying parameters.\todo[inline]{"the"?}
 
 \section{Model System: the \He{5} Nucleus}
-Typical examples of open quantum systems are encountered in nuclear physics. The atomic nucleus is held together by the very short-range strong interaction, acting between the nucleons. \todo[inline]{typical?}
-This can be studied within a shell model. \todo[inline]{this what? really short sentance btw}
-In this framework, the nucleons are modelled as interacting with a \emph{mean-field} potential, approximating an effective interaction the nucleons experience. \todo[inline]{jag gillar inte flödet i sista satsen, man hakar upp sig}
+Typical examples of open quantum systems are encountered in nuclear physics. The atomic nucleus is held together by the very short-range strong interaction acting between nucleons. \todo[inline]{typical?}
+These are systems that can be studied within a shell model. \todo[inline]{really short sentance}
+In this framework, the nucleons are modelled as interacting with a \emph{mean-field} potential, approximating an effective interaction the nucleons experience. \todo[inline]{jag gillar inte flödet i sista satsen, man hakar upp sig}\todo{Do the proper derivation?}
 The remaining potential is left as a weak \emph{residual} interaction between nucleons. \todo[inline]{remaining?}
 
 This method has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
@@ -355,4 +355,28 @@ We have now studied the solutions obtained from solving the nuclear two-body pro
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
 
+
+%%% E(r0)
+\tikzsetnextfilename{triangle_contour}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = \textwidth,
+      height = 7cm,
+      xlabel= $r_0$,
+      ylabel=E,
+		  axis lines = middle,
+      no markers,
+      enlargelimits,
+      ticks = none,
+      ]
+      \addplot[color=red, ultra thick] table[x index = 0, y index =1] {../figures/E(omega)/E(omega).data};
+      \foreach \y in {2,...,5}
+         \addplot[color=gray] table[x index = 0, y index = \y] {../figures/E(omega)/E(omega).data};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The complex contour used. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
+  \label{fig:triangle contour}
+\end{figure}
 \end{document}

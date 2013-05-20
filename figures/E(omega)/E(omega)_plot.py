@@ -22,7 +22,7 @@ r0list=sp.linspace(a,b,500)
 omegalist=[]
 for r in r0list:
     omegalist.append(1/(problem.mass*r*r))
-basis_size=50
+basis_size=100
 k_max=3
 
 contour = gauss_contour([0, k_max], basis_size)
@@ -34,13 +34,21 @@ Q = QNums(l=1, j=1.5, J=0, M=0,
 
 res_osc = []
 
-for omega in omegalist:
-    print omega
+trunc_at = 5
+trunc_val = 5
+
+for i,omega in enumerate(omegalist):
+    print (i+1),":",omega
     problem.HO_omega=omega
     H = osc.hamiltonian(basis_size, problem, Q)
     eigvals, _ = energies(H)
-    res_osc.append(eigvals[0:5])
+    res_osc.append(eigvals[0:20])
 
+for ev in res_osc:
+    for e in ev:
+        if e > trunc_at:
+            e = trunc_val
+    
 print "done"
 
 # range = []
