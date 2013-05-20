@@ -22,27 +22,6 @@ We now have to take into account the attractive two-body interaction between neu
 This is a curious phenomenon---these types of systems are called \emph{Borromean systems}, after the Borromean rings (\cref{fig:borromean}). 
 The Borromean rings are three rings interlocked in such a way, that if any one is removed, the other two will fall apart as well.  
 
-\begin{figure}
-  \newcommand{\circdist}{1}
-  \newcommand{\circrad}{2}
-  \centering
-  \begin{tikzpicture}[even odd rule]
-    \foreach \angle/\colour in {90/red,-30/blue,210/green}
-      \fill [\colour] (\angle:\circdist) circle (\circrad) circle (\circrad+0.5);
-
-    \begin{scope}
-    \clip (-30:\circdist) circle (1);
-    \fill [red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
-    \end{scope}
-
-    \clip (90:\circdist) ++ (180:\circrad) circle (1);
-    \fill [red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
-  \end{tikzpicture}
-  \caption{The Borromean rings}
-  \label{fig:borromean}
-\end{figure}
-
-
 We see the three-body system as a combination of two two-body systems of core and neutron, interacting. Since we are only considering valence neutrons in the $p$ orbitals ($l=1$), we can use the fact\cite{suzuki} that one may use the same reduced mass as in the two-body problem (in a system with particles of like parity there will be no recoil of the core.)
 \todo[inline]{Cite article in dropbox}
 Because of this, $H_1$ is the same Hamiltonian that was used in the solution of \He{5}. 
@@ -82,12 +61,37 @@ Initially we investigate the simplest form of separable interaction, a product o
 \begin{eq}
   V(r_1, r_2) 
   = 
-  -V\sub{GI} \exp\p{-\frac{r_1^2}{R^2}} \exp\p{-\frac{r_1^2}{R^2}}.
+  -V\sub{GI} \exp\p{-\frac{r_1^2}{R^2}} \exp\p{-\frac{r_2^2}{R^2}}.
 \end{eq}
 The range $R$ and strength $V\sub{GI}$ are fitting parameters.
 
-\todo{"We see"? Plot?}
-We see that the potential in a rough sense satisfies the expected properties of the interaction. If at least one neutron is far from the core, the other will experience little attraction. If both neutrons are in the vicinity of the core, they will experience a stronger attraction.
+\begin{figure}
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        xlabel = $r_1$,
+        ylabel = V,
+        axis x line = middle,
+        axis y line = left,
+        xtick=\empty,
+        ytick={0, -1},
+        yticklabels={0, $\displaystyle V\sub{GI}\exp\p{-\frac{r_2^2}{R^2}}$},
+        domain=0:3,
+        ymin=-1.2, ymax=0.5,
+        every axis y label/.style={
+          at = {(current axis.above origin)},
+          anchor = north west,
+        },
+        ]
+        \addplot[black] {-e^(-x^2)};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{The Gaussian interaction as seen by one of the neutrons. The position of the other neutron determines the depth of the potential well.}
+  \label{fig:gaussian}
+\end{figure}
+
+
+In \cref{fig:gaussian} we see that the potential in a rough sense satisfies the expected properties of the interaction. If at least one neutron is far from the core, the other will experience little attraction. If both neutrons are in the vicinity of the core, they will experience a stronger attraction.
 
 Because the potential is separable
 \begin{eq}
