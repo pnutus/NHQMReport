@@ -16,15 +16,16 @@ The Borromean rings are three rings interlocked in such a way that, if any one r
   \centering
   \begin{tikzpicture}[even odd rule]
     \foreach \angle/\colour in {90/red,-30/blue,210/green}
-      \fill [\colour] (\angle:\circdist) circle (\circrad) circle (\circrad+0.5);
+      \draw [fill=\colour] 
+        (\angle:\circdist) circle (\circrad) circle (\circrad+0.5);
 
     \begin{scope}
     \clip (-30:\circdist) circle (1);
-    \fill [red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
+    \draw [fill=red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
     \end{scope}
 
     \clip (90:\circdist) ++ (180:\circrad) circle (1);
-    \fill [red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
+    \draw [fill=red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
   \end{tikzpicture}
   \caption{The Borromean rings}
   \label{fig:borromean}
