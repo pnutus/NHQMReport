@@ -16,7 +16,7 @@ commonly written in the position basis as
 \end{eq}
 
 For the nuclear systems to be treated, the TISE has no known analytical solutions, and we need to use numerical methods to solve it.
-However, the Hamiltonian written as in \cref{eq:TISEpos}, is not suitable for numerical calculations. \todo[inline]{cite/explain}
+However, the Hamiltonian written as in \cref{eq:TISEpos} is not optimal for computation. \todo[inline]{cite/explain}
 Instead, we would like to write it as a matrix equation
 \begin{eq}
   \label{eq:matrix equation}
@@ -28,12 +28,11 @@ To write the TISE as a matrix equation we use \emph{basis expansion}.
 Basis expansion is how we make sense of the abstract Hilbert spaces, operators and state vectors of Quantum Mechanics (QM).
 By expanding these abstract objects in a basis, we can relate them to the physical world. 
 For example, \cref{eq:TISEpos} is the TISE for a single particle, expanded in the position basis. 
-We will not expand our problems in the position basis, but it will still be important, since it is the only basis in which we can express the potentials.
+We will not expand our problems in the position basis, but it will still be important, since it is the only basis in which we can express the potentials.\todo{Which potentials?}
 
 Before we begin, we briefly recap some well known QM facts. 
 First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$. 
-A discrete basis means that any state $\ket\psi$ can be written as a linear combination of the basis states
-\todo[inline]{discrete basis? shouldn't this be complte basis?}
+A complete basis means that any state $\ket\psi$ can be written as a linear combination of the basis states
 \begin{eq}
   \label{eq:lincomb}	
   \ket\psi = \sum_n \psi_n \ket{n}
@@ -42,7 +41,7 @@ A discrete basis means that any state $\ket\psi$ can be written as a linear comb
   \quad
   \ket\psi = \fint{x} \psi(x) \ket{x}.
 \end{eq}
-The  complete bases we will use in this report are the \emph{position basis} $\ket{\vec{r}}$, the \emph{plane wave basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis} \cite{berggren}. 
+The  complete bases we will use in this thesis are the \emph{position basis} $\ket{\vec{r}}$, the \emph{plane wave basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis} \cite{berggren}. 
 All these bases are orthonormal, i.e.~all the basis vectors satisfy 
 \begin{eq}
   \braket{n}{n'} = \delta_{nn'}
@@ -60,7 +59,7 @@ With a complete basis $\ket{n}$, we get the very useful \emph{completeness relat
   \quad
   I = \fint{x} \ket{x}\bra{x},
 \end{eq}
-where $I$ is the identity operator. This relation can thus be inserted anywhere in any equation, and will find frequent use in this report.
+where $I$ is the identity operator. This relation can thus be inserted anywhere in any equation, and will find frequent use in this thesis.
 
 Let us now expand the TISE in the abstract $\ket{n}$ basis. We start by inserting the completeness relation for $\ket{n}$ in \cref{eq:TISE}
 \begin{eq}
@@ -89,21 +88,21 @@ and write $H_{nn'} = \bra{n} H \ket{n'}$, we get
 \end{eq}
 which is equivalent to the matrix equation \cref{eq:matrix equation}. This is 
 the basic method of expanding the TISE in a basis.
-\todo{Only (1.4) for equations?}
+\todo{Only use (1.4) for equations?}
 
 \section{Spherical Symmetry}
 \label{sec:spherical symmetry}
 
 We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. 
 This is sufficient for our purposes and, indeed, most common QM problems. \todo[inline]{why?/cite/explain}
-If we considered three-dimensional systems with arbitrary potentials, the matrix size would grow very fast and the problem would be infeasible to calculate.
+If we considered three-dimensional systems with arbitrary potentials, the matrices would be very large and solving the problem would become infeasible.
 
 The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m$
 \begin{eq}
   \psi(\vec{r}) = R(r) Y_l^m(\theta, \phi).
 \end{eq}
 Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. \todo{$j$ in here somewhere?}
-Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, which will result in a factor of $\delta_{ll'}\delta_{mm'}$.
+Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, \todo{and will}which will result in a factor of $\delta_{ll'}\delta_{mm'}$.
 This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
@@ -130,7 +129,7 @@ and if we use the fact that $H$ is diagonal in $l$ and $m$ we get
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
 \end{eq}
-We now have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (see \cref{sec:HO matrix elements} for the details) and the result is \todo{are we stringent in the use of compute, calculate?}
+We now have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (details are in \cref{sec:HO matrix elements}) and the result is
 \begin{eq}
   \label{eq:HO_matrix_elements}
   &
@@ -147,23 +146,22 @@ We now have a matrix equation, but we need to find the matrix elements $\bra{nlm
 	\fint[0][\inf]{r} 
     r^2 R_{nl}(r) V(r) R_{n'l}(r)
 \end{eq}
-where $R_{nl}$ are the radial wavefunctions of the harmonic oscillator
+where $R_{nl}$ are the radial wavefunctions of the harmonic oscillator,
 \begin{eq}
   \label{eq:HO_radial_wavefunction}
 	R_{nl}(r) 
 	= 
   \sqrt{\frac{
-    2^{l+2} \gamma^{l + 3/2} (n - l)!!
+    2^{l+2}  (n - l)!!
   }{
-    \sqrt\pi (n + l + 1)!!
+    \sqrt\pi r_0^{2l + 3} (n + l + 1)!!
   }}
-	r^l e^{-\gamma r^2 / 2}
-	L_{(n-l) / 2}^{(l+\frac{1}{2})}(\gamma r^2),
+	r^l \exp\p{-\frac{r^2}{2r_0^2}}
+	L_{(n-l) / 2}^{(l+\frac{1}{2})}\p{\frac{r^2}{r_0^2}},
 \end{eq}
-$\gamma = \mu\omega/\hbar$ and $L_\mu^\nu(x)$ are the generalized Laguerre polynomials.
+$r_0 = \sqrt{\hbar/\mu\omega}$ is the range and $L_\mu^\nu(x)$ are the generalized Laguerre polynomials.
 \todo{Doublecheck normalization constant.}
-The real space wavefunction $R(r)$ for a state will be expressed as a linear combination of the harmonic oscillator radial wavefunctions:
-\todo[inline]{"real space"?}
+The radial wavefunction $R(r)$ of a state will be expressed as a linear combination of the harmonic oscillator radial wavefunctions:
 \begin{eq}
   R_l(r) = \sum_n \psi_{nl} R_{nl}(r).
 \end{eq}
@@ -188,7 +186,7 @@ A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Sc
   \label{eq:radial mom space TISE}
   H\phi(k)
   =
-  \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k} k'^2 V(k,k') \phi(k') 
+  \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k') 
   =
   E\phi(k) \, ,
 \end{eq}
@@ -264,10 +262,11 @@ with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{
   \sqrt{\frac{2}{\pi}}
   \sum_{j=1}^N 
     \sqrt{w_j}k_j \phi'_j j_l(k_j r).
-  \label{eq:discrete radial wavefunction}
 \end{eq}
 
 \section{Numerical Considerations}
+
+\todo{calculation vs computation (entire report)}
 
 In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. 
 This includes truncation of the basis, matrix size reduction, numerical integration and eigensolver optimizations.
@@ -289,7 +288,7 @@ The more states we include in the basis, the more accurate results we get. This 
 		  axis y line=left,
 		  axis x line=bottom,
       legend pos = south east,
-      xmin=5, xmax=25,
+      xmin=7, xmax=25,
       ]
     	\addplot
         table[x index = 0, y index = 1]  
@@ -320,11 +319,11 @@ or in matrix notation
   H\psi = E\psi.
 \end{eq}
 
-We calculate the matrix elements $H_{ij}$ with \cref{eq:HO_matrix_elements,eq:plane_wave_matrix_elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
+We compute the matrix elements $H_{ij}$ with \cref{eq:HO_matrix_elements,eq:plane_wave_matrix_elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
 \todo{Gauss-Legendre in many places, where is canon?}
-If the matrix is hermitian or symmetric, we only need to calculate the elements in the upper triangle including the diagonal, roughly halving the number of elements we need calculate. 
+If the matrix is hermitian or symmetric, we only need to consider the elements in the upper triangle including the diagonal, roughly halving the number of computed elements. 
 
-When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
+When the matrix elements have been computed, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
 
 
 

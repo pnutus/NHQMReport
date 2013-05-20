@@ -1,9 +1,9 @@
 \documentclass[../main/report.tex]{subfiles}
 \begin{document}
 
-\chapter{The Complex Berggren Basis}
+\chapter{The Complex Momentum Basis}
 \label{cha:berggren}
-As was argued in the introduction, resonances can only be properly described by a complex energy, $E=E_0-i\frac{\Gamma}{2}$. 
+As was argued in the introduction, resonances can only be properly described by a complex energy, \todo[inline]{"as was"} $E=E_0-i\frac{\Gamma}{2}$. 
 We may relate the energy of a system to a momentum, according to
 \begin{eq}
   E = \frac{\hbar^2 k^2}{2\mu}
@@ -17,19 +17,31 @@ We may relate the energy of a system to a momentum, according to
 %Therefore, far away from the core (''in the lab''?) all solutions satisfy (k^2/2m)u = Eu, because V(r) = 0, making it a reasonable (?) definition
 %Should something along these lines be included? 
 This tells us that the resonant states have complex momenta and that we have to extend the plane wave basis into the complex momentum plane in order to find them.
-To clarify what this means, consider again the Schrödinger equation in momentum representation, \cref{eq:radial mom space TISE}:\todo{Momentum space Schrödinger equation? Plane wave SE? Spherical wave SE?}
+To clarify what this means, consider again the Schrödinger equation in momentum representation, \cref{eq:radial mom space TISE}:
 \begin{eq}
-  \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k} k'^2 V(k,k') \phi(k') 
+  \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k') 
   &=
   E\phi(k) \, .
 \end{eq}
-Using a complex momentum basis effectively means that we instead evaluate the integral along a complex contour. 
+Using a complex momentum basis effectively means that we\todo{instead of what?} evaluate the integral along a complex contour. 
 In 1968, Berggren\cite{berggren} first showed that the solutions --- bound states, resonant states and the non-resonant continuum --- that are obtained using this scheme form a complete orthonormal basis. 
 This is a major result, meaning that resonances are included as proper solutions to open quantum systems. This will be of importance later, when we consider systems of multiple interacting particles. 
 In this Chapter, we will instead focus on using contours in the complex momentum plane to find the resonances of \He{5}.
 
-To find the resonance, the contour is required to pass below the pole corresponding to the resonance. \todo{Should we say that it is required, or just investigate different contours and find out?}
+To find the resonance, the contour is required to pass below the pole corresponding to the resonance. 
+This follows from Cauchy's residue theorem, and the fact that the resonance corresponds to a pole in the complex plane.
 A sample contour that could be used is visualized in \cref{fig:berggren contour}. %Note that the solutions in the complex plane are mirrored in the y-axis. \todo{why is this important? elaborate further?}
+Note that the solutions are mirrored in\todo{mirrored in?} the y-axis. It can be shown that this symmetry allows us to restrict our attention to the segment between $0$ and $+\infty$.\cite{berggren}
+
+A curious result following from this procedure is that the ordinary scalar product,
+\begin{eq}
+  \braket{\phi}{\psi} = \fint[0][\inf]{k} k^2 \conj{\phi(k)}\psi(k)
+\end{eq}
+should be replaced in favour\todo{favour or favor?} for
+\begin{eq}
+  \braket{\phi}{\psi} = \fint[0][\inf]{k} k^2 \phi(k)\psi(k)
+\end{eq} 
+without the conjugation. This also follows over to the norm. 
 
 \begin{figure}
   \tikzset{
@@ -81,21 +93,16 @@ A sample contour that could be used is visualized in \cref{fig:berggren contour}
   \label{fig:complex plane}
 \end{figure}
 
-\todo{Need to mention completeness of berggren basis. Important here or later?}
-
-\todo{Where to put: "No conjugate on bras"?}
-
 \section{The Complex Contour}
-\todo{In this section I will add additional context and connect it better with previous section}
 We choose to extend our integration along the real axis to 
 the simplest possible complex contour, a triangle-shaped downward extrusion. 
 The tip of the triangle is placed below the hypothesized resonance.
 
 We are faced with the problem of evaluating this contour integral numerically. 
-We can solve this by considering each straight segment of the contour separately 
-and rescale the integration variable so that they are written as integrals along the real line.
-We may then use the standard Gauss-Legendre quadrature to calculate the contributions from each segment.
-An example of a contour is seen in \cref{fig:triangle_contour}, marking each point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the GL-quadrature.
+We can solve this by considering each straight segment of the contour separately,
+and write it as a sum of three integrals, each treated with Gauss-Legendre quadrature according to \cref{app:gauss-legendre}.
+An example of a contour is seen in \cref{fig:triangle_contour}, marking each quadrature point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the GL-quadrature.
+
 With this procedure, we once again get the Schrödinger equation on the same discretized form as \cref{eq:plane_wave_matrix_elements}:
 \begin{eq}
   H_{ij}' = \frac{k_i^2}{2\mu}\delta_{ij} + \sqrt{w_i w_j}k_i k_j V_{ij} \, ,
@@ -137,28 +144,28 @@ but now with complex $k$ and $w$.
       enlargelimits,
       only marks,
 	    width = \textwidth, 
-		height = 9cm, 
-		xlabel=Re $k/\b{\si{fm^{-1}}}$, 
-		ylabel=Im $k/\b{\si{fm^{-1}}}$, 
-		axis x line = middle, 
-		axis y line = left, 
-		ymax =  0.04,
-		ymin = -0.12,
-		ytick = {-0.12,-0.08,...,0.04},
-		xtick = {0,0.5,...,3},
-		every axis y label/.style={ 
-			at = {(current axis.above origin)},
+  		height = 9cm, 
+  		xlabel=Re $k/\b{\si{fm^{-1}}}$, 
+  		ylabel=Im $k/\b{\si{fm^{-1}}}$, 
+  		axis x line = middle, 
+  		axis y line = left, 
+  		ymax =  0.04,
+  		ymin = -0.12,
+  		ytick = {-0.12,-0.08,...,0.04},
+  		xtick = {0,0.5,...,3},
+  		every axis y label/.style={ 
+  			at = {(current axis.above origin)},
 	    	anchor = north west, 
-		}, 
-		every axis x label/.style={
-			at = {(current axis.right of origin)}, 
-			anchor = north east, 
-		}, 
-		yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, 
-		every x tick label/.append style = {
-			anchor = south, yshift = 3pt
-		}, 
-		xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},
+  		}, 
+  		every axis x label/.style={
+  			at = {(current axis.right of origin)}, 
+  			anchor = north east, 
+  		}, 
+  		yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, 
+  		every x tick label/.append style = {
+  			anchor = south, yshift = 3pt
+  		}, 
+  		xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},
       ]
       \addplot table [x index=0, y index=1]{../figures/verification_momenta/momentum_solutions.data};
 	  \addplot table [x index=2, y index=3]{../figures/verification_momenta/momentum_solutions.data};
@@ -167,12 +174,13 @@ but now with complex $k$ and $w$.
   \caption{The complex contour used. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
   \label{fig:verification}
 \end{figure}
+\todo[inline]{Mention something about solutions in second figure?}
 %%%%%%%%%%%%%%%%%%%%%%%%%%VERIFICATION end
 
 \section{Studying the Resonance}
 Armed with this we can continue our study of the \He{5} spectrum. 
 Diagonalizing the matrix given by \cref{eq:nhqm matrix element} using a complex contour with vertices $k_0 = 0$, $k_1 = 0.2 - i0.1$, $k_2 = 2.5$ 
-with 5 points on each segment, yields the result shown in \cref{fig:simple resonance}\todo{Create this figure.}. 
+with 5 points on each segment, yields the result shown in \cref{fig:simple resonance}\todo[inline]{use this figure.}. 
 The same Woods-Saxon parameters have been used as before, and we represent the solutions by their momenta, $k=\sqrt{2\mu E}$, corresponding to the eigenvalues. 
 We can see that we obtain solutions almost corresponding to the $k$-values used in the discretization, similar to what was found in the real case. 
 These are once again interpreted as unbound solutions, not interacting strongly with the potential. 
@@ -183,7 +191,7 @@ Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstratin
 
 In addition we can investigate the wavefunctions of these solutions. 
 \Cref{fig:mom wavefunctions}\todo{Create this figure. SPILL?} shows the momentum distribution of an arbitrary unbound solution and the resonance. 
-As is expected, the unbound solution basically correspond to one definite momentum. 
+As is expected\todo{as expected?}, the unbound solution basically correspond to one definite momentum. 
 On the other hand, the resonance has a broad distribution, reflecting the localized nature of the solution 
 (remember Heisenberg --- a broad momentum wavefunction allows a localized position wavefunction). 
 In principle, this feature also gives us a way to automatically find the resonance among a large set of solutions: 
@@ -191,7 +199,7 @@ simply single out the one with the broadest wavefunction, or equivalently after 
 \todo{Perhaps this should only be in the two-body chapter} 
 
 We can now properly investigate how the solutions change as the potential is varied. \Cref{fig:pole(V0)} shows how the solutions vary as $V_0$ 
-is successively changed from \SI{70}{MeV}, where the potential well can contain a bound state, to \SI{50}{MeV} where no bound states exist. 
+is successively changed from \SI{70}{MeV}, where the potential well can contain a bound state, to \SI{50}{MeV}, where no bound states exist. 
 As the potential well grows less attractive, we see that the imaginary part $\Gamma$ of the resonance energy increases, and thus the half-time of the quasi-bound state becomes shorter.  
 
 We may now proceed to fit our model of \He{5} to experimental data of the $p_{3/2}$ and  $p_{1/2}$ resonance provided by \cite{inte_jimmy}, giving values 
