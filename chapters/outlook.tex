@@ -4,64 +4,48 @@
 \chapter{Outlook}
 \label{cha:outlook}
 
-\section{Recap}
-In this thesis we have studied resonance phenomena in heavy Helium isotopes and explained the procedure surrounding it.
-The study was made by expanding the wavefunctions of \He{5} and \He{6} in a basis, after modelling them as an alpha particle with one and two valence neutrons respectively.
-We started by expanding the wavefunction of \He{5} in harmonic oscillators, but found that it was of no use when examining resonances.
-This made us move on to a plane wave expansion instead.
+We have studied resonances in heavy Helium isotopes and given heuristic justifications for the methods used. The \He{5} nucleus was modeled satisfactorily, and we could reproduce the experimental width and XXX of its resonances. 
 
-The plane wave expansion, which could be expressed as a discretization of momentum space, was able to detect the resonances, but failed to reveal its position.
-To do this we had to extend momentum space into the complex plane, where we finally could find our resonance.
+We were not as successful in modeling the \He{6} nucleus. The interactions used were simple first approximations, and while the ground state was reproducible, we were unable to. Consequently, an obvious way of improving upon our results is to use a more realistic potential. 
 
-We now evolved the theory to include many bodies and used the solutions from \He{5} as a basis for the \He{6} expansion.
-In \He{6} we were able to locate the bound state and later also the resonance, albeit not very well.
+Other areas to further explore, covered in more detail below, are: increasing the number of particles in the system, reducing the computational complexity through renormalization techniques, combining the complex basis with another type of shell model etc.
+The Monte Carlo method shows some promise, but we suggest looking into other possibilites.
+\todo{any more ideas?}
 
-To speed up calculations we investigated the use of a Monte-Carlo approach to both \He{5} and \He{6}.
-We found this to not work well at all, since not were able to find neither the resonances in \ce{^{5,6} He} nor the bound state in \He{6}.
+\section{Increased Number of Particles}
 
+We have studied the nuclei \He{5} and \He{6}, a two- and three-body problem respectively. 
+A natural extension of these problems is to add more particles, either neutrons of protons.
+In the case of neutrons, we end up with even heavier \He{} isotopes,  \He{7} and \He{8}.
+We then have have to consider the angular momentum coupling of three or four bodies, but other than that the techniques we employ are general.
+\todo[inline]{how general?}
+Adding protons, we have to consider the different isospin of the two types of nucleon.
+This has implications for the nucleon-nucleon interaction, discussed below.
 
-\section{Ways to expand}
-Here we present a list of som interesting aspects that are possible paths to procced on after this work.
-\todo[inline]{Not shure if itemize is the best way to present this. Discussion?}
-\subsection{Renormalization}
-  \begin{itemize}
-    \item Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis \cite{DMRG}.
-    This can be done in several different ways and there exists some different algoritms, two of them are similarity renormalization and kdkfl density ekdlks.
-    \todo[inline]{Don't remember what it's called.}
-    The point with only selecting a few of the single-particle states is that it reduces the size of the matrix, hence the decreased computational time.
-    \todo[inline]{Cite Jimmy...}
-    \item Another way to decrease computational time is the Monte-Carlo simulations we did in \cref{cha:monte_carlo}.
-    The problem is to get it to work.
-    In our simulations we did not see neither the resonances in \ce{^{5,6} He}, nor did we find the bound state in \He{6}.
-    One theory is that it would show results in larger systems or if we would include more basis states in each iteration, but in our case, this would not be faster than the original algorithm.
-  \end{itemize}
-\subsection{More nucleons}
-  \begin{itemize}
-    \item We have confined ourselves to the nuclei of \He{5} and \He{6} in this thesis.
-    Which would make the most natural way to proceed the addition of more neutrons to the alpha particle.
-    This since neither the code nor the theory changes much when adding a fourth or fifth neutron, as in the case with \He{7} and \He{8}.
-    Heavier cores than these could pose trouble since they probably would need a faster computer than those we have access to.
+Another possibility is to study other elements than helium. \ce{^{16} O} and \ce{^{24} O} are good candidates, since they too are doubly magic nuclei.
+We could study other light elements like \ce{Li} or \ce{Be}, as they display several interesting properties of open quantum systems.
 
-   \item Of course there exists other interesting nuclei than Helium to study, which makes the study of other cores another interesting path to explore.
-   One of these cores is \ce{^{16} O} since it also is doubly magical, which makes it suitable to add more neutrons to.
-   Other than Oxygen or Hydrogen, we could study Li or Be since they displays several interesting boromean and resonance phenomena.
-   \todo[inline]{Not shure of last sentence.}
+When expanding \He{6}, our basis consists of only $p_{1/2}$ and $p_{3/2}$ waves. 
+This is a good approximation for \He{6} \cite{gamow_shell_model_2008},  but for other systems, we have to include more partial waves (sober physicists ...) in the expansion.
 
-   \item Our method for describing \He{6} is currently consisting of only $p_{1/2}$ and $p_{3/2}$ waves, but we believe that in order to study it more carefully or to study different cores we may have to include more waves in our expansion.
-   This would be waves in the s, p, d, f, ... shells.
-   The reason to why we might need these is that the states we are interested in could have large dependencies on these other waves.
+Another way of describing different cores would be to use a \emph{No-Core Shell Model} (NCSM), i.e. treating each nucleon as separate and starting with \ce{^2 H}, just one neutron and proton. This approach would only let us study very light nuclei, but the complex energy treatment could prove interesting.
 
-   \item Another way of describing different cores would be to start with only nucleons, ie only use protons and neutrons as base elements, instead of how we do now with an alpha core interacting with valence neutrons.
-   We do not know if this is a good approach, but it would be interesting to try and see if the result is the same, better or worse.
-   It would in either case demand a lot of computational power.
-   This is probably a good reason to use a core and just add neutrons to it since this vastly reduces the size of the problem.
-  \end{itemize}
+\section{Reducing Computation Time}
 
-\subsection{More realistic interaction}
-  \begin{itemize}
-   \item We could also get a better result by using a more realistic potential, this would then be ............... which describes ... in a better way since ... .
-    \item Cite stuff, maybe ask jimmy/christian
-  \end{itemize}
+Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis.
+There are currently several methods of doing this. Two of them are the Similarity Renormalization Group (SRG) and Density Matrix Renormalization Group (DMRG) \cite{DMRG}.
+The point of only selecting a few of the single-particle states is that it reduces the size of the matrix, hence the decreased computational time.
+This is close to what we did with the Monte Carlo method.
+
+Another way to decrease computational time is the Monte-Carlo simulations we did in \cref{cha:monte_carlo}.
+The problem is to get it to work.
+In our simulations we did not see neither the resonances in \ce{^{5,6} He}, nor did we find the bound state in \He{6}.
+One theory is that it would show results in larger systems or if we would include more basis states in each iteration, but in our case, this would not be faster than the original algorithm.
+
+\section{Realistic Interactions}
+
+QCD yada yada cite jimmy/christian etc.
+
 
 
 \end{document}
