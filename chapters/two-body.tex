@@ -326,4 +326,28 @@ Supposedly \cite{dolan} one wavefunction will enter a plateau as omega is increa
 Our results from investigating this is presented in \cref{fig:energies(omega)}.
 It is clear that no such behavior was observed.
 
+%%%% E(r0)
+\tikzsetnextfilename{triangle_contour}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = \textwidth,
+      height = 7cm,
+      xlabel= $r_0$,
+      ylabel=E,
+		  axis lines = middle,
+      ymax = 2.5,
+      no markers,
+      enlargelimits,
+      ticks = none,
+      ]
+      \addplot[color=red, ultra thick] table[x index = 0, y index =1] {../figures/E(omega)/E(omega).data};
+      \foreach \y in {2,...,5}
+         \addplot[color=gray] table[x index = 0, y index = \y] {../figures/E(omega)/E(omega).data};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The complex contour used. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
+  \label{fig:triangle contour}
+\end{figure}
 \end{document}
