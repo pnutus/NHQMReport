@@ -4,7 +4,9 @@
 \chapter{Basis Expansion}
 \label{cha:basis_expansion}
 
+\todo{Intro to chapter here}
 We want to study loosely bound quantum systems by solving the \emph{Time Independent Schrödinger Equation} (TISE)
+\todo{why TISE?}
 \begin{eq}
   \label{eq:TISE}
   H \ket\psi = E \ket\psi,
@@ -16,7 +18,7 @@ commonly written in the position basis as
 \end{eq}
 
 For the nuclear systems to be treated, the TISE has no known analytical solutions, and we need to use numerical methods to solve it.
-However, the Hamiltonian written as in \cref{eq:TISEpos} is not optimal for computation. \todo[inline]{cite/explain}
+However, the Hamiltonian written as in \cref{eq:TISEpos} is not optimal for computation. \todo[inline]{Why not position basis PDE??}
 Instead, we would like to write it as a matrix equation
 \begin{eq}
   \label{eq:matrix equation}
@@ -28,7 +30,7 @@ To write the TISE as a matrix equation we use \emph{basis expansion}.
 Basis expansion is how we make sense of the abstract Hilbert spaces, operators and state vectors of Quantum Mechanics (QM).
 By expanding these abstract objects in a basis, we can relate them to the physical world. 
 For example, \cref{eq:TISEpos} is the TISE for a single particle, expanded in the position basis. 
-We will not expand our problems in the position basis, but it will still be important, since it is the only basis in which we can express the potentials.\todo{Which potentials?}
+We will not expand our problems in the position basis, but it will still be important, since it is the most natural basis to express the potential in.
 
 Before we begin, we briefly recap some well known QM facts. 
 First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$. 
@@ -101,6 +103,7 @@ The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a 
 \begin{eq}
   \psi(\vec{r}) = R(r) Y_l^m(\theta, \phi).
 \end{eq}
+\todo{OLA fixar integralen}
 Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. \todo{$j$ in here somewhere?}
 Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, \todo{and will}which will result in a factor of $\delta_{ll'}\delta_{mm'}$.
 This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
@@ -110,7 +113,7 @@ This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
 If we now treat $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
 we notice that the diagonal elements of this matrix have the same $l$ and $m$,
 which can be expressed as \emph{$H$ is diagonal in $l$ and $m$}.
-\todo{OLA KOLLA}
+\todo{block diagonal figur}
 
 \section{The Harmonic Oscillator Basis}
 \label{sec:harmosc}
@@ -159,16 +162,16 @@ where $R_{nl}$ are the radial wavefunctions of the harmonic oscillator,
 	r^l \exp\p{-\frac{r^2}{2r_0^2}}
 	L_{(n-l) / 2}^{(l+\frac{1}{2})}\p{\frac{r^2}{r_0^2}},
 \end{eq}
-$r_0 = \sqrt{\hbar/\mu\omega}$ is the range and $L_\mu^\nu(x)$ are the generalized Laguerre polynomials.
+$r_0 = \sqrt{\hbar/\mu\omega}$ is the range and $L_\nu^\lambda(x)$ are the generalized Laguerre polynomials.
 \todo{Doublecheck normalization constant.}
 The radial wavefunction $R(r)$ of a state will be expressed as a linear combination of the harmonic oscillator radial wavefunctions:
 \begin{eq}
-  R_l(r) = \sum_n \psi_{nl} R_{nl}(r).
+  R(r) = \sum_n \psi_{nl} R_{nl}(r).
 \end{eq}
 
 \section{The Plane Wave Basis}
 \label{sec:mom_space}
-\todo{Relation to momentum space $p = \hbar k$}
+\todo{Relation to momentum space $p = \hbar k$, plane wave is what?}
 The plane wave basis $\ket{\vec{k}}$ is of great importance for us since we are studying a system with a short-range potential supporting only a few, if any, bound solutions.
 This means that we will find multiple unbound solutions, corresponding to free particles with various momenta.
 These are almost eigenstates of the momentum operator, only slightly perturbed by the small potential well at $r=0$. 
@@ -177,7 +180,7 @@ The expansion is done in the same way as before, giving us
 \begin{eq}
   \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}')
   &= 
-  E\Phi(\vec{k}) \, .
+  E\Phi(\vec{k}).
 \end{eq}
 This three-dimensional equation is practically unsolvable in general, but we can simplify it using the fact that we have a central problem. 
 \todo[inline]{Redundant? same stuff in sphere symm section}
@@ -188,14 +191,14 @@ A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Sc
   =
   \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k') 
   =
-  E\phi(k) \, ,
-\end{eq}
-where $\phi(k)$ is the radial part of the momentum space wavefunction, \todo[inline]{textlimmet saknas här, flödet blir konstigt}
-\begin{eq}
+  E\phi(k)
+  \\
   V(k,k') 
-  &= 
-  \frac{2}{\pi}\int_0^\infty \rd r \, r^2 V(r) j_l(kr) j_l(k'r) 
+  = 
+  \frac{2}{\pi}\int_0^\infty \rd r \, r^2 V(r) j_l(kr) j_l(k'r),
 \end{eq}
+\todo{align}
+where $\phi(k)$ is the radial part of the momentum space wavefunction
 and $j_l(kr)$ are the spherical bessel functions of order $l$. 
 The momentum space radial wavefunction $\phi(k)$ is related to the position space radial wavefunction by
 \begin{eq}
@@ -225,10 +228,12 @@ With this discretization the Schrödinger equation may be written as
 \begin{eq}
   \sum_j H_{ij} \phi(k_j) &= E \phi(k_i)
 \end{eq}
+where
 \begin{align}
   \label{eq:mom_matrix}
   H_{ij} &= \frac{k_i^2}{2\mu}\delta_{ij} + w_jk_j^2 V_{ij} \\
-  V_{ij} &= \frac{2}{\pi} \int_0^\infty \rd r \, r^2 V(r) j_l(k_i r) j_l(k_j r) \label{eq:potential matrix}
+  \label{eq:potential matrix}
+  V_{ij} &= \frac{2}{\pi} \int_0^\infty \rd r \, r^2 V(r) j_l(k_i r) j_l(k_j r).
 \end{align}
 
 Because of the $k_j^2$ in the second term of the matrix elements 
@@ -268,6 +273,7 @@ with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{
 
 \todo{calculation vs computation (entire report)}
 
+\todo{order of sections}
 In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. 
 This includes truncation of the basis, matrix size reduction, numerical integration and eigensolver optimizations.
 The plane wave basis is continuous and thus requires special treatment.
@@ -305,6 +311,8 @@ The more states we include in the basis, the more accurate results we get. This 
   \caption{Ground state energy $E_0$ of the hydrogen atom as a function of $N$, the number of states included in the basis. The potential of the hydrogen atom is more closely related to the HO potential than a free particle, which is why it converges faster.}
   \label{fig:hydrogen_convergence}
 \end{figure}
+
+\todo{two figures}
 
 The truncation gives us an $N \times N$ Hamiltonian matrix $H$.
 Since $H$ is diagonal in $l$ and $m$, we can consider each value of $l$ and $m$ separately, reducing the size of the matrix and thus the amount of computation needed to solve for the eigenvalues.
