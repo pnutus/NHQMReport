@@ -28,16 +28,16 @@ In 1968, Berggren\cite{berggren} first showed that the solutions --- bound state
 This is a major result, meaning that resonances are included as proper solutions to open quantum systems. This will be of importance later, when we consider systems of multiple interacting particles. 
 In this Chapter, we will instead focus on using contours in the complex momentum plane to find the resonances of \He{5}.
 
-To find the resonance, the contour is required to pass below the pole corresponding to the resonance. 
-This follows from Cauchy's residue theorem, and the fact that the resonance corresponds to a pole in the complex plane.
+To find the resonance with its complex energy as a solution, it is required that a contour is chosen such that it passes below the momentum corresponding to the resonance. 
+This follows from Cauchy's residue theorem, and the fact that the resonance corresponds to a pole in the complex plane\footnote{See standard treatments on scattering theory for more detail, e.g. Sakurai\cite{sakurai}}.
 A sample contour that could be used is visualized in \cref{fig:berggren contour}. %Note that the solutions in the complex plane are mirrored in the y-axis. \todo{why is this important? elaborate further?}
-Note that the solutions are mirrored in\todo{mirrored in?} the y-axis. It can be shown that this symmetry allows us to restrict our attention to the segment between $0$ and $+\infty$.\cite{berggren}
+Note that the solutions are mirrored in \todo{mirrored in?} the y-axis. It can be shown that this symmetry allows us to restrict our attention to the segment between $0$ and $+\infty$.\cite{berggren}
 
 A curious result following from this procedure is that the ordinary scalar product,
 \begin{eq}
   \braket{\phi}{\psi} = \fint[0][\inf]{k} k^2 \conj{\phi(k)}\psi(k)
 \end{eq}
-should be replaced in favour\todo{favour or favor?} for
+is replaced in favour \todo{favour or favor?} for
 \begin{eq}
   \braket{\phi}{\psi} = \fint[0][\inf]{k} k^2 \phi(k)\psi(k)
 \end{eq} 
@@ -186,7 +186,7 @@ We can see that we obtain solutions almost corresponding to the $k$-values used 
 These are once again interpreted as unbound solutions, not interacting strongly with the potential. 
 
 The interesting solution is however the one not lying on the contour. If this solution is the resonance, we expect it to be unchanged when the contour is varied. 
-Indeed, any contour passing below the resonance should give this solution. \todo[inline]{cite berggren?}
+Indeed, any contour passing below the resonance should give this solution, with reservation for numerical error. \todo[inline]{cite berggren?}
 Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstrating that this is the case.
 
 In addition we can investigate the wavefunctions of these solutions. 
