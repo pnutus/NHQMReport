@@ -28,7 +28,7 @@ To write the TISE as a matrix equation we use \emph{basis expansion}.
 Basis expansion is how we make sense of the abstract Hilbert spaces, operators and state vectors of Quantum Mechanics (QM).
 By expanding these abstract objects in a basis, we can relate them to the physical world. 
 For example, \cref{eq:TISEpos} is the TISE for a single particle, expanded in the position basis. 
-We will not expand our problems in the position basis, but it will still be important, since it is the only basis in which we can express the potentials.
+We will not expand our problems in the position basis, but it will still be important, since it is the only basis in which we can express the potentials.\todo{Which potentials?}
 
 Before we begin, we briefly recap some well known QM facts. 
 First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$. 
@@ -103,7 +103,7 @@ The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a 
   \psi(\vec{r}) = R(r) Y_l^m(\theta, \phi).
 \end{eq}
 Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. \todo{$j$ in here somewhere?}
-Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, which will result in a factor of $\delta_{ll'}\delta_{mm'}$.
+Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, \todo{and will}which will result in a factor of $\delta_{ll'}\delta_{mm'}$.
 This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
@@ -142,7 +142,7 @@ and if we use the fact that $H$ is diagonal in $l$ and $m$ we get
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
 \end{eq}
-We now have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (see \cref{sec:HO matrix elements} for the details) and the result is \todo{are we stringent in the use of compute, calculate?}
+We now have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculations (see \cref{sec:HO matrix elements} for the details) and the result is \todo{are we stringent in the use of compute, calculate?}
 \begin{eq}
   \label{eq:HO matrix elements}
   &
@@ -159,7 +159,7 @@ We now have a matrix equation, but we need to find the matrix elements $\bra{nlm
 	\fint[0][\inf]{r} 
     r^2 R_{nl}(r) V(r) R_{n'l}(r)
 \end{eq}
-where $R_{nl}$ are the radial wavefunctions of the harmonic oscillator
+where $R_{nl}$ are the radial wavefunctions of the harmonic oscillator,
 \begin{eq}
   \label{eq:HO radial wavefunction}
 	R_{nl}(r) 
