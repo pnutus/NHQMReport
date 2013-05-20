@@ -133,20 +133,24 @@ In this section we will apply those methods to find the eigensolutions of our mo
 \subsection{Harmonic Oscillator Basis }
 To begin with, we will solve the problem in HO basis. \todo[inline]{convergence plot or not?} \Cref{fig:he5 conv HO} shows how the obtained energies converge when the number of basis states $N$ included in the expansion increases. 
 
-In addition, the parameter $\omega$ in the HO potential may be varied. This parameter determines the rate at which the potential increases, but also (as can be seen in \cref{eq:HO radial wavefunction}) the range of the wavefunctions which include a factor $e^{-\gamma r^2}$, $\gamma = \mu \omega/\hbar$. We could define a range 
+In addition, the parameter $\omega$ in the HO potential may be varied. 
+This parameter determines the rate at which the potential increases, but also (as can be seen in \cref{eq:HO radial wavefunction}) the range of the wavefunctions which include a factor $e^{-\gamma r^2}$, $\gamma = \mu \omega/\hbar$. We can define a range 
 \begin{eq}
-  r_0 = \frac{1}{\sqrt{\gamma}} = \frac{\hbar}{\sqrt{\mu \omega}} ,
+  r_0 = \frac{1}{\sqrt{\gamma}} = \sqrt{\frac{\hbar}{\mu \omega}} ,
 \end{eq}  
-such that for $r>r_0$ the basis wavefunctions quickly approach zero. This parameter will affect how rapidly the solutions converge, because a basis where the wavefunctions are similar to the solutions will have better convergence. \Cref{fig:HO omega} shows how the eigensolutions depend on the range of the basis functions.
+such that for $r>r_0$ the basis wavefunctions quickly approach zero. 
+This parameter will affect how rapidly the solutions converge, because a basis where the wavefunctions are similar to the solutions will have better convergence. 
+\Cref{fig:HO omega} shows how the eigensolutions depend on the range of the basis functions.
 
-The solutions all have energies $E>0$, meaning that they are not bound, and thus have unlimited range. However, we can clearly distinguish a minimum in energy for the lowest energy solution when the range of the basis is in the region $r_0 \approx \SI{1.3}{fm}$, corresponding to radii within the nucleus. This is a sign that there is a solution to \He{5} localized in this region. Furthermore, we see that the energies for the others strictly decrease when the range of the basis increases, further showing their unbound nature.
+The solutions all have energies $E>0$, meaning that they are not bound, and thus have unlimited range. 
+However, we can clearly distinguish a minimum in energy for the lowest energy solution when the range of the basis is in the region $r_0 \approx \SI{1.3}{fm}$, corresponding to radii within the nucleus. 
+This is a sign that there is a solution to \He{5} localized in this region. 
+Furthermore, we see that the energies for the others strictly decrease when the range of the basis increases, further showing their unbound nature.
 
-Because the harmonic oscillator consists only of bound states and we are trying to study unbound states with infinite range, we can not get much further with this method. We will have to switch to a basis with wavefunctions of infinite reach to properly describe this system.
+Because the harmonic oscillator consists only of bound states and we are trying to study unbound states with infinite range, we can not get much further with this method. 
+We will have to switch to a basis with wavefunctions of infinite reach to properly describe this system.
 
 \subsection{Plane Wave Basis}
-
-
-\todo{review wf //this// section.}
 The best metric of a potential or Hamiltonian are the wave functions it harbors, we present below the wavefunctions that solve the two particle system for different potential strengths.
 In \cref{fig:resonance wavefunction} we can see the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied.
  We see that one solution (filled line) displays different behavior for diffrent potentials.
