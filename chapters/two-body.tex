@@ -326,8 +326,8 @@ Supposedly \cite{dolan} one wavefunction will enter a plateau as omega is increa
 Our results from investigating this is presented in \cref{fig:energies(omega)}.
 It is clear that no such behavior was observed.
 
-%%%% E(r0)
-\tikzsetnextfilename{triangle_contour}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
+\tikzsetnextfilename{Eofro}
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
@@ -337,17 +337,21 @@ It is clear that no such behavior was observed.
       xlabel= $r_0$,
       ylabel=E,
 		  axis lines = middle,
-      ymax = 2.5,
+      ymax = 3,
       no markers,
       enlargelimits,
       ticks = none,
       ]
       \addplot[color=red, ultra thick] table[x index = 0, y index =1] {../figures/E(omega)/E(omega).data};
-      \foreach \y in {2,...,5}
+	  \addlegendentry{suspicious behavior}
+      \foreach \y in {2,...,15}
          \addplot[color=gray] table[x index = 0, y index = \y] {../figures/E(omega)/E(omega).data};
+		\addlegendentry{regular behavior} 
     \end{axis}
   \end{tikzpicture}
-  \caption{The complex contour used. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
-  \label{fig:triangle contour}
+  \caption{Lowest solution energies for the He5 system solved with the Harmonic Oscillator basis}
+  \label{fig:eofro}
 \end{figure}
 \end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
