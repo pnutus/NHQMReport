@@ -288,8 +288,39 @@ The plane wave basis is continuous and thus requires special treatment.
 
 The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
 The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo[inline]{Questionable? OLA}
-\todo[inline]{Convergence plots here?}
-This gives us an $N \times N$ Hamiltonian matrix $H$.
+The more states we include in the basis, the more accurate results we get. This is illustrated in \cref{fig:hydrogen_convergence}.
+
+%\tikzset{external/remake next}
+\tikzsetnextfilename{hydrogen_convergence}
+\pgfplotstableread{../figures/convergence/hydrogen_convergence.data}\Hconv
+\begin{figure}
+\centering	
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel=Basis size $N$,
+      ylabel=Ground state energy $E_0/\b{\si{MeV}}$,
+		  axis y line=left,
+		  axis x line=bottom,
+      legend pos = south east,
+      xmin=5, xmax=25,
+      ]
+    	\addplot
+        table[x index = 0, y index = 1]  
+        {\Hconv};
+    	  \addlegendentry{Harmonic oscillator basis}
+    	\addplot
+        table[x index = 0, y index = 2] 
+        {\Hconv};
+        \addlegendentry{Plane wave basis}
+      \addplot+[no markers, black, domain=0:50] {-13.6};
+        \addlegendentry{Theoretical value}
+    \end{axis}
+\end{tikzpicture}
+  \caption{Ground state energy $E_0$ of the hydrogen atom as a function of $N$, the number of states included in the basis. The potential of the hydrogen atom is more closely related to the HO potential than a free particle, which is why it converges faster.}
+  \label{fig:hydrogen_convergence}
+\end{figure}
+
+The truncation gives us an $N \times N$ Hamiltonian matrix $H$.
 Since $H$ is diagonal in $l$ and $m$, we can consider each value of $l$ and $m$ separately, reducing the size of the matrix and thus the amount of computation needed to solve for the eigenvalues.
 The equation is then, for a given $l$ and $m$,
 \begin{eq}
@@ -307,49 +338,6 @@ If the matrix is hermitian or symmetric, we only need to calculate the elements 
 
 When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
 
-\section{Verifying with the Hydrogen Atom} \todo{where to put this?}
 
-To test our HO and momentum-space bases, we expand the well-known 
-hydrogen atom. It has the potential
-\begin{eq}
-  \label{eq:hydrogen potential}
-	V(r)=
-	-\frac{q_e^2}{4\pi \epsilon_0 r},
-\end{eq}
-and is analytically solvable with a ground state energy 
-$E_0 = -\SI{13.6}{eV}$. In \cref{fig:hydrogen HOvsMom} we plot 
-the convergence of the ground state energy as a function of the number, $N$ of basis states in the expansion
-We can see that the plane-wave expansion converges faster than the 
-harmonic oscillator.
-\todo{fix plot, larger $k_max$}
-
-%\tikzset{external/remake next}
-\tikzsetnextfilename{hydrogen_convergence}
-\begin{figure}
-\centering	
-\begin{tikzpicture}
-    \begin{axis}[
-      xlabel=Basis size $N$,
-      ylabel=Ground state energy $E_0/\b{\si{MeV}}$,
-		  axis y line=left,
-		  axis x line=bottom,
-      legend pos = south east,
-      thick,
-      ]
-    	\addplot
-        table[x index = 0, y index = 1]  
-        {../figures/hydrogen_convergence/hydrogen_convergence.data};
-    	  \addlegendentry{Harmonic oscillator basis}
-    	\addplot
-        table[x index = 0, y index = 2] 
-        {../figures/hydrogen_convergence/hydrogen_convergence.data};
-        \addlegendentry{Plane wave basis}
-      \addplot+[no markers, domain=11:20] {-13.6};
-        \addlegendentry{Theoretical value}
-    \end{axis}
-\end{tikzpicture}
-  \caption{Ground state energy $E_0$ of the hydrogen atom as a function of $N$, the number of states included in the basis.}
-  \label{fig:hydrogen HOvsMom}
-\end{figure}
 
 \end{document}

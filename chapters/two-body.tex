@@ -80,19 +80,19 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
 	  \centering{
 	  \pgfplotsset{
 	    width = 0.45\textwidth, height = 7cm,
-        domain = 0.1:9.8, 
-        ymin = -47, 
-		ymax = 9,
-        xlabel = $r/\b{\si{fm}}$,
-        axis x line = middle,
-        axis y line = left
-		% 	    xlabel = $r/\b{\si{fm}}$, ylabel = $r^2\absq{R(r)}$,
-		% 	    axis x line = bottom,
-		% 	    axis y line = left,
-		% 	    no markers,
-		% 	    ytick = \empty,
-		% 	    ymax = 1.7,
-		% legend style={anchor=north east,legend columns=1},
+      domain = 0.1:9.8, 
+      ymin = -47, 
+	    ymax = 9,
+      xlabel = $r/\b{\si{fm}}$,
+      axis x line = middle,
+      axis y line = left
+      % xlabel = $r/\b{\si{fm}}$, ylabel = $r^2\absq{R(r)}$,
+      % axis x line = bottom,
+      % axis y line = left,
+      % no markers,
+      % ytick = \empty,
+      % ymax = 1.7,
+      % legend style={anchor=north east,legend columns=1},
 	  }
 	    \subfloat[$p_\frac{1}{2}$]{
 	      \tikzset{external/remake next}
@@ -146,7 +146,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 
 \todo{kalla det inte resonans, information hiding, vi kommer på det sen för vi är smarta. OLA}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION MOM FIGURE
+%%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions
 
 \begin{figure}
   \pgfplotstableread{../figures/wavefunctions/wavefunctions.data}\wavefunctions
@@ -223,64 +223,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
   \label{fig:resonance wavefunction}
   \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%WAVEUNCTION MOM end
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%EIGVECS FIGURE
-
-\begin{figure}[H]
-	  \pgfplotstableread{../figures/he5_mom_eigvecs/physical_eigvecs.data}\phys
-	    \pgfplotstableread{../figures/he5_mom_eigvecs/symmetric_eigvecs.data}\symm
-  \centering{
-  \pgfplotsset{
-    width = \textwidth, height = 7cm,
-    xlabel = $k$, 
-    axis x line = bottom,
-    xmin = 0,
-    xmax=1,
-    axis y line = left,
-    no markers,
-    ytick = \empty,
-    legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
-  }
-  \subfloat[Squared absolute value of the eigenvectors to the hamiltonian]{
-    %\tikzset{external/remake next}
-    \tikzsetnextfilename{eigvecs}
-    \begin{tikzpicture}
-      \begin{axis}[	ylabel = $|\phi_i|^2$,]
-        \foreach \yindex in {1,15,8,54}
-        {   
-        \addplot table [x index= 0, y index = \yindex] {\phys};
-        }
-      \end{axis}
-    \end{tikzpicture}
-  }
-	
-  \subfloat[Squared absolute value weighted by k squared and integration weights of the eigenvectors to the hamiltonian]{
-    % \tikzset{external/remake next}
-    \tikzsetnextfilename{symmvecs}
-    \begin{tikzpicture}
-      \begin{axis}[	ylabel = $k^2 w |\phi_i|^2$,]
-        \foreach \yindex in {1,15,8,54}
-        {   
-        \addplot table [x index= 0, y index = \yindex] {\symm};
-        }
-      \end{axis}
-    \end{tikzpicture}
-  }
-	
-}
-
-
-
-\caption{yada} 
-\label{fig:he5_eigvecs}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%EIGVECS end
+%%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions END
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
@@ -354,7 +297,7 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 
 
 
-\section{Varying $\omega$} \todo{the black sheep section}
+\section{Varying $\omega$} \todo{Needs plot}
 %sentiment: last ditch effort to find the resonnance using hermitian QM. this doesn't / almost work. need to tackle the problem from a diffrent (Non-H) angle
 Theory suggests that the HO solutions will hint at the existance of a pole as omega is varried. 
 Supposedly \cite{dolan} one wavefunction will enter a plateau as omega is increased while the other wavefunctions will continue to grow unabatedly. 
