@@ -16,7 +16,7 @@ commonly written in the position basis as
 \end{eq}
 
 For the nuclear systems to be treated, the TISE has no known analytical solutions, and we need to use numerical methods to solve it.
-However, the Hamiltonian written as in \cref{eq:TISEpos}, is not suitable for numerical calculations. \todo[inline]{cite/explain}
+However, the Hamiltonian written as in \cref{eq:TISEpos} is not optimal for computation. \todo[inline]{cite/explain}
 Instead, we would like to write it as a matrix equation
 \begin{eq}
   \label{eq:matrix equation}
@@ -88,14 +88,14 @@ and write $H_{nn'} = \bra{n} H \ket{n'}$, we get
 \end{eq}
 which is equivalent to the matrix equation \cref{eq:matrix equation}. This is 
 the basic method of expanding the TISE in a basis.
-\todo{Only (1.4) for equations?}
+\todo{Only use (1.4) for equations?}
 
 \section{Spherical Symmetry}
 \label{sec:spherical symmetry}
 
 We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. 
 This is sufficient for our purposes and, indeed, most common QM problems. \todo[inline]{why?/cite/explain}
-If we considered three-dimensional systems with arbitrary potentials, the matrix size would grow very fast and the problem would be infeasible to calculate.
+If we considered three-dimensional systems with arbitrary potentials, the matrices would be very large and solving the problem would become infeasible.
 
 The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m$
 \begin{eq}
@@ -129,7 +129,7 @@ and if we use the fact that $H$ is diagonal in $l$ and $m$ we get
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
 \end{eq}
-We now have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (see \cref{sec:HO matrix elements} for the details) and the result is \todo{are we stringent in the use of compute, calculate?}
+We now have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (details are in \cref{sec:HO matrix elements}) and the result is
 \begin{eq}
   \label{eq:HO_matrix_elements}
   &
@@ -262,10 +262,11 @@ with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{
   \sqrt{\frac{2}{\pi}}
   \sum_{j=1}^N 
     \sqrt{w_j}k_j \phi'_j j_l(k_j r).
-  \label{eq:discrete radial wavefunction}
 \end{eq}
 
 \section{Numerical Considerations}
+
+\todo{calculation vs computation (entire report)}
 
 In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. 
 This includes truncation of the basis, matrix size reduction, numerical integration and eigensolver optimizations.
@@ -318,11 +319,11 @@ or in matrix notation
   H\psi = E\psi.
 \end{eq}
 
-We calculate the matrix elements $H_{ij}$ with \cref{eq:HO_matrix_elements,eq:plane_wave_matrix_elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
+We compute the matrix elements $H_{ij}$ with \cref{eq:HO_matrix_elements,eq:plane_wave_matrix_elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
 \todo{Gauss-Legendre in many places, where is canon?}
-If the matrix is hermitian or symmetric, we only need to calculate the elements in the upper triangle including the diagonal, roughly halving the number of elements we need calculate. 
+If the matrix is hermitian or symmetric, we only need to consider the elements in the upper triangle including the diagonal, roughly halving the number of computed elements. 
 
-When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
+When the matrix elements have been computed, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
 
 
 
