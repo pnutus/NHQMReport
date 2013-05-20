@@ -17,15 +17,24 @@
 
 
 
-%\begin{figure}[h!]
+\begin{figure}[h!]
+   \newcommand{\circdist}{1.2}
+   \newcommand{\circrad}{2}
+   \centering
+   \begin{tikzpicture}[even odd rule]
+     \foreach \angle/\colour in {90/red,-30/blue,210/green}
+       \fill [\colour] (\angle:\circdist) circle (\circrad) circle (\circrad+0.5);
 
-%            \centering
+     \begin{scope}
+     \clip (-30:\circdist) circle (1);
+     \fill [red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
+     \end{scope}
 
-%            \includegraphics[width=0.8\linewidth]{EV FRAMSIDABILD.png}
-
-%    \end{figure}
-
-%    %\\[1 cm]
+     \clip (90:\circdist) ++ (180:\circrad) circle (1);
+     \fill [red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
+   \end{tikzpicture}
+\end{figure}
+%\\[1 cm]
 
 
 
