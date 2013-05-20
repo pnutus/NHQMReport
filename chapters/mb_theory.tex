@@ -13,7 +13,9 @@ This chapter covers the construction of such states.
 
 First, the mathematical consequences of identical, indistinguishable particles is presented, focusing on fermions.
 This is followed by a short introduction to the second quantization formalism, which allows calculations with an arbitrary number of particles.
-Finally, we discuss the practical usage of second quantization and present a simple implementation for fermions.\todo[inline]{"practical usage"}
+Finally, we discuss the use of second quantization in computations and present a simple implementation for fermions.
+
+\todo{adapted from dickhoff (suhonen)}
 
 \section{Identical Particles}
 
@@ -172,7 +174,7 @@ A one-body operator $H_1$ which acts on a single sp state, is represented by the
   \bra\alpha H_1 \ket\beta 
   a_\alpha^\dag a_\beta.
 \end{eq}
-It is important to note that, while the sum runs over the complete set of sp states twice, only a few terms will be non-zero, because of the operator rules in \cref{eq:creation_zero,eq:annihilation_zero}. 
+It is important to note that while the sum runs over the complete set of sp states twice, only a few terms will be non-zero, because of the operator rules in \cref{eq:create_zero,eq:annihilate_zero}. 
 
 \todo{$\alpha$ bad notation?}
 If the sp-states are eigenstates to the one-body operator
@@ -302,11 +304,16 @@ The creation operator function steps through the list, flipping the sign at each
 If the particle is already part of the Fock state, the sign is set to 0.
 The annihilation operator searches for a state, saves its index $k$ in the list, annihilates it and set the sign to $(-1)^k$. If the state does not exist the sign is set to 0.
 
-\subsection{Matrix Element Calculations}
+\subsection{Matrix Element Computations}
 
 When calculating the matrix elements, we do do not
+\todo{finish this section}
 
-\section{Ola coupling}
+\section{Angular Momentum Coupling}
+\label{sec:coupling}
+
+\todo{integrate this section}
+
 We have now developed the tools we need to create the Hamiltonian matrix and solve the problem. 
 First, however, we will discuss the concept of angular momentum coupling. 
 This corresponds to making a change of basis, using the rotational symmetry of the problem to significantly reduce the size of the matrix. 

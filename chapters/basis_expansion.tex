@@ -113,17 +113,6 @@ we notice that the diagonal elements of this matrix have the same $l$ and $m$,
 which can be expressed as \emph{$H$ is diagonal in $l$ and $m$}.
 \todo{OLA KOLLA}
 
-
-% Since we are considering a spherically symmetric Hamiltonian
-% the $l$ and $m$ in $\ket{nlm}$ commute with $H$
-% and will therefore contribute with a $\delta_{ll'}\delta_{mm'}$ factor. 
-% This means we can drop the primes and write \cref{eq:HOexpanded} as
-% \begin{eq}
-%   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
-% \end{eq}
-% If we see $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix, this can be expressed as {\it $H$ is diagonal in $l$ and $m$}.
-% \todo{Old stuff for inspiration}
-
 \section{The Harmonic Oscillator Basis}
 \label{sec:harmosc}
 
@@ -135,7 +124,6 @@ We now expand the TISE in the spherically symmetric Harmonic Oscillator (HO) bas
 where $\mu$ is the mass of the problem and $\omega$ is the angular frequency of the oscillator. 
 The expansion procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and gives us
 \begin{eq}
-  \label{eq:HOexpanded}
   \sum_{n'l'm'} \bra{nlm} H \ket{n'l'm'} \psi_{n'l'm'} = E \psi_{nlm}
 \end{eq}
 and if we use the fact that $H$ is diagonal in $l$ and $m$ we get
@@ -144,7 +132,7 @@ and if we use the fact that $H$ is diagonal in $l$ and $m$ we get
 \end{eq}
 We now have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (see \cref{sec:HO matrix elements} for the details) and the result is \todo{are we stringent in the use of compute, calculate?}
 \begin{eq}
-  \label{eq:HO matrix elements}
+  \label{eq:HO_matrix_elements}
   &
   \bra{nlm} H \ket{n'lm} =
 	\frac{\hbar\omega}{2}
@@ -161,7 +149,7 @@ We now have a matrix equation, but we need to find the matrix elements $\bra{nlm
 \end{eq}
 where $R_{nl}$ are the radial wavefunctions of the harmonic oscillator
 \begin{eq}
-  \label{eq:HO radial wavefunction}
+  \label{eq:HO_radial_wavefunction}
 	R_{nl}(r) 
 	= 
   \sqrt{\frac{
@@ -246,7 +234,7 @@ With this discretization the Schrödinger equation may be written as
 \end{align}
 
 Because of the $k_j^2$ in the second term of the matrix elements 
-(\cref{eq:mom matrix}), the $H_{ij}$ matrix will not be symmetric. 
+(\cref{eq:mom_matrix}), the $H_{ij}$ matrix will not be symmetric. 
 Working with a symmetric matrix will be faster, hence we perform \todo{why?/explain more}\todo{where do we mention the need for symmetrized matrix in he6?}
 the transformation
 \begin{eq}
@@ -260,7 +248,7 @@ the transformation
 \end{eq}
 which gives us a symmetric matrix
 \begin{eq}
-  \label{eq:plane wave matrix elements}
+  \label{eq:plane_wave_matrix_elements}
   H_{ij}' = \frac{k_i^2}{2\mu}\delta_{ij} + \sqrt{w_i w_j}k_i k_j V_{ij}.
 \end{eq}
 The Shrödinger equation then becomes
@@ -332,7 +320,7 @@ or in matrix notation
   H\psi = E\psi.
 \end{eq}
 
-We calculate the matrix elements $H_{ij}$ with \cref{eq:HO matrix elements,eq:plane wave matrix elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
+We calculate the matrix elements $H_{ij}$ with \cref{eq:HO_matrix_elements,eq:plane_wave_matrix_elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
 \todo{Gauss-Legendre in many places, where is canon?}
 If the matrix is hermitian or symmetric, we only need to calculate the elements in the upper triangle including the diagonal, roughly halving the number of elements we need calculate. 
 

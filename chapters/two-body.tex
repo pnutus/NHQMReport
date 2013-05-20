@@ -17,13 +17,13 @@ The remaining potential is left as a weak \emph{residual} interaction between nu
 
 This method has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
 It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ angular momentum. 
-Of special interest to us are \emph{doubly magic} nuclei, where both proton are neutron numbers are magic. These nuclei can be very tightly bound.  
+Of special interest to us are \emph{doubly magic} nuclei, where both proton are neutron numbers are magic. These nuclei can be very tightly bound.
  
 Because of this, we will choose to study the \He{5} nucleus as an example of a two-body system. 
 The \He{4} nucleus is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core. 
 This core will be treated as a single particle (subsequently referred to as the $\alpha$-particle), interacting with the valence neutron through the mean-field only. 
 
-Other doubly magic light nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow shell model 2008}, but we will here focus on the Helium nucleus.
+Other doubly magic light nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow_shell_model_2008}, but we will here focus on the Helium nucleus.
 
 For mean-field potential we will use the established Woods-Saxon potential. It is given by
 \begin{eq}
@@ -338,4 +338,32 @@ Supposedly \cite{dolan} one wavefunction will enter a plateau as omega is increa
 Our results from investigating this is presented in \cref{fig:energies(omega)}.
 It is clear that no such behavior was observed.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
+\tikzsetnextfilename{Eofro}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = \textwidth,
+      height = 7cm,
+      xlabel= $r_0$,
+      ylabel=E,
+		  axis lines = middle,
+      ymax = 3,
+      no markers,
+      enlargelimits,
+      ticks = none,
+      ]
+      \addplot[color=red, ultra thick] table[x index = 0, y index =1] {../figures/E(omega)/E(omega).data};
+	  \addlegendentry{suspicious behavior}
+      \foreach \y in {2,...,15}
+         \addplot[color=gray] table[x index = 0, y index = \y] {../figures/E(omega)/E(omega).data};
+		\addlegendentry{regular behavior} 
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Lowest solution energies for the He5 system solved with the Harmonic Oscillator basis}
+  \label{fig:eofro}
+\end{figure}
 \end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
