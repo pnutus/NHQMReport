@@ -6,7 +6,7 @@
 
 Equipped with the many-body theory of \cref{cha:many-body} we are now ready to study an open three-body system.
 The natural way to proceed is to add another neutron to our two-body \He{5} system and end up with \He{6}, seen as an alpha particle core with two valence neutrons ($\alpha + n + n$).
-We now have to take into account the attractive two-body interaction between the neutrons, which allows for bound states in \He{6} where there were none in \He{5}.
+We now have to take into account the attractive two-body interaction between the neutrons, which allows for bound states in \He{6} where there were none in \He{5}.\todo[inline]{were none or was none?}
 Nuclei with this property are called \emph{Borromean}, after the Borromean rings (\cref{fig:borromean}). 
 The Borromean rings are three rings interlocked in such a way that, if any one ring is removed, the other two will fall apart, as is the case with the core and the neutrons.
 
@@ -33,7 +33,7 @@ The Borromean rings are three rings interlocked in such a way that, if any one r
 \section{Model System: The \He{6} Nucleus}
 \todo{section title?}
 
-We see the three-body system as a combination of two identical two-body systems of core and neutron, i.e. two ``one-particle'' systems with the same reduced mass as in \cref{cha:two-body}.
+We treat the three-body system as a combination of two identical two-body systems of core and neutron, i.e. two ``one-particle'' systems with the same reduced mass as in \cref{cha:two-body}.
 The validity of this approach is not immediately obvious, but 
 if the two neutron-core pairs have like parity there will be no recoil of the core \cite{suzuki}. 
 The parity depends solely on $l$ and we only consider neutrons in the $p$ orbitals ($l=1$), so the approach is valid.
@@ -79,7 +79,7 @@ A commonly used approximation is an interaction on the form
 \begin{eq}
   V = V(\vec{r}_1 - \vec{r}_2).
 \end{eq}
-To make the calculations more managable, a \emph{separable} interaction can be chosen. An arbitrary function $V = V(\vec{r}_1 - \vec{r}_2)$ can be expanded in a \emph{multipole expansion},
+To make the calculations more managable, a \emph{separable} interaction can be chosen. An arbitrary function $V = V(\vec{r}_1 - \vec{r}_2)$ can be expanded in a \emph{multipole expansion},\todo{cite souhonen somewhere}
 \todo[inline]{what conj?}
 \begin{eq}
   V(\vec{r}_1 - \vec{r}_2) 
@@ -96,6 +96,7 @@ We study two different types of separable two-body interactions, a trivially sep
 
 \subsection{Gaussian Interaction}
 Initially we investigate the simplest form of separable interaction, a product of two functions of $r_1$ and $r_2$, the distance from each neutron to the core
+\todo[inline]{each neutron's distance from hte core?}
 \begin{eq}
   V(r_1, r_2) 
   = 
@@ -130,7 +131,7 @@ In \cref{fig:gaussian} we see that the potential in a rough sense satisfies the 
   \caption{The Gaussian interaction potential as seen by one of the neutrons. The position of the other neutron determines the depth of the potential well.}
   \label{fig:gaussian}
 \end{figure}
-
+\todo{var tydligare med att exp skiten är konstant, så man inte tror att vi failat med index}
 Because the potential is separable
 \begin{eq}
   V(r_1, r_2) 
@@ -185,10 +186,10 @@ Another possible separable interaction is the surface delta interaction (SDI)
   \delta(\vec{r}_1 - \vec{r}_2) 
   \delta(r_2 - r_0)
 \end{eq}
-where $V\sub{SDI}$ is the strength and $r_0$ is the range, chosen to have the same value as the range of the Woods-Saxon potential. 
+where $V\sub{SDI}$ is the strength and $r_0$ is the range, chosen to have the same value as the range of the Woods-Saxon potential. \todo[inline]{why?}
 
 The short-range strong force is thus approximated as a point interaction. 
-The physical motivation of the $\delta(r-r_0)$ term is the experimental fact that the scattering cross-section between neutrons is inversely proportional to their kinetic energy.
+The physical motivation of the $\delta(r-r_0)$ term is the experimental fact that the scattering cross-section between neutrons is inversely proportional to their kinetic energy. \todo[inline]{cite?}
 Since the kinetic energy has a minimum near the surface of the nucleus (at the range $r_0$ of the Woods-Saxon potential), we can approximate the interaction as focused entirely in that shell. 
 \todo{maybe a citation here?}
 

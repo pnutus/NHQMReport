@@ -288,14 +288,14 @@ Furthermore, the sum in the expression of the Fock operators can be optimized by
 
 We represent a single particle state with a record, i.e. an object with named fields that can be assigned values. It is natural to let each quantum number, such as $l$ and $j$ be a field. 
 Moreover, we can include other information about the state, information that is taken for granted in the mathematical formulation.
-This includes a unique id number for each state, the eigenvector holding information about the wavefunction, the basis of the eigenvector and, in the case of the plane wave basis, the contour used.
+This includes a unique index for each state, the eigenvector holding information about the wavefunction, the basis of the eigenvector and, in the case of the plane wave basis, the contour used.
 Much of this extra information is redundant, as many states share the same information.
 Nevertheless, we found that this representation significantly simplifies the structure of the program and makes it easier to understand.
 
 \subsection{Fock State Objects and Operator Functions}
 
 An antisymmetric many-body state $\ket{\alpha_1\dots}$ is represented by an ordered list of single particle objects and a sign. 
-Since the sp state objects have a unique id, there is a well-defined sorting order. 
+Since the sp state objects have a unique index, there is a well-defined sorting order. 
 The sign can be $1$, $-1$ or $0$, representing $\ket{\alpha_1\dots}$, $-\ket{\alpha_1\dots}$ and $0$, respectively. 
 
 The creation and annihilation operators are implemented as functions on the Fock state objects, obeying

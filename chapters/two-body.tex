@@ -7,13 +7,13 @@
 In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
 We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}. 
 The Shrödinger equation is then solved in the HO and plane wave bases.
-The solutions are studied by looking at the energies and wavefunctions while varying parameters.
+The solutions are studied by looking at the energies and wavefunctions while varying parameters.\todo[inline]{"the"?}
 
 \section{Model System: the \He{5} Nucleus}
-Typical examples of open quantum systems are encountered in nuclear physics. The atomic nucleus is held together by the very short-range strong interaction, acting between the nucleuons. 
-This can be studied within a shell model. 
-In this framework, the nucleons are modelled as interacting with a \emph{mean-field} potential, approximating an effective interaction the nucleons experience. 
-The remaining potential is left as a weak \emph{residual} interaction between nucleons. 
+Typical examples of open quantum systems are encountered in nuclear physics. The atomic nucleus is held together by the very short-range strong interaction, acting between the nucleuons. \todo[inline]{typical?}
+This can be studied within a shell model. \todo[inline]{this what? really short sentance btw}
+In this framework, the nucleons are modelled as interacting with a \emph{mean-field} potential, approximating an effective interaction the nucleons experience. \todo[inline]{jag gillar inte flödet i sista satsen, man hakar upp sig}
+The remaining potential is left as a weak \emph{residual} interaction between nucleons. \todo[inline]{remaining?}
 
 This method has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
 It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ angular momentum. 
@@ -21,11 +21,11 @@ Of special interest to us are \emph{doubly magic} nuclei, where both proton are 
  
 Because of this, we will choose to study the \He{5} nucleus as an example of a two-body system. 
 The \He{4} nucleus is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core. 
-This core will be treated as a single particle (subsequently referred to as the $\alpha$-particle), interacting with the valence neutron through the mean-field only. 
+This core will be treated as a single particle (subsequently referred to as the $\alpha$-particle), interacting with the valence neutron through the mean-field only. \todo[inline]{neurons?}
 
-Other doubly magic light nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow_shell_model_2008}, but we will here focus on the Helium nucleus.
+Other doubly magic light nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow_shell_model_2008}, but we will only treat Helium nucleus. \todo[inline]{???}
 
-For mean-field potential we will use the established Woods-Saxon potential. It is given by
+For mean-field potential we will use the established Woods-Saxon potential, which is given by
 \begin{eq}
 	V(r)=
 	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr} ,
@@ -65,7 +65,7 @@ This means that the ground state of \He{5} will be the $p_{3/2}$-wave, with $p_{
 
 Since we approximate the system as a spherically symmetric interaction between two particles, 
 we can by standard procedure reduce the problem to a one-dimensional equation by using the relative coordinate 
-$r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass \todo{why?/cite/explain}
+$r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass \todo[inline]{why?/cite/explain}
 \begin{eq}
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
@@ -160,7 +160,6 @@ This parameter determines the rate at which the potential increases, but also af
   \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. We see that one of the states behaves differently than the others.}
   \label{fig:energies(r0)}
 \end{figure}
-\end{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
 
@@ -191,20 +190,16 @@ Now, the defining property of the spherical bessel functions are that they are e
 Thus we see may conclude that these peaked solution correspond to free particles. 
 In addition, the fact that we find unbound solutions corresponding to each value of $k$ that we feed into the equation hints at the continuous nature of these states. 
 
-THIS IS WHERE I AM NOW
-
 In \cref{fig:resonance wavefunction} the radial probability distributions $r^2|R(r)^2|$ is shown for the broadest momentum wavefunction (the one marked in red in \cref{fig:real mom wavefunctions}) together with an unbound state, for different values of the potential strength $V_0$. 
- We see that one solution (filled line) displays different behavior for diffrent potentials.
- This is the state with the lowest energy and with a very strong potential, $V_0 =$ \SI{70}{MeV} this is a bound state, $E<0$. \todo{lowest energy?}
-In the two weaker potentials, though, this state has an energy $E>0$ meaning that it, too, must be unbound. 
-However, its wavefunction is highly localized near the center, suggesting a quasi-bound state. 
-Additionally, the fact that the solution varies dramatically with the potential implies that it must be a feature of the system.
- 
-The other (dashed line) solution, however, is essentially unchanged under variation of the potential. 
-This can be interpreted as it being an unbound state in the energy continuum. We see that its probability distribution does not decrease for large $r$. \todo{what's the expected bahvior in the continuum? reflect and compare.}
 
+We can see that for systems with a deep potential well (here represented by the $V_0 = \SI{70}{MeV}$ case) will support a bound solution with $E<0$, characterized by a wavefunction that quickly tends to zero outside the potential well. 
+As the strength is decreased, however, the energy of the bound state will increase. 
+When a certain value is reached (in our case around $V_0 = \SI{52}{MeV}$), the potential well no longer supports any bound states. 
+Instead we find a solution with a very localized wavefunction, but with positive energy and a wavefunction that does not tend to zero outside the core. 
+As the interaction strength is further decreased this unique solution becomes less and less localized, as demonstrated in the two last figures ($V0 = \SI{47}{MeV}$, our \He{5} problem, and $V_0 = \SI{40}{MeV}$
 
-%Since we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet. We do not expect the resonance to be properly described until complex energies are introduced.
+We have now studied the solutions obtained from solving the nuclear two-body problem, with the \He{5} nucleus supporting no bound states as a model system. Instead we have found a continuum of unbound particles with positive energies, and one unique solution corresponding to a more localized state, but that still has many characteristics of the unbound states. These are the first signs of quasi-bound states --- the sought-after resonances --- but since these are described by complex energies, and the Schrödinger equation only giving real solutions, we cannot possibly hope to fully describe them within this framework. Instead we have to move on to a different one: The complex momentum representation. 
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions
@@ -228,10 +223,10 @@ This can be interpreted as it being an unbound state in the energy continuum. We
       \tikzsetnextfilename{wavefunction-70MeV}
       \begin{tikzpicture}
         \begin{axis}
-          \addplot          table[x index=0, y index=1] {\wavefunctions};
+          \addplot [color=red, ultra thick] table[x index=0, y index=1] {\wavefunctions};
 					  \addlegendentry{$E = \SI{-4.85}{MeV}$}
 							
-          \addplot+[densely dashed] table[x index=0, y index=2] {\wavefunctions};
+          \addplot+[color=gray] table[x index=0, y index=2] {\wavefunctions};
 		  		  \addlegendentry{$E = \phantom{+}\SI{5.63}{MeV}$}
         \end{axis}
       \end{tikzpicture}
@@ -241,9 +236,9 @@ This can be interpreted as it being an unbound state in the energy continuum. We
     \tikzsetnextfilename{wavefunction-60MeV}
     \begin{tikzpicture}
       \begin{axis}
-        \addplot          table[x index=0, y index=3] {\wavefunctions};
+        \addplot [color=red, ultra thick] table[x index=0, y index=3] {\wavefunctions};
 				  \addlegendentry{$E = \SI{0.062}{MeV}$}
-        \addplot+[densely dashed] table[x index=0, y index=4] {\wavefunctions};
+        \addplot+[color=gray] table[x index=0, y index=4] {\wavefunctions};
 				  \addlegendentry{$E = \phantom{0}\SI{5.75}{MeV}$}
       \end{axis}
     \end{tikzpicture}
@@ -253,9 +248,9 @@ This can be interpreted as it being an unbound state in the energy continuum. We
     \tikzsetnextfilename{wavefunction-52MeV}
     \begin{tikzpicture}
       \begin{axis}
-        \addplot table[x index=0, y index=5] {\wavefunctions};
+        \addplot [color=red, ultra thick] table[x index=0, y index=5] {\wavefunctions};
 				  \addlegendentry{$E = \SI{0.94}{MeV}$}
-        \addplot+[densely dashed] table[x index=0, y index=6] {\wavefunctions};
+        \addplot+[color=gray] table[x index=0, y index=6] {\wavefunctions};
 				  \addlegendentry{$E = \SI{5.80}{MeV}$}
       \end{axis}
     \end{tikzpicture}
@@ -265,9 +260,9 @@ This can be interpreted as it being an unbound state in the energy continuum. We
     \tikzsetnextfilename{wavefunction-47MeV}
     \begin{tikzpicture}
       \begin{axis}
-        \addplot table[x index=0, y index=7] {\wavefunctions};
+        \addplot [color=red, ultra thick] table[x index=0, y index=7] {\wavefunctions};
 				  \addlegendentry{$E = \SI{1.02}{MeV}$}
-        \addplot+[densely dashed] table[x index=0, y index=8] {\wavefunctions};
+        \addplot+[color=gray] table[x index=0, y index=8] {\wavefunctions};
 				  \addlegendentry{$E = \SI{5.89}{MeV}$}
       \end{axis}
     \end{tikzpicture}
@@ -357,4 +352,4 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
 
-
+\end{document}
