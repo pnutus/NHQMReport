@@ -90,7 +90,7 @@ This can be expressed mathematically if we let the resonance have a complex ener
   \label{fig:potentials}
 \end{figure}
 \todo[inline]{bound state in last figure?}
-
+\todo[inline]{Colored energy levels? y-axis to the left of the potentials? add x-axis specifying position?}
 In addition to the bound and unbound states, an open quantum system can harbor \emph{resonances}. 
 These are \emph{quasi-bound} states that are neither bound nor unbound, but exhibit properties of both. 
 It appears in the continuum, like an unbound state, but its wavefunction is localized, like that of a bound state.
@@ -100,12 +100,12 @@ This can be expressed mathematically if we let the resonance have\todo{correspon
 \newpage
 \todo{fixa klart figuren}
 
-The time evolution of a quantum system is governed by the Shrödinger equation
+The time evolution of a quantum system is governed by the Schrödinger equation
 \begin{eq}
   \label{eq:schrödinger}
   i\hbar\ddt\ket\psi = H \ket\psi.
 \end{eq}
-The time-dependency of a bound state $\psi$ with energy $E$ in the discrete spectrum is \todo[inline]{only in the discrete spectrum?}
+The time-dependency of an eigenstate to the Hamiltonian with energy $E$ is 
 \begin{eq}
 	\psi(t)
 	= 
@@ -127,7 +127,7 @@ we get
   =
   \exp\p{-\frac{\Gamma}{\hbar} t} \absq{\psi(0)}
 \end{eq} 
-which describes a resonant state that decays exponentially with half-life 
+which describes a state that decays exponentially with half-life 
 $t_{1/2}=\hbar\ln 2/\Gamma$. $\Gamma$ is called the \emph{width} of the resonance.
 
 \todo[inline]{Talk about width here? Needs to be better. Figure of experimental resonance?}
@@ -149,13 +149,13 @@ the simple nuclear systems \He{5} and \He{6}, which are both known to have reson
 
 The thesis can be thought of as divided into two parts, the first covering resonances in a simple two-body problem and the second part covering the first steps toward more complicated many-body systems. 
 In \cref{cha:basis_expansion} the mathematical foundation for the calculations in this thesis, \emph{basis expansion}, is introduced.
-The basis expansion method is then used in \cref{cha:two-body} to study a loosely bound nuclear system, the \He{5} nucleus.
+The basis expansion method is then used in \cref{cha:two-body} to study a loosely bound two-body nuclear system, the \He{5} nucleus.
 In \Cref{cha:berggren} we use the Berggren basis to reproduce the resonance in \He{5}.
 
 \Cref{cha:many-body} is an introduction to many-body theory, focusing on fermionic systems. 
 The many-body theory is then utilized in \cref{cha:three-body} 
 to study a three-body problem, specifically the \He{6} nucleus.  
-In \cref{cha:monte_carlo} a Monte Carlo method for reducing the basis size is investigated. 
+In \cref{cha:monte_carlo} a Monte Carlo method for reducing the basis size\todo{and reducing calculation time?} is investigated. 
 Finally, \cref{cha:outlook} discusses the methods and results, and suggests further avenues of inquiry.
 
 \end{document}

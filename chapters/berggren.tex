@@ -17,19 +17,31 @@ We may relate the energy of a system to a momentum, according to
 %Therefore, far away from the core (''in the lab''?) all solutions satisfy (k^2/2m)u = Eu, because V(r) = 0, making it a reasonable (?) definition
 %Should something along these lines be included? 
 This tells us that the resonant states have complex momenta and that we have to extend the plane wave basis into the complex momentum plane in order to find them.
-To clarify what this means, consider again the Schrödinger equation in momentum representation, \cref{eq:radial mom space TISE}:\todo{Momentum space Schrödinger equation? Plane wave SE? Spherical wave SE?}
+To clarify what this means, consider again the Schrödinger equation in momentum representation, \cref{eq:radial mom space TISE}:
 \begin{eq}
-  \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k} k'^2 V(k,k') \phi(k') 
+  \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k') 
   &=
   E\phi(k) \, .
 \end{eq}
-Using a complex momentum basis effectively means that we instead\todo{instead of what?} evaluate the integral along a complex contour. 
+Using a complex momentum basis effectively means that we\todo{instead of what?} evaluate the integral along a complex contour. 
 In 1968, Berggren\cite{berggren} first showed that the solutions --- bound states, resonant states and the non-resonant continuum --- that are obtained using this scheme form a complete orthonormal basis. 
 This is a major result, meaning that resonances are included as proper solutions to open quantum systems. This will be of importance later, when we consider systems of multiple interacting particles. 
 In this Chapter, we will instead focus on using contours in the complex momentum plane to find the resonances of \He{5}.
 
-To find the resonance, the contour is required to pass below the pole corresponding to the resonance. \todo{Should we say that it is required, or just investigate different contours and find out?}
+To find the resonance with its complex energy as a solution, it is required that a contour is chosen such that it passes below the momentum corresponding to the resonance. 
+This follows from Cauchy's residue theorem, and the fact that the resonance corresponds to a pole in the complex plane\footnote{See standard treatments on scattering theory for more detail, e.g. Sakurai\cite{sakurai}}.
 A sample contour that could be used is visualized in \cref{fig:berggren contour}. %Note that the solutions in the complex plane are mirrored in the y-axis. \todo{why is this important? elaborate further?}
+Note that the solutions are mirrored in \todo{mirrored in?} the y-axis. It can be shown that this symmetry allows us to restrict our attention to the segment between $0$ and $+\infty$.\cite{berggren}
+
+A curious result following from this procedure is that the ordinary scalar product,
+\begin{eq}
+  \braket{\phi}{\psi} = \fint[0][\inf]{k} k^2 \conj{\phi(k)}\psi(k)
+\end{eq}
+is replaced in favour \todo{favour or favor?} for
+\begin{eq}
+  \braket{\phi}{\psi} = \fint[0][\inf]{k} k^2 \phi(k)\psi(k)
+\end{eq} 
+without the conjugation. This also follows over to the norm. 
 
 \begin{figure}
   \tikzset{
@@ -81,21 +93,17 @@ A sample contour that could be used is visualized in \cref{fig:berggren contour}
   \label{fig:complex plane}
 \end{figure}
 
-\todo{Need to mention completeness of berggren basis. Important here or later?}
-
-\todo{Where to put: "No conjugate on bras"?}
-
 \section{The Complex Contour}
-\todo{In this section I will add additional context and connect it better with previous section}
 We choose to extend our integration along the real axis to 
 the simplest possible complex contour, a triangle-shaped downward extrusion. 
 The tip of the triangle is placed below the hypothesized resonance.
 
 We are faced with the problem of evaluating this contour integral numerically. 
-We can solve this by considering each straight segment of the contour separately 
-and rescale the integration variable so that they are written as integrals along the real line.
-We may then use the standard Gauss-Legendre quadrature to calculate the contributions from each segment.
-An example of a contour is seen in \cref{fig:triangle_contour}, marking each point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the GL-quadrature.\todo{GL?}
+
+We can solve this by considering each straight segment of the contour separately,
+and write it as a sum of three integrals, each treated with Gauss-Legendre quadrature according to \cref{app:gauss-legendre}.
+An example of a contour is seen in \cref{fig:triangle_contour}, marking each quadrature point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the GL-quadrature.\todo{GL?}
+
 With this procedure, we once again get the Schrödinger equation on the same discretized form as \cref{eq:plane_wave_matrix_elements}:
 \begin{eq}
   H_{ij}' = \frac{k_i^2}{2\mu}\delta_{ij} + \sqrt{w_i w_j}k_i k_j V_{ij} \, ,
@@ -179,7 +187,7 @@ We can see that we obtain solutions almost corresponding to the $k$-values used 
 These are once again interpreted as unbound solutions, not interacting strongly with the potential. 
 
 The interesting solution is however the one not lying on the contour. If this solution is the resonance, we expect it to be unchanged when the contour is varied. 
-Indeed, any contour passing below the resonance should give this solution. \todo[inline]{cite berggren?}
+Indeed, any contour passing below the resonance should give this solution, with reservation for numerical error. \todo[inline]{cite berggren?}
 Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstrating that this is the case.
 
 In addition we can investigate the wavefunctions of these solutions. 
