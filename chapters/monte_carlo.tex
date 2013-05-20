@@ -4,50 +4,22 @@
 \chapter{Monte Carlo Method}
 \label{cha:monte_carlo}
 
-Another way to determine the ground state energy of the systems at hand is through a statistical Monte Carlo simulation. 
-Instead of a rigorous examination of how all the many particle states interact with each other we strive to take a couple of state at random and see what energy their interaction give. 
-This procedure is then repeated until we can determine the ground state energy of the system with a statistical confidence.
+The combination of matrix diagonalisation and vast matrices is not advantageous.
+A way to deal with this manner is through \emph{Monte Carlo Simulations}.
+Instead of a rigorous examination of how all particle states interact with each other, we chose only some at random and calculate the energies they give rise to.
+This procedure is then repeated until we can determine the ground state energy with confidence.
 
-\section{Monte Carlo \He{5}}
-When trying to solve the \He{5} problem using a Monte Carlo simulation we choose a couple of states along each line segment as basis, we then calculate the energies for theese with the hope that we should find the resonance state.
-The calculation of the energies is done in the same way as before, only with fewer points in the basis.
+We tried this Monte Carlo method to calculate the energies for the \He{6} problem.
+The procedure starts with the computation of the energies and wavefunctions for \He{5}, since these pose the basis for \He{6}.
+Then we take one state from each of the contour segments at random, which in principle is one point from each third of the contour points.
+The resonance state is also included in the basis because this is the state that contributes the most towards the final solution.
 
-We started of with placing one point per segment at random.
-We got energies following the contour to a large degree for the first two segments, but the ``tail'' did not seem to converge \cref{fig:mc_one}.
-The resonance was nowhere to be found.
+This basis is then used to calculate the energy eigenvalues in the same manner as before.
 
-Since we obviously had no luck with only one point per segment we tried with two.
-The solutions where now much more spread out and we did not feel for average over theese since the place where the resonance should be were the area whith the least amount of solutions.
+By plotting all the energies we get we see that there is a region in the first quadrant with many points that seem to correspond to the  bound state of He{6}, but it has a way too large imaginary part.
 
-\section{Monte Carlo \He{6}}
-Even though we had no success with the Monte Carlo method in the case of \He{5} we decided to try it with \He{6}.
-Here we generated a solution to the \He{5} problem the usual way, but picked only some of these one-body states for the calculations of the energies.
-The way we chose theese were one free basis state corresponding to each of the segments and the resonant state.
-This made our basis contain four states, the resonant state were selected by hand from the \He{5} system.
-Sadly, this gave us as much information about resonant and bound states as from the \He{5}.
-Which was nothing.
+\todo[inline]{Interpret the results in a better way.}
 
-We also tried with choosing two states per segment, but did not get any wiser by doing this.
-If anything the points gotten told us even less.
 
-Observant readers may notice that we not have averaged over the points in the figures.
-This comes from the fact that we do seek a bound state, which would be placed somewhear along the positive imaginary axis.
-The same readers may now notice that no states are placed here, which is why we believe this method useless for our needs.
-
-\section{Conclusion}
-In our case we can conclude that the Mone Carlo method did not work as we hoped.
-We did not find any bound or resonant states as we wished and it was not as fast as the original methods.
-Why we feel that these Monte Carlo simulations maybe belongs better in other places than simulations of heavy helium nuclei.
-
-\section{Evolution?}
-In order to improve the Monte Carlo method there are a few avenues to explore.
-One could instead of choosing the points with a uniform probability use a probability density function akin to the points used in Gauss-Legendre integration. 
-and/or change the weights.
-Another way to modify the simulation would be to use more than one point per segment, maybe there is an optimal (small) number of points per segment that gives the best convergence. 
-Currently we give all the points on the sample contours the weight (used in conjunction with GL-contour and its weights in the calculation of the Hamiltonian) 1, regardless of their position on the segment, maybe this should be updated to conform better with the GL weights, but still let the position be uniformly random.
-
-delta trickery! it might be bad if we 'miss' the resonance.
-
-determine the resonance first and include it in the basis for mb
 
 \end{document}
