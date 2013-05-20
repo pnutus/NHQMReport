@@ -93,7 +93,7 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
 	      \begin{tikzpicture}
 		    \begin{axis}[
 				ylabel = $V/\b{\si{MeV}}$,
-				xmax = 5.9,]
+				xmax = 7.9,]
 		      \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * 7.5 * -2 * (\func -1) / (\diff * x )) };
 		    \end{axis}
 	      \end{tikzpicture}
@@ -113,13 +113,7 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
   \label{fig:woods-saxons}
 \end{figure}
 
-\section{The \He{5} Spectrum}
-  \begin{itemize}
-    \item Short method recap, like one equation
-    \item HO, vary $\omega$
-    \item Wavefunctions
-    \item k-space wavefunction
-  \end{itemize}
+\section{Studying the \He{5} Schrödinger Equation}
 In \cref{cha:basis_expansion} we described the procedure for numerically solving the Schrödinger equation using basis expansion. 
 In this section we will apply those methods to find the eigensolutions of our model system. 
 
@@ -128,6 +122,47 @@ In this section we will apply those methods to find the eigensolutions of our mo
 The range $r_0$ of the HO potential may be varied. 
 This parameter determines the rate at which the potential increases, but also affects how rapidly the solutions converge, because a basis where the wavefunctions are similar to the solutions will have better convergence. 
 \Cref{fig:energies(r0)} shows how the eigensolutions depend on the range of the basis functions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
+\tikzsetnextfilename{E(r0)}
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = \textwidth,
+      height = 7cm,
+      xlabel = $r_0/\b{\si{fm}}$,
+      ylabel = $E/\b{\si{MeV}}$,
+		  axis x line = middle,
+      axis y line = left,
+      ymax = 2.9,
+      xmin = 0,
+      xtickmax = 8,
+      no markers,
+  		every axis y label/.style={ 
+  			at = {(current axis.above origin)},
+	    	anchor = north west, 
+  		},
+  		every axis x label/.style={ 
+  			at = {(current axis.right of origin)},
+	    	anchor = north east, 
+  		},
+      y label style = {fill=white, xshift=2mm, inner sep = 0.5mm},
+      enlarge y limits = lower,
+      ]
+      \addplot[red, ultra thick] table[x index = 0, y index =1] {../figures/E(omega)/E(omega).data};
+	    \addlegendentry{Unique behaviour}
+      \foreach \y in {2,...,15}
+         \addplot[gray] table[x index = 0, y index = \y] {../figures/E(omega)/E(omega).data};
+		     \addlegendentry{Regular behavior} 
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. We see that one of the states behaves differently than the others.}
+  \label{fig:energies(r0)}
+\end{figure}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
 
 The solutions all have energies $E>0$, meaning that they are not bound, and thus have unlimited range. 
 However, we can clearly distinguish a minimum in energy for the lowest energy solution when the range of the basis is in the region $r_0 \approx \SI{1.3}{fm}$, corresponding to radii within the nucleus. 
@@ -138,8 +173,27 @@ Because the harmonic oscillator consists only of bound states and we are trying 
 We will have to switch to a basis with wavefunctions of infinite reach to properly describe this system.
 
 \subsection{Plane Wave Basis}
-The best metric of a potential or Hamiltonian are the wave functions it harbors, we present below the wavefunctions that solve the two particle system for different potential strengths.
-In \cref{fig:resonance wavefunction} we can see the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied.
+The fact that we have found solutions lying in the positive energy spectrum, solutions with infinite reach, have brought us to consider the plane wave basis. 
+Solving the Schrödinger equation in the way prescribed in \cref{cha:basis_expansion} with the Woods-Saxon potential gives us the eigenvalues and momentum eigenfunctions. 
+In \cref{fig:real mom wavefunctions} we present all the obtained eigenfunctions. 
+We especially marked one of the functions in red, clearly standing out among the others and peaking at $k = \SI{0.17}{fm^{-1}}$. 
+Let us discuss the physical significance of the obtained solutions.
+
+We see that we have a background of wavefunctions peaking at different values of $k$. Recall the relation between wavefunctions in position and momentum representation, \cref{eq:radial wavefunction}
+\begin{eq}
+  R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
+\end{eq} 
+We see that a wavefunction peaking at a single value $k_i$ corresponds to a radial wavefunction
+\begin{eq}
+  R_i(r) = i^l\sqrt{\frac{2}{\pi}}k_i^2 j_l(k_i r)
+\end{eq}
+Now, the defining property of the spherical bessel functions are that they are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
+Thus we see may conclude that these peaked solution correspond to free particles. 
+In addition, the fact that we find unbound solutions corresponding to each value of $k$ that we feed into the equation hints at the continuous nature of these states. 
+
+THIS IS WHERE I AM NOW
+
+In \cref{fig:resonance wavefunction} the radial probability distributions $r^2|R(r)^2|$ is shown for the broadest momentum wavefunction (the one marked in red in \cref{fig:real mom wavefunctions}) together with an unbound state, for different values of the potential strength $V_0$. 
  We see that one solution (filled line) displays different behavior for diffrent potentials.
  This is the state with the lowest energy and with a very strong potential, $V_0 =$ \SI{70}{MeV} this is a bound state, $E<0$. \todo{lowest energy?}
 In the two weaker potentials, though, this state has an energy $E>0$ meaning that it, too, must be unbound. 
@@ -152,7 +206,6 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 
 %Since we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet. We do not expect the resonance to be properly described until complex energies are introduced.
 
-\todo{kalla det inte resonans, information hiding, vi kommer på det sen för vi är smarta. OLA}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions
 
@@ -304,28 +357,4 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
 
-%%%% E(r0)
-\tikzsetnextfilename{triangle_contour}
-\begin{figure}[H]
-  \centering
-  \begin{tikzpicture}
-    \begin{axis}[
-      width = \textwidth,
-      height = 7cm,
-      xlabel= $r_0$,
-      ylabel=E,
-		  axis lines = middle,
-      ymax = 2.5,
-      no markers,
-      enlargelimits,
-      ticks = none,
-      ]
-      \addplot[color=red, ultra thick] table[x index = 0, y index =1] {../figures/E(omega)/E(omega).data};
-      \foreach \y in {2,...,5}
-         \addplot[color=gray] table[x index = 0, y index = \y] {../figures/E(omega)/E(omega).data};
-    \end{axis}
-  \end{tikzpicture}
-  \caption{The complex contour used. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
-  \label{fig:triangle contour}
-\end{figure}
-\end{document}
+
