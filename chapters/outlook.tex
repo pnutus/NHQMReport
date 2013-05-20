@@ -5,7 +5,7 @@
 \label{cha:outlook}
 
 \section{Recap}
-In this report we have studied resonance phenomena in heavy Helium isotopes and explained the procedure surrounding it.
+In this thesis we have studied resonance phenomena in heavy Helium isotopes and explained the procedure surrounding it.
 The study was made by expanding the wavefunctions of \He{5} and \He{6} in a basis, after modelling them as an alpha particle with one and two valence neutrons respectively.
 We started by expanding the wavefunction of \He{5} in harmonic oscillators, but found that it was of no use when examining resonances.
 This made us move on to a plane wave expansion instead.
@@ -25,19 +25,19 @@ Here we present a list of som interesting aspects that are possible paths to pro
 \todo[inline]{Not shure if itemize is the best way to present this. Discussion?}
 \subsection{Renormalization}
   \begin{itemize}
-    \item Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis \cite{jimmy}.
+    \item Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis \cite{DMRG}.
     This can be done in several different ways and there exists some different algoritms, two of them are similarity renormalization and kdkfl density ekdlks.
     \todo[inline]{Don't remember what it's called.}
     The point with only selecting a few of the single-particle states is that it reduces the size of the matrix, hence the decreased computational time.
     \todo[inline]{Cite Jimmy...}
-    \item Another way to decrease computational time is the Monte-Carlo simulations we did in \cref{cha:monte-carlo}.
+    \item Another way to decrease computational time is the Monte-Carlo simulations we did in \cref{cha:monte_carlo}.
     The problem is to get it to work.
     In our simulations we did not see neither the resonances in \ce{^{5,6} He}, nor did we find the bound state in \He{6}.
     One theory is that it would show results in larger systems or if we would include more basis states in each iteration, but in our case, this would not be faster than the original algorithm.
   \end{itemize}
 \subsection{More nucleons}
   \begin{itemize}
-    \item We have confined ourselves to the nuclei of \He{5} and \He{6} in this report.
+    \item We have confined ourselves to the nuclei of \He{5} and \He{6} in this thesis.
     Which would make the most natural way to proceed the addition of more neutrons to the alpha particle.
     This since neither the code nor the theory changes much when adding a fourth or fifth neutron, as in the case with \He{7} and \He{8}.
     Heavier cores than these could pose trouble since they probably would need a faster computer than those we have access to.
