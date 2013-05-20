@@ -4,41 +4,62 @@
 \chapter{The Nuclear Three-Body Problem}
 \label{cha:three-body}
 
-Equipped with the Fock-space theory we are now ready to study an open three-body system.
+Equipped with the many-body theory of \cref{cha:many-body} we are now ready to study an open three-body system.
 The natural way to proceed is to add another neutron to our two-body \He{5} system and end up with \He{6}, seen as an alpha particle core with two valence neutrons ($\alpha + n + n$).
-We now have to take into account the attractive two-body interaction between neutrons, which allows for bound states in \He{6} where there were none in \He{5}.
-This is a curious phenomenon---these types of systems are called \emph{Borromean systems}, after the Borromean rings (\cref{fig:borromean}). 
-The Borromean rings are three rings interlocked in such a way, that if any one is removed, the other two will fall apart as well.  
+We now have to take into account the attractive two-body interaction between the neutrons, which allows for bound states in \He{6} where there were none in \He{5}.
+Nuclei with this property are called \emph{Borromean}, after the Borromean rings (\cref{fig:borromean}). 
+The Borromean rings are three rings interlocked in such a way that, if any one ring is removed, the other two will fall apart, as is the case with the core and the neutrons.
 
-We see the three-body system as a combination of two two-body systems of core and neutron, interacting. Since we are only considering valence neutrons in the $p$ orbitals ($l=1$), we can use the fact\cite{suzuki} that one may use the same reduced mass as in the two-body problem (in a system with particles of like parity there will be no recoil of the core.)
-\todo[inline]{Cite article in dropbox}
-Because of this, $H_1$ is the same Hamiltonian that was used in the solution of \He{5}. 
-This means that our basis states will be eigensolutions to this component, and it will only give diagonal contributions to the Hamiltonian matrix. 
-The non-diagonal part of the matrix will come from the two-body interaction $H_2$.
+\begin{figure}[h]
+  \newcommand{\circdist}{1.2}
+  \newcommand{\circrad}{2}
+  \centering
+  \begin{tikzpicture}[even odd rule]
+    \foreach \angle/\colour in {90/red,-30/blue,210/green}
+      \fill [\colour] (\angle:\circdist) circle (\circrad) circle (\circrad+0.5);
+
+    \begin{scope}
+    \clip (-30:\circdist) circle (1);
+    \fill [red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
+    \end{scope}
+
+    \clip (90:\circdist) ++ (180:\circrad) circle (1);
+    \fill [red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
+  \end{tikzpicture}
+  \caption{The Borromean rings}
+  \label{fig:borromean}
+\end{figure} 
+
+We see the three-body system as a combination of two identical two-body systems of core and neutron, i.e. two ``one-particle'' systems with the same reduced mass as in \cref{cha:two-body}.
+The validity of this approach is not immediately obvious, but 
+if the two neutron-core pairs have like parity there will be no recoil of the core \cite{suzuki}. 
+The parity depends solely on $l$ and we only consider neutrons in the $p$ orbitals ($l=1$), so the approach is valid.
 
 We have a hamiltonian on the form
 \begin{eq}
   \hat{H} = \hat{H}_1 + \hat{V}\sub{res}
 \end{eq}
-where $\hat{H}_1$ is the one-body Hamiltonian of the two-body problem and $\hat{V}\sub{res}$ is the residual neutron-neutron interaction.
+where $\hat{H}_1$ is the Hamiltonian of the two-body problem and $\hat{V}\sub{res}$ is the residual neutron-neutron interaction.
 Since our basis is the solutions to the two-body problem, i.e. the eigenstates to $\hat{H}_1$, we can use \cref{eq:one-body_matrix_elements,eq:two-body_matrix_elements} to write the matrix elements as
 \begin{eq}
   \bra{ab} \hat{H} \ket{cd} 
   = 
   \delta_{ac}\delta_{bd}(E_a + E_b)
   +
-  \bra{ab} V \ket{cd}.
+  \bra{ab} V\sub{res} \ket{cd},
 \end{eq}
+where $E_\alpha$ are the energy eigenvalues of the two-body problem.
 In the coupled scheme this becomes
 \begin{eq}
   \bra{ab; J} H \ket{cd; J}
   & =
   \frac{1 + (-1)^J\delta_{ab}}{1 + \delta_{ab}}
   \delta_{ac}\delta_{bd}(E_a + E_b)
-  \\ & +
-  \bra{ab; J} V \ket{ab; J}.
+  +
+  \bra{ab; J} V\sub{res} \ket{ab; J}.
 \end{eq}
-where
+
+
 \section{Neutron-Neutron Interaction}
 
 \todo{maybe refer to some article that covers this topic and then conclude that we'd rather use a dumbed-down approximation}
