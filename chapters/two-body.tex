@@ -100,7 +100,7 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
 	      \begin{tikzpicture}
 		    \begin{axis}[
 				ylabel = $V/\b{\si{MeV}}$,
-				xmax = 5.9,]
+				xmax = 7.9,]
 		      \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * 7.5 * -2 * (\func -1) / (\diff * x )) };
 		    \end{axis}
 	      \end{tikzpicture}
@@ -120,13 +120,7 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
   \label{fig:woods-saxons}
 \end{figure}
 
-\section{The \He{5} Spectrum}
-  \begin{itemize}
-    \item Short method recap, like one equation
-    \item HO, vary $\omega$
-    \item Wavefunctions
-    \item k-space wavefunction
-  \end{itemize}
+\section{Studying the \He{5} Schrödinger Equation}
 In \cref{cha:basis_expansion} we described the procedure for numerically solving the Schrödinger equation using basis expansion. 
 In this section we will apply those methods to find the eigensolutions of our model system. 
 
@@ -151,8 +145,27 @@ Because the harmonic oscillator consists only of bound states and we are trying 
 We will have to switch to a basis with wavefunctions of infinite reach to properly describe this system.
 
 \subsection{Plane Wave Basis}
-The best metric of a potential or Hamiltonian are the wave functions it harbors, we present below the wavefunctions that solve the two particle system for different potential strengths.
-In \cref{fig:resonance wavefunction} we can see the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied.
+The fact that we have found solutions lying in the positive energy spectrum, solutions with infinite reach, have brought us to consider the plane wave basis. 
+Solving the Schrödinger equation in the way prescribed in \cref{cha:basis_expansion} with the Woods-Saxon potential gives us the eigenvalues and momentum eigenfunctions. 
+In \cref{fig:real mom wavefunctions} we present all the obtained eigenfunctions. 
+We especially marked one of the functions in red, clearly standing out among the others and peaking at $k = \SI{0.17}{fm^{-1}}$. 
+Let us discuss the physical significance of the obtained solutions.
+
+We see that we have a background of wavefunctions peaking at different values of $k$. Recall the relation between wavefunctions in position and momentum representation, \cref{eq:radial wavefunction}
+\begin{eq}
+  R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
+\end{eq} 
+We see that a wavefunction peaking at a single value $k_i$ corresponds to a radial wavefunction
+\begin{eq}
+  R_i(r) = i^l\sqrt{\frac{2}{\pi}}k_i^2 j_l(k_i r)
+\end{eq}
+Now, the defining property of the spherical bessel functions are that they are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
+Thus we see may conclude that these peaked solution correspond to free particles. 
+In addition, the fact that we find unbound solutions corresponding to each value of $k$ that we feed into the equation hints at the continuous nature of these states. 
+
+THIS IS WHERE I AM NOW
+
+In \cref{fig:resonance wavefunction} the radial probability distributions $r^2|R(r)^2|$ is shown for the broadest momentum wavefunction (the one marked in red in \cref{fig:real mom wavefunctions}) together with an unbound state, for different values of the potential strength $V_0$. 
  We see that one solution (filled line) displays different behavior for diffrent potentials.
  This is the state with the lowest energy and with a very strong potential, $V_0 =$ \SI{70}{MeV} this is a bound state, $E<0$. \todo{lowest energy?}
 In the two weaker potentials, though, this state has an energy $E>0$ meaning that it, too, must be unbound. 
@@ -165,7 +178,6 @@ This can be interpreted as it being an unbound state in the energy continuum. We
 
 %Since we are working within the realm of real numbers, we can gain no further insight into the nature of these solutions yet. We do not expect the resonance to be properly described until complex energies are introduced.
 
-\todo{kalla det inte resonans, information hiding, vi kommer på det sen för vi är smarta. OLA}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions
 
