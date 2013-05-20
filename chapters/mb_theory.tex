@@ -189,6 +189,7 @@ the matrix elements only exist on the diagonal, when $\alpha = \beta$, and we ge
 \end{eq}
 Sandwiched between a bra and a ket, this becomes
 \begin{eq}
+  \label{eq:one-body_matrix_elements}
   \bra{\alpha_1\dots\alpha_N} \hat{H}_1 \ket{\alpha'_1\dots\alpha'_N}
   & =
   \sum_{\alpha} 
@@ -205,7 +206,6 @@ Sandwiched between a bra and a ket, this becomes
     h_1 + \dots + h_N
   }
   \delta_{\alpha_1\alpha'_1} \dots \delta_{\alpha_N\alpha'_N},
-\label{eq:one-body interaction}
 \end{eq}
 the sum of the eigenvalues of the sp states in the bra and ket, but only if the bra and ket are the same. The Fock space operator $\hat{H}_1$ is thus also diagonal.
 
@@ -255,6 +255,7 @@ The double counting can be avoided, however, by taking into account the ordering
 
 For the case of two particles we have
 \begin{eq}
+  \label{eq:two-body_matrix_elements}
   \bra{ab} \hat{H}_2 \ket{cd}
   & =
   \sum_{\substack{\alpha < \beta \\ \gamma < \delta}} 
@@ -305,6 +306,81 @@ The annihilation operator searches for a state, saves its index $k$ in the list,
 
 When calculating the matrix elements, we do do not
 
+\section{Ola coupling}
+We have now developed the tools we need to create the Hamiltonian matrix and solve the problem. 
+First, however, we will discuss the concept of angular momentum coupling. 
+This corresponds to making a change of basis, using the rotational symmetry of the problem to significantly reduce the size of the matrix. 
+In principle this is not neccesary to solve the problem, but it is a neat trick to make the computations more managable. 
+The following section introduces the concept of angular momentum coupling. \todo{refer to souhonen or somewhere where this coupling is satisfactorily explained}
+ 
+%The \He{6} nucleus can be solved in two ways, either we couple the angular momenta of the two sp states to reduce the amount of calculations needed or we generate all mb states to get calculations that are more straight-forward. 
+%We solve the problem using both schemes, the coupled scheme because is is the one we want to use, but we also solve it using the uncoupled scheme to verify the answer.
+%Both schemes can be used together when solving in both the HO basis and the k basis. 
+%We will cover all four approaches in this chapter.
+
+%\subsection{Uncoupled Scheme}
+%In the uncoupled scheme we use a mb basis, $\alpha$, formed from two sp solutions, $a,b$, and give each sp state an m quantum number. In order to reduce the calculatins needed we filter the mb states so the sum of m numbers equals M.
+
+
+\subsection{Coupled Scheme}
+So far we have used basis states 
+\begin{eq}
+  \pket{E_1m_1, E_2m_2} = \ket{E_1j_1m_1}\otimes\ket{E_2j_2m_2}
+\end{eq}
+that are eigenvectors to the \He{5} Hamiltonian (with eigenvalues $E_1+E_2$). 
+However, they are also constructed so that they are eigenvectors to the operators $\vec{J}_1^2$ and $\vec{J}_2^2$ with eigenvalues $j_1(j_1+1)$ and $j_2(j_2+1)$ respectively, and the operators $\vec{J}_{1z}$ and $\vec{J}_{2z}$ with eigenvalues $m_1$ and $m_2$. \todo{det här egenvektorer till alla operatorer som vi vill, är det uppenbart eller har vi gjort något smart så att det blir så? behövs citerng?}
+
+
+One often studies systems where the total angular momentum $\vec{J} = \vec{J}_1 + \vec{J}_2$ is conserved, but the individual angular momenta $\vec{J}_1$ and $\vec{J}_2$ are not. 
+Then it is convenient to switch to a basis $\pket{E_1, E_2; JM}$ where the total angular momentum is well defined, but the individual momenta are not. 
+You may then significantly reduce the size of the Hamiltonian matrix by considering systems of various $J$ and $M$ separately. 
+\todo[inline]{such as ours?}
+
+The reader may confirm that $J^2$, $J_z$, $J_1^2$ and $J_2^2$ commute with each other. 
+This means that one may choose a basis where $J$, $M$, $j_1$ and $j_2$ are simultanously well-defined. However, this is not the case with $m_1$ and $m_2$, and you neccesarily have \todo{trivialt? eller citera?}
+\begin{eq}
+  \pket{E_1, E_2; JM} = \sum_{m_1, m_2} c_{m_1 m_2} \pket{E_1m_1, E_2m_2}
+\end{eq}
+where the $j$'s are no longer explicitly written out since they are fixed for any given calculation. The transformation is done with the coefficients $c_{m_1 m_2}$, formally written as \todo{take on one value? please elaborate}
+\begin{eq}
+  c_{m_1 m_2} = \pbraket{j_1 m_1, j_2 m_2}{JM}
+\end{eq}
+known as the \emph{Clebsch-Gordan coefficients}. There are known expressions for these, and values can be found in standard tables. \todo{citation or at least explain what we do}
+
+Since we are studying fermions, we need to use basis states that are antisymmetric with respect to exchange of all quantum numbers. Using the symmetry property of the Clebsch-Gordan coefficients,
+\begin{eq}
+  c_{m_2 m_1} = (-1)^{j_1 + j_2 - J} c_{m_1 m_2} 
+\end{eq}
+we can see that
+\begin{eq}
+  \pket{E_2, E_1; JM} 
+  & = 
+  \sum_{m_1, m_2} c_{m_1 m_2} \pket{E_2 m_1, E_1 m_2} 
+  \\ & = 
+  (-1)^{j_1+j_2-J}\sum_{m_1, m_2} c_{m_1 m_2} \pket{E_2 m_2, E_1 m_1}
+\end{eq}
+Hence it is possible to form the antisymmetric basis vector
+\begin{eq}
+  \ket{E_1 E_2; JM} &= \frac{1}{\sqrt{2}}\bigp{\pket{E_1 E_2;JM} - (-1)^{j_1+j_2-J}\pket{E_2 E_1;JM}} \\
+  &= \sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 m_1, E_2 m_2}.
+\end{eq}
+Now consider the case where both particles are in the same orbital, $E_1 j_1 = E_2 j_2 = E j$. Since $j$ is half-numbered for fermions, we will have $(-1)^{j_1+j_2 - J} = - (-1)^J$, and we get
+\begin{eq}
+  \ket{E^2; JM} = \frac{1+(-1)^J}{\sqrt{2}}\pket{E^2; JM} .
+\end{eq} 
+\todo{ugly kets?}
+We see that this state is equal to the vacuum state for $J$ odd. However, for $J$ even, we find that the norm
+\begin{eq}
+  \braket{E^2; JM}{E^2; JM} = 2
+\end{eq}
+meaning that we have to normalize these states with an additional factor $\nicefrac{1}{\sqrt{2}}$. This can formally be written
+\begin{eq}
+  \ket{E_1 E_2; JM} 
+  = 
+  \frac{1}{\sqrt{1+\delta_{E_1 E_2}}}\sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 m_1, E_2 m_2}
+\end{eq}
+
+\subsection{Matrix elements in coupled scheme}
 \todo{Write about matrix elements}
 
 \end{document}
