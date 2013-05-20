@@ -4,18 +4,6 @@
 \chapter{The Nuclear Three-Body Problem}
 \label{cha:three-body}
 
-\begin{itemize}
-  \item State problem in Fock space
-  \item Coupling (or does it belong in many-body chapter?)
-  \item Interactions
-  \begin{itemize}
-    \item Gaussian
-    \item Delta
-  \end{itemize}
-  \item \He{6} and the specifics of our problem
-  \item Solutions/results
-\end{itemize}
-
 Equipped with the Fock-space theory we are now ready to study an open three-body system.
 The natural way to proceed is to add another neutron to our two-body \He{5} system and end up with \He{6}, seen as an alpha particle core with two valence neutrons ($\alpha + n + n$).
 We now have to take into account the attractive two-body interaction between neutrons, which allows for bound states in \He{6} where there were none in \He{5}.
@@ -28,6 +16,29 @@ Because of this, $H_1$ is the same Hamiltonian that was used in the solution of 
 This means that our basis states will be eigensolutions to this component, and it will only give diagonal contributions to the Hamiltonian matrix. 
 The non-diagonal part of the matrix will come from the two-body interaction $H_2$.
 
+We have a hamiltonian on the form
+\begin{eq}
+  \hat{H} = \hat{H}_1 + \hat{V}\sub{res}
+\end{eq}
+where $\hat{H}_1$ is the one-body Hamiltonian of the two-body problem and $\hat{V}\sub{res}$ is the residual neutron-neutron interaction.
+Since our basis is the solutions to the two-body problem, i.e. the eigenstates to $\hat{H}_1$, we can use \cref{eq:one-body_matrix_elements,eq:two-body_matrix_elements} to write the matrix elements as
+\begin{eq}
+  \bra{ab} \hat{H} \ket{cd} 
+  = 
+  \delta_{ac}\delta_{bd}(E_a + E_b)
+  +
+  \bra{ab} V \ket{cd}.
+\end{eq}
+In the coupled scheme this becomes
+\begin{eq}
+  \bra{ab; J} H \ket{cd; J}
+  & =
+  \frac{1 + (-1)^J\delta_{ab}}{1 + \delta_{ab}}
+  \delta_{ac}\delta_{bd}(E_a + E_b)
+  \\ & +
+  \bra{ab; J} V \ket{ab; J}.
+\end{eq}
+where
 \section{Neutron-Neutron Interaction}
 
 \todo{maybe refer to some article that covers this topic and then conclude that we'd rather use a dumbed-down approximation}
@@ -65,7 +76,10 @@ Initially we investigate the simplest form of separable interaction, a product o
 \end{eq}
 The range $R$ and strength $V\sub{GI}$ are fitting parameters.
 
-\begin{figure}
+In \cref{fig:gaussian} we see that the potential in a rough sense satisfies the expected properties of the interaction. If at least one neutron is far from the core, the other will experience little attraction. If both neutrons are in the vicinity of the core, they will experience a stronger attraction.
+
+
+\begin{figure}[h]
   \centering
     \begin{tikzpicture}
       \begin{axis}[
@@ -86,12 +100,9 @@ The range $R$ and strength $V\sub{GI}$ are fitting parameters.
         \addplot[black] {-e^(-x^2)};
       \end{axis}
     \end{tikzpicture}
-  \caption{The Gaussian interaction as seen by one of the neutrons. The position of the other neutron determines the depth of the potential well.}
+  \caption{The Gaussian interaction potential as seen by one of the neutrons. The position of the other neutron determines the depth of the potential well.}
   \label{fig:gaussian}
 \end{figure}
-
-
-In \cref{fig:gaussian} we see that the potential in a rough sense satisfies the expected properties of the interaction. If at least one neutron is far from the core, the other will experience little attraction. If both neutrons are in the vicinity of the core, they will experience a stronger attraction.
 
 Because the potential is separable
 \begin{eq}
@@ -107,35 +118,39 @@ we can write the two-body matrix elements as
   =
   -V\sub{GI} 
   \bra{a} V\sub{sep} \ket{c} 
-  \bra{b} V\sub{sep} \ket{d}.
+  \bra{b} V\sub{sep} \ket{d}
 \end{eq}
-The $\bra{\alpha} V\sub{sep}(r) \ket{\beta}$ are then calculated by expanding $V\sub{sep}$ in the same basis as the sp states. In the harmonic oscillator basis, this is
+which in the coupled scheme becomes
+\begin{eq}
+  & \bra{ab; J} V \ket{cd; J}
+  = \\
+  & -V\sub{GI} 
+  \N_{ab} \N_{cd}
+  \p{
+    \bra{a} V\sub{sep} \ket{c} 
+    \bra{b} V\sub{sep} \ket{d}
+    - (-1)^{j_1 + j_2 + J}
+    \bra{a} V\sub{sep} \ket{d} 
+    \bra{b} V\sub{sep} \ket{c}
+  }.
+\end{eq}
+The $\bra{a} V\sub{sep}(r) \ket{c}$ are calculated by expanding $V\sub{sep}$ in the same basis as the sp states. In the plane wave basis this is
 \begin{eq}
   \bra{a} V\sub{sep} \ket{c}
   =
-  \sum_n \psi^{(a)}_n
-  \sum_{n'} \psi^{(c)}_{n'}
-  \delta_{m_a m_c}
-  \fint[0][\inf]{r} r^2 R_{nl}(r) V\sub{sep}(r) R_{n'l}(r)
+  \sum_i \sqrt{w_i}k_i \phi'_a(k_i) \sum_j \sqrt{w_j}k_j \phi'_b(k_j) V\sub{sep}(k_i, k_j),
 \end{eq}
-\todo{notation? $\psi_{n_\alpha}$}
-and in the plane wave basis
-\begin{eq}
-  \bra{a} V\sub{sep}(r) \ket{c}
-  =
-  \sum_i \sqrt{w_i}k_i \phi^(a)_i \sum_j \sqrt{w_j}k_j \phi^(c)_j V\sub{sep}(k,k'),
-\end{eq}
-\todo{$\phi_i$ bad notation?}
 with
 \begin{eq}
-  V\sub{sep}(k,k') 
+  V\sub{sep}(k_i, k_j) 
   = 
-  \frac{2}{\pi} \fint[0][\inf]{r} r^2 V(r) j_l(kr)j_l(k'r),
+  \frac{2}{\pi} \fint[0][\inf]{r} r^2 V(r) j_l(k_i r)j_l(k_j r),
 \end{eq}
 as before.
+\todo{numerical considerations}
 
 \subsection{Surface Delta Interaction}
-Another separable interaction one may use is the surface delta interaction
+Another possible separable interaction is the surface delta interaction (SDI)
 \begin{eq}
   V(\vec{r}_1, \vec{r}_2) 
   = 
@@ -144,238 +159,45 @@ Another separable interaction one may use is the surface delta interaction
   \delta(r_2 - r_0)
 \end{eq}
 where $V\sub{SDI}$ is the strength and $r_0$ is the range, chosen to have the same value as the range of the Woods-Saxon potential. 
-We are thus approximating the short-range force as a point interaction. 
-The physical motivation of the $\delta(r-r_0)$ term is the experimental fact that the scattering cross-section between neutrons is inversely proportional to their kinetic energy. \todo[inline]{maybe a citation here?}
+
+The short-range strong force is thus approximated as a point interaction. 
+The physical motivation of the $\delta(r-r_0)$ term is the experimental fact that the scattering cross-section between neutrons is inversely proportional to their kinetic energy.
 Since the kinetic energy has a minimum near the surface of the nucleus (at the range $r_0$ of the Woods-Saxon potential), we can approximate the interaction as focused entirely in that shell. 
+\todo{maybe a citation here?}
 
-It is found that this is indeed a separable interaction, with multipole radial components
+The SDI has multipole radial components
 \begin{eq}
-  v_l(r) = \frac{\delta(r-r_0)}{r}
-\end{eq} 
-
-Because we now also have the spherical harmonics components, the interaction matrix elements are cumbersome to calculate and beyond the scope of this report. Instead we will simply cite the result. \todo[inline]{fron where?}
-
-%With this potential, the two-body matrix elements become (for calculation, see \cref{app:SDI})
-%\begin{eq}
-%  \pbra{ab} V \pket{cd}
-%  =
-%  V\sub{SDI} r_0^2
-%  \delta_{m_a m_c}\delta_{m_b m_d}   
-%  R^*_a(r_0) R^*_b(r_0) R_c(r_0) R_d(r_0),
-%\end{eq}
-%Here $R(r)$ are the radial wavefunctions of the sp states.
-
-\subsection{Herp}
-
-For the \He{5} eigensolutions these consist of the quantum numbers
-\begin{eq}
-\ket{a} = \ket{E l s j m} .
+  v_l(r) = \frac{\delta(r-r_0)}{r},
 \end{eq}
-We will only be using $p_{3/2}$ states in our expansion, meaning that $(lsj)$ will be common for all states and will not be written out explicitly, so single-particle states can be written $\ket{Em}$. 
-
-We can now appreciate the benefits of choosing a spherically symmetric separable potential. To calculate the Hamiltonian matrix we need only evaluate the interaction matrix $V_{ij} = \bra{E_i m_i}V\sub{sep}\ket{E_j m_j}$. Since we are solving the \He{5} problem in some basis expansion, we generally do not know the wavefunctions in coordinate space. Instead we transform the integral to the representation that is currently used. For the plane wave expansion we could do it explicitly by inserting \cref{eq:radial wavefunction}, restated below,
-
+and with a complicated calculation (see \cite{suhonen}) one reaches the following expression for the coupled scheme matrix elements
 \begin{eq}
-  R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
-  \label{eq:radial wavefunction 2}
-\end{eq}
-
-twice:
-
-\begin{eq}
-  \bra{E_i m_i}V\sub{sep}\ket{E_j m_j} 
-  &=
-  \int \rd^3 \vec{r} \conj{\psi_i}(\vec{r}) V\sub{sep}(r) \psi_j(\vec{r}) \\
-  &= 
-  \int \rd k k^2 \phi_i(k) \int \rd k' k'^2 \phi_j(k') V\sub{sep}(k,k') \delta_{m_i m_j}
-\end{eq}
-where 
-\begin{eq}
-  V\sub{sep}(k,k') = \frac{2}{\pi}\int \rd r r^2 V(r) j_l(kr)j_l(k'r).
-\end{eq}
-Putting it all together, we have 
-\begin{eq}
-  &\bra{E_1 m_1 E_2 m_2} V\sub{n-n} \ket{E'_1 m'_1 E'_2 m'_2} \\
-   = &V_0 \bra{E_1 m_1} V\sub{sep} \ket{E'_1 m'_1} \bra{E_2 m_2} V\sub{sep} \ket{E'_2 m'_2}
-  -
-  V_0 \bra{E_1 m_1} V\sub{sep} \ket{E'_2 m'_2} \bra{E_2 m_2} V\sub{sep} \ket{E'_1 m'_1} \\
-   =&
-  V_0 \bigp{ V(E_1, E'_1)V(E_2, E'_2) \delta_{m_1 m'_1} \delta_{m_2 m'_2}
-  -
-  V(E_1, E'_2)V(E_2, E'_1) \delta_{m_1 m'_2} \delta_{m_2 m'_1} }.
-\label{eq:n-n interaction}
-\end{eq}
-where
-\begin{eq}
-V(E, E') = \int \rd k \, k^2 \phi(k) \int \rd k' \, k'^2 \phi'(k') V\sub{sep}(k,k').
-\end{eq}
-$\phi$ and $\phi'$ are the \He{5} eigenfunctions corresponding to the eigenvalues $E$ and $E'$ respectively. To evaluate the integral numerically it is discretized as
-\begin{eq}
-V(E, E') = \sum_i \sqrt{w_i}k_i \phi_i \sum_j \sqrt{w_j}k_j \phi'_j V\sub{sep}(k_i, k_j)
-\end{eq}
-where part of the quadrature weight is included in eigenvectors (see \cref{sec:mom discretization}) ... obtained from solving the single-particle problem.
-
-\section{Neutron-Core Interaction}
-\todo{This paragraph might be redundant, as this result is in mb theory chapter}
-Consider the one-body part of the interaction
-\begin{eq}
-	\hat{H_1} = 
-	\sum_{\alpha \beta} \bra{\alpha}H_1\ket{\beta} a_{\alpha}^{\dagger} a_{\beta}
-\end{eq}	 
-Because $H_1$ is the \He{5} Hamiltonian and we are using its eigensolutions as basis states, we trivially have
-\begin{eq}
-  \bra{\alpha}H_1\ket{\beta} = E_\alpha \delta_{\alpha \beta}
-\end{eq}
-hence the matrix elements are
-\begin{eq}
-  \bra{ab}\hat{H_1}\ket{cd} 
-  &= 
-  \sum_\alpha E_\alpha \bra{ab}a^\dag_\alpha a_\alpha\ket{cd} \\
-  &=
-  (E_a + E_b)\delta_{ac}\delta_{bd}
-\label{eq:n-a interaction}
-\end{eq}
-
-\section{Constructing the Hamiltonian Matrix}
-We have now developed the tools we need to create the Hamiltonian matrix and solve the problem. 
-First, however, we will discuss the concept of angular momentum coupling. 
-This corresponds to making a change of basis, using the rotational symmetry of the problem to significantly reduce the size of the matrix. 
-In principle this is not neccesary to solve the problem, but it is a neat trick to make the computations more managable. 
-The following section introduces the concept of angular momentum coupling. \todo{refer to souhonen or somewhere where this coupling is satisfactorily explained}
- 
-%The \He{6} nucleus can be solved in two ways, either we couple the angular momenta of the two sp states to reduce the amount of calculations needed or we generate all mb states to get calculations that are more straight-forward. 
-%We solve the problem using both schemes, the coupled scheme because is is the one we want to use, but we also solve it using the uncoupled scheme to verify the answer.
-%Both schemes can be used together when solving in both the HO basis and the k basis. 
-%We will cover all four approaches in this chapter.
-
-%\subsection{Uncoupled Scheme}
-%In the uncoupled scheme we use a mb basis, $\alpha$, formed from two sp solutions, $a,b$, and give each sp state an m quantum number. In order to reduce the calculatins needed we filter the mb states so the sum of m numbers equals M.
-
-
-\subsection{Coupled Scheme}
-So far we have used basis states 
-\begin{eq}
-  \pket{E_1m_1, E_2m_2} = \ket{E_1j_1m_1}\otimes\ket{E_2j_2m_2}
-\end{eq}
-
-that are eigenvectors to the \He{5} Hamiltonian (with eigenvalues $E_1+E_2$). 
-However, they are also constructed so that they are eigenvectors to the operators $\vec{J}_1^2$ and $\vec{J}_2^2$ with eigenvalues $j_1(j_1+1)$ and $j_2(j_2+1)$ respectively, and the operators $\vec{J}_{1z}$ and $\vec{J}_{2z}$ with eigenvalues $m_1$ and $m_2$. \todo{det här egenvektorer till alla operatorer som vi vill, är det uppenbart eller har vi gjort något smart så att det blir så? behövs citerng?}
-
-
-One often studies systems where the total angular momentum $\vec{J} = \vec{J}_1 + \vec{J}_2$ is conserved, but the individual angular momenta $\vec{J}_1$ and $\vec{J}_2$ are not. 
-Then it is convenient to switch to a basis $\pket{E_1, E_2; JM}$ where the total angular momentum is well defined, but the individual momenta are not. 
-You may then significantly reduce the size of the Hamiltonian matrix by considering systems of various $J$ and $M$ separately. 
-\todo[inline]{such as ours?}
-
-The reader may confirm that $J^2$, $J_z$, $J_1^2$ and $J_2^2$ commute with each other. 
-This means that one may choose a basis where $J$, $M$, $j_1$ and $j_2$ are simultanously well-defined. However, this is not the case with $m_1$ and $m_2$, and you neccesarily have \todo{trivialt? eller citera?}
-\begin{eq}
-  \pket{E_1, E_2; JM} = \sum_{m_1, m_2} c_{m_1 m_2} \pket{E_1m_1, E_2m_2}
-\end{eq}
-where the $j$'s are no longer explicitly written out since they are fixed for any given calculation. The transformation is done with the coefficients $c_{m_1 m_2}$, formally written as \todo{take on one value? please elaborate}
-\begin{eq}
-  c_{m_1 m_2} = \pbraket{j_1 m_1, j_2 m_2}{JM}
-\end{eq}
-known as the \emph{Clebsch-Gordan coefficients}. There are known expressions for these, and values can be found in standard tables. \todo{citation or at least explain what we do}
-
-Since we are studying fermions, we need to use basis states that are antisymmetric with respect to exchange of all quantum numbers. Using the symmetry property of the Clebsch-Gordan coefficients,
-\begin{eq}
-  c_{m_2 m_1} = (-1)^{j_1 + j_2 - J} c_{m_1 m_2} 
-\end{eq}
-we can see that
-\begin{eq}
-  \pket{E_2, E_1; JM} 
-  & = 
-  \sum_{m_1, m_2} c_{m_1 m_2} \pket{E_2 m_1, E_1 m_2} 
-  \\ & = 
-  (-1)^{j_1+j_2-J}\sum_{m_1, m_2} c_{m_1 m_2} \pket{E_2 m_2, E_1 m_1}
-\end{eq}
-Hence it is possible to form the antisymmetric basis vector
-\begin{eq}
-  \ket{E_1 E_2; JM} &= \frac{1}{\sqrt{2}}\bigp{\pket{E_1 E_2;JM} - (-1)^{j_1+j_2-J}\pket{E_2 E_1;JM}} \\
-  &= \sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 m_1, E_2 m_2}.
-\end{eq}
-Now consider the case where both particles are in the same orbital, $E_1 j_1 = E_2 j_2 = E j$. Since $j$ is half-numbered for fermions, we will have $(-1)^{j_1+j_2 - J} = - (-1)^J$, and we get
-\begin{eq}
-  \ket{E^2; JM} = \frac{1+(-1)^J}{\sqrt{2}}\pket{E^2; JM} .
-\end{eq} 
-\todo{ugly kets?}
-We see that this state is equal to the vacuum state for $J$ odd. However, for $J$ even, we find that the norm
-\begin{eq}
-  \braket{E^2; JM}{E^2; JM} = 2
-\end{eq}
-meaning that we have to normalize these states with an additional factor $\nicefrac{1}{\sqrt{2}}$. This can formally be written
-\begin{eq}
-  \ket{E_1 E_2; JM} 
+  \bra{ab; J} V \ket{cd; J} 
   = 
-  \frac{1}{\sqrt{1+\delta_{E_1 E_2}}}\sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 m_1, E_2 m_2}
+  & - K_{abcd} \N_{ab} \N_{cd} 
+  (-1)^{l_a + l_c + j_b + j_d}
+  \\ & \times
+  \b{1 + (-1)^{l_a + l_b + l_c + l_d}}
+  \b{1 + (-1)^{l_c + l_d + J}}
+  \\ & \times
+  \widehat{j_a} \widehat{j_b} \widehat{j_c} \widehat{j_d}
+  \begin{pmatrix}
+    j_a & j_b & J \\
+    \frac{1}{2} & -\frac{1}{2} & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    j_c & j_d & J \\
+    \frac{1}{2} & -\frac{1}{2} & 0
+  \end{pmatrix}.
 \end{eq}
-\subsection{Matrix elements in coupled scheme}
-Let us explicitly write out the matrix elements in the total angular momentum basis for our situation. The notation $\ket{E_1 E_2} = \ket{E_1 E_2; JM}$ will be employed. We want to find the elements
-\todo{Find better solution for crazy summation indices}
-\todo{situation, ordval}
+with $\widehat{j_\alpha} = \sqrt{2j_\alpha + 1}$ and
 \begin{eq}
-  \bra{E_1 E_2}\hat{H}\ket{E_1' E_2'}     
-  =
-  \frac{1}{
-    \sqrt{1 + \delta_{E_1E_2}}
-    \sqrt{1 + \delta_{E_1'E_2'}}
-  } 
-  \sum_{\substack{m_1',m_2' \\ m_1,m_2}} 
-  \conj{c_{m_1 m_2}} c_{m_1'm_2'} 
-  \bra{E_1m_1 E_2m_2} \hat{H} \ket{E_1'm_1' E_2'm_2'}
-\end{eq}
-For the neutron-neutron interaction we may simply insert \cref{eq:n-n interaction} and obtain
-\begin{eq}
-  &\bra{E_1 E_2}\hat{H}_2\ket{E_1' E_2'} 
+  K_{abcd} 
   = 
-  \frac{V_0}{
-    \sqrt{1+\delta_{E_1E_2}}
-    \sqrt{1+\delta_{E_1'E_2'}}
-  } \\
-  &\times\bigp{
-    V(E_1, E_1')V(E_2, E_2')\sum_{m_1, m_2} 
-    |c_{m_1 m_2}|^2 + (-1)^J V(E_1, E_2') V(E_2, E_1') 
-    \sum_{m_1, m_2} |c_{m_1 m_2}|^2
-  }\\
-  &=
-  \frac{V_0}{
-    \sqrt{1+\delta_{E_1E_2}}
-    \sqrt{1+\delta_{E_1'E_2'}}
-  }
-  \bigp{
-    V(E_1, E_1')V(E_2, E_2')+ (-1)^J V(E_1, E_2') V(E_2, E_1')
-  }
+  - \frac{V_0 r_0^2}{16\pi}
+  \psi_a(r_0) \psi_b(r_0) \psi_c(r_0) \psi_d(r_0),
 \end{eq}
-because of the relation
-\begin{eq}
-  \sum_{m_1, m_2} |c_{m_1 m_2}|^2 = 1
-\end{eq}
-when summing over all ($m_1,\, m_2$).
+$\psi_\alpha(r)$ being the radial wavefunction.
 
-The one-body neutron-core interaction gives
-\begin{eq}
-  \bra{E_1 E_2}\hat{H}_1\ket{E_1' E_2'} 
-  =
-  \frac{1}{\sqrt{1+\delta_{E_1E_2}}
-  \sqrt{1+\delta_{E_1'E_2'}}}
-  \sum_{\substack{m_1',m_2' \\ m_1,m_2}} 
-  \conj{c_{m_1 m_2}} c_{m_1'm_2'} H_1
-\end{eq}
-where $H_1$ denotes the result from \cref{eq:one-body interaction}:
-\begin{eq}
-  H_1 &= (E_1 + E_2)\braket{E_1m_1 E_2m_2}{E_1'm_1' E_2' m_2'} \\
-  &= 
-  (E_1 + E_2) \p{
-    \delta_{E_1E_1'}\delta_{E_2E_2'}\delta_{m_1 m_1'}\delta_{m_2 m_2'} 
-   -\delta_{E_1E_2'}\delta_{E_2E_1'}\delta_{m_1 m_2'}\delta_{m_2 m_1'}
-  }
-\end{eq}
-Since we are ordering our states in $E$, we only get contributions from the first term, except for when $E_1=E_2$ or $E_1'=E_2'$, which would allow both terms to be satisfied. When inserting this in the relation above and performing the summations, we end up with \todo{"end up with" informal?}
-\begin{eq}
-  \bra{E_1 E_2}\hat{H}_1\ket{E_1' E_2'} 
-  =
-  \frac{1+(-1)^J\delta_{E_1 E_2}}{1+\delta_{E_1E_2}}\delta_{E_1E_1'}\delta_{E_2 E_2'}(E_1 + E_2)
-\end{eq}  
-which is basically saying that we get contributions $E_1 + E_2$ along the diagonal, except for when $J$ is odd and $E_1=E_2$, where the contribution is $0$. \todo{otydlig sista mening}
+\section{The \He{6} Solutions}
+
 \end{document}

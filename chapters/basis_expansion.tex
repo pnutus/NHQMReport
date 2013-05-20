@@ -235,25 +235,23 @@ A particular set of points and corresponding weights is called a \emph{quadratur
 A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used.
 We instead use the Gauss-Legendre quadrature, for details see \cref{app:gauss-legendre}.
 
-With this approximation the Schrödinger equation may be written as \todo{approximation? discretization?}
+With this discretization the Schrödinger equation may be written as 
 \begin{eq}
-  \sum_j H_{ij} \phi_j &= E \phi_i
+  \sum_j H_{ij} \phi(k_j) &= E \phi(k_i)
 \end{eq}
-where $\phi_i=\phi(k_i)$ and 
 \begin{align}
-  \label{eq:mom matrix}
+  \label{eq:mom_matrix}
   H_{ij} &= \frac{k_i^2}{2\mu}\delta_{ij} + w_jk_j^2 V_{ij} \\
   V_{ij} &= \frac{2}{\pi} \int_0^\infty \rd r \, r^2 V(r) j_l(k_i r) j_l(k_j r)
 \end{align}
-\todo{$\phi_i$ notation might be bad... use $\phi{k_i}$ instead to free up indexes}
 
 Because of the $k_j^2$ in the second term of the matrix elements 
 (\cref{eq:mom matrix}), the $H_{ij}$ matrix will not be symmetric. 
 Working with a symmetric matrix will be faster, hence we perform \todo{why?/explain more}\todo{where do we mention the need for symmetrized matrix in he6?}
 the transformation
 \begin{eq}
-  \phi_i &\mapsto
-  \phi_i' =  \sqrt{w_i} k_i \phi_i
+  \phi(k_i) &\mapsto
+  \phi'(k_i) =  \sqrt{w_i} k_i \phi(k_i)
   \\
   H_{ij} &\mapsto
   H_{ij}' 
@@ -267,10 +265,10 @@ which gives us a symmetric matrix
 \end{eq}
 The Shrödinger equation then becomes
 \begin{eq}
-  \sum_j H'_{ij}\phi'_j = E\phi'_i \, ,
+  \sum_j H'_{ij}\phi'(k_j) = E\phi'(k_j),
 \end{eq}
 with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{ij}$ matrix.
- The real space radial wavefunction $R(r)$ is expressed in terms of $\phi'_j$ as
+ The real space radial wavefunction $R(r)$ is expressed in terms of $\phi'(k_j)$ as
 \begin{eq}
   R(r)
   =
