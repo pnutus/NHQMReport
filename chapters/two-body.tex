@@ -7,13 +7,13 @@
 In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
 We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}. 
 The Shrödinger equation is then solved in the HO and plane wave bases.
-The solutions are studied by looking at the energies and wavefunctions while varying parameters.
+The solutions are studied by looking at the energies and wavefunctions while varying parameters.\todo[inline]{"the"?}
 
 \section{Model System: the \He{5} Nucleus}
-Typical examples of open quantum systems are encountered in nuclear physics. The atomic nucleus is held together by the very short-range strong interaction, acting between the nucleuons. 
-This can be studied within a shell model. 
-In this framework, the nucleons are modelled as interacting with a \emph{mean-field} potential, approximating an effective interaction the nucleons experience. 
-The remaining potential is left as a weak \emph{residual} interaction between nucleons. 
+Typical examples of open quantum systems are encountered in nuclear physics. The atomic nucleus is held together by the very short-range strong interaction, acting between the nucleuons. \todo[inline]{typical?}
+This can be studied within a shell model. \todo[inline]{this what? really short sentance btw}
+In this framework, the nucleons are modelled as interacting with a \emph{mean-field} potential, approximating an effective interaction the nucleons experience. \todo[inline]{jag gillar inte flödet i sista satsen, man hakar upp sig}
+The remaining potential is left as a weak \emph{residual} interaction between nucleons. \todo[inline]{remaining?}
 
 This method has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
 It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ angular momentum. 
@@ -21,11 +21,11 @@ Of special interest to us are \emph{doubly magic} nuclei, where both proton are 
  
 Because of this, we will choose to study the \He{5} nucleus as an example of a two-body system. 
 The \He{4} nucleus is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core. 
-This core will be treated as a single particle (subsequently referred to as the $\alpha$-particle), interacting with the valence neutron through the mean-field only. 
+This core will be treated as a single particle (subsequently referred to as the $\alpha$-particle), interacting with the valence neutron through the mean-field only. \todo[inline]{neurons?}
 
-Other doubly magic light nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow_shell_model_2008}, but we will here focus on the Helium nucleus.
+Other doubly magic light nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow_shell_model_2008}, but we will only treat Helium nucleus. \todo[inline]{???}
 
-For mean-field potential we will use the established Woods-Saxon potential. It is given by
+For mean-field potential we will use the established Woods-Saxon potential, which is given by
 \begin{eq}
 	V(r)=
 	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr} ,
@@ -65,7 +65,7 @@ This means that the ground state of \He{5} will be the $p_{3/2}$-wave, with $p_{
 
 Since we approximate the system as a spherically symmetric interaction between two particles, 
 we can by standard procedure reduce the problem to a one-dimensional equation by using the relative coordinate 
-$r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass \todo{why?/cite/explain}
+$r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass \todo[inline]{why?/cite/explain}
 \begin{eq}
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
@@ -337,7 +337,7 @@ We have now studied the solutions obtained from solving the nuclear two-body pro
       xlabel= $r_0$,
       ylabel=E,
 		  axis lines = middle,
-      ymax = 3,
+      ymax = 5,
       no markers,
       enlargelimits,
       ticks = none,
