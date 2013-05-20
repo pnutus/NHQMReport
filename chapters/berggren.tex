@@ -95,7 +95,7 @@ We are faced with the problem of evaluating this contour integral numerically.
 We can solve this by considering each straight segment of the contour separately 
 and rescale the integration variable so that they are written as integrals along the real line.
 We may then use the standard Gauss-Legendre quadrature to calculate the contributions from each segment.
-An example of a contour is seen in \cref{fig:triangle_contour}, marking each point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the GL-quadrature.
+An example of a contour is seen in \cref{fig:triangle_contour}, marking each point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the GL-quadrature.\todo{GL?}
 With this procedure, we once again get the Schrödinger equation on the same discretized form as \cref{eq:plane_wave_matrix_elements}:
 \begin{eq}
   H_{ij}' = \frac{k_i^2}{2\mu}\delta_{ij} + \sqrt{w_i w_j}k_i k_j V_{ij} \, ,
