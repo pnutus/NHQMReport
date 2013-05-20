@@ -9,44 +9,41 @@ We begin by discussing the shell model, the Woods-Saxon potential and our model 
 The Shrödinger equation is then solved in the HO and plane wave bases.
 The solutions are studied by looking at the energies and wavefunctions while varying parameters.
 
-\section{Model system -- the \He{5} Nucleus}
-%\begin{itemize}
-%  \item shell model
-%  \item core/valence nucleons
-%  \item woods-saxon
-%  \item doubly magic nuclei are good
-%  \item we can choose O or He, we chose He
-%  \item \He{5} specifics (parameters)
-%\end{itemize}
-\todo{Begin by discussing nuclear problem in general?}
-We will choose to study the \He{5} nucleus as a concrete
-\todo[inline]{Concrete <=> betong confusion?} 
-example because its solutions have physical significance, and it is a system that can effectively be treated as a two-body system, consisting of the \He{4} nucleus (subsequently referred to as the $\alpha$-particle) and a valence neutron. This is a good approximation, because the $\alpha$ is a tightly bound doubly magic nucleus, where both the neutrons and protons form filled shells, consisting of 2 $s_{1/2}$-neutrons and 2 $s_{1/2}$-protons. The ground state of \He{5} will thus consist of a valence $p_{3/2}$-neutron, with an excited $p_{1/2}$-state. 
+\section{Model System: the \He{5} Nucleus}
+Typical examples of open quantum systems are encountered in nuclear physics. The atomic nucleus is held together by the very short-range strong interaction, acting between the nucleuons. 
+This can be studied within a shell model. 
+In this framework, the nucleons are modelled as interacting with a \emph{mean-field} potential, approximating an effective interaction the nucleons experience. 
+The remaining potential is left as a weak \emph{residual} interaction between nucleons. 
 
-Other doubly magic nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow_shell_model_2008}, but we will focus on the light Helium nuclei.
-%This is common practice and is a corner stone of the nuclear shell model. \todo{maybe a citation here? OLA PONTUS OLA} \todo{why?/cite/explain}
-
-The \He{5} consists of five nucleons, each consisting of three quarks, all interacting with the strong force. The exact interaction of this system is in fact unknown, and we will have to use an effective \emph{mean-field} potential to describe it. These are potentials constructed to approximate the real behavior, with a set of parameters fitted to reproduce experimental data. Throughout this report, we will use the established Woods-Saxon potential to model our systems.
+This method has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
+It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ angular momentum. 
+Of special interest to us are \emph{doubly magic} nuclei, where both proton are neutron numbers are magic. These nuclei can be very tightly bound.
  
-The Woods-Saxon potential (shown in \cref{fig:woods-saxons}) is given by
+Because of this, we will choose to study the \He{5} nucleus as an example of a two-body system. 
+The \He{4} nucleus is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core. 
+This core will be treated as a single particle (subsequently referred to as the $\alpha$-particle), interacting with the valence neutron through the mean-field only. 
+
+Other doubly magic light nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow_shell_model_2008}, but we will here focus on the Helium nucleus.
+
+For mean-field potential we will use the established Woods-Saxon potential. It is given by
 \begin{eq}
 	V(r)=
-	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr}
+	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr} ,
 \end{eq}
 where 
 \begin{eq}
-	f(r)=\b{1+\exp\p{\frac{r-r_0}{d}}}^{-1}.
+	f(r)=\b{1+\exp\p{\frac{r-r_0}{d}}}^{-1} ,
 \end{eq}
-We will eventually optimize the parameters to match experimentally determined energy levels for \He{5}, but we will begin with using standard values given by \cite{suhonen,dickhoff} to investigate the general behavior of the solutions. 
-These parameters are: 
-\begin{align*}
-  & \text{Interaction strength}         & V_0       &= \SI{47}{MeV}   \\
-  & \text{Spin-orbit coupling strength} & V\sub{so} &= \SI{-7.5}{Mev} \\
-  & \text{Range}                        & r_0       &= \SI{2}{fm}     \\
-  & \text{Diffuseness}                  & d         &= \SI{0.65}{fm}  \\ 
-\end{align*}
-where the names of the parameters should be self-explaining. 
+and it is visualized in \cref{fig:woods-saxons}).
 
+We will eventually optimize the parameters to match experimentally determined energy levels for \He{5}, but to begin with we will use 
+standard values given by \cite{suhonen,dickhoff} to investigate the general behavior of the solutions. These parameters are: 
+\todo{fix table instead}\begin{align*}
+  & \text{Interaction strength}         & V_0       = \SI{47}{MeV}   \\
+  & \text{Spin-orbit coupling strength} & V\sub{so} = \SI{-7.5}{Mev} \\
+  & \text{Range}                        & r_0       = \SI{2}{fm}     \\
+  & \text{Diffuseness}                  & d         = \SI{0.65}{fm}  \\ 
+\end{align*}
 Note that the spin-orbit coupling term can give either attractive or repulsive contributions, depending on how the angular momenta couples
 \begin{eq}
   \vec{l}\cdot\vec{s} 
@@ -62,14 +59,17 @@ Note that the spin-orbit coupling term can give either attractive or repulsive c
   \end{cases}
   .
 \end{eq}
+Because the $s$-shell is already filled in \He{4}, the valence neutron of \He{5} will be a $p$-wave, with $l=1$. 
+We see that the $p_{3/2}$-wave will get a negative net contribution from the total spin-orbit term, also shown in \cref{fig:woods-saxons}. 
+This means that the ground state of \He{5} will be the $p_{3/2}$-wave, with $p_{1/2}$ an excited state.
 
-Since we approximate the system as a spherically symmetric interaction 
-between two particles, we can by standard procedure reduce the problem to a one-dimensional equation by using the relative coordinate $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass \todo{why?/cite/explain}
+Since we approximate the system as a spherically symmetric interaction between two particles, 
+we can by standard procedure reduce the problem to a one-dimensional equation by using the relative coordinate 
+$r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass \todo{why?/cite/explain}
 \begin{eq}
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
 We can now proceed to solve the Schrödinger equation with the specified potential.
-
 
 \begin{figure}
 	\newcommand{\diff}{0.65}
@@ -94,9 +94,9 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
       % ymax = 1.7,
       % legend style={anchor=north east,legend columns=1},
 	  }
-	    \subfloat[$p_\frac{1}{2}$]{
+	    \subfloat[$p_\frac{3}{2}$]{
 	      \tikzset{external/remake next}
-	  \tikzsetnextfilename{p12}
+	  \tikzsetnextfilename{p32}
 	      \begin{tikzpicture}
 		    \begin{axis}[
 				ylabel = $V/\b{\si{MeV}}$,
@@ -105,9 +105,9 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
 		    \end{axis}
 	      \end{tikzpicture}
 	    }
-	  \subfloat[$p_\frac{3}{2}$]{
+	  \subfloat[$p_\frac{1}{2}$]{
 	    \tikzset{external/remake next}
-	\tikzsetnextfilename{p32}
+	\tikzsetnextfilename{p12}
 	    \begin{tikzpicture}
 	      \begin{axis}[
 			  xmax = 7.9,]
@@ -120,16 +120,37 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
   \label{fig:woods-saxons}
 \end{figure}
 
-\section{Solutions to the \He{5} Schrödinger equation}
-
+\section{The \He{5} Spectrum}
   \begin{itemize}
     \item Short method recap, like one equation
     \item HO, vary $\omega$
     \item Wavefunctions
     \item k-space wavefunction
   \end{itemize}
+In \cref{cha:basis_expansion} we described the procedure for numerically solving the Schrödinger equation using basis expansion. 
+In this section we will apply those methods to find the eigensolutions of our model system. 
 
-\todo{review wf //this// section.}
+\subsection{Harmonic Oscillator Basis }
+To begin with, we will solve the problem in HO basis. \todo[inline]{convergence plot or not?} \Cref{fig:he5 conv HO} shows how the obtained energies converge when the number of basis states $N$ included in the expansion increases. 
+
+In addition, the parameter $\omega$ in the HO potential may be varied. 
+This parameter determines the rate at which the potential increases, but also (as can be seen in \cref{eq:HO radial wavefunction}) the range of the wavefunctions which include a factor $e^{-\gamma r^2}$, $\gamma = \mu \omega/\hbar$. We can define a range 
+\begin{eq}
+  r_0 = \frac{1}{\sqrt{\gamma}} = \sqrt{\frac{\hbar}{\mu \omega}} ,
+\end{eq}  
+such that for $r>r_0$ the basis wavefunctions quickly approach zero. 
+This parameter will affect how rapidly the solutions converge, because a basis where the wavefunctions are similar to the solutions will have better convergence. 
+\Cref{fig:HO omega} shows how the eigensolutions depend on the range of the basis functions.
+
+The solutions all have energies $E>0$, meaning that they are not bound, and thus have unlimited range. 
+However, we can clearly distinguish a minimum in energy for the lowest energy solution when the range of the basis is in the region $r_0 \approx \SI{1.3}{fm}$, corresponding to radii within the nucleus. 
+This is a sign that there is a solution to \He{5} localized in this region. 
+Furthermore, we see that the energies for the others strictly decrease when the range of the basis increases, further showing their unbound nature.
+
+Because the harmonic oscillator consists only of bound states and we are trying to study unbound states with infinite range, we can not get much further with this method. 
+We will have to switch to a basis with wavefunctions of infinite reach to properly describe this system.
+
+\subsection{Plane Wave Basis}
 The best metric of a potential or Hamiltonian are the wave functions it harbors, we present below the wavefunctions that solve the two particle system for different potential strengths.
 In \cref{fig:resonance wavefunction} we can see the radial probability distributions $r^2|R(r)^2|$ for two states as the potential is varied.
  We see that one solution (filled line) displays different behavior for diffrent potentials.
@@ -305,4 +326,28 @@ Supposedly \cite{dolan} one wavefunction will enter a plateau as omega is increa
 Our results from investigating this is presented in \cref{fig:energies(omega)}.
 It is clear that no such behavior was observed.
 
+%%%% E(r0)
+\tikzsetnextfilename{triangle_contour}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = \textwidth,
+      height = 7cm,
+      xlabel= $r_0$,
+      ylabel=E,
+		  axis lines = middle,
+      ymax = 2.5,
+      no markers,
+      enlargelimits,
+      ticks = none,
+      ]
+      \addplot[color=red, ultra thick] table[x index = 0, y index =1] {../figures/E(omega)/E(omega).data};
+      \foreach \y in {2,...,5}
+         \addplot[color=gray] table[x index = 0, y index = \y] {../figures/E(omega)/E(omega).data};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The complex contour used. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
+  \label{fig:triangle contour}
+\end{figure}
 \end{document}
