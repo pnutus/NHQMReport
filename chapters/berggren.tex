@@ -127,6 +127,49 @@ but now with complex $k$ and $w$.
   \label{fig:triangle contour}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%VERIFICATION figure
+%\tikzset{external/remake next}
+\tikzsetnextfilename{triangle_contour}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      ymax = 0.1,
+      enlargelimits,
+      only marks,
+	    width = \textwidth, 
+		height = 9cm, 
+		xlabel=Re $k/\b{\si{fm^{-1}}}$, 
+		ylabel=Im $k/\b{\si{fm^{-1}}}$, 
+		axis x line = middle, 
+		axis y line = left, 
+		ymax =  0.04,
+		ymin = -0.12,
+		ytick = {-0.12,-0.08,...,0.04},
+		xtick = {0,0.5,...,3},
+		every axis y label/.style={ 
+			at = {(current axis.above origin)},
+	    	anchor = north west, 
+		}, 
+		every axis x label/.style={
+			at = {(current axis.right of origin)}, 
+			anchor = north east, 
+		}, 
+		yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, 
+		every x tick label/.append style = {
+			anchor = south, yshift = 3pt
+		}, 
+		xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},
+      ]
+      \addplot table [x index=0, y index=1]{../figures/verification_momenta/momentum_solutions.data};
+	  \addplot table [x index=2, y index=3]{../figures/verification_momenta/momentum_solutions.data};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The complex contour used. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
+  \label{fig:triangle contour}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%VERIFICATION end
+
 \section{Studying the Resonance}
 Armed with this we can continue our study of the \He{5} spectrum. 
 Diagonalizing the matrix given by \cref{eq:nhqm matrix element} using a complex contour with vertices $k_0 = 0$, $k_1 = 0.2 - i0.1$, $k_2 = 2.5$ 
@@ -135,13 +178,15 @@ The same Woods-Saxon parameters have been used as before, and we represent the s
 We can see that we obtain solutions almost corresponding to the $k$-values used in the discretization, similar to what was found in the real case. 
 These are once again interpreted as unbound solutions, not interacting strongly with the potential. 
 
-The interesting solution is however the one not lying on the contour. If this solution is the resonance, we expect it to be unchanged when the contour is varied. Indeed, any contour passing below the resonance should give this solution. Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstrating that this is the case.
+The interesting solution is however the one not lying on the contour. If this solution is the resonance, we expect it to be unchanged when the contour is varied. 
+Indeed, any contour passing below the resonance should give this solution. \todo[inline]{cite berggren?}
+Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstrating that this is the case.
 
 In addition we can investigate the wavefunctions of these solutions. 
 \Cref{fig:mom wavefunctions}\todo{Create this figure. SPILL?} shows the momentum distribution of an arbitrary unbound solution and the resonance. 
 As is expected, the unbound solution basically correspond to one definite momentum. 
 On the other hand, the resonance has a broad distribution, reflecting the localized nature of the solution 
-(remember Heisenberg -- a broad momentum wavefunction allows a localized position wavefunction). 
+(remember Heisenberg --- a broad momentum wavefunction allows a localized position wavefunction). 
 In principle, this feature also gives us a way to automatically find the resonance among a large set of solutions: 
 simply single out the one with the broadest wavefunction, or equivalently after normalization, with the lowest maximum value.
 \todo{Perhaps this should only be in the two-body chapter} 
@@ -152,7 +197,7 @@ As the potential well grows less attractive, we see that the imaginary part $\Ga
 
 We may now proceed to fit our model of \He{5} to experimental data of the $p_{3/2}$ and  $p_{1/2}$ resonance provided by \cite{inte jimmy i alla fall}, giving values 
 
-\todo{Make tables? One table showing all?}
+\todo{Make tables? One table \cancel{showing} \emph{to rule} them all?}
 $p_{3/2}: E_0 = bla bla, \Gamma = bla bla$
 
 $p_{1/2}: E_0 = bla bla, \Gamma = bla bla$ 
@@ -192,6 +237,9 @@ where we get the calculated values $bla bla$ for the $p_{3/2}$ resonance and $bl
         ytickmax = 0.3, xtickmax = 0.9,
         enlarge y limits,
         no markers,
+		     xtickmin = 0.1,
+		     xticklabel style={/pgf/number format/fixed,
+		     /pgf/number format/precision=3},
         ]
       	\addplot+[very thick, ->] table  {../figures/res_pole(V0)/poles.data};
       	    \addlegendentry{Pole position}

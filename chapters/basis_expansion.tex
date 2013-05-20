@@ -235,25 +235,23 @@ A particular set of points and corresponding weights is called a \emph{quadratur
 A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used.
 We instead use the Gauss-Legendre quadrature, for details see \cref{app:gauss-legendre}.
 
-With this approximation the Schrödinger equation may be written as \todo{approximation? discretization?}
+With this discretization the Schrödinger equation may be written as 
 \begin{eq}
-  \sum_j H_{ij} \phi_j &= E \phi_i
+  \sum_j H_{ij} \phi(k_j) &= E \phi(k_i)
 \end{eq}
-where $\phi_i=\phi(k_i)$ and 
 \begin{align}
-  \label{eq:mom matrix}
+  \label{eq:mom_matrix}
   H_{ij} &= \frac{k_i^2}{2\mu}\delta_{ij} + w_jk_j^2 V_{ij} \\
-  V_{ij} &= \frac{2}{\pi} \int_0^\infty \rd r \, r^2 V(r) j_l(k_i r) j_l(k_j r)
+  V_{ij} &= \frac{2}{\pi} \int_0^\infty \rd r \, r^2 V(r) j_l(k_i r) j_l(k_j r) \label{eq:potential matrix}
 \end{align}
-\todo{$\phi_i$ notation might be bad... use $\phi{k_i}$ instead to free up indexes}
 
 Because of the $k_j^2$ in the second term of the matrix elements 
 (\cref{eq:mom matrix}), the $H_{ij}$ matrix will not be symmetric. 
 Working with a symmetric matrix will be faster, hence we perform \todo{why?/explain more}\todo{where do we mention the need for symmetrized matrix in he6?}
 the transformation
 \begin{eq}
-  \phi_i &\mapsto
-  \phi_i' =  \sqrt{w_i} k_i \phi_i
+  \phi(k_i) &\mapsto
+  \phi'(k_i) =  \sqrt{w_i} k_i \phi(k_i)
   \\
   H_{ij} &\mapsto
   H_{ij}' 
@@ -267,10 +265,10 @@ which gives us a symmetric matrix
 \end{eq}
 The Shrödinger equation then becomes
 \begin{eq}
-  \sum_j H'_{ij}\phi'_j = E\phi'_i \, ,
+  \sum_j H'_{ij}\phi'(k_j) = E\phi'(k_j),
 \end{eq}
 with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{ij}$ matrix.
- The real space radial wavefunction $R(r)$ is expressed in terms of $\phi'_j$ as
+ The real space radial wavefunction $R(r)$ is expressed in terms of $\phi'(k_j)$ as
 \begin{eq}
   R(r)
   =
@@ -288,11 +286,43 @@ The plane wave basis is continuous and thus requires special treatment.
 
 The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
 The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo[inline]{Questionable? OLA}
-\todo[inline]{Convergence plots here?}
-This gives us an $N \times N$ Hamiltonian matrix $H$.
+The more states we include in the basis, the more accurate results we get. This is illustrated in \cref{fig:hydrogen_convergence}.
+
+%\tikzset{external/remake next}
+\tikzsetnextfilename{hydrogen_convergence}
+\pgfplotstableread{../figures/convergence/hydrogen_convergence.data}\Hconv
+\begin{figure}
+\centering	
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel=Basis size $N$,
+      ylabel=Ground state energy $E_0/\b{\si{MeV}}$,
+		  axis y line=left,
+		  axis x line=bottom,
+      legend pos = south east,
+      xmin=5, xmax=25,
+      ]
+    	\addplot
+        table[x index = 0, y index = 1]  
+        {\Hconv};
+    	  \addlegendentry{Harmonic oscillator basis}
+    	\addplot
+        table[x index = 0, y index = 2] 
+        {\Hconv};
+        \addlegendentry{Plane wave basis}
+      \addplot+[no markers, black, domain=0:50] {-13.6};
+        \addlegendentry{Theoretical value}
+    \end{axis}
+\end{tikzpicture}
+  \caption{Ground state energy $E_0$ of the hydrogen atom as a function of $N$, the number of states included in the basis. The potential of the hydrogen atom is more closely related to the HO potential than a free particle, which is why it converges faster.}
+  \label{fig:hydrogen_convergence}
+\end{figure}
+
+The truncation gives us an $N \times N$ Hamiltonian matrix $H$.
 Since $H$ is diagonal in $l$ and $m$, we can consider each value of $l$ and $m$ separately, reducing the size of the matrix and thus the amount of computation needed to solve for the eigenvalues.
 The equation is then, for a given $l$ and $m$,
 \begin{eq}
+  \label{eq:symm matrix elem}
   \sum_{n'= 0}^N \bra{n} H \ket{n'} \psi_{n'} = E\psi_{n},
 \end{eq}
 or in matrix notation
@@ -307,49 +337,6 @@ If the matrix is hermitian or symmetric, we only need to calculate the elements 
 
 When the matrix elements have been calculated, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
 
-\section{Verifying with the Hydrogen Atom} \todo{where to put this?}
 
-To test our HO and momentum-space bases, we expand the well-known 
-hydrogen atom. It has the potential
-\begin{eq}
-  \label{eq:hydrogen potential}
-	V(r)=
-	-\frac{q_e^2}{4\pi \epsilon_0 r},
-\end{eq}
-and is analytically solvable with a ground state energy 
-$E_0 = -\SI{13.6}{eV}$. In \cref{fig:hydrogen HOvsMom} we plot 
-the convergence of the ground state energy as a function of the number, $N$ of basis states in the expansion
-We can see that the plane-wave expansion converges faster than the 
-harmonic oscillator.
-\todo{fix plot, larger $k_max$}
-
-%\tikzset{external/remake next}
-\tikzsetnextfilename{hydrogen_convergence}
-\begin{figure}
-\centering	
-\begin{tikzpicture}
-    \begin{axis}[
-      xlabel=Basis size $N$,
-      ylabel=Ground state energy $E_0/\b{\si{MeV}}$,
-		  axis y line=left,
-		  axis x line=bottom,
-      legend pos = south east,
-      thick,
-      ]
-    	\addplot
-        table[x index = 0, y index = 1]  
-        {../figures/hydrogen_convergence/hydrogen_convergence.data};
-    	  \addlegendentry{Harmonic oscillator basis}
-    	\addplot
-        table[x index = 0, y index = 2] 
-        {../figures/hydrogen_convergence/hydrogen_convergence.data};
-        \addlegendentry{Plane wave basis}
-      \addplot+[no markers, domain=11:20] {-13.6};
-        \addlegendentry{Theoretical value}
-    \end{axis}
-\end{tikzpicture}
-  \caption{Ground state energy $E_0$ of the hydrogen atom as a function of $N$, the number of states included in the basis.}
-  \label{fig:hydrogen HOvsMom}
-\end{figure}
 
 \end{document}

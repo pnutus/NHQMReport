@@ -1,7 +1,7 @@
 \documentclass[../main/report.tex]{subfiles}
 \begin{document}
   
-\chapter{Many-Body Theory}
+\chapter{Many-Body Theory and Implementation}
 \label{cha:many-body}
 \todo{mer röd tråd}  
 
@@ -12,12 +12,14 @@ Instead, we need to use a single particle (sp) basis to construct many-body stat
 This chapter covers the construction of such states.
 
 First, the mathematical consequences of identical, indistinguishable particles is presented, focusing on fermions.
-This is followed by a short introduction fo the second quantization formalism, which allows calculations with an arbitrary number of particles.
-Finally, we discuss the practical usage of second quantization and present a simple implementation for fermions.
+This is followed by a short introduction to the second quantization formalism, which allows calculations with an arbitrary number of particles.
+Finally, we discuss the practical usage of second quantization and present a simple implementation for fermions.\todo[inline]{"practical usage"}
 
 \section{Identical Particles}
 
-A quirk of quantum mechanics is that particles that look identical \emph{are} identical, for all intents and purposes. For example, in the case of the two neutrons orbiting the core, the neutrons are impossible to distinguish from one another. This has to be taken into consideration when dealing with many-body states of identical particles, as we will see.
+A quirk of quantum mechanics is that particles that look identical \emph{are} identical, for all intents and purposes. \todo[inline]{the sentence would be more powerful without "for all intents and purposes"}
+For example, in the case of the two neutrons orbiting the core, the neutrons are impossible to distinguish from one another. 
+This has to be taken into consideration when dealing with many-body states of identical particles, as we will see.
 
 We begin with an orthonormal single particle (sp) basis $\ket{\alpha_i}$, where $\alpha_i$ represents all the quantum numbers that describe the state.
 Next, consider $N$ identical particles, expressed in this basis. We form a product state
@@ -28,7 +30,7 @@ Next, consider $N$ identical particles, expressed in this basis. We form a produ
   =
   \ket{\alpha_1}\ket{\alpha_2}\dots\ket{\alpha_N},
 \end{eq}
-which, by the orthonormality of the $\ket\alpha$, will be orthonormal as well
+which, by the orthonormality of the $\ket\alpha$, will also be orthonormal
 \begin{eq}
   \pbraket{\alpha_1\alpha_2\dots\alpha_N}{\alpha'_1\alpha'_2\dots\alpha'_N}
   =
@@ -73,10 +75,10 @@ We will henceforth use the angular ket notation $\ket\dots$ for antisymmetric st
 
 \todo[inline]{completeness relation? Orthonormality?}
 
-Important to note is that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
+It is important to note that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
 This means that we have to make sure not to double count these states. 
 We can do this by requiring the sp states to always appear in the same order in the ket. 
-If they are not, we permute two sp states at a time until the correct ordering is reached \todo{"double count"?}
+If they are not, we permute two sp states at a time until the correct ordering is reached
 \begin{eq}
   \ket{\alpha_i\alpha_1\dots\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
   & =
@@ -105,12 +107,14 @@ States with different number of particles are orthogonal to each other.
 The simplest Fock state is the \emph{vacuum state} $\ket{0}$, which describes a system with no particles. 
 All other states can be created from the vacuum state using the \emph{creation operator} $a_\alpha^\dag$, which adds a particle with quantum numbers $\alpha$ to a state
 \begin{eq}
+  \label{eq:create}
   a_{\alpha}^{\dagger} \ket{\alpha_1 \alpha_2 ... \alpha_N} 
   =
   \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N}.
 \end{eq}
 The resulting state will not necessarily be ordered, and the ordering might contribute a sign:
 \begin{eq}
+  \label{eq:create_ordered}
   a_{\alpha_i}^{\dagger} 
   \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_{i+1}...\alpha_{N}} 
   =
@@ -119,21 +123,23 @@ The resulting state will not necessarily be ordered, and the ordering might cont
 \end{eq}
 Note that when $a_\alpha^\dag$ acts on a state that already contains a particle with quantum numbers $\alpha$, the result is 0, because of antisymmetry
 \begin{eq}
+  \label{eq:create_zero}
   a_{\alpha}^{\dagger} \ket{\alpha\alpha_1 \alpha_2 ... \alpha_N} 
   =
   0.
-  \label{eq:creation_zero}
 \end{eq}
 
 The adjoint of the creation operator is called the \emph{annihilation operator} $a_\alpha$. 
 It can be shown to have the opposite effect, removing a particle, when acting on a state
 \begin{eq}
+  \label{eq:annihilate}
   a_{\alpha} \ket{\alpha \alpha_1 \alpha_2 ... \alpha_N}
   =
   \ket{\alpha_1 \alpha_2 ... \alpha_N}.
 \end{eq}
 Here, too, a sign might appear from the ordering
 \begin{eq}
+  \label{eq:annihilate_ordered}
   a_{\alpha_i}
   \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_i \alpha_{i+1} ... \alpha_N}
   =
@@ -142,16 +148,19 @@ Here, too, a sign might appear from the ordering
 \end{eq}
 Analogous to $a_\alpha^\dag$, when $a_\alpha$ acts on a state that does not contain a particle with the quantum numbers $\alpha$, the result is 0
 \begin{eq}
+  \label{eq:annihilate_zero}
   a_\alpha \ket{\alpha_1 \alpha_2 ... \alpha_N} 
   =
   0.
-  \label{eq:annihilation_zero}
 \end{eq}
 
 
 \subsection{General Operators in Fock Space}
 
-We can now express the state of any number of particles, but in order to do something with the states we also need to express operators in the Fock space formalism. It turns out that operators involving any number of particles can be expressed using the creation and annihilation operators. The operators can then act on a state with an arbitrary number of particles. We will only treat one- and two-body operators here, as they are all we need in this report.
+We can now express the state of any number of particles, but in order to do something with the states we also need to express operators in the Fock space formalism. 
+It turns out that operators involving any number of particles can be expressed using the creation and annihilation operators. \todo[inline]{what a pleasant surprise}
+The operators can then act on a state with an arbitrary number of particles. 
+We will only treat one- and two-body operators here, as they are all we need in this report.
 
 \subsubsection{One-Body Operators}
 
@@ -180,6 +189,7 @@ the matrix elements only exist on the diagonal, when $\alpha = \beta$, and we ge
 \end{eq}
 Sandwiched between a bra and a ket, this becomes
 \begin{eq}
+  \label{eq:one-body_matrix_elements}
   \bra{\alpha_1\dots\alpha_N} \hat{H}_1 \ket{\alpha'_1\dots\alpha'_N}
   & =
   \sum_{\alpha} 
@@ -196,7 +206,6 @@ Sandwiched between a bra and a ket, this becomes
     h_1 + \dots + h_N
   }
   \delta_{\alpha_1\alpha'_1} \dots \delta_{\alpha_N\alpha'_N},
-\label{eq:one-body interaction}
 \end{eq}
 the sum of the eigenvalues of the sp states in the bra and ket, but only if the bra and ket are the same. The Fock space operator $\hat{H}_1$ is thus also diagonal.
 
@@ -246,6 +255,7 @@ The double counting can be avoided, however, by taking into account the ordering
 
 For the case of two particles we have
 \begin{eq}
+  \label{eq:two-body_matrix_elements}
   \bra{ab} \hat{H}_2 \ket{cd}
   & =
   \sum_{\substack{\alpha < \beta \\ \gamma < \delta}} 
@@ -263,8 +273,114 @@ For the case of two particles we have
 \end{eq}
 as expected.
 
+
+
 \section{Implementation}
 
-In order to use the fock space formalism in numerical calculations
+To use the fock space formalism in numerical calculations we have to represent the quantum states using available data structures. 
+We construct sp states and use them to form antisymmetric Fock states.
+The creation and annihilation operators become functions that take the Fock states as arguments, and are used to create the Fock operators. 
+Furthermore, the sum in the expression of the Fock operators can be optimized by only evaluating the non-zero terms.
+
+\subsection{Single-Particle-State Objects}
+
+We represent a single particle state with a record, i.e. an object with named fields that can be assigned values. It is natural to let each quantum number, such as $l$ and $j$ be a field. 
+Moreover, we can include other information about the state, information that is taken for granted in the mathematical formulation.
+This includes a unique id number for each state, the eigenvector holding information about the wavefunction, the basis of the eigenvector and, in the case of the plane wave basis, the contour used.
+Much of this extra information is redundant, as many states share the same information.
+Nevertheless, we found that this representation significantly simplifies the structure of the program and makes it easier to understand.
+
+\subsection{Fock State Objects and Operator Functions}
+
+An antisymmetric many-body state $\ket{\alpha_1\dots}$ is represented by an ordered list of single particle objects and a sign. 
+Since the sp state objects have a unique id, there is a well-defined sorting order. 
+The sign can be $1$, $-1$ or $0$, representing $\ket{\alpha_1\dots}$, $-\ket{\alpha_1\dots}$ and $0$, respectively. 
+
+The creation and annihilation operators are implemented as functions on the Fock state objects, obeying
+\cref{eq:create,eq:create_ordered,eq:create_zero,eq:annihilate,eq:annihilate_ordered,eq:annihilate_zero}.
+The creation operator function steps through the list, flipping the sign at each step, until the correct place for the new particle is found. 
+If the particle is already part of the Fock state, the sign is set to 0.
+The annihilation operator searches for a state, saves its index $k$ in the list, annihilates it and set the sign to $(-1)^k$. If the state does not exist the sign is set to 0.
+
+\subsection{Matrix Element Calculations}
+
+When calculating the matrix elements, we do do not
+
+\section{Ola coupling}
+We have now developed the tools we need to create the Hamiltonian matrix and solve the problem. 
+First, however, we will discuss the concept of angular momentum coupling. 
+This corresponds to making a change of basis, using the rotational symmetry of the problem to significantly reduce the size of the matrix. 
+In principle this is not neccesary to solve the problem, but it is a neat trick to make the computations more managable. 
+The following section introduces the concept of angular momentum coupling. \todo{refer to souhonen or somewhere where this coupling is satisfactorily explained}
+ 
+%The \He{6} nucleus can be solved in two ways, either we couple the angular momenta of the two sp states to reduce the amount of calculations needed or we generate all mb states to get calculations that are more straight-forward. 
+%We solve the problem using both schemes, the coupled scheme because is is the one we want to use, but we also solve it using the uncoupled scheme to verify the answer.
+%Both schemes can be used together when solving in both the HO basis and the k basis. 
+%We will cover all four approaches in this chapter.
+
+%\subsection{Uncoupled Scheme}
+%In the uncoupled scheme we use a mb basis, $\alpha$, formed from two sp solutions, $a,b$, and give each sp state an m quantum number. In order to reduce the calculatins needed we filter the mb states so the sum of m numbers equals M.
+
+
+\subsection{Coupled Scheme}
+So far we have used basis states 
+\begin{eq}
+  \pket{E_1m_1, E_2m_2} = \ket{E_1j_1m_1}\otimes\ket{E_2j_2m_2}
+\end{eq}
+that are eigenvectors to the \He{5} Hamiltonian (with eigenvalues $E_1+E_2$). 
+However, they are also constructed so that they are eigenvectors to the operators $\vec{J}_1^2$ and $\vec{J}_2^2$ with eigenvalues $j_1(j_1+1)$ and $j_2(j_2+1)$ respectively, and the operators $\vec{J}_{1z}$ and $\vec{J}_{2z}$ with eigenvalues $m_1$ and $m_2$. \todo{det här egenvektorer till alla operatorer som vi vill, är det uppenbart eller har vi gjort något smart så att det blir så? behövs citerng?}
+
+
+One often studies systems where the total angular momentum $\vec{J} = \vec{J}_1 + \vec{J}_2$ is conserved, but the individual angular momenta $\vec{J}_1$ and $\vec{J}_2$ are not. 
+Then it is convenient to switch to a basis $\pket{E_1, E_2; JM}$ where the total angular momentum is well defined, but the individual momenta are not. 
+You may then significantly reduce the size of the Hamiltonian matrix by considering systems of various $J$ and $M$ separately. 
+\todo[inline]{such as ours?}
+
+The reader may confirm that $J^2$, $J_z$, $J_1^2$ and $J_2^2$ commute with each other. 
+This means that one may choose a basis where $J$, $M$, $j_1$ and $j_2$ are simultanously well-defined. However, this is not the case with $m_1$ and $m_2$, and you neccesarily have \todo{trivialt? eller citera?}
+\begin{eq}
+  \pket{E_1, E_2; JM} = \sum_{m_1, m_2} c_{m_1 m_2} \pket{E_1m_1, E_2m_2}
+\end{eq}
+where the $j$'s are no longer explicitly written out since they are fixed for any given calculation. The transformation is done with the coefficients $c_{m_1 m_2}$, formally written as \todo{take on one value? please elaborate}
+\begin{eq}
+  c_{m_1 m_2} = \pbraket{j_1 m_1, j_2 m_2}{JM}
+\end{eq}
+known as the \emph{Clebsch-Gordan coefficients}. There are known expressions for these, and values can be found in standard tables. \todo{citation or at least explain what we do}
+
+Since we are studying fermions, we need to use basis states that are antisymmetric with respect to exchange of all quantum numbers. Using the symmetry property of the Clebsch-Gordan coefficients,
+\begin{eq}
+  c_{m_2 m_1} = (-1)^{j_1 + j_2 - J} c_{m_1 m_2} 
+\end{eq}
+we can see that
+\begin{eq}
+  \pket{E_2, E_1; JM} 
+  & = 
+  \sum_{m_1, m_2} c_{m_1 m_2} \pket{E_2 m_1, E_1 m_2} 
+  \\ & = 
+  (-1)^{j_1+j_2-J}\sum_{m_1, m_2} c_{m_1 m_2} \pket{E_2 m_2, E_1 m_1}
+\end{eq}
+Hence it is possible to form the antisymmetric basis vector
+\begin{eq}
+  \ket{E_1 E_2; JM} &= \frac{1}{\sqrt{2}}\bigp{\pket{E_1 E_2;JM} - (-1)^{j_1+j_2-J}\pket{E_2 E_1;JM}} \\
+  &= \sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 m_1, E_2 m_2}.
+\end{eq}
+Now consider the case where both particles are in the same orbital, $E_1 j_1 = E_2 j_2 = E j$. Since $j$ is half-numbered for fermions, we will have $(-1)^{j_1+j_2 - J} = - (-1)^J$, and we get
+\begin{eq}
+  \ket{E^2; JM} = \frac{1+(-1)^J}{\sqrt{2}}\pket{E^2; JM} .
+\end{eq} 
+\todo{ugly kets?}
+We see that this state is equal to the vacuum state for $J$ odd. However, for $J$ even, we find that the norm
+\begin{eq}
+  \braket{E^2; JM}{E^2; JM} = 2
+\end{eq}
+meaning that we have to normalize these states with an additional factor $\nicefrac{1}{\sqrt{2}}$. This can formally be written
+\begin{eq}
+  \ket{E_1 E_2; JM} 
+  = 
+  \frac{1}{\sqrt{1+\delta_{E_1 E_2}}}\sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 m_1, E_2 m_2}
+\end{eq}
+
+\subsection{Matrix elements in coupled scheme}
+\todo{Write about matrix elements}
 
 \end{document}
