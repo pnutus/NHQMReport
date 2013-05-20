@@ -2,8 +2,7 @@
 \begin{document}
   
 \chapter{Many-Body Theory and Implementation}
-\label{cha:many-body}
-\todo{mer röd tråd}  
+\label{cha:many-body} 
 
 We have solved the nuclear two-body problem and studied its resonances.
 The next step is to add another particle and subsequently solve the three-body problem. 
@@ -19,7 +18,7 @@ Finally, we discuss the use of second quantization in computations and present a
 
 \section{Identical Particles}
 
-A quirk of quantum mechanics is that particles that look identical \emph{are} identical, for all intents and purposes. \todo[inline]{the sentence would be more powerful without "for all intents and purposes"}
+A quirk of quantum mechanics is that particles that look identical \emph{are} identical.
 For example, in the case of the two neutrons orbiting the core, the neutrons are impossible to distinguish from one another. 
 This has to be taken into consideration when dealing with many-body states of identical particles, as we will see.
 
@@ -55,7 +54,8 @@ Since the particles are identical, and thus indistinguishable, we require the no
 These states can therefore only differ in phase $e^{i\phi}$, and since another swap will bring us back to the original state, the phase has to be either $e^{i\phi} = 1$ or $e^{i\phi} = -1$.
 Symmetric states with no phase change describe \emph{bosons}, whereas antisymmetric states that change sign describe \emph{fermions}.
 In this thesis all sp states will be fermionic, hence we do not treat the bosonic case.
-\todo[inline]{tappade röda tråden här}
+
+
 \subsection{Antisymmetric Fermion states}
 
 We have now established that our fermion many-body states are a linear combination of product states that satisfy
@@ -75,6 +75,7 @@ For example, in the case of two particles, the correctly normalized antisymmetri
 \end{eq}
 We will henceforth use the angular ket notation $\ket\dots$ for antisymmetric states, as opposed to $\pket\dots$ for product states.
 
+\todo[inline]{pauli principle}
 \todo[inline]{completeness relation? Orthonormality?}
 
 It is important to note that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
@@ -157,8 +158,8 @@ Analogous to $a_\alpha^\dag$, when $a_\alpha$ acts on a state that does not cont
 
 \subsection{General Operators in Fock Space}
 
-We can now express the state of any number of particles, but in order to do something with the states we also need to express operators in the Fock space formalism. 
-It turns out that operators involving any number of particles can be expressed using the creation and annihilation operators. \todo[inline]{what a pleasant surprise}
+We can now express the state of any number of particles, but in order to do something with the states we also need to express operators such as the Hamiltonian in the Fock space formalism. 
+General operators, involving any number of particles, can be expressed using the creation and annihilation operators. \todo[inline]{what a pleasant surprise}
 The operators can then act on a state with an arbitrary number of particles. 
 We will only treat one- and two-body operators here, as they are sufficient for our purposes.
 \todo[inline]{There are many operators here...}
