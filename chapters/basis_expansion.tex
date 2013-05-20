@@ -32,8 +32,7 @@ We will not expand our problems in the position basis, but it will still be impo
 
 Before we begin, we briefly recap some well known QM facts. 
 First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$. 
-A discrete basis means that any state $\ket\psi$ can be written as a linear combination of the basis states
-\todo[inline]{discrete basis? shouldn't this be complte basis?}
+A complete basis means that any state $\ket\psi$ can be written as a linear combination of the basis states
 \begin{eq}
   \label{eq:lincomb}	
   \ket\psi = \sum_n \psi_n \ket{n}
@@ -42,7 +41,7 @@ A discrete basis means that any state $\ket\psi$ can be written as a linear comb
   \quad
   \ket\psi = \fint{x} \psi(x) \ket{x}.
 \end{eq}
-The  complete bases we will use in this report are the \emph{position basis} $\ket{\vec{r}}$, the \emph{plane wave basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis} \cite{berggren}. 
+The  complete bases we will use in this thesis are the \emph{position basis} $\ket{\vec{r}}$, the \emph{plane wave basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis} \cite{berggren}. 
 All these bases are orthonormal, i.e.~all the basis vectors satisfy 
 \begin{eq}
   \braket{n}{n'} = \delta_{nn'}
@@ -60,7 +59,7 @@ With a complete basis $\ket{n}$, we get the very useful \emph{completeness relat
   \quad
   I = \fint{x} \ket{x}\bra{x},
 \end{eq}
-where $I$ is the identity operator. This relation can thus be inserted anywhere in any equation, and will find frequent use in this report.
+where $I$ is the identity operator. This relation can thus be inserted anywhere in any equation, and will find frequent use in this thesis.
 
 Let us now expand the TISE in the abstract $\ket{n}$ basis. We start by inserting the completeness relation for $\ket{n}$ in \cref{eq:TISE}
 \begin{eq}
@@ -153,17 +152,16 @@ where $R_{nl}$ are the radial wavefunctions of the harmonic oscillator
 	R_{nl}(r) 
 	= 
   \sqrt{\frac{
-    2^{l+2} \gamma^{l + 3/2} (n - l)!!
+    2^{l+2}  (n - l)!!
   }{
-    \sqrt\pi (n + l + 1)!!
+    \sqrt\pi r_0^{2l + 3} (n + l + 1)!!
   }}
-	r^l e^{-\gamma r^2 / 2}
-	L_{(n-l) / 2}^{(l+\frac{1}{2})}(\gamma r^2),
+	r^l \exp\p{-\frac{r^2}{2r_0^2}}
+	L_{(n-l) / 2}^{(l+\frac{1}{2})}\p{\frac{r^2}{r_0^2}},
 \end{eq}
-$\gamma = \mu\omega/\hbar$ and $L_\mu^\nu(x)$ are the generalized Laguerre polynomials.
+$r_0 = \sqrt{\hbar/\mu\omega}$ is the range and $L_\mu^\nu(x)$ are the generalized Laguerre polynomials.
 \todo{Doublecheck normalization constant.}
-The real space wavefunction $R(r)$ for a state will be expressed as a linear combination of the harmonic oscillator radial wavefunctions:
-\todo[inline]{"real space"?}
+The radial wavefunction $R(r)$ of a state will be expressed as a linear combination of the harmonic oscillator radial wavefunctions:
 \begin{eq}
   R_l(r) = \sum_n \psi_{nl} R_{nl}(r).
 \end{eq}
@@ -289,7 +287,7 @@ The more states we include in the basis, the more accurate results we get. This 
 		  axis y line=left,
 		  axis x line=bottom,
       legend pos = south east,
-      xmin=5, xmax=25,
+      xmin=7, xmax=25,
       ]
     	\addplot
         table[x index = 0, y index = 1]  

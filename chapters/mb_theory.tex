@@ -54,7 +54,7 @@ Since the particles are identical, and thus indistinguishable, we require the no
 \end{eq}
 These states can therefore only differ in phase $e^{i\phi}$, and since another swap will bring us back to the original state, the phase has to be either $e^{i\phi} = 1$ or $e^{i\phi} = -1$.
 Symmetric states with no phase change describe \emph{bosons}, whereas antisymmetric states that change sign describe \emph{fermions}.
-In this report all our sp states will be fermionic, hence we do not treat the bosonic case.
+In this thesis all sp states will be fermionic, hence we do not treat the bosonic case.
 \todo[inline]{tappade röda tråden här}
 \subsection{Antisymmetric Fermion states}
 
@@ -162,7 +162,7 @@ Analogous to $a_\alpha^\dag$, when $a_\alpha$ acts on a state that does not cont
 We can now express the state of any number of particles, but in order to do something with the states we also need to express operators in the Fock space formalism. 
 It turns out that operators involving any number of particles can be expressed using the creation and annihilation operators. \todo[inline]{what a pleasant surprise}
 The operators can then act on a state with an arbitrary number of particles. 
-We will only treat one- and two-body operators here, as they are all we need in this report.
+We will only treat one- and two-body operators here, as they are sufficient for our purposes.
 
 \subsubsection{One-Body Operators}
 
@@ -288,14 +288,14 @@ Furthermore, the sum in the expression of the Fock operators can be optimized by
 
 We represent a single particle state with a record, i.e. an object with named fields that can be assigned values. It is natural to let each quantum number, such as $l$ and $j$ be a field. 
 Moreover, we can include other information about the state, information that is taken for granted in the mathematical formulation.
-This includes a unique id number for each state, the eigenvector holding information about the wavefunction, the basis of the eigenvector and, in the case of the plane wave basis, the contour used.
+This includes a unique index for each state, the eigenvector holding information about the wavefunction, the basis of the eigenvector and, in the case of the plane wave basis, the contour used.
 Much of this extra information is redundant, as many states share the same information.
 Nevertheless, we found that this representation significantly simplifies the structure of the program and makes it easier to understand.
 
 \subsection{Fock State Objects and Operator Functions}
 
 An antisymmetric many-body state $\ket{\alpha_1\dots}$ is represented by an ordered list of single particle objects and a sign. 
-Since the sp state objects have a unique id, there is a well-defined sorting order. 
+Since the sp state objects have a unique index, there is a well-defined sorting order. 
 The sign can be $1$, $-1$ or $0$, representing $\ket{\alpha_1\dots}$, $-\ket{\alpha_1\dots}$ and $0$, respectively. 
 
 The creation and annihilation operators are implemented as functions on the Fock state objects, obeying

@@ -7,13 +7,13 @@
 In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
 We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}. 
 The Shrödinger equation is then solved in the HO and plane wave bases.
-The solutions are studied by looking at the energies and wavefunctions while varying parameters.
+The solutions are studied by looking at the energies and wavefunctions while varying parameters.\todo[inline]{"the"?}
 
 \section{Model System: the \He{5} Nucleus}
-Typical examples of open quantum systems are encountered in nuclear physics. The atomic nucleus is held together by the very short-range strong interaction, acting between the nucleuons. 
-This can be studied within a shell model. 
-In this framework, the nucleons are modelled as interacting with a \emph{mean-field} potential, approximating an effective interaction the nucleons experience. 
-The remaining potential is left as a weak \emph{residual} interaction between nucleons. 
+Typical examples of open quantum systems are encountered in nuclear physics. The atomic nucleus is held together by the very short-range strong interaction, acting between the nucleuons. \todo[inline]{typical?}
+This can be studied within a shell model. \todo[inline]{this what? really short sentance btw}
+In this framework, the nucleons are modelled as interacting with a \emph{mean-field} potential, approximating an effective interaction the nucleons experience. \todo[inline]{jag gillar inte flödet i sista satsen, man hakar upp sig}
+The remaining potential is left as a weak \emph{residual} interaction between nucleons. \todo[inline]{remaining?}
 
 This method has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
 It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ angular momentum. 
@@ -21,11 +21,11 @@ Of special interest to us are \emph{doubly magic} nuclei, where both proton are 
  
 Because of this, we will choose to study the \He{5} nucleus as an example of a two-body system. 
 The \He{4} nucleus is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core. 
-This core will be treated as a single particle (subsequently referred to as the $\alpha$-particle), interacting with the valence neutron through the mean-field only. 
+This core will be treated as a single particle (subsequently referred to as the $\alpha$-particle), interacting with the valence neutron through the mean-field only. \todo[inline]{neurons?}
 
-Other doubly magic light nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow_shell_model_2008}, but we will here focus on the Helium nucleus.
+Other doubly magic light nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow_shell_model_2008}, but we will only treat Helium nucleus. \todo[inline]{???}
 
-For mean-field potential we will use the established Woods-Saxon potential. It is given by
+For mean-field potential we will use the established Woods-Saxon potential, which is given by
 \begin{eq}
 	V(r)=
 	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr} ,
@@ -68,7 +68,7 @@ This means that the ground state of \He{5} will be the $p_{3/2}$-wave, with $p_{
 
 Since we approximate the system as a spherically symmetric interaction between two particles, 
 we can by standard procedure reduce the problem to a one-dimensional equation by using the relative coordinate 
-$r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass \todo{why?/cite/explain}
+$r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass \todo[inline]{why?/cite/explain}
 \begin{eq}
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
@@ -89,13 +89,6 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
       xlabel = $r/\b{\si{fm}}$,
       axis x line = middle,
       axis y line = left
-      % xlabel = $r/\b{\si{fm}}$, ylabel = $r^2\absq{R(r)}$,
-      % axis x line = bottom,
-      % axis y line = left,
-      % no markers,
-      % ytick = \empty,
-      % ymax = 1.7,
-      % legend style={anchor=north east,legend columns=1},
 	  }
 	    \subfloat[$p_\frac{3}{2}$]{
 	      \tikzset{external/remake next}
@@ -127,17 +120,51 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
 In \cref{cha:basis_expansion} we described the procedure for numerically solving the Schrödinger equation using basis expansion. 
 In this section we will apply those methods to find the eigensolutions of our model system. 
 
-\subsection{Harmonic Oscillator Basis }
-To begin with, we will solve the problem in HO basis. \todo[inline]{convergence plot or not?} \Cref{fig:he5 conv HO} shows how the obtained energies converge when the number of basis states $N$ included in the expansion increases. 
+\subsection{Harmonic Oscillator Basis}
+\todo{Fix paragraph}
+The range $r_0$ of the HO potential may be varied. 
+This parameter determines the rate at which the potential increases, but also affects how rapidly the solutions converge, because a basis where the wavefunctions are similar to the solutions will have better convergence. 
+\Cref{fig:energies(r0)} shows how the eigensolutions depend on the range of the basis functions.
 
-In addition, the parameter $\omega$ in the HO potential may be varied. 
-This parameter determines the rate at which the potential increases, but also (as can be seen in \cref{eq:HO radial wavefunction}) the range of the wavefunctions which include a factor $e^{-\gamma r^2}$, $\gamma = \mu \omega/\hbar$. We can define a range 
-\begin{eq}
-  r_0 = \frac{1}{\sqrt{\gamma}} = \sqrt{\frac{\hbar}{\mu \omega}} ,
-\end{eq}  
-such that for $r>r_0$ the basis wavefunctions quickly approach zero. 
-This parameter will affect how rapidly the solutions converge, because a basis where the wavefunctions are similar to the solutions will have better convergence. 
-\Cref{fig:HO omega} shows how the eigensolutions depend on the range of the basis functions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
+\tikzsetnextfilename{E(r0)}
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = \textwidth,
+      height = 7cm,
+      xlabel = $r_0/\b{\si{fm}}$,
+      ylabel = $E/\b{\si{MeV}}$,
+		  axis x line = middle,
+      axis y line = left,
+      ymax = 2.9,
+      xmin = 0,
+      xtickmax = 8,
+      no markers,
+  		every axis y label/.style={ 
+  			at = {(current axis.above origin)},
+	    	anchor = north west, 
+  		},
+  		every axis x label/.style={ 
+  			at = {(current axis.right of origin)},
+	    	anchor = north east, 
+  		},
+      y label style = {fill=white, xshift=2mm, inner sep = 0.5mm},
+      enlarge y limits = lower,
+      ]
+      \addplot[red, ultra thick] table[x index = 0, y index =1] {../figures/E(omega)/E(omega).data};
+	    \addlegendentry{Unique behaviour}
+      \foreach \y in {2,...,15}
+         \addplot[gray] table[x index = 0, y index = \y] {../figures/E(omega)/E(omega).data};
+		     \addlegendentry{Regular behavior} 
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. We see that one of the states behaves differently than the others.}
+  \label{fig:energies(r0)}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
 
 The solutions all have energies $E>0$, meaning that they are not bound, and thus have unlimited range. 
 However, we can clearly distinguish a minimum in energy for the lowest energy solution when the range of the basis is in the region $r_0 \approx \SI{1.3}{fm}$, corresponding to radii within the nucleus. 
@@ -328,33 +355,4 @@ We have now studied the solutions obtained from solving the nuclear two-body pro
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
-\tikzsetnextfilename{Eofro}
-\begin{figure}[H]
-  \centering
-  \begin{tikzpicture}
-    \begin{axis}[
-      width = \textwidth,
-      height = 7cm,
-      xlabel= $r_0$,
-      ylabel=E,
-		  axis lines = middle,
-      ymax = 3,
-      no markers,
-      enlargelimits,
-      ticks = none,
-      ]
-      \addplot[color=red, ultra thick] table[x index = 0, y index =1] {../figures/E(omega)/E(omega).data};
-	  \addlegendentry{suspicious behavior}
-      \foreach \y in {2,...,15}
-         \addplot [color=gray] table[x index = 0, y index = \y] {../figures/E(omega)/E(omega).data};
-		\addlegendentry{regular behavior} 
-    \end{axis}
-  \end{tikzpicture}
-  \caption{Lowest solution energies for the He5 system solved with the Harmonic Oscillator basis}
-  \label{fig:eofro}
-\end{figure}
 \end{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
