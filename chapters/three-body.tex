@@ -28,19 +28,24 @@ The Borromean rings are three rings interlocked in such a way that, if any one r
   \end{tikzpicture}
   \caption{The Borromean rings}
   \label{fig:borromean}
-\end{figure} 
+\end{figure}
+
+\section{Section title?}
+\todo{section title?}
 
 We see the three-body system as a combination of two identical two-body systems of core and neutron, i.e. two ``one-particle'' systems with the same reduced mass as in \cref{cha:two-body}.
 The validity of this approach is not immediately obvious, but 
 if the two neutron-core pairs have like parity there will be no recoil of the core \cite{suzuki}. 
 The parity depends solely on $l$ and we only consider neutrons in the $p$ orbitals ($l=1$), so the approach is valid.
 
-We have a hamiltonian on the form
+The Hamiltonian takes on the form
 \begin{eq}
   \hat{H} = \hat{H}_1 + \hat{V}\sub{res}
 \end{eq}
 where $\hat{H}_1$ is the Hamiltonian of the two-body problem and $\hat{V}\sub{res}$ is the residual neutron-neutron interaction.
-Since our basis is the solutions to the two-body problem, i.e. the eigenstates to $\hat{H}_1$, we can use \cref{eq:one-body_matrix_elements,eq:two-body_matrix_elements} to write the matrix elements as
+To compute the Hamiltonian matrix we will use the eigensolutions $\ket{\psi_i}$ from the previous two-body problem as single-particle basis states. 
+The neutron-core pairs are fermions, so we form antisymmetric two-particle Fock states $\ket{\psi_i,\, \psi_j}$.
+Because our basis consists of the eigenstates of $\hat{H}_1$, we can use \cref{eq:one-body_matrix_elements,eq:two-body_matrix_elements} to write the matrix elements as
 \begin{eq}
   \bra{ab} \hat{H} \ket{cd} 
   = 
@@ -48,8 +53,9 @@ Since our basis is the solutions to the two-body problem, i.e. the eigenstates t
   +
   \bra{ab} V\sub{res} \ket{cd},
 \end{eq}
-where $E_\alpha$ are the energy eigenvalues of the two-body problem.
-In the coupled scheme this becomes
+where $E_\alpha$ are the energy eigenvalues of the two-body problem. 
+Finally, the states are coupled according to \cref{sec:coupling} to reduce the size of the Hamiltonian matrix.
+The coupled matrix elements are
 \begin{eq}
   \bra{ab; J} H \ket{cd; J}
   & =
@@ -63,8 +69,8 @@ In the coupled scheme this becomes
 \section{Neutron-Neutron Interaction}
 
 \todo{maybe refer to some article that covers this topic and then conclude that we'd rather use a dumbed-down approximation}
-The interaction between nucleons is complex and there is no known analytical expression for the potential. It arises from the strong interaction between the quarks that make up the nucleons, which is well known at high energies,
-\todo[inline]{how high energies?}
+The interaction between nucleons is complex and there is no known analytical expression for the potential. It arises from the strong interaction between the quarks that make up the nucleons, which is well known at high energies (\si{TeV}),
+\todo{how high energies?}
 but less so at nuclear energy levels (\si{MeV}).
 The study of this interaction is an active field of research \cite{living on the edge?}.
 \todo[inline]{mention ab initio?}
