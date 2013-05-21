@@ -39,7 +39,7 @@ and it is visualized in \cref{fig:woods-saxons}).
 We will eventually optimize the parameters to match experimentally determined energy levels for \He{5}, but to begin with we will use 
 standard values given by \cite{suhonen,dickhoff} to investigate the general behavior of the solutions. These parameters are: 
 \begin{center}
-\begin{tabular}{l l}
+\begin{tabular}{r l}
  Interaction strength          & $V_0 = \SI{47}{MeV}$   \\
  Spin-orbit coupling strength  & $V\sub{so} = \SI{-7.5}{Mev}$ \\
  Range                         & $r_0 = \SI{2}{fm}   $  \\
@@ -131,6 +131,7 @@ This parameter determines the rate at which the potential increases, but also af
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
 \tikzsetnextfilename{E(r0)}
 \begin{figure}[ht!]
+  \pgfplotstableread{../figures/E(r0)/E(r0).data}\Ernoll
   \centering
   \begin{tikzpicture}
     \begin{axis}[
@@ -155,14 +156,14 @@ This parameter determines the rate at which the potential increases, but also af
       y label style = {fill=white, xshift=2mm, inner sep = 0.5mm},
       enlarge y limits = lower,
       ]
-      \addplot[red, ultra thick] table[x index = 0, y index =1] {../figures/E(omega)/E(omega).data};
+      \addplot[red, ultra thick] table[x index = 0, y index =1] {\Ernoll};
 	    \addlegendentry{Unique behaviour}
       \foreach \y in {2,...,15}
-         \addplot[gray] table[x index = 0, y index = \y] {../figures/E(omega)/E(omega).data};
+         \addplot[gray] table[x index = 0, y index = \y] {\Ernoll};
 		     \addlegendentry{Regular behavior} 
     \end{axis}
   \end{tikzpicture}
-  \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. We see that one of the states behaves differently than the others.}
+  \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. We see that one of the states behaves differently from the others.}
   \label{fig:energies(r0)}
 \end{figure}
 \todo{fix "dimension tooo large"}
