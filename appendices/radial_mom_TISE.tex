@@ -19,7 +19,7 @@ Standard textbooks on quantum mechanics show
   &= 
   \frac{1}{(2\pi)^{\frac{3}{2}}}e^{i\vec{k}\cdot\vec{r}}.
 \end{eq}
-For a spherically symmetric problem, solutions can be found on the form $\psi(\vec{r})=  R(r)Y_l^m(\Omega_r)$. \todo{why?/cite/explain}
+For a spherically symmetric problem, solutions can be found on the form $\psi(\vec{r})=  R(r)Y_l^m(\Omega_r)$.
 We can simplify the above integral by using the plane wave expansion \cite{mehrem}
 \begin{eq}
   e^{i\vec{k}\cdot\vec{r}} 
@@ -28,7 +28,7 @@ We can simplify the above integral by using the plane wave expansion \cite{mehre
 \end{eq}
 where you can choose either factor to conjugate. \todo{"complex" necessary?}
 
-Inserting this and using the orthogonality of the spherical harmonics
+Inserting this and using orthogonality of spherical harmonics
 \begin{eq}
   \int \rd \Omega_r Y_{l'}^{{m'}^*}(\Omega_r)Y_l^m(\Omega_r)
   =
@@ -38,7 +38,7 @@ you end up with \todo{ordval}
 \begin{eq}
   \Phi(\vec{k}) &= \phi(k)Y_l^m(\Omega_k)
   =
-  \sqrt{\frac{2}{\pi}} i^l Y_l^m(\Omega_k) \int \rd r \, r^2 R(r) j_l(kr).
+  \sqrt{\frac{2}{\pi}} i^l Y_l^m(\Omega_k) \fint{r} r^2 R(r) j_l(kr).
 \end{eq}
 
 In a similar manner, we evaluate
@@ -63,10 +63,12 @@ Inserting all of this into the Schrödinger equation and again simplifying by us
 \begin{eq}
   \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}') 
   &= 
-  \frac{k^2}{2\mu}\phi(k)Y_l^m(\Omega_k) + \int \rd^3 \vec{k}' \bra{\vec{k}}V(r)\ket{\vec{k}'} \phi(k') Y_l^m(\Omega_{k'}) 
+  \frac{k^2}{2\mu}\phi(k)Y_l^m(\Omega_k) 
+  + 
+  \fint[\R^3]{^3\vec{k}'} \bra{\vec{k}}V(r)\ket{\vec{k}'} \phi(k') Y_l^m(\Omega_{k'}) 
   \\
   &=
-  \frac{k^2}{2\mu}\phi(k)Y_l^m(\Omega_k) + Y_l^m(\Omega_k) \int \rd k' \, k'^2 \phi(k') V(k,k')
+  \frac{k^2}{2\mu}\phi(k)Y_l^m(\Omega_k) + Y_l^m(\Omega_k) \fint[0][\inf]{k'} k'^2 \phi(k') V(k,k')
   \\
   &=
   E\phi(k)Y_l^m(\Omega_k)

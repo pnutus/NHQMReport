@@ -5,15 +5,36 @@
 \label{cha:two-body}
 
 In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
-We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}. \todo{is it called model system?}
+We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}.
 The Schrödinger equation is then solved in the HO and plane wave bases.
 The solutions are studied by looking at the energies and wavefunctions while varying parameters.	
 
-\section{Model System: the \He{5} Nucleus}
-Typical examples of open quantum systems are encountered in nuclear physics. The atomic nucleus is held together by the very short-range strong interaction acting between nucleons. \todo[inline]{typical?}
-These are systems that can be studied within a shell model. \todo[inline]{really short sentance}
-In this framework, the nucleons are modelled as interacting with a \emph{mean-field} potential, approximating an effective interaction the nucleons experience. \todo[inline]{jag gillar inte flödet i sista satsen, man hakar upp sig}\todo{Do the proper derivation?}
-The remaining potential is left as a weak \emph{residual} interaction between nucleons. \todo[inline]{remaining?}
+\section{The Nuclear Shell Model}
+\todo{more subsections here PONTUS}
+
+Typical examples of open quantum systems are encountered in nuclear physics. 
+The atomic nucleus is held together by the short-ranged strong interaction acting between all nucleons.
+Nuclei are systems that can be studied within a shell model. This is done by introducing a \emph{mean-field} potential, often done in the following way.\cite{suhonen}
+
+Consider the Hamiltonian for a system of $A$ interacting particles,
+\begin{eq}
+  H = \sum_{i=1}^A \frac{1}{2m_i} \nabla_i^2 
+  + 
+  \sum_{j<i=1}^A v(\vec{r}_i,\,\vec{k}_i, \vec{r}_j, \vec{k}_j)
+\end{eq}
+where $v$ is the nucleon-nucleon interaction. Now add and subtract a potential field $V(\vec{r})$ affecting all particles,
+\begin{eq}
+  H &= \sum_i \b{ 
+    \frac{1}{2m_i} \nabla_i^2 + V(\vec{r}_i) 
+    }
+  + 
+  \sum_{j<i} \b{ 
+    v(\vec{r}_i,\,\vec{k}_i, \vec{r}_j, \vec{k}_j) - V(\vec{r_i})
+  } \\
+  &=
+  H\sub{MF} + V\sub{res}
+\end{eq} 
+where we have split the Hamiltonian into a spherically symmetric mean-field Hamiltonian $H\sub{MF}$ in which particles do notinteract directly, and the \emph{residual interaction} $V\sub{res}$ that can be seen as the new interaction between particles. If the mean-field potential $V$ is chosen carefully, $V\sub{res}$ can become small enough to be treated pertubationally (if at all).
 
 This method has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
 It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ angular momentum. 
@@ -21,11 +42,11 @@ Of special interest to us are \emph{doubly magic} nuclei, where both proton are 
  
 Because of this, we will choose to study the \He{5} nucleus as an example of a two-body system. 
 The \He{4} nucleus is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core. 
-This core will be treated as a single particle (subsequently referred to as the $\alpha$-particle), interacting with the valence neutron through the mean-field only.
+This core will be treated as a single particle (subsequently referred to as the $\alpha$-particle), interacting with the valence neutron through the mean-field only.\todo{Why can we see the alpha core as a particle through the mean-field approximation.}
 
-Other doubly magic light nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow_shell_model_2008}, but we will restrict ourselves to the Helium nucleus. 
+Other doubly magic light nuclei, such as \ce{^{16}O} and its isotopes, have been studied using methods similar to ours\cite{gamow_shell_model_2008}, but we will restrict ourselves to He nuclei.
 
-For mean-field potential we will use the established Woods-Saxon potential, which is given by
+For mean-field potential we will use the established Woods-Saxon potential, given by
 \begin{eq}
 	V(r)=
 	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr} ,
@@ -36,16 +57,17 @@ where
 \end{eq}
 and it is visualized in \cref{fig:woods-saxons}).
 
-We will eventually optimize the parameters to match experimentally determined energy levels for \He{5}, but to begin with we will use 
+We will eventually optimize the parameters to match experimentally determined energy levels for \He{5}, but to begin with we use 
 standard values given by \cite{suhonen,dickhoff} to investigate the general behavior of the solutions. These parameters are: 
 \begin{center}
 \begin{tabular}{r l}
- Interaction strength          & $V_0 = \SI{47}{MeV}$   \\
+ Potential depth               & $V_0 = \SI{47}{MeV}$   \\
  Spin-orbit coupling strength  & $V\sub{so} = \SI{-7.5}{Mev}$ \\
  Range                         & $r_0 = \SI{2}{fm}   $  \\
  Diffuseness                   & $d = \SI{0.65}{fm}$  \\ 
 \end{tabular}
 \end{center}
+\todo{beautify ordo sista minuten}
 
 Note that the spin-orbit coupling term can give either attractive or repulsive contributions, depending on how the angular momenta couples. Recall
 \begin{eq}
@@ -73,8 +95,7 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
 We can now proceed to solve the Schrödinger equation with the specified potential.
-\todo{use correct mass}
-\todo{search replace for backslash ,}
+\todo{search replace for backslash , SPILL}
 
 \begin{figure}
 	\newcommand{\diff}{0.65}
@@ -92,7 +113,7 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
       axis x line = middle,
       axis y line = left
 	  }
-	    \subfloat[$p_\frac{3}{2}$]{
+	    \subfloat[$p_{3/2}$]{
 	      \tikzset{external/remake next}
 	  \tikzsetnextfilename{p32}
 	      \begin{tikzpicture}
@@ -103,7 +124,7 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
 		    \end{axis}
 	      \end{tikzpicture}
 	    }
-	  \subfloat[$p_\frac{1}{2}$]{
+	  \subfloat[$p_{1/2}$]{
 	    \tikzset{external/remake next}
 	\tikzsetnextfilename{p12}
 	    \begin{tikzpicture}
@@ -118,244 +139,133 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
   \label{fig:woods-saxons}
 \end{figure}
 
-\section{Studying the \He{5} Schrödinger Equation}
+\todo{change mass, ticks SPILL}
+
+\section{The \He{5} Nucleus}
+
+\todo{read through OLA VINCENT SPILL}
+
+\todo{We want to find p3/2 resonance, and we know its parameters}
+
 In \cref{cha:basis_expansion} we described the procedure for numerically solving the Schrödinger equation using basis expansion. 
-In this section we will apply those methods to find the eigensolutions of our model system. 
+In this section we will apply those methods to solve the Schrödinger equation and subsequently study the solutions, specifically searching for the known resonance
+\begin{eq}
+  bla.
+\end{eq}
+
 
 \subsection{Harmonic Oscillator Basis}
-\todo{Fix paragraph}
-The range $r_0$ of the HO potential may be varied. 
-This parameter determines the rate at which the potential increases, but also affects how rapidly the solutions converge, because a basis where the wavefunctions are similar to the solutions will have better convergence. 
+
+The range $r_0$ of the HO potential determines the rate at which the potential increases, and thus the range of the HO eigenfunctions.
+This affects how rapidly the solutions converge, since a basis with wavefunctions more similar to the solutions will have better convergence. 
 \Cref{fig:energies(r0)} shows how the eigensolutions depend on the range of the basis functions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
+
 \tikzsetnextfilename{E(r0)}
-\begin{figure}[ht!]
-  \pgfplotstableread{../figures/E(r0)/E(r0).data}\Ernoll
+\begin{figure}[t]
   \centering
-  \begin{tikzpicture}
-    \begin{axis}[
-      width = \textwidth,
-      height = 7cm,
-      xlabel = $r_0/\b{\si{fm}}$,
-      ylabel = $E/\b{\si{MeV}}$,
-		  axis x line = middle,
-      axis y line = left,
-      ymax = 2.9,
-      xmin = 0,
-      xtickmax = 8,
-      no markers,
-  		every axis y label/.style={ 
-  			at = {(current axis.above origin)},
-	    	anchor = north west, 
-  		},
-  		every axis x label/.style={ 
-  			at = {(current axis.right of origin)},
-	    	anchor = north east, 
-  		},
-      y label style = {fill=white, xshift=2mm, inner sep = 0.5mm},
-      enlarge y limits = lower,
-      ]
-      \addplot[red, ultra thick] table[x index = 0, y index =1] {\Ernoll};
-	    \addlegendentry{Unique behaviour}
-      \foreach \y in {2,...,15}
-         \addplot[gray] table[x index = 0, y index = \y] {\Ernoll};
-		     \addlegendentry{Regular behavior} 
-    \end{axis}
-  \end{tikzpicture}
-  \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. We see that one of the states behaves differently from the others.}
+ 	\includegraphics[]{../figures/E(r0)/E(r0).pdf}
+  \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. The lowest energy state behaves differently from the others.}
   \label{fig:energies(r0)}
 \end{figure}
-\todo{fix "dimension tooo large"}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
 
-The solutions all have energies $E>0$, meaning that they are not bound, and thus have unlimited range. 
-However, we can clearly distinguish a minimum in energy for the lowest energy solution when the range of the basis is in the region $r_0 \approx \SI{1.3}{fm}$, corresponding to radii within the nucleus. 
-This is a sign that there is a solution to \He{5} localized in this region. 
-Furthermore, we see that the energies for the others strictly decrease when the range of the basis increases, further showing their unbound nature.
+\todo{use 47, more points between 1 and 2 fm VINCENT}
 
-Because the harmonic oscillator consists only of bound states and we are trying to study unbound states with infinite range, we can not get much further with this method. 
-We will have to switch to a basis with wavefunctions of infinite reach to properly describe this system.
+\todo{redo figure different $V_0 = 47$ VINCENT}
 
-\subsection{Plane Wave Basis}
-The fact that we have found solutions lying in the positive energy spectrum, solutions with infinite reach, have brought us to consider the plane wave basis. 
-Solving the Schrödinger equation in the way prescribed in \cref{cha:basis_expansion} with the Woods-Saxon potential gives us the eigenvalues and momentum eigenfunctions. 
-In \cref{fig:real mom wavefunctions} we present all the obtained eigenfunctions. 
-We especially marked one of the functions in red, clearly standing out among the others and peaking at $k = \SI{0.17}{fm^{-1}}$. 
-Let us discuss the physical significance of the obtained solutions.
+\todo{what is infinite range? OLA}
 
-We see that we have a background of wavefunctions peaking at different values of $k$. Recall the relation between wavefunctions in position and momentum representation, \cref{eq:radial wavefunction}
+All solutions have energies $E > 0$, meaning that they are unbound, scattering states, and thus have unlimited range. 
+\todo{minimum/saddle/plateau?}
+However, we can clearly distinguish a saddle point in energy for the lowest energy solution when the range $r_0 \approx \SI{1}{fm}$, corresponding to radii within the nucleus.
+This is a sign that there is a solution localized in this region.
+We guess that this is the resonance state.
+
+Because the harmonic oscillator consists only of bound states and we are trying to study unbound states, this method cannot take us much further.
+We will have to switch to a basis with wavefunctions of infinite range to properly describe this system.
+
+\subsection{Momentum Basis}
+
+\todo{subsub PONTUS}
+
+The momentum basis describes a plane wave, i.e. a free particle. Because all solutions appear in the continuum, this basis is more suited to the problem.
+
+Solving the Schrödinger equation in the momentum basis gives us momentum eigenfunctions $\phi(k)$, presented in \cref{fig:real_momentum_wavefunctions}.
+There is a background of wavefunctions peaking at different values of $k$, and, once again, one of the functions stand out as lower and wider. Let us first discuss the peaked wavefunctions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
+
+\begin{figure}
+  \centering
+  	\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
+
+  \caption{\He{5} momentum probability distributions. The resonance is significantly wider than the surrounding states. We can see a trend toward lower and wider states around \SI{1}{fm^{-1}} that is merely a pecularity in the normalization.} 
+  \label{fig:real_momentum_wavefunctions}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
+
+Recall the relation between wavefunctions in position and momentum representation, \cref{eq:radial wavefunction}
 \begin{eq}
   R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
 \end{eq} 
-We see that a wavefunction peaking at a single value $k_i$ corresponds to a radial wavefunction
+A wavefunction peaking at a single value $k_i$ corresponds to a radial wavefunction
 \begin{eq}
-  R_i(r) = i^l\sqrt{\frac{2}{\pi}}k_i^2 j_l(k_i r)
+  R_i(r) = i^l\sqrt{\frac{2}{\pi}} j_l(k_i r)
 \end{eq}
-Now, the defining property of the spherical bessel functions are that they are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
-Thus we see may conclude that these peaked solution correspond to free particles. 
-In addition, the fact that we find unbound solutions corresponding to each value of $k$ that we feed into the equation hints at the continuous nature of these states. 
+The spherical bessel functions $j_l(k_i r)$ are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
+We can thus conclude that the peaked solutions correspond to free particles. 
+In addition, the fact that we find unbound solutions corresponding to each value of $k$ used in the discretization hints at the continuous nature of these states.
 
-In \cref{fig:resonance wavefunction} the radial probability distributions $r^2|R(r)^2|$ is shown for the broadest momentum wavefunction (the one marked in red in \cref{fig:real mom wavefunctions}) together with an unbound state, for different values of the potential strength $V_0$. 
-\todo{More structure. Subsubsection?}
-We can see that for systems with a deep potential well (here represented by the $V_0 = \SI{70}{MeV}$ case) will support a bound solution with $E<0$, characterized by a wavefunction that quickly tends to zero outside the potential well. 
-As the strength is decreased, however, the energy of the bound state will increase. 
-When a certain value is reached (in our case around $V_0 = \SI{52}{MeV}$), the potential well no longer supports any bound states. 
-Instead we find a solution with a very localized wavefunction, but with positive energy and a wavefunction that does not tend to zero outside the core. 
-As the interaction strength is further decreased this unique solution becomes less and less localized, as demonstrated in the two last figures ($V0 = \SI{47}{MeV}$, our \He{5} problem, and $V_0 = \SI{40}{MeV}$
+The unique state peaks at $k = \SI{0.17}{fm^{-1}}$ and is slightly wider than the surrounding states. 
+The Heisenberg uncertainty relation tells us that a less well-defined momentum corresponds to a more well-defined position.
+Consequently, the state should correspond to a localized wavefunction, which is what we expect from a resonance.
 
-We have now studied the solutions obtained from solving the nuclear two-body problem, with the \He{5} nucleus supporting no bound states as a model system. Instead we have found a continuum of unbound particles with positive energies, and one unique solution corresponding to a more localized state, but that still has many characteristics of the unbound states. These are the first signs of quasi-bound states --- the sought-after resonances --- but since these are described by complex energies, and the Schrödinger equation only giving real solutions, we cannot possibly hope to fully describe them within this framework. Instead we have to move on to a different one: The complex momentum representation. 
+To investigate the relation between the hypothesized resonance solution and a bound solution, we increase the depth of the potential to $V_0 = \SI{70}{MeV}$, and successively decrease the depth until there is no bound state. 
+This is documented in \cref{fig:wavefunctions}, where the radial probability distributions $r^2|R(r)^2|$ are plotted for the widest momentum wavefunction together with an arbitrary unbound state. 
+With a deep potential, the bound state wavefunction quickly tends to zero outside the potential well.
+As we decrease the depth below a certain threshold, the potential well no longer supports the bound state ($E > 0$), but the wavefunction is still fairly localized.
+This is the region where we find our resonances.
+When decreased even further the wavefunction starts to look similar to the unbound states.
 
-
+\todo{Short summary?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions
 
 \begin{figure}
-  \pgfplotstableread{../figures/wavefunctions/wavefunctions.data}\wavefunctions
-  \centering{
-  \pgfplotsset{
-    width = 0.49\textwidth, height = 7cm,
-    xlabel = $r/\b{\si{fm}}$, ylabel = $r^2\absq{R(r)}$,
-    axis x line = bottom,
-    axis y line = left,
-    no markers,
-    ytick = \empty,
-    ymax = 1.7,
-	  legend style={anchor=north east},
-    legend cell align=left,
-  }
-    \subfloat[$V_0=\SI{70}{MeV}$]{
-      \tikzset{external/remake next}
-      \tikzsetnextfilename{wavefunction-70MeV}
-      \begin{tikzpicture}
-        \begin{axis}
-          \addplot [color=red, ultra thick] table[x index=0, y index=1] {\wavefunctions};
-					  \addlegendentry{$E = \SI{-4.85}{MeV}$}
-							
-          \addplot+[color=gray] table[x index=0, y index=2] {\wavefunctions};
-		  		  \addlegendentry{$E = \phantom{+}\SI{5.63}{MeV}$}
-        \end{axis}
-      \end{tikzpicture}
-    }
-  \subfloat[$V_0=\SI{52}{MeV}$]{
-    \tikzset{external/remake next}
-    \tikzsetnextfilename{wavefunction-60MeV}
-    \begin{tikzpicture}
-      \begin{axis}
-        \addplot [color=red, ultra thick] table[x index=0, y index=3] {\wavefunctions};
-				  \addlegendentry{$E = \SI{0.062}{MeV}$}
-        \addplot+[color=gray] table[x index=0, y index=4] {\wavefunctions};
-				  \addlegendentry{$E = \phantom{0}\SI{5.75}{MeV}$}
-      \end{axis}
-    \end{tikzpicture}
-  } \\
-  \subfloat[$V_0 = \SI{47}{MeV}$]{
-	\tikzset{external/remake next}
-    \tikzsetnextfilename{wavefunction-52MeV}
-    \begin{tikzpicture}
-      \begin{axis}
-        \addplot [color=red, ultra thick] table[x index=0, y index=5] {\wavefunctions};
-				  \addlegendentry{$E = \SI{0.94}{MeV}$}
-        \addplot+[color=gray] table[x index=0, y index=6] {\wavefunctions};
-				  \addlegendentry{$E = \SI{5.80}{MeV}$}
-      \end{axis}
-    \end{tikzpicture}
-  	}
-  \subfloat[$V_0 = \SI{40}{MeV}$]{
-    \tikzset{external/remake next}
-    \tikzsetnextfilename{wavefunction-47MeV}
-    \begin{tikzpicture}
-      \begin{axis}
-        \addplot [color=red, ultra thick] table[x index=0, y index=7] {\wavefunctions};
-				  \addlegendentry{$E = \SI{1.02}{MeV}$}
-        \addplot+[color=gray] table[x index=0, y index=8] {\wavefunctions};
-				  \addlegendentry{$E = \SI{5.89}{MeV}$}
-      \end{axis}
-    \end{tikzpicture}
-  	}
-
-  }
+\centering{
+	\subfloat[$V_0=\SI{70}{MeV}$]{
+		\includegraphics[page=1]{../figures/wavefunctions/wavefunctions.pdf}
+	}
+	\subfloat[$V_0=\SI{52}{MeV}$]{
+		\includegraphics[page=2]{../figures/wavefunctions/wavefunctions.pdf}	  
+	}
+	\\
+	\subfloat[$V_0 = \SI{47}{MeV}$]{
+		\includegraphics[page=3]{../figures/wavefunctions/wavefunctions.pdf}
+	}
+	\subfloat[$V_0 = \SI{40}{MeV}$]{
+	  	\includegraphics[page=4]{../figures/wavefunctions/wavefunctions.pdf}
+	}
+}
   \caption{
     \He{5} wavefunctions for varying potential depth. 
     Plotted are the unique localized solution (solid) and, for comparison, an arbitrary continuum solution (dashed).
     With a deep potential $V_0 = \SI{70}{MeV}$ there is a strongly bound state, which gets weaker as the potential depth is decreased.
     At $V_0 = \SI{52}{MeV}$ the wavefunction is highly localized, yet the energy value is in the continuum, a sign of resonance.
-    There is still a clearly localized state with $V_0 = \SI{47}{MeV}$, but at $V_0 = \SI{40}{MeV}$ it is practically indistinguishable from the other states.
+    There is still a clearly localized state with $V_0 = \SI{47}{MeV}$, but at $V_0 = \SI{40}{MeV}$ it is practically indistinguishable from the continuum states.
   } 
-  \label{fig:resonance wavefunction}
+  \label{fig:wavefunctions}
   \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions END
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
-
-\begin{figure}[H]
-	    \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_real.data}\wfs
-  \centering{
-  \pgfplotsset{
-    width = \textwidth, height = 7cm,
- xlabel = $k/\b{\si{fm^{-1}}}$, ylabel = $k^2 \absq{\Phi(k)}$,
-    axis x line = bottom,
-    xmin = 0,
-    xmax=0.5,
-    axis y line = left,
-    no markers,
-    %ytick = \empty,
-	xtick = {0,0.5,...,3},
-    legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
-  }
-  \subfloat[Wavefunctions in momentum space for solutions along real-axis]{
-    \tikzset{external/remake next}
-    \tikzsetnextfilename{wfs-real}
-    \begin{tikzpicture}
-      \begin{axis}[xmax=3]
-		  
-  		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
-  		 \addlegendentry{Resonance}
-
-        \foreach \yindex in {1,...,60}
-        {   
-        \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
-        }
-		\addlegendentry{Continuum state}
-		
-		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
+\todo{probability distributions or wavefunctions?}
+\todo{dashed/solid SPILL}
 
 
-      \end{axis}
-    \end{tikzpicture}
-  }
-	
-  \subfloat[Wavefunctions in momentum space for solutions along the complex berggren contour]{
-     \tikzset{external/remake next}
-    \tikzsetnextfilename{wfs-comp}
-    \begin{tikzpicture}
-					  \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_complex.data}\wfs
-      \begin{axis}[xmax=3]
- 		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
- 		 \addlegendentry{Resonance}
-        \foreach \yindex in {1,...,60}
-        {   
-        \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
-		
-        }
-		\addlegendentry{Continuum state}
- 		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
-
-      \end{axis}
-    \end{tikzpicture}
-  }
-	
-}
-
-
-
-\caption{yada} 
-\label{fig:he5_eigvecs}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
 \end{document}

@@ -4,7 +4,7 @@
 \chapter{Basis Expansion}
 \label{cha:basis_expansion}
 
-\todo{Intro to chapter here}
+\todo{Intro to chapter here PONTUS}
 We want to study loosely bound quantum systems by solving the \emph{Time Independent Schrödinger Equation} (TISE)
 \todo{why TISE?}
 \begin{eq}
@@ -18,8 +18,7 @@ commonly written in the position basis as
 \end{eq}
 
 For the nuclear systems to be treated, the TISE has no known analytical solutions, and we need to use numerical methods to solve it.
-However, the Hamiltonian written as in \cref{eq:TISEpos} is not optimal for computation. \todo[inline]{Why not position basis PDE??}
-Instead, we would like to write it as a matrix equation
+There exists some methods for this, one can solve a system of coupled differential equations, make it a problem of evaluate a multi-dimensional integral or as we will do, express it as a matrix equation \todo{would something like this be ok?}
 \begin{eq}
   \label{eq:matrix equation}
   \sum_j H_{ij}\psi_j = E \psi_i
@@ -33,7 +32,7 @@ For example, \cref{eq:TISEpos} is the TISE for a single particle, expanded in th
 We will not expand our problems in the position basis, but it will still be important, since it is the most natural basis to express the potential in.
 
 Before we begin, we briefly recap some well known QM facts. 
-First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$. 
+First we need a \emph{complete basis}, either discrete, $\ket{n}$, or continuous, $\ket{x}$. 
 A complete basis means that any state $\ket\psi$ can be written as a linear combination of the basis states
 \begin{eq}
   \label{eq:lincomb}	
@@ -90,30 +89,52 @@ and write $H_{nn'} = \bra{n} H \ket{n'}$, we get
 \end{eq}
 which is equivalent to the matrix equation \cref{eq:matrix equation}. This is 
 the basic method of expanding the TISE in a basis.
-\todo{Only use (1.4) for equations?}
+\todo{Only use (1.4) for equations? DOUBLECHECK}
 
 \section{Spherical Symmetry}
 \label{sec:spherical symmetry}
 
-We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. 
-This is sufficient for our purposes and, indeed, most common QM problems. \todo[inline]{why?/cite/explain}
+We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the radial distance $r$.
 If we considered three-dimensional systems with arbitrary potentials, the matrices would be very large and solving the problem would become infeasible.
 
-The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m$
+Spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m(\Omega_r)$, $\Omega_r = (\theta,\, \varphi)$.
 \begin{eq}
-  \psi(\vec{r}) = R(r) Y_l^m(\theta, \phi).
+<<<<<<< HEAD
+  \psi(\vec{r}) = R(r) Y_l^m(\theta, \varphi).
+=======
+  \psi(\vec{r}) = R_l(r) Y_l^m(\Omega_r).
+>>>>>>> f05a509298b040f9698a285eaf09835448519b33
 \end{eq}
-\todo{OLA fixar integralen}
 Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. \todo{$j$ in here somewhere?}
-Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, \todo{and will}which will result in a factor of $\delta_{ll'}\delta_{mm'}$.
-This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
+For the matrix elements we find, using the orthonormality of the spherical harmonics,
 \begin{eq}
-  \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
+  \bra{nlm}V\ket{n'l'm'} 
+  &= \fint[0][\inf]{r} 
+    r^2 \conj{R_l(r)}R_{l'}(r)V(r) 
+    \fint{\Omega_r} 
+      \conj{Y_l^m(\Omega_r)}Y_{l'}^{m'}(\Omega_r)
+  \\ & = 
+  \delta_{mm'}\delta_{ll'}\fint[0][\inf]{r} 
+    r^2 \conj{R_l(r)}R_{l'}(r)V(r)
 \end{eq}
-If we now treat $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
-we notice that the diagonal elements of this matrix have the same $l$ and $m$,
-which can be expressed as \emph{$H$ is diagonal in $l$ and $m$}.
-\todo{block diagonal figur}
+meaning that the matrix will be \emph{block diagonal}, illustrated in \cref{fig:bmatrix}. This means that systems with different $l$ and $m$ can be treated separately, thus significantly reducing computation time. We say that \emph{$H$ is diagonal in $l$ and $m$}.
+%Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, and will result in a factor of $\delta_{ll'}\delta_{mm'}$.
+%This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
+
+%\begin{eq}
+%  \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
+%\end{eq}
+%\todo{ket nlm can be confused with the harmonic oscillator.}
+%If we now treat $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
+%we notice that the the matrix is block diagonal in $l$ and $m$, i e there are no terms between states with $lm != l'm'$, this is presented graphically in \cref{fig:bmatrix}.
+%We say that \emph{$H$ is diagonal in $l$ and $m$}. \todo[inline]{first step...}
+
+\begin{figure}
+\center
+\includegraphics{../figures/block_matrix/matrix.pdf}	
+\caption{An illustration of a block diagonal matrix. The eigenvalues of different blocks are independent of each other. Thus the blocks can be diagonalized separately.}
+\label{fig:bmatrix}
+\end{figure}
 
 \section{The Harmonic Oscillator Basis}
 \label{sec:harmosc}
@@ -172,6 +193,7 @@ The radial wavefunction $R(r)$ of a state will be expressed as a linear combinat
 \section{The Plane Wave Basis}
 \label{sec:mom_space}
 \todo{Relation to momentum space $p = \hbar k$, plane wave is what?}
+\todo{Do we introduce this earlier, since we use the word since? (open system, few/any bound solutions)}
 The plane wave basis $\ket{\vec{k}}$ is of great importance for us since we are studying a system with a short-range potential supporting only a few, if any, bound solutions.
 This means that we will find multiple unbound solutions, corresponding to free particles with various momenta.
 These are almost eigenstates of the momentum operator, only slightly perturbed by the small potential well at $r=0$. 
@@ -180,8 +202,9 @@ The expansion is done in the same way as before, giving us
 \begin{eq}
   \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}')
   &= 
-  E\Phi(\vec{k}).
+  E\Phi(\vec{k}),
 \end{eq}
+where we denote the wavefunctions in momentum space with $\Phi$.
 This three-dimensional equation is practically unsolvable in general, but we can simplify it using the fact that we have a central problem. 
 \todo[inline]{Redundant? same stuff in sphere symm section}
 A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Schrödinger equation can be written as
@@ -195,9 +218,9 @@ A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Sc
   \\
   V(k,k') 
   = 
-  \frac{2}{\pi}\int_0^\infty \rd r \, r^2 V(r) j_l(kr) j_l(k'r),
+  \frac{2}{\pi}\fint[0][\inf]{r} r^2 V(r) j_l(kr) j_l(k'r),
 \end{eq}
-\todo{align}
+\todo{align -is'nt this fixed now, remove it if that is the case.}
 where $\phi(k)$ is the radial part of the momentum space wavefunction
 and $j_l(kr)$ are the spherical bessel functions of order $l$. 
 The momentum space radial wavefunction $\phi(k)$ is related to the position space radial wavefunction by
@@ -220,6 +243,7 @@ The integral equation \cref{eq:radial mom space TISE} can be rewritten as a matr
   E \phi(k_i)
   .
 \end{eq}
+\todo{source on this or explain that we tried the naive way to do it.}
 A particular set of points and corresponding weights is called a \emph{quadrature}, and the choice of quadrature greatly impacts the precision of the result. 
 A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used.
 We instead use the Gauss-Legendre quadrature, for details see \cref{app:gauss-legendre}.
@@ -233,12 +257,12 @@ where
   \label{eq:mom_matrix}
   H_{ij} &= \frac{k_i^2}{2\mu}\delta_{ij} + w_jk_j^2 V_{ij} \\
   \label{eq:potential matrix}
-  V_{ij} &= \frac{2}{\pi} \int_0^\infty \rd r \, r^2 V(r) j_l(k_i r) j_l(k_j r).
+  V_{ij} &= \frac{2}{\pi} \fint[0][\inf]{r} r^2 V(r) j_l(k_i r) j_l(k_j r).
 \end{align}
 
 Because of the $k_j^2$ in the second term of the matrix elements 
 (\cref{eq:mom_matrix}), the $H_{ij}$ matrix will not be symmetric. 
-Working with a symmetric matrix will be faster, hence we perform \todo{why?/explain more}\todo{where do we mention the need for symmetrized matrix in he6?}
+Working with a symmetric matrix is preffered since it halves the amount of time the eigensolver takes, hence we perform \todo{why?/explain more}\todo{where do we mention the need for symmetrized matrix in he6?}
 the transformation
 \begin{eq}
   \phi(k_i) &\mapsto
@@ -279,39 +303,10 @@ This includes truncation of the basis, matrix size reduction, numerical integrat
 The plane wave basis is continuous and thus requires special treatment.
 
 The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
-The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo[inline]{Questionable? OLA}
+The included states will be the $N$ first ones, since these have the biggest overlap with the actual wavefunctions. \todo[inline]{Questionable? OLA}
 The more states we include in the basis, the more accurate results we get. This is illustrated in \cref{fig:hydrogen_convergence}.
 
-%\tikzset{external/remake next}
-\tikzsetnextfilename{hydrogen_convergence}
-\pgfplotstableread{../figures/convergence/hydrogen_convergence.data}\Hconv
-\begin{figure}
-\centering	
-\begin{tikzpicture}
-    \begin{axis}[
-      xlabel=Basis size $N$,
-      ylabel=Ground state energy $E_0/\b{\si{MeV}}$,
-		  axis y line=left,
-		  axis x line=bottom,
-      legend pos = south east,
-      xmin=7, xmax=25,
-      ]
-    	\addplot
-        table[x index = 0, y index = 1]  
-        {\Hconv};
-    	  \addlegendentry{Harmonic oscillator basis}
-    	\addplot
-        table[x index = 0, y index = 2] 
-        {\Hconv};
-        \addlegendentry{Plane wave basis}
-      \addplot+[no markers, black, domain=0:50] {-13.6};
-        \addlegendentry{Theoretical value}
-    \end{axis}
-\end{tikzpicture}
-  \caption{Ground state energy $E_0$ of the hydrogen atom as a function of $N$, the number of states included in the basis. The potential of the hydrogen atom is more closely related to the HO potential than a free particle, which is why it converges faster.}
-  \label{fig:hydrogen_convergence}
-\end{figure}
-
+\todo{should the last things of the figure (ho similar to hydrogen etc.) be mentioned in the text as well?}
 \todo{two figures}
 
 The truncation gives us an $N \times N$ Hamiltonian matrix $H$.
@@ -332,7 +327,5 @@ We compute the matrix elements $H_{ij}$ with \cref{eq:HO_matrix_elements,eq:plan
 If the matrix is hermitian or symmetric, we only need to consider the elements in the upper triangle including the diagonal, roughly halving the number of computed elements. 
 
 When the matrix elements have been computed, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
-
-
 
 \end{document}

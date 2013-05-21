@@ -12,4 +12,4 @@ contour = triangle_contour(peak_x, peak_y, k_max, order/3)
 points, _ = contour
 contourdata = sp.array([sp.real(points), sp.imag(points)])
 script_dir = os.path.dirname(os.path.realpath(__file__)) + "/"
-sp.savetxt(script_dir + "contour.data", contourdata.T)
+sp.savetxt(script_dir + "numerical_contour.data", contourdata.T)

@@ -1,0 +1,41 @@
+\documentclass[tikz=true]{standalone}
+\usepackage{../../main/NHQM}
+\begin{document}
+	\pgfplotstableread{hydrogen_convergence.data}\Hconv
+	\begin{tikzpicture}
+		\begin{axis}[
+			xlabel=Basis size $N$,
+			ylabel=Ground state energy $E_0/\b{\si{eV}}$,
+			axis y line=left,
+			axis x line=bottom,
+			legend pos = south east,
+			xmin=7, xmax=25,
+			ymax=-12,
+			]
+			\addplot table[x index = 0, y index = 1]  {\Hconv};
+			\addlegendentry{Harmonic oscillator basis}
+			\addplot table[x index = 0, y index = 2] {\Hconv};
+			\addlegendentry{Plane wave basis}
+			\addplot+[no markers, black, domain=0:50] {-13.6};
+			\addlegendentry{Theoretical value}
+		\end{axis}
+	\end{tikzpicture}
+
+	\begin{tikzpicture}
+		\begin{axis}[
+			xlabel=Basis size $N$,
+			ylabel=Ground state energy $E_0/\b{\si{MeV}}$,
+			axis y line=left,
+			axis x line=bottom,
+			legend pos = south east,
+			xmin=7, xmax=25,
+			]
+			\addplot table[x index = 0, y index = 1]  {he5_convergence.data};
+			\addlegendentry{Harmonic oscillator basis}
+			\addplot table[x index = 0, y index = 2] {he5_convergence.data};
+			\addlegendentry{Plane wave basis}
+		\end{axis}
+	\end{tikzpicture}
+
+
+\end{document}
