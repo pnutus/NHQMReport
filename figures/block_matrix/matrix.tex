@@ -1,0 +1,40 @@
+\documentclass[]{standalone}
+
+\usepackage[utf8]{inputenc}
+\usepackage[upright]{fourier}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\begin{document}
+
+% l' unite
+\newcommand{\myunit}{1 cm}
+\tikzset{
+    node style sp/.style={draw,circle,minimum size=\myunit},
+    node style ge/.style={circle,minimum size=\myunit},
+    arrow style mul/.style={draw,sloped,midway,fill=white},
+    arrow style plus/.style={midway,sloped,fill=white},
+}
+
+
+
+\begin{tikzpicture}[>=latex]
+
+\matrix (A) [matrix of math nodes,%
+             nodes = {node style ge},%
+             left delimiter  = (,%
+             right delimiter = )] at (0,0)
+{%
+  a_{11} &\ldots & a_{1k} & \ldots & a_{1p}  \\
+    \vdots & \ddots & \vdots & \vdots & \vdots \\
+  \node[node style sp] {a_{i1}};& \ldots%
+         & \node[node style sp] {a_{ik}};%
+                  & \ldots%
+                           & \node[node style sp] {a_{ip}}; \\
+  \vdots & \vdots& \vdots & \ddots & \vdots  \\
+  a_{n1}& \ldots & a_{nk} & \ldots & a_{np}  \\
+};
+
+
+\draw [fill=white,ultra thick,white] (-2.5,-2.5) rectangle (2.5,2.5);
+\end{tikzpicture}
+\end{document}
