@@ -98,21 +98,33 @@ We limit ourselves to spherically symmetric systems, i.e. systems with a potenti
 This is sufficient for our purposes and, indeed, most common QM problems. \todo[inline]{why?/cite/explain}
 If we considered three-dimensional systems with arbitrary potentials, the matrices would be very large and solving the problem would become infeasible.\todo{infeasable?}
 
-The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m$
+Spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m(\Omega_r)$, $\Omega_r = (\theta,\, \varphi)$.
 \begin{eq}
-  \psi(\vec{r}) = R(r) Y_l^m(\theta, \phi).
+  \psi(\vec{r}) = R_l(r) Y_l^m(\Omega_r).
 \end{eq}
-
 Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. \todo{$j$ in here somewhere?}
-Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, and will result in a factor of $\delta_{ll'}\delta_{mm'}$.
-This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
+For the matrix elements we find, using the orthonormality of the spherical harmonics,
 \begin{eq}
-  \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
+  \bra{nlm}V\ket{n'l'm'} 
+  &= \fint[0][\inf]{r} 
+    r^2 \conj{R_l(r)}R_{l'}(r)V(r) 
+    \fint{\Omega_r} 
+      \conj{Y_l^m(\Omega_r)}Y_{l'}^{m'}(\Omega_r)
+  \\ & = 
+  \delta_{mm'}\delta_{ll'}\fint[0][\inf]{r} 
+    r^2 \conj{R_l(r)}R_{l'}(r)V(r)
 \end{eq}
-\todo{ket nlm can be confused with the harmonic oscillator.}
-If we now treat $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
-we notice that the the matrix is block diagonal in $l$ and $m$, i e there are no terms between states with $lm != l'm'$, this is presented graphically in \cref{fig:bmatrix}.
-We say that \emph{$H$ is diagonal in $l$ and $m$}. \todo[inline]{first step...}
+meaning that the matrix will be \emph{block diagonal}, illustrated in \cref{fig:bmatrix}. This means that systems with different $l$ and $m$ can be treated separately, thus significantly reducing computation time. We say that \emph{$H$ is diagonal in $l$ and $m$}.
+%Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, and will result in a factor of $\delta_{ll'}\delta_{mm'}$.
+%This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
+
+%\begin{eq}
+%  \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
+%\end{eq}
+%\todo{ket nlm can be confused with the harmonic oscillator.}
+%If we now treat $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
+%we notice that the the matrix is block diagonal in $l$ and $m$, i e there are no terms between states with $lm != l'm'$, this is presented graphically in \cref{fig:bmatrix}.
+%We say that \emph{$H$ is diagonal in $l$ and $m$}. \todo[inline]{first step...}
 
 \begin{figure}
 \center
