@@ -42,7 +42,7 @@ which, by the orthonormality of the $\ket\alpha$, will also be orthonormal
 \end{eq}
 
 %Let us now create an arbitrary linear combination of the product states, denoted by an angled ket
-Let us assume that the system of particles can be described by some linear combinations of these basis states, denoted \todo[inline]{make sure this assumption is verified later on, don't leave it hangin'}
+Let us assume that the system of particles can be described by some linear combinations of these basis states, denoted
 \begin{eq}
   \ket{\alpha_1\alpha_2\dots\alpha_N}.
 \end{eq}
@@ -281,45 +281,13 @@ as expected.
 
 
 
-\section{Implementation}
-
-To use the Fock space formalism in numerical calculations we have to represent the quantum states using available data structures. 
-We construct sp states and use them to form antisymmetric Fock states.
-The creation and annihilation operators become functions that take the Fock states as arguments, and are used to create the Fock operators. 
-Furthermore, the sum in the expression of the Fock operators can be optimized by only evaluating the non-zero terms.
-
-\subsection{Single-Particle-State Objects}
-
-We represent a single particle state with a record, i.e. an object with named fields that can be assigned values. It is natural to let each quantum number, such as $l$ and $j$ be a field. 
-Moreover, we can include other information about the state, information that is taken for granted in the mathematical formulation.
-This includes a unique index for each state, the eigenvector holding information about the wavefunction, the basis of the eigenvector and, in the case of the plane wave basis, the contour used.
-Much of this extra information is redundant, as many states share the same information.
-Nevertheless, we found that this representation significantly simplifies the structure of the program and makes it easier to understand.
-
-\subsection{Fock State Objects and Operator Functions}
-
-An antisymmetric many-body state $\ket{\alpha_1\dots}$ is represented by an ordered list of single particle objects and a sign. 
-Since the sp state objects have a unique index, there is a well-defined sorting order. 
-The sign can be $1$, $-1$ or $0$, representing $\ket{\alpha_1\dots}$, $-\ket{\alpha_1\dots}$ and $0$, respectively. 
-
-The creation and annihilation operators are implemented as functions on the Fock state objects, obeying
-\cref{eq:create,eq:create_ordered,eq:create_zero,eq:annihilate,eq:annihilate_ordered,eq:annihilate_zero}.
-The creation operator function steps through the list, flipping the sign at each step, until the correct place for the new particle is found. 
-If the particle is already part of the Fock state, the sign is set to 0.
-The annihilation operator searches for a state, saves its index $k$ in the list, annihilates it and set the sign to $(-1)^k$. If the state not exists, the sign is set to 0.
-
-\subsection{Matrix Element Computations}
-
-When computing the matrix elements, we do do not
-\todo{finish this section}
-
 \section{Angular Momentum Coupling}
 \label{sec:coupling}
 We have now developed the theory we need to solve actual many-body problems.
 Before applying these methods, however, we will discuss the concept of angular momentum coupling. 
 This corresponds to making a change of basis, using the rotational symmetry of the problem to significantly reduce the size of the matrix. 
 In principle this is not neccesary to solve many-nody problems, but it is a neat trick to make the computations more managable. 
-The following section introduces the concept of angular momentum coupling. \todo{refer to souhonen or somewhere where this coupling is satisfactorily explained}
+The following section will thus introduce the concept of angular momentum coupling. \todo{refer to souhonen or somewhere where this coupling is satisfactorily explained}
  
 %The \He{6} nucleus can be solved in two ways, either we couple the angular momenta of the two sp states to reduce the amount of calculations needed or we generate all mb states to get calculations that are more straight-forward. 
 %We solve the problem using both schemes, the coupled scheme because is is the one we want to use, but we also solve it using the uncoupled scheme to verify the answer.
@@ -331,13 +299,12 @@ The following section introduces the concept of angular momentum coupling. \todo
 
 
 \subsection{Coupled Scheme}
-So far we have used the basis states 
+In previous Chapters we have studied single-particle states on the form $\ket{Ejm}$, where we let the quantum number $E$ represent all quantum numbers needed to uniquely specify a state. 
 \begin{eq}
   \pket{E_1m_1, E_2m_2} = \ket{E_1j_1m_1}\otimes\ket{E_2j_2m_2}
 \end{eq}
 that are eigenvectors to the \He{5} Hamiltonian (with eigenvalues $E_1+E_2$). 
-However, they are also constructed so that they are eigenvectors to the operators $\vec{J}_1^2$ and $\vec{J}_2^2$ with eigenvalues $j_1(j_1+1)$ and $j_2(j_2+1)$ respectively, and the operators $\vec{J}_{1z}$ and $\vec{J}_{2z}$ with eigenvalues $m_1$ and $m_2$. \todo{det här egenvektorer till alla operatorer som vi vill, är det uppenbart eller har vi gjort något smart så att det blir så? behövs citerng?}
-
+However, they are also to the operators $J_1^2$, $J_2^2$, $J_{1z}$ and $J_{2z}$ with eigenvalues $j_1(j_1+1)$, $j_2(j_2+1)$, $m_1$ and $m_2$ respectively.
 
 One often studies systems where the total angular momentum $\vec{J} = \vec{J}_1 + \vec{J}_2$ is conserved, but the individual angular momenta $\vec{J}_1$ and $\vec{J}_2$ are not. 
 Then it is convenient to switch to a basis $\pket{E_1, E_2; JM}$ where the total angular momentum is well defined, but the individual momenta are not. 
@@ -390,5 +357,42 @@ meaning that we have to normalize these states with an additional factor $\nicef
 
 \subsection{Matrix elements in coupled scheme}
 \todo{Write about matrix elements}
+
+
+
+
+
+\section{Implementation}
+
+To use the Fock space formalism in numerical calculations we have to represent the quantum states using available data structures. 
+We construct sp states and use them to form antisymmetric Fock states.
+The creation and annihilation operators become functions that take the Fock states as arguments, and are used to create the Fock operators. 
+Furthermore, the sum in the expression of the Fock operators can be optimized by only evaluating the non-zero terms.
+
+\subsection{Single-Particle-State Objects}
+
+We represent a single particle state with a record, i.e. an object with named fields that can be assigned values. It is natural to let each quantum number, such as $l$ and $j$ be a field. 
+Moreover, we can include other information about the state, information that is taken for granted in the mathematical formulation.
+This includes a unique index for each state, the eigenvector holding information about the wavefunction, the basis of the eigenvector and, in the case of the plane wave basis, the contour used.
+Much of this extra information is redundant, as many states share the same information.
+Nevertheless, we found that this representation significantly simplifies the structure of the program and makes it easier to understand.
+
+\subsection{Fock State Objects and Operator Functions}
+
+An antisymmetric many-body state $\ket{\alpha_1\dots}$ is represented by an ordered list of single particle objects and a sign. 
+Since the sp state objects have a unique index, there is a well-defined sorting order. 
+The sign can be $1$, $-1$ or $0$, representing $\ket{\alpha_1\dots}$, $-\ket{\alpha_1\dots}$ and $0$, respectively. 
+
+The creation and annihilation operators are implemented as functions on the Fock state objects, obeying
+\cref{eq:create,eq:create_ordered,eq:create_zero,eq:annihilate,eq:annihilate_ordered,eq:annihilate_zero}.
+The creation operator function steps through the list, flipping the sign at each step, until the correct place for the new particle is found. 
+If the particle is already part of the Fock state, the sign is set to 0.
+The annihilation operator searches for a state, saves its index $k$ in the list, annihilates it and set the sign to $(-1)^k$. If the state not exists, the sign is set to 0.
+
+\subsection{Matrix Element Computations}
+
+When computing the matrix elements, we do do not
+\todo{finish this section}
+
 
 \end{document}
