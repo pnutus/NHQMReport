@@ -14,7 +14,7 @@ The solutions are studied by looking at the energies and wavefunctions while var
 
 Typical examples of open quantum systems are encountered in nuclear physics. 
 The atomic nucleus is held together by the very short-range strong interaction acting between all nucleons. \todo[inline]{typical? Short rangeD?}
-Nuclei are systems that can be studied within a shell model. This is done by introducing a \emph{mean-field} potential, often done in the following way.\cite{suhonen}
+Nuclei are systems that can be studied within a shell model. \todo[inline]{all nuclei?} This is done by introducing a \emph{mean-field} potential, often done in the following way.\cite{suhonen}
 
 Consider the Hamiltonian for a system of $A$ interacting particles,
 \begin{eq}
@@ -34,7 +34,7 @@ where $v$ is the nucleon-nucleon interaction. Now add and subtract a potential f
   &=
   H\sub{MF} + V\sub{res}
 \end{eq} 
-where we have split the Hamiltonian into a spherically symmetric mean-field Hamiltonian $H\sub{MF}$ in which particles don't interact directly, and the \emph{residual interaction} $V\sub{res}$ that can be seen as the new interaction between particles. If the mean-field potential $V$ is chosen carefully, $V\sub{res}$ can become small enough to be treated pertubationally (if at all).
+where we have split the Hamiltonian into a spherically symmetric mean-field Hamiltonian $H\sub{MF}$ in which particles do notinteract directly, and the \emph{residual interaction} $V\sub{res}$ that can be seen as the new interaction between particles. If the mean-field potential $V$ is chosen carefully, $V\sub{res}$ can become small enough to be treated pertubationally (if at all).
 
 This method has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
 It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ angular momentum. 
@@ -185,7 +185,7 @@ We see that a wavefunction peaking at a single value $k_i$ corresponds to a radi
   R_i(r) = i^l\sqrt{\frac{2}{\pi}} j_l(k_i r)
 \end{eq}
 Now, the defining property of the spherical bessel functions are that they are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
-Thus we see may conclude that these peaked solutions correspond to free particles. 
+Thus we may conclude that these peaked solutions correspond to free particles. 
 In addition, the fact that we find unbound solutions corresponding to each value of $k$ that we feed into the equation hints at the continuous nature of these states. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
@@ -203,7 +203,7 @@ In addition, the fact that we find unbound solutions corresponding to each value
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
 
-In \cref{fig:resonance wavefunction} the radial probability distributions $r^2|R(r)^2|$ are shown for the broadest momentum wavefunction (the one marked in red in \cref{fig:real mom wavefunctions}) together with an unbound state, for different values of the interaction strength $V_0$. The figure demonstrates how we may have bound solutions ($E<0$) if the potential is sufficiently attractive, and how this solution is replaced by a localized but unbounded state as the interaction strength decreases. 
+In \cref{fig:resonance wavefunction} the radial probability distributions $r^2|R(r)^2|$ are shown for the broadest momentum wavefunction (the one marked in red in \cref{fig:real mom wavefunctions}) together with an unbound state, for different values of the interaction strength $V_0$. The figure demonstrates how we may have bound solutions ($E<0$) if the potential is sufficiently attractive, and how this solution is replaced by a localized but unbound state as the interaction strength decreases. 
 
 %We can see that for systems with a deep potential well (here represented by the $V_0 = \SI{70}{MeV}$ case) will support a bound solution with $E<0$, characterized by a wavefunction that quickly tends to zero outside the potential well. 
 %As the strength is decreased, however, the energy of the bound state will increase. 
@@ -211,7 +211,7 @@ In \cref{fig:resonance wavefunction} the radial probability distributions $r^2|R
 %Instead we find a solution with a very localized wavefunction, but with positive energy and a wavefunction that does not tend to zero outside the core. 
 %As the interaction strength is further decreased this unique solution becomes less and less localized, as demonstrated in the two last figures ($V0 = \SI{47}{MeV}$, our \He{5} problem, and $V_0 = \SI{40}{MeV}$.
 
-We have now studied the solutions obtained from solving the nuclear two-body problem, with the \He{5} nucleus not supporting any bound states as a model system. Instead we have found a continuum of unbound particles with positive energies, and one unique solution corresponding to a more localized state, but that still has many characteristics of the unbound states. These are the first signs of quasi-bound states --- the sought-after resonance --- but these are described by complex energies, and the Schrödinger equation only gives us real solutions. Therefore we cannot possibly hope to fully describe them within this framework. Instead we have to move on to a new one: The complex momentum representation. 
+We have now studied the solutions obtained from solving the nuclear two-body problem, with the \He{5} nucleus not supporting any bound states as a model system. Instead we have found a continuum of unbound particles with positive energies, and one unique solution corresponding to a more localized state, but that still has many characteristics of the unbound states. These are the first signs of quasi-bound states --- the sought-after resonance --- but these are described by complex energies, and the Schrödinger equation only gives us real solutions. Therefore we cannot describe them within this framework. Instead we have to move on to a new one: The complex momentum representation. 
 
 
 
