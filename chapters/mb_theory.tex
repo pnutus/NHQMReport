@@ -42,17 +42,14 @@ which, by the orthonormality of the $\ket\alpha$, will also be orthonormal
 \end{eq}
 
 %Let us now create an arbitrary linear combination of the product states, denoted by an angled ket
-Let us assume that the system of particles can be described by some linear combinations of these basis states, denoted
+Let us assume that the system of particles can be described by some linear combinations of these basis states, denoted \todo[inline]{make sure this assumption is verified later on, don't leave it hangin'}
 \begin{eq}
   \ket{\alpha_1\alpha_2\dots\alpha_N}.
 \end{eq}
 Since the particles are identical, and thus indistinguishable, we require the norm of the state to be unchanged when swapping the quantum numbers of two particles $i$ and $j$
 \begin{eq}
-  %\absq{\big.\ket{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N}}
-  %=
-  %\absq{\big.\ket{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}}.
-  &\braket{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N}{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N} \\
-  =&\braket{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}
+  \braket{\alpha_1\dots\alpha_i\dots\alpha_j\dots&\alpha_N}{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N} \\
+  &=\braket{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}
 \end{eq}
 \todo[inline]{The equation above looks a bit weird now. Do something about it?}
 These states can therefore only differ in phase $e^{i\phi}$, and since another swap will bring us back to the original state, the phase has to be either $e^{i\phi} = 1$ or $e^{i\phi} = -1$.
@@ -91,7 +88,7 @@ If they are not, we permute two sp states at a time until the correct ordering i
   & =
   - \ket{\alpha_1\alpha_i\dots\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
   \\ & =
-  ...
+  \dots
   \\ & =
   (-1)^{i-2} 
   \ket{\alpha_1\dots\alpha_i\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
@@ -215,6 +212,7 @@ Sandwiched between a bra and a ket, this becomes
   }
   \delta_{\alpha_1\alpha'_1} \dots \delta_{\alpha_N\alpha'_N},
 \end{eq}
+\todo[inline]{for kets outside sum: use <a...b|H|c...d>?}
 the sum of the eigenvalues of the sp states in the bra and ket, but only if the bra and ket are the same. The Fock space operator $\hat{H}_1$ is thus also diagonal.
 
 \subsubsection{Two-Body Operators}
@@ -227,7 +225,7 @@ A two-body operator in Fock space becomes
   \pbra{\alpha \beta} H_2 \pket{\gamma \delta} 
   a_\alpha^\dag a_\beta^\dag a_\delta a_\gamma.
 \end{eq}
-Note that the ordering of the $\gamma$ and $\delta$ is different for the product states and the operators, so-called \emph{normal ordering}.
+\todo{Give an example of a $H_2$? Like, mention $V(\vec{r}_1,\, \vec{r}_2)$?}Note that the ordering of the $\gamma$ and $\delta$ is different for the product states and the operators, so-called \emph{normal ordering}.
 The factor \nicefrac{1}{2} stems from the fact that %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{eq}
   \pbra{\alpha \beta} H_2 \pket{\gamma \delta} 
@@ -285,7 +283,7 @@ as expected.
 
 \section{Implementation}
 
-To use the fock space formalism in numerical calculations we have to represent the quantum states using available data structures. 
+To use the Fock space formalism in numerical calculations we have to represent the quantum states using available data structures. 
 We construct sp states and use them to form antisymmetric Fock states.
 The creation and annihilation operators become functions that take the Fock states as arguments, and are used to create the Fock operators. 
 Furthermore, the sum in the expression of the Fock operators can be optimized by only evaluating the non-zero terms.
@@ -317,9 +315,6 @@ When computing the matrix elements, we do do not
 
 \section{Angular Momentum Coupling}
 \label{sec:coupling}
-
-\todo{integrate this section}
-
 We have now developed the tools we need to create the Hamiltonian matrix and solve the problem. 
 First, however, we will discuss the concept of angular momentum coupling. 
 This corresponds to making a change of basis, using the rotational symmetry of the problem to significantly reduce the size of the matrix. 
