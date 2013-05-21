@@ -47,14 +47,21 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
     \begin{tikzpicture}[scale = 2.7]
       \draw[->] (-1.2, 0) -- (1.2, 0) node[below left] {$\Re k$};
       \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
-      \foreach \y in {0.1, 0.3}
-        \node at (0, \y) [bound] {};
-      \foreach \x in {0.25, -0.25}
-        \node at (\x, -0.15) [quasibound] {};
+	  
+\tikzstyle{every pin edge}=[shorten <=1pt,]
+\tikzstyle{every pin}=[fill=white,]
+
+        \node at (0, 0.1) [bound, pin=above left:Bound state,] {};
+		\node at (0, 0.3) [bound] {};
+		
+        \node at (0.25, -0.15) [quasibound] {};
         \draw[very thick, mid arrows] 
         (0,0) -- (1,0);
         \draw[thick, mid arrows, dashed]
           (1,0) arc (0:90:1) arc (90:180:1) -- (0,0);
+		  
+		\node at (0, 0.1) [bound, pin=above left:Bound State,] {};
+		\node at (-0.25, -0.15) [quasibound, pin=below left:Resonance,] {};
     \end{tikzpicture}
     }
     \subfloat[]{
@@ -178,13 +185,15 @@ but now with complex $k$ and $w$.
       only marks,
 	    width = \textwidth, 
   		height = 9cm, 
+		xmin=-0.2,
   		xlabel=Re $k/\b{\si{fm^{-1}}}$, 
   		ylabel=Im $k/\b{\si{fm^{-1}}}$, 
   		axis x line = middle, 
-  		axis y line = left, 
-  		ymax =  0.04,
+  		axis y line = middle, 
+  		ymax =  0.025,
   		ymin = -0.12,
-  		ytick = {-0.12,-0.08,...,0.04},
+		xmax= 2.499,
+  		ytick = {-0.12,-0.08,...,0},
   		xtick = {0,0.5,...,3},
   		every axis y label/.style={ 
   			at = {(current axis.above origin)},
@@ -199,6 +208,7 @@ but now with complex $k$ and $w$.
   			anchor = south, yshift = 3pt
   		}, 
   		xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},
+		legend style={at={(0.8,0.7)}, anchor=north,legend columns=1},
       ]
       \addplot [color=gray] table [x index=0, y index=1]{../figures/verification_momenta/momentum_solutions.data};
 	  \addlegendentry{contour points}
@@ -206,7 +216,7 @@ but now with complex $k$ and $w$.
 	  \addlegendentry{solutions}
     \end{axis}
   \end{tikzpicture}
-  \caption{The complex contour used and the computed solutions. Notice the resonance in the middle of the triangle.}
+  \caption{Solutions to \He{5} along a complex contour. Notice the resonance in the middle of the triangle. In this figure the following parameters were used: ...}
   \label{fig:verification}
 \end{figure}
 \todo[inline]{Mention something about solutions in second figure?}
@@ -251,7 +261,7 @@ simply single out the one with the broadest wavefunction, or equivalently after 
   		\includegraphics[page=2]{../figures/eigvecs_real_comp/eigvecs.pdf}
 	}
   }
-\caption{yada} 
+\caption{\He{5} momentum probability distributions for a real and complex contour. The resonance is more prominent when solving along the complex contour but is significantly wider than the surrounding states in both cases.} 
 \label{fig:he5_eigvecs}
 \end{figure}
 
@@ -304,11 +314,13 @@ where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla 
         every x tick label/.append style = {anchor = south, yshift = 3pt},
         xmax=0.5,
         ytickmax = 0.3, xtickmax = 0.9,
+		xtick={0.1,0.2,...,0.4},
         enlarge y limits,
         no markers,
 		     xtickmin = 0.1,
 		     xticklabel style={/pgf/number format/fixed,
 		     /pgf/number format/precision=3},
+			 legend style={at={(0.8,0.7)}, anchor=north,legend columns=1},
         ]
       	\addplot+[color = red, very thick, ->] table  {../figures/res_pole(V0)/poles.data};
       	    \addlegendentry{Pole position}
@@ -333,7 +345,8 @@ where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla 
    \includegraphics[page=2]{../figures/poles(contour)/poles.pdf}
    }
    }
-  \caption{yadayoda} 
+  \caption{\He{5} momentum solutions for different contours. The resonance is located at $0.1731, -0.03558i$ for both contours. we have used $V0 =$ \SI{47}{MeV} with $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
+
   \label{fig:pole(cont)}  
 \end{figure}
 
