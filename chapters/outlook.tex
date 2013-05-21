@@ -16,31 +16,38 @@ The Monte Carlo method shows some promise, but we suggest looking into other pos
 
 We have studied the nuclei \He{5} and \He{6}, a two- and three-body problem respectively. 
 A natural extension of these problems is to add more particles, either neutrons of protons.
-In the case of neutrons, we end up with even heavier \He{} isotopes,  \He{7} and \He{8}.
+In the case of neutrons, the heavier \He{} isotopes \He{7} and \He{8} are.
 We then have have to consider the angular momentum coupling of three or four bodies, but other than that the techniques we employ are general.
 \todo[inline]{how general?}
 Adding protons, we have to consider the different isospin of the two types of nucleon.
 This has implications for the nucleon-nucleon interaction, discussed below.
 
 Another possibility is to study other elements than helium. \ce{^{16} O} and \ce{^{24} O} are good candidates, since they too are doubly magic nuclei.
-We could study other light elements like \ce{Li} or \ce{Be}, as they display several interesting properties of open quantum systems.
+Other light elements like \ce{Li} or \ce{Be} are of interest as well, as they like \He{} display several interesting properties of open quantum systems.
 
 When expanding \He{6}, our basis consists of only $p_{1/2}$ and $p_{3/2}$ waves. 
-This is a good approximation for \He{6} \cite{gamow_shell_model_2008},  but for other systems, we have to include more partial waves (sober physicists ...) in the expansion.
+This is a good approximation for \He{6} \cite{gamow_shell_model_2008},  but for other systems, more partial waves (sober physicists ...) have to be included in the expansion in the expansion.
 
-Another way of describing different cores would be to use a \emph{No-Core Shell Model} (NCSM), i.e. treating each nucleon as separate and starting with \ce{^2 H}, just one neutron and proton. This approach would only let us study very light nuclei, but the complex energy treatment could prove interesting.
+Another way of describing different cores would be to use a \emph{No-Core Shell Model} (NCSM), i.e. treating each nucleon as separate and starting with \ce{^2 H}, just one neutron and proton. This approach works best with light nuclei, but the complex energy treatment could prove interesting.
 
 \section{Reducing Computation Time}
 
-Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis.
-There are currently several methods of doing this. Two of them are the Similarity Renormalization Group (SRG) and Density Matrix Renormalization Group (DMRG) \cite{DMRG}.
-The point of only selecting a few of the single-particle states is that it reduces the size of the matrix, hence the decreased computational time.
-This is close to what we did with the Monte Carlo method.
+With an increased number of particles, the size of the Hamiltonian matrix grows exponentially. This leads to more matrix element calculations, memory usage requirements and slower diagonalization.
 
-Another way to decrease computational time is the Monte-Carlo simulations we did in \cref{cha:monte_carlo}.
-The problem is to get it to work.
-In our simulations we did not see neither the resonances in \ce{^{5,6} He}, nor did we find the bound state in \He{6}.
-One theory is that it would show results in larger systems or if we would include more basis states in each iteration, but in our case, this would not be faster than the original algorithm.
+One approach to reducing the matrix size is called \emph{renormalization}, and is related to the Monte Carlo approach we investigated. 
+Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis.
+There exist several known ways of deetermining what statse are important and which ones to include. Two of them are the Similarity Renormalization Group (SRG) and Density Matrix Renormalization Group (DMRG) \cite{DMRG}. 
+\todo{Monte Carlo?}
+
+While a larger system requires more matrix elements, many of the elements are zero. 
+As the size of the matrix grows, it is therefore no longer efficient to store them as an array. 
+Instead, a \emph{sparse-matrix} representation is employed, which only stores information about the non-zero elements. 
+There are several different sparse matrix types that fit different kinds of applications. 
+
+Furthermore, working with sparse matrices one has to adapt the diagonalization (eigensolver) algorithms. 
+The Lanczos method is the most commonly used method for large, sparse matrices.
+Here, our complex-momentum approach plays a role, as most eigensolvers assume matrices to be hermitian.
+A possible development, then, is to research eigensolver for non-hermitian (but symmetric) matrices.
 
 \section{Realistic Interactions}
 
