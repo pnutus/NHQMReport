@@ -18,7 +18,7 @@ commonly written in the position basis as
 \end{eq}
 
 For the nuclear systems to be treated, the TISE has no known analytical solutions, and we need to use numerical methods to solve it.
-However, the Hamiltonian written as in \cref{eq:TISEpos} is not optimal for computation. \todo[inline]{Why not position basis PDE??}
+However, the Hamiltonian written as in \cref{eq:TISEpos} is not optimal for computation. \todo{why?} \todo[inline]{Why not position basis PDE??}
 Instead, we would like to write it as a matrix equation
 \begin{eq}
   \label{eq:matrix equation}
@@ -33,7 +33,7 @@ For example, \cref{eq:TISEpos} is the TISE for a single particle, expanded in th
 We will not expand our problems in the position basis, but it will still be important, since it is the most natural basis to express the potential in.
 
 Before we begin, we briefly recap some well known QM facts. 
-First we need a \emph{complete basis}, either discrete $\ket{n}$ or continuous $\ket{x}$. 
+First we need a \emph{complete basis}, either discrete, $\ket{n}$, or continuous, $\ket{x}$. 
 A complete basis means that any state $\ket\psi$ can be written as a linear combination of the basis states
 \begin{eq}
   \label{eq:lincomb}	
@@ -95,7 +95,7 @@ the basic method of expanding the TISE in a basis.
 \section{Spherical Symmetry}
 \label{sec:spherical symmetry}
 
-We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. 
+We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. \todo{boundary of this project, move to introduction?}
 This is sufficient for our purposes and, indeed, most common QM problems. \todo[inline]{why?/cite/explain}
 If we considered three-dimensional systems with arbitrary potentials, the matrices would be very large and solving the problem would become infeasible.
 
@@ -110,6 +110,7 @@ This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
 \end{eq}
+\todo{ket nlm can be confused with the harmonic oscillator.}
 If we now treat $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
 we notice that the diagonal elements of this matrix have the same $l$ and $m$,
 which can be expressed as \emph{$H$ is diagonal in $l$ and $m$}.
@@ -172,6 +173,7 @@ The radial wavefunction $R(r)$ of a state will be expressed as a linear combinat
 \section{The Plane Wave Basis}
 \label{sec:mom_space}
 \todo{Relation to momentum space $p = \hbar k$, plane wave is what?}
+\todo{Do we introduce this earlier, since we use the word since?}
 The plane wave basis $\ket{\vec{k}}$ is of great importance for us since we are studying a system with a short-range potential supporting only a few, if any, bound solutions.
 This means that we will find multiple unbound solutions, corresponding to free particles with various momenta.
 These are almost eigenstates of the momentum operator, only slightly perturbed by the small potential well at $r=0$. 
@@ -180,8 +182,9 @@ The expansion is done in the same way as before, giving us
 \begin{eq}
   \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}')
   &= 
-  E\Phi(\vec{k}).
+  E\Phi(\vec{k}),
 \end{eq}
+where we denote the wavefunctions in momentum space with $\Phi$.
 This three-dimensional equation is practically unsolvable in general, but we can simplify it using the fact that we have a central problem. 
 \todo[inline]{Redundant? same stuff in sphere symm section}
 A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Schrödinger equation can be written as
@@ -220,6 +223,7 @@ The integral equation \cref{eq:radial mom space TISE} can be rewritten as a matr
   E \phi(k_i)
   .
 \end{eq}
+\todo{source on this or explain that we tried the naive way to do it.}
 A particular set of points and corresponding weights is called a \emph{quadrature}, and the choice of quadrature greatly impacts the precision of the result. 
 A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used.
 We instead use the Gauss-Legendre quadrature, for details see \cref{app:gauss-legendre}.
@@ -279,7 +283,7 @@ This includes truncation of the basis, matrix size reduction, numerical integrat
 The plane wave basis is continuous and thus requires special treatment.
 
 The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
-The included states will be the $N$ first ones, since these has the biggest overlap with the actual wavefunctions. \todo[inline]{Questionable? OLA}
+The included states will be the $N$ first ones, since these have the biggest overlap with the actual wavefunctions. \todo[inline]{Questionable? OLA}
 The more states we include in the basis, the more accurate results we get. This is illustrated in \cref{fig:hydrogen_convergence}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%CONVERGENCE FIGURE
@@ -292,6 +296,7 @@ The more states we include in the basis, the more accurate results we get. This 
 	
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%CONVERGENCE end
+\todo{should the last things of the figure (ho similar to hydrogen etc.) be mentioned in the text as well?}
 \todo{two figures}
 
 The truncation gives us an $N \times N$ Hamiltonian matrix $H$.
