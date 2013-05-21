@@ -45,11 +45,13 @@ With an increased number of particles, the size of the Hamiltonian matrix grows 
 
 One approach to reducing the matrix size is called \emph{renormalization}, and is related to the Monte Carlo approach we investigated. 
 Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis.
+
 This is possible because, as we have demonstrated\todo{Will we demonstrate this?}, certain many-body configuration barely give any contribution to the energy of the (quasi-)bound solutions. 
 One could in principle define a  measure of how important a many-body states is, truncating the basis at a set treshold value. 
 This kind of procedure has already been used to some extent. 
 Examples are the Similarity Renormalization Group (SRG) and Density Matrix Renormalization Group (DMRG) \cite{DMRG}. 
-\todo{Monte Carlo?}
+ 
+\todo{Monte Carlo?}\todo{no cite.}
 
 While a larger system requires more matrix elements, many of the elements are zero. 
 As the size of the matrix grows, it is eventually no longer efficient to store them as an array. 
