@@ -195,7 +195,7 @@ A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Sc
   \\
   V(k,k') 
   = 
-  \frac{2}{\pi}\int_0^\infty \rd r \, r^2 V(r) j_l(kr) j_l(k'r),
+  \frac{2}{\pi}\fint[0][\inf]{r} r^2 V(r) j_l(kr) j_l(k'r),
 \end{eq}
 \todo{align}
 where $\phi(k)$ is the radial part of the momentum space wavefunction
@@ -233,7 +233,7 @@ where
   \label{eq:mom_matrix}
   H_{ij} &= \frac{k_i^2}{2\mu}\delta_{ij} + w_jk_j^2 V_{ij} \\
   \label{eq:potential matrix}
-  V_{ij} &= \frac{2}{\pi} \int_0^\infty \rd r \, r^2 V(r) j_l(k_i r) j_l(k_j r).
+  V_{ij} &= \frac{2}{\pi} \fint[0][\inf]{r} r^2 V(r) j_l(k_i r) j_l(k_j r).
 \end{align}
 
 Because of the $k_j^2$ in the second term of the matrix elements 

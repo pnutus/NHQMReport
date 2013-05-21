@@ -7,7 +7,7 @@
 \todo{interaction/potential confusion}
 Equipped with the many-body theory of \cref{cha:many-body} we are now ready to study an open three-body system.
 The natural way to proceed is to add another neutron to our two-body \He{5} system and end up with \He{6}, seen as an alpha particle core with two valence neutrons ($\alpha + n + n$).
-We now have to take into account the attractive two-body interaction between the neutrons, which allows for bound states in \He{6} where there were none in \He{5}.\todo[inline]{were none or was none? where there in \He{5} was none.}
+We now have to take into account the attractive two-body interaction between the neutrons, which allows for bound states in \He{6} where there were none in \He{5}.
 Nuclei with this property are called \emph{Borromean}, after the Borromean rings (\cref{fig:borromean}). 
 The Borromean rings are three rings interlocked in such a way that, if any one ring is removed, the other two will fall apart, as is the case with the core and the neutrons.
 
@@ -35,7 +35,7 @@ The Borromean rings are three rings interlocked in such a way that, if any one r
 \section{Model System: The \He{6} Nucleus}
 \todo{section title?}
 
-We treat the three-body system as a combination of two identical two-body systems of core and neutron, i.e. two ``one-particle'' systems with the same reduced mass as in \cref{cha:two-body}.
+We treat the three-body system as a combination of two identical two-body systems of core and neutron, i.e. two ``one-particle'' systems with the same reduced mass $\mu$ as in \cref{cha:two-body}.
 The validity of this approach is not immediately obvious, but 
 if the two neutron-core pairs have like parity there will be no recoil of the core \cite{suzuki}. 
 The parity depends solely on $l$ and we only consider neutrons in the $p$ orbitals ($l=1$), so the approach is valid.
@@ -46,7 +46,7 @@ The Hamiltonian takes on the form
 \end{eq}
 where $\hat{H}_1$ is the Hamiltonian of the two-body problem and $\hat{V}\sub{res}$ is the residual neutron-neutron interaction.
 To compute the Hamiltonian matrix we will use the eigensolutions $\ket{\psi_i}$ from the previous two-body problem as single-particle basis states. 
-The neutron-core pairs are fermions, so we form antisymmetric two-particle Fock states $\ket{\psi_i,\, \psi_j}$.
+The neutron-core pairs are fermions, so we form antisymmetric two-particle Fock states $\ket{\psi_i, \psi_j}$.
 Because our basis consists of the eigenstates of $\hat{H}_1$, we can use \cref{eq:one-body_matrix_elements,eq:two-body_matrix_elements} to write the matrix elements as
 \todo[inline]{Last paragraph needs cleanup, but I don't see how atm.}
 \begin{eq}
@@ -72,32 +72,36 @@ The coupled matrix elements are
 \section{Neutron-Neutron Interaction}
 
 \todo{maybe refer to some article that covers this topic and then conclude that we'd rather use a dumbed-down approximation}
-The interaction between nucleons is complex and there is no known analytical expression for the potential. It arises from the strong interaction between the quarks that make up the nucleons, which is well known at high energies (\si{TeV}),
+The interaction between nucleons is complex and there is no known analytical expression for the potential. It arises from the strong force between the quarks that make up the nucleons, which is well known at high energies (\si{TeV}),
 \todo{how high energies?}
 but less so at nuclear energy levels (\si{MeV}).
 The study of this interaction is an active field of research \cite{living_on_the_edge}.
 \todo[inline]{mention ab initio? living on the edge}
 
-A commonly used approximation is an interaction on the form
+\todo[inline]{Ola, verify paragraph!}
+A commonly used approximation is an interaction 
 \begin{eq}
-  V = V(\vec{r}_1 - \vec{r}_2).
+  V = V(|\vec{r}_1 - \vec{r}_2|),
 \end{eq}
-To make the calculations more managable, a \emph{separable} interaction are preferrable since we can write it as
-\begin{eq}
-  V_l(r_1, r_2) = v_l(r_1)v_l(r_2).
-\end{eq}
-
-An arbitrary function $V = V(\vec{r}_1 - \vec{r}_2)$ can be expanded in a \emph{multipole expansion},\todo{cite souhonen somewhere}
+depending only on the distance between the nucleons. Using the symmetry around the axis connecting the two particles, the interaction can be expanded in a \emph{multipole expansion},\todo{cite souhonen somewhere}
 \todo[inline]{what conj?}
 \begin{eq}
-  V(\vec{r}_1 - \vec{r}_2) 
-  = 
-  \sum_{lm} v_l(r_1, r_2) 
+  V(|\vec{r}_1 - \vec{r}_2|) 
+  & = 
+  \sum_{lm} V_l(r_1, r_2) 
   Y_l^m(\Omega_{r_1})\conj{Y_l^m}(\Omega_{r_2})
+  \\
+  V_l(r_1, r_2) 
+  & = 
+  2\pi \fint[-1][1]{(\cos{\theta_{12}})} 
+  P_l(\cos{\theta_{12}}) V(|\vec{r}_1 - \vec{r}_2|)
 \end{eq}
-using the symmetry around the axis connecting the two particles.
-\todo[inline]{This paragraph needs to know why it's here.}
-
+where $\theta_{12}$ is the angle between $\vec{r}_1$ and $\vec{r}_2$. To make calculations even more managable, one can use a \emph{separable} interaction that can be expressed as a product of functions of $r_1$ and $r_2$, either before or after the multipole expansion
+\begin{eq}
+  V(r_1, r_2) = v(r_1)v(r_2)
+  \quad\textup{or}\quad
+  V_l(r_1, r_2) = v_l(r_1) v_l(r_2)
+\end{eq}
 We study two different types of separable two-body interactions, a trivially separable gaussian interaction and a surface delta interaction.
 
 

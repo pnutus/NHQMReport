@@ -10,6 +10,8 @@ The Schrödinger equation is then solved in the HO and plane wave bases.
 The solutions are studied by looking at the energies and wavefunctions while varying parameters.	
 
 \section{Model System: the \He{5} Nucleus}
+\todo{Not sure I like the title. maybe more subsections here? /Pontus}
+
 Typical examples of open quantum systems are encountered in nuclear physics. The atomic nucleus is held together by the very short-range strong interaction acting between nucleons. \todo[inline]{typical?}
 These are systems that can be studied within a shell model. \todo[inline]{really short sentance}
 In this framework, the nucleons are modelled as interacting with a \emph{mean-field} potential, approximating an effective interaction the nucleons experience. \todo[inline]{jag gillar inte flödet i sista satsen, man hakar upp sig}\todo{Do the proper derivation?}
@@ -124,11 +126,11 @@ In this section we will apply those methods to find the eigensolutions of our mo
 
 \subsection{Harmonic Oscillator Basis}
 \todo{Fix paragraph}
-The range $r_0$ of the HO potential may be varied. 
-This parameter determines the rate at which the potential increases, but also affects how rapidly the solutions converge, because a basis where the wavefunctions are similar to the solutions will have better convergence. 
+The range $r_0$ of the HO potential determines the rate at which the potential increases, but also affects how rapidly the solutions converge, since a basis where the wavefunctions are similar to the solutions will have better convergence. 
 \Cref{fig:energies(r0)} shows how the eigensolutions depend on the range of the basis functions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
+
 \tikzsetnextfilename{E(r0)}
 \begin{figure}[ht!]
   \pgfplotstableread{../figures/E(r0)/E(r0).data}\Ernoll
@@ -166,7 +168,6 @@ This parameter determines the rate at which the potential increases, but also af
   \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. We see that one of the states behaves differently from the others.}
   \label{fig:energies(r0)}
 \end{figure}
-\todo{fix "dimension tooo large"}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
 
@@ -175,8 +176,9 @@ However, we can clearly distinguish a minimum in energy for the lowest energy so
 This is a sign that there is a solution to \He{5} localized in this region. 
 Furthermore, we see that the energies for the others strictly decrease when the range of the basis increases, further showing their unbound nature.
 
-Because the harmonic oscillator consists only of bound states and we are trying to study unbound states with infinite range, we can not get much further with this method. 
+Because the harmonic oscillator consists only of bound states and we are trying to study unbound states with infinite range, we can not get much further with this method.
 We will have to switch to a basis with wavefunctions of infinite reach to properly describe this system.
+\todo{what is infinite range?}
 
 \subsection{Plane Wave Basis}
 The fact that we have found solutions lying in the positive energy spectrum, solutions with infinite reach, have brought us to consider the plane wave basis. 

@@ -11,10 +11,10 @@ This, however requires many points to converge and quickly becomes unwieldly in 
 That is why one should use the Gauss-Legendre quadrature; through a clever choice of points and weights the integral will converge with less points. 
 The theory behind this approximation is invloved \cite{abramowitz+stegun} and is not covered here. 
 The idea is to pick points on the -1 to 1 interval that are roots of the Legendre polynomial of a certain degree n and after some rescaling
-\todo{"some rescaling", this is most important part}
+\todo{"some rescaling", this is most important part!}
  the integral can be written as
 \begin{eq}
-  \int_{-1}^1 f(x)\,dx \approx \sum_{i=1}^n w_i f(x_i).
+  \int_{-1}^1 f(x)\id{x} \approx \sum_{i=1}^n w_i f(x_i).
 \end{eq}
 with the weights given by
 \begin{eq}
