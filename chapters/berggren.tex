@@ -138,7 +138,7 @@ but now with complex $k$ and $w$.
       only marks,
       ticks = none,
       ]
-      \addplot table {../figures/numerical_contour/numerical_contour.data};
+      \addplot[color=gray] table {../figures/numerical_contour/numerical_contour.data};
     \end{axis}
   \end{tikzpicture}
   \caption{The complex contour used. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
@@ -179,7 +179,7 @@ but now with complex $k$ and $w$.
   		}, 
   		xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},
       ]
-      \addplot table [x index=0, y index=1]{../figures/verification_momenta/momentum_solutions.data};
+      \addplot [color=gray] table [x index=0, y index=1]{../figures/verification_momenta/momentum_solutions.data};
 	  \addlegendentry{contour points}
 	  \addplot table [x index=2, y index=3]{../figures/verification_momenta/momentum_solutions.data};
 	  \addlegendentry{solutions}
@@ -283,9 +283,9 @@ where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla 
 		     xticklabel style={/pgf/number format/fixed,
 		     /pgf/number format/precision=3},
         ]
-      	\addplot+[very thick, ->] table  {../figures/res_pole(V0)/poles.data};
+      	\addplot+[color = red, very thick, ->] table  {../figures/res_pole(V0)/poles.data};
       	    \addlegendentry{Pole position}
-      	\addplot+[very thick] table {../figures/res_pole(V0)/contour.data};
+      	\addplot+[color= gray, very thick] table {../figures/res_pole(V0)/contour.data};
           \addlegendentry{Contour}
       \end{axis}
   \end{tikzpicture}

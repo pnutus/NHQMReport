@@ -32,9 +32,9 @@
      \begin{axis}[
        legend style={at={(0.8,0.5)}, anchor=north,legend columns=1},
        xlabel=Re $k/\b{\si{fm^{-1}}}$]
-       \addplot+[only marks, very thick] table [x index =0, y index =1] {poles.data};
+       \addplot+[color=darkgray, only marks, very thick] table [x index =0, y index =1] {poles.data};
        \addlegendentry{Pole position}
-       \addplot+[no marks, very thick] table [x index =0, y index =1] {contour.data};
+       \addplot+[color = gray, no marks, very thick] table [x index =0, y index =1] {contour.data};
        \addlegendentry{Contour}
      \end{axis}
    \end{tikzpicture}
@@ -43,9 +43,9 @@
      \begin{axis}[
        legend style={at={(0.8,0.5)}, anchor=north,legend columns=1},
        xlabel=Re $k/\b{\si{fm^{-1}}}$]
-       \addplot+[only marks, very thick] table [x index =2, y index =3] {poles.data};
+       \addplot+[color= darkgray, only marks, very thick] table [x index =2, y index =3] {poles.data};
        \addlegendentry{Pole position}
-       \addplot+[no marks, very thick] table [x index =0, y index =1] {contour.data};
+       \addplot+[color = gray, no marks, very thick] table [x index =0, y index =1] {contour.data};
        \addlegendentry{Contour}
      \end{axis}
    \end{tikzpicture}
