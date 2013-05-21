@@ -3,8 +3,19 @@
 
 \chapter{The Complex Momentum Basis}
 \label{cha:berggren}
-\todo{plusplus}
-We argued in the introduction that resonances can only be properly described by a complex energy, $E=E_0-i\frac{\Gamma}{2}$. 
+
+\todo{momentum/plane wave???}
+In \cref{cha:two-body} we studied the \He{5} system and found a special state in the continuum which we believe to be a resonance. 
+We will in this chapter detail a method of extending the momentum basis to the complex plane, which gives a more complete description of resonances. 
+The \He{5} problem is then examined once more using this new tool.
+
+\section{The Complex Momentum Plane} 
+
+\todo{Mention scattering theory?}
+We argued in the introduction that resonances can only be properly described by a complex energy
+\begin{eq}
+  E=E_0-i\frac{\Gamma}{2}.
+\end{eq}
 We may relate the energy of a system to a momentum $k$, according to
 \begin{eq}
   E = \frac{\hbar^2 k^2}{2\mu}
@@ -12,7 +23,8 @@ We may relate the energy of a system to a momentum $k$, according to
   \textup{or}
   \quad\quad
   k = \frac{\sqrt{2\mu E}}{\hbar},
-\end{eq} \todo{Perhaps add a discussion/motivation of this ''definition''?}
+\end{eq}
+\todo{this tells us???}
 This tells us that the resonant states have complex momenta and that we have to extend the plane wave basis into the complex momentum plane in order to find them.
 To clarify what this means, consider again the Schrödinger equation in momentum representation, \cref{eq:radial mom space TISE}:
 \begin{eq}
@@ -20,20 +32,20 @@ To clarify what this means, consider again the Schrödinger equation in momentum
   &=
   E\phi(k).
 \end{eq}
-
-\todo{Mention scattering theory?}
-Using a complex momentum basis effectively means that we\todo{instead of what?} evaluate the integral along a complex contour. 
-In 1968, Berggren\cite{berggren} first showed that the solutions---bound states, resonant states and the non-resonant continuum---that are obtained using this scheme form a complete orthonormal basis. 
+Using a complex momentum basis effectively means that we evaluate the integral not along the real line,  
+In 1968, Berggren \cite{berggren} first showed that the solutions---bound states, resonant states and the non-resonant continuum---that are obtained using this scheme form a complete orthonormal basis. 
+\todo[inline]{where is the complete basis equation?}
 
 This is a major result, meaning that resonances are included as proper solutions to open quantum systems. This will be of importance later, when we consider systems of multiple interacting particles. 
 In this Chapter, we will instead focus on using contours in the complex momentum plane to find the resonances of \He{5}.
 
 To find the resonance with its complex energy as a solution, it is required that a contour is chosen such that it passes below the momentum corresponding to the resonance. 
-This follows from Cauchy's residue theorem, and the fact that the resonance corresponds to a pole in the complex plane\footnote{See standard treatments on scattering theory for more detail, e.g. Sakurai\cite{sakurai}}.
+This follows from Cauchy's residue theorem, and the fact that the resonance corresponds to a pole in the complex plane
+\footnote{See standard quantum mechanics textbooks on scattering theory for more detail, e.g. \cite{sakurai}}.
 A sample contour that could be used is visualized in \cref{fig:berggren contour}.
 Note that the solutions are mirrored in the imaginary axis. It can be shown that this symmetry allows us to restrict our attention to the segment between $0$ and $+\infty$.\cite{berggren}
 
-A curious result following from this procedure is that the ordinary scalar product, and thus the norm,
+A curious, but important, fact that follows from this procedure is that the standard scalar product (and thus the norm)
 \begin{eq}
   \braket{\phi}{\phi'} = \fint[0][\inf]{k} k^2 \conj{\phi(k)}\phi'(k)
 \end{eq}
@@ -180,9 +192,10 @@ but now with complex $k$ and $w$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%VERIFICATION end
 
 \section{Studying the Resonance}
-Armed with this we can continue our study of the \He{5} spectrum. 
+Armed with this we can continue our study of the \He{5} system. 
 Diagonalizing the matrix given by \cref{eq:nhqm matrix element} using a complex contour with vertices $k_0 = 0$, $k_1 = 0.2 - i0.1$, $k_2 = 2.5$ 
 with 5 points on each segment, yields the result shown in \cref{fig:verification}.
+\todo{tydligare vertices?}
 The same Woods-Saxon parameters have been used as before, and we represent the solutions by their momenta, $k=\sqrt{2\mu E}$, corresponding to the eigenvalues. 
 We can see that we obtain solutions almost corresponding to the $k$-values used in the discretization, similar to what was found in the real case. 
 These are once again interpreted as unbound solutions, not interacting strongly with the potential. 
