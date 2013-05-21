@@ -203,65 +203,19 @@ simply single out the one with the broadest wavefunction, or equivalently after 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
 \begin{figure}[H]
-	    \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_real.data}\wfs
-  \centering{
-  \pgfplotsset{
-    width = \textwidth, height = 7cm,
- xlabel = $k/\b{\si{fm^{-1}}}$, ylabel = $k^2 \absq{\Phi(k)}$,
-    axis x line = bottom,
-    xmin = 0,
-    xmax=0.5,
-    axis y line = left,
-    no markers,
-    %ytick = \empty,
-	xtick = {0,0.5,...,3},
-    legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
+\centering{
+	\subfloat[Wavefunctions in momentum space for solutions along real-axis]{
+  		\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
+	}
+	\\
+	\subfloat[Wavefunctions in momentum space for solutions along the complex berggren contour]{
+  		\includegraphics[page=2]{../figures/eigvecs_real_comp/eigvecs.pdf}
+	}
   }
-  \subfloat[Wavefunctions in momentum space for solutions along real-axis]{
-    \tikzset{external/remake next}
-    \tikzsetnextfilename{wfs-real}
-    \begin{tikzpicture}
-      \begin{axis}[xmax=3]
-		  
-  		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
-  		 \addlegendentry{Resonance}
-
-        \foreach \yindex in {1,...,60}
-        {   
-        \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
-        }
-		\addlegendentry{Continuum state}
-		
-		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
-
-
-      \end{axis}
-    \end{tikzpicture}
-  }
-	
-  \subfloat[Wavefunctions in momentum space for solutions along the complex berggren contour]{
-     \tikzset{external/remake next}
-    \tikzsetnextfilename{wfs-comp}
-    \begin{tikzpicture}
-					  \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_complex.data}\wfs
-      \begin{axis}[xmax=3]
- 		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
- 		 \addlegendentry{Resonance}
-        \foreach \yindex in {1,...,60}
-        {   
-        \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
-		
-        }
-		\addlegendentry{Continuum state}
- 		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
-
-      \end{axis}
-    \end{tikzpicture}
-  }	
-}
 \caption{yada} 
 \label{fig:he5_eigvecs}
 \end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
@@ -418,6 +372,7 @@ where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla 
      },
      every x tick label/.append style = {anchor = south, yshift = 3pt},
    }
+   
    \subfloat[Real Contour \SI{-70}{MeV}]{
    %\tikzset{external/remake next}
    \tikzsetnextfilename{realcont70}
@@ -451,8 +406,8 @@ where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla 
    \caption{momentum solutions to the Schrödinger equation ``along'' the real axis for \He{5} with a potential of $V_0 = \SI{-70}{MeV}$ (a) and $V_0 =$ \SI{-50}{MeV} (b).} 
    \label{fig:pole real contour}  
  \end{figure}
- \todo{define pole - momentum solution}
- %%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE end
 
+ %%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE end
+ \todo{define pole - momentum solution}
 
 \end{document}
