@@ -9,16 +9,17 @@
  xlabel = $k/\b{\si{fm^{-1}}}$, ylabel = $k^2 \absq{\Phi(k)}$,
     axis x line = bottom,
     xmin = 0,
-    xmax=0.5,
+    xmax=3.05,
+    ymax=1.05,
     axis y line = left,
     no markers,
     %ytick = \empty,
 	xtick = {0,0.5,...,3},
-    legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
+    legend style={at={(0.4,1)}, anchor=north},,
   }
 
     \begin{tikzpicture}
-      \begin{axis}[xmax=3]
+      \begin{axis}
 		  
   		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
   		 \addlegendentry{Resonance}
@@ -37,7 +38,7 @@
 	
     \begin{tikzpicture}
 					  \pgfplotstableread{eigvecs_complex.data}\wfs
-      \begin{axis}[xmax=3]
+      \begin{axis}
  		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
  		 \addlegendentry{Resonance}
         \foreach \yindex in {1,...,60}
