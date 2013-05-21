@@ -17,12 +17,13 @@ problem = He5
 osc.integration_order = 30
 problem.V0 = -52
 a=0.1
-b=10
-r0list=sp.linspace(a,b,200)
+b=2
+c=10
+r0list=sp.hstack([sp.linspace(a,b,100),sp.linspace(b,c,100)])
 omegalist=[]
 for r in r0list:
     omegalist.append(1/(problem.mass*r**2))
-basis_size=50
+basis_size=100
 k_max=3
 
 contour = gauss_contour([0, k_max], basis_size)
@@ -42,6 +43,9 @@ for i,omega in enumerate(omegalist):
     res_osc.append(eigvals[0:20])
 
 clipped_res = sp.clip(res_osc, -sp.inf, truncation)
+
+# plt.plot(r0list,clipped_res,'.')
+# plt.show()
 
 script_dir = os.path.dirname(os.path.realpath(__file__)) + "/"
 sp.savetxt(script_dir + "E(r0).data", 
