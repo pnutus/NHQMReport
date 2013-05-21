@@ -180,7 +180,7 @@ We will have to switch to a basis with wavefunctions of infinite reach to proper
 \subsection{Plane Wave Basis}
 The fact that we have found solutions lying in the positive energy spectrum, solutions with infinite reach, have brought us to consider the plane wave basis. 
 Solving the Schrödinger equation in the way prescribed in \cref{cha:basis_expansion} with the Woods-Saxon potential gives us the eigenvalues and momentum eigenfunctions. 
-In \cref{fig:real mom wavefunctions} we present all the obtained eigenfunctions. 
+In \cref{fig:he5_eigvecs} we present all the obtained eigenfunctions. 
 We especially marked one of the functions in red, clearly standing out among the others and peaking at $k = \SI{0.17}{fm^{-1}}$. 
 Let us discuss the physical significance of the obtained solutions.
 
@@ -190,19 +190,62 @@ We see that we have a background of wavefunctions peaking at different values of
 \end{eq} 
 We see that a wavefunction peaking at a single value $k_i$ corresponds to a radial wavefunction
 \begin{eq}
-  R_i(r) = i^l\sqrt{\frac{2}{\pi}}k_i^2 j_l(k_i r)
+  R_i(r) = i^l\sqrt{\frac{2}{\pi}} j_l(k_i r)
 \end{eq}
 Now, the defining property of the spherical bessel functions are that they are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
-Thus we see may conclude that these peaked solution correspond to free particles. 
+Thus we see may conclude that these peaked solutions correspond to free particles. 
 In addition, the fact that we find unbound solutions corresponding to each value of $k$ that we feed into the equation hints at the continuous nature of these states. 
 
-In \cref{fig:resonance wavefunction} the radial probability distributions $r^2|R(r)^2|$ is shown for the broadest momentum wavefunction (the one marked in red in \cref{fig:real mom wavefunctions}) together with an unbound state, for different values of the potential strength $V_0$. 
-\todo{More structure. Subsubsection?}
-We can see that for systems with a deep potential well (here represented by the $V_0 = \SI{70}{MeV}$ case) will support a bound solution with $E<0$, characterized by a wavefunction that quickly tends to zero outside the potential well. 
-As the strength is decreased, however, the energy of the bound state will increase. 
-When a certain value is reached (in our case around $V_0 = \SI{52}{MeV}$), the potential well no longer supports any bound states. 
-Instead we find a solution with a very localized wavefunction, but with positive energy and a wavefunction that does not tend to zero outside the core. 
-As the interaction strength is further decreased this unique solution becomes less and less localized, as demonstrated in the two last figures ($V0 = \SI{47}{MeV}$, our \He{5} problem, and $V_0 = \SI{40}{MeV}$
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
+
+\begin{figure}[H]
+	    \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_real.data}\wfs
+  \centering{
+  \pgfplotsset{
+    width = \textwidth, height = 7cm,
+ xlabel = $k/\b{\si{fm^{-1}}}$, ylabel = $k^2 \absq{\Phi(k)}$,
+    axis x line = bottom,
+    xmin = 0,
+    xmax=0.5,
+    axis y line = left,
+    no markers,
+    %ytick = \empty,
+	xtick = {0,0.5,...,3},
+    legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
+  }
+  
+  \tikzset{external/remake next}
+  \tikzsetnextfilename{wfs-real}
+  \begin{tikzpicture}
+    \begin{axis}[xmax=3]
+		  
+  	 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
+  	 \addlegendentry{Resonance}
+
+         \foreach \yindex in {1,...,60}
+         {   
+           \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
+         }
+	 \addlegendentry{Continuum state}
+
+	 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
+    \end{axis}
+  \end{tikzpicture}  	
+}
+\caption{Momentum probability distributions for all obtained solutions to the Woods-Saxon potential.} 
+\label{fig:he5_eigvecs}
+\end{figure}
+\todo{Move the legend more up to the right?}
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
+
+
+In \cref{fig:resonance wavefunction} the radial probability distributions $r^2|R(r)^2|$ are shown for the broadest momentum wavefunction (the one marked in red in \cref{fig:real mom wavefunctions}) together with an unbound state, for different values of the interaction strength $V_0$. The figure demonstrates how we may have bound solutions ($E<0$) if the potential is sufficiently attractive, and how this solution is replaced by a localized but unbounded state as the interaction strength decreases. 
+
+%We can see that for systems with a deep potential well (here represented by the $V_0 = \SI{70}{MeV}$ case) will support a bound solution with $E<0$, characterized by a wavefunction that quickly tends to zero outside the potential well. 
+%As the strength is decreased, however, the energy of the bound state will increase. 
+%When a certain value is reached (in our case around $V_0 = \SI{52}{MeV}$), the potential well no longer supports any bound states. 
+%Instead we find a solution with a very localized wavefunction, but with positive energy and a wavefunction that does not tend to zero outside the core. 
+%As the interaction strength is further decreased this unique solution becomes less and less localized, as demonstrated in the two last figures ($V0 = \SI{47}{MeV}$, our \He{5} problem, and $V_0 = \SI{40}{MeV}$.
 
 We have now studied the solutions obtained from solving the nuclear two-body problem, with the \He{5} nucleus supporting no bound states as a model system. Instead we have found a continuum of unbound particles with positive energies, and one unique solution corresponding to a more localized state, but that still has many characteristics of the unbound states. These are the first signs of quasi-bound states --- the sought-after resonances --- but since these are described by complex energies, and the Schrödinger equation only giving real solutions, we cannot possibly hope to fully describe them within this framework. Instead we have to move on to a different one: The complex momentum representation. 
 
@@ -288,73 +331,5 @@ We have now studied the solutions obtained from solving the nuclear two-body pro
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions END
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
-
-\begin{figure}[H]
-	    \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_real.data}\wfs
-  \centering{
-  \pgfplotsset{
-    width = \textwidth, height = 7cm,
- xlabel = $k/\b{\si{fm^{-1}}}$, ylabel = $k^2 \absq{\Phi(k)}$,
-    axis x line = bottom,
-    xmin = 0,
-    xmax=0.5,
-    axis y line = left,
-    no markers,
-    %ytick = \empty,
-	xtick = {0,0.5,...,3},
-    legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
-  }
-  \subfloat[Wavefunctions in momentum space for solutions along real-axis]{
-    \tikzset{external/remake next}
-    \tikzsetnextfilename{wfs-real}
-    \begin{tikzpicture}
-      \begin{axis}[xmax=3]
-		  
-  		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
-  		 \addlegendentry{Resonance}
-
-        \foreach \yindex in {1,...,60}
-        {   
-        \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
-        }
-		\addlegendentry{Continuum state}
-		
-		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
-
-
-      \end{axis}
-    \end{tikzpicture}
-  }
-	
-  \subfloat[Wavefunctions in momentum space for solutions along the complex berggren contour]{
-     \tikzset{external/remake next}
-    \tikzsetnextfilename{wfs-comp}
-    \begin{tikzpicture}
-					  \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_complex.data}\wfs
-      \begin{axis}[xmax=3]
- 		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
- 		 \addlegendentry{Resonance}
-        \foreach \yindex in {1,...,60}
-        {   
-        \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
-		
-        }
-		\addlegendentry{Continuum state}
- 		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
-
-      \end{axis}
-    \end{tikzpicture}
-  }
-	
-}
-
-
-
-\caption{yada} 
-\label{fig:he5_eigvecs}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
 \end{document}
