@@ -10,10 +10,31 @@ The Schrödinger equation is then solved in the HO and plane wave bases.
 The solutions are studied by looking at the energies and wavefunctions while varying parameters.	
 
 \section{Model System: the \He{5} Nucleus}
-Typical examples of open quantum systems are encountered in nuclear physics. The atomic nucleus is held together by the very short-range strong interaction acting between nucleons. \todo[inline]{typical?}
-These are systems that can be studied within a shell model. \todo[inline]{really short sentance}
-In this framework, the nucleons are modelled as interacting with a \emph{mean-field} potential, approximating an effective interaction the nucleons experience. \todo[inline]{jag gillar inte flödet i sista satsen, man hakar upp sig}\todo{Do the proper derivation?}
-The remaining potential is left as a weak \emph{residual} interaction between nucleons. \todo[inline]{remaining?}
+\todo{Not sure I like the title. maybe more subsections here? /Pontus}
+
+Typical examples of open quantum systems are encountered in nuclear physics. 
+The atomic nucleus is held together by the very short-range strong interaction acting between all nucleons. \todo[inline]{typical?}
+Nuclei are systems that can be studied within a shell model. This is done by introducing a \emph{mean-field} potential, often done in the following way.\cite{suhonen}
+
+Consider the Hamiltonian for a system of $A$ interacting particles,
+\begin{eq}
+  H = \sum_{i=1}^A \frac{1}{2m_i} \nabla_i^2 
+  + 
+  \sum_{j<i=1}^A v(\vec{r}_i,\,\vec{k}_i, \vec{r}_j, \vec{k}_j)
+\end{eq}
+where $v$ is the nucleon-nucleon interaction. Now add and subtract a potential field $V(\vec{r})$ affecting all particles,
+\begin{eq}
+  H &= \sum_i \b{ 
+    \frac{1}{2m_i} \nabla_i^2 + V(\vec{r}_i) 
+    }
+  + 
+  \sum_{j<i} \b{ 
+    v(\vec{r}_i,\,\vec{k}_i, \vec{r}_j, \vec{k}_j) - V(\vec{r_i})
+  } \\
+  &=
+  H\sub{MF} + V\sub{res}
+\end{eq} 
+where we have split the Hamiltonian into a spherically symmetric mean-field Hamiltonian $H\sub{MF}$ in which particles don't interact directly, and the \emph{residual interaction} $V\sub{res}$ that can be seen as the new interaction between particles. If the mean-field potential $V$ is chosen carefully, $V\sub{res}$ can become small enough to be treated pertubationally (if at all).
 
 This method has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
 It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ angular momentum. 
@@ -23,9 +44,9 @@ Because of this, we will choose to study the \He{5} nucleus as an example of a t
 The \He{4} nucleus is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core. 
 This core will be treated as a single particle (subsequently referred to as the $\alpha$-particle), interacting with the valence neutron through the mean-field only.
 
-Other doubly magic light nuclei, such as \ce{^{16}O}, have been studied using similar methods\cite{gamow_shell_model_2008}, but we will restrict ourselves to the Helium nucleus. 
+Other doubly magic light nuclei, such as \ce{^{16}O} and its isotopes, have been studied using methods similar to ours\cite{gamow_shell_model_2008}, but we will restrict ourselves to Helium nuclei. 
 
-For mean-field potential we will use the established Woods-Saxon potential, which is given by
+For mean-field potential we will use the established Woods-Saxon potential, given by
 \begin{eq}
 	V(r)=
 	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr} ,
@@ -124,11 +145,11 @@ In this section we will apply those methods to find the eigensolutions of our mo
 
 \subsection{Harmonic Oscillator Basis}
 \todo{Fix paragraph}
-The range $r_0$ of the HO potential may be varied. 
-This parameter determines the rate at which the potential increases, but also affects how rapidly the solutions converge, because a basis where the wavefunctions are similar to the solutions will have better convergence. 
+The range $r_0$ of the HO potential determines the rate at which the potential increases, but also affects how rapidly the solutions converge, since a basis where the wavefunctions are similar to the solutions will have better convergence. 
 \Cref{fig:energies(r0)} shows how the eigensolutions depend on the range of the basis functions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
+
 \tikzsetnextfilename{E(r0)}
 \begin{figure}[ht!]
   \centering
@@ -140,17 +161,18 @@ This parameter determines the rate at which the potential increases, but also af
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
 
 The solutions all have energies $E>0$, meaning that they are not bound, and thus have unlimited range. 
-However, we can clearly distinguish a minimum in energy for the lowest energy solution when the range of the basis is in the region $r_0 \approx \SI{1.3}{fm}$, corresponding to radii within the nucleus. 
+However, we can clearly distinguish a minimum in energy for the lowest energy solution when the range of the basis is in the region $r_0 \approx \SI{1}{fm}$, corresponding to radii within the nucleus. 
 This is a sign that there is a solution to \He{5} localized in this region. 
 Furthermore, we see that the energies for the others strictly decrease when the range of the basis increases, further showing their unbound nature.
 
-Because the harmonic oscillator consists only of bound states and we are trying to study unbound states with infinite range, we can not get much further with this method. 
+Because the harmonic oscillator consists only of bound states and we are trying to study unbound states with infinite range, we can not get much further with this method.
 We will have to switch to a basis with wavefunctions of infinite reach to properly describe this system.
+\todo{what is infinite range?}
 
 \subsection{Plane Wave Basis}
 The fact that we have found solutions lying in the positive energy spectrum, solutions with infinite reach, have brought us to consider the plane wave basis. 
 Solving the Schrödinger equation in the way prescribed in \cref{cha:basis_expansion} with the Woods-Saxon potential gives us the eigenvalues and momentum eigenfunctions. 
-In \cref{fig:real mom wavefunctions} we present all the obtained eigenfunctions. 
+In \cref{fig:he5_eigvecs} we present all the obtained eigenfunctions. 
 We especially marked one of the functions in red, clearly standing out among the others and peaking at $k = \SI{0.17}{fm^{-1}}$. 
 Let us discuss the physical significance of the obtained solutions.
 
@@ -160,21 +182,36 @@ We see that we have a background of wavefunctions peaking at different values of
 \end{eq} 
 We see that a wavefunction peaking at a single value $k_i$ corresponds to a radial wavefunction
 \begin{eq}
-  R_i(r) = i^l\sqrt{\frac{2}{\pi}}k_i^2 j_l(k_i r)
+  R_i(r) = i^l\sqrt{\frac{2}{\pi}} j_l(k_i r)
 \end{eq}
 Now, the defining property of the spherical bessel functions are that they are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
-Thus we see may conclude that these peaked solution correspond to free particles. 
+Thus we see may conclude that these peaked solutions correspond to free particles. 
 In addition, the fact that we find unbound solutions corresponding to each value of $k$ that we feed into the equation hints at the continuous nature of these states. 
 
-In \cref{fig:resonance wavefunction} the radial probability distributions $r^2|R(r)^2|$ is shown for the broadest momentum wavefunction (the one marked in red in \cref{fig:real mom wavefunctions}) together with an unbound state, for different values of the potential strength $V_0$. 
-\todo{More structure. Subsubsection?}
-We can see that for systems with a deep potential well (here represented by the $V_0 = \SI{70}{MeV}$ case) will support a bound solution with $E<0$, characterized by a wavefunction that quickly tends to zero outside the potential well. 
-As the strength is decreased, however, the energy of the bound state will increase. 
-When a certain value is reached (in our case around $V_0 = \SI{52}{MeV}$), the potential well no longer supports any bound states. 
-Instead we find a solution with a very localized wavefunction, but with positive energy and a wavefunction that does not tend to zero outside the core. 
-As the interaction strength is further decreased this unique solution becomes less and less localized, as demonstrated in the two last figures ($V0 = \SI{47}{MeV}$, our \He{5} problem, and $V_0 = \SI{40}{MeV}$
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
-We have now studied the solutions obtained from solving the nuclear two-body problem, with the \He{5} nucleus supporting no bound states as a model system. Instead we have found a continuum of unbound particles with positive energies, and one unique solution corresponding to a more localized state, but that still has many characteristics of the unbound states. These are the first signs of quasi-bound states --- the sought-after resonances --- but since these are described by complex energies, and the Schrödinger equation only giving real solutions, we cannot possibly hope to fully describe them within this framework. Instead we have to move on to a different one: The complex momentum representation. 
+\begin{figure}[H]
+\centering
+	\subfloat[Wavefunctions in momentum space for solutions along real-axis]{
+  		\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
+	}
+
+\caption{Momentum probability distributions for all obtained solutions to the Woods-Saxon potential.} 
+\label{fig:he5_eigvecs}
+\end{figure}
+\todo{Move the legend more up to the right?}
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
+
+
+In \cref{fig:resonance wavefunction} the radial probability distributions $r^2|R(r)^2|$ are shown for the broadest momentum wavefunction (the one marked in red in \cref{fig:real mom wavefunctions}) together with an unbound state, for different values of the interaction strength $V_0$. The figure demonstrates how we may have bound solutions ($E<0$) if the potential is sufficiently attractive, and how this solution is replaced by a localized but unbounded state as the interaction strength decreases. 
+
+%We can see that for systems with a deep potential well (here represented by the $V_0 = \SI{70}{MeV}$ case) will support a bound solution with $E<0$, characterized by a wavefunction that quickly tends to zero outside the potential well. 
+%As the strength is decreased, however, the energy of the bound state will increase. 
+%When a certain value is reached (in our case around $V_0 = \SI{52}{MeV}$), the potential well no longer supports any bound states. 
+%Instead we find a solution with a very localized wavefunction, but with positive energy and a wavefunction that does not tend to zero outside the core. 
+%As the interaction strength is further decreased this unique solution becomes less and less localized, as demonstrated in the two last figures ($V0 = \SI{47}{MeV}$, our \He{5} problem, and $V_0 = \SI{40}{MeV}$.
+
+We have now studied the solutions obtained from solving the nuclear two-body problem, with the \He{5} nucleus not supporting any bound states as a model system. Instead we have found a continuum of unbound particles with positive energies, and one unique solution corresponding to a more localized state, but that still has many characteristics of the unbound states. These are the first signs of quasi-bound states --- the sought-after resonance --- but these are described by complex energies, and the Schrödinger equation only gives us real solutions. Therefore we cannot possibly hope to fully describe them within this framework. Instead we have to move on to a new one: The complex momentum representation. 
 
 
 
@@ -212,6 +249,7 @@ We have now studied the solutions obtained from solving the nuclear two-body pro
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions END
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
 \begin{figure}[H]
@@ -229,5 +267,6 @@ We have now studied the solutions obtained from solving the nuclear two-body pro
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
+
 
 \end{document}

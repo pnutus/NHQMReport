@@ -105,8 +105,8 @@ An example of a contour is seen in \cref{fig:triangle_contour}, marking each qua
 
 With this procedure, we once again get the Schrödinger equation on the same discretized form as \cref{eq:plane_wave_matrix_elements}:
 \begin{eq}
-  H_{ij}' = \frac{k_i^2}{2\mu}\delta_{ij} + \sqrt{w_i w_j}k_i k_j V_{ij} \, ,
   \label{eq:nhqm matrix element}
+  H_{ij}' = \frac{k_i^2}{2\mu}\delta_{ij} + \sqrt{w_i w_j}k_i k_j V_{ij},
 \end{eq}
 but now with complex $k$ and $w$.
 
@@ -187,18 +187,84 @@ The same Woods-Saxon parameters have been used as before, and we represent the s
 We can see that we obtain solutions almost corresponding to the $k$-values used in the discretization, similar to what was found in the real case. 
 These are once again interpreted as unbound solutions, not interacting strongly with the potential. 
 
-The interesting solution is however the one not lying on the contour. If this solution is the resonance, we expect it to be unchanged when the contour is varied. 
+However, the interesting solution is the one not lying on the contour. If this solution is the resonance, we expect it to be unchanged when the contour is varied. 
 Indeed, any contour passing below the resonance should give this solution, with reservation for numerical error. \todo[inline]{cite berggren?}
 Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstrating that this is the case.
 
 In addition we can investigate the wavefunctions of these solutions. 
-\Cref{fig:mom wavefunctions}\todo{ref ref} shows the momentum distribution of an arbitrary unbound solution and the resonance. 
-As is expected\todo{as expected?}, the unbound solution basically correspond to one definite momentum. 
+\Cref{fig:mom wavefunctions}\todo{ref ref} shows the momentum distribution of an arbitrary unbound solution and the resonance. We also show the corresponding situation when using the real basis, for comparison. Note how the resonance wavefunction is much more distinguished in the complex basis.  
+The unbound solution still correspond to one definite (now complex) momentum. 
 On the other hand, the resonance has a broad distribution, reflecting the localized nature of the solution 
 (remember Heisenberg --- a broad momentum wavefunction allows a localized position wavefunction). 
 In principle, this feature also gives us a way to automatically find the resonance among a large set of solutions: 
 simply single out the one with the broadest wavefunction, or equivalently after normalization, with the lowest maximum value.
 \todo{move the two-body chapter} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
+
+\begin{figure}[H]
+	    \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_real.data}\wfs
+  \centering{
+  \pgfplotsset{
+    width = \textwidth, height = 7cm,
+ xlabel = $k/\b{\si{fm^{-1}}}$, ylabel = $k^2 \absq{\Phi(k)}$,
+    axis x line = bottom,
+    xmin = 0,
+    xmax=0.5,
+    axis y line = left,
+    no markers,
+    %ytick = \empty,
+	xtick = {0,0.5,...,3},
+    legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
+  }
+  \subfloat[Wavefunctions in momentum space for solutions along real-axis]{
+    \tikzset{external/remake next}
+    \tikzsetnextfilename{wfs-real}
+    \begin{tikzpicture}
+      \begin{axis}[xmax=3]
+		  
+  		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
+  		 \addlegendentry{Resonance}
+
+        \foreach \yindex in {1,...,60}
+        {   
+        \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
+        }
+		\addlegendentry{Continuum state}
+		
+		 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
+
+
+      \end{axis}
+    \end{tikzpicture}
+  }
+	
+  \subfloat[Wavefunctions in momentum space for solutions along the complex berggren contour]{
+     \tikzset{external/remake next}
+    \tikzsetnextfilename{wfs-comp}
+    \begin{tikzpicture}
+					  \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_complex.data}\wfs
+      \begin{axis}[xmax=3]
+ 		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
+ 		 \addlegendentry{Resonance}
+        \foreach \yindex in {1,...,60}
+        {   
+        \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
+		
+        }
+		\addlegendentry{Continuum state}
+ 		 \addplot[color=red, ultra thick] table [x index= 0, y index = 13] {\wfs};
+
+      \end{axis}
+    \end{tikzpicture}
+  }	
+}
+\caption{yada} 
+\label{fig:he5_eigvecs}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
+
 
 We can now properly investigate how the solutions change as the potential is varied. \Cref{fig:pole(V0)} shows how the solutions vary as $V_0$ 
 is successively changed from \SI{70}{MeV}, where the potential well can contain a bound state, to \SI{50}{MeV}, where no bound states exist. 
