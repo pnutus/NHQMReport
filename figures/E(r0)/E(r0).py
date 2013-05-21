@@ -15,7 +15,7 @@ from nhqm.plot_helpers import *
 
 problem = He5
 osc.integration_order = 30
-problem.V0 = -52
+problem.V0 = -47
 a=0.1
 b=2
 c=10
@@ -23,7 +23,7 @@ r0list=sp.hstack([sp.linspace(a,b,100),sp.linspace(b,c,100)])
 omegalist=[]
 for r in r0list:
     omegalist.append(1/(problem.mass*r**2))
-basis_size=100
+basis_size=50
 k_max=3
 
 contour = gauss_contour([0, k_max], basis_size)
