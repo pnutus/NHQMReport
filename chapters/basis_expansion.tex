@@ -112,9 +112,15 @@ This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
 \end{eq}
 \todo{ket nlm can be confused with the harmonic oscillator.}
 If we now treat $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
-we notice that the diagonal elements of this matrix have the same $l$ and $m$,
-which can be expressed as \emph{$H$ is diagonal in $l$ and $m$}.
-\todo{block diagonal figur}
+we notice that the the matrix is block diagonal in $l$ and $m$, i e there are no terms between states with $lm != l'm'$, this is presented graphically in \cref{fig:bmatrix}.
+We say that \emph{$H$ is diagonal in $l$ and $m$}. \todo[inline]{first step...}
+
+\begin{figure}
+\center
+\includegraphics{../figures/block_matrix/matrix.pdf}	
+\caption{A block diagonal matrix}
+\label{fig:bmatrix}
+\end{figure}
 
 \section{The Harmonic Oscillator Basis}
 \label{sec:harmosc}
@@ -317,14 +323,5 @@ We compute the matrix elements $H_{ij}$ with \cref{eq:HO_matrix_elements,eq:plan
 If the matrix is hermitian or symmetric, we only need to consider the elements in the upper triangle including the diagonal, roughly halving the number of computed elements. 
 
 When the matrix elements have been computed, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
-
-\begin{figure}
-\center
-\includegraphics{../figures/block_matrix/matrix.pdf}	
-\caption{A block diagonal matrix}
-\label{fig:bmatrix}
-\end{figure}
-
-
 
 \end{document}
