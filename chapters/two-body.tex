@@ -152,38 +152,8 @@ The range $r_0$ of the HO potential determines the rate at which the potential i
 
 \tikzsetnextfilename{E(r0)}
 \begin{figure}[ht!]
-  \pgfplotstableread{../figures/E(r0)/E(r0).data}\Ernoll
   \centering
-  \begin{tikzpicture}
-    \begin{axis}[
-      width = \textwidth,
-      height = 7cm,
-      xlabel = $r_0/\b{\si{fm}}$,
-      ylabel = $E/\b{\si{MeV}}$,
-		  axis x line = middle,
-      axis y line = left,
-      ymax = 1,
-      xmin = 0,
-      xtickmax = 8,
-      no markers,
-  		every axis y label/.style={ 
-  			at = {(current axis.above origin)},
-	    	anchor = north west, 
-  		},
-  		every axis x label/.style={ 
-  			at = {(current axis.right of origin)},
-	    	anchor = north east, 
-  		},
-      y label style = {fill=white, xshift=2mm, inner sep = 0.5mm},
-      enlarge y limits = lower,
-      ]
-      \addplot[red, ultra thick] table[x index = 0, y index =1] {\Ernoll};
-	    \addlegendentry{Unique behaviour}
-      \foreach \y in {2,...,15}
-         \addplot[gray] table[x index = 0, y index = \y] {\Ernoll};
-		     \addlegendentry{Regular behavior} 
-    \end{axis}
-  \end{tikzpicture}
+ 	\includegraphics[]{../figures/E(r0)/E(r0).pdf}
   \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. We see that one of the states behaves differently from the others.}
   \label{fig:energies(r0)}
 \end{figure}
@@ -221,39 +191,11 @@ In addition, the fact that we find unbound solutions corresponding to each value
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
 \begin{figure}[H]
-	    \pgfplotstableread{../figures/eigvecs_real_comp/eigvecs_real.data}\wfs
-  \centering{
-  \pgfplotsset{
-    width = \textwidth, height = 7cm,
- xlabel = $k/\b{\si{fm^{-1}}}$, ylabel = $k^2 \absq{\Phi(k)}$,
-    axis x line = bottom,
-    xmin = 0,
-    xmax=0.5,
-    axis y line = left,
-    no markers,
-    %ytick = \empty,
-	xtick = {0,0.5,...,3},
-    legend style={at={(0.5,0.6)}, anchor=north,legend columns=1},
-  }
-  
-  \tikzset{external/remake next}
-  \tikzsetnextfilename{wfs-real}
-  \begin{tikzpicture}
-    \begin{axis}[xmax=3]
-		  
-  	 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
-  	 \addlegendentry{Resonance}
+\centering
+	\subfloat[Wavefunctions in momentum space for solutions along real-axis]{
+  		\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
+	}
 
-         \foreach \yindex in {1,...,60}
-         {   
-           \addplot[color=gray] table [x index= 0, y index = \yindex] {\wfs};
-         }
-	 \addlegendentry{Continuum state}
-
-	 \addplot[color=red, ultra thick] table [x index= 0, y index = 9] {\wfs};
-    \end{axis}
-  \end{tikzpicture}  	
-}
 \caption{Momentum probability distributions for all obtained solutions to the Woods-Saxon potential.} 
 \label{fig:he5_eigvecs}
 \end{figure}
@@ -276,70 +218,24 @@ We have now studied the solutions obtained from solving the nuclear two-body pro
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions
 
 \begin{figure}
-  \pgfplotstableread{../figures/wavefunctions/wavefunctions.data}\wavefunctions
-  \centering{
-  \pgfplotsset{
-    width = 0.49\textwidth, height = 7cm,
-    xlabel = $r/\b{\si{fm}}$, ylabel = $r^2\absq{R(r)}$,
-    axis x line = bottom,
-    axis y line = left,
-    no markers,
-    ytick = \empty,
-    ymax = 1.7,
-	  legend style={anchor=north east},
-    legend cell align=left,
-  }
-    \subfloat[$V_0=\SI{70}{MeV}$]{
-      \tikzset{external/remake next}
-      \tikzsetnextfilename{wavefunction-70MeV}
-      \begin{tikzpicture}
-        \begin{axis}
-          \addplot [color=red, ultra thick] table[x index=0, y index=1] {\wavefunctions};
-					  \addlegendentry{$E = \SI{-4.85}{MeV}$}
-							
-          \addplot+[color=gray] table[x index=0, y index=2] {\wavefunctions};
-		  		  \addlegendentry{$E = \phantom{+}\SI{5.63}{MeV}$}
-        \end{axis}
-      \end{tikzpicture}
-    }
-  \subfloat[$V_0=\SI{52}{MeV}$]{
-    \tikzset{external/remake next}
-    \tikzsetnextfilename{wavefunction-60MeV}
-    \begin{tikzpicture}
-      \begin{axis}
-        \addplot [color=red, ultra thick] table[x index=0, y index=3] {\wavefunctions};
-				  \addlegendentry{$E = \SI{0.062}{MeV}$}
-        \addplot+[color=gray] table[x index=0, y index=4] {\wavefunctions};
-				  \addlegendentry{$E = \phantom{0}\SI{5.75}{MeV}$}
-      \end{axis}
-    \end{tikzpicture}
-  } \\
-  \subfloat[$V_0 = \SI{47}{MeV}$]{
-	\tikzset{external/remake next}
-    \tikzsetnextfilename{wavefunction-52MeV}
-    \begin{tikzpicture}
-      \begin{axis}
-        \addplot [color=red, ultra thick] table[x index=0, y index=5] {\wavefunctions};
-				  \addlegendentry{$E = \SI{0.94}{MeV}$}
-        \addplot+[color=gray] table[x index=0, y index=6] {\wavefunctions};
-				  \addlegendentry{$E = \SI{5.80}{MeV}$}
-      \end{axis}
-    \end{tikzpicture}
-  	}
-  \subfloat[$V_0 = \SI{40}{MeV}$]{
-    \tikzset{external/remake next}
-    \tikzsetnextfilename{wavefunction-47MeV}
-    \begin{tikzpicture}
-      \begin{axis}
-        \addplot [color=red, ultra thick] table[x index=0, y index=7] {\wavefunctions};
-				  \addlegendentry{$E = \SI{1.02}{MeV}$}
-        \addplot+[color=gray] table[x index=0, y index=8] {\wavefunctions};
-				  \addlegendentry{$E = \SI{5.89}{MeV}$}
-      \end{axis}
-    \end{tikzpicture}
-  	}
+\centering{
+	\subfloat[$V_0=\SI{70}{MeV}$]{
+		\includegraphics[page=1]{../figures/wavefunctions/wavefunctions.pdf}
+	}
+	\subfloat[$V_0=\SI{52}{MeV}$]{
+		\includegraphics[page=2]{../figures/wavefunctions/wavefunctions.pdf}	  
+	}
+	\\
+	\subfloat[$V_0 = \SI{47}{MeV}$]{
+		\includegraphics[page=3]{../figures/wavefunctions/wavefunctions.pdf}
+	}
+	\subfloat[$V_0 = \SI{40}{MeV}$]{
+	  	\includegraphics[page=4]{../figures/wavefunctions/wavefunctions.pdf}
+	}
+}
 
-  }
+
+
   \caption{
     \He{5} wavefunctions for varying potential depth. 
     Plotted are the unique localized solution (solid) and, for comparison, an arbitrary continuum solution (dashed).
@@ -351,7 +247,6 @@ We have now studied the solutions obtained from solving the nuclear two-body pro
   \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions END
-
 
 
 \end{document}

@@ -6,7 +6,7 @@
 
 We have studied resonances in heavy Helium isotopes and given heuristic justifications for the methods used. The \He{5} nucleus was modeled satisfactorily, and we could reproduce the experimental width and XXX of its resonances. 
 
-We were not as successful in modeling the \He{6} nucleus. The interactions used were simple first approximations, and while the ground state was reproducible, we were unable to. Consequently, an obvious way of improving upon our results is to use a more realistic potential. 
+We were not as successful in modeling the \He{6} nucleus. The interactions used were simple first approximations, and while the ground state was reproducible, we were unable to find any resonances near the theoretical one. Consequently, an obvious way of improving upon our results is to use a more realistic potential.
 
 Other areas to further explore, covered in more detail below, are: increasing the number of particles in the system, reducing the computational complexity through renormalization techniques, combining the complex basis with another type of shell model etc.
 The Monte Carlo method shows some promise, but we suggest looking into other possibilites.
@@ -16,14 +16,14 @@ The Monte Carlo method shows some promise, but we suggest looking into other pos
 
 We have studied the nuclei \He{5} and \He{6}, a two- and three-body problem respectively. 
 A natural extension of these problems is to add more particles, either neutrons of protons.
-In the case of neutrons, the heavier \He{} isotopes \He{7} and \He{8} are.
-We then have have to consider the angular momentum coupling of three or four bodies, but other than that the techniques we employ are general.
+In the case of neutrons, the heavier He isotopes \He{7} and \He{8} would be our first choise.
+We then have to consider the angular momentum coupling of three or four bodies, but other than that the techniques we employ are general.
 \todo[inline]{how general?}
 Adding protons, we have to consider the different isospin of the two types of nucleon.
 This has implications for the nucleon-nucleon interaction, discussed below.
 
 Another possibility is to study other elements than helium. \ce{^{16} O} and \ce{^{24} O} are good candidates, since they too are doubly magic nuclei.
-Other light elements like \ce{Li} or \ce{Be} are of interest as well, as they like \He{} display several interesting properties of open quantum systems.
+Other light elements like \ce{Li} or \ce{Be} are of interest as well, as they like He display several interesting properties of open quantum systems.
 
 When expanding \He{6}, our basis consists of only $p_{1/2}$ and $p_{3/2}$ waves. 
 This is a good approximation for \He{6} \cite{gamow_shell_model_2008},  but for other systems, more partial waves (sober physicists ...) have to be included in the expansion in the expansion.
@@ -36,7 +36,7 @@ With an increased number of particles, the size of the Hamiltonian matrix grows 
 
 One approach to reducing the matrix size is called \emph{renormalization}, and is related to the Monte Carlo approach we investigated. 
 Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis.
-There exist several known ways of deetermining what statse are important and which ones to include. Two of them are the Similarity Renormalization Group (SRG) and Density Matrix Renormalization Group (DMRG) \cite{DMRG}. 
+There exist several known ways of determining what statse are important and which ones to include. Two of them are the Similarity Renormalization Group (SRG) and Density Matrix Renormalization Group (DMRG) \cite{DMRG}. 
 \todo{Monte Carlo?}
 
 While a larger system requires more matrix elements, many of the elements are zero. 
