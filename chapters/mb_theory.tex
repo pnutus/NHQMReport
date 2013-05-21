@@ -41,16 +41,20 @@ which, by the orthonormality of the $\ket\alpha$, will also be orthonormal
   \braket{\alpha_N}{\alpha'_N}.
 \end{eq}
 
-Let us now create an arbitrary linear combination of the product states, denoted by an angled ket
+%Let us now create an arbitrary linear combination of the product states, denoted by an angled ket
+Let us assume that the system of particles can be described by some linear combinations of these basis states, denoted
 \begin{eq}
   \ket{\alpha_1\alpha_2\dots\alpha_N}.
 \end{eq}
 Since the particles are identical, and thus indistinguishable, we require the norm of the state to be unchanged when swapping the quantum numbers of two particles $i$ and $j$
 \begin{eq}
-  \absq{\big.\ket{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N}}
-  =
-  \absq{\big.\ket{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}}.
+  %\absq{\big.\ket{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N}}
+  %=
+  %\absq{\big.\ket{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}}.
+  &\braket{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N}{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N} \\
+  =&\braket{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}
 \end{eq}
+\todo[inline]{The equation above looks a bit weird now. Do something about it?}
 These states can therefore only differ in phase $e^{i\phi}$, and since another swap will bring us back to the original state, the phase has to be either $e^{i\phi} = 1$ or $e^{i\phi} = -1$.
 Symmetric states with no phase change describe \emph{bosons}, whereas antisymmetric states that change sign describe \emph{fermions}.
 In this thesis all sp states will be fermionic, hence we do not treat the bosonic case.
@@ -86,6 +90,8 @@ If they are not, we permute two sp states at a time until the correct ordering i
   \ket{\alpha_i\alpha_1\dots\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
   & =
   - \ket{\alpha_1\alpha_i\dots\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
+  \\ & =
+  ...
   \\ & =
   (-1)^{i-2} 
   \ket{\alpha_1\dots\alpha_i\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
