@@ -18,8 +18,7 @@ commonly written in the position basis as
 \end{eq}
 
 For the nuclear systems to be treated, the TISE has no known analytical solutions, and we need to use numerical methods to solve it.
-However, the Hamiltonian written as in \cref{eq:TISEpos} is not optimal for computation. \todo{why?} \todo[inline]{Why not position basis PDE??}
-Instead, we would like to write it as a matrix equation
+There exists some methods for this, one can solve a system of coupled differential equations, make it a problem of evaluate a multi-dimensional integral or as we will do, express it as a matrix equation \todo{would something like this be ok?}
 \begin{eq}
   \label{eq:matrix equation}
   \sum_j H_{ij}\psi_j = E \psi_i
@@ -97,7 +96,7 @@ the basic method of expanding the TISE in a basis.
 
 We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. \todo{boundary of this project, move to introduction?}
 This is sufficient for our purposes and, indeed, most common QM problems. \todo[inline]{why?/cite/explain}
-If we considered three-dimensional systems with arbitrary potentials, the matrices would be very large and solving the problem would become infeasible.
+If we considered three-dimensional systems with arbitrary potentials, the matrices would be very large and solving the problem would become infeasible.\todo{infeasable?}
 
 The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m$
 \begin{eq}
@@ -179,7 +178,7 @@ The radial wavefunction $R(r)$ of a state will be expressed as a linear combinat
 \section{The Plane Wave Basis}
 \label{sec:mom_space}
 \todo{Relation to momentum space $p = \hbar k$, plane wave is what?}
-\todo{Do we introduce this earlier, since we use the word since?}
+\todo{Do we introduce this earlier, since we use the word since? (open system, few/any bound solutions)}
 The plane wave basis $\ket{\vec{k}}$ is of great importance for us since we are studying a system with a short-range potential supporting only a few, if any, bound solutions.
 This means that we will find multiple unbound solutions, corresponding to free particles with various momenta.
 These are almost eigenstates of the momentum operator, only slightly perturbed by the small potential well at $r=0$. 
@@ -206,7 +205,7 @@ A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Sc
   = 
   \frac{2}{\pi}\fint[0][\inf]{r} r^2 V(r) j_l(kr) j_l(k'r),
 \end{eq}
-\todo{align}
+\todo{align -is'nt this fixed now, remove it if that is the case.}
 where $\phi(k)$ is the radial part of the momentum space wavefunction
 and $j_l(kr)$ are the spherical bessel functions of order $l$. 
 The momentum space radial wavefunction $\phi(k)$ is related to the position space radial wavefunction by
