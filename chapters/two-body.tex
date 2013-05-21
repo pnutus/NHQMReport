@@ -140,8 +140,14 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
 \end{figure}
 
 \section{The \He{5} Nucleus}
+
+\todo{We want to find p3/2 resonance, and we know its parameters}
+
 In \cref{cha:basis_expansion} we described the procedure for numerically solving the Schrödinger equation using basis expansion. 
-In this section we will apply those methods to solve the Schrödinger equation and subsequently study the solutions.
+In this section we will apply those methods to solve the Schrödinger equation and subsequently study the solutions, specifically searching for the known resonance
+\begin{eq}
+  bla.
+\end{eq}
 
 
 \subsection{Harmonic Oscillator Basis}
@@ -178,31 +184,8 @@ We will have to switch to a basis with wavefunctions of infinite range to proper
 
 The momentum basis describes a plane wave, i.e. a free particle. Because all solutions appear in the continuum, this basis is more suited to the problem.
 
-
-\subsubsection{Momentum Wavefunctions}
-
 Solving the Schrödinger equation in the momentum basis gives us momentum eigenfunctions $\phi(k)$, presented in \cref{fig:he5_eigvecs}.
 There is a background of wavefunctions peaking at different values of $k$, and, once again, one of the functions stand out as lower and wider. Let us first discuss the peaked wavefunctions.
-
-Recall the relation between wavefunctions in position and momentum representation, \cref{eq:radial wavefunction}
-\begin{eq}
-  R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
-\end{eq} 
-A wavefunction peaking at a single value $k_i$ corresponds to a radial wavefunction
-\begin{eq}
-  R_i(r) = i^l\sqrt{\frac{2}{\pi}} j_l(k_i r)
-\end{eq}
-The spherical bessel functions $j_l(k_i r)$ are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
-We can thus conclude that the peaked solutions correspond to free particles. 
-In addition, the fact that we find unbound solutions corresponding to each value of $k$ used in the discretization hints at the continuous nature of these states.
-
-The unique state peaks at $k = \SI{0.17}{fm^{-1}}$ and is slightly wider than the other states. 
-The Heisenberg uncertainty relation tells us that a less well-defined momentum corresponds to a more well-defined position.
-Consequently, the state should correspond to a localized wavefunction, which is what we expect from a resonance.
-
-To investigate the relation between the hypothesized resonance solution and a bound solution, we increase the depth of the potential to $V_0 = \SI{70}{MeV}$, and successively decrease the depth until there is no bound state. 
-This is documented in \cref{fig:resonance wavefunction}, where the radial probability distributions $r^2|R(r)^2|$ are plotted for the widest momentum wavefunction together with an arbitrary unbound state. 
-The 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
@@ -216,19 +199,28 @@ The
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
-\todo{probability distributions or wavefunctions}
+Recall the relation between wavefunctions in position and momentum representation, \cref{eq:radial wavefunction}
+\begin{eq}
+  R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
+\end{eq} 
+A wavefunction peaking at a single value $k_i$ corresponds to a radial wavefunction
+\begin{eq}
+  R_i(r) = i^l\sqrt{\frac{2}{\pi}} j_l(k_i r)
+\end{eq}
+The spherical bessel functions $j_l(k_i r)$ are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
+We can thus conclude that the peaked solutions correspond to free particles. 
+In addition, the fact that we find unbound solutions corresponding to each value of $k$ used in the discretization hints at the continuous nature of these states.
 
+The unique state peaks at $k = \SI{0.17}{fm^{-1}}$ and is slightly wider than the surrounding states. 
+The Heisenberg uncertainty relation tells us that a less well-defined momentum corresponds to a more well-defined position.
+Consequently, the state should correspond to a localized wavefunction, which is what we expect from a resonance.
 
-
-%We can see that for systems with a deep potential well (here represented by the $V_0 = \SI{70}{MeV}$ case) will support a bound solution with $E<0$, characterized by a wavefunction that quickly tends to zero outside the potential well. 
-%As the strength is decreased, however, the energy of the bound state will increase. 
-%When a certain value is reached (in our case around $V_0 = \SI{52}{MeV}$), the potential well no longer supports any bound states. 
-%Instead we find a solution with a very localized wavefunction, but with positive energy and a wavefunction that does not tend to zero outside the core. 
-%As the interaction strength is further decreased this unique solution becomes less and less localized, as demonstrated in the two last figures ($V0 = \SI{47}{MeV}$, our \He{5} problem, and $V_0 = \SI{40}{MeV}$.
-
-We have now studied the solutions obtained from solving the nuclear two-body problem, with the \He{5} nucleus not supporting any bound states as a model system. Instead we have found a continuum of unbound particles with positive energies, and one unique solution corresponding to a more localized state, but that still has many characteristics of the unbound states. These are the first signs of quasi-bound states --- the sought-after resonance --- but these are described by complex energies, and the Schrödinger equation only gives us real solutions. Therefore we cannot describe them within this framework. Instead we have to move on to a new one: The complex momentum representation. 
-
-
+To investigate the relation between the hypothesized resonance solution and a bound solution, we increase the depth of the potential to $V_0 = \SI{70}{MeV}$, and successively decrease the depth until there is no bound state. 
+This is documented in \cref{fig:resonance wavefunction}, where the radial probability distributions $r^2|R(r)^2|$ are plotted for the widest momentum wavefunction together with an arbitrary unbound state. 
+With a deep potential, the bound state wavefunction quickly tends to zero outside the potential well.
+As we decrease the depth below a certain threshold, the potential well no longer supports the bound state ($E > 0$), but the wavefunction is still fairly localized.
+This is the region where we find our resonances.
+When decreased even further the wavefunction starts to look similar to the unbound states.
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions
 
@@ -248,9 +240,6 @@ We have now studied the solutions obtained from solving the nuclear two-body pro
 	  	\includegraphics[page=4]{../figures/wavefunctions/wavefunctions.pdf}
 	}
 }
-
-
-
   \caption{
     \He{5} wavefunctions for varying potential depth. 
     Plotted are the unique localized solution (solid) and, for comparison, an arbitrary continuum solution (dashed).
@@ -262,6 +251,14 @@ We have now studied the solutions obtained from solving the nuclear two-body pro
   \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions END
+
+\todo{probability distributions or wavefunctions?}
+
+We have studied the \He{5} nucleus and found that it does not support any bound states. 
+Instead we have found continuum states with one solution standing out.
+This unique state show quasi-bound properties and we suspect it to be the \He{5} ground state resonance. 
+Resonances are however best described by complex energies, and the basis we have been working in only give real solutions.
+We need a new framework---the \emph{complex-momentum basis}---which will be treated in the next chapter.
 
 
 \end{document}
