@@ -13,6 +13,7 @@ The \He{5} problem is then examined once more using this new tool and we fit the
 
 When solving the Schrödinger equation in the momentum basis, we know that the solutions form a complete basis, expressed as a completeness relation
 \begin{eq}
+  \label{eq:momentum_completeness_relation}
   \sum\sub{bound} \ket{E_n}\bra{E_n} + \fint[0][\inf]{k} k^2 \ket{E_k}\bra{E_k} = 1,
 \end{eq}
 where $E_n$ are discrete bound states and $E_k$ are continuous.
@@ -28,7 +29,7 @@ If we relate the energies $E$ of a system to momenta $k$ as
 we can plot the solutions as $k$ in the complex plane, see 
 \cref{fig:complex plane}. 
 We then expect bound states, with $E<0$, to be represented by discrete $k$ along the imaginary axis---whereas unbound, scattering states, with $E>0$, are found continuously along the real axis. 
-Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument appear somewhere in the fourth quadrant. Because the root is a multi-valued function, each state will have a mirror image in the imaginary axis.
+Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument appear somewhere in the fourth quadrant.
 
 \begin{figure}
   \tikzset{
@@ -38,42 +39,49 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
     unbound/.style={rectangle,draw,minimum size=2mm,nosep},
     quasibound/.style={triangle,draw,minimum size=2.5mm,nosep}
   }
-  \subfloat[]{
-  \label{fig:simple_contour}
-  %\tikzset{external/remake next}
-\tikzsetnextfilename{simple_contour}
-  \begin{tikzpicture}[scale = 2.5]
-    \draw[->] (-1.2, 0) -- (1.2, 0) node[right] {$\Re k$};
-    \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
-    \foreach \y in {0.1, 0.3}
-      \node at (0, \y) [bound] {};
-    \foreach \x in {0.25, -0.25}
-      \node at (\x, -0.15) [quasibound] {};
-    \draw[very thick, mid arrows] (0, 0) -- (1,0)
-       {[dashed]
-         arc (0:90:1) arc (90:180:1) -- cycle};
-  \end{tikzpicture}
-  }
-  \subfloat[]{
-  \label{fig:berggren_contour}
-  %\tikzset{external/remake next}
-\tikzsetnextfilename{berggren_contour}
-  \begin{tikzpicture}[scale = 2.5]
-    \draw[->] (-1.2, 0) -- (1.2, 0) node[right] {$\Re k$};
-    \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
-    \foreach \y in {0.1, 0.3}
-      \node at (0, \y) [bound] {};
-    \foreach \x in {0.25, -0.25}
-      \node at (\x, -0.15) [quasibound] {};
-    \draw[very thick, mid arrows, radius=1]
-      (1, 0) arc [start angle=0,  end angle=90]
-             arc [start angle=90, end angle=180]
-             -- (-0.5, 0) 
-             -- (-0.25, 0.25) 
-             -- (0.25, -0.25)
-             -- (0.5, 0)
-             -- cycle;
-  \end{tikzpicture}
+  \centering{
+    \subfloat[]{
+    \label{fig:simple_contour}
+    %\tikzset{external/remake next}
+  \tikzsetnextfilename{simple_contour}
+    \begin{tikzpicture}[scale = 2.7]
+      \draw[->] (-1.2, 0) -- (1.2, 0) node[below left] {$\Re k$};
+      \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
+      \foreach \y in {0.1, 0.3}
+        \node at (0, \y) [bound] {};
+      \foreach \x in {0.25, -0.25}
+        \node at (\x, -0.15) [quasibound] {};
+        \draw[very thick, mid arrows] 
+        (0,0) -- (1,0);
+        \draw[thick, mid arrows, dashed]
+          (1,0) arc (0:90:1) arc (90:180:1) -- (0,0);
+    \end{tikzpicture}
+    }
+    \subfloat[]{
+    \label{fig:berggren_contour}
+    %\tikzset{external/remake next}
+  \tikzsetnextfilename{berggren_contour}
+    \begin{tikzpicture}[scale = 2.7]
+      \draw[->] (-1.2, 0) -- (1.2, 0) node[below left] {$\Re k$};
+      \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
+      \foreach \y in {0.1, 0.3}
+        \node at (0, \y) [bound] {};
+      \foreach \x in {0.25, -0.25}
+        \node at (\x, -0.15) [quasibound] {};
+      \draw[very thick, mid arrows] (0,0) 
+         -- (0.25, -0.25) 
+         -- (0.5, 0) node[pos=0.5, below right] {$L_+$} 
+         -- (1, 0);
+      \draw[thick, mid arrows, dashed, radius=1] (1, 0) 
+                arc [start angle=0,  end angle=90]
+                arc [start angle=90, end angle=180]
+                -- (-0.5, 0) 
+                -- (-0.25, 0.25)
+                -- (0, 0);
+      
+    \end{tikzpicture}
+    }
+    \label{fig:contours}
   }
   \caption{The complex $k$-plane. The circles represent 
   bound states and the triangles resonant states. Note the 
@@ -92,59 +100,22 @@ The result of a contour integration depends on the poles it encircles by the res
 The contour in \cref{fig:simple_contour} encircles the bound states, but not the resonance.
 We suspect a deformation of the contour, such that it encircles the resonance might have an effect on the solutions.
 
+\subsection{The Berggren Basis}
+
 In fact, this is correct, and was proven in 1968 by Berggren \cite{berggren}. 
-The contour, dubbed $L_+$, can be deformed to surround the resonance poles. 
-The continuum states along $L_+$ combined with the encircled bound and resonant states form a complete basis. The result can be stated succinctly as the \emph{Berggren} completeness relation
+The contour, dubbed $L_+$, can be deformed to surround the resonance poles, as illustrated in \cref{fig:berggren_contour}. 
+The continuum states along $L_+$ combined with the encircled bound and resonant states form a complete basis, the \emph{Berggren Basis}. 
+The result can be stated succinctly in the Berggren completeness relation (compare with \cref{eq:momentum_completeness_relation})
 \begin{eq}
   \sum_{\substack{\text{bound} \\ \text{resonant}}} \ket{E_n}\bra{E_n} 
   + \fint[L_+]{k} k^2 \ket{E_k}\bra{E_k} = 1.
 \end{eq}
+This is an important result, because of the inclusion of the resonances in the basis.
+As we will see in \cref{cha:three-body}, the Berggren basis is what allows us to find resonances in systems with more particles.
 
-
-Consider the radial momentum space Schrödinger equation
-\begin{eq}
-  \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k') 
-  &=
-  E\phi(k),
-\end{eq}
-specifically the integral along the positive real axis. 
-We now make a leap of faith and extend the integration contour into the complex plane as in \cref{fig:complex_plane}.
-\todo[inline]{leap of faith?}
-
-% \begin{figure}
-%   \centering
-%     \begin{tikzpicture}[scale = 2.5]
-%       \draw[->] (-1, 0) -- (1.1, 0) node[below] {$\Re k$};
-%       \draw[->] (0, -1) -- (0, 1) node[below right] {$\Im k$};
-%       \draw[very thick, mid arrows] (0,0) -- (1, 0);
-%       
-%       \draw[thick] (1.3, 0.2) edge[out=45, in=135, ->] (2,0.2);
-%       
-%       \begin{scope}[shift={(3.2,0)}]
-%         \draw[->] (-1, 0) -- (1.1, 0) node[below] {$\Re k$};
-%         \draw[->] (0, -1) -- (0, 1) node[below right] {$\Im k$};
-%         \draw[very thick, mid arrows] 
-%           (0,0) -- (0.25, -0.25) -- (0.5, 0) -- (1, 0);
-%       \end{scope}
-%     \end{tikzpicture}
-%   \caption{}
-%   \label{fig:complex_plane}
-% \end{figure}
-
-
-
-\todo[inline]{where is the complete basis equation?}
-
-This is a major result, meaning that resonances are included as proper solutions to open quantum systems. This will be of importance later, when we consider systems of multiple interacting particles. 
-In this Chapter, we will instead focus on using contours in the complex momentum plane to find the resonances of \He{5}.
-
-To find the resonance with its complex energy as a solution, it is required that a contour is chosen such that it passes below the momentum corresponding to the resonance. 
-This follows from Cauchy's residue theorem, and the fact that the resonance corresponds to a pole in the complex plane
-\footnote{See standard quantum mechanics textbooks on scattering theory for more detail, e.g. \cite{sakurai}}.
-A sample contour that could be used is visualized in \cref{fig:berggren contour}.
-Note that the solutions are mirrored in the imaginary axis. It can be shown that this symmetry allows us to restrict our attention to the segment between $0$ and $+\infty$.\cite{berggren}
-
-A curious, but important, fact that follows from this procedure is that the standard scalar product (and thus the norm)
+An observant reader may have noticed that the resonant poles in \cref{fig:contours} are mirrored in the imaginary axis and that the contour has a shadow on the left half plane.
+Berggren shows that the symmetry of the states allows us to see the contour segment from 0 to $\inf$ as a contour integral around the upper half plane. 
+A curious, but important, fact that follows from the symmetry is that the standard scalar product (and thus the norm)
 \begin{eq}
   \braket{\phi}{\phi'} = \fint[0][\inf]{k} k^2 \conj{\phi(k)}\phi'(k)
 \end{eq}
@@ -153,13 +124,12 @@ is replaced with
   \braket{\phi}{\phi'} = \fint[0][\inf]{k} k^2 \phi(k)\phi'(k)
 \end{eq} 
 without the conjugation. 
+ 
 
-
-
-\section{The Complex Contour}
+\section{The Discretized Contour}
 We choose to extend our integration along the real axis to 
 the simplest possible complex contour, a triangle-shaped downward extrusion. 
-The tip of the triangle is placed below the hypothesized resonance.
+The tip of the triangle is placed below the hypothesized resonance pole.
 
 We are faced with the problem of evaluating this contour integral numerically. 
 We can solve this by considering each straight segment of the contour separately,
@@ -192,7 +162,7 @@ but now with complex $k$ and $w$.
       \addplot[color=gray] table {../figures/numerical_contour/numerical_contour.data};
     \end{axis}
   \end{tikzpicture}
-  \caption{The complex contour used. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
+  \caption{A schemtic picture of the discretized complex contour. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
   \label{fig:triangle_contour}
 \end{figure}
 
@@ -242,18 +212,22 @@ but now with complex $k$ and $w$.
 \todo[inline]{Mention something about solutions in second figure?}
 %%%%%%%%%%%%%%%%%%%%%%%%%%VERIFICATION end
 
-\section{Studying the Resonance}
+\section{\He{5} Revisited}
 Armed with with our new contour we can continue our study of the \He{5} system. 
 Diagonalizing the matrix given by \cref{eq:nhqm matrix element} using a complex contour with vertices $k_0 = 0$, $k_1 = 0.2 - i0.1$, $k_2 = 2.5$ 
 with 5 points on each segment, yields the result shown in \cref{fig:verification}.
 \todo{tydligare vertices?}
 The same Woods-Saxon parameters have been used as before, and we represent the solutions by their momenta, $k=\sqrt{2\mu E}$, corresponding to the eigenvalues. 
 We can see that we obtain solutions almost corresponding to the $k$-values used in the discretization, similar to what was found in the real case. 
-These are once again interpreted as unbound solutions, not interacting strongly with the potential. 
+These are once again interpreted as unbound solutions, not interacting strongly with the potential.
+
+\subsection{Varying the Contour}
 
 However, the interesting solution is the one not lying on the contour. If this solution is the resonance, we expect it to be unchanged when the contour is varied. 
 Indeed, any contour passing below the resonance should give this solution, with reservation for numerical error. \todo[inline]{cite berggren?}
 Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstrating that this is the case.
+
+\subsection{Momentum Space Wavefunctions}
 
 In addition we can investigate the wavefunctions of these solutions. 
 \Cref{fig:mom wavefunctions}\todo{ref ref} shows the momentum distribution of an arbitrary unbound solution and the resonance. We also show the corresponding situation when using the real basis, for comparison. Note how the resonance wavefunction is much more distinguished in the complex basis.  
@@ -268,11 +242,11 @@ simply single out the one with the broadest wavefunction, or equivalently after 
 
 \begin{figure}[H]
 \centering{
-	\subfloat[Wavefunctions in momentum space for solutions along real-axis]{
+	\subfloat[Momentum space wavefunctions using a real contour.]{
   		\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
 	}
 	\\
-	\subfloat[Wavefunctions in momentum space for solutions along the complex berggren contour]{
+	\subfloat[Momentum space wavefunctions with a complex contour.]{
   		\includegraphics[page=2]{../figures/eigvecs_real_comp/eigvecs.pdf}
 	}
   }
@@ -280,13 +254,16 @@ simply single out the one with the broadest wavefunction, or equivalently after 
 \label{fig:he5_eigvecs}
 \end{figure}
 
+\todo{figurtext!}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
 
 We can now properly investigate how the solutions change as the potential is varied. \Cref{fig:pole(V0)} shows how the solutions vary as $V_0$ 
 is successively changed from \SI{70}{MeV}, where the potential well can contain a bound state, to \SI{50}{MeV}, where no bound states exist. 
-As the potential well grows less attractive, we see that the imaginary part $\Gamma$ of the resonance energy increases, and thus the half-time of the quasi-bound state becomes shorter.  
+As the potential well grows less attractive, we see that the imaginary part $\Gamma$ of the resonance energy increases, and thus the half-time of the quasi-bound state becomes shorter. 
+
+\subsection{Fitting to Experimental Resonance Data} 
 
 We may now proceed to fit our model of \He{5} to experimental data of the $p_{3/2}$ and  $p_{1/2}$ resonance provided by \cite{inte_jimmy}, giving values 
 \todo{fix citation}
