@@ -4,7 +4,7 @@
 \chapter{Basis Expansion}
 \label{cha:basis_expansion}
 
-\todo{Intro to chapter here}
+\todo{Intro to chapter here PONTUS}
 We want to study loosely bound quantum systems by solving the \emph{Time Independent Schrödinger Equation} (TISE)
 \todo{why TISE?}
 \begin{eq}
@@ -89,18 +89,17 @@ and write $H_{nn'} = \bra{n} H \ket{n'}$, we get
 \end{eq}
 which is equivalent to the matrix equation \cref{eq:matrix equation}. This is 
 the basic method of expanding the TISE in a basis.
-\todo{Only use (1.4) for equations?}
+\todo{Only use (1.4) for equations? DOUBLECHECK}
 
 \section{Spherical Symmetry}
 \label{sec:spherical symmetry}
 
-We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the distance $r$ from the origin. \todo{boundary of this project, move to introduction?}
-This is sufficient for our purposes and, indeed, most common QM problems. \todo[inline]{why?/cite/explain}
-If we considered three-dimensional systems with arbitrary potentials, the matrices would be very large and solving the problem would become infeasible.\todo{infeasable?}
+We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the radial distance $r$.
+If we considered three-dimensional systems with arbitrary potentials, the matrices would be very large and solving the problem would become infeasible.
 
 The spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m$
 \begin{eq}
-  \psi(\vec{r}) = R(r) Y_l^m(\theta, \phi).
+  \psi(\vec{r}) = R(r) Y_l^m(\theta, \varphi).
 \end{eq}
 
 Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. \todo{$j$ in here somewhere?}
@@ -117,7 +116,7 @@ We say that \emph{$H$ is diagonal in $l$ and $m$}. \todo[inline]{first step...}
 \begin{figure}
 \center
 \includegraphics{../figures/block_matrix/matrix.pdf}	
-\caption{A block diagonal matrix}
+\caption{An illustration of a block diagonal matrix. The eigenvalues of different blocks are independent of each other. Thus the blocks can be diagonalized separately.}
 \label{fig:bmatrix}
 \end{figure}
 

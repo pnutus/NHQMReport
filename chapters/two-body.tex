@@ -9,12 +9,12 @@ We begin by discussing the shell model, the Woods-Saxon potential and our model 
 The Schrödinger equation is then solved in the HO and plane wave bases.
 The solutions are studied by looking at the energies and wavefunctions while varying parameters.	
 
-\section{Model System: the \He{5} Nucleus}
-\todo{Not sure I like the title. maybe more subsections here? /Pontus}
+\section{The Nuclear Shell Model}
+\todo{more subsections here PONTUS}
 
 Typical examples of open quantum systems are encountered in nuclear physics. 
-The atomic nucleus is held together by the very short-range strong interaction acting between all nucleons. \todo[inline]{typical? Short rangeD?}
-Nuclei are systems that can be studied within a shell model. \todo[inline]{all nuclei?} This is done by introducing a \emph{mean-field} potential, often done in the following way.\cite{suhonen}
+The atomic nucleus is held together by the short-ranged strong interaction acting between all nucleons.
+Nuclei are systems that can be studied within a shell model. This is done by introducing a \emph{mean-field} potential, often done in the following way.\cite{suhonen}
 
 Consider the Hamiltonian for a system of $A$ interacting particles,
 \begin{eq}
@@ -61,12 +61,13 @@ We will eventually optimize the parameters to match experimentally determined en
 standard values given by \cite{suhonen,dickhoff} to investigate the general behavior of the solutions. These parameters are: 
 \begin{center}
 \begin{tabular}{r l}
- Interaction strength          & $V_0 = \SI{47}{MeV}$   \\
+ Potential depth               & $V_0 = \SI{47}{MeV}$   \\
  Spin-orbit coupling strength  & $V\sub{so} = \SI{-7.5}{Mev}$ \\
  Range                         & $r_0 = \SI{2}{fm}   $  \\
  Diffuseness                   & $d = \SI{0.65}{fm}$  \\ 
 \end{tabular}
 \end{center}
+\todo{beautify ordo sista minuten}
 
 Note that the spin-orbit coupling term can give either attractive or repulsive contributions, depending on how the angular momenta couples. Recall
 \begin{eq}
@@ -94,8 +95,7 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
 We can now proceed to solve the Schrödinger equation with the specified potential.
-\todo{use correct mass}
-\todo{search replace for backslash ,}
+\todo{search replace for backslash , SPILL}
 
 \begin{figure}
 	\newcommand{\diff}{0.65}
@@ -113,7 +113,7 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
       axis x line = middle,
       axis y line = left
 	  }
-	    \subfloat[$p_\frac{3}{2}$]{
+	    \subfloat[$p_{3/2}$]{
 	      \tikzset{external/remake next}
 	  \tikzsetnextfilename{p32}
 	      \begin{tikzpicture}
@@ -124,7 +124,7 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
 		    \end{axis}
 	      \end{tikzpicture}
 	    }
-	  \subfloat[$p_\frac{1}{2}$]{
+	  \subfloat[$p_{1/2}$]{
 	    \tikzset{external/remake next}
 	\tikzsetnextfilename{p12}
 	    \begin{tikzpicture}
@@ -139,7 +139,11 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
   \label{fig:woods-saxons}
 \end{figure}
 
+\todo{change mass, ticks SPILL}
+
 \section{The \He{5} Nucleus}
+
+\todo{read through OLA VINCENT SPILL}
 
 \todo{We want to find p3/2 resonance, and we know its parameters}
 
@@ -168,23 +172,28 @@ This affects how rapidly the solutions converge, since a basis with wavefunction
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
 
-\todo{redo figure different $V_0 = 47$}
+\todo{use 47, more points between 1 and 2 fm VINCENT}
+
+\todo{redo figure different $V_0 = 47$ VINCENT}
+
+\todo{what is infinite range? OLA}
 
 All solutions have energies $E > 0$, meaning that they are unbound, scattering states, and thus have unlimited range. 
-\todo{minimum/saddle?}
+\todo{minimum/saddle/plateau?}
 However, we can clearly distinguish a saddle point in energy for the lowest energy solution when the range $r_0 \approx \SI{1}{fm}$, corresponding to radii within the nucleus.
 This is a sign that there is a solution localized in this region.
 We guess that this is the resonance state.
 
 Because the harmonic oscillator consists only of bound states and we are trying to study unbound states, this method cannot take us much further.
 We will have to switch to a basis with wavefunctions of infinite range to properly describe this system.
-\todo{what is infinite range?}
 
 \subsection{Momentum Basis}
 
+\todo{subsub PONTUS}
+
 The momentum basis describes a plane wave, i.e. a free particle. Because all solutions appear in the continuum, this basis is more suited to the problem.
 
-Solving the Schrödinger equation in the momentum basis gives us momentum eigenfunctions $\phi(k)$, presented in \cref{fig:he5_eigvecs}.
+Solving the Schrödinger equation in the momentum basis gives us momentum eigenfunctions $\phi(k)$, presented in \cref{fig:real_momentum_wavefunctions}.
 There is a background of wavefunctions peaking at different values of $k$, and, once again, one of the functions stand out as lower and wider. Let us first discuss the peaked wavefunctions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
@@ -194,7 +203,7 @@ There is a background of wavefunctions peaking at different values of $k$, and, 
   	\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
 
   \caption{\He{5} momentum probability distributions. The } 
-  \label{fig:he5_eigvecs}
+  \label{fig:real_momentum_wavefunctions}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
@@ -216,11 +225,13 @@ The Heisenberg uncertainty relation tells us that a less well-defined momentum c
 Consequently, the state should correspond to a localized wavefunction, which is what we expect from a resonance.
 
 To investigate the relation between the hypothesized resonance solution and a bound solution, we increase the depth of the potential to $V_0 = \SI{70}{MeV}$, and successively decrease the depth until there is no bound state. 
-This is documented in \cref{fig:resonance wavefunction}, where the radial probability distributions $r^2|R(r)^2|$ are plotted for the widest momentum wavefunction together with an arbitrary unbound state. 
+This is documented in \cref{fig:wavefunctions}, where the radial probability distributions $r^2|R(r)^2|$ are plotted for the widest momentum wavefunction together with an arbitrary unbound state. 
 With a deep potential, the bound state wavefunction quickly tends to zero outside the potential well.
 As we decrease the depth below a certain threshold, the potential well no longer supports the bound state ($E > 0$), but the wavefunction is still fairly localized.
 This is the region where we find our resonances.
 When decreased even further the wavefunction starts to look similar to the unbound states.
+
+\todo{Short summary?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions
 
@@ -247,18 +258,14 @@ When decreased even further the wavefunction starts to look similar to the unbou
     At $V_0 = \SI{52}{MeV}$ the wavefunction is highly localized, yet the energy value is in the continuum, a sign of resonance.
     There is still a clearly localized state with $V_0 = \SI{47}{MeV}$, but at $V_0 = \SI{40}{MeV}$ it is practically indistinguishable from the other states.
   } 
-  \label{fig:resonance_wavefunction}
+  \label{fig:wavefunctions}
   \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions END
 
 \todo{probability distributions or wavefunctions?}
+\todo{dashed/solid SPILL}
 
-We have studied the \He{5} nucleus and found that it does not support any bound states. 
-Instead we have found continuum states with one solution standing out.
-This unique state show quasi-bound properties and we suspect it to be the \He{5} ground state resonance. 
-Resonances are however best described by complex energies, and the basis we have been working in only give real solutions.
-We need a new framework---the \emph{complex-momentum basis}---which will be treated in the next chapter.
 
 
 \end{document}

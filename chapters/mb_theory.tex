@@ -14,7 +14,7 @@ First, the mathematical consequences of identical, indistinguishable particles i
 This is followed by a short introduction to the second quantization formalism, which allows calculations with an arbitrary number of particles.
 Finally, we discuss the use of second quantization in computations and present a simple implementation for fermions.
 
-\todo{adapted from dickhoff (suhonen)}
+\todo{adapted from dickhoff (suhonen) PONTUS}
 
 \section{Identical Particles}
 
@@ -48,10 +48,10 @@ Let us assume that the system of particles can be described by some linear combi
 \end{eq}
 Since the particles are identical, and thus indistinguishable, we require the norm of the state to be unchanged when swapping the quantum numbers of two particles $i$ and $j$
 \begin{eq}
-  \braket{\alpha_1\dots\alpha_i\dots\alpha_j\dots&\alpha_N}{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N} \\
-  &=\braket{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}
+  \braket{\alpha_1\dots\alpha_i\dots&\alpha_j\dots\alpha_N}{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N} \\
+&=\braket{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}
 \end{eq}
-\todo[inline]{The equation above looks a bit weird now. Do something about it?}
+\todo[inline]{absq?}
 These states can therefore only differ in phase $e^{i\phi}$, and since another swap will bring us back to the original state, the phase has to be either $e^{i\phi} = 1$ or $e^{i\phi} = -1$.
 Symmetric states with no phase change describe \emph{bosons}, whereas antisymmetric states that change sign describe \emph{fermions}.
 In this thesis all sp states will be fermionic, hence we do not treat the bosonic case.
@@ -76,8 +76,8 @@ For example, in the case of two particles, the correctly normalized antisymmetri
 \end{eq}
 We will henceforth use the angular ket notation $\ket\dots$ for antisymmetric states, as opposed to $\pket\dots$ for product states.
 
-\todo[inline]{pauli principle}
-\todo[inline]{completeness relation? Orthonormality?}
+\todo[inline]{pauli principle PONTUS}
+\todo[inline]{completeness relation? Orthonormality? PONTUS}
 
 It is important to note that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
 This means that we have to make sure not to double count these states. 
@@ -100,14 +100,12 @@ If they are not, we permute two sp states at a time until the correct ordering i
 \section{Second quantization and Fock Space}
 
 So far we've looked at a system with a fixed number of particles, but we want to work with a system with an arbitrary number of identical particles. 
-The construction that lets us do this is called the \emph{Fock space}. 
-\todo{why?/cite/explain citation at start of chapter, covering all our bases :)}
+The construction that lets us do this is called the \emph{Fock space}.
 A state in Fock space, a \emph{Fock state}, can contain any number of particles. 
 States with different number of particles are orthogonal to each other.
 
 \subsection{Creation and Annihilation Operators}
 
-\todo{particle addition/removal operators?}
 The simplest Fock state is the \emph{vacuum state} $\ket{0}$, which describes a system with no particles. 
 All other states can be created from the vacuum state using the \emph{creation operator} $a_\alpha^\dag$, which adds a particle with quantum numbers $\alpha$ to a state
 \begin{eq}
@@ -125,14 +123,13 @@ The resulting state will not necessarily be ordered, and the ordering might cont
   (-1)^{i-1} 
   \ket{\alpha_1 \alpha_2 ... \alpha_{i-1} \alpha_i \alpha_{i+1} ... \alpha_{N}}.
 \end{eq}
-Note that when $a_\alpha^\dag$ acts on a state that already contains a particle with quantum numbers $\alpha$, the result is 0, because of antisymmetry\todo{is it really antisymmetry? what about pauli?}
+Note that when $a_\alpha^\dag$ acts on a state that already contains a particle with quantum numbers $\alpha$, the result is 0, because of the Pauli principle
 \begin{eq}
   \label{eq:create_zero}
   a_{\alpha}^{\dagger} \ket{\alpha\alpha_1 \alpha_2 ... \alpha_N} 
   =
   0.
 \end{eq}
-This can also be understood through the \emph{Pauli Principle}, which says that two identical particles cannot exist with the same quantum numbers. The above equation can now be interpreted as when adding $\alpha$ to a state already containing it, it seize exist.
 
 The adjoint of the creation operator is called the \emph{annihilation operator} $a_\alpha$. 
 It can be shown to have the opposite effect, removing a particle, when acting on a state
@@ -162,11 +159,11 @@ Analogous to $a_\alpha^\dag$, when $a_\alpha$ acts on a state that does not cont
 
 \subsection{General Operators in Fock Space}
 
+\todo{Kolla igenom PONTUS}
 We can now express the state of any number of particles, but in order to do something with the states we also need to express operators such as the Hamiltonian in the Fock space formalism. 
-General operators, involving any number of particles, can be expressed using the creation and annihilation operators. \todo[inline]{what a pleasant surprise}
+General operators, involving any number of particles, can be expressed using the creation and annihilation operators.
 The operators can then act on a state with an arbitrary number of particles. 
 We will only treat one- and two-body operators here, as they are sufficient for our purposes.
-\todo[inline]{There are many operators here...}
 
 \subsubsection{One-Body Operators}
 
@@ -180,10 +177,9 @@ A one-body operator $H_1$ which acts on a single sp state, is represented by the
 \end{eq}
 It is important to note that while the sum runs over the complete set of sp states twice, only a few terms will be non-zero, because of the operator rules in \cref{eq:create_zero,eq:annihilate_zero}. 
 
-\todo{$\alpha$ bad notation?}
 If the sp-states are eigenstates to the one-body operator
 \begin{eq}
-  H_1 \ket{\alpha_i} = h_i \ket{\alpha_i}
+  H_1 \ket{\alpha} = h_\alpha \ket{\alpha}
 \end{eq}
 the matrix elements only exist on the diagonal, when $\alpha = \beta$, and we get
 \begin{eq}
@@ -193,7 +189,7 @@ the matrix elements only exist on the diagonal, when $\alpha = \beta$, and we ge
   \bra\alpha H_1 \ket\alpha
   a_\alpha^\dag a_\alpha.
 \end{eq}
-\todo{sandwiched?}Sandwiched between a bra and a ket, this becomes
+The many-body matrix element becomes
 \begin{eq}
   \label{eq:one-body_matrix_elements}
   \bra{\alpha_1\dots\alpha_N} \hat{H}_1 \ket{\alpha'_1\dots\alpha'_N}
@@ -213,11 +209,11 @@ the matrix elements only exist on the diagonal, when $\alpha = \beta$, and we ge
   }
   \delta_{\alpha_1\alpha'_1} \dots \delta_{\alpha_N\alpha'_N},
 \end{eq}
-\todo[inline]{greek letters outside sums?}
+\todo[inline]{notation OLA}
 the sum of the eigenvalues of the sp states in the bra and ket, but only if the bra and ket are the same. The Fock space operator $\hat{H}_1$ is thus also diagonal.
 
 \subsubsection{Two-Body Operators}
-\todo{notations}
+
 A two-body operator in Fock space becomes
 \begin{eq}
   \hat{H}_2
@@ -226,7 +222,7 @@ A two-body operator in Fock space becomes
   \pbra{\alpha \beta} H_2 \pket{\gamma \delta} 
   a_\alpha^\dag a_\beta^\dag a_\delta a_\gamma.
 \end{eq}
-\todo{Give an example of a $H_2$? Like, mention $V(\vec{r}_1,\, \vec{r}_2)$?}Note that the ordering of the $\gamma$ and $\delta$ is different for the product states and the operators, so-called \emph{normal ordering}.
+Note that the ordering of the $\gamma$ and $\delta$ is different for the product states and the operators, so-called \emph{normal ordering}.
 The factor \nicefrac{1}{2} stems from the fact that %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{eq}
   \pbra{\alpha \beta} H_2 \pket{\gamma \delta} 
@@ -288,7 +284,7 @@ We have now developed the theory we need to solve actual many-body problems.
 Before applying these methods, however, we will discuss the concept of angular momentum coupling. 
 This corresponds to making a change of basis, using the rotational symmetry of problems to significantly reduce the size of the matrix. 
 In principle, this is not neccesary to solve many-nody problems, but it is a neat trick to make the computations more managable. 
-The following section will thus introduce the concept of angular momentum coupling. \todo{refer to souhonen or somewhere where this coupling is satisfactorily explained}
+The following section will thus introduce the concept of angular momentum coupling. \todo{refer to souhonen or somewhere where this coupling is satisfactorily explained PONTUS}
  
 %The \He{6} nucleus can be solved in two ways, either we couple the angular momenta of the two sp states to reduce the amount of calculations needed or we generate all mb states to get calculations that are more straight-forward. 
 %We solve the problem using both schemes, the coupled scheme because is is the one we want to use, but we also solve it using the uncoupled scheme to verify the answer.
@@ -327,11 +323,11 @@ The notation is meant to read as: the first particle is described by the quantum
 If we study a system with rotational symmetry, the problem will be block diagonal in $J$ and $M$, meaning that we can study systems of different $J$ and $M$ separately. 
 We have thus significantly decreased the dimension of the matrices that need to be computed and diagonalized. 
 
- The transformation is done with the coefficients $c_{m_1 m_2}$, formally written as \todo{take on one value? please elaborate}
+The transformation is done with the coefficients $c_{m_1 m_2}$, formally written as
 \begin{eq}
   c_{m_1 m_2} = \pbraket{j_1 m_1, j_2 m_2}{JM},
 \end{eq}
-known as the \emph{Clebsch-Gordan coefficients}. \todo{cite CG?} There are known expressions for these, and values can be found in standard tables or calculated in a fairly straigth-forward way. Suhonen\cite{suhonen} gives a detailed discussion of this.
+known as the \emph{Clebsch-Gordan coefficients}. There are known expressions for these, and values can be found in standard tables or calculated in a fairly straigth-forward way. Suhonen\cite{suhonen} gives a detailed discussion of this.
 
 Since we are studying fermions, we need to use basis states that are antisymmetric with respect to exchange of all quantum numbers. Using the symmetry property of the Clebsch-Gordan coefficients,
 \begin{eq}
@@ -353,8 +349,7 @@ Hence it is possible to form the antisymmetric basis vector
 Now consider the case where both particles are in the same orbital, $E_1 j_1 = E_2 j_2 = E j$. Since $j$ is half-numbered for fermions, we will have $(-1)^{j_1+j_2 - J} = - (-1)^J$, and we get
 \begin{eq}
   \ket{(Ej)^2; JM} = \frac{1+(-1)^J}{\sqrt{2}}\pket{(Ej)^2; JM} .
-\end{eq} 
-\todo{ugly kets?}
+\end{eq}
 We see that this state is equal to the vacuum state for $J$ odd. However, for $J$ even, we find that the norm
 \begin{eq}
   \braket{(Ej)^2; JM}{(Ej)^2; JM} = 2
@@ -365,19 +360,21 @@ We can write this result formally as
 \begin{eq}
   \ket{ab; JM} 
   &= 
-  N_{ab}\sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 j_1 m_1, E_2 j_2 m_2}
+  \N_{ab}\sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 j_1 m_1, E_2 j_2 m_2}
   \\ & 
-  N_{ab} = \frac{\sqrt{1+(-1)^{J}\delta_{ab}}}{1+\delta_{ab}}
+  \N_{ab} = \frac{\sqrt{1+(-1)^{J}\delta_{ab}}}{1+\delta_{ab}}
 \end{eq}
 where we have used the notation $(a,\, b)$ for $(E_1j_1,\, E_2j_2)$.
 \subsection{Matrix elements in coupled scheme}
-\todo{Write about matrix elements}
+\todo{Write about matrix elements in entire chapter PONTUS}
 
 
 
 
 
 \section{Implementation}
+
+\todo{read through, do we need more justification? VINCENT OLA}
 
 To use the Fock space formalism in numerical calculations we have to represent the quantum states using available data structures. 
 We construct sp states and use them to form antisymmetric Fock states.
@@ -407,7 +404,7 @@ The annihilation operator searches for a state, saves its index $k$ in the list,
 \subsection{Matrix Element Computations}
 
 When computing the matrix elements, we do do not
-\todo{finish this section}
+\todo{finish this section PONTUS}
 
 
 \end{document}

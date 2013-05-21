@@ -6,7 +6,7 @@
 
 \todo{mer referenser?}
 
-We have studied resonances in Helium isotopes and given heuristic justifications for the methods used. The \He{5} nucleus was modeled satisfactorily, and we could reproduce the experimental width and position of its resonances. 
+We have studied resonances in Helium isotopes and given heuristic justifications for the methods used. The \He{5} nucleus was modeled satisfactorily, and we could reproduce the experimental width and position of its resonances.
 
 We were not as successful in modeling the \He{6} nucleus. The interactions used were simple first approximations, and while the ground state was reproducible, we were unable to find any resonances near the theoretical one. Consequently, an obvious way of improving upon our results is to use a more realistic potential. One could also explore the \He{6} system in more detail, e.g. looking at its density distribution \cite{radii}.
 
@@ -25,7 +25,6 @@ We have studied the nuclei \He{5} and \He{6}, a two- and three-body problem resp
 A natural extension of these problems is to add more particles, either neutrons or protons.
 In the case of neutrons, the heavier He isotopes \He{7} and \He{8} would be our first choice.
 We then have to consider the angular momentum coupling of three or four bodies, but other than that the techniques we employ are general.
-\todo[inline]{how general?}
 Adding protons, we have to consider the different isospin of the two types of nucleon.
 This has implications for the nucleon-nucleon interaction, discussed below.
 
@@ -45,12 +44,13 @@ With an increased number of particles, the size of the Hamiltonian matrix grows 
 
 One approach to reducing the matrix size is called \emph{renormalization}, and is related to the Monte Carlo approach we investigated. 
 Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis.
-This is possible because, as we have demonstrated\todo{Will we demonstrate this?}, certain many-body configuration barely give any contribution to the energy of the (quasi-)bound solutions. 
+This is possible because, as we have demonstrated
+\todo{Will we demonstrate this?}, certain many-body configuration barely give any contribution to the energy of the (quasi-)bound solutions. 
 One could in principle define a  measure of how important a many-body states is and truncate the basis at a set treshold value. 
 This kind of procedure has already been used to some extent. 
 Examples are the Similarity Renormalization Group (SRG) and Density Matrix Renormalization Group (DMRG) \cite{DMRG}. 
 
-\todo{Monte Carlo?}\todo{no cite.}
+\todo{Monte Carlo?}
 
 While a larger system requires more matrix elements, many of the elements are zero. 
 As the size of the matrix grows, it is eventually no longer efficient to store them as an array. 

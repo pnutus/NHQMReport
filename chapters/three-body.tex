@@ -4,7 +4,9 @@
 \chapter{The Nuclear Three-Body Problem}
 \label{cha:three-body}
 
-\todo{interaction/potential confusion}
+\todo{interaction/potential potential confusion SPILL}
+\todo{potential depth, interaction strength OLA}
+
 Equipped with the many-body theory of \cref{cha:many-body} we are now ready to study an open three-body system.
 The natural way to proceed is to add another neutron to our two-body \He{5} system and end up with \He{6}, seen as an alpha particle core with two valence neutrons ($\alpha + n + n$).
 We now have to take into account the attractive two-body interaction between the neutrons, which allows for bound states in \He{6} where there were none in \He{5}.
@@ -32,12 +34,12 @@ The Borromean rings are three rings interlocked in such a way that, if any one r
   \label{fig:borromean}
 \end{figure}
 
-\section{Model System: The \He{6} Nucleus}
-\todo{section title?}
+\section{The \He{6} Nucleus}
+\todo{He6 approach to writing PONTUS}
 
 We treat the three-body system as a combination of two identical two-body systems of core and neutron, i.e. two ``one-particle'' systems with the same reduced mass $\mu$ as in \cref{cha:two-body}.
 The validity of this approach is not immediately obvious, but 
-if the two neutron-core pairs have like parity there will be no recoil of the core \cite{suzuki}. 
+if the two neutrons have like parity there will be no recoil of the core \cite{suzuki}. 
 The parity depends solely on $l$ and we only consider neutrons in the $p$ orbitals ($l=1$), so the approach is valid.
 
 The Hamiltonian takes on the form
@@ -48,7 +50,6 @@ where $\hat{H}_1$ is the Hamiltonian of the two-body problem and $\hat{V}\sub{re
 To compute the Hamiltonian matrix we will use the eigensolutions $\ket{\psi_i}$ from the previous two-body problem as single-particle basis states. 
 The neutron-core pairs are fermions, so we form antisymmetric two-particle Fock states $\ket{\psi_i, \psi_j}$.
 Because our basis consists of the eigenstates of $\hat{H}_1$, we can use \cref{eq:one-body_matrix_elements,eq:two-body_matrix_elements} to write the matrix elements as
-\todo[inline]{Last paragraph needs cleanup, but I don't see how atm.}
 \begin{eq}
   \bra{ab} \hat{H} \ket{cd} 
   = 
@@ -71,25 +72,25 @@ The coupled matrix elements are
 
 \section{Neutron-Neutron Interaction}
 
-\todo{maybe refer to some article that covers this topic and then conclude that we'd rather use a dumbed-down approximation}
+\todo{cite suhonen about this shit PONTUS}
 The interaction between nucleons is complex and there is no known analytical expression for the potential. It arises from the strong force between the quarks that make up the nucleons, which is well known at high energies (\si{TeV}),
-\todo{how high energies?}
+\todo{how high energies? OLA}
 but less so at nuclear energy levels (\si{MeV}).
-The study of this interaction is an active field of research \cite{living_on_the_edge}.\todo{no cite.}
-\todo[inline]{mention ab initio? living on the edge}
+The study of this interaction is an active field of research \cite{living_on_the_edge}.
 
-\todo[inline]{Ola, verify paragraph!}
+\todo{Börja med separabel OLA}
+\todo{Få med numeriska aspekter, varför separabel? OLA}
 A commonly used approximation is an interaction 
 \begin{eq}
   V = V(|\vec{r}_1 - \vec{r}_2|),
 \end{eq}
-depending only on the distance between the nucleons. Using the symmetry around the axis connecting the two particles, the interaction can be expanded in a \emph{multipole expansion},\todo{cite souhonen somewhere}
+depending only on the distance between the nucleons. Using the symmetry around the axis connecting the two particles, the interaction can be expanded in a \emph{multipole expansion},
 \todo[inline]{what conj?}
 \begin{eq}
   V(|\vec{r}_1 - \vec{r}_2|) 
   & = 
   \sum_{lm} V_l(r_1, r_2) 
-  Y_l^m(\Omega_{r_1})\conj{Y_l^m}(\Omega_{r_2})
+  Y_l^m(\Omega_{r_1})\conj{Y_l^m(\Omega_{r_2})}
   \\
   V_l(r_1, r_2) 
   & = 
@@ -106,8 +107,8 @@ We study two different types of separable two-body interactions, a trivially sep
 
 
 \subsection{Gaussian Interaction}
+\todo{rewrite first sentence, separabel redan nämnt OLA}
 Initially we investigate the simplest form of separable interaction, a product of two functions of $r_1$ and $r_2$, the distance from each neutron to the core
-\todo[inline]{each neutron's distance from hte core?}
 \begin{eq}
   V(r_1, r_2) 
   = 
@@ -142,7 +143,7 @@ In \cref{fig:gaussian} we see that the potential in a rough sense satisfies the 
   \caption{The Gaussian interaction potential as seen by one of the neutrons. The position of the other neutron determines the depth of the potential well.}
   \label{fig:gaussian}
 \end{figure}
-\todo{var tydligare med att exp är konstant, så man inte tror att vi failat med index}
+\todo{tydligare exp konstant, linje åt höger SPILL}
 Because the potential is separable
 \begin{eq}
   V(r_1, r_2) 
@@ -173,7 +174,6 @@ which in the coupled scheme becomes
     \bra{b} V\sub{sep} \ket{c}
   }.
 \end{eq}
-\todo{Få med numeriska aspekter, varför separabel?}
 The $\bra{a} V\sub{sep}(r) \ket{c}$ are calculated by expanding $V\sub{sep}$ in the same basis as the sp states. In the plane wave basis this is
 \begin{eq}
   \bra{a} V\sub{sep} \ket{c}
@@ -187,11 +187,11 @@ with
   \frac{2}{\pi} \fint[0][\inf]{r} r^2 V(r) j_l(k_i r)j_l(k_j r),
 \end{eq}
 as before.
-\todo{numerical considerations}
 \todo[inline]{many new terms, whitch not are explained?}
 
 
 \subsection{Surface Delta Interaction}
+\todo{motivering först OLA}
 Another possible separable interaction is the surface delta interaction (SDI)
 \begin{eq}
   V(\vec{r}_1, \vec{r}_2) 
@@ -200,18 +200,19 @@ Another possible separable interaction is the surface delta interaction (SDI)
   \delta(\vec{r}_1 - \vec{r}_2) 
   \delta(r_2 - r_0)
 \end{eq}
-where $V\sub{SDI}$ is the strength and $r_0$ is the range, chosen to have the same value as the range of the Woods-Saxon potential. \todo[inline]{why?}
+where $V\sub{SDI}$ is the strength and $r_0$ is the range, chosen to have the same value as the range of the Woods-Saxon potential.
 
 The short-range strong force is thus approximated as a point interaction. 
-The physical motivation of the $\delta(r-r_0)$ term is the experimental fact that the scattering cross-section between neutrons is inversely proportional to their kinetic energy. \todo[inline]{cite?}
-Since the kinetic energy has a minimum near the surface of the nucleus (at the range $r_0$ of the Woods-Saxon potential), we can approximate the interaction as focused entirely in that shell. 
-\todo{maybe a citation here?}
+The physical motivation of the $\delta(r-r_0)$ term is the experimental fact that the scattering cross-section between neutrons is inversely proportional to their kinetic energy.
+Since the kinetic energy has a minimum near the surface of the nucleus (at the range $r_0$ of the Woods-Saxon potential), we can approximate the interaction as focused entirely in that shell.
 
 The SDI has multipole radial components
 \begin{eq}
   v_l(r) = \frac{\delta(r-r_0)}{r},
 \end{eq}
 and with a complicated calculation (see \cite{suhonen}) one reaches the following expression for the coupled scheme matrix elements
+\todo{definiera $\N$ i mb theory och här, mention wigner 3j OLA}
+\todo{dubbelkolla med suhonen VINCENT}
 \begin{eq}
   \bra{ab; J} V \ket{cd; J} 
   = 
@@ -226,7 +227,7 @@ and with a complicated calculation (see \cite{suhonen}) one reaches the followin
     j_a & j_b & J \\
     \frac{1}{2} & -\frac{1}{2} & 0
   \end{pmatrix}
-  \begin{pmatrix}
+  \begin{pmatrix} 
     j_c & j_d & J \\
     \frac{1}{2} & -\frac{1}{2} & 0
   \end{pmatrix}.

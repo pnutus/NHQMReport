@@ -1,11 +1,12 @@
 \documentclass[../main/report.tex]{subfiles}
 \begin{document}
 
-\chapter{The Complex Momentum Basis}
+\chapter{The Complex-Momentum Basis}
 \label{cha:berggren}
 
-\todo{momentum/plane wave???}
-In \cref{cha:two-body} we studied the \He{5} system and found a special state in the continuum which we believe to be a resonance. 
+\todo{momentum/plane wave search and destroy OLA}
+\todo{read through OLA SPILL VINCENT}
+In \cref{cha:two-body} we studied the \He{5} system and found a special state in the continuum, the resonance.
 We will in this chapter detail a method of extending the momentum basis to the complex plane, which gives a more complete description of resonances. 
 The \He{5} problem is then examined once more using this new tool and we fit the model parameters to experimental resonance data.
 
@@ -89,6 +90,8 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
   \label{fig:complex plane}
 \end{figure}
 
+\todo{label on right resonance SPILL}
+
 We now interpret the bound and resonant $k$ as complex poles and the unbound continuum as a contour, mirrored in the imaginary axis, encircling the upper half plane (\cref{fig:simple_contour}).
 The integral to be evaluated along the contour is the one in the radial momentum space Schrödinger equation
 \begin{eq}
@@ -100,12 +103,12 @@ The result of a contour integration depends on the poles it encircles by the res
 The contour in \cref{fig:simple_contour} encircles the bound states, but not the resonance.
 We suspect a deformation of the contour, such that it encircles the resonance might have an effect on the solutions.
 
-\subsection{The Berggren Basis}
+\subsection{The Berggren Completeness Relation}
 
-In fact, this is correct, and was proven in 1968 by Berggren \cite{berggren}. \todo{no cite.}
+In fact, this is correct, and was proven in 1968 by Berggren \cite{berggren}.
 The contour, dubbed $L_+$, can be deformed to surround the resonance poles, as illustrated in \cref{fig:berggren_contour}. 
-The continuum states along $L_+$ combined with the encircled bound and resonant states form a complete basis, the \emph{Berggren Basis}. 
-The result can be stated succinctly in the Berggren completeness relation (compare with \cref{eq:momentum_completeness_relation})
+The continuum states along $L_+$ combined with the encircled bound and resonant states form a complete basis. 
+The result can be stated succinctly in the \emph{Berggren completeness relation} (compare with \cref{eq:momentum_completeness_relation})
 \begin{eq}
   \sum_{\substack{\text{bound} \\ \text{resonant}}} \ket{E_n}\bra{E_n} 
   + \fint[L_+]{k} k^2 \ket{E_k}\bra{E_k} = 1.
@@ -123,7 +126,7 @@ is replaced with
 \begin{eq}
   \braket{\phi}{\phi'} = \fint[0][\inf]{k} k^2 \phi(k)\phi'(k)
 \end{eq} 
-without the conjugation. \todo{Does this mean anything? impacts? etc}
+without the conjugation.
  
 
 \section{The Discretized Contour}
@@ -131,10 +134,11 @@ We choose to extend our integration along the real axis to
 the simplest possible complex contour, a triangle-shaped downward extrusion. 
 The tip of the triangle is placed below the hypothesized resonance pole.
 
+\todo{upprepning? SPILL}
 We are faced with the problem of evaluating this contour integral numerically. 
 We can solve this by considering each straight segment of the contour separately,
 and write it as a sum of three integrals, each treated with Gauss-Legendre quadrature according to \cref{app:gauss-legendre}.
-An example of a contour is seen in \cref{fig:triangle_contour}, marking each quadrature point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the Gauss-Legendre quadrature (see \cref{app:gauss-legendre}).\todo{no cite.}
+An example of a contour is seen in \cref{fig:triangle_contour}, marking each quadrature point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the Gauss-Legendre quadrature (see \cref{app:gauss-legendre}).
 
 With this procedure, we once again get the Schrödinger equation on the same discretized form as \cref{eq:plane_wave_matrix_elements}:
 \begin{eq}
@@ -209,75 +213,30 @@ but now with complex $k$ and $w$.
   \caption{The complex contour used and the computed solutions. Notice the resonance in the middle of the triangle.}
   \label{fig:verification}
 \end{figure}
-\todo[inline]{Mention something about solutions in second figure?}
-\todo[inline]{Why doest the solutions follow the mesh points if they are free?}
+\todo[inline]{Why does the solutions follow the mesh points if they are free? SPILL}
+\todo[inline]{same resonance $\Re k$ as before SPILL}
+\todo[inline]{fix legend SPILL}
+\todo[inline]{move figure SPILL}
 %%%%%%%%%%%%%%%%%%%%%%%%%%VERIFICATION end
 
+\todo{figure markers, romb, kvadrat, cirkel, triangel}
 \section{\He{5} Revisited}
+\todo{structure PONTUS}
 Armed with with our new contour we can continue our study of the \He{5} system. 
 Diagonalizing the matrix given by \cref{eq:nhqm matrix element} using a complex contour with vertices $k_0 = 0$, $k_1 = 0.2 - i0.1$, $k_2 = 2.5$ 
 with 5 points on each segment, yields the result shown in \cref{fig:verification}.
-\todo{tydligare vertices?}
+\todo{tydligare vertices? PONTUS}
 The same Woods-Saxon parameters have been used as before, and we represent the solutions by their momenta, $k=\sqrt{2\mu E}$, corresponding to the eigenvalues. 
 We can see that we obtain solutions almost corresponding to the $k$-values used in the discretization, similar to what was found in the real case. 
 These are once again interpreted as unbound solutions, not interacting strongly with the potential.
 
 \subsection{Varying the Contour}
 
+\todo{more focus on numerical, relate to something PONTUS}
 However, the interesting solution is the one not lying on the contour. If this solution is the resonance, we expect it to be unchanged when the contour is varied. 
-Indeed, any contour passing below the resonance should give this solution, with reservation for numerical error. \todo[inline]{cite berggren?}
+Indeed, any contour passing below the resonance should give this solution, with reservation for numerical error.
 Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstrating that this is the case.
 
-\subsection{Momentum Space Wavefunctions}
-
-In addition we can investigate the wavefunctions of these solutions. 
-\Cref{fig:mom wavefunctions}\todo{ref ref} shows the momentum distribution of an arbitrary unbound solution and the resonance. We also show the corresponding situation when using the real basis, for comparison. Note how the resonance wavefunction is much more distinguished in the complex basis.  
-The unbound solution still correspond to one definite (now complex) momentum. 
-On the other hand, the resonance has a broad distribution, reflecting the localized nature of the solution 
-(remember Heisenberg --- a broad momentum wavefunction allows a localized position wavefunction). 
-In principle, this feature also gives us a way to automatically find the resonance among a large set of solutions: 
-simply single out the one with the broadest wavefunction, or equivalently after normalization, with the lowest maximum value.
-\todo{move the two-body chapter} 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
-
-\begin{figure}[H]
-\centering{
-	\subfloat[Momentum space wavefunctions using a real contour.]{
-  		\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
-	}
-	\\
-	\subfloat[Momentum space wavefunctions with a complex contour.]{
-  		\includegraphics[page=2]{../figures/eigvecs_real_comp/eigvecs.pdf}
-	}
-  }
-\caption{yada} 
-\label{fig:he5_eigvecs}
-\end{figure}
-
-\todo{figurtext!}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
-
-
-We can now properly investigate how the solutions change as the potential is varied. \Cref{fig:pole(V0)} shows how the solutions vary as $V_0$ 
-is successively changed from \SI{70}{MeV}, where the potential well can contain a bound state, to \SI{50}{MeV}, where no bound states exist. 
-As the potential well grows less attractive, we see that the imaginary part $\Gamma$ of the resonance energy increases, and thus the half-time of the quasi-bound state becomes shorter. 
-
-\subsection{Fitting to Experimental Resonance Data} 
-
-We may now proceed to fit our model of \He{5} to experimental data of the $p_{3/2}$ and  $p_{1/2}$ resonance provided by \cite{inte_jimmy}, giving values 
-\todo{fix citation}
-\todo{Make tables? One table \cancel{showing} \emph{to rule} them all?}
-
-\begin{tabular}{l r r}
-  $p_{3/2}:$ & $E_0 = bla bla,$ & $\Gamma = bla bla$\\
-  $p_{1/2}:$ & $E_0 = bla bla,$ & $\Gamma = bla bla$ \\
-\end{tabular}\\
-Fitting the parameters $V_0$ and $V\sub{so}$ to these four data points give a best fit when
-
-$V_0 = bla$ and $V\sub{so} = bla$,\\
-where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla bla$ for the $p_{1/2}$ resonance.
 
 %\tikzset{external/remake next}
 \tikzsetnextfilename{pole(V0)}
@@ -318,11 +277,67 @@ where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla 
   \end{tikzpicture}
   \caption{The pole position as a function of $V_0$.}
   \label{fig:pole(V0)}
-
 \end{figure}
-\todo{make beautiful}
-%%%%%%%%%%%%%%%%%%%%%%%%%V0 (CONTOUR) FIGURE
-  
+\todo{make beautiful SPILL}
+%%%%%%%%%%%%%%%%%%%%%%%%% V0(CONTOUR) FIGURE
+
+\todo{touch up figure, width etc. SPILL}
+
+\subsection{Momentum Space Wavefunctions}
+
+\todo{repeat? PONTUS}
+
+In addition we can investigate the wavefunctions of these solutions. 
+\Cref{fig:complex_mom_wavefunctions} shows the momentum distribution of an arbitrary unbound solution and the resonance. We also show the corresponding situation when using the real basis, for comparison. Note how the resonance wavefunction is much more distinguished in the complex basis.  
+The unbound solution still correspond to one definite (now complex) momentum. 
+On the other hand, the resonance has a broad distribution, reflecting the localized nature of the solution 
+(remember Heisenberg --- a broad momentum wavefunction allows a localized position wavefunction). 
+In principle, this feature also gives us a way to automatically find the resonance among a large set of solutions: 
+simply single out the one with the broadest wavefunction, or equivalently after normalization, with the lowest maximum value.
+\todo{move the two-body chapter} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
+
+\begin{figure}[H]
+\centering{
+	\subfloat[Momentum space wavefunctions with a real contour.]{
+  		\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
+	}
+	\\
+	\subfloat[Momentum space wavefunctions with a complex contour.]{
+  		\includegraphics[page=2]{../figures/eigvecs_real_comp/eigvecs.pdf}
+	}
+  }
+\caption{yada} 
+\label{fig:complex_mom_wavefunctions}
+\end{figure}
+
+\todo{figurtext! zebra numeriskt SPILL}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
+
+
+We can now properly investigate how the solutions change as the potential is varied. \Cref{fig:pole(V0)} shows how the solutions vary as $V_0$ 
+is successively changed from \SI{70}{MeV}, where the potential well can contain a bound state, to \SI{50}{MeV}, where no bound states exist. 
+As the potential well grows less attractive, we see that the imaginary part $\Gamma$ of the resonance energy increases, and thus the half-time of the quasi-bound state becomes shorter. 
+
+\subsection{Fitting to Experimental Resonance Data} 
+
+We may now proceed to fit our model of \He{5} to experimental data of the $p_{3/2}$ and  $p_{1/2}$ resonance provided by \cite{tunl}, giving values 
+\todo{fix citation OLA}
+\todo{Make tables? One table \cancel{showing} \emph{to rule} them all? OLA}
+
+\begin{tabular}{l r r}
+  $p_{3/2}:$ & $E_0 = bla bla,$ & $\Gamma = bla bla$\\
+  $p_{1/2}:$ & $E_0 = bla bla,$ & $\Gamma = bla bla$ \\
+\end{tabular}\\
+Fitting the parameters $V_0$ and $V\sub{so}$ to these four data points give a best fit when
+
+$V_0 = bla$ and $V\sub{so} = bla$,\\
+where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla bla$ for the $p_{1/2}$ resonance.
+
+\todo{p1/2 figur SPILL OLA}
+
 \begin{figure}
    \centering{
    \subfloat[Square Contour]{
@@ -337,27 +352,12 @@ where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla 
   \label{fig:pole(cont)}  
 \end{figure}
 
+\todo{triangle before square SPILL}
+
+\todo{search and destroy pole position SPILL}
+
 \todo{figures where they belong. Wednesday night: fixa uppslag med figur + tillhörande text}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%V0 (CONTOUR) end
-
-
-%%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE
-
-\begin{figure}[H] %this figure needs to be nudged a little bit to the left
-   \centering{
-     \subfloat[Real Contour \SI{-70}{MeV}]{
-	 	\includegraphics[page=1]{../figures/poles(realcontour)/poles.pdf}
-	 }
-	 \subfloat[Real Contour \SI{-50}{MeV}]{
-		 \includegraphics[page=2]{../figures/poles(realcontour)/poles.pdf}
-	 }
-   }
-   \caption{momentum solutions to the Schrödinger equation ``along'' the real axis for \He{5} with a potential of $V_0 = \SI{-70}{MeV}$ (a) and $V_0 =$ \SI{-50}{MeV} (b).} 
-   \label{fig:pole real contour}  
- \end{figure}
-
- %%%%%%%%%%%%%%%%%%%REAL CONTOUR FIGURE end
- \todo{define pole - momentum solution}
+\todo{in captions: solutions in the complex momentum plane SPILL}
 
 \end{document}
