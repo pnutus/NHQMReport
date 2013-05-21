@@ -6,16 +6,15 @@
 
 \todo{mer referenser?}
 
-We have studied resonances in heavy Helium isotopes and given heuristic justifications for the methods used. The \He{5} nucleus was modeled satisfactorily, and we could reproduce the experimental width and XXX of its resonances. 
+We have studied resonances in Helium isotopes and given heuristic justifications for the methods used. The \He{5} nucleus was modeled satisfactorily, and we could reproduce the experimental width and position of its resonances. 
 
 We were not as successful in modeling the \He{6} nucleus. The interactions used were simple first approximations, and while the ground state was reproducible, we were unable to find any resonances near the theoretical one. Consequently, an obvious way of improving upon our results is to use a more realistic potential. One could also explore the \He{6} system in more detail, e.g. looking at its density distribution \cite{radii}.
 
-Other areas to further explore, covered in more detail below, are: increasing the number of particles in the system, reducing the computational complexity through renormalization techniques, combining the complex basis with another type of shell model etc.
+Other areas to further explore, covered in more detail below, are: increasing the number of particles in the system, reducing the computational complexity through renormalization techniques, combining the complex basis with other bases, better suited for describing bound states.
 The Monte Carlo method shows some promise, but we suggest looking into other possibilites.
 \todo{any more ideas?}
 
 \section{Realistic Two-Body Interactions}
-
 The two-body interactions used in this thesis were chosen because of their simplicity, and while they can be argued to have physical properties, there is much room for improvement. One approach is to keep guessing, beginning with simple forms and working toward more sophisticated.
 
 Alternatively, one could begin from first principles by using knowledge of Quantum ChromoDynamics (QCD) and the strong interaction between the constituent quarks, the \emph{ab initio} approach.
@@ -31,24 +30,29 @@ Adding protons, we have to consider the different isospin of the two types of nu
 This has implications for the nucleon-nucleon interaction, discussed below.
 
 Another possibility is to study other elements than helium. \ce{^{16} O} and \ce{^{24} O} are good candidates, since they too are doubly magic nuclei.
-Other light elements like \ce{Li} or \ce{Be} are of interest as well, as they like He display several interesting properties of open quantum systems.
+Other light elements like \ce{Li} or \ce{Be} are of interest as well, as they like He, display several interesting properties of open quantum systems and also have low numbers of valence nucleons. 
+This could make them suitable subjects for the methods described here.
 
 When expanding \He{6}, our basis consists of only $p_{1/2}$ and $p_{3/2}$ waves. 
-This is a good approximation for \He{6} \cite{gamow_shell_model_2008},  but for other systems, more partial waves (sober physicists ...) have to be included in the expansion.
+This is a good approximation for \He{6} \cite{gamow_shell_model_2008},  but for other systems, more partial waves (sober physicists ...) have to be included in the expansion. 
+This poses additional challenges, since you will need to introduce new coordinate systems when treating particles of mixed parity. 
 
-Another way of describing different cores would be to use a \emph{No-Core Shell Model} (NCSM), i.e. treating each nucleon as separate and starting with \ce{^2 H}, just one neutron and proton. This approach works best with light nuclei, but the complex energy treatment could prove interesting.
+Another way of describing different cores would be to use a \emph{No-Core Shell Model} (NCSM), i.e. treating each nucleon as separate and starting with \ce{^2 H}, just one neutron and proton. 
+This approach works best with light nuclei, but the complex energy treatment could prove interesting.
 
 \section{Reducing Computation Time}
-
 With an increased number of particles, the size of the Hamiltonian matrix grows exponentially. This leads to more matrix element calculations, memory usage requirements and slower diagonalization.
 
 One approach to reducing the matrix size is called \emph{renormalization}, and is related to the Monte Carlo approach we investigated. 
 Renormalization is a way to decrease computational time by only including the most important states in the single-particle basis.
-There exist several known ways of determining what states are important and which ones to include. Two of them are the Similarity Renormalization Group (SRG) and Density Matrix Renormalization Group (DMRG) \cite{DMRG}. 
+This is possible because, as we have demonstrated\todo{Will we demonstrate this?}, certain many-body configuration barely give any contribution to the energy of the (quasi-)bound solutions. 
+One could in principle define a  measure of how important a many-body states is, truncating the basis at a set treshold value. 
+This kind of procedure has already been used to some extent. 
+Examples are the Similarity Renormalization Group (SRG) and Density Matrix Renormalization Group (DMRG) \cite{DMRG}. 
 \todo{Monte Carlo?}
 
 While a larger system requires more matrix elements, many of the elements are zero. 
-As the size of the matrix grows, it is therefore no longer efficient to store them as an array. 
+As the size of the matrix grows, it is eventually no longer efficient to store them as an array. 
 Instead, a \emph{sparse-matrix} representation is employed, which only stores information about the non-zero elements. 
 There are several different sparse matrix types that fit different kinds of applications. 
 
