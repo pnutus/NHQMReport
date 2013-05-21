@@ -102,7 +102,7 @@ We suspect a deformation of the contour, such that it encircles the resonance mi
 
 \subsection{The Berggren Basis}
 
-In fact, this is correct, and was proven in 1968 by Berggren \cite{berggren}. 
+In fact, this is correct, and was proven in 1968 by Berggren \cite{berggren}. \todo{no cite.}
 The contour, dubbed $L_+$, can be deformed to surround the resonance poles, as illustrated in \cref{fig:berggren_contour}. 
 The continuum states along $L_+$ combined with the encircled bound and resonant states form a complete basis, the \emph{Berggren Basis}. 
 The result can be stated succinctly in the Berggren completeness relation (compare with \cref{eq:momentum_completeness_relation})
@@ -123,7 +123,7 @@ is replaced with
 \begin{eq}
   \braket{\phi}{\phi'} = \fint[0][\inf]{k} k^2 \phi(k)\phi'(k)
 \end{eq} 
-without the conjugation. 
+without the conjugation. \todo{Does this mean anything? impacts? etc}
  
 
 \section{The Discretized Contour}
@@ -134,7 +134,7 @@ The tip of the triangle is placed below the hypothesized resonance pole.
 We are faced with the problem of evaluating this contour integral numerically. 
 We can solve this by considering each straight segment of the contour separately,
 and write it as a sum of three integrals, each treated with Gauss-Legendre quadrature according to \cref{app:gauss-legendre}.
-An example of a contour is seen in \cref{fig:triangle_contour}, marking each quadrature point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the Gauss-Legendre quadrature (see \cite{gausslegendre}).
+An example of a contour is seen in \cref{fig:triangle_contour}, marking each quadrature point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the Gauss-Legendre quadrature (see \cite{gausslegendre}).\todo{no cite.}
 
 With this procedure, we once again get the Schrödinger equation on the same discretized form as \cref{eq:plane_wave_matrix_elements}:
 \begin{eq}
@@ -210,6 +210,7 @@ but now with complex $k$ and $w$.
   \label{fig:verification}
 \end{figure}
 \todo[inline]{Mention something about solutions in second figure?}
+\todo[inline]{Why doest the solutions follow the mesh points if they are free?}
 %%%%%%%%%%%%%%%%%%%%%%%%%%VERIFICATION end
 
 \section{\He{5} Revisited}
