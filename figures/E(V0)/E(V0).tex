@@ -1,0 +1,58 @@
+\documentclass[tikz=true]{standalone}
+\usepackage{../../main/NHQM}
+
+\begin{document}
+
+   \pgfplotsset{
+     width = \textwidth,
+     height = 7cm,
+     axis lines = middle,
+     xmin = -0.01, xmax = 0.5,
+     xtickmin = 0.15,
+     enlargelimits,
+     ylabel=Im $k/\b{\si{fm^{-1}}}$,
+     every axis y label/.style={
+     at = {(current axis.above origin)},
+     anchor = north west,
+     },
+     yticklabel style={/pgf/number format/fixed,
+     /pgf/number format/precision=3},
+     every axis x label/.style={
+     at = {(current axis.right of origin)},
+     anchor = north,
+     },
+     every x tick label/.append style = {anchor = south, yshift = 3pt},
+   }
+   \subfloat[Square Contour]{
+   \tikzset{external/remake next}
+   \tikzsetnextfilename{sqrcont}
+   \begin{tikzpicture}
+     \begin{axis}[
+       ymax = 0.04,
+       legend style={at={(0.6,0.4)}, anchor=north,legend columns=1},
+       xlabel=Re $k/\b{\si{fm^{-1}}}$]
+       \addplot[color = red, only marks,very thick] table [x index =2, y index =3] {../figures/poles(contour)/square.data};
+       \addlegendentry{Pole position}
+       \addplot+[color = gray, no marks, ultra thick] table [x index =0, y index =1] {../figures/poles(contour)/square.data};
+       \addlegendentry{Contour}
+     \end{axis}
+   \end{tikzpicture}
+   }
+   \subfloat[Triangle Contour]{
+   \tikzset{external/remake next}
+   \tikzsetnextfilename{trigcont}
+   \begin{tikzpicture}
+     \begin{axis}[
+       ymax = 0.04,
+       xtick = {-0.2,-0.1},
+       legend style={at={(0.8,0.2)}, anchor=north,legend columns=1},
+       xlabel=Re $k/\b{\si{fm^{-1}}}$]
+       \addplot[color=red, only marks, very thick] table [x index =2, y index =3] {../figures/poles(contour)/triangle.data};
+       \addlegendentry{Pole position}
+       \addplot+[color=gray, no marks, ultra thick] table [x index =0, y index =1] {../figures/poles(contour)/triangle.data};
+       \addlegendentry{Contour}
+     \end{axis}
+   \end{tikzpicture}
+   }
+
+\end{document}
