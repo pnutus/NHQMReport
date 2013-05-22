@@ -242,9 +242,22 @@ $\psi_\alpha(r)$ being the radial wavefunction.
 
 \section{The \He{6} Solutions}
 \todo{With/without resonance in basis?}
-Now that we know the interaction matrix elements, we can proceed and solve the Schrödinger equation for the \He{6} nucleus. The parameters of our interactions will be fit to the known ground state\cite{ajzenberg? or better} of \He{6}, and a prediction for the excited $2^+$ state --- a resonance --- can be made. \Cref{tab:he6_resonance_data} summarizes the results of this investigation. 
+Now that we know the interaction matrix elements, we can proceed and solve the Schrödinger equation for the \He{6} nucleus. 
+The parameters of our interactions will be fit to the known ground state\cite{tunlhe6 alt ajzenberg} of \He{6}, and a prediction for the excited $2^+$ state --- a resonance --- can be made. 
+\Cref{tab:he6_resonance_data} summarizes the results of this investigation. 
 
-It is clearly seen that the Gaussian interaction is unsuitable to describe this system. It is degenerate in J and will thus not reproduce the excited $2^+$ state of \He{6}. It is possible to fit $V_0$ to reproduce the ground state energy. However, with the range $r_0$ set to \SI{2}{fm}, it does not produce a resonance. A wide resonance ($\Gamma > \SI{6}{MeV}$) forms when the range is decreased to \SI{1}{fm}, but doing so requires larger values of $\k$ to be included in the basis. This rapidly increases computation time, making the method uneffective.
+%TUNL's förslag på hur dom vill bli citerade: TUNL Nuclear Data Evaluation Project, "Energy Level Diagram, \He{6}". Available WWW: http://www.tunl.duke.edu/nucldata/HTML/A=6/06_01_2002.pdf 
+%\He{6} experimental:
+%0^+ E = -0.975
+%2^+ E = 0.8 - i0.55
+
+
+It is clearly seen that the Gaussian interaction is unsuitable to describe this system. 
+It is degenerate in J and will thus not reproduce the excited $2^+$ state of \He{6}. 
+It is possible to fit $V_0$ to reproduce the ground state energy. 
+However, with the range $r_0$ set to \SI{2}{fm}, it does not produce a resonance. 
+A wide resonance ($\Gamma > \SI{6}{MeV}$) forms when the range is decreased to \SI{1}{fm}, but doing so requires larger values of $k$ to be included in the basis. 
+This rapidly increases computation time, making the method uneffective.
 
 On the other hand, the SDI managed to reproduce the solutions remarkably well. \todo{bla bla.. Or let the table do the talkin'?}
 
@@ -253,12 +266,12 @@ It is also possible to consider the wavefunctions. The solutions $\ket{\psi}$ wi
 \begin{eq}
 \ket{\psi} = \sum_{E_1 E_2} \Psi(E_1, E_2) \ket{E_1 E_2; J}
 \end{eq}
-where the coefficients $\Psi(E_1, E_2)$ can be considered the wavefunction. These are hard to visualize effectively. However, it is of interest to investigate the component 
+where the coefficients $\Psi(E_1, E_2)$ can be considered the wavefunction. These are hard to visualize effectively. 
+However, it can be of interest to investigate the component 
 \begin{eq}
 \Psi(E\sub{r}, E\sub{r}) = \braket{E\sub{r}^2;J}{\psi},
 \end{eq}
-the overlap between a solution and the two-particle state corresponding to two independent \He{5} resonances (where $E\sub{r}$ denotes the energy of the \He{5} $p_{3/2}$ resonance). We 
-
+the overlap between a solution and the two-particle state corresponding to two independent \He{5} resonances (where $E\sub{r}$ denotes the energy of the \He{5} $p_{3/2}$ resonance). For the $2^+$ resonance, we obtain a value of $0.99$ for this coefficient, while the bound $0^+$ state gives a value of $0.70$. These are both very high relative to the background continuum states, meaning that this is a allows for an efficient method of identifying relevant solutions. 
 
 A plot showing all solutions $k=\sqrt{2\mu E}/\hbar$ obtained, plotted in the complex momentum plane, is shown in \cref{fig:he6_momenta}. It can be verified that most of the solutions correspond to energieson the form
 \begin{eq}
@@ -267,4 +280,16 @@ E = E_1 + E_2 \quad \text{or} \quad k=\sqrt{k_1^2 + k_2^2}
 where $E_1$, $E_2$, $k_1$ and $k_2$ are the energies of two \He{5} eigenstates or their corresponding momenta. These solutions can be interpreted as two unbound particles, barely interacting with eachother. This also explains the pattern that is seen -- the momenta are all combinations of contour points that was used in the solution of \He{5} to generate the basis. 
 
 
+\begin{table}
+\caption{Experimental \He{6} resonance data\cite{tunlhe6} and computed values 
+         with fitted Woods-Saxon parameters $V_0 = 47.05$ and $V\sub{so}=-7.04$. For the SDI, we used interaction strength $V_0 = \SI{998}{MeV}$ and range $r_0 = 2$. 
+         The Gaussian interaction used parameters $V_0 = \SI{99}{MeV}$ and $r_0 = 2$. 24 points were included on the contour for both bases. All values are in \si{MeV}.}
+\begin{center}
+\begin{tabular}{r| r c l}
+$J^\pi$ &   Experiment &   SDI     & Gaussian \\ \hline
+ $0^+$  &   -0.975  &  -0.98    & -0.97  \\
+ $2^+$  &  0.8-0.55i & 1.47-0.47i & -0.97 
+\end{tabular}
+\end{center}
+\end{table}
 \end{document}
