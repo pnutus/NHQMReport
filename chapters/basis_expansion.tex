@@ -99,35 +99,23 @@ If we considered three-dimensional systems with arbitrary potentials, the matric
 
 Spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m(\Omega_r)$, $\Omega_r = (\theta,\, \varphi)$.
 \begin{eq}
-<<<<<<< HEAD
-  \psi(\vec{r}) = R(r) Y_l^m(\theta, \varphi).
-=======
-  \psi(\vec{r}) = R_l(r) Y_l^m(\Omega_r).
->>>>>>> f05a509298b040f9698a285eaf09835448519b33
+  \psi(\vec{r}) = R_{nl}(r) Y_l^m(\Omega_r).
 \end{eq}
 Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. \todo{$j$ in here somewhere?}
 For the matrix elements we find, using the orthonormality of the spherical harmonics,
 \begin{eq}
   \bra{nlm}V\ket{n'l'm'} 
   &= \fint[0][\inf]{r} 
-    r^2 \conj{R_l(r)}R_{l'}(r)V(r) 
+    r^2 \conj{R_{nl}(r)}R_{n'l'}(r)V(r) 
     \fint{\Omega_r} 
       \conj{Y_l^m(\Omega_r)}Y_{l'}^{m'}(\Omega_r)
   \\ & = 
   \delta_{mm'}\delta_{ll'}\fint[0][\inf]{r} 
-    r^2 \conj{R_l(r)}R_{l'}(r)V(r)
+    r^2 \conj{R_{nl}(r)}R_{n'l'}(r)V(r)
 \end{eq}
 meaning that the matrix will be \emph{block diagonal}, illustrated in \cref{fig:bmatrix}. This means that systems with different $l$ and $m$ can be treated separately, thus significantly reducing computation time. We say that \emph{$H$ is diagonal in $l$ and $m$}.
-%Their corresponding operators, $L^2$ and $L_z$, commute with the Hamiltonian $H$, and will result in a factor of $\delta_{ll'}\delta_{mm'}$.
-%This delta factor puts the restraint $l=l'$ and $m=m'$ on the SE, giving us
 
-%\begin{eq}
-%  \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
-%\end{eq}
-%\todo{ket nlm can be confused with the harmonic oscillator.}
-%If we now treat $\bra{nlm} H \ket{n'lm} = H_{nn'}$ as a matrix,
-%we notice that the the matrix is block diagonal in $l$ and $m$, i e there are no terms between states with $lm != l'm'$, this is presented graphically in \cref{fig:bmatrix}.
-%We say that \emph{$H$ is diagonal in $l$ and $m$}. \todo[inline]{first step...}
+\todo{diagonalization, no need to create entire matrix OLA}
 
 \begin{figure}
 \center
@@ -204,22 +192,22 @@ The expansion is done in the same way as before, giving us
   &= 
   E\Phi(\vec{k}),
 \end{eq}
-where we denote the wavefunctions in momentum space with $\Phi$.
+where we denote the momentum space wavefunctions with $\Phi$.
 This three-dimensional equation is practically unsolvable in general, but we can simplify it using the fact that we have a central problem. 
-\todo[inline]{Redundant? same stuff in sphere symm section}
+\todo[inline]{Redundant? same stuff in sphere symm section OLA}
 A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Schrödinger equation can be written as
-\begin{eq} 
+\begin{align} 
   \label{eq:radial mom space TISE}
   H\phi(k)
-  =
+  & =
   \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k') 
   =
   E\phi(k)
   \\
   V(k,k') 
-  = 
+  & = 
   \frac{2}{\pi}\fint[0][\inf]{r} r^2 V(r) j_l(kr) j_l(k'r),
-\end{eq}
+\end{align}
 \todo{align -is'nt this fixed now, remove it if that is the case.}
 where $\phi(k)$ is the radial part of the momentum space wavefunction
 and $j_l(kr)$ are the spherical bessel functions of order $l$. 
@@ -261,9 +249,9 @@ where
 \end{align}
 
 Because of the $k_j^2$ in the second term of the matrix elements 
-(\cref{eq:mom_matrix}), the $H_{ij}$ matrix will not be symmetric. 
-Working with a symmetric matrix is preffered since it halves the amount of time the eigensolver takes, hence we perform \todo{why?/explain more}\todo{where do we mention the need for symmetrized matrix in he6?}
-the transformation
+\cref{eq:mom_matrix}, the $H_{ij}$ matrix will not be symmetric. 
+Working with a symmetric matrix is faster, which will be explained in the following section. 
+We perform the transformation
 \begin{eq}
   \phi(k_i) &\mapsto
   \phi'(k_i) =  \sqrt{w_i} k_i \phi(k_i)
@@ -283,7 +271,8 @@ The Schrödinger equation then becomes
   \sum_j H'_{ij}\phi'(k_j) = E\phi'(k_j),
 \end{eq}
 with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{ij}$ matrix.
- The real space radial wavefunction $R(r)$ is expressed in terms of $\phi'(k_j)$ as
+Another benefit of the symmetrization is that the norm of the $\phi'(k_i)$ incorporates the weights $w_i k_i^2$.
+The real space radial wavefunction $R(r)$ is expressed in terms of $\phi'(k_j)$ as
 \begin{eq}
   R(r)
   =
@@ -294,10 +283,8 @@ with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{
 \end{eq}
 
 \section{Numerical Considerations}
-\todo{point out that symmetrization gives correct normalization}
 \todo{calculation vs computation (entire report)}
 
-\todo{order of sections}
 In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. 
 This includes truncation of the basis, matrix size reduction, numerical integration and eigensolver optimizations.
 The plane wave basis is continuous and thus requires special treatment.
@@ -306,23 +293,12 @@ The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only in
 The included states will be the $N$ first ones, since these have the biggest overlap with the actual wavefunctions. \todo[inline]{Questionable? OLA}
 The more states we include in the basis, the more accurate results we get. This is illustrated in \cref{fig:hydrogen_convergence}.
 
-\todo{should the last things of the figure (ho similar to hydrogen etc.) be mentioned in the text as well?}
-\todo{two figures}
-
-The truncation gives us an $N \times N$ Hamiltonian matrix $H$.
-Since $H$ is diagonal in $l$ and $m$, we can consider each value of $l$ and $m$ separately, reducing the size of the matrix and thus the amount of computation needed to solve for the eigenvalues.
-The equation is then, for a given $l$ and $m$,
-\begin{eq}
-  \label{eq:symm matrix elem}
-  \sum_{n'= 0}^N \bra{n} H \ket{n'} \psi_{n'} = E\psi_{n},
-\end{eq}
-or in matrix notation
+The truncation gives us an $N \times N$ Hamiltonian matrix $H$ and the TISE can be written in matrix notation as
 \begin{eq}
   \label{eq:matrix eq}
-  H\psi = E\psi.
+  H\psi = E\psi,
 \end{eq}
-
-We compute the matrix elements $H_{ij}$ with \cref{eq:HO_matrix_elements,eq:plane_wave_matrix_elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
+where the $\psi$ are eigenvectors. We compute the matrix elements $H_{ij}$ with \cref{eq:HO_matrix_elements,eq:plane_wave_matrix_elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
 \todo{Gauss-Legendre in many places, where is canon?}
 If the matrix is hermitian or symmetric, we only need to consider the elements in the upper triangle including the diagonal, roughly halving the number of computed elements. 
 
