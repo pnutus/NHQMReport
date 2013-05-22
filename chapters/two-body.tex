@@ -4,20 +4,19 @@
 \chapter{The Two-Body Nuclear System}
 \label{cha:two-body}
 
-\todo{read through entire chapter OLA VINCENT SPILL}
+\todo{read through entire chapter OLA SPILL}
 
 In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
 We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}.
-The Schrödinger equation is then solved in the HO and plane wave bases.
+The Schrödinger equation is then solved in the HO and momentum bases.
 The solutions are studied by looking at the energies and wavefunctions while varying parameters.	
 
 \section{The Nuclear Shell Model}
 
 \todo{Why open? OLA}
-Typical examples of open quantum systems are encountered in nuclear physics. 
-The atomic nucleus is held together by the short-ranged strong interaction acting between all nucleons.
-Nuclei are commonly studied within a shell model.
-This is done by introducing a \emph{mean-field} potential, often done in the following way.\cite{suhonen}
+A typical example of an open quantum system is the atomic nucleus encountered in nuclear physics. 
+The atomic nucleus is held together by the short-ranged strong interaction acting between all nucleons and is commonly sdudied within a shell model.
+This is done by introducing a \emph{mean-field} potential, often in the following way.\cite{suhonen}
 
 Consider the Hamiltonian for a system of $A$ interacting particles,
 \begin{eq}
@@ -146,6 +145,7 @@ We see from the the $p_{3/2}$-wave will get a negative net contribution from the
 This means that the ground state of \He{5} will be the $p_{3/2}$ wave, with $p_{1/2}$ an excited state.
 Both the $p_{3/2}$ and $p_{1/2}$ waves contain known resonances \cite{resonance}
 \todo{table of resonances? OLA}
+\todo{What Jimmy said.}
 
 The Woods-Saxon paramaters will initially be set to standard values given by \cite{suhonen,dickhoff} 
 \todo{Are they given there?}
@@ -171,8 +171,7 @@ The range $r_0$ of the HO potential determines the rate at which the potential i
 This affects how rapidly the solutions converge, since a basis with wavefunctions more similar to the solutions will have better convergence. 
 \Cref{fig:energies(r0)} shows how the eigensolutions depend on the range of the basis functions.
 
-To further specify what we mean by range, which will be used when discussing wave functions and potentials,
-When discussing wavefunctions and potentials, we often describe them by their \emph{range}. We will say that a function that asymptotically decreases at least as $\propto e^{-ar}$ has a finite range. We will in that case define $1/a$ as the range.\todo{Added this paragraph on range, but not sure if it really belongs here? Should it not be in connection with its first use outside the introduction? PONTUS SPILL}  
+When discussing wavefunctions and potentials, we often describe them by their \emph{range}. We will say that a function that asymptotically decreases at least as $\propto e^{-ar}$ has a finite range. In this case we define $1/a$ as the range.\todo{Added this paragraph on range, but not sure if it really belongs here? Should it not be in connection with its first use outside the introduction? PONTUS SPILL}  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
 
@@ -208,6 +207,7 @@ Because all \He{5} solutions appear in the continuum, this basis is better suite
 
 Solving the Schrödinger equation in the momentum basis gives us momentum eigenfunctions $\phi(k)$, presented in \cref{fig:real_momentum_wavefunctions}.
 There is a background of wavefunctions peaking at different values of $k$, and, once again, one of the functions stand out as lower and wider. Let us first discuss the peaked wavefunctions.
+\todo[inline]{Stands out once again or lower and wider once again? clarify.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 

@@ -42,7 +42,7 @@ A complete basis means that any state $\ket\psi$ can be written as a linear comb
   \quad
   \ket\psi = \fint{x} \psi(x) \ket{x}.
 \end{eq}
-The  complete bases we will use in this thesis are the \emph{position basis} $\ket{\vec{r}}$, the \emph{plane wave basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis} \cite{berggren}. 
+The  complete bases we will use in this thesis are the \emph{position basis} $\ket{\vec{r}}$, the \emph{momentum basis} $\ket{\vec{k}}$, the \emph{harmonic oscillator basis} $\ket{nlm}$ and the elusive \emph{Berggren basis} \cite{berggren}. 
 All these bases are orthonormal, i.e.~all the basis vectors satisfy 
 \begin{eq}
   \braket{n}{n'} = \delta_{nn'}
@@ -178,11 +178,11 @@ The radial wavefunction $R(r)$ of a state will be expressed as a linear combinat
   R(r) = \sum_n \psi_{nl} R_{nl}(r).
 \end{eq}
 
-\section{The Plane Wave Basis}
+\section{The Momentum Basis}
 \label{sec:mom_space}
 \todo{Relation to momentum space $p = \hbar k$, plane wave is what?}
 \todo{Do we introduce this earlier, since we use the word since? (open system, few/any bound solutions)}
-The plane wave basis $\ket{\vec{k}}$ is of great importance for us since we are studying a system with a short-range potential supporting only a few, if any, bound solutions.
+The momentum basis $\ket{\vec{k}}$ is of great importance for us since we are studying a system with a short-range potential supporting only a few, if any, bound solutions.
 This means that we will find multiple unbound solutions, corresponding to free particles with various momenta.
 These are almost eigenstates of the momentum operator, only slightly perturbed by the small potential well at $r=0$. 
 
@@ -217,7 +217,7 @@ The momentum space radial wavefunction $\phi(k)$ is related to the position spac
 \end{eq}
 
 \subsection{Discretization and Symmetrization}
-\label{sec:mom discretization}
+\label{sec:discretization}
 The integral equation \cref{eq:radial mom space TISE} can be rewritten as a matrix equation through discretization, turning the integral into a sum over a finite set of points $k_j$ and $\rd{k}$ into a set of weights $w_j$:
 \begin{eq}
   \label{eq:discrete_momentum}
@@ -286,7 +286,7 @@ The real space radial wavefunction $R(r)$ is expressed in terms of $\phi'(k_j)$ 
 
 In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. 
 This includes truncation of the basis, matrix size reduction, numerical integration and eigensolver optimizations.
-The plane wave basis is continuous and thus requires special treatment.
+The momentum basis is continuous and thus requires special treatment.
 
 The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
 For an orthonormal basis, the best approximation is to include the $N$ first states.
