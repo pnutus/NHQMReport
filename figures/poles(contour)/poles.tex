@@ -31,7 +31,7 @@
        ymax = 0.04,
        legend style={at={(0.6,0.4)}, anchor=north,legend columns=1},
 	   ]
-  	   \addplot[color = red, only marks,thick] table {res.data};
+  	   \addplot[color = red, only marks,ultra thick,mark=diamond*] table {res.data};
   	   \addlegendentry{Resonance}
      
        \addplot[color = darkgray, only marks,thick] 
@@ -42,8 +42,9 @@
          table [x index =0, y index =1] {square.data};
        \addlegendentry{Contour}
        
-  	   \addplot[color = red, only marks,thick] 
-         table {res.data};
+	   \addplot[color = white, only marks,ultra thick,] table {res.data};
+  	   \addplot[color = red, only marks,ultra thick,mark=diamond*] table {res.data};
+
      \end{axis}
    \end{tikzpicture}
 
@@ -52,7 +53,7 @@
        legend style={at={(0.8,0.2)}, anchor=north,legend columns=1},
 	   ]
 
-  	   \addplot[color = red, only marks,thick] 
+  	   \addplot[color = red, only marks,ultra thick,mark=diamond*] 
          table {res.data};
   	   \addlegendentry{Resonance}
        \addplot[color=darkgray, only marks, thick] 
@@ -61,8 +62,9 @@
        \addplot+[color=gray, no marks, ultra thick] 
          table [x index =0, y index =1] {triangle.data};
        \addlegendentry{Contour}
-  	   \addplot[color = red, only marks,thick] 
-         table {res.data};
+	   \addplot[color = white, only marks,ultra thick,] table {res.data};
+  	   \addplot[color = red, only marks,ultra thick,mark=diamond*] table {res.data};
+
      \end{axis}
    \end{tikzpicture}
 
