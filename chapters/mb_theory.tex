@@ -123,7 +123,7 @@ The \emph{second quantization} formalism and is what lets us do this.
 We will be working \emph{Fock space}, a combination of spaces of $0,1,2,...$ particles.
 This means that a state in Fock space, a \emph{Fock state}, can contain any number of particles and that states with different number of particles are orthogonal to each other.
 
-Important to note here is that, while we introduce this powerful concept, we do not make full use of it in this thesis. 
+A disclaimer is in place here: while we introduce this powerful concept, we do not make full use of it in this thesis. 
 It should instead be considered as a stepping stone for readers wishing to expand on the systems and methods we do use.
 
 \todo[inline]{paragraphs okay?}
@@ -303,21 +303,14 @@ as expected.
 \label{sec:coupling}
 We have now developed the theory we need to solve actual many-body problems.
 Before applying these methods, however, we will discuss the concept of angular momentum coupling. 
-This corresponds to making a change of basis, using the rotational symmetry of problems to significantly reduce the size of the matrix. 
-In principle, this is not neccesary to solve many-nody problems, but it is a neat trick to make the computations more managable. 
-The following section will thus introduce the concept of angular momentum coupling. \todo{refer to souhonen or somewhere where this coupling is satisfactorily explained PONTUS}
- 
-%The \He{6} nucleus can be solved in two ways, either we couple the angular momenta of the two sp states to reduce the amount of calculations needed or we generate all mb states to get calculations that are more straight-forward. 
-%We solve the problem using both schemes, the coupled scheme because is is the one we want to use, but we also solve it using the uncoupled scheme to verify the answer.
-%Both schemes can be used together when solving in both the HO basis and the k basis. 
-%We will cover all four approaches in this chapter.
-
-%\subsection{Uncoupled Scheme}
-%In the uncoupled scheme we use a mb basis, $\alpha$, formed from two sp solutions, $a,b$, and give each sp state an m quantum number. In order to reduce the calculatins needed we filter the mb states so the sum of m numbers equals M.
+This corresponds to making a change of basis, using the rotational symmetry of problems to make the Hamiltonian matrix block diagonal and significantly reducing its size. 
+In principle, coupling is not neccesary to solve many-body problems, but its an invaluable tool.
+We will limit the discussion to coupling of two particles, as we never work with more particles here.
+A more complete description is found in \cite{suhonen}.
 
 \todo{sp -- single particle}
 
-\subsection{Coupled Scheme}
+\subsection{The Two-Particle Coupled Basis}
 In previous Chapters we have studied single-particle states on the form $\ket{Ejm}$, where we let the quantum number $E$ represent all quantum numbers needed to uniquely specify a state. From these we would form product states
 \begin{eq}
   \pket{E_1j_1m_1, E_2j_2m_2} = \ket{E_1j_1m_1}\otimes\ket{E_2j_2m_2}
@@ -345,7 +338,7 @@ A more in-depth treatment of the coefficients can be found in \cite{suhonen}.
 If we study a system with rotational symmetry, the problem will be block diagonal in $J$ and $M$, meaning that we can study systems of different $J$ and $M$ separately.
 We have thus significantly decreased the dimension of the matrices that need to be computed and diagonalized. 
 
-\subsubsection{Antisymmetric Coupled Basis}
+\subsection{The Antisymmetric Coupled Basis}
 
 Since we are studying fermions, we need to use basis states that are antisymmetric with respect to exchange of all quantum numbers. Using the $m$ symmetry property of the Clebsch-Gordan coefficients,
 \begin{eq}
