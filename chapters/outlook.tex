@@ -13,8 +13,6 @@ Consequently, an obvious way of improving upon our results is to use a more real
 We have limited ourselves to a study of the energy spectrum, but one could also explore the \He{6} system in more detail, e.g.~looking at its density distribution \cite{radii}.
 
 Other areas to further explore, covered in more detail below, are: increasing the number of valence particles to study even more exotic systems, reducing the computational complexity through various techniques, combining the complex basis with other bases, better suited for describing bound states.
-We have also studied the Monte-Carlo method as a tool to reduce the dimensionality of the problem. Although the method shows some promise, our preliminary results are not satisfactory and further studies are needed.
-The Monte Carlo method shows some promise, but we suggest looking into other possibilites.
 \todo{any more ideas?}
 
 \section{Realistic Two-Body Interactions}
@@ -51,9 +49,10 @@ One way to reduce the matrix size is to select only the most important basis sta
 This is possible because, as we have demonstrated
 \todo{Will we demonstrate this?}, certain many-body configuration barely give any contribution to the energy of the (quasi-)bound solutions. 
 An example on a method doing this is the Density Matrix Renormalization Group (DMRG) \cite{DMRG}.
-Another, not so systematic, approach is the Monte Carlo method we described above.
-This could, as we said, be used to minimize computational time, but...
-\todo{Monte Carlo?}
+Another, not so systematic, approach is the Monte Carlo method.
+We made a minor study on this, but did not found it to give any valuable results.
+Since this was only made briefly we do not want to discourage any future research made on this topic.
+\todo{read through}
 
 While a larger system requires more matrix elements, many of the elements are zero. 
 As the size of the matrix grows, it is eventually no longer efficient to store them as an array. 
