@@ -295,20 +295,17 @@ Barring such numerical errors, we found that any contour that runs below the pol
 
 \subsubsection{Momentum Space Wavefunctions}
 
-\todo{repeat? PONTUS}
-
-In addition we can investigate the wavefunctions of these solutions. 
+As in \cref{cha:two-body} we can study the momentum wavefunctions obtained in the diagonalization.
 \Cref{fig:complex_mom_wavefunctions} shows the momentum distribution of an arbitrary unbound solution and the resonance. We also show the corresponding situation when using the real basis, for comparison. Note how the resonance wavefunction is much more distinguished in the complex basis.  
 The unbound solution still correspond to one definite (now complex) momentum. 
-On the other hand, the resonance has a broad distribution, reflecting the localized nature of the solution 
-(remember Heisenberg --- a broad momentum wavefunction allows a localized position wavefunction). 
-In principle, this feature also gives us a way to automatically find the resonance among a large set of solutions: 
-simply single out the one with the broadest wavefunction, or equivalently after normalization, with the lowest maximum value.
+On the other hand, the resonance has a wide distribution, reflecting the localized nature of the solution 
+(remember Heisenberg---a wide momentum wavefunction allows a localized position wavefunction). 
+This also allows for automatically finding the resonance among a large set of solutions by singling out the one with the widest (or lowest) wavefunction.
 \todo{move the two-body chapter} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
-\begin{figure}[H]
+\begin{figure}
 \centering{
 	\subfloat[Momentum space wavefunctions with a real contour.]{
   		\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
@@ -326,29 +323,39 @@ simply single out the one with the broadest wavefunction, or equivalently after 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
+\subsubsection{Varying the Potential Depth}
 
-We can now properly investigate how the solutions change as the potential is varied. \Cref{fig:pole(V0)} shows how the solutions vary as $V_0$ 
-is successively changed from \SI{70}{MeV}, where the potential well can contain a bound state, to \SI{50}{MeV}, where no bound states exist. 
-As the potential well grows less attractive, we see that the imaginary part $\Gamma$ of the resonance energy increases, and thus the half-time of the quasi-bound state becomes shorter. 
+We repeat the procedure in \cref{sub:momentum_basis}, lowering the potential well and increasing it gradually, but we now plot the position of the bound/resonance pole.
+In \cref{fig:pole(V0)} we see how the pole starts on the imaginary axis at $V_0 = \SI{70}{MeV}$. It then moves downwards, becoming less and less bound.
+At $V_0 \approx \SI{52}{MeV}$ the pole jumps to the fourth quadrant, becoming a resonance.
+As the potential well grows even less attractive, we see that both the binding energy $E_0$ and the width $\Gamma$ of the resonance increases.
+\todo{vad händer sen?}
 
 \subsection{Fitting to Experimental Resonance Data} 
 
-We may now proceed to fit our model of \He{5} to experimental data of the $p_{3/2}$ and  $p_{1/2}$ resonance provided by \cite{tunl}, giving values 
+Having studied the solutions and ensured that we have found the resonances, we now proceed to fit our model of \He{5} to experimental data. The data, taken from \cite{tunl}, is presented in \cref{tab:resonance_data}.
 \todo{fix citation OLA}
 \todo{Make tables? One table \cancel{showing} \emph{to rule} them all? OLA}
 
-\begin{tabular}{l r r}
-  $p_{3/2}:$ & $E_0 = 0.798,$ & $\Gamma = 0.648$\\
-  $p_{1/2}:$ & $E_0 = 2.068,$ & $\Gamma = 5.57$ \\
-\end{tabular}\\
-Fitting the parameters $V_0$ and $V\sub{so}$ to these four data points give a best fit when
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    Wave      & $E_0/\b{\si{MeV}}$ & $\Gamma/\b{\si{MeV}}$ \\
+    \hline
+    $p_{3/2}$ & 0.798 & 0.648 \\
+    $p_{1/2}$ & 2.068 & 5.57 \\
+  \end{tabular}
+  \caption{Experimental \He{5} resonance data \cite{tunl}.}
+  \label{tab:resonance_data}
+\end{table}
 
-$V_0 = 47.0490019$ and $V\sub{so} = -7.03992575$,\\
+Fitting the parameters $V_0$ and $V\sub{so}$ to these four data points give a best fit when
+$V_0 = \SI{47.0490019}{MeV}$ and $V\sub{so} = \SI{-7.03992575}{MeV}$,
 where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla bla$ for the $p_{1/2}$ resonance.
 
+\todo{signifikanta siffror?}
+
 \todo{p1/2 figur SPILL OLA MAYBE NOT NEEDED}
-
-
 
 \todo{triangle before square SPILL}
 
