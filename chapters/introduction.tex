@@ -21,10 +21,12 @@ Depending on the depth of the potential well of the open system, there can be a 
 
 In addition to the bound and unbound states, some open quantum systems harbor \emph{resonances}. 
 These are \emph{quasi-bound} states that are neither bound nor unbound, but exhibit properties of both. 
-They appear in the continuum, like unbound states.
-A resonance wavefunction is localized for a finite amount of time, as opposed to a bound, \emph{stationary} state that forever stays the same.
-Perhaps most curious is that the norm of the resonance state decreases exponentially with time.\todo{how do whe know this?}
-This can be expressed mathematically if we let the resonance correspond to a complex energy, as the following argument suggests.
+
+They appear in the continuum, like unbound states, but are localized, like bound states.
+However, the wavefunction of a resonance is only localized for a finite amount of time, as opposed to a bound, \emph{stationary} state that forever stays the same.
+A resonance can be described as a \emph{quasi-stationary} state with a complex energy, as the following argument suggests.
+
+\todo{Vet inte var/hur vi förklarar det exponentiella avtagandet.}
 
 \begin{figure}
   \newcommand{\depth}{3}
@@ -112,35 +114,40 @@ An eigenstate of the Hamiltonian $H$ with energy $E$, i.e. a solution to the Tim
 \end{eq}
 has the simple time evolution
 \begin{eq}
-	\psi_t(t)\psi_{\vec{r}}(\vec{r})
+	\psi(t, \vec{r})
 	= 
   \exp\p{-\frac{iE}{\hbar}t}\psi_t(0)\psi_{\vec{r}}(\vec{r}).
 \end{eq}
 With the energy $E$ real, the exponential factor is just a phase 
-and the probability $|\psi(t)|^2$ of finding the particle at a given $\vec{r}$ is unchanged over time. 
+and the probability $|\psi(t, \vec{r})|^2$ of finding the particle at a given $\vec{r}$ is unchanged over time. 
 However, if we let the energy be complex
 \begin{eq}
 	E = E_0 - i\frac{\Gamma}{2},
 \end{eq}
 we get
 \begin{eq}
-  |\psi(t)|^2 
+  |\psi(t, \vec{r})|^2 
   =
   \absq{
-    \exp\p{-\frac{iE_0}{\hbar} t} \exp\p{- \frac{\Gamma}{2\hbar} t} \psi(0)
+    \exp\p{-\frac{iE_0}{\hbar} t} 
+    \exp\p{- \frac{\Gamma}{2\hbar} t} 
+    \psi(0, \vec{r})
   }
   =
-  \exp\p{-\frac{\Gamma}{\hbar} t} \absq{\psi(0)}
+  \exp\p{-\frac{\Gamma}{\hbar} t} \absq{\psi(0, \vec{r})}
 \end{eq} 
-which describes a state with \emph{width} $\Gamma$ that decays exponentially with half-life $t_{1/2}=\hbar\ln 2/\Gamma$. 
+describing a resonance state decaying exponentially with half-life $t_{1/2}=\hbar\ln 2/\Gamma$. $\Gamma$ is called the \emph{width} of the resonance.
+
+\todo{width/scattering argument?}
 
 We want to use the simpler formalism of the TISE, as opposed to the more general TDSE, and we see that this is possible by letting the resonance have a complex energy.
 However, complex eigenvalues pose a problem in standard quantum mechanics, where operators are postulated to be Hermitian.
 Hermitian operators can only have real eigenvalues, and are thus insufficient for treating resonances.
 
 \todo{aim?}
-The aim of this thesis is to present methods for describing resonances using the complex energy. 
-To demonstrate the methods, we will study the simple nuclear systems \He{5} and \He{6}, since the ground state of \He{5} and the first excited state of both \He{5} and \He{6} are resonances. 
+The aim of this thesis is to present methods for describing resonances using the TISE and a complex energy. 
+To demonstrate the methods, we will study the simple nuclear systems \He{5} and \He{6}.
+They are relevant because the ground state of \He{5} and the first excited state of both \He{5} and \He{6} are resonances. 
 The ground state of \He{6} is bound, an example of a \emph{Borromean} system, named after the Borromean rings depicted on the cover of the thesis.
 
 The thesis can be thought of as divided into two parts, the first covering resonances in a simple two-body problem and the second part covering the first steps toward more complicated many-body systems. 
