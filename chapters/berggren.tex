@@ -164,7 +164,7 @@ However, when normalizing the obtained eigenvectors, one must make sure to use t
 
 %\tikzset{external/remake next}
 \tikzsetnextfilename{triangle_contour}
-\begin{figure}[h]
+\begin{figure}[t]
   \centering
   \begin{tikzpicture}
     \begin{axis}[
@@ -221,7 +221,7 @@ Barring such numerical errors, we found that any contour that runs below and not
 
 
 
-\begin{figure}
+\begin{figure}[h]
   \centering{
     \subfloat[Triangle Contour]{
       \label{fig:triangle_contour}
@@ -240,7 +240,7 @@ Barring such numerical errors, we found that any contour that runs below and not
 
 %\tikzset{external/remake next}
 \tikzsetnextfilename{pole(V0)}
-\begin{figure}
+\begin{figure}[t]
   \centering
   \begin{tikzpicture}
     \begin{axis}[
@@ -288,10 +288,6 @@ at (axis cs:0,0.351) {};
 
 \node[coordinate,pin=below left:{$V_0=40.0$}] 
 at (axis cs:0.257,-0.0860) {};
-
-
-
-
           \addlegendentry{Contour}
       \end{axis}
   \end{tikzpicture}
