@@ -193,7 +193,7 @@ and with a complicated calculation (see \cite{suhonen}) one reaches the followin
 \begin{eq}
   \bra{ab; J} V \ket{cd; J} 
   = 
-  & - K_{abcd} \N_{ab} \N_{cd} 
+  & - K_{abcd} \N_{ab}(J) \N_{cd}(J) 
   (-1)^{l_a + l_c + j_b + j_d}
   \\ & \times
   \b{1 + (-1)^{l_a + l_b + l_c + l_d}}
@@ -215,6 +215,12 @@ with $\widehat{j_\alpha} = \sqrt{2j_\alpha + 1}$ and
   = 
   - \frac{V_0 r_0^2}{16\pi}
   \psi_a(r_0) \psi_b(r_0) \psi_c(r_0) \psi_d(r_0),
+\end{eq}
+and
+\begin{eq}
+	\N_{ab}(J) 
+	= 
+	\frac{\sqrt{1-\delta_{ab}(-1)^J}}{1+\delta_{ab}}
 \end{eq}
 $\psi_\alpha(r)$ being the radial wavefunction.
 
