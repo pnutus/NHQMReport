@@ -182,7 +182,7 @@ However, when normalizing the obtained eigenvectors, one must make sure to use t
         anchor = north,
       },
       ]
-      \addplot[color=gray] table {../figures/numerical_contour/numerical_contour.data};
+      \addplot[color=darkgray] table {../figures/numerical_contour/numerical_contour.data};
     \end{axis}
   \end{tikzpicture}
   \caption{A schematic picture of the discretized complex contour. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
@@ -193,7 +193,7 @@ However, when normalizing the obtained eigenvectors, one must make sure to use t
 
 We expect the position $k_r$ of the resonance poles to be fairly close to the experimental data in \cref{tab:resonance_data}, hence we choose a triangular contour that extends below the expected position. \Cref{tab:contours} presents the poles and the contours used to identify them.
 
-\todo{fix table width}
+\todo{fix table width, cite exp vals. tunl finns i bibtex}
 
 \begin{table}[H]
   \begin{tabular}{c|c|c|c}
@@ -207,7 +207,7 @@ We expect the position $k_r$ of the resonance poles to be fairly close to the ex
   \caption{Contours used to identify \He{5} resonances.}
   \label{tab:contours}
 \end{table}
-
+\todo[inline]{varför skiljer sig polerna i tabell och stycke?}
 We solve the Schrödinger equation using the contours and represent the energy solutions by their momenta $k=\sqrt{2\mu E}$.
  The result for the $p_{3/2}$ wave is shown in \cref{fig:triangle_contour}. 
 We see that most solutions follow the contour, corresponding to non-resonant continuum states, similarly to the real case.
@@ -220,7 +220,6 @@ But with sufficiently large imaginary parts, the matrix element integrals starte
 Barring such numerical errors, we found that any contour that runs below and not too close to the pole gives a stable resonance solution.
 
 
-\todo{double legend? SPILL}
 
 \begin{figure}
   \centering{
@@ -246,7 +245,7 @@ Barring such numerical errors, we found that any contour that runs below and not
   \begin{tikzpicture}
     \begin{axis}[
       width = \textwidth,
-      height = 9cm,
+      height = 13 cm,
         xlabel=Re $k/\b{\si{fm^{-1}}}$,
         ylabel=Im $k/\b{\si{fm^{-1}}}$,
   		  axis x line = middle,
@@ -278,11 +277,18 @@ Barring such numerical errors, we found that any contour that runs below and not
 \node[coordinate,pin=above right:{$V_0=54.3$}, mark=*] 
 at (axis cs:0,0.116) {};
 
-\node[coordinate,pin=below right:{$V_0=51.2$}] 
+\node[coordinate,pin=below:{$V_0=51.2$}] 
 at (axis cs:0.0817,-0.00752) {};
 
 \node[coordinate,pin=right:{$V_0=47.1$}] 
 at (axis cs:0.17,-0.0346) {};
+
+\node[coordinate,pin=right:{$V_0=65.0$}] 
+at (axis cs:0,0.351) {};
+
+\node[coordinate,pin=below left:{$V_0=40.0$}] 
+at (axis cs:0.257,-0.0860) {};
+
 
 
 
@@ -292,10 +298,7 @@ at (axis cs:0.17,-0.0346) {};
   \caption{The position of the resonance pole as a function of $V_0$. The pole begins at \SI{70}{MeV} as a bound state on the imaginary axis, gradually becomes less and less bound, jumps into the fourth quadrant ($V_0 \approx \SI{52}{MeV}$), passes the \He{5} resonance and continues further down and to the right.}
   \label{fig:pole(V0)}
 \end{figure}
-\todo{make beautiful SPILL}
 %%%%%%%%%%%%%%%%%%%%%%%%% V0(CONTOUR) FIGURE
-
-\todo{touch up figure, width etc. SPILL}
 
 \subsubsection{Momentum Space Wavefunctions}
 
@@ -322,13 +325,11 @@ This also allows for automatically finding the resonance among a large set of so
 \label{fig:complex_mom_wavefunctions}
 \end{figure}
 
-\todo{figurtext! SPILL}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
 \subsubsection{Varying the Potential Depth}
 \todo{SPILL}
-We repeat the procedure in \cref{sub:momentum_basis}, lowering the potential well to \SI{70}{MeV} and increasing it gradually, but we now plot the position of the bound/resonance pole in the complex plane.
+We repeat the procedure from \cref{sub:momentum_basis}, lowering the potential well to \SI{70}{MeV} and increasing it gradually, but we now plot the position of the bound/resonance pole in the complex plane.
 \Cref{fig:pole(V0)} we see how the pole starts on the imaginary axis at $V_0 = \SI{70}{MeV}$. 
 It then moves downwards, becoming less and less strongly bound.
 At $V_0 \approx \SI{52}{MeV}$ the pole jumps to the fourth quadrant, becoming a resonance.
