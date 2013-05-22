@@ -106,35 +106,3 @@ def plot_shit(eigvals, mb_eigvals, mb_eigvecs):
 
 plot_shit(eigvals, mb_eigvals, mb_eigvecs)
 plt.show()
-
-#finds bound state and resonance
-# problem = He5 
-# basis_size = 15*3
-# gaussian.V0 = -1140
-# gaussian.r0 = 1
-# peak_x = 0.5
-# peak_y = 0.5
-# k_max = 12
-# k_max = 20
-# problem.V0 = -47.
-# complex_contour = True
-
-# problem = He5 
-# basis_size = 25*3
-# gaussian.V0 = -5810
-# gaussian.r0 = 0.5
-# peak_x = 0.6
-# peak_y = 0.5
-# k_max = 20
-# problem.V0 = -47.
-# complex_contour = True
-  
-# problem = He5 
-# basis_size = 10*3
-# gaussian.V0 = -98
-# gaussian.r0 = 2
-# peak_x = .5
-# peak_y = .5
-# k_max = 5
-# problem.V0 = -47.
-# complex_contour = True
