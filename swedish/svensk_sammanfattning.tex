@@ -8,18 +8,14 @@
 %\numberwithin{equation}{chapter}
 %\numberwithin{figure}{chapter}
 
-\listoftodos
 
-
-\title{Kvantresonanser behandlade i en komplex rörelsemängdsbas \\ 
-\Large Kandidatrapport i fysik, svensk sammanfattning FUFX02–13–03 }
+\title{Kvantresonanser behandlade i en\\ komplex rörelsemängdsbas \\ 
+\Large Kandidatrapport i fysik, svensk sammanfattning\\
+FUFX02-13-03}
 \author{Jonathan Bengtsson \and Ola Embréus \and Vincent Ericsson \and Pontus Granström \and Nils Wireklint}
 \date{\today}
 \maketitle
 \newpage
-
-
-
 
 Beteendet hos ett kvantmekaniskt system beskrivs av dess Hamiltonian som består av en rörelsmängdsterm och en potentialterm.
 Beroende på potentialens form kan systemet ge upphov till bundna och obundna tillstånd, som svarar mot diskreta respektive kontinuerliga energispektrum.
@@ -30,9 +26,9 @@ Ett resonanstillstånd är obundet, men diskret och lokaliserat, och brukar kall
 
 Syftet med detta projekt är att studera dessa resonanser, specifikt hos \He{5} och \He{6}, lätta atomkärnor som är obunden respektive löst bunden.
 Vi gör detta genom att betrakta den tidsoberoende Schrödingerekvationen, ett egenvärdesproblem
-\begin{eq}
+\begin{eq*}
   H \ket\psi = E \ket\psi.
-\end{eq}
+\end{eq*}
 I denna formalism kan ett resonanstillstånd beskrivas med en komplex energi $E = E_0 - i\Gamma/2$, vilket modellerar tillståndets korta livslängd.
 
 Vi studerar Schrödingerekvationen med numeriska beräkningar. Då behöver ekvationen skrivas om på en passande form.
@@ -48,12 +44,21 @@ Kvadraturen används även för att beräkna integraler vid beräkning av matris
 
 Genom en skalmodell kan \He{5}-kärnan betraktas som två partiklar, en alfapartikel och en valensneutron. Detta tillåter att problemet reduceras till en dimension.
 Alfapartikeln och neutronen växelverkan approximeras i skalmodellen med Woods-Saxonpotentialen
-\begin{eq}
-	V(r) & =
-	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr},
+\begin{eq*}
+  V(r) & =
+  -V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr},
   \\
-	f(r) & = \b{1+\exp\p{\frac{r-r_0}{d}}}^{-1}.
-\end{eq}
+  f(r) & = \b{1+\exp\p{\frac{r-r_0}{d}}}^{-1},
+\end{eq*}
+Parametrarna som används är
+\begin{center}
+\begin{tabular}{r l}
+ Potentialdjup               & $V_0 = \SI{47}{MeV}$   \\
+ Spinn-bankopplingsstyrka  & $V\sub{so} = \SI{-7.5}{Mev}$ \\
+ Räckvidd                       & $r_0 = \SI{2}{fm}   $  \\
+ Diffusivitet                   & $d = \SI{0.65}{fm}$.  \\ 
+\end{tabular}
+\end{center}.
 
 Schrödingerekvationen för \He{5}-system löses i både harmoniska oscillatorbasen och rörelsemängdsbasen. Den harmoniska oscillatorn är ett stängt system med bara bundna egenlösningar och passar därför dåligt för att analysera det öppna \He{5}-systemet. 
 
@@ -62,17 +67,18 @@ I denna bas ser vi att en av lösningarna till Schrödingerekvationen står ut (
 Den befinner sig i kontinuumet, liksom resten av lösningarna, men dess vågfunktion är lokaliserad, ett tecken på att det är en resonans.
 Vi kunde dock inte kvantifiera resonansens egenskaper, utan bara göra kvalitativa bedömningar.
 
-\begin{figure}
+\begin{figure}[h]
 \centering{
-	\subfloat[$V_0=\SI{70}{MeV}$]{
-		\includegraphics[page=1]{../figures/wavefunctions/wavefunctions.pdf}
-	}
-	\subfloat[$V_0 = \SI{47}{MeV}$]{
-		\includegraphics[page=3]{../figures/wavefunctions/wavefunctions.pdf}
+  \subfloat[$V_0=\SI{70}{MeV}$]{
+    \includegraphics[page=1]{../figures/wavefunctions/wavefunctions.pdf}
+  }
+  \subfloat[$V_0 = \SI{47}{MeV}$]{
+    \includegraphics[page=3]{../figures/wavefunctions/wavefunctions.pdf}
 }
   \caption{
-    \He{5} Vågfunktioner för olika starka potentialer. Den unika lokaliserade lösningen till SE markers i rött och en vanlig obunden lösning visas i grått.
-    Till vänster uppvisar en stark potential $V_0 = \SI{70}{MeV}$ ett bundet tillstånd medan vi har ett lokaliserat obundet tillstånd till höger vid potentialen $V_0 = \SI{47}{MeV}$.
+
+    \He{5} Radiella vågfunktioner för två olika starka potentialer. Den unika lokaliserade lösningen till SE markeras i rött och en vanlig obunden tillstånd visas i grått.
+    Den starka potentialen i (a) ger ett starkt bundet tillstånd medan den svagare i (b) ger ett lokaliserat men obundet tillstånd -- en resonans.
   } 
   }
   \label{fig:resonance_wavefunction}
@@ -99,19 +105,19 @@ Vi kan göra detta då vi endast betraktar tillstånd med samma $l$-kvanttal \ci
 När vi löser Schrödingerekvationen utnyttjar vi den sfäriska symmetrin och kopplar rörelsemängdsmomentet för att reducera matrisstorleken.
 Eftersom vi nu har två neutroner, måste vi även ta hänsyn till växelverkan mellan dessa.
 Vi använder två enkla, separabla växelverkan, en gaussisk
-\begin{eq}
+\begin{eq*}
   V(r_1, r_2) 
   = 
   -V\sub{GI} \exp\p{-\frac{r_1^2}{R^2}} \exp\p{-\frac{r_2^2}{R^2}},
-\end{eq}
+\end{eq*}
 och en ytdeltainteraktion
-\begin{eq}
+\begin{eq*}
   V(\vec{r}_1, \vec{r}_2) 
   = 
   -V\sub{SDI} 
   \delta(\vec{r}_1 - \vec{r}_2) 
   \delta(r_2 - r_0).
-\end{eq}
+\end{eq*}
 Parametrarna för dessa anpassas till grundtillståndet $0^+$ i \He{6}, varefter vi undersöker det exciterade $2^+$-tillståndet, en resonans.
 Här behöver vi använda Berggrenbasen vi skapade från lösningarna till \He{5} för att överhuvudtaget kunna finna en resonans. 
 Det visar sig att den gaussiska interaktionen inte ger några rimliga resultat, medan ytdeltainteraktionen låter oss återskapa \He{6}-resonansen. Resultaten sammanfattas i \cref{he6_results.}
