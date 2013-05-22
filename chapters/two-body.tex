@@ -78,7 +78,7 @@ The shell model has had some success in reproducing the general features of nucl
 It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ total angular momentum. 
 Of special interest to us are \emph{doubly magic} nuclei, where both proton and neutron numbers are magic. 
 These nuclei can be very tightly bound, and will therefore interact weakly with nucleons in outer shells.
-If we add nucleons to a doubly magic nuclei, we can thus treat it as a monolithic \emph{core}, interacting with valence neutrons through the mean-field only. \todo[inline]{heter det så? fint skrivet}
+If we add nucleons to a doubly magic nuclei, we can thus treat it as a rigid \emph{core}, interacting with valence neutrons through the mean-field only.
 
 We will consider the special case of core and one valence neutron, two particles with a spherically symmetric potential. We can then perform the standard procedure of reducing the problem to a one-dimensional equation by using the relative coordinate 
 $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
@@ -139,7 +139,7 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
 \todo{ticks, xlabel. caption ok? (deep one should be p3/2).  SPILL}
 
 \section{The \He{5} Nucleus}
-\todo{A ''softer'' introduction to \He{5}? It feels sudden}
+
 Because the $s$-shell is already filled in \He{4}, the valence neutron of \He{5} will be a $p$-wave, with $l=1$. 
 We see from [ref?] that the $p_{3/2}$-wave will get a negative net contribution from the total spin-orbit term, also shown in \cref{fig:woods-saxons}. \todo[inline]{ref}
 This means that the ground state of \He{5} will be the $p_{3/2}$ wave, with $p_{1/2}$ an excited state.
@@ -158,7 +158,6 @@ to investigate the general behavior of the solutions. The following values are u
  Diffuseness                   & $d = \SI{0.65}{fm}$  \\ 
 \end{tabular}
 \end{center}
-\todo{beautify ordo sista minuten}
 We later optimize the parameters to match experimentally determined energy levels for \He{5}.
 
 We use the procedures described in \cref{cha:basis_expansion} to numerically solve the \He{5} Schrödinger equation for the $p_{3/2}$ wave. When examining the solutions, we are specifically looking for the ground state resonance.
@@ -166,17 +165,19 @@ We use the procedures described in \cref{cha:basis_expansion} to numerically sol
 \todo{More about resonances?}
 
 \subsection{Harmonic Oscillator Basis}
-\todo{jag skulle vilja ha något generellt HO först, annars blir det bara ett stycke om range typ}
-The \emph{range} $r_0$ of the HO potential determines the rate at which the potential increases, and thus the range of the HO eigenfunctions. 
-This affects how rapidly the solutions converge, since a basis with wavefunctions more similar to the solutions will have better convergence. 
-\Cref{fig:energies(r0)} shows how the eigensolutions depend on the range of the basis functions.
 
-When discussing wavefunctions and potentials, we often describe them by their \emph{range}. We will say that a function that asymptotically decreases at least as $e^{-ar}$ has a finite range. In this case we define $1/a$ as the range.\todo{Added this paragraph on range, but not sure if it really belongs here? Should it not be in connection with its first use outside the introduction? PONTUS SPILL}  
+We begin by solving the \He{5} Schrödinger equation in the HO basis. 
+We plot the solutions in \cref{fig:energies(r0)} as a function of the range $r_0$ of the HO potential.
+All solutions have energies $E > 0$, meaning that they are unbound, scattering states, and thus have unlimited range.
+However, we see a saddle point in energy for the lowest energy solution when the HO range $r_0 \approx \SI{1}{fm}$, corresponding to radii within the nucleus.
+The range $r_0$ is a measure of the 
+
+\todo{concis tolkning, bad plot}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
 
 \tikzsetnextfilename{E(r0)}
-\begin{figure}[b]
+\begin{figure}[ht]
   \centering
  	\includegraphics[]{../figures/E(r0)/E(r0).pdf}
   \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. The lowest energy state behaves differently from the others.}
@@ -185,15 +186,6 @@ When discussing wavefunctions and potentials, we often describe them by their \e
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
 
-\todo{use 47, more points between 1 and 2 fm -done, check if ok. / v}
-
-\todo{redo figure different $V_0 = 47$ -done, check if ok. / v}
-
-All solutions have energies $E > 0$, meaning that they are unbound, scattering states, and thus have unlimited range. 
-\todo{minimum/saddle/plateau?}
-However, we can clearly distinguish a saddle point in energy for the lowest energy solution when the range $r_0 \approx \SI{1}{fm}$, corresponding to radii within the nucleus.
-This is a sign that there is a solution localized in this region.\todo[inline]{hur fasen vet vi det?}
-We guess that this is the resonance state.
 
 Because the harmonic oscillator consists only of bound states and we are trying to study unbound states, this method cannot take us much further.
 We will have to switch to a basis with wavefunctions of infinite range to properly describe this system.
@@ -207,12 +199,11 @@ Because all \He{5} solutions appear in the continuum, this basis is better suite
 \subsubsection{Momementum Space Wavefunctions}
 
 Solving the Schrödinger equation in the momentum basis gives us momentum eigenfunctions $\phi(k)$, presented in \cref{fig:real_momentum_wavefunctions}.
-There is a background of wavefunctions peaking at different values of $k$, and, once again, one of the functions stand out as lower and wider. Let us first discuss the peak-shaped wavefunctions.
-\todo[inline]{Stands out once again or lower and wider once again? clarify.}
+There is a background of wavefunctions peaking at different values of $k$, and one wavefunction standing out as lower and wider. Let us first discuss the peak-shaped wavefunctions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
-\begin{figure}[b]
+\begin{figure}[h]
   \centering
   	\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
 
@@ -232,9 +223,7 @@ A wavefunction peaking at a single value $k_i$ corresponds to a radial wavefunct
 \end{eq}
 The spherical bessel functions $j_l(k_i r)$ are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
 We can thus conclude that the peak-shaped solutions correspond to free particles. 
-A free particle is practically unaffected by the potential term of the Hamiltonian and since it is an eigensolution to the kinetic energy operator. 
-Thus we expect most of our solutions to be only marginally perturbed basis states. \todo[inline]{is this clearer or just redundant ramble?}
-Hence, the fact that we find unbound solutions corresponding to each value of $k$ used in the discretization hints at the continuous nature of these states.
+This is not unexpected as we are dealing with an open quantum system that only marginally perturbs passing particles, explaining why we find unbound solutions corresponding to each value of $k$ used in the discretized basis.
 
 The unique state peaks at $k = \SI{0.17}{fm^{-1}}$ and is  wider than the surrounding states. 
 The Heisenberg uncertainty relation tells us that a less well-defined momentum corresponds to a more well-defined position.
@@ -245,15 +234,13 @@ Consequently, this state should correspond to a localized wavefunction, which is
 To investigate the relation between the hypothesized resonance solution and a bound solution, we increase the depth of the potential to $V_0 = \SI{70}{MeV}$, and successively decrease the depth until there is no bound state. 
 This is documented in \cref{fig:wavefunctions}, where the radial probability distributions $r^2|R(r)^2|$ are plotted for the widest momentum wavefunction together with an arbitrary unbound state. 
 With a deep potential, the bound state wavefunction quickly tends to zero outside the potential well.
-As we decrease the depth below a certain threshold, the potential well no longer supports the bound state ($E > 0$), but the wavefunction is still localized. \todo[inline]{styrkemarkör? jag gillade inte fairly}
+As we decrease the depth below a certain threshold, the potential well no longer supports the bound state ($E > 0$), but the wavefunction remains localized.
 This is the region of the \He{5} depth (\SI{47}{MeV}) where we should find the resonance.
-When decreased even further the wavefunction starts to look similar to the unbound states. \todo[inline]{osäker syftning?}
-
-\todo{Short summary?}
+When $V_0$ is decreased even further the resonance disappears.
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions
 
-\begin{figure}[H]
+\begin{figure}
 \centering{
 	\subfloat[$V_0=\SI{70}{MeV}$]{
 		\includegraphics[page=1]{../figures/wavefunctions/wavefunctions.pdf}
@@ -271,7 +258,7 @@ When decreased even further the wavefunction starts to look similar to the unbou
 }
   \caption{
     \He{5} wavefunctions for varying potential depth. 
-    Plotted are the unique localized solution (red) and, for comparison, an arbitrary continuum solution (gray).
+    Plotted are the unique localized solution (thick line) and, for comparison, an arbitrary continuum solution (thin line).
     With a deep potential $V_0 = \SI{70}{MeV}$ there is a strongly bound state, which gets weaker as the potential depth is decreased.
     At $V_0 = \SI{52}{MeV}$ the wavefunction is highly localized, yet the energy value is in the continuum, a sign of resonance.
     There is still a clearly localized state for $V_0 = \SI{47}{MeV}$, but at $V_0 = \SI{40}{MeV}$ it is practically indistinguishable from the continuum states.

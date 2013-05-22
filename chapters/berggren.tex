@@ -4,9 +4,11 @@
 \chapter{The Complex-Momentum Basis}
 \label{cha:berggren}
 \todo{read through OLA SPILL}
+
 In \cref{cha:two-body} we studied the \He{5} system and found a special state in the continuum, the resonance.
-We will in this chapter detail a method of extending the momentum basis to the complex plane, which gives a more complete description of resonances. 
-The \He{5} problem is then examined once more using this new tool and we fit the model parameters to experimental resonance data.
+We will in this chapter detail a method of extending the momentum basis to the complex plane, which gives a more complete description of resonances.
+We also state the important the important Berggren completeness relation.
+The \He{5} problem is examined once more using the complex-momentum basis and we fit the model parameters to experimental resonance data.
 
 \section{The Complex Momentum Plane}
 
@@ -95,10 +97,10 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
   mirroring of the states in the imaginary axis.}
   \label{fig:complex plane}
 \end{figure}
-\todo{this has been slightly updated. Please read through it.}
+
 It is known that bound and resonant states indeed correspond to poles in the complex momentum plane at $k=\sqrt{2\mu E}/\hbar$. 
-The details of this is treated in scattering theory, and is beyond the scope of this report. 
-We will thus interpret the bound and resonant $k$ as complex poles and treat the unbound continuum as a contour, mirrored in the imaginary axis, encircling the upper half plane (\cref{fig:simple_contour}).
+The details of this is treated in scattering theory, and is beyond the scope of this thesis. 
+We interpret the bound and resonant $k$ as complex poles and treat the unbound continuum as a contour, mirrored in the imaginary axis, encircling the upper half plane (\cref{fig:simple_contour}).
 
 The integral to be evaluated along the contour is the one in the radial momentum space Schrödinger equation
 \begin{eq}
@@ -116,7 +118,6 @@ In fact, this is correct, and was proven in 1968 by Berggren \cite{berggren}.
 The contour, dubbed $L_+$, can be deformed to surround the resonance poles, as illustrated in \cref{fig:berggren_contour}. 
 The continuum states along $L_+$ combined with the encircled bound and resonant states form a complete basis, the \emph{Berggren basis}. 
 This result can be stated succinctly with the \emph{Berggren completeness relation} (compare with \cref{eq:momentum_completeness_relation})
-\todo{is this ok ref?}
 \begin{eq}
   \sum_{\substack{\text{bound} \\ \text{resonant}}} \ket{E_n}\bra{E_n} 
   + \fint[L_+]{k} k^2 \ket{E_k}\bra{E_k} = 1.
@@ -124,7 +125,6 @@ This result can be stated succinctly with the \emph{Berggren completeness relati
 This is an important result, because of the inclusion of the resonances in the basis.
 The Berggren basis is what allows us to find resonances in systems with more particles.
 
-\todo[inline]{berättande stil?}
 An observant reader may have noticed that the resonant poles in \cref{fig:contours} are mirrored in the imaginary axis and that the contour has a shadow on the left half plane.
 Berggren showed that this symmetry allows us to restrict ourselves to the contour segment from 0 to $\inf$. 
 However, doing this leads to a scalar product \emph{without conjugation} that must be used
@@ -162,7 +162,7 @@ However, when normalizing the obtained eigenvectors, one must make sure to use t
 
 %\tikzset{external/remake next}
 \tikzsetnextfilename{triangle_contour}
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \begin{tikzpicture}
     \begin{axis}[
@@ -189,14 +189,13 @@ However, when normalizing the obtained eigenvectors, one must make sure to use t
 
 \subsection{The \He{5} Resonances}
 
-We expect the position of the resonance poles to be fairly close to the experimental data in \cref{tab:}. We then choose a triangular contour that extends below the expected position. \Cref{tab:contours} presents the poles and the contours used to identify them.
+We expect the position $k_r$ of the resonance poles to be fairly close to the experimental data in \cref{tab:resonance_data}, hence we choose a triangular contour that extends below the expected position. \Cref{tab:contours} presents the poles and the contours used to identify them.
 
-\todo{use $k_r$?}
+\todo{resulting poles in table VINCENT}
 
-\todo{different contours, discuss.}
 \begin{table}[H]
   \begin{tabular}{c|c|c}
-    Wave      & Experimental $k$  & Contour vertices \\
+    Wave      & Experimental $k_r$  & Contour vertices \\
     \hline
     $p_{3/2}$ & 0.1788 -  0.0349i & 
       $(0, 0) \to (0.17, -0.2) \to (0.34, 0) \to (3, 0)$ \si{fm^{-1}} \\
@@ -216,7 +215,7 @@ If we have indeed found the resonance, we expect it to be unchanged when the con
 In \cref{fig:rect_contour}, a rectangular contour is used instead of the triangular, yet the pole is completely stable.
 We also found that we could vary the downward extrusion of the contour to some extent without the resonance pole moving. 
 But with sufficiently large imaginary parts, the matrix element integrals started to diverge.
-Barring such numerical errors, we found that any contour that runs below the pole and not too close gives a stable resonance solution. \todo[inline]{halvsanning? ok?}
+Barring such numerical errors, we found that any contour that runs below and not too close to the pole gives a stable resonance solution.
 
 
 \todo{double legend? SPILL}
@@ -270,7 +269,7 @@ Barring such numerical errors, we found that any contour that runs below the pol
 		     /pgf/number format/precision=3},legend style={at={(0.8,0.65)}, anchor=north,legend columns=1},
         ]
       	\addplot+[color = red, very thick, ->, no markers,] table  {../figures/res_pole(V0)/poles.data};
-      	    \addlegendentry{Pole position}
+      	    \addlegendentry{Resonance pole position}
       	\addplot+[color= gray, very thick, no markers,] table [x index = 0, y index = 1] {../figures/res_pole(V0)/contour.data};
 		
 \addplot+[color= gray, only marks] table  {../figures/res_pole(V0)/mark.data};
@@ -288,15 +287,11 @@ at (axis cs:0.17,-0.0346) {};
           \addlegendentry{Contour}
       \end{axis}
   \end{tikzpicture}
-  \caption{The pole position as a function of $V_0$.}
+  \caption{The position of the resonance pole as a function of $V_0$. The pole begins as a bound state on the imaginary axis, gradually becomes less and less bound, jumps into the fourth quadrant and moves down and to the right.}
   \label{fig:pole(V0)}
 \end{figure}
 \todo{make beautiful SPILL}
 %%%%%%%%%%%%%%%%%%%%%%%%% V0(CONTOUR) FIGURE
-
-
-\todo[inline]{Why does the solutions follow the mesh points if they are free? SPILL}
-\todo[inline]{same resonance $\Re k$ as before SPILL}
 
 \todo{touch up figure, width etc. SPILL}
 
@@ -308,7 +303,6 @@ The unbound solution still correspond to one definite (now complex) momentum.
 On the other hand, the resonance has a wide distribution, reflecting the localized nature of the solution 
 (remember Heisenberg---a wide momentum wavefunction allows a localized position wavefunction). 
 This also allows for automatically finding the resonance among a large set of solutions by singling out the one with the widest (or lowest) wavefunction.
-\todo{move the two-body chapter} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
@@ -331,9 +325,9 @@ This also allows for automatically finding the resonance among a large set of so
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
 \subsubsection{Varying the Potential Depth}
-\todo{spill läs}
-We repeat the procedure in \cref{sub:momentum_basis}, lowering the potential well and increasing it gradually, but we now plot the position of the bound/resonance pole.
-In \cref{fig:pole(V0)} we see how the pole starts on the imaginary axis at $V_0 = \SI{70}{MeV}$. 
+\todo{SPILL}
+We repeat the procedure in \cref{sub:momentum_basis}, lowering the potential well to \SI{70}{MeV} and increasing it gradually, but we now plot the position of the bound/resonance pole in the complex plane.
+\Cref{fig:pole(V0)} we see how the pole starts on the imaginary axis at $V_0 = \SI{70}{MeV}$. 
 It then moves downwards, becoming less and less strongly bound.
 At $V_0 \approx \SI{52}{MeV}$ the pole jumps to the fourth quadrant, becoming a resonance.
 As the potential well grows even less attractive, we see that both the binding energy $E_0$ and the width $\Gamma$ of the resonance increases.
@@ -361,8 +355,6 @@ The data, taken from \cite{tunl}, is presented in \cref{tab:resonance_data} alon
 \end{center}
 \end{table}
 \todo{Table ok? Units in the corner or in caption?}
-
-\todo{p1/2 figur SPILL OLA MAYBE NOT NEEDED}
 
 \todo{search and destroy pole position SPILL}
 
