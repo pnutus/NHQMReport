@@ -5,6 +5,7 @@
 \label{cha:basis_expansion}
 
 \todo{Intro to chapter here PONTUS}
+
 We want to study loosely bound quantum systems by solving the \emph{Time Independent Schrödinger Equation} (TISE)
 \begin{eq}
   \label{eq:TISE}
@@ -15,9 +16,8 @@ commonly written in the position basis as
   \label{eq:TISEpos}
   \p{-\frac{\hbar^2}{2m}\nabla^2 + V(\vec{r})}\psi(\vec{r}) = E\psi(\vec{r}).
 \end{eq}
-
 For the nuclear systems to be treated, the TISE has no known analytical solutions, and we need to use numerical methods to solve it.
-There exists some methods for this, one can solve a system of coupled differential equations, make it a problem of evaluate a multi-dimensional integral or as we will do, express it as a matrix equation \todo{would something like this be ok?}
+We will use the basis expansion method, writing the equation an eigenvalue problem
 \begin{eq}
   \label{eq:matrix equation}
   \sum_j H_{ij}\psi_j = E \psi_i
@@ -88,7 +88,6 @@ and write $H_{nn'} = \bra{n} H \ket{n'}$, we get
 \end{eq}
 which is equivalent to the matrix equation \cref{eq:matrix equation}. This is 
 the basic method of expanding the TISE in a basis.
-\todo{Only use (1.4) for equations? DOUBLECHECK - All "links" checked and they look good. /v}
 
 \section{Spherical Symmetry}
 \label{sec:spherical symmetry}
@@ -96,11 +95,11 @@ the basic method of expanding the TISE in a basis.
 We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the radial distance $r$.
 If we considered three-dimensional systems with arbitrary potentials, the matrices would be very large and solving the problem would become infeasible.
 
-Spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and the spherical harmonics $Y_l^m(\Omega_r)$, $\Omega_r = (\theta, \varphi)$.
+Spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and a spherical harmonic $Y_l^m(\Omega_r)$
 \begin{eq}
   \psi(\vec{r}) = R_{nl}(r) Y_l^m(\Omega_r).
 \end{eq}
-Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis. \todo{$j$ in here somewhere?}
+Here $l$ and $m$ are the quantum numbers for the orbital angular momentum and its projection along an arbitrary $z$-axis.
 For the matrix elements we find, using the orthonormality of the spherical harmonics,
 \begin{eq}
   \bra{nlm}V\ket{n'l'm'} 
@@ -112,9 +111,7 @@ For the matrix elements we find, using the orthonormality of the spherical harmo
   \delta_{mm'}\delta_{ll'}\fint[0][\inf]{r} 
     r^2 \conj{R_{nl}(r)}R_{n'l'}(r)V(r)
 \end{eq}
-meaning that the matrix will be \emph{block diagonal}, illustrated in \cref{fig:bmatrix}. This means that systems with different $l$ and $m$ can be treated separately, thus significantly reducing computation time. We say that \emph{$H$ is diagonal in $l$ and $m$}.
-
-\todo{diagonalization, no need to create entire matrix OLA}
+meaning that the matrix will be \emph{block diagonal}, illustrated in \cref{fig:bmatrix}. This means that systems with different $l$ and $m$ can be treated separately. We say that \emph{$H$ is diagonal in $l$ and $m$}.
 
 \begin{figure}
 \center
@@ -179,11 +176,7 @@ The radial wavefunction $R(r)$ of a state will be expressed as a linear combinat
 
 \section{The Momentum Basis}
 \label{sec:mom_space}
-\todo{Relation to momentum space $p = \hbar k$, plane wave is what?}
-\todo{Do we introduce this earlier, since we use the word since? (open system, few/any bound solutions)}
-The momentum basis $\ket{\vec{k}}$ is of great importance for us since we are studying a system with a short-range potential supporting only a few, if any, bound solutions.
-This means that we will find multiple unbound solutions, corresponding to free particles with various momenta.
-These are almost eigenstates of the momentum operator, only slightly perturbed by the small potential well at $r=0$. 
+The momentum, or plane wave, basis has eigenstates $\ket{\vec{k}}$, each describing a free particle with momentum $\vec{p}$ or wavevector $\vec{k} = \vec{p}/\hbar$. We will only use $\vec{k}$ and refer to it as momentum.
 
 The expansion is done in the same way as before, giving us
 \begin{eq}
@@ -191,11 +184,10 @@ The expansion is done in the same way as before, giving us
   &= 
   E\Phi(\vec{k}),
 \end{eq}
-where we denote the momentum space wavefunctions with $\Phi$.
-This three-dimensional equation is practically unsolvable in general, but we can simplify it using the fact that we have a central problem. 
-\todo[inline]{Redundant? same stuff in sphere symm section OLA}
-A rather involved calculation (see \cref{app:radial_mom_TISE}) shows that the Schrödinger equation can be written as
-\begin{align} 
+where we denote the momentum space wavefunctions with $\Phi$. 
+As in position space, these can be separated into a radial and angular part.
+This is shown in \cref{app:radial_mom_TISE} along with the fact that the Schrödinger equation can be written as
+\begin{align}
   \label{eq:radial mom space TISE}
   H\phi(k)
   & =
@@ -229,7 +221,6 @@ The integral equation \cref{eq:radial mom space TISE} can be rewritten as a matr
   E \phi(k_i)
   .
 \end{eq}
-\todo{source on this or explain that we tried the naive way to do it.}
 A particular set of points and corresponding weights is called a \emph{quadrature}, and the choice of quadrature greatly impacts the precision of the result. 
 A naïve quadrature with evenly spaced $k_j = j\Delta k$ and a constant weight $w_j=\Delta k$ converges slowly, and should not be used.
 We instead use the Gauss-Legendre quadrature, for details see \cref{app:gauss-legendre}.
@@ -297,9 +288,8 @@ The truncation gives us an $N \times N$ Hamiltonian matrix $H$ and the TISE can 
   H\psi = E\psi,
 \end{eq}
 where the $\psi$ are eigenvectors. We compute the matrix elements $H_{ij}$ with \cref{eq:HO_matrix_elements,eq:plane_wave_matrix_elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
-\todo{Gauss-Legendre in many places, where is canon?}
 If the matrix is hermitian or symmetric, we only need to consider the elements in the upper triangle including the diagonal, roughly halving the number of computed elements. 
 
-When the matrix elements have been computed, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a faster specialized algorithm.
+When the matrix elements have been computed, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a specialized, faster algorithm.
 
 \end{document}
