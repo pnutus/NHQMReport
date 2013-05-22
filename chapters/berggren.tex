@@ -227,6 +227,7 @@ Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstratin
         every x tick label/.append style = {anchor = south, yshift = 3pt},
         xmax=0.5,
         ytickmax = 0.3, xtickmax = 0.9,
+		xtick={0.1,0.2,...,0.4}
         enlarge y limits,
         no markers,
 		     xtickmin = 0.1,
@@ -272,11 +273,11 @@ simply single out the one with the broadest wavefunction, or equivalently after 
   		\includegraphics[page=2]{../figures/eigvecs_real_comp/eigvecs.pdf}
 	}
   }
-\caption{\He{5} momentum probability distributions for a real and complex contour. The resonance is more prominent when solving along the complex contour but is significantly wider than the surrounding states in both cases.} 
+\caption{\He{5} momentum probability distributions for a real and complex contour. The resonance is more prominent when solving along the complex contour but is significantly wider than the surrounding states in both cases. Both contours comprise 60 points in total, but the points in the complex contour are focused near the origin. The density fluctuation stems from the gauss-legedre distribution on the individual segments.} 
 \label{fig:complex_mom_wavefunctions}
 \end{figure}
 
-\todo{figurtext! zebra numeriskt SPILL}
+\todo{figurtext! SPILL}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
@@ -304,15 +305,15 @@ where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla 
 
 \begin{figure}
    \centering{
-   \subfloat[Square Contour]{
-   \includegraphics[page=1]{../figures/poles(contour)/poles.pdf}
-   }
-   \\
    \subfloat[Triangle Contour]{
    \includegraphics[page=2]{../figures/poles(contour)/poles.pdf}
    }
+   \\
+   \subfloat[Square Contour]{
+   \includegraphics[page=1]{../figures/poles(contour)/poles.pdf}
    }
-  \caption{\He{5} momentum solutions for different contours. The resonance is located at $0.1731, -0.03558i$ for both contours. we have used $V0 =$ \SI{47}{MeV} with $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
+   }
+  \caption{Momentum solutions for a \He{5} $p_{3/2}$ wave for different contours. The resonance is located at $0.1731, -0.03558i$ for both contours. we have used $V0 =$ \SI{47}{MeV} with $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
 
   \label{fig:pole(cont)}  
 \end{figure}

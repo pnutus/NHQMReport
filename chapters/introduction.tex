@@ -71,9 +71,13 @@ This can be expressed mathematically if we let the resonance correspond to a com
         node[right] {$V = 0$};
       \draw[->] (0, -3.1) -- (0, 2) node[right] {$V$};
       \draw plot (\x,{-\depth*exp(- \x*\x/6)});
-      \foreach \y in {-2.3, -1.7, -1}
+      \foreach \y in {-2.3, -1}
       \draw ($ ({sqrt(-6*ln(-\y/\depth))}, \y)$)
          -- ($ ({-sqrt(-6*ln(-\y/\depth))}, \y)$);
+		 
+         \draw ($ ({sqrt(-6*ln(1/\depth))}, -1)$)
+            -- ($ ({-sqrt(-6*ln(1/\depth))}, -1)$)
+			        node[midway, above right] {Bound state};
       \draw[densely dashed] 
         (-6,0.5) -- (6,0.5)
         node[midway, above right] {Resonance state};
@@ -93,7 +97,7 @@ This can be expressed mathematically if we let the resonance correspond to a com
 \todo[inline]{bound state in last figure?}
 \todo[inline]{Colored energy levels (gray/red)? y-axis to the left of the potentials? add x-axis specifying position?}
 \todo[inline]{Plot colors????? Do red/gray look good printed without color?}
-\todo{fixa klart figuren}
+\todo{fixa klart figuren, linje tjocka?}
 
 The time evolution of a quantum system is governed by the Schrödinger equation
 \begin{eq}
