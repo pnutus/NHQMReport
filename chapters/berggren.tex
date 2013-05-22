@@ -94,10 +94,12 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
   mirroring of the states in the imaginary axis.}
   \label{fig:complex plane}
 \end{figure}
-
 \todo{label on right resonance SPILL}
 
-\todo[inline]{this seems like a big leap of faith?. Ask Jimmy about this subsection?} We now interpret the bound and resonant $k$ as complex poles and the unbound continuum as a contour, mirrored in the imaginary axis, encircling the upper half plane (\cref{fig:simple_contour}).
+\todo{this has been slightly updated. Please read through it.}
+It is known that bound and resonant states indeed correspond to poles in the complex momentum plane at $k=\sqrt{2\mu E}/\hbar$. 
+The details of this is treated in scattering theory, and is beyond the scope of this report. 
+We will thus interpret the bound and resonant $k$ as complex poles and treat the unbound continuum as a contour, mirrored in the imaginary axis, encircling the upper half plane (\cref{fig:simple_contour}).
 The integral to be evaluated along the contour is the one in the radial momentum space Schrödinger equation
 \begin{eq}
   \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k') 
@@ -286,15 +288,29 @@ is successively changed from \SI{70}{MeV}, where the potential well can contain 
 As the potential well grows less attractive, we see that the imaginary part $\Gamma$ of the resonance energy increases, and thus the half-time of the quasi-bound state becomes shorter. 
 
 \subsection{Fitting to Experimental Resonance Data} 
+We may now proceed to fit our model of \He{5} to experimental data of the $p_{3/2}$ and  $p_{1/2}$ resonance provided by \cite{tunl}. Experimental data and simulated values are shown in \cref{tab:resonances}
 
-We may now proceed to fit our model of \He{5} to experimental data of the $p_{3/2}$ and  $p_{1/2}$ resonance provided by \cite{tunl}, giving values 
 \todo{fix citation OLA}
-\todo{Make tables? One table \cancel{showing} \emph{to rule} them all? OLA}
+\todo{Insert simulated values and parameters in table}
+\todo{Is the table ok?}
 
-\begin{tabular}{l r r}
-  $p_{3/2}:$ & $E_0 = 0.798,$ & $\Gamma = 0.648$\\
-  $p_{1/2}:$ & $E_0 = 2.068,$ & $\Gamma = 5.57$ \\
-\end{tabular}\\
+
+\begin{table}
+\caption{\label{tab:resonances} Experimentally obtained values\cite{tunl} for the \He{5} resonances, 
+                                along with our calculated values with the fitted Woods-Saxon parameters \\
+                                $V_0 = ...$, $V\sub{so} = ...$}
+\begin{center}
+\resizebox{10cm}{!} {
+\begin{tabular}{c c c c c}  \hline\hline
+ \multicolumn{1}{c|}{ \multirow{2}{*}{\si{MeV}} }   &\multicolumn{2}{c|}{Experimental data}         & \multicolumn{2}{c}{Simulated values} \\ 
+ \multicolumn{1}{c|}{}   &     $E_0$     & \multicolumn{1}{c|}{$\Gamma$} & $E_0$           &    $\Gamma$         \\ \hline
+$p_{3/2}$:&     0.798     &              0.648            &      bla        &      bla            \\  
+$p_{1/2}$:&     2.068     &              5.57             &      bla        &      bla           \\ \hline\hline
+\end{tabular}
+}
+\end{center}
+\end{table}
+
 Fitting the parameters $V_0$ and $V\sub{so}$ to these four data points give a best fit when
 
 $V_0 = 47.0490019$ and $V\sub{so} = -7.03992575$,\\
