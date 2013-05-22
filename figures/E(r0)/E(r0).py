@@ -35,11 +35,6 @@ res_osc = []
 
 truncation = 5
 
-print sp.sqrt(2*problem.mass*(0.798-(0.648j)/2.0))
-print sp.sqrt(2*problem.mass*(2.068-(5.57j)/2.0))
-
-1/0
-
 for i,omega in enumerate(omegalist):
     print (i+1),":",omega
     problem.HO_omega=omega
