@@ -200,14 +200,15 @@ We expect the position of the resonance poles to be fairly close to the experime
 \todo{use $k_r$?}
 
 \todo{fill in table, contours are NOT CORRECT VINCENT}
+\todo{different contours, discuss.}
 \begin{table}[H]
   \begin{tabular}{l|c|c}
     Wave      & Experimental $k$  & Contour vertices \\
     \hline
-    $p_{3/2}$ & yada              & 
-      $(0, 0) \to (0.2, -0.3) \to (0.4, 0) \to (3, 0)$ \si{fm^{-1}} \\
-    $p_{1/2}$ & yada              &
-      $(0, 0) \to (0.2, -0.3) \to (0.4, 0) \to (3, 0)$ \si{fm^{-1}} \\
+    $p_{3/2}$ & 0.1788 -  0.0349i & 
+      $(0, 0) \to (0.17, -0.2) \to (0.34, 0) \to (3, 0)$ \si{fm^{-1}} \\
+    $p_{1/2}$ & 0.3267 - 0.1643i &
+      $(0, 0) \to (0.35, -0.4) \to (0.7, 0) \to (3, 0)$ \si{fm^{-1}} \\
   \end{tabular}
   \caption{Contours used to identify \He{5} resonances.}
   \label{tab:contours}
@@ -217,7 +218,7 @@ We solve the Schrödinger equation using the contours and represent the energy s
 
 \todo{fill in value}
 There is one solution that doesn't lie on the contour, however. 
-It has $k = \SI{999999999999}{fm^{-1}}$, which is reasonably close to what we expected for the resonance.
+It has $k = \SI{0.1732-0.03567i}{fm^{-1}}$, which is reasonably close to what we expected for the resonance.
 If we have indeed found the resonance, we expect it to be unchanged when the contour is varied.
 In \cref{fig:rect_contour}, we have used a rectangular contour instead, yet the pole is completely stable.
 We also found that we could vary the depth of the contour without the resonance pole moving, but if we went too far down, the matrix element integrals started to diverge.
@@ -237,11 +238,11 @@ Barring such numerical errors, we found that any contour that runs below the pol
       \includegraphics[page=1]{../figures/poles(contour)/poles.pdf}
     }
   }
-  \caption{\He{5} momentum solutions for different contours. The resonance is located at $k = \SI{0.173 - 0.0355i}{fm^{-1}}$ for both contours. We use $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
-
-  \label{fig:pole(cont)}  
+   \caption{Momentum solutions for a \He{5} $p_{3/2}$ wave for different contours. The resonance is located at $0.1731, -0.03558i$ for both contours. we have used $V0 =$ \SI{47}{MeV} with $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
+\label{fig:pole(cont)}  
 \end{figure}
 
+ 
 
 
 %\tikzset{external/remake next}
@@ -269,6 +270,7 @@ Barring such numerical errors, we found that any contour that runs below the pol
         every x tick label/.append style = {anchor = south, yshift = 3pt},
         xmax=0.5,
         ytickmax = 0.3, xtickmax = 0.9,
+		xtick={0.1,0.2,...,0.4},
         enlarge y limits,
         no markers,
 		     xtickmin = 0.1,
@@ -277,7 +279,9 @@ Barring such numerical errors, we found that any contour that runs below the pol
         ]
       	\addplot+[color = red, very thick, ->] table  {../figures/res_pole(V0)/poles.data};
       	    \addlegendentry{Pole position}
-      	\addplot+[color= gray, very thick] table {../figures/res_pole(V0)/contour.data};
+      	\addplot+[color= gray, very thick] table [x index = 0, y index = 1] {../figures/res_pole(V0)/contour.data};
+\node[coordinate,pin=above right:{$V_0=54.3$}] 
+at (axis cs:0,0.116) {};
           \addlegendentry{Contour}
       \end{axis}
   \end{tikzpicture}
@@ -315,11 +319,11 @@ This also allows for automatically finding the resonance among a large set of so
   		\includegraphics[page=2]{../figures/eigvecs_real_comp/eigvecs.pdf}
 	}
   }
-\caption{\He{5} momentum probability distributions for a real and complex contour. The resonance is more prominent when solving along the complex contour but is significantly wider than the surrounding states in both cases.} 
+\caption{\He{5} momentum probability distributions for a real and complex contour. The resonance is more prominent when solving along the complex contour but is significantly wider than the surrounding states in both cases. Both contours comprise 60 points in total, but the points in the complex contour are focused near the origin. The density fluctuation stems from the gauss-legedre distribution on the individual segments.} 
 \label{fig:complex_mom_wavefunctions}
 \end{figure}
 
-\todo{figurtext! zebra numeriskt SPILL}
+\todo{figurtext! SPILL}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
 
@@ -356,8 +360,6 @@ where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla 
 \todo{signifikanta siffror?}
 
 \todo{p1/2 figur SPILL OLA MAYBE NOT NEEDED}
-
-\todo{triangle before square SPILL}
 
 \todo{search and destroy pole position SPILL}
 

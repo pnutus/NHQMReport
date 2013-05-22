@@ -99,13 +99,18 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
 	  \pgfplotsset{
 	    width = 0.45\textwidth, height = 7cm,
       domain = 0.5:9.8, 
+	  xmax=10,
       ymin = -20,
 	    ymax = 9,
       xlabel = $r/\b{\si{fm}}$,
       axis x line = middle,
       axis y line = left
+		%       every axis x label/.style={
+		%         at = {(current axis.right of origin)},
+		%         anchor = north east,
+		% }
 	  }
-	    \subfloat[$p_{3/2}$]{
+	    \subfloat[$p_{1/2}$]{
 	      \tikzset{external/remake next}
 	  \tikzsetnextfilename{p12}
 	      \begin{tikzpicture}
@@ -116,7 +121,7 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
 		    \end{axis}
 	      \end{tikzpicture}
 	    }
-	  \subfloat[$p_{1/2}$]{
+	  \subfloat[$p_{3/2}$]{
 	    \tikzset{external/remake next}
 	\tikzsetnextfilename{p32}
 	    \begin{tikzpicture}
@@ -131,7 +136,7 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
   \label{fig:woods-saxons}
 \end{figure}
 
-\todo{ticks, xlabel. caption ok? The descriptions are wrong (deep one should be p3/2).  SPILL}
+\todo{ticks, xlabel. caption ok? (deep one should be p3/2).  SPILL}
 
 \section{The \He{5} Nucleus}
 \todo{A ''softer'' introduction to \He{5}? It feels sudden}

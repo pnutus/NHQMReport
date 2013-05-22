@@ -5,12 +5,9 @@ from nhqm.problems import H_atom, He5
 import matplotlib.pyplot as plt
 from collections import namedtuple
 from nhqm.QM_helpers import energies, symmetric, hermitian
-from nhqm.bases.gen_contour import triangle_contour, gauss_contour
+from nhqm.bases.contours import triangle_contour, gauss_contour
 from nhqm.bases import (mom_space            as mom, 
-                        harm_osc             as osc, 
-                        mb_coupled           as coupled, 
-                        mb_uncoupled         as uncoupled,
-                        two_body_interaction as n_n)
+)
 from nhqm.plot_helpers import *
 
 basis_size=10
