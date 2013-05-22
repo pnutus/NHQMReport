@@ -13,10 +13,11 @@ This chapter covers the construction of such states.
 First, \cref{sec:identical_particles} discusses the mathematical consequences of identical, indistinguishable particles, focusing on fermions.
 This is followed in \cref{sec:second_quantization} by a short introduction to the second quantization formalism, which allows calculations with an arbitrary number of particles.
 The line of reasoning as well as the notation of these sections is adapted from \cite{dickhoff}, to facilitate further reading for the interested reader. 
-With the same intention, the style of \cite{suhonen} is employed in \cref{sec:angular_momentum} where the concept of angular momentum coupling is briefly explained.
+With the same intention, the style of \cite{suhonen} is employed in \cref{sec:coupling} where the concept of angular momentum coupling is briefly explained.
 Finally, in \cref{sec:mb_implementation} we discuss the use of second quantization in computations and present a simple implementation for fermions.
 
 \section{Identical Particles}
+\label{sec:identical_particles}
 
 A quirk of quantum mechanics is that particles that look identical \emph{are} identical.
 For example, consider the nucleons in a nucleus. 
@@ -116,7 +117,8 @@ The orthonormality of normalized antisymmetric states with a well-defined orderi
 \end{eq}
 
 
-\section{Second quantization and Fock Space}
+\section{Second quantization}
+\label{sec:second_quantization}
 
 So far we've looked at a system with a fixed number of particles, but we want to work with a system with an arbitrary number of identical particles.
 The \emph{second quantization} formalism and is what lets us do this.
@@ -301,6 +303,7 @@ as expected.
 
 \section{Angular Momentum Coupling}
 \label{sec:coupling}
+
 We have now developed the theory we need to solve actual many-body problems.
 Before applying these methods, however, we will discuss the concept of angular momentum coupling. 
 This corresponds to making a change of basis, using the rotational symmetry of problems to make the Hamiltonian matrix block diagonal and significantly reducing its size. 
@@ -386,6 +389,7 @@ where we have used the notation $(a, b)$ for $(E_1j_1, E_2j_2)$.
 
 
 \section{Implementation}
+\label{sec:mb_implementation}
 
 \todo{read through, do we need more justification? OLA  - no /v}
 
