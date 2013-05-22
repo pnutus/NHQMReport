@@ -11,46 +11,41 @@
 \listoftodos
 
 
-\title{Resonanser i löst bundna kvantsystem\\ 
-\Large Kandidatrapport i fysik, sammanfattning}
+\title{Kvantresonanser behandlade i en komplex rörelsemängdsbas \\ 
+\Large Kandidatrapport i fysik, svensk sammanfattning}
 \author{Jonathan Bengtsson \and Ola Embréus \and Vincent Ericsson \and Pontus Granström \and Nils Wireklint}
 \date{\today}
 \maketitle
 \newpage
 
-\todo[inline]{LÄS IGENOM.}
+\todo{Bör ha med kurskod}
 
-Detta är ett sammandrag av vår ``Resonances in loosely bound quantum systems''.
-\todo[inline]{Var skriva detta? Står även under titeln just nu.}
 
-\todo[inline]{Börjar på samma sätt som introduktionen nu, bra/dåligt?}
+Beteendet hos ett kvantmekaniskt system beskrivs av dess Hamiltonian som består av en rörelsmängdsterm och en potentialterm.
+Beroende på potentialens form kan systemet ge upphov till bundna och obundna tillstånd, som svarar mot diskreta respektive kontinuerliga energispektrum.
+Partiklar i ett så kallat \emph{stängt kvantsystem} är alltid bundna och lokaliserade i en ändlig omgivning av potentialen. 
+Ett \emph{öppet kvantsystem} kan ha ett spektrum som är både diskret och kontinuerligt.
+I det kontinuerliga spektrumet hos ett öppet kvantsystem kan uppstå något som kallas \emph{resonans}.
+Ett resonanstillstånd är obundet, men diskret och lokaliserat, och brukar kallas \emph{kvasibundet}.
 
-Beteendet hos ett kvantmekaniskt system beror till en stor del på dess potential.
-Vi vet att beroende på potentialens utseende kan systemet ge upphov till bundna och obundna (fria) tillstånd.
-Men det finns en tredje typ av lösning, vilket kallas för ett kvasibundet, eller resonant tillstånd.
-\todo[inline]{Kan man säga resonanta tillstånd?}
-Dessa tillstånd delar egenskaper med både bundna och obundna tillstånd och kan beskrivas med hjälp av komplexa energier.
-
-Vi har i vår rapport undersökt olika sätt att modelera resonansfenomen i flerkropparssystem. Specifikt har vi betraktat \He{5} och \He{6}, vilka kan beskrivas som problem bestående av två respektive tre kroppar.
-För att göra detta har vi löst Schrödingerekvationen på matrisform med basexpansion i en komplex berggrenbas.
-
-Det första vi vill göra är att skriva om Schrödingerekvationen på en form som är lösbar utav datorn, då den saknar analytiska lösningar för de potentialer vi kommer att använda (woods-saxon, gaussisk tvåkropparsinteraktion och ytdeltainteraktion).
-\todo{ytdeltainteraktion?}
-
-Detta görs genom att använda så kallad \emph{basexpansion}, vilket går ut på att en bas kan skrivas som en linjärkombination av en annan.
-En viktig sak att komma ihåg när man gör detta är att basen måste vara komplett.
-Genom teori förklarad i huvudrapporten kan vi skriva vårt problem på formen
-
+Syftet med detta projekt är att studera dessa resonanser, specifikt \He{5} och \He{6}, lätta atomkärnor som är obunden resp. löst bunden.
+Vi gör detta genom att betrakta den tidsoberoende Schrödingerekvationen, ett egenvärdesproblem
 \begin{eq}
-  \label{eq:expand3}
-  H\phi_n = \bra{n} H \ket{n'} = \sum_{n'} H_{nn'} \psi_{n'} = E \psi_n,
+  H \ket\psi = E \ket\psi.
 \end{eq}
+I denna formalism kan ett resonanstillstånd beskrivas med en komplex energi $E = E_0 - i\Gamma/2$, vilket modellerar tillståndets korta livslängd.
 
-Vi har alltså skrivit om Schrödingerekvationen till en matrisekvation som löses med hjälp av en egenvärdeslösare på datorn.
+Vi studerar Schrödingerekvationen med numeriska beräkningar. Då behöver ekvationen skrivas om på en passande form.
+Detta görs genom att utveckla ekvationen i en fullständig bas där egenvärdesproblemet kan skrivas med en ändlig Hamiltonianmatris $H$. 
+Då kan egenvärdesproblemet lösas med en så kallad egenlösaralgoritm.
+Vi gör en naturlig inskränkning till sfäriskt symmetriska problem, vilket minskar komplexiteten hos problemet och leder till mindre matriser och snabbare beräkningar.
 
-För att göra våra beräkningar kortare och enklare inskränker vi oss till sfäriskt symmetriska problem, vilket drar ner komplexitet och därigenom beräkningstid betydligt.
-Genom en skalapproximation kan vi betrakta kärnan som en alfapartikel och en valensneutron där alfapartikeln kan anses vara punktformad och ger upphov till en woods-saxonpotential, vilken valensneutronen känner av.
-Woods-Saxonpotentialen ser ut som följer
+Rapporten behandlar två fullständiga baser, den sfäriska harmoniska oscillatorns bas och rörelsemängdsbasen. 
+Rörelsemängdsbasen är kontinuerlig och kräver diskretisering som utförs med hjälp av Gauss-Legendrekvadratur. 
+Kvadraturen används även för att beräkna de integraler vid beräkning av matriselement.
+
+Genom en skalmodell kan \He{5}-kärnan betraktas två partiklar, en alfapartikel och en valensneutron. Detta tillåter att problemet reduceras till en dimension.
+Alfapartikeln och neutronen växelverkar med en Woods-Saxonpotential:
 \begin{eq}
 	w-s.
 \end{eq}
@@ -95,15 +90,6 @@ Vi delar upp hamiltonianen i två delar, den ena är en operator för kinetisk e
 Denna växelvärkan är extremt komplicerad och är inte heller helt känd, istället använder vi oss utav grova förenklingar genom att använda först en gaussisk interaktion och sedan en mer fysikalisk ytdeltainteraktion.
 \todo[inline]{Upprepning från ovan?}
 
-
-\todo[inline]{kopplingar, hur mycket skriva?}
-
-\subsection{Monte Carlo}
-Vi har även testat att använda Monte-Carlo-metoden för att reducera beräkningstiden för simuleringarna.
-Monte-Carlo-Metoden går ut på att man istället för att välja en hel bas endast väljer några av dessa tillstånd och löser problemet.
-Sedan gör man detta ett flertal gånger och medelvärdesbildar lösningarna.
-Förhoppningsvis går detta då mot rätt värde.
-Detta har visat sig vara ofördelaktigt och vi fick inte ut några vettiga resultat utav det.\todo[inline]{hittills...}
 
 \subsection{saker}
 
