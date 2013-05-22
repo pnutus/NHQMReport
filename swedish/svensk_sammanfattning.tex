@@ -44,7 +44,7 @@ Rapporten behandlar två fullständiga baser, den sfäriska harmoniska oscillato
 Rörelsemängdsbasen är kontinuerlig och kräver diskretisering som utförs med hjälp av Gauss-Legendrekvadratur. 
 Kvadraturen används även för att beräkna de integraler vid beräkning av matriselement.
 
-\section{\He{5}-kärnan}
+\section{\He{5}-systemet}
 
 Genom en skalmodell kan \He{5}-kärnan betraktas två partiklar, en alfapartikel och en valensneutron. Detta tillåter att problemet reduceras till en dimension.
 Alfapartikeln och neutronen växelverkan approximeras i skalmodellen med Woods-Saxonpotentialen
@@ -88,33 +88,33 @@ Enligt Berggrens teori \cite{berggren} bildar lösningarna en fullständig bas, 
 
 Innan vi utnyttjar detta återgår vi till att studera \He{5}, nu i den komplexa rörelsemängdsbasen. Med den nya metoden lyckas vi återskapa experimentella värden, och vi kan anpassa Woods-Saxonpotentialens parametrar utifrån observerad data. \Cref{tab:resonances} visar resultatet av denna anpassning.
 
-\subsection{Flerkropparsproblem och \He{6}}
-En naturlig utveckling av \He{5} är att lägga till ytterligare en neutron och på så sätt nå \He{6}.
-Detta är svårare då vi inte längre kan reducera problemet till en dimension och det faktum att matriserna nu tar en betydande tid att diagonalisera.
+\section{Flerkropparsproblem och \He{6}}
+En naturlig utveckling av \He{5} är att lägga till ytterligare en neutron och på så sätt nå \He{6}. 
+Då kan vi inte längre kan reducera problemet till en dimension, utan behöver använda mångkropparsteori.
+Vi sammanfattar de viktigaste resultaten: antisymmetriska fermiontillstånd, ockupationstalrepresentation och rörelsemängdsmomentskoppling.
+Ett kort avsnitt ger ett förslag på en implementation av ockupationstalsrepresentationen.
 
-Det trekropparssystem vi vill undersöka är \He{6}, vilket är vår naturliga övergång ifrån \He{5}.
-Denna kärna moddelerar vi som en alfapartikel med två valensneutroner.
-Vi kan plocka interaktionen mellan dessa valensneutroner och kärnan från våra lösningar av \He{5}, men måste ta hänsyn till att de är fermioner och därför inte kan befinna sig i samma tillstånd.
-Interaktionen mellan de två neutronerna beskriver vi med en grovt approximerad sfärisk potential.
-
-I ett första steg bygger vi upp en bas utav energierna och vågfunktionerna vi fann i tvåkropparssystemet och avänder dessa för att konstruera möjliga simultana tillstånd för de två neutronerna.
-För att beskriva flerkropparstillstånden kan vi antingen koppla de två enpartikeltillståndens rörelsemängsmoment eller räkna på en större uppsättning okopplade tillstånd. För att koppla rörelsemängdsmomenten utnyttjar vi ... 
+Vi betraktar nu \He{6} och ser det som två sammankopplade \He{5}-system. 
+Vi kan göra detta då vi endast betraktar tillstånd med samma $l$-kvanttal \cite{suzuki}.
+När vi löser Schrödingerekvationen utnyttjar vi den sfäriska symmetrin och kopplar rörelsemängdsmomentet för att reducera matrisstorleken.
+Eftersom vi nu har två neutroner, måste vi även ta hänsyn till växelverkan mellan dessa.
+Vi använder två enkla, separabla växelverkan, en gaussisk
 \begin{eq}
-	1+2+... = -\frac{1}{12}
+  V(r_1, r_2) 
+  = 
+  -V\sub{GI} \exp\p{-\frac{r_1^2}{R^2}} \exp\p{-\frac{r_2^2}{R^2}},
 \end{eq}
-Vi får då kravet att den totala rörelsemängden ... 
-Detta för att undvika att i onödan behadla kombinationer som inte ger bidrag till hamiltonianen.
-Medan vi i det okopplade fallet testar alla möjligheter och inkluderar snävare krav i vilka tillstånd som ger bidrag till hamiltonianen. Beräkningstekniskt är det den kopplade konfigurationen som de facto används.
-
-När vi sedan beräknar hamiltonianen kommer neutronerna växelvärka med kärnan på samma sätt som förut, men de kommer även att växelvärka med varandra.
-Vi delar upp hamiltonianen i två delar, den ena är en operator för kinetisk energi och behandlar enpartikeltillstånden oberoende av varandra, den andra delen beskriver är även den en operator och beskriver växelvärkan mellan de två neutronerna.
-Denna växelvärkan är extremt komplicerad och är inte heller helt känd, istället använder vi oss utav grova förenklingar genom att använda först en gaussisk interaktion och sedan en mer fysikalisk ytdeltainteraktion.
-\todo[inline]{Upprepning från ovan?}
-
-
-\subsection{saker}
-
-
+och en ytdeltainteraktion
+\begin{eq}
+  V(\vec{r}_1, \vec{r}_2) 
+  = 
+  -V\sub{SDI} 
+  \delta(\vec{r}_1 - \vec{r}_2) 
+  \delta(r_2 - r_0).
+\end{eq}
+Parametrarna för dessa anpassas till grundtillståndet $0^+$ i \He{6}, varefter vi undersöker det exciterade $2^+$-tillståndet, en resonans.
+Här behöver vi använda Berggrenbasen vi skapade från lösningarna till \He{5} för att överhuvudtaget kunna finna en resonans. 
+Det visar sig att den gaussiska interaktionen inte ger några rimliga resultat, medan ytdeltainteraktionen låter oss återskapa \He{6}-resonansen. Resultaten sammanfattas i \cref{he6_results.}
 
 
 
