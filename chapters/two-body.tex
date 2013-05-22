@@ -8,7 +8,7 @@
 
 In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
 We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}.
-The Schrödinger equation is then solved in the HO and plane wave bases.
+The Schrödinger equation is then solved in the HO and momentum bases.
 The solutions are studied by looking at the energies and wavefunctions while varying parameters.	
 
 \section{The Nuclear Shell Model}
@@ -93,13 +93,14 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
 	\newcommand{\diff}{0.65}
 	\newcommand{\ro}{2}
 	\newcommand{\vo}{47}
+        \newcommand{\so}{-7.5}
 	\newcommand{\func}{1/(1 + e^((x-\ro)/\diff))}
-	\newcommand{\mass}{0.1}
+	\newcommand{\mass}{0.019272}
 	  \centering{
 	  \pgfplotsset{
 	    width = 0.45\textwidth, height = 7cm,
-      domain = 0.1:9.8, 
-      ymin = -47, 
+      domain = 0.5:9.8, 
+      ymin = -20,
 	    ymax = 9,
       xlabel = $r/\b{\si{fm}}$,
       axis x line = middle,
@@ -107,38 +108,34 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
 	  }
 	    \subfloat[$p_{3/2}$]{
 	      \tikzset{external/remake next}
-	  \tikzsetnextfilename{p32}
+	  \tikzsetnextfilename{p12}
 	      \begin{tikzpicture}
 		    \begin{axis}[
 				ylabel = $V/\b{\si{MeV}}$,
 				xmax = 7.9,]
-		      \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * 7.5 * -2 * (\func -1) / (\diff * x )) };
+		      \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * \so * (-2) * (\func -1) / (\diff * x )) };
 		    \end{axis}
 	      \end{tikzpicture}
 	    }
 	  \subfloat[$p_{1/2}$]{
 	    \tikzset{external/remake next}
-	\tikzsetnextfilename{p12}
+	\tikzsetnextfilename{p32}
 	    \begin{tikzpicture}
 	      \begin{axis}[
 			  xmax = 7.9,]
-	        \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * 7.5 * 1 * (\func -1) / (\diff * x ))};
+	        \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * \so * 1 * (\func -1) / (\diff * x ))};
 	      \end{axis}
 	    \end{tikzpicture}
 	  }
 	  }
-  \caption{The Woods-Saxon potential for different waves, with $V_0 = \SI{47}{MeV}$, $r_0 = \SI{2}{fm}$ and $d = \SI{0.65}{fm}$}
+  \caption{The Woods-Saxon potential with centrifugal barrier $l(l+1)/2\mu r^2$ added, for different waves. Parameters $V_0 = \SI{47}{MeV}$, $r_0 = \SI{2}{fm}$ and $d = \SI{0.65}{fm}$}
   \label{fig:woods-saxons}
 \end{figure}
 
-\todo{change mass, ticks SPILL}
+\todo{ticks, xlabel. caption ok? The descriptions are wrong (deep one should be p3/2).  SPILL}
 
 \section{The \He{5} Nucleus}
-
-We choose to study \He{5}, seen as a \He{4} nucleus and a valence neutron.
-The \He{4} nucleus ($alpha$-particle) is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core. 
-Other doubly magic light nuclei, such as \ce{^{16}O} and its isotopes, have been studied using methods similar to ours\cite{gamow_shell_model_2008}, but we will restrict ourselves to \He nuclei.
-
+\todo{A ''softer'' introduction to \He{5}? It feels sudden}
 Because the $s$-shell is already filled in \He{4}, the valence neutron of \He{5} will be a $p$-wave, with $l=1$. 
 We see from the the $p_{3/2}$-wave will get a negative net contribution from the total spin-orbit term, also shown in \cref{fig:woods-saxons}. 
 This means that the ground state of \He{5} will be the $p_{3/2}$ wave, with $p_{1/2}$ an excited state.
@@ -169,6 +166,9 @@ The range $r_0$ of the HO potential determines the rate at which the potential i
 This affects how rapidly the solutions converge, since a basis with wavefunctions more similar to the solutions will have better convergence. 
 \Cref{fig:energies(r0)} shows how the eigensolutions depend on the range of the basis functions.
 
+To further specify what we mean by range, which will be used when discussing wave functions and potentials,
+When discussing wavefunctions and potentials, we often describe them by their \emph{range}. We will say that a function that asymptotically decreases at least as $\propto e^{-ar}$ has a finite range. We will in that case define $1/a$ as the range.\todo{Added this paragraph on range, but not sure if it really belongs here? Should it not be in connection with its first use outside the introduction? PONTUS SPILL}  
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
 
 \tikzsetnextfilename{E(r0)}
@@ -184,8 +184,6 @@ This affects how rapidly the solutions converge, since a basis with wavefunction
 \todo{use 47, more points between 1 and 2 fm -done, check if ok. / v}
 
 \todo{redo figure different $V_0 = 47$ -done, check if ok. / v}
-
-\todo{what is infinite range? explain in introduction? OLA}
 
 All solutions have energies $E > 0$, meaning that they are unbound, scattering states, and thus have unlimited range. 
 \todo{minimum/saddle/plateau?}
