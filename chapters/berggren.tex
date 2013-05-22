@@ -195,8 +195,10 @@ We expect the position $k_r$ of the resonance poles to be fairly close to the ex
 
 \todo{fix table width, cite exp vals. tunl finns i bibtex}
 
-\begin{table}[H]
-  \begin{tabular}{c|c|c|c}
+\begin{table}[b]
+\caption{Contours used to identify \He{5} resonances.}
+  \label{tab:contours}
+  \hspace{-2cm}\begin{tabular}{c|c|c|c}
     Wave      & Experimental $k_r$ & Computed $k_r$  & Contour vertices \\
     \hline
     $p_{3/2}$ & 0.1788 -  0.0349i & 0.1778 - 0.0376i &
@@ -204,15 +206,13 @@ We expect the position $k_r$ of the resonance poles to be fairly close to the ex
     $p_{1/2}$ & 0.3267 - 0.1643i & 0.3286 - 0.1630i &
       $(0, 0) \to (0.35, -0.4) \to (0.7, 0) \to (2.5, 0)$ \si{fm^{-1}} \\
   \end{tabular}
-  \caption{Contours used to identify \He{5} resonances.}
-  \label{tab:contours}
 \end{table}
 \todo[inline]{varför skiljer sig polerna i tabell och stycke?}
 We solve the Schrödinger equation using the contours and represent the energy solutions by their momenta $k=\sqrt{2\mu E}$.
  The result for the $p_{3/2}$ wave is shown in \cref{fig:triangle_contour}. 
 We see that most solutions follow the contour, corresponding to non-resonant continuum states, similarly to the real case.
 There is one solution that does not lie on the contour, however. 
-It has $k = \SI{0.1732-0.03567i}{fm^{-1}}$, which is reasonably close to what we expected for the resonance.
+It has $k = \SI{0.173-0.0357i}{fm^{-1}}$, which is reasonably close to what we expected for the resonance.
 If we have indeed found the resonance, we expect it to be unchanged when the contour is varied.
 In \cref{fig:rect_contour}, a rectangular contour is used instead of the triangular, yet the pole is completely stable.
 We also found that we could vary the downward extrusion of the contour to some extent without the resonance pole moving. 
@@ -233,7 +233,7 @@ Barring such numerical errors, we found that any contour that runs below and not
       \includegraphics[page=1]{../figures/poles(contour)/poles.pdf}
     }
   }
-   \caption{Momentum solutions for a \He{5} $p_{3/2}$ wave for different contours. The resonance is located at $0.1731, -0.03558i$ for both contours. we have used $V0 =$ \SI{47}{MeV} with $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
+   \caption{Momentum solutions for a \He{5} $p_{3/2}$ wave for different contours. The resonance is located at $0.173, -0.0356i$ for both contours. we have used $V0 =$ \SI{47}{MeV} with $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
 \label{fig:pole(cont)}  
 \end{figure}
 
@@ -338,13 +338,13 @@ Having studied the solutions and verified that we have found the resonances, we 
 The data, taken from \cite{tunl}, is presented in \cref{tab:resonance_data} along with simulated results. Fitting the Woods-Saxon parameters after the four experimental data points resulted in optimal values $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$.
 
 
-\begin{table}[H]
+\hspace{-2cm}\begin{table}[H]
 \caption{Experimental \He{5} resonance data \cite{tunl} and computed values with fitted Woods-Saxon parameters $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$. All values are in \si{MeV}.}
 \label{tab:resonance_data} 
 \begin{center}
 \resizebox{10cm}{!} {
 \begin{tabular}{c c c c c}  \hline\hline
- \multicolumn{1}{c|}{ \multirow{2}{*}{\si{MeV}} }  &\multicolumn{2}{c|}{Experimental data}    & \multicolumn{2}{c}{Computed values} \\ 
+ \multicolumn{1}{c|}{ \multirow{2}{*}{Wave} }  &\multicolumn{2}{c|}{Experimental data}    & \multicolumn{2}{c}{Computed values} \\ 
 
  \multicolumn{1}{c|}{} &       $E_0$        & \multicolumn{1}{c|}{$\Gamma$} &      $E_0$      &    $\Gamma$     \\ \hline
        $p_{3/2}$:       &       0.798        &              0.648            &      0.783      &     0.695       \\  
@@ -353,9 +353,6 @@ The data, taken from \cite{tunl}, is presented in \cref{tab:resonance_data} alon
 }
 \end{center}
 \end{table}
-
-\todo{Table ok? Units in the corner or in caption?}
-
 \todo{figures where they belong. Wednesday night: fixa uppslag med figur + tillhörande text}
 
 \todo{in captions: solutions in the complex momentum plane SPILL}
