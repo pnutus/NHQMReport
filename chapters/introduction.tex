@@ -24,7 +24,7 @@ They appear in the continuum, like unbound states, but are localized, like bound
 However, the wavefunction of a resonance is only localized for a finite amount of time, as opposed to a bound, \emph{stationary} state that forever stays the same.
 A resonance can be described as a \emph{quasi-stationary} state with a complex energy, as the following argument suggests.
 
-\todo{Vet inte var/hur vi förklarar det exponentiella avtagandet.}
+\todo{Vet inte var/hur vi förklarar det exponentiella avtagandet. -behöver vi det?}
 
 \begin{figure}
   \newcommand{\depth}{3}
@@ -35,7 +35,7 @@ A resonance can be described as a \emph{quasi-stationary} state with a complex e
       domain=-2:2,
       samples=200,
       ]
-      \draw[->] (-2, 2) -- (2, 2) node[above] {$r$};
+      \draw[->] (-2, 2) -- (2, 2) node[above] {$x$};
       \draw[->] (0, 0) -- (0, 4) node[right] {$V$};
       \draw plot (\x, \x*\x);
       \foreach \y in {0.7, 1.4, ..., 4}
@@ -49,7 +49,7 @@ A resonance can be described as a \emph{quasi-stationary} state with a complex e
     \begin{tikzpicture}[
       scale=1.6
       ]
-      \draw[->] (-2, 0) -- (2, 0) node[above] {$r$};
+      \draw[->] (-2, 0) -- (2, 0) node[above] {$x$};
       \draw[->] (0, -2) -- (0, 2) node[right] {$V$};
       \draw[->, decorate, decoration={snake, post length=1mm}] 
         (-2, 1) -- (2, 1) node[above left, yshift=1mm] {Unbound};
@@ -64,9 +64,7 @@ A resonance can be described as a \emph{quasi-stationary} state with a complex e
       domain=-6:6,
       samples=200,
       ]
-      %\draw[->] (-6, 0) -- (6, 0) node[above] {$r$};
-      \draw (-6, 0) -- (6, 0)
-        node[right] {$V = 0$};
+      \draw[->] (-6, 0) -- (6, 0) node[above] {$x$};
       \draw[->] (0, -3.1) -- (0, 2) node[right] {$V$};
       \draw plot (\x,{-\depth*exp(- \x*\x/6)});
       \foreach \y in {-2.3, -1}
