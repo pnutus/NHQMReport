@@ -4,15 +4,15 @@
 \section{Gauss-Legendre Quadrature}
 \label{app:gauss-legendre}
 
-One quickly notices that conventional integrals are computationally taxing. 
-A conventional integral approximation is to evaluate the function in a lot of evenly spaced points and give a homogenous weight based on the step length. 
+One notices that conventional integrals are computationally taxing. 
+A conventional integral approximation is to evaluate the function in  evenly spaced points with a homogenous weight based on the step length. 
 This, however requires many points to converge and quickly becomes unwieldly in computations. 
 
-That is why one should use the Gauss-Legendre quadrature; through a clever choice of points and weights the integral will converge with less points. 
-The theory behind this approximation is invloved \cite{abramowitz+stegun} and is not covered here. 
-The idea is to pick points on the -1 to 1 interval that are roots of the Legendre polynomial of a certain degree n and after some rescaling
-\todo{"some rescaling", this is most important part!}
- the integral can be written as
+That is why one should use the Gauss-Legendre quadrature; through a clever choice of points and weights the integral will converge with fewer points. 
+The theory behind this approximation is invloved \cite{gl} and is not covered here. 
+
+The idea is to pick points $x_i$ on the -1 to 1 interval that are roots of the Legendre polynomial of a certain degree n and approximate the integral with
+
 \begin{eq}
   \int_{-1}^1 f(x)\id{x} \approx \sum_{i=1}^n w_i f(x_i).
 \end{eq}
@@ -20,7 +20,12 @@ with the weights given by
 \begin{eq}
   w_i = \frac{2}{\left( 1-x_i^2 \right) [P'_n(x_i)]^2}
 \end{eq}
-where $P_n$ is the Legendre polynomial of degree $n$.
+where $P_n$ is the Legendre polynomial of degree $n$. This can be rescaled for any defnite integral
+
+\begin{eq}
+	\int_a^b f(x)\,dx \approx \frac{b-a}{2} \sum_{i=1}^n w_i f\left(\frac{b-a}{2}z_i + \frac{a+b}{2}\right).
+\end{eq}
+
 It can be shown that this quadrature gives the correct value for all polynomials of degree up to $2n-1$. 
 The only requirement for convergence is that the integrand can be approximated by a polynomial on the interval.
 In some cases, as with singular functions, that is not possible, but for the functions encountered in this work it is a safe approximation.
