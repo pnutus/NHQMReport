@@ -15,7 +15,7 @@ The solutions are studied by looking at the energies and wavefunctions while var
 
 \todo{Why open? OLA}
 A typical example of an open quantum system is the atomic nucleus encountered in nuclear physics. 
-The atomic nucleus is held together by the short-ranged strong interaction acting between all nucleons and is commonly sdudied within a shell model.
+The atomic nucleus is held together by the short-ranged strong interaction acting between all nucleons and is commonly studied within a shell model.
 This is done by introducing a \emph{mean-field} potential, often in the following way.\cite{suhonen}
 
 Consider the Hamiltonian for a system of $A$ interacting particles,
@@ -40,7 +40,7 @@ where we have split the Hamiltonian into a spherically symmetric mean-field Hami
  
 \subsection{The Woods-Saxon Potential}
 
-For the mean-field potential we will use the established Woods-Saxon potential visualized in \cref{fig:woods-saxons} and given by
+For the mean-field potential we will use the established Woods-Saxon potential visualized in \cref{fig:woods-saxons} and given by \todo[inline]{comma?}
 \begin{eq}
 	V(r)=
 	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr},
@@ -76,9 +76,9 @@ where we have stated the result in the case of one valence nucleon.
 
 The shell model has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
 It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ total angular momentum. 
-Of special interest to us are \emph{doubly magic} nuclei, where both proton are neutron numbers are magic. 
+Of special interest to us are \emph{doubly magic} nuclei, where both proton and neutron numbers are magic. 
 These nuclei can be very tightly bound, and will therefore interact weakly with nucleons in outer shells.
-If we add nucleons to a doubly magic nuclei, we can thus treat it as a monolithic \emph{core}, interacting with valence neutrons through the mean-field only.
+If we add nucleons to a doubly magic nuclei, we can thus treat it as a monolithic \emph{core}, interacting with valence neutrons through the mean-field only. \todo[inline]{heter det så? fint skrivet}
 
 We will consider the special case of core and one valence neutron, two particles with a spherically symmetric potential. We can then perform the standard procedure of reducing the problem to a one-dimensional equation by using the relative coordinate 
 $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
@@ -141,7 +141,7 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
 \section{The \He{5} Nucleus}
 \todo{A ''softer'' introduction to \He{5}? It feels sudden}
 Because the $s$-shell is already filled in \He{4}, the valence neutron of \He{5} will be a $p$-wave, with $l=1$. 
-We see from the the $p_{3/2}$-wave will get a negative net contribution from the total spin-orbit term, also shown in \cref{fig:woods-saxons}. 
+We see from [ref?] that the $p_{3/2}$-wave will get a negative net contribution from the total spin-orbit term, also shown in \cref{fig:woods-saxons}. \todo[inline]{ref}
 This means that the ground state of \He{5} will be the $p_{3/2}$ wave, with $p_{1/2}$ an excited state.
 
 Both the $p_{3/2}$ and $p_{1/2}$ waves have known resonances, see \cref{tab:resonance_data}.
@@ -166,12 +166,12 @@ We use the procedures described in \cref{cha:basis_expansion} to numerically sol
 \todo{More about resonances?}
 
 \subsection{Harmonic Oscillator Basis}
-
-The range $r_0$ of the HO potential determines the rate at which the potential increases, and thus the range of the HO eigenfunctions.
+\todo{jag skulle vilja ha något generellt HO först, annars blir det bara ett stycke om range typ}
+The \emph{range} $r_0$ of the HO potential determines the rate at which the potential increases, and thus the range of the HO eigenfunctions. 
 This affects how rapidly the solutions converge, since a basis with wavefunctions more similar to the solutions will have better convergence. 
 \Cref{fig:energies(r0)} shows how the eigensolutions depend on the range of the basis functions.
 
-When discussing wavefunctions and potentials, we often describe them by their \emph{range}. We will say that a function that asymptotically decreases at least as $\propto e^{-ar}$ has a finite range. In this case we define $1/a$ as the range.\todo{Added this paragraph on range, but not sure if it really belongs here? Should it not be in connection with its first use outside the introduction? PONTUS SPILL}  
+When discussing wavefunctions and potentials, we often describe them by their \emph{range}. We will say that a function that asymptotically decreases at least as $e^{-ar}$ has a finite range. In this case we define $1/a$ as the range.\todo{Added this paragraph on range, but not sure if it really belongs here? Should it not be in connection with its first use outside the introduction? PONTUS SPILL}  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
 
@@ -192,7 +192,7 @@ When discussing wavefunctions and potentials, we often describe them by their \e
 All solutions have energies $E > 0$, meaning that they are unbound, scattering states, and thus have unlimited range. 
 \todo{minimum/saddle/plateau?}
 However, we can clearly distinguish a saddle point in energy for the lowest energy solution when the range $r_0 \approx \SI{1}{fm}$, corresponding to radii within the nucleus.
-This is a sign that there is a solution localized in this region.
+This is a sign that there is a solution localized in this region.\todo[inline]{hur fasen vet vi det?}
 We guess that this is the resonance state.
 
 Because the harmonic oscillator consists only of bound states and we are trying to study unbound states, this method cannot take us much further.
@@ -207,7 +207,7 @@ Because all \He{5} solutions appear in the continuum, this basis is better suite
 \subsubsection{Momementum Space Wavefunctions}
 
 Solving the Schrödinger equation in the momentum basis gives us momentum eigenfunctions $\phi(k)$, presented in \cref{fig:real_momentum_wavefunctions}.
-There is a background of wavefunctions peaking at different values of $k$, and, once again, one of the functions stand out as lower and wider. Let us first discuss the peaked wavefunctions.
+There is a background of wavefunctions peaking at different values of $k$, and, once again, one of the functions stand out as lower and wider. Let us first discuss the peak-shaped wavefunctions.
 \todo[inline]{Stands out once again or lower and wider once again? clarify.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
@@ -231,21 +231,21 @@ A wavefunction peaking at a single value $k_i$ corresponds to a radial wavefunct
   R_i(r) = i^l\sqrt{\frac{2}{\pi}} j_l(k_i r)
 \end{eq}
 The spherical bessel functions $j_l(k_i r)$ are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
-We can thus conclude that the peaked solutions correspond to free particles. 
+We can thus conclude that the peak-shaped solutions correspond to free particles. 
 In addition, the fact that we find unbound solutions corresponding to each value of $k$ used in the discretization hints at the continuous nature of these states.
 
-The unique state peaks at $k = \SI{0.17}{fm^{-1}}$ and is slightly wider than the surrounding states. 
+The unique state peaks at $k = \SI{0.17}{fm^{-1}}$ and is  wider than the surrounding states. 
 The Heisenberg uncertainty relation tells us that a less well-defined momentum corresponds to a more well-defined position.
-Consequently, the state should correspond to a localized wavefunction, which is what we expect from a resonance.
+Consequently, this state should correspond to a localized wavefunction, which is what we expect from a resonance.
 
 \subsubsection{Position Space Wavefunctions}
 
 To investigate the relation between the hypothesized resonance solution and a bound solution, we increase the depth of the potential to $V_0 = \SI{70}{MeV}$, and successively decrease the depth until there is no bound state. 
 This is documented in \cref{fig:wavefunctions}, where the radial probability distributions $r^2|R(r)^2|$ are plotted for the widest momentum wavefunction together with an arbitrary unbound state. 
 With a deep potential, the bound state wavefunction quickly tends to zero outside the potential well.
-As we decrease the depth below a certain threshold, the potential well no longer supports the bound state ($E > 0$), but the wavefunction is still fairly localized.
+As we decrease the depth below a certain threshold, the potential well no longer supports the bound state ($E > 0$), but the wavefunction is still localized. \todo[inline]{styrkemarkör? jag gillade inte fairly}
 This is the region of the \He{5} depth (\SI{47}{MeV}) where we should find the resonance.
-When decreased even further the wavefunction starts to look similar to the unbound states.
+When decreased even further the wavefunction starts to look similar to the unbound states. \todo[inline]{osäker syftning?}
 
 \todo{Short summary?}
 
@@ -272,7 +272,7 @@ When decreased even further the wavefunction starts to look similar to the unbou
     Plotted are the unique localized solution (red) and, for comparison, an arbitrary continuum solution (gray).
     With a deep potential $V_0 = \SI{70}{MeV}$ there is a strongly bound state, which gets weaker as the potential depth is decreased.
     At $V_0 = \SI{52}{MeV}$ the wavefunction is highly localized, yet the energy value is in the continuum, a sign of resonance.
-    There is still a clearly localized state with $V_0 = \SI{47}{MeV}$, but at $V_0 = \SI{40}{MeV}$ it is practically indistinguishable from the continuum states.
+    There is still a clearly localized state for $V_0 = \SI{47}{MeV}$, but at $V_0 = \SI{40}{MeV}$ it is practically indistinguishable from the continuum states.
   } 
   \label{fig:wavefunctions}
   \end{figure}
