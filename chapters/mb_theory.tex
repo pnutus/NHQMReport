@@ -192,25 +192,24 @@ the matrix elements only exist on the diagonal, when $\alpha = \beta$, and we ge
 The many-body matrix element becomes
 \begin{eq}
   \label{eq:one-body_matrix_elements}
-  \bra{\alpha_1\dots\alpha_N} \hat{H}_1 \ket{\alpha'_1\dots\alpha'_N}
+  \bra{a_1\dots a_N} \hat{H}_1 \ket{b_1\dots b_N}
   & =
   \sum_{\alpha} 
   \bra\alpha H_1 \ket\alpha
-  \bra{\alpha_1\dots\alpha_N} 
+  \bra{a_1\dots a_N} 
   a_\alpha^\dag a_\alpha
-  \ket{\alpha'_1\dots\alpha'_N}
+  \ket{b_1\dots b_N}
   \\ & =
   \sum_{i = 1}^N 
-  \bra{\alpha_i} H_1 \ket{\alpha_i}
+  \bra{a_i} H_1 \ket{a_i}
   \braket{\alpha_1\dots\alpha_N}{\alpha'_1\dots\alpha'_N}
   \\ & =
   \p{
     h_1 + \dots + h_N
   }
-  \delta_{\alpha_1\alpha'_1} \dots \delta_{\alpha_N\alpha'_N},
+  \delta_{a_1 b_1} \dots \delta_{a_N b_N},
 \end{eq}
-\todo[inline]{notation OLA}
-the sum of the eigenvalues of the sp states in the bra and ket, but only if the bra and ket are the same. The Fock space operator $\hat{H}_1$ is thus also diagonal.
+the sum of the eigenvalues of the sp states in the bra or ket, but only if the bra and ket are the same. The Fock space operator $\hat{H}_1$ is thus also diagonal.
 
 \subsubsection{Two-Body Operators}
 
@@ -255,7 +254,6 @@ The double counting can be avoided, however, by taking into account the ordering
   \bra{\alpha \beta} H_2 \ket{\gamma \delta} 
   a_\alpha^\dag a_\beta^\dag a_\delta a_\gamma.
 \end{eq}
-
 For the case of two particles we have
 \begin{eq}
   \label{eq:two-body_matrix_elements}
