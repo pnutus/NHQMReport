@@ -128,22 +128,25 @@ In \cref{fig:gaussian} we see that the potential in a rough sense satisfies the 
         axis x line = middle,
         axis y line = left,
         xtick=\empty,
-        ytick={0, -1},
-        yticklabels={0, $\displaystyle V\sub{GI}\exp\p{-\frac{r_2^2}{R^2}}$},
+        ytick={0},
+        yticklabels={0},
         domain=0:3,
         ymin=-1.2, ymax=0.5,
         every axis y label/.style={
           at = {(current axis.above origin)},
           anchor = north west,
         },
+		after end axis/.code={
+		               \draw[anchor=west] (axis cs:0,-1) -- (axis cs:1.5,-1) 
+					   node [] {$\displaystyle V\sub{GI}\exp\p{-\frac{r_2^2}{R^2}}$};
+		             },
         ]
-        \addplot[black] {-e^(-x^2)};
+        \addplot[thick, black] {-e^(-x^2)};		
       \end{axis}
     \end{tikzpicture}
   \caption{The Gaussian interaction potential as seen by one of the neutrons. The position of the other neutron determines the depth of the potential well.}
   \label{fig:gaussian}
 \end{figure}
-\todo{tydligare exp konstant, linje åt höger SPILL}
 Because the potential is separable
 \begin{eq}
   V(r_1, r_2) 
