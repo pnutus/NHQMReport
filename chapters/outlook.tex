@@ -4,11 +4,9 @@
 \chapter{Outlook}
 \label{cha:outlook}
 
-\todo{mer referenser?}
-
 We have studied resonances in Helium isotopes and given heuristic justifications for the methods used. The \He{5} nucleus was modeled satisfactorily, and we could reproduce the experimental width and position of its resonances.
 
-We were not as successful in modeling the \He{6} nucleus. The interactions used were simple first approximations, which is why we believe it was not possible to reproduce both the binding energy and the experimental $2^+$ resonance. 
+The Berggren basis obtained from the \He{5} solutions was used to model the \He{6} nucleus. The interactions used were simple first approximations, but while we were unable to reproduce the \He{6} resonance with the gaussian interaction, the surface delta interaction gave us meaningful results.
 Consequently, an obvious way of improving upon our results is to use a more realistic potential. 
 We have limited ourselves to a study of the energy spectrum, but one could also explore the \He{6} system in more detail, e.g.~looking at its density distribution \cite{radii}.
 
@@ -16,21 +14,17 @@ Other areas to further explore, covered in more detail below, are: increasing th
 \todo{any more ideas?}
 
 \section{Realistic Two-Body Interactions}
-The two-body interactions used in this thesis were chosen because of their simplicity, and while they display some physicality, there is much room for improvement. 
+The phenomenological two-body interactions used in this thesis were chosen because of their simplicity, and there is much room for improvement. 
 One approach is to make more educated guesses as to the form of the interaction, fitting parameters to experimental data for one system and trying to make predictions for other.
 Alternatively, one could begin from first principles by using knowledge of Quantum ChromoDynamics (QCD) and the strong interaction between the constituent quarks, the \emph{ab initio} approach.
-\todo[inline]{how to do this, done once on helium. (by jimmy...)}
 
 \section{Additional Nucleons and Other Elements}
 
-We have studied the nuclei \He{5} and \He{6}, a two- and three-body problem consisting of a core and one or two valence particles respectively.
-A natural extension of these problems is to add more particles, either neutrons or protons. However, adding protons requires careful consideration, since the core will no longer be well defined. 
-In either case we would have to consider different isospin of the two types of nucleon.
-This has implications for the nucleon-nucleon interaction.
-In the case of neutrons, the heavier He isotopes \He{7} and \He{8} would be our first choice.
-We then have to consider the angular momentum coupling of three or four particles and the center of mass motion when using more than one shell, but other than that the techniques we employ are general.
+We have studied the nuclei \He{5} and \He{6} in a few-body picture as a two- and three-body problem consisting of a core and one or two valence particles respectively.
+A natural extension is to stay in the same picture, adding more neutrons to study the more exotic \He{7} and \He{8}.
+With more particles has to consider the angular momentum coupling of three or four particles. Other than that the techniques we employ are general.
 
-Another possibility is to study other elements than helium. \ce{^{16} O} and \ce{^{24} O} are good candidates, since they too are doubly magic nuclei.
+Another possibility is to study other elements than helium, still in the core with valence neutron model. \ce{^{16} O} and \ce{^{24} O} are good candidates, since they too are doubly magic nuclei.
 Other light elements like \ce{Li} or \ce{Be} are of interest as well, as they like He, display several interesting properties of open quantum systems. One has to take into consideration that they do not have a well-defined core though. 
 This could make them suitable subjects for the methods described here.
 
@@ -38,20 +32,17 @@ When expanding \He{6}, our basis consists of only $p_{1/2}$ and $p_{3/2}$ waves.
 This is a good approximation for \He{6} \cite{gamow_shell_model_2008},  but for other systems, more partial waves may be needed.
 This poses additional challenges, since one needs to introduce a transitionally invariant coordinate systems when treating particles of mixed parity. 
 
-Another way of describing different cores would be to use a \emph{No-Core Shell Model} (NCSM), i.e. treating each nucleon as separate and starting with \ce{^2 H}, just one neutron and proton. 
-This approach works best with light nuclei, but the complex energy treatment could prove interesting.
-\todo{C. has many questions about this paragraph.}
-
 \section{Reducing Computation Time}
 With an increased number of particles, the size of the Hamiltonian matrix grows exponentially. This leads to more matrix element calculations, memory usage requirements and slower diagonalization.
 
 One way to reduce the matrix size is to select only the most important basis states in computations.
 This is possible because certain many-body configurations barely give any contribution to the energy of the (quasi-)bound solutions. 
 An example of a method doing this is the Density Matrix Renormalization Group (DMRG) \cite{DMRG}.
-Another, not so systematic, approach is a Monte Carlo method.
-We made a minor study on the Monte-Carlo approach, but did not find any conclusive results.
-Since this was only made briefly we do not want to discourage any future research on this topic.
-\todo{read through}
+
+
+Another, less systematic, approach is the Monte Carlo method of randomly sampling states to include and taking the mean.
+We made a minor study of a potential Monte-Carlo approach, but cannot present any conclusive results.
+We want to encourage further research on this topic, though, as the method, while simple, could prove a useful tool.
 
 While a larger system requires more matrix elements, many of the elements are zero. 
 As the size of the matrix grows, it is eventually no longer efficient to store them as an array. 
@@ -62,5 +53,4 @@ The Lanczos algorithm is the most commonly used method for large, sparse matrice
 It generally extracts the largest or smallest eigenvalues, but resonances can exist in the middle of the spectrum, so some adaptations might be required.
 It is also important to note that our complex-momentum approach gives us a non-hermitian symmetric matrix while most eigensolvers expect matrices to be hermitian. A possible development is then to research eigensolver for non-hermitian (but symmetric) matrices.
 
-\todo{if you want to build upon our work yada yoda github GNU CC mikrosaft}
 \end{document}
