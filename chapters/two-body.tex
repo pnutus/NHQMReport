@@ -22,7 +22,7 @@ Consider the Hamiltonian for a system of $A$ interacting particles,
 \begin{eq}
   H = \sum_{i=1}^A \frac{1}{2m_i} \nabla_i^2 
   + 
-  \sum_{j<i=1}^A v(\vec{r}_i,\,\vec{k}_i, \vec{r}_j, \vec{k}_j)
+  \sum_{j<i=1}^A v(\vec{r}_i,\vec{k}_i, \vec{r}_j, \vec{k}_j)
 \end{eq}
 where $v$ is the nucleon-nucleon interaction. Now add and subtract a potential field $V(\vec{r})$ affecting all particles,
 \begin{eq}
@@ -31,7 +31,7 @@ where $v$ is the nucleon-nucleon interaction. Now add and subtract a potential f
     }
   + 
   \sum_{j<i} \b{ 
-    v(\vec{r}_i,\,\vec{k}_i, \vec{r}_j, \vec{k}_j) - V(\vec{r_i})
+    v(\vec{r}_i,\vec{k}_i, \vec{r}_j, \vec{k}_j) - V(\vec{r_i})
   } \\
   &=
   H\sub{MF} + V\sub{res}
@@ -145,6 +145,7 @@ We see from [ref?] that the $p_{3/2}$-wave will get a negative net contribution 
 This means that the ground state of \He{5} will be the $p_{3/2}$ wave, with $p_{1/2}$ an excited state.
 
 Both the $p_{3/2}$ and $p_{1/2}$ waves have known resonances, see \cref{tab:resonance_data}.
+\todo[inline]{Forward-reffing tables. Spoiler alert?}
 
 The Woods-Saxon paramaters will initially be set to standard values given by \cite{suhonen,dickhoff} 
 \todo{Are they given there?}
@@ -211,7 +212,7 @@ There is a background of wavefunctions peaking at different values of $k$, and, 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
-\begin{figure}
+\begin{figure}[b]
   \centering
   	\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
 

@@ -13,10 +13,11 @@ This chapter covers the construction of such states.
 First, \cref{sec:identical_particles} discusses the mathematical consequences of identical, indistinguishable particles, focusing on fermions.
 This is followed in \cref{sec:second_quantization} by a short introduction to the second quantization formalism, which allows calculations with an arbitrary number of particles.
 The line of reasoning as well as the notation of these sections is adapted from \cite{dickhoff}, to facilitate further reading for the interested reader. 
-With the same intention, the style of \cite{suhonen} is employed in \cref{sec:angular_momentum} where the concept of angular momentum coupling is briefly explained.
+With the same intention, the style of \cite{suhonen} is employed in \cref{sec:coupling} where the concept of angular momentum coupling is briefly explained.
 Finally, in \cref{sec:mb_implementation} we discuss the use of second quantization in computations and present a simple implementation for fermions.
 
 \section{Identical Particles}
+\label{sec:identical_particles}
 
 A quirk of quantum mechanics is that particles that look identical \emph{are} identical.
 For example, consider the nucleons in a nucleus. 
@@ -24,7 +25,7 @@ The neutrons and protons have different charge, and can thus be told apart, but 
 This has to be taken into consideration when dealing with many-body states of identical particles, as we will see.
 
 We begin with an orthonormal single particle (sp) basis $\ket{\alpha_i}$, where $\alpha_i$ represents all the quantum numbers that describe the state.
-Next, consider $N$ identical particles, expressed in this basis. We form a product state
+Next, consider $N$ identical particles, expressed in this basis. We form product states
 \begin{eq}
   \pket{\alpha_1\alpha_2\dots\alpha_N} 
   \equiv
@@ -32,18 +33,19 @@ Next, consider $N$ identical particles, expressed in this basis. We form a produ
   =
   \ket{\alpha_1}\ket{\alpha_2}\dots\ket{\alpha_N},
 \end{eq}
-which, by the orthonormality of the $\ket\alpha$, will also be orthonormal
+which, by the orthonormality of the $\ket\alpha$, are orthonormal as well
 \begin{eq}
   \pbraket{\alpha_1\alpha_2\dots\alpha_N}{\alpha'_1\alpha'_2\dots\alpha'_N}
   =
-  \braket{\alpha_1}{\alpha'_1}
-  \braket{\alpha_2}{\alpha'_2}
+  \delta_{\alpha_1\alpha'_1}
+  \delta_{\alpha_2\alpha'_2}
   \dots
-  \braket{\alpha_N}{\alpha'_N}.
+  \delta_{\alpha_N\alpha'_N}.
 \end{eq}
 
-%Let us now create an arbitrary linear combination of the product states, denoted by an angled ket
-Let us assume that the system of particles can be described by some linear combinations of these basis states, denoted
+\todo{orthonormality or completeness relation?}
+
+Let us assume that the system of identical particles can be described by some linear combinations of these basis states, denoted
 \begin{eq}
   \ket{\alpha_1\alpha_2\dots\alpha_N}.
 \end{eq}
@@ -52,7 +54,7 @@ Since the particles are identical, and thus indistinguishable, we require the no
   \braket{\alpha_1\dots\alpha_i\dots&\alpha_j\dots\alpha_N}{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N} \\
 &=\braket{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}
 \end{eq}
-\todo[inline]{absq?}
+\todo[inline]{absq? use $\beta\gamma$?}
 These states can therefore only differ in phase $e^{i\varphi}$, and since another swap will bring us back to the original state, the phase has to be either $e^{i\varphi} = 1$ or $e^{i\varphi} = -1$.
 Symmetric states with no phase change describe \emph{bosons}, whereas antisymmetric states that change sign describe \emph{fermions}.
 In this thesis all sp states will be fermionic, hence we do not treat the bosonic case.
@@ -77,13 +79,20 @@ For example, in the case of two particles, the correctly normalized antisymmetri
 \end{eq}
 We will henceforth use the angular ket notation $\ket\dots$ for antisymmetric states, as opposed to $\pket\dots$ for product states.
 
-\todo[inline]{pauli principle PONTUS}
-\todo[inline]{completeness relation? Orthonormality? PONTUS}
+Let us ponder that two fermions occupy the same state. 
+Exchanging the two particles and flipping the sign would then result in
+\begin{eq}
+  \ket{\alpha\alpha\alpha_1\dots\alpha_N} 
+  = 
+  - \ket{\alpha\alpha\alpha_1\dots\alpha_N}
+\end{eq}
+which can only be true if both states are 0. 
+We conclude that two fermions can never occupy the same state, commonly referred to as the \emph{Pauli Principle}.
 
 It is important to note that states with permuted quantum numbers, such as the states $\ket{\alpha_1\alpha_2}$ and $\ket{\alpha_2\alpha_1}$, represent the same physical state, as they only differ in sign (phase). 
 This means that we have to make sure not to double count these states. 
-We can do this by requiring the sp states to always appear in the same order in the ket. 
-If they are not, we permute two sp states at a time until the correct ordering is reached
+We can do this by requiring that the sp states always appear in the same order in the ket. 
+If they do not, we permute two sp states at a time until the correct ordering is reached
 \begin{eq}
   \ket{\alpha_i\alpha_1\dots\alpha_{i-1}\alpha_{i+1}\dots\alpha_N}
   & =
@@ -97,14 +106,29 @@ If they are not, we permute two sp states at a time until the correct ordering i
   (-1)^{i-1} 
   \ket{\alpha_1\dots\alpha_{i-1}\alpha_i\alpha_{i+1}\dots\alpha_N}.
 \end{eq}
+The orthonormality of normalized antisymmetric states with a well-defined ordering can be stated simply
+\begin{eq}
+  \braket{\alpha_1\alpha_2\dots\alpha_N}{\alpha'_1\alpha'_2\dots\alpha'_N}
+  =
+  \delta_{\alpha_1\alpha'_1}
+  \delta_{\alpha_2\alpha'_2}
+  \dots
+  \delta_{\alpha_N\alpha'_N}.
+\end{eq}
 
-\section{Second quantization and Fock Space}
-\
+
+\section{Second quantization}
+\label{sec:second_quantization}
 
 So far we've looked at a system with a fixed number of particles, but we want to work with a system with an arbitrary number of identical particles.
-The construction that lets us do this is called the \emph{Fock space}.
-A state in Fock space, a \emph{Fock state}, can contain any number of particles. 
-States with different number of particles are orthogonal to each other.
+The \emph{second quantization} formalism and is what lets us do this.
+We will be working \emph{Fock space}, a combination of spaces of $0,1,2,...$ particles.
+This means that a state in Fock space, a \emph{Fock state}, can contain any number of particles and that states with different number of particles are orthogonal to each other.
+
+A disclaimer is in place here: while we introduce this powerful concept, we do not make full use of it in this thesis. 
+It should instead be considered as a stepping stone for readers wishing to expand on the systems and methods we do use.
+
+\todo[inline]{paragraphs okay?}
 
 \subsection{Creation and Annihilation Operators}
 
@@ -161,10 +185,9 @@ Analogous to $a_\alpha^\dag$, when $a_\alpha$ acts on a state that does not cont
 
 \subsection{General Operators in Fock Space}
 
-\todo{Kolla igenom PONTUS}
-We can now express the state of any number of particles, but in order to do something with the states we also need to express operators such as the Hamiltonian in the Fock space formalism. 
-General operators, involving any number of particles, can be expressed using the creation and annihilation operators.
-The operators can then act on a state with an arbitrary number of particles. 
+We can now express the state of an arbitrary number of particles, but to have any use of the states we also need to express operators such as the Hamiltonian in the Fock space formalism. 
+A general operator, involving any number of particles, can be expressed using the creation and annihilation operators.
+The Fock space equivalent of an operator is able act on a state with an arbitrary number of particles. 
 We will only treat one- and two-body operators here, as they are sufficient for our purposes.
 
 \subsubsection{One-Body Operators}
@@ -194,25 +217,24 @@ the matrix elements only exist on the diagonal, when $\alpha = \beta$, and we ge
 The many-body matrix element becomes
 \begin{eq}
   \label{eq:one-body_matrix_elements}
-  \bra{\alpha_1\dots\alpha_N} \hat{H}_1 \ket{\alpha'_1\dots\alpha'_N}
+  \bra{a_1\dots a_N} \hat{H}_1 \ket{b_1\dots b_N}
   & =
   \sum_{\alpha} 
   \bra\alpha H_1 \ket\alpha
-  \bra{\alpha_1\dots\alpha_N} 
+  \bra{a_1\dots a_N} 
   a_\alpha^\dag a_\alpha
-  \ket{\alpha'_1\dots\alpha'_N}
+  \ket{b_1\dots b_N}
   \\ & =
   \sum_{i = 1}^N 
-  \bra{\alpha_i} H_1 \ket{\alpha_i}
+  \bra{a_i} H_1 \ket{a_i}
   \braket{\alpha_1\dots\alpha_N}{\alpha'_1\dots\alpha'_N}
   \\ & =
   \p{
     h_1 + \dots + h_N
   }
-  \delta_{\alpha_1\alpha'_1} \dots \delta_{\alpha_N\alpha'_N},
+  \delta_{a_1 b_1} \dots \delta_{a_N b_N},
 \end{eq}
-\todo[inline]{notation OLA}
-the sum of the eigenvalues of the sp states in the bra and ket, but only if the bra and ket are the same. The Fock space operator $\hat{H}_1$ is thus also diagonal.
+the sum of the eigenvalues of the sp states in the bra or ket, but only if the bra and ket are the same. The Fock space operator $\hat{H}_1$ is thus also diagonal.
 
 \subsubsection{Two-Body Operators}
 
@@ -257,7 +279,6 @@ The double counting can be avoided, however, by taking into account the ordering
   \bra{\alpha \beta} H_2 \ket{\gamma \delta} 
   a_\alpha^\dag a_\beta^\dag a_\delta a_\gamma.
 \end{eq}
-
 For the case of two particles we have
 \begin{eq}
   \label{eq:two-body_matrix_elements}
@@ -282,23 +303,17 @@ as expected.
 
 \section{Angular Momentum Coupling}
 \label{sec:coupling}
+
 We have now developed the theory we need to solve actual many-body problems.
 Before applying these methods, however, we will discuss the concept of angular momentum coupling. 
-This corresponds to making a change of basis, using the rotational symmetry of problems to significantly reduce the size of the matrix. 
-In principle, this is not neccesary to solve many-nody problems, but it is a neat trick to make the computations more managable. 
-The following section will thus introduce the concept of angular momentum coupling. \todo{refer to souhonen or somewhere where this coupling is satisfactorily explained PONTUS}
- 
-%The \He{6} nucleus can be solved in two ways, either we couple the angular momenta of the two sp states to reduce the amount of calculations needed or we generate all mb states to get calculations that are more straight-forward. 
-%We solve the problem using both schemes, the coupled scheme because is is the one we want to use, but we also solve it using the uncoupled scheme to verify the answer.
-%Both schemes can be used together when solving in both the HO basis and the k basis. 
-%We will cover all four approaches in this chapter.
-
-%\subsection{Uncoupled Scheme}
-%In the uncoupled scheme we use a mb basis, $\alpha$, formed from two sp solutions, $a,b$, and give each sp state an m quantum number. In order to reduce the calculatins needed we filter the mb states so the sum of m numbers equals M.
+This corresponds to making a change of basis, using the rotational symmetry of problems to make the Hamiltonian matrix block diagonal and significantly reducing its size. 
+In principle, coupling is not neccesary to solve many-body problems, but its an invaluable tool.
+We will limit the discussion to coupling of two particles, as we never work with more particles here.
+A more complete description is found in \cite{suhonen}.
 
 \todo{sp -- single particle}
 
-\subsection{Coupled Scheme}
+\subsection{The Two-Particle Coupled Basis}
 In previous Chapters we have studied single-particle states on the form $\ket{Ejm}$, where we let the quantum number $E$ represent all quantum numbers needed to uniquely specify a state. From these we would form product states
 \begin{eq}
   \pket{E_1j_1m_1, E_2j_2m_2} = \ket{E_1j_1m_1}\otimes\ket{E_2j_2m_2}
@@ -310,7 +325,7 @@ This is not possible when studying directly interacting particles
 \todo{"not possible" instead "rarely the case"?}
 It is then convenient to switch to a basis where the total angular momentum is well defined, but the individual momenta are not. 
 
-We introduce the \emph{coupled} basis with states $\pket{E_1j_1, E_2j_2; JM}$ meant to read as: the first particle is described by the quantum numbers $E_1 j_1$, the second particle with $E_2 j_2$, and they together have a total angular momentum $JM$ (the $M$ is sometimes left out).
+We introduce the \emph{coupled} basis with states $\pket{E_1j_1, E_2j_2; JM}$ meant to be read as: the first particle is described by the quantum numbers $E_1 j_1$, the second by $E_2 j_2$, and they together have a total angular momentum $JM$ (the $M$ is sometimes left out).
 The coupled states are related to the uncoupled by
 \begin{eq}
   \pket{E_1j_1, E_2j_2; JM} 
@@ -318,7 +333,7 @@ The coupled states are related to the uncoupled by
   \sum_{m_1, m_2} c_{m_1 m_2} \pket{E_1j_1m_1, E_2j_2m_2} .
 \end{eq}
 where $c_{m_1 m_2}$ are the \emph{Clebsch-Gordan coefficients} (which also depend on $j_1, j_2, J$ and $M$, though this is suppressed for brevity). 
-They are known expressions for these, and values can be found in standard tables or calculated in a fairly straight-forward way. 
+There are known expressions for these, and values can be found in standard tables or calculated in a fairly straight-forward way. 
 A more in-depth treatment of the coefficients can be found in \cite{suhonen}.
 
 \todo{do we need cite here?}
@@ -326,7 +341,7 @@ A more in-depth treatment of the coefficients can be found in \cite{suhonen}.
 If we study a system with rotational symmetry, the problem will be block diagonal in $J$ and $M$, meaning that we can study systems of different $J$ and $M$ separately.
 We have thus significantly decreased the dimension of the matrices that need to be computed and diagonalized. 
 
-\subsubsection{Antisymmetric Coupled Basis}
+\subsection{The Antisymmetric Coupled Basis}
 
 Since we are studying fermions, we need to use basis states that are antisymmetric with respect to exchange of all quantum numbers. Using the $m$ symmetry property of the Clebsch-Gordan coefficients,
 \begin{eq}
@@ -345,7 +360,8 @@ Hence it is possible to form the antisymmetric basis vector
   \ket{E_1 j_1 E_2 j_2; JM} &= \frac{1}{\sqrt{2}}\bigp{\pket{E_1 j_1 E_2 j_2;JM} - (-1)^{j_1+j_2-J}\pket{E_2 j_2 E_1 j_1;JM}} \\
   &= \sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 j_1 m_1, E_2 j_2 m_2}.
 \end{eq}
-Now consider the case where both particles are in the same orbital, $E_1 j_1 = E_2 j_2 = E j$. 
+
+Consider the case where both particles occupy the same orbital, $E_1 j_1 = E_2 j_2 = E j$. 
 Since, for fermions, $j$ is a half-integer we have $(-1)^{j_1+j_2 - J} = - (-1)^J$ and the result is
 \begin{eq}
   \ket{(Ej)^2; JM} = \frac{1+(-1)^J}{\sqrt{2}}\pket{(Ej)^2; JM} .
@@ -363,15 +379,17 @@ We can write this result succinctly as
   \\ & 
   \N_{ab} = \frac{\sqrt{1+(-1)^{J}\delta_{ab}}}{1+\delta_{ab}}
 \end{align}
-where we have used the notation $(a,\, b)$ for $(E_1j_1,\, E_2j_2)$.
+where we have used the notation $(a, b)$ for $(E_1j_1, E_2j_2)$.
 \subsection{Matrix elements in coupled scheme}
 \todo{Write about matrix elements in entire chapter PONTUS}
 
+\todo[inline]{saknar vi något här, OLA?}
 
 
 
 
 \section{Implementation}
+\label{sec:mb_implementation}
 
 \todo{read through, do we need more justification? OLA  - no /v}
 

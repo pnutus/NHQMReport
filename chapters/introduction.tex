@@ -2,10 +2,9 @@
 \begin{document}
 \chapter{Introduction}
 
-\todo[inline]{Check comments iv, vii, ix from Jimmy and read through. PONTUS}
 The properties of a quantum mechanical system is largely determined by its potential. 
-A particle in a potential well with infinitely high walls is completely bound and cannot leave the potential well.
-Such a system is a called a \emph{closed} quantum system, since the number of particles is conserved and the particles localized in a finite region. 
+Particles in a potential well with infinitely high walls are completely bound and cannot leave the potential well.
+Such a system is a called a \emph{closed} quantum system, since the number of particles is conserved and the particles are localized in a finite region. 
 The energy of a closed quantum system can only take on discrete values, as illustrated in \cref{fig:closed_quantum_system} with the harmonic oscillator potential.
 \todo{Talk about positive/negative energy?}
 
@@ -22,9 +21,8 @@ Depending on the depth of the potential well of the open system, there can be a 
 
 In addition to the bound and unbound states, some open quantum systems harbor \emph{resonances}. 
 These are \emph{quasi-bound} states that are neither bound nor unbound, but exhibit properties of both. 
-They appear in the continuum, like an unbound state.
-\todo[inline]{check sentences. PONTUS}
-Its wavefunction is localized for a finite amount of time, as opposed to a bound state that stays forever the same.
+They appear in the continuum, like unbound states.
+Its wavefunction is localized for a finite amount of time, as opposed to a bound, \emph{stationary} state that forever stays the same.
 Perhaps most curious is that the norm of the resonance state decreases exponentially with time.\todo{how do whe know this?}
 This can be expressed mathematically if we let the resonance correspond to a complex energy, as the following argument suggests.
 
@@ -99,19 +97,27 @@ This can be expressed mathematically if we let the resonance correspond to a com
 \todo[inline]{Plot colors????? Do red/gray look good printed without color?}
 \todo{fixa klart figuren, linje tjocka?}
 
-The time evolution of a quantum system is governed by the Schrödinger equation
+The state of a particle is described by its wavefunction $\psi$, which can be written as the product of a function of time and position
+\begin{eq}
+  \psi(t, \vec{r}) = \psi_t(t)\psi_{\vec{r}}(\vec{r}).
+\end{eq}
+The wavefunction evolves according to the Time-Dependent Schrödinger Equation (TDSE)
 \begin{eq}
   \label{eq:schrödinger}
   i\hbar\ddt\ket\psi = H \ket\psi.
 \end{eq}
-The time-dependency of an eigenstate to the Hamiltonian with energy $E$ is 
+An eigenstate of the Hamiltonian $H$ with energy $E$, i.e. a solution to the Time-Independent Schrödinger Equation (TISE)
 \begin{eq}
-	\psi(t)
+  H \ket\psi = E \ket\psi
+\end{eq}
+has the simple time evolution
+\begin{eq}
+	\psi_t(t)\psi_{\vec{r}}(\vec{r})
 	= 
-  \exp\p{-\frac{iE}{\hbar}t}\psi(0).
+  \exp\p{-\frac{iE}{\hbar}t}\psi_t(0)\psi_{\vec{r}}(\vec{r}).
 \end{eq}
 With the energy $E$ real, the exponential factor is just a phase 
-and the norm $|\psi(t)|^2$ is unchanged over time. 
+and the probability $|\psi(t)|^2$ of finding the particle at a given $\vec{r}$ is unchanged over time. 
 However, if we let the energy be complex
 \begin{eq}
 	E = E_0 - i\frac{\Gamma}{2},
@@ -126,25 +132,16 @@ we get
   =
   \exp\p{-\frac{\Gamma}{\hbar} t} \absq{\psi(0)}
 \end{eq} 
-which describes a state that decays exponentially with half-life 
-$t_{1/2}=\hbar\ln 2/\Gamma$. $\Gamma$ is called the \emph{width} of the resonance.
+which describes a state with \emph{width} $\Gamma$ that decays exponentially with half-life $t_{1/2}=\hbar\ln 2/\Gamma$. 
 
-\todo[inline]{Talk about width here? Needs to be better. Figure of experimental resonance?}
- % Heisenberg's uncertainty principle gives a relation between energy and time
- % \begin{equation}
- %    \Delta E \Delta t \ge \frac{\hbar}{2}.
- % \end{equation}
- % Hence a state with finite life time must have an uncertainty in its energy spectrum, called the \emph{width} of a resonant state. It is this width that is measured in experiments.
- 
-\todo[inline]{We should mention the parallel to tunneling and radioactive decay. -or should we?}
-
-It seems like we need complex energies to describe resonances. 
+We want to use the simpler formalism of the TISE, as opposed to the more general TDSE, and we see that this is possible by letting the resonance have a complex energy.
 However, complex eigenvalues pose a problem in standard quantum mechanics, where operators are postulated to be Hermitian.
-\todo{Introduce that eigenvalues to the hamiltonian are energies, or can we take this for granted?}
 Hermitian operators can only have real eigenvalues, and are thus insufficient for treating resonances.
 
-\todo{aim?}The aim of this thesis is to present methods for dealing with the complex energies that describe resonances. To demonstrate the methods, we will use 
-the simple nuclear systems \He{5} and \He{6}, where the ground state of \He{5} and the exite states of \He{6} are unbound and the ground state of \He{6} beeing an example of a \emph{Borromean} system.
+\todo{aim?}
+The aim of this thesis is to present methods for describing resonances using the complex energy. 
+To demonstrate the methods, we will study the simple nuclear systems \He{5} and \He{6}, since the ground state of \He{5} and the first excited state of both \He{5} and \He{6} are resonances. 
+The ground state of \He{6} is bound, an example of a \emph{Borromean} system, named after the Borromean rings depicted on the cover of the thesis.
 
 The thesis can be thought of as divided into two parts, the first covering resonances in a simple two-body problem and the second part covering the first steps toward more complicated many-body systems. 
 In \cref{cha:basis_expansion} the \emph{basis expansion} method for solving the Schrödinger equation is introduced.
