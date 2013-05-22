@@ -277,7 +277,8 @@ The double counting can be avoided, however, by taking into account the ordering
   \bra{\alpha \beta} H_2 \ket{\gamma \delta} 
   a_\alpha^\dag a_\beta^\dag a_\delta a_\gamma.
 \end{eq}
-For the case of two particles we have
+
+For the special case of two particles we have
 \begin{eq}
   \label{eq:two-body_matrix_elements}
   \bra{ab} \hat{H}_2 \ket{cd}
@@ -296,8 +297,6 @@ For the case of two particles we have
   \bra{ab} H_2 \ket{cd},
 \end{eq}
 as expected.
-
-
 
 \section{Angular Momentum Coupling}
 \label{sec:coupling}
@@ -334,7 +333,7 @@ A more in-depth treatment of the coefficients can be found in \cite{suhonen}.
 Working with matrix elements between coupled basis states is called working in the \emph{coupled scheme} or \emph{$J$-scheme}.
 If we study a system with rotational symmetry, the Hamiltonian will be block diagonal in $J$ and $M$, meaning that working in the coupled scheme will be much more efficient.
 
-\subsection{The Antisymmetric Coupled Basis}
+\subsection{Antisymmetrizing the Coupled Basis}
 
 Since we are studying fermions, we need to use basis states that are antisymmetric with respect to exchange of all quantum numbers. Using the $m$ symmetry property of the Clebsch-Gordan coefficients,
 \begin{eq}
@@ -374,18 +373,10 @@ We can write this result succinctly as
 \end{align}
 where we have used the notation $(a, b)$ for $(E_1j_1, E_2j_2)$.
 
-\subsection{Matrix elements in coupled scheme}
-\todo{Write about matrix elements in entire chapter PONTUS}
+\todo{OLA OLA THEOREM}
 
-\todo[inline]{saknar vi något här, OLA? OLA OLA THEOREM}
-
-
-
-
-\section{Implementation}
+\section{Second Quantization Implementation}
 \label{sec:mb_implementation}
-
-\todo{read through, do we need more justification? OLA  - no /v}
 
 To use the Fock space formalism in numerical calculations we have to represent the quantum states using available data structures. 
 We construct sp states and use them to form antisymmetric Fock states.
@@ -412,10 +403,13 @@ The creation operator function steps through the list, flipping the sign at each
 If the particle is already part of the Fock state, the sign is set to 0.
 The annihilation operator searches for a state, saves its index $k$ in the list, annihilates it and set the sign to $(-1)^k$. If the state not exists, the sign is set to 0.
 
-\subsection{Matrix Element Computations}
+\subsection{Fock Operator Matrix Elements}
 
-When computing the matrix elements, we do do not
-\todo{finish this section PONTUS}
+When computing matrix elements of a Fock space operator, most terms in the sum vanish. 
+This is because most states will become zero when acted on by the creation and annihilation operators (equations \cref{eq:create_zero,eq:annihilate_zero}).
+Evaluating a sum of mostly zero elements is not very efficient, but this can be 
+avoided by letting the sum run over just the sp states present in the bras and kets.
 
+\todo{behöver detta vara tydligare? /pontus}
 
 \end{document}
