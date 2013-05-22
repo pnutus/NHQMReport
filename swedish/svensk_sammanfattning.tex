@@ -44,17 +44,28 @@ Genom teori förklarad i huvudrapporten kan vi skriva vårt problem på formen
 Vi har alltså skrivit om Schrödingerekvationen till en matrisekvation som löses med hjälp av en egenvärdeslösare på datorn.
 
 För att göra våra beräkningar kortare och enklare inskränker vi oss till sfäriskt symmetriska problem, vilket drar ner komplexitet och därigenom beräkningstid betydligt.
+Genom en skalapproximation kan vi betrakta kärnan som en alfapartikel och en valensneutron där alfapartikeln kan anses vara punktformad och ger upphov till en woods-saxonpotential, vilken valensneutronen känner av.
+Woods-Saxonpotentialen ser ut som följer
+\begin{eq}
+	w-s.
+\end{eq}
+De parametrar som använts är: PARAMS
+\todo{Bra upplägg med potential??}
 
 Den bas vi börjar med att använda består av harmoniska oscillatorer, vilket ger oss matriselement på formen
 \begin{eq}
 2.15, ev 2.16 också.
 \end{eq}
-Det visade sig snart dock att denna bas inte räckte till när vi ville betrakta resonanser, även om den fungerade bra till bundna tillstånd.
-Istället introducerar vi en planvågsexpansion som går ut på att vi väljer vissa diskreta punkter i rörelsemängdsrummet och utvecklar problemet i denna bas. \todo[inline]{Är detta någolunda rätt förklarat.}
-Efter detta kunde vi nu se tendenser till en resonans hos \He{5}, men hade inget sätt att bestämma dess komplexa delar.
+Det visade sig snart dock att denna bas inte räckte till när vi ville betrakta resonanser, då det enda vi kan se är en avvikelse hos den energinivån när vi plottar de lägsta energinivåerna mot oscillatorns räckvidd.
+
+För att råda bot på detta introducerar vi en planvågsexpansion som går ut på att vi väljer vissa diskreta punkter i rörelsemängdsrummet och utvecklar problemet i denna bas.
+Efter detta kunde vi nu se tydliga tendenser till en resonans hos \He{5}, men hade inget sätt att bestämma dess komplexa delar.
 
 För att beskriva resonansen på ett bra sätt använder vi Tore \emph{Berggren}s teori och utökar basen till att även innehålla komplexa rörelsemängdsmoment.
 Detta betyder att vi istället för att låta våra planvågspunkter ligga längs den reella axeln låter de gå ner i den fjärde kvadranten och runt den pol som svarar mot resonansen.
+Denna går då att lokalisera och vi varrierar våra parametrar för att polen ska ligga så nära den experimentellt bestämda resonansen som möjligt.
+Resulattet av detta blev:
+\todo[inline]{tabellsaker.}
 
 \subsection{Flerkroppssaker}
 Nu när vi har lokaliserat resonansen i \He{5} kan vi anse oss ha löst tvåkropparsfallet och vill då naturligtvis gå vidare med tre.
