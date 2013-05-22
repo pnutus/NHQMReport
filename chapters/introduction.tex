@@ -7,9 +7,9 @@ Particles in a potential well with infinitely high walls form localized bound st
 Such a system is a called a \emph{closed quantum system}, since the number of particles is conserved and the particles are localized in a finite region. 
 The energy of a closed quantum system can only take on discrete values, as illustrated in \cref{fig:closed_quantum_system} with the harmonic oscillator potential.
 
-An \emph{open quantum system}, on the other hand, portrayed in \cref{fig:open_quantum_system}, is neither closed nor completely free.
-Here, the potential vanishes at infinity.
-Particles can thus enter and exit the system and, consequently, there are unbound states.
+An \emph{open quantum system}, on the other hand, portrayed in \cref{fig:open_quantum_system}, is a system with a finite potential.
+For a system with a vanishing potential particles can enter and exit the system and, consequently, there are unbound states. 
+For a trivial potential these are just free particle states but for a non-negligible potential these are denoted \emph{scattering states}.
 Depending on the depth of the potential well of the open system, there can be a finite number of bound states.
 
 In addition to the bound and unbound states, some open quantum systems harbor \emph{resonances}. 
@@ -125,7 +125,7 @@ we get
   =
   \exp\p{-\frac{\Gamma}{\hbar} t} \absq{\psi(0, \vec{r})}
 \end{eq} 
-describing a resonance state decaying exponentially with half-life $t_{1/2}=\hbar\ln 2/\Gamma$. $\Gamma$ is called the \emph{width} of the resonance.
+describing a resonance state decaying exponentially with half-life $t_{1/2}=\hbar\ln 2/\Gamma$. This parameter $\Gamma$ is called the \emph{width} of the resonance.
 
 \todo{width/scattering argument?}
 
@@ -134,10 +134,10 @@ However, complex eigenvalues pose a problem in standard quantum mechanics, where
 Hermitian operators can only have real eigenvalues, and are thus insufficient for treating resonances.
 
 \todo{aim?}
-The aim of this thesis is to present methods for describing resonances using the TISE and a complex energy. 
+The aim of this thesis is to present methods for describing resonances using the TISE in a complex-energy framework. 
 To demonstrate the methods, we will study the simple nuclear systems \He{5} and \He{6}.
 They are relevant because the ground state of \He{5} and the first excited state of both \He{5} and \He{6} are resonances. 
-Despite the unbound nature of \He{5}, the ground state of \He{6} is bound, an example of a \emph{Borromean} system, named after the Borromean rings depicted on the cover of this thesis.
+Despite the unbound nature of \He{5}, Despite the unbound nature of \He{5}, the ground state of \He{6} is actually bound, an example of a \emph{Borromean} system, named after the Borromean rings depicted on the cover of this thesis.
 
 The thesis can conceptually be divided into two parts, the first covering resonances in a simple two-body problem and the second part covering the first steps toward more complicated many-body systems. 
 In \cref{cha:basis_expansion} the \emph{basis expansion} method for solving the Schrödinger equation is introduced.
