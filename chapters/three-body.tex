@@ -35,9 +35,8 @@ The Borromean rings are three rings interlocked in such a way that, if any one r
 \end{figure}
 
 \section{The \He{6} Nucleus}
-\todo{He6 approach to writing PONTUS}
 
-We treat the three-body system as a combination of two identical two-body systems of core and neutron, i.e. two ``one-particle'' systems with the same reduced mass $\mu$ as in \cref{cha:two-body}.
+We treat the \He{6} system as a combination of two identical \He{5} systems of core and neutron, i.e. two ``one-particle'' systems with the same reduced mass $\mu$ as in \cref{cha:two-body}.
 The validity of this approach is not immediately obvious, but 
 if the two neutrons have like parity there will be no recoil of the core \cite{suzuki}. 
 The parity depends solely on $l$ and we only consider neutrons in the $p$ orbitals ($l=1$), so the approach is valid.
@@ -47,8 +46,8 @@ The Hamiltonian takes on the form
   \hat{H} = \hat{H}_1 + \hat{V}\sub{res}
 \end{eq}
 where $\hat{H}_1$ is the Hamiltonian of the two-body problem and $\hat{V}\sub{res}$ is the residual neutron-neutron interaction.
-To compute the Hamiltonian matrix we will use the eigensolutions $\ket{\psi_i}$ from the previous two-body problem as single-particle basis states. 
-The neutron-core pairs are fermions, so we form antisymmetric two-particle Fock states $\ket{\psi_i, \psi_j}$.
+To compute the Hamiltonian matrix we will use the eigensolutions $\ket{E_i}$ from the \He{5} problem as single-particle basis states. 
+The neutron-core pairs are fermions, so we form antisymmetric two-particle Fock states $\ket{E_i, E_j}$.
 Because our basis consists of the eigenstates of $\hat{H}_1$, we can use \cref{eq:one-body_matrix_elements,eq:two-body_matrix_elements} to write the matrix elements as
 \begin{eq}
   \bra{ab} \hat{H} \ket{cd} 
@@ -61,6 +60,7 @@ where $E_\alpha$ are the energy eigenvalues of the two-body problem.
 Finally, the states are coupled according to \cref{sec:coupling} to reduce the size of the Hamiltonian matrix.
 The coupled matrix elements are
 \begin{eq}
+  \label{eq:coupled_matrix_elements}
   \bra{ab; J} H \ket{cd; J}
   & =
   \frac{1 + (-1)^J\delta_{ab}}{1 + \delta_{ab}}
@@ -95,7 +95,7 @@ The range $R$ and strength $V\sub{GI}$ are fitting parameters.
 In \cref{fig:gaussian} we see that the potential in a rough sense satisfies the expected properties of the interaction. If at least one neutron is far from the core, the other will experience little attraction. If both neutrons are in the vicinity of the core, they will experience a stronger attraction.
 
 
-\begin{figure}[h]
+\begin{figure}[t]
   \centering
     \begin{tikzpicture}
       \begin{axis}[
@@ -219,14 +219,17 @@ with $\widehat{j_\alpha} = \sqrt{2j_\alpha + 1}$ and
 $\psi_\alpha(r)$ being the radial wavefunction.
 
 \section{The \He{6} Solutions}
-\todo{With/without resonance in basis?}
 
-Now that we know the interaction matrix elements, we can proceed and solve the Schrödinger equation for the \He{6} nucleus. 
-The parameters of our interactions will be fit to the known ground state\cite{ajzenberg? or better} of \He{6}, and a prediction for the excited $2^+$ state --- a resonance --- can be made. 
-\Cref{tab:he6_resonance_data} summarizes the results of this investigation. 
+We solve the \He{6} Schrödinger equation in the coupled scheme, using \cref{eq:coupled_matrix_elements} for the matrix elements. We first consider the gaussian interaction, followed by the SDI.
+The parameters of our interactions will be fit to the known $0^+$ ground state of \He{6}. The parameters are then used to make a prediction for the excited $2^+$ state---a resonance. To find the resonance, we have to include the resonance of \He{5} in the sp basis. 
+
+\subsection{Using a Gaussian Interaction}
+
+We began bysetting the range $R$ of the gaussian potential to the same value as the Woods-Saxon range, \SI{2}{fm}. The strength $V\sub{GI}$ was then fitted to reproduce the \He{6} ground state.
+\cref{tab:he6_gaussian} summarizes the results of this investigation. 
 
 It is clearly seen that the Gaussian interaction is unsuitable to describe this system. 
-It is degenerate in $J$ and will thus not reproduce the excited $2^+$ state of \He{6}. 
+It is degenerate in $J$, meaning there is no distinction between the ground and excited states.
 It is possible to fit $V_0$ to reproduce the ground state energy. However, with the range $r_0$ set to \SI{2}{fm}, it does not produce a resonance.
 A wide resonance ($\Gamma > \SI{6}{MeV}$) forms when the range is decreased to \SI{1}{fm}, but doing so requires larger values of $k$ to be included in the basis. 
 This rapidly increases computation time, making the method uneffective.
