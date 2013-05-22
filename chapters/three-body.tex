@@ -48,7 +48,9 @@ The Hamiltonian takes on the form
 where $\hat{H}_1$ is the Hamiltonian of the two-body problem and $\hat{V}\sub{res}$ is the residual neutron-neutron interaction.
 To compute the Hamiltonian matrix we will use the eigensolutions $\ket{E_i}$ from the \He{5} problem as single-particle basis states. 
 We can do this because of the Berggren completeness relation \cref{eq:berggren_completeness_relation}, proving the completeness of this basis. 
-The neutron-core pairs are fermions, so we form antisymmetric two-particle Fock states $\ket{E_i, E_j}$.
+Using the Berggren basis in this way to build more complex nuclei is referred to as the \emph{Gamow Shell Model}.
+
+The neutrons are fermions, so we form antisymmetric two-particle Fock states $\ket{E_i, E_j}$, according to the theory in \cref{cha:many-body}.
 Because our basis consists of the eigenstates of $\hat{H}_1$, we can use \cref{eq:one-body_matrix_elements,eq:two-body_matrix_elements} to write the matrix elements as
 \begin{eq}
   \bra{ab} \hat{H} \ket{cd} 
