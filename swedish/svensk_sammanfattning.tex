@@ -12,13 +12,13 @@
 
 
 \title{Kvantresonanser behandlade i en komplex rörelsemängdsbas \\ 
-\Large Kandidatrapport i fysik, svensk sammanfattning}
+\Large Kandidatrapport i fysik, svensk sammanfattning FUFX02–13–03 }
 \author{Jonathan Bengtsson \and Ola Embréus \and Vincent Ericsson \and Pontus Granström \and Nils Wireklint}
 \date{\today}
 \maketitle
 \newpage
 
-\todo{Bör ha med kurskod}
+
 
 
 Beteendet hos ett kvantmekaniskt system beskrivs av dess Hamiltonian som består av en rörelsmängdsterm och en potentialterm.
@@ -28,7 +28,7 @@ Ett \emph{öppet kvantsystem} kan ha ett spektrum som är både diskret och kont
 I det kontinuerliga spektrumet hos ett öppet kvantsystem kan uppstå något som kallas \emph{resonans}.
 Ett resonanstillstånd är obundet, men diskret och lokaliserat, och brukar kallas \emph{kvasibundet}.
 
-Syftet med detta projekt är att studera dessa resonanser, specifikt \He{5} och \He{6}, lätta atomkärnor som är obunden resp. löst bunden.
+Syftet med detta projekt är att studera dessa resonanser, specifikt hos \He{5} och \He{6}, lätta atomkärnor som är obunden respektive löst bunden.
 Vi gör detta genom att betrakta den tidsoberoende Schrödingerekvationen, ett egenvärdesproblem
 \begin{eq}
   H \ket\psi = E \ket\psi.
@@ -42,11 +42,11 @@ Vi gör en naturlig inskränkning till sfäriskt symmetriska problem, vilket min
 
 Rapporten behandlar två fullständiga baser, den sfäriska harmoniska oscillatorns bas och rörelsemängdsbasen. 
 Rörelsemängdsbasen är kontinuerlig och kräver diskretisering som utförs med hjälp av Gauss-Legendrekvadratur. 
-Kvadraturen används även för att beräkna de integraler vid beräkning av matriselement.
+Kvadraturen används även för att beräkna integraler vid beräkning av matriselement.
 
 \section{\He{5}-systemet}
 
-Genom en skalmodell kan \He{5}-kärnan betraktas två partiklar, en alfapartikel och en valensneutron. Detta tillåter att problemet reduceras till en dimension.
+Genom en skalmodell kan \He{5}-kärnan betraktas som två partiklar, en alfapartikel och en valensneutron. Detta tillåter att problemet reduceras till en dimension.
 Alfapartikeln och neutronen växelverkan approximeras i skalmodellen med Woods-Saxonpotentialen
 \begin{eq}
 	V(r) & =
@@ -71,8 +71,8 @@ Vi kunde dock inte kvantifiera resonansens egenskaper, utan bara göra kvalitati
 		\includegraphics[page=3]{../figures/wavefunctions/wavefunctions.pdf}
 }
   \caption{
-    \He{5} Vågfunktioner för olika starka potentialer. Den unika lokaliserade lösningen till SE markers i rött och en vanlig obunden tillstånd visas i grått.
-    Till vänster uppvisar en stark potential $V_0 = \SI{70}{MeV}$ ett bundet tillstånd medan vi har ett lokaliserat obundet tillstånd tillvänster vid potentialen $V_0 = \SI{47}{MeV}$.
+    \He{5} Vågfunktioner för olika starka potentialer. Den unika lokaliserade lösningen till SE markers i rött och en vanlig obunden lösning visas i grått.
+    Till vänster uppvisar en stark potential $V_0 = \SI{70}{MeV}$ ett bundet tillstånd medan vi har ett lokaliserat obundet tillstånd till höger vid potentialen $V_0 = \SI{47}{MeV}$.
   } 
   }
   \label{fig:resonance_wavefunction}
@@ -80,7 +80,7 @@ Vi kunde dock inte kvantifiera resonansens egenskaper, utan bara göra kvalitati
   
 \section{Den komplexa rörelsemängdsbasen}
 
-För att bättre beskriva resonansen introducerar vi det komplexa rörelsemängdsplanet, \cref{fig:simple_contour}, där energiegenlösningar svarar mot en rörelsemängd $k = \sqrt{2mE}{\hbar}$.
+För att bättre beskriva resonansen introducerar vi det komplexa rörelsemängdsplanet, \cref{fig:simple_contour}, där energiegenlösningar svarar mot en rörelsemängd $k = \frac{\sqrt{2mE}}{{\hbar}}$.
 Bundna lösningar representeras av diskreta poler på positiva imaginäraxeln, obundna lösningar ligger kontinuerligt längs positiva realaxeln och resonanser är poler i fjärde kvadranten.
 Vi ser kontinuumlösningarna som en kontur, och deformerar denna till att omsluta resonanspolen \cref{fig:berggren_contour}. 
 Resonansen blir då en av lösningarna till Schrödingerekvationen, tillsammans med kontinuumtillstånden längs konturen och eventuella bundna tillstånd.
@@ -90,7 +90,7 @@ Innan vi utnyttjar detta återgår vi till att studera \He{5}, nu i den komplexa
 
 \section{Flerkropparsproblem och \He{6}}
 En naturlig utveckling av \He{5} är att lägga till ytterligare en neutron och på så sätt nå \He{6}. 
-Då kan vi inte längre kan reducera problemet till en dimension, utan behöver använda mångkropparsteori.
+Då vi kan inte längre reducera problemet till en dimension, utan behöver använda mångkropparsteori.
 Vi sammanfattar de viktigaste resultaten: antisymmetriska fermiontillstånd, ockupationstalrepresentation och rörelsemängdsmomentskoppling.
 Ett kort avsnitt ger ett förslag på en implementation av ockupationstalsrepresentationen.
 
