@@ -3,8 +3,6 @@
 
 \chapter{The Complex-Momentum Basis}
 \label{cha:berggren}
-
-\todo{momentum/plane wave search and destroy OLA}
 \todo{read through OLA SPILL}
 In \cref{cha:two-body} we studied the \He{5} system and found a special state in the continuum, the resonance.
 We will in this chapter detail a method of extending the momentum basis to the complex plane, which gives a more complete description of resonances. 
@@ -29,7 +27,7 @@ If we relate the energies $E$ of a system to momenta $k$ as
 \end{eq}
 we can plot the solutions as $k$ in the complex plane, see 
 \cref{fig:complex plane}. 
-We then expect bound states, with $E<0$, to be represented by discrete $k$ along the imaginary axis---whereas unbound, scattering states, with $E>0$, are found continuously along the real axis. 
+We then expect bound states, with $E<0$, to be represented by discrete $k$ along the imaginary axis---whereas unbound states with $E>0$, are found continuously along the real axis. 
 Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument appear somewhere in the fourth quadrant.
 
 \begin{figure}
@@ -99,7 +97,7 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
 
 \todo{label on right resonance SPILL}
 
-We now interpret the bound and resonant $k$ as complex poles and the unbound continuum as a contour, mirrored in the imaginary axis, encircling the upper half plane (\cref{fig:simple_contour}).
+\todo[inline]{this seems like a big leap of faith?. Ask Jimmy about this subsection?} We now interpret the bound and resonant $k$ as complex poles and the unbound continuum as a contour, mirrored in the imaginary axis, encircling the upper half plane (\cref{fig:simple_contour}).
 The integral to be evaluated along the contour is the one in the radial momentum space Schrödinger equation
 \begin{eq}
   \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k') 
@@ -108,7 +106,8 @@ The integral to be evaluated along the contour is the one in the radial momentum
 \end{eq}
 The result of a contour integration depends on the poles it encircles by the residue theorem. 
 The contour in \cref{fig:simple_contour} encircles the bound states, but not the resonance.
-We suspect a deformation of the contour, such that it encircles the resonance might have an effect on the solutions.
+We suspect a deformation of the contour, such that it encircles the resonance, might have an effect on the solutions.
+\todo{Encircle sounds a bit weird? 'Includes'?}
 
 \subsection{The Berggren Completeness Relation}
 
@@ -120,16 +119,17 @@ The result can be stated succinctly in the \emph{Berggren completeness relation}
   \sum_{\substack{\text{bound} \\ \text{resonant}}} \ket{E_n}\bra{E_n} 
   + \fint[L_+]{k} k^2 \ket{E_k}\bra{E_k} = 1.
 \end{eq}
-This is an important result, because of the inclusion of the resonances in the basis.
+This is an important result, because of the inclusion of the resonances in the basis.\todo[inline]{'the Berggren basis' is thus far undefined}
 As we will see in \cref{cha:three-body}, the Berggren basis is what allows us to find resonances in systems with more particles.
 
+\todo[inline]{berättande stil?}
 An observant reader may have noticed that the resonant poles in \cref{fig:contours} are mirrored in the imaginary axis and that the contour has a shadow on the left half plane.
-Berggren shows that the symmetry of the states allows us to see the contour segment from 0 to $\inf$ as a contour integral around the upper half plane. 
-A curious, but important, fact that follows from the symmetry is that the standard scalar product (and thus the norm)
+Berggren showed that this symmetry allows us to restrict ourselves to the contour segment from 0 to $\inf$. 
+However, doing this leads to a new scalar product (and thus norm) that must be used: 
 \begin{eq}
   \braket{\phi}{\phi'} = \fint[0][\inf]{k} k^2 \conj{\phi(k)}\phi'(k)
 \end{eq}
-is replaced with
+is replaced by
 \begin{eq}
   \braket{\phi}{\phi'} = \fint[0][\inf]{k} k^2 \phi(k)\phi'(k)
 \end{eq} 
@@ -145,7 +145,7 @@ The tip of the triangle is placed below the hypothesized resonance pole.
 We are faced with the problem of evaluating this contour integral numerically. 
 We can solve this by considering each straight segment of the contour separately,
 and write it as a sum of three integrals, each treated with Gauss-Legendre quadrature according to \cref{app:gauss-legendre}.
-An example of a contour is seen in \cref{fig:triangle_contour}, marking each quadrature point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the Gauss-Legendre quadrature (see \cref{app:gauss-legendre}).
+An example of a contour is seen in \cref{fig:triangle_contour}, marking each quadrature point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the Gauss-Legendre quadrature.
 
 With this procedure, we once again get the Schrödinger equation on the same discretized form as \cref{eq:plane_wave_matrix_elements}:
 \begin{eq}
