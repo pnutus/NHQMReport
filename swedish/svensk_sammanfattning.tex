@@ -44,31 +44,52 @@ Rapporten behandlar två fullständiga baser, den sfäriska harmoniska oscillato
 Rörelsemängdsbasen är kontinuerlig och kräver diskretisering som utförs med hjälp av Gauss-Legendrekvadratur. 
 Kvadraturen används även för att beräkna de integraler vid beräkning av matriselement.
 
+\section{\He{5}-kärnan}
+
 Genom en skalmodell kan \He{5}-kärnan betraktas två partiklar, en alfapartikel och en valensneutron. Detta tillåter att problemet reduceras till en dimension.
-Alfapartikeln och neutronen växelverkar med en Woods-Saxonpotential:
+Alfapartikeln och neutronen växelverkan approximeras i skalmodellen med Woods-Saxonpotentialen
 \begin{eq}
-	w-s.
+	V(r) & =
+	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr},
+  \\
+	f(r) & = \b{1+\exp\p{\frac{r-r_0}{d}}}^{-1}.
 \end{eq}
-De parametrar som använts är: PARAMS
-\todo{Bra upplägg med potential??}
 
-Den bas vi börjar med att använda består av harmoniska oscillatorer, vilket ger oss matriselement på formen
-\begin{eq}
-2.15, ev 2.16 också.
-\end{eq}
-Det visade sig snart dock att denna bas inte räckte till när vi ville betrakta resonanser, då det enda vi kan se är en avvikelse hos den energinivån när vi plottar de lägsta energinivåerna mot oscillatorns räckvidd.
+Schrödingerekvationen för \He{5}-system löses i både harmoniska oscillatorbasen och rörelsemängdsbasen. Den harmoniska oscillatorn är ett stängt system med bara bundna egenlösningar och passar därför dåligt för att analysera det öppna \He{5}-systemet. 
 
-För att råda bot på detta introducerar vi en planvågsexpansion som går ut på att vi väljer vissa diskreta punkter i rörelsemängdsrummet och utvecklar problemet i denna bas.
-Efter detta kunde vi nu se tydliga tendenser till en resonans hos \He{5}, men hade inget sätt att bestämma dess komplexa delar.
+Rörelsemängdsbasens egenlösningar beskriver fria partiklar, vilket ligger mycket närmre den obundna \He{5}-kärnan. 
+I denna bas ser vi att en av lösningarna till Schrödingerekvationen står ut (\cref{fig:resonance_wavfunction}).
+Den befinner sig i kontinuumet, liksom resten av lösningarna, men dess vågfunktion är lokaliserad, ett tecken på att det är en resonans.
+Vi kunde dock inte kvantifiera resonansens egenskaper, utan bara göra kvalitativa bedömningar.
 
-För att beskriva resonansen på ett bra sätt använder vi Tore \emph{Berggren}s teori och utökar basen till att även innehålla komplexa rörelsemängdsmoment.
-Detta betyder att vi istället för att låta våra planvågspunkter ligga längs den reella axeln låter de gå ner i den fjärde kvadranten och runt den pol som svarar mot resonansen.
-Denna går då att lokalisera och vi varrierar våra parametrar för att polen ska ligga så nära den experimentellt bestämda resonansen som möjligt.
-Resulattet av detta blev:
-\todo[inline]{tabellsaker.}
+\begin{figure}
+\centering{
+	\subfloat[$V_0=\SI{70}{MeV}$]{
+		\includegraphics[page=1]{../figures/wavefunctions/wavefunctions.pdf}
+	}
+	\subfloat[$V_0 = \SI{47}{MeV}$]{
+		\includegraphics[page=3]{../figures/wavefunctions/wavefunctions.pdf}
+}
+  \caption{
+    \He{5} Vågfunktioner för olika starka potentialer. Den unika lokaliserade lösningen till SE markers i rött och en vanlig obunden tillstånd visas i grått.
+    Till vänster uppvisar en stark potential $V_0 = \SI{70}{MeV}$ ett bundet tillstånd medan vi har ett lokaliserat obundet tillstånd tillvänster vid potentialen $V_0 = \SI{47}{MeV}$.
+  } 
+  }
+  \label{fig:resonance_wavefunction}
+  \end{figure}
+  
+\section{Den komplexa rörelsemängdsbasen}
 
-\subsection{Flerkroppssaker}
-Nu när vi har lokaliserat resonansen i \He{5} kan vi anse oss ha löst tvåkropparsfallet och vill då naturligtvis gå vidare med tre.
+För att bättre beskriva resonansen introducerar vi det komplexa rörelsemängdsplanet, \cref{fig:simple_contour}, där energiegenlösningar svarar mot en rörelsemängd $k = \sqrt{2mE}{\hbar}$.
+Bundna lösningar representeras av diskreta poler på positiva imaginäraxeln, obundna lösningar ligger kontinuerligt längs positiva realaxeln och resonanser är poler i fjärde kvadranten.
+Vi ser kontinuumlösningarna som en kontur, och deformerar denna till att omsluta resonanspolen \cref{fig:berggren_contour}. 
+Resonansen blir då en av lösningarna till Schrödingerekvationen, tillsammans med kontinuumtillstånden längs konturen och eventuella bundna tillstånd.
+Enligt Berggrens teori \cite{berggren} bildar lösningarna en fullständig bas, ett viktigt resultat som låter oss använda lösningarna för att bygga flerpartikeltillstånd.
+
+Innan vi utnyttjar detta återgår vi till att studera \He{5}, nu i den komplexa rörelsemängdsbasen. Med den nya metoden lyckas vi återskapa experimentella värden, och vi kan anpassa Woods-Saxonpotentialens parametrar utifrån observerad data. \Cref{tab:resonances} visar resultatet av denna anpassning.
+
+\subsection{Flerkropparsproblem och \He{6}}
+En naturlig utveckling av \He{5} är att lägga till ytterligare en neutron och på så sätt nå \He{6}.
 Detta är svårare då vi inte längre kan reducera problemet till en dimension och det faktum att matriserna nu tar en betydande tid att diagonalisera.
 
 Det trekropparssystem vi vill undersöka är \He{6}, vilket är vår naturliga övergång ifrån \He{5}.
@@ -94,24 +115,7 @@ Denna växelvärkan är extremt komplicerad och är inte heller helt känd, ist�
 \subsection{saker}
 
 
-\begin{figure}
-\centering{
-	\subfloat[$V_0=\SI{70}{MeV}$]{
-		\includegraphics[page=1]{../figures/wavefunctions/wavefunctions.pdf}
-	}
-	\subfloat[$V_0 = \SI{47}{MeV}$]{
-		\includegraphics[page=3]{../figures/wavefunctions/wavefunctions.pdf}
-}
 
-
-
-  \caption{
-    \He{5} Vågfunktioner för olika starka potentialer. Den unika lokaliserade lösningen till SE markers i rött och en vanlig obunden tillstånd visas i grått.
-    Till vänster uppvisar en stark potential $V_0 = \SI{70}{MeV}$ ett bundet tillstånd medan vi har ett lokaliserat obundet tillstånd tillvänster vid potentialen $V_0 = \SI{47}{MeV}$.
-  } 
-  }
-  \label{fig:resonance wavefunction}
-  \end{figure}
 
 
 \end{document}

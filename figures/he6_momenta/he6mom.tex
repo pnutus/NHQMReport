@@ -2,12 +2,11 @@
 \usepackage{../../main/NHQM}
 
 \begin{document}
-
+\tikzset{every mark/.append style={scale=0.5}}
    \pgfplotsset{
      width = 14cm,
      height = 8cm,
      axis lines = middle,
-     xmin = -0.01, xmax = 0.5,
      enlargelimits,
      ylabel=Im $k/\b{\si{fm^{-1}}}$,
 	 xlabel=Re $k/\b{\si{fm^{-1}}}$,
@@ -22,18 +21,19 @@
      anchor = north,
      },
      every x tick label/.append style = {anchor = south, yshift = 3pt},
-	 xtick={0.15,0.25,0.35,0.45},
-     ymax = 0.04,
-     ytick = {-0.2,-0.1},
-       create on use/Y/.style={create col/copy column from table={imag_he6_momenta736.data}{0}}
+	 xtick={1,1.5,...,3}
    }
    \begin{tikzpicture}
-     \begin{axis}[	 
-       ymax = 0.04,
+     \begin{axis}[
        legend style={at={(0.6,0.4)}, anchor=north,legend columns=1},
 	   ]
-       \addplot table [] {test.data};
-       \addlegendentry{continuum states}
+	   \addplot [only marks, color=red, mark=diamond*, ultra thin] table {res.data};
+	   \addlegendentry{Resonance}
+       \addplot [only marks, color=darkgray] table {he6_momenta192.data};
+       \addlegendentry{Continuum states}
+	   	\addplot [only marks, color=white, ultra thick] table {res.data};
+	   \addplot [only marks, color=red, mark=diamond*, ultra thick] table {res.data};
+
 
      \end{axis}
    \end{tikzpicture}
