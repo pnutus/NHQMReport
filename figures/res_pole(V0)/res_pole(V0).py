@@ -7,10 +7,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "/..")
 from nhqm.bases import mom_space as mom
 from nhqm.problems import He5
 from nhqm.QM_helpers import energies
-from nhqm.bases.gen_contour import triangle_contour
+from nhqm.bases.contours import triangle_contour
 import sys,os.path
 sys.path.append(os.path.join(os.path.dirname(__file__),'..'))
-import plot_setup as plts
+from collections import namedtuple
+
 
 import matplotlib.pyplot as plt
 
@@ -40,7 +41,11 @@ contour = triangle_contour(peak_x, peak_y, k_max, order/3)
 ks, _ = contour
 
 
-order_nr = 1
+order_nr = 50
+
+QNums = namedtuple('qnums', 'l j k')
+Q = QNums(l=1, j=1.5, k=range(len(contour[0])))
+    
 V0s = sp.linspace(-65, -40, order_nr)
 k_res = sp.empty(order_nr, 'complex')
 
@@ -48,7 +53,6 @@ for m, V0 in enumerate(V0s):
     problem.V0=V0
     print order_nr-m, 'to go'
 
-    Q = mom.QNums(l=1, j=1.5, k=range(len(contour[0])))
     H = mom.hamiltonian(contour, problem, Q)
     eigvals, eigvecs = energies(H)
     res = res_index(eigvecs)
@@ -56,7 +60,7 @@ for m, V0 in enumerate(V0s):
     if sp.real(k_res[m])<10 ** -6:
         k_res[m] = abs(k_res[m]) * 1j
     
-res_pole    = sp.array([sp.real(k_res), sp.imag(k_res)])
+res_pole    = sp.array([sp.real(k_res), sp.imag(k_res),V0s])
 contour     = sp.array([sp.real(ks), sp.imag(ks)])
 
 script_dir = os.path.dirname(os.path.realpath(__file__)) + "/"
