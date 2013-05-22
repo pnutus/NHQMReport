@@ -138,20 +138,23 @@ is replaced by
 \end{eq} 
 without the conjugation.
 
-\todo{figure markers, romb, kvadrat, cirkel, triangel}
+
+
+
+\todo{figure markers, romb, kvadrat, cirkel, triangel SPILL}
 \section{\He{5} Revisited}
 
 With the complex-momentum basis we can continue our study of the \He{5} system. 
 We use the same Woods-Saxon parameters as before, but now use a complex contour.
-The solutions will be examined in a similar fashion to the one in \cref{cha:two-body}, using this new tool.
+The solutions will be examined in a similar fashion to \cref{cha:two-body}, using this new tool.
 
 \subsection{The Discretized Complex Contour}
 
-We deform the previously real contour by a triangle-shaped downward extrusion, as in \cref{fig:triangle_contour}. 
+We deform the previously real contour by a triangle-shaped downward extrusion, as in \cref{fig:discretized_contour}. 
 The tip of the triangle is placed below the expected position of the resonance pole.
 To use the contour in computations it has to be discretized, as before in \cref{sec:discretization}.
 We still use the Gauss-Legendre quadrature, but now consider each segment of the contour separately, rescaling the evaluation points and weights between each pair of complex endpoints according to \cref{app:gauss-legendre}.
-The discretized contour is seen in \cref{fig:triangle_contour}. 
+The discretized contour is seen in \cref{fig:discretized_contour}. 
 Note the concentration of points near the ends of each segment, characteristic of the Gauss-Legendre quadrature.
 
 The discretized Schrödinger equation \cref{eq:plane_wave_matrix_elements} is unchanged from before
@@ -187,7 +190,7 @@ However, when normalizing the obtained eigenvectors, care must be taken to use t
     \end{axis}
   \end{tikzpicture}
   \caption{A schematic picture of the discretized complex contour. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
-  \label{fig:triangle_contour}
+  \label{fig:discretized_contour}
 \end{figure}
 
 \subsection{The \He{5} Resonances}
@@ -196,7 +199,7 @@ We expect the position of the resonance poles to be fairly close to the experime
 
 \todo{use $k_r$?}
 
-\todo{fill in table}
+\todo{fill in table, contours are NOT CORRECT VINCENT}
 \begin{table}[H]
   \begin{tabular}{l|c|c}
     Wave      & Experimental $k$  & Contour vertices \\
@@ -210,23 +213,27 @@ We expect the position of the resonance poles to be fairly close to the experime
   \label{tab:contours}
 \end{table}
 
-We solve the Schrödinger equation using the contours and represent the energy solutions by their momenta $k=\sqrt{2\mu E}$. The result is shown in \cref{fig:he5_resonances}. We see that most solutions follow the contour, corresponding to non-resonant continuum states, similarly to what was found in the real case.
-These are once again interpreted as unbound solutions, not interacting strongly with the potential.
+We solve the Schrödinger equation using the contours and represent the energy solutions by their momenta $k=\sqrt{2\mu E}$. The result for the $p_{3/2}$ wave is shown in \cref{fig:triangle_contour}. We see that most solutions follow the contour, corresponding to non-resonant continuum states, similarly to the real case.
 
-Just as before, we get a 
-If this solution is the resonance, we expect it to be unchanged when the contour is varied. 
-Indeed, any contour passing below the resonance should give this solution, with reservation for numerical error.
-Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstrating that this is the case.
+\todo{fill in value}
+There is one solution that doesn't lie on the contour, however. 
+It has $k = \SI{XXX}{fm^{-1}}$, which is reasonably close to what we expected for the resonance.
+If we have indeed found the resonance, we expect it to be unchanged when the contour is varied.
+In \cref{fig:rect_contour}, we have used a rectangular contour instead, yet the pole is completely stable.
+We also found that we could vary the depth of the contour without the resonance pole moving, but if we went too far down, the matrix element integrals started to diverge.
+Barring such numerical errors, we found that any contour that runs below the pole gives a stable resonance solution.
 
-\todo{double legend?}
+\todo{double legend? SPILL}
 
 \begin{figure}
   \centering{
     \subfloat[Triangle Contour]{
+      \label{fig:triangle_contour}
       \includegraphics[page=2]{../figures/poles(contour)/poles.pdf}
     }
     \\
-    \subfloat[Square Contour]{
+    \subfloat[Rectangular Contour]{
+      \label{fig:rect_contour}
       \includegraphics[page=1]{../figures/poles(contour)/poles.pdf}
     }
   }
@@ -342,7 +349,7 @@ Fitting the parameters $V_0$ and $V\sub{so}$ to these four data points give a be
 $V_0 = 47.0490019$ and $V\sub{so} = -7.03992575$,\\
 where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla bla$ for the $p_{1/2}$ resonance.
 
-\todo{p1/2 figur SPILL OLA}
+\todo{p1/2 figur SPILL OLA MAYBE NOT NEEDED}
 
 
 
