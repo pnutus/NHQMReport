@@ -12,11 +12,11 @@ The Schrödinger equation is then solved in the HO and plane wave bases.
 The solutions are studied by looking at the energies and wavefunctions while varying parameters.	
 
 \section{The Nuclear Shell Model}
-\todo{more subsections here PONTUS}
 
+\todo{Why open? OLA}
 Typical examples of open quantum systems are encountered in nuclear physics. 
 The atomic nucleus is held together by the short-ranged strong interaction acting between all nucleons.
-Nuclei are systems that can be studied within a shell model.
+Nuclei are commonly studied within a shell model.
 This is done by introducing a \emph{mean-field} potential, often done in the following way.\cite{suhonen}
 
 Consider the Hamiltonian for a system of $A$ interacting particles,
@@ -185,7 +185,7 @@ This affects how rapidly the solutions converge, since a basis with wavefunction
 
 \todo{redo figure different $V_0 = 47$ -done, check if ok. / v}
 
-\todo{what is infinite range? OLA}
+\todo{what is infinite range? explain in introduction? OLA}
 
 All solutions have energies $E > 0$, meaning that they are unbound, scattering states, and thus have unlimited range. 
 \todo{minimum/saddle/plateau?}
@@ -198,9 +198,10 @@ We will have to switch to a basis with wavefunctions of infinite range to proper
 
 \subsection{Momentum Basis}
 
-\todo{subsub PONTUS}
+The momentum basis describes a plane wave, i.e. a free particle, with wave functions of infinite range.
+Because all \He{5} solutions appear in the continuum, this basis is better suited to the problem than the HO basis.
 
-The momentum basis describes a plane wave, i.e. a free particle. Because all solutions appear in the continuum, this basis is more suited to the problem.
+\subsubsection{Momementum Space Wavefunctions}
 
 Solving the Schrödinger equation in the momentum basis gives us momentum eigenfunctions $\phi(k)$, presented in \cref{fig:real_momentum_wavefunctions}.
 There is a background of wavefunctions peaking at different values of $k$, and, once again, one of the functions stand out as lower and wider. Let us first discuss the peaked wavefunctions.
@@ -233,11 +234,13 @@ The unique state peaks at $k = \SI{0.17}{fm^{-1}}$ and is slightly wider than th
 The Heisenberg uncertainty relation tells us that a less well-defined momentum corresponds to a more well-defined position.
 Consequently, the state should correspond to a localized wavefunction, which is what we expect from a resonance.
 
+\subsubsection{Position Space Wavefunctions}
+
 To investigate the relation between the hypothesized resonance solution and a bound solution, we increase the depth of the potential to $V_0 = \SI{70}{MeV}$, and successively decrease the depth until there is no bound state. 
 This is documented in \cref{fig:wavefunctions}, where the radial probability distributions $r^2|R(r)^2|$ are plotted for the widest momentum wavefunction together with an arbitrary unbound state. 
 With a deep potential, the bound state wavefunction quickly tends to zero outside the potential well.
 As we decrease the depth below a certain threshold, the potential well no longer supports the bound state ($E > 0$), but the wavefunction is still fairly localized.
-This is the region where we find our resonances.
+This is the region of the \He{5} depth (\SI{47}{MeV}) where we should find the resonance.
 When decreased even further the wavefunction starts to look similar to the unbound states.
 
 \todo{Short summary?}
@@ -272,8 +275,8 @@ When decreased even further the wavefunction starts to look similar to the unbou
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions END
 
-\todo{probability distributions or wavefunctions?}
 \todo{dashed/solid SPILL}
+\todo{fix figure placement SPILL}
 
 
 
