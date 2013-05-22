@@ -5,25 +5,25 @@
 \label{app:gauss-legendre}
 
 One notices that conventional integrals are computationally taxing. 
-A conventional integral approximation is to evaluate the function in  evenly spaced points with a homogenous weight based on the step length. 
+A conventional integral approximation is to evaluate the function in evenly spaced points with a weighted by the step length. 
 This, however requires many points to converge and quickly becomes unwieldly in computations. 
 
 That is why one should use the Gauss-Legendre quadrature; through a clever choice of points and weights the integral will converge with fewer points. 
-The theory behind this approximation is invloved \cite{gl} and is not covered here. 
+The theory behind this approximation is involved \cite{gl} and is not covered here. 
 
-The idea is to pick points $x_i$ on the -1 to 1 interval that are roots of the Legendre polynomial of a certain degree n and approximate the integral with
+The idea is to pick points $x_i$ on the $[-1,1]$ interval that are roots of the Legendre polynomial of a certain degree n and approximate the integral with
 
 \begin{eq}
   \int_{-1}^1 f(x)\id{x} \approx \sum_{i=1}^n w_i f(x_i).
 \end{eq}
-with the weights given by
+with the weights given by \cite[abramowitz+stegun]
 \begin{eq}
   w_i = \frac{2}{\left( 1-x_i^2 \right) [P'_n(x_i)]^2}
 \end{eq}
 where $P_n$ is the Legendre polynomial of degree $n$. This can be rescaled for any defnite integral
 
 \begin{eq}
-	\int_a^b f(x)\,dx \approx \frac{b-a}{2} \sum_{i=1}^n w_i f\left(\frac{b-a}{2}z_i + \frac{a+b}{2}\right).
+	\int_a^b f(x)\,dx \approx \frac{b-a}{2} \sum_{i=1}^n w_i f\left(\frac{b-a}{2}x_i + \frac{a+b}{2}\right).
 \end{eq}
 
 It can be shown that this quadrature gives the correct value for all polynomials of degree up to $2n-1$. 
