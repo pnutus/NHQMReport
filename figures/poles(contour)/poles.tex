@@ -4,8 +4,8 @@
 \begin{document}
 
    \pgfplotsset{
-     width = \textwidth,
-     height = 7cm,
+     width = 14cm,
+     height = 8cm,
      axis lines = middle,
      xmin = -0.01, xmax = 0.5,
      enlargelimits,
@@ -31,12 +31,19 @@
        ymax = 0.04,
        legend style={at={(0.6,0.4)}, anchor=north,legend columns=1},
 	   ]
-       \addplot[color = darkgray, only marks,thick] table [x index =2, y index =3] {square.data};
+  	   \addplot[color = red, only marks,thick] table {res.data};
+  	   \addlegendentry{Resonance}
+     
+       \addplot[color = darkgray, only marks,thick] 
+         table [x index =2, y index =3] {square.data};
        \addlegendentry{continuum states}
-	   \addplot[color = red, only marks,thick] table {res.data};
-	   \addlegendentry{Resonance}
-       \addplot+[color = gray, no marks, ultra thick] table [x index =0, y index =1] {square.data};
+       
+       \addplot+[color = gray, no marks, ultra thick] 
+         table [x index =0, y index =1] {square.data};
        \addlegendentry{Contour}
+       
+  	   \addplot[color = red, only marks,thick] 
+         table {res.data};
      \end{axis}
    \end{tikzpicture}
 
@@ -44,12 +51,18 @@
      \begin{axis}[
        legend style={at={(0.8,0.2)}, anchor=north,legend columns=1},
 	   ]
-       \addplot[color=darkgray, only marks, thick] table [x index =2, y index =3] {triangle.data};
+
+  	   \addplot[color = red, only marks,thick] 
+         table {res.data};
+  	   \addlegendentry{Resonance}
+       \addplot[color=darkgray, only marks, thick] 
+         table [x index =2, y index =3] {triangle.data};
        \addlegendentry{Continuum states}
-	   \addplot[color = red, only marks,thick] table {res.data};
-	   \addlegendentry{Resonance}
-       \addplot+[color=gray, no marks, ultra thick] table [x index =0, y index =1] {triangle.data};
+       \addplot+[color=gray, no marks, ultra thick] 
+         table [x index =0, y index =1] {triangle.data};
        \addlegendentry{Contour}
+  	   \addplot[color = red, only marks,thick] 
+         table {res.data};
      \end{axis}
    \end{tikzpicture}
 

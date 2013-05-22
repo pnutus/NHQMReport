@@ -17,7 +17,7 @@ When solving the Schrödinger equation in the momentum basis, we know that the s
 \end{eq}
 where $E_n$ are discrete bound states and $E_k$ are continuous.
 
-If we relate the energies $E$ of a system to momenta $k$ as
+If we relate the energies $E$ to momenta $k$ as
 \begin{eq}
   E = \frac{\hbar^2 k^2}{2\mu}
   \quad\quad
@@ -46,9 +46,9 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
     \begin{tikzpicture}[scale = 2.7]
       \draw[->] (-1.2, 0) -- (1.2, 0) node[below left] {$\Re k$};
       \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
-	  
-\tikzstyle{every pin edge}=[shorten <=1pt,]
-\tikzstyle{every pin}=[fill=white,]
+      
+	    \tikzstyle{every pin edge}=[shorten <=1pt,]
+      \tikzstyle{every pin}=[fill=white,]
 
         \node at (0, 0.1) [bound, pin=above left:Bound state,] {};
 		\node at (0, 0.3) [bound] {};
@@ -74,9 +74,10 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
         \node at (0, \y) [bound] {};
       \foreach \x in {0.25, -0.25}
         \node at (\x, -0.15) [quasibound] {};
+        
       \draw[very thick, mid arrows] (0,0) 
          -- (0.25, -0.25) 
-         -- (0.5, 0) node[pos=0.5, below right] {$L_+$} 
+         -- (0.5, 0) node[pos=0.25, pin=below right:$L_+$] {} 
          -- (1, 0);
       \draw[thick, mid arrows, dashed, radius=1] (1, 0) 
                 arc [start angle=0,  end angle=90]
@@ -131,28 +132,35 @@ However, doing this leads to a new scalar product (and thus norm) that must be u
 \end{eq}
 is replaced by
 \begin{eq}
+  \label{eq:berggren_product}
   \braket{\phi}{\phi'} = \fint[0][\inf]{k} k^2 \phi(k)\phi'(k)
 \end{eq} 
 without the conjugation.
- 
 
-\section{The Discretized Contour}
-We choose to extend our integration along the real axis to 
-the simplest possible complex contour, a triangle-shaped downward extrusion. 
-The tip of the triangle is placed below the hypothesized resonance pole.
+\todo{figure markers, romb, kvadrat, cirkel, triangel}
+\section{\He{5} Revisited}
 
-\todo{upprepning? SPILL}
-We are faced with the problem of evaluating this contour integral numerically. 
-We can solve this by considering each straight segment of the contour separately,
-and write it as a sum of three integrals, each treated with Gauss-Legendre quadrature according to \cref{app:gauss-legendre}.
-An example of a contour is seen in \cref{fig:triangle_contour}, marking each quadrature point where the integrand is evaluated. Note the concentration of points near the ends of each segment, resulting from the Gauss-Legendre quadrature.
+With the complex-momentum basis we can continue our study of the \He{5} system. 
+We use the same Woods-Saxon parameters as before, but now use a complex contour.
+The solutions will be examined in a similar fashion to the one in \cref{cha:two-body}, using this new tool.
 
-With this procedure, we once again get the Schrödinger equation on the same discretized form as \cref{eq:plane_wave_matrix_elements}:
+\subsection{The Discretized Complex Contour}
+
+We deform the previously real contour by a triangle-shaped downward extrusion, as in \cref{fig:triangle_contour}. 
+The tip of the triangle is placed below the expected position of the resonance pole.
+To use the contour in computations it has to be discretized, as before in \cref{sec:discretization}.
+We still use the Gauss-Legendre quadrature, but now consider each segment of the contour separately, rescaling the evaluation points and weights between each pair of complex endpoints according to \cref{app:gauss-legendre}.
+The discretized contour is seen in \cref{fig:triangle_contour}. 
+Note the concentration of points near the ends of each segment, characteristic of the Gauss-Legendre quadrature.
+
+The discretized Schrödinger equation \cref{eq:plane_wave_matrix_elements} is unchanged from before
 \begin{eq}
   \label{eq:nhqm matrix element}
   H_{ij}' = \frac{k_i^2}{2\mu}\delta_{ij} + \sqrt{w_i w_j}k_i k_j V_{ij},
 \end{eq}
-but now with complex $k$ and $w$.
+but now the $k$ and $w$ are complex. 
+However, when normalizing the obtained eigenvectors, care must be taken to use the new scalar product defined in \cref{eq:berggren_product}.
+
 
 %\tikzset{external/remake next}
 \tikzsetnextfilename{triangle_contour}
@@ -169,6 +177,10 @@ but now with complex $k$ and $w$.
       enlargelimits,
       only marks,
       ticks = none,
+      every axis x label/.style={
+        at = {(current axis.right of origin)},
+        anchor = north,
+      },
       ]
       \addplot[color=gray] table {../figures/numerical_contour/numerical_contour.data};
     \end{axis}
@@ -177,29 +189,54 @@ but now with complex $k$ and $w$.
   \label{fig:triangle_contour}
 \end{figure}
 
+\subsection{The \He{5} Resonances}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%VERIFICATION end
+We expect the position of the resonance poles to be fairly close to the experimental data in \cref{tab:}. We then choose the triangular contour so that it extends below the expected position. \Cref{tab:contours} show the poles and the corresponding contours. 
 
-\todo{figure markers, romb, kvadrat, cirkel, triangel}
-\section{\He{5} Revisited}
-\todo{structure PONTUS}
-Armed with with our new contour we can continue our study of the \He{5} system. 
-Diagonalizing the matrix given by \cref{eq:nhqm matrix element} using a complex contour with vertices $k_0 = 0$, $k_1 = 0.2 - i0.1$, $k_2 = 2.5$ 
-with 5 points on each segment, yields the result shown in \cref{fig:verification}.
-\todo{tydligare vertices? PONTUS}
-The same Woods-Saxon parameters have been used as before, and we represent the solutions by their momenta, $k=\sqrt{2\mu E}$, corresponding to the eigenvalues. 
-We can see that we obtain solutions almost corresponding to the $k$-values used in the discretization, similar to what was found in the real case. 
+\todo{use $k_r$?}
+
+\todo{fill in table}
+\begin{table}[H]
+  \begin{tabular}{l|c|c}
+    Wave      & Experimental $k$  & Contour vertices \\
+    \hline
+    $p_{3/2}$ & yada              & 
+      $(0, 0) \to (0.2, -0.3) \to (0.4, 0) \to (3, 0)$ \si{fm^{-1}} \\
+    $p_{1/2}$ & yada              &
+      $(0, 0) \to (0.2, -0.3) \to (0.4, 0) \to (3, 0)$ \si{fm^{-1}} \\
+  \end{tabular}
+  \caption{Contours used to identify \He{5} resonances.}
+  \label{tab:contours}
+\end{table}
+
+We solve the Schrödinger equation using the contours and represent the energy solutions by their momenta $k=\sqrt{2\mu E}$. The result is shown in \cref{fig:he5_resonances}. We see that most solutions follow the contour, corresponding to non-resonant continuum states, similarly to what was found in the real case.
 These are once again interpreted as unbound solutions, not interacting strongly with the potential.
 
-\todo[inline]{Why does the solutions follow the mesh points if they are free? SPILL}
-\todo[inline]{same resonance $\Re k$ as before SPILL}
-
-\subsection{Varying the Contour}
-
-\todo{more focus on numerical, relate to something PONTUS}
-However, the interesting solution is the one not lying on the contour. If this solution is the resonance, we expect it to be unchanged when the contour is varied. 
+Just as before, we get a 
+If this solution is the resonance, we expect it to be unchanged when the contour is varied. 
 Indeed, any contour passing below the resonance should give this solution, with reservation for numerical error.
 Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstrating that this is the case.
+
+\todo{double legend?}
+
+\begin{figure}
+  \centering{
+    \subfloat[Triangle Contour]{
+      \includegraphics[page=2]{../figures/poles(contour)/poles.pdf}
+    }
+    \\
+    \subfloat[Square Contour]{
+      \includegraphics[page=1]{../figures/poles(contour)/poles.pdf}
+    }
+  }
+  \caption{\He{5} momentum solutions for different contours. The resonance is located at $k = \SI{0.173 - 0.0355i}{fm^{-1}}$ for both contours. We use $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
+
+  \label{fig:pole(cont)}  
+\end{figure}
+
+
+\todo{more focus on numerical, relate to something PONTUS}
+
 
 
 %\tikzset{external/remake next}
@@ -245,9 +282,13 @@ Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstratin
 \todo{make beautiful SPILL}
 %%%%%%%%%%%%%%%%%%%%%%%%% V0(CONTOUR) FIGURE
 
+
+\todo[inline]{Why does the solutions follow the mesh points if they are free? SPILL}
+\todo[inline]{same resonance $\Re k$ as before SPILL}
+
 \todo{touch up figure, width etc. SPILL}
 
-\subsection{Momentum Space Wavefunctions}
+\subsubsection{Momentum Space Wavefunctions}
 
 \todo{repeat? PONTUS}
 
@@ -302,20 +343,7 @@ where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla 
 
 \todo{p1/2 figur SPILL OLA}
 
-\begin{figure}
-   \centering{
-   \subfloat[Square Contour]{
-   \includegraphics[page=1]{../figures/poles(contour)/poles.pdf}
-   }
-   \\
-   \subfloat[Triangle Contour]{
-   \includegraphics[page=2]{../figures/poles(contour)/poles.pdf}
-   }
-   }
-  \caption{\He{5} momentum solutions for different contours. The resonance is located at $0.1731, -0.03558i$ for both contours. we have used $V0 =$ \SI{47}{MeV} with $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
 
-  \label{fig:pole(cont)}  
-\end{figure}
 
 \todo{triangle before square SPILL}
 
