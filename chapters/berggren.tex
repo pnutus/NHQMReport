@@ -227,18 +227,20 @@ Solutions from various contours are shown in \cref{fig:pole(cont)}, demonstratin
         every x tick label/.append style = {anchor = south, yshift = 3pt},
         xmax=0.5,
         ytickmax = 0.3, xtickmax = 0.9,
-		xtick={0.1,0.2,...,0.4}
+		xtick={0.1,0.2,...,0.4},
         enlarge y limits,
         no markers,
 		     xtickmin = 0.1,
 		     xticklabel style={/pgf/number format/fixed,
 		     /pgf/number format/precision=3},
         ]
-      	\addplot+[color = red, very thick, ->] table  {../figures/res_pole(V0)/poles.data};
+      	\addplot+[color = red, very thick, ->] table [x index = 0, y index = 1] {../figures/res_pole(V0)/poles.data};
       	    \addlegendentry{Pole position}
       	\addplot+[color= gray, very thick] table {../figures/res_pole(V0)/contour.data};
           \addlegendentry{Contour}
-      \end{axis}
+\node[coordinate,pin=above right:{$V_0=54.3$}] 
+at (axis cs:0,0.116) {};
+		        \end{axis}
   \end{tikzpicture}
   \caption{The pole position as a function of $V_0$.}
   \label{fig:pole(V0)}
@@ -273,7 +275,7 @@ simply single out the one with the broadest wavefunction, or equivalently after 
   		\includegraphics[page=2]{../figures/eigvecs_real_comp/eigvecs.pdf}
 	}
   }
-\caption{\He{5} momentum probability distributions for a real and complex contour. The resonance is more prominent when solving along the complex contour but is significantly wider than the surrounding states in both cases. Both contours comprise 60 points in total, but the points in the complex contour are focused near the origin. The density fluctuation stems from the gauss-legedre distribution on the individual segments.} 
+\caption{\He{5} momentum probability distributions for a real and complex contour. The resonance is more prominent when solving along the complex contour but is significantly lower and wider than the surrounding states in both cases. Both contours comprise 60 points in total, but the points in the complex contour are focused near the origin. The density fluctuation stems from the gauss-legedre distribution on the individual segments.} 
 \label{fig:complex_mom_wavefunctions}
 \end{figure}
 
@@ -313,7 +315,7 @@ where we get the computed values $bla bla$ for the $p_{3/2}$ resonance and $bla 
    \includegraphics[page=1]{../figures/poles(contour)/poles.pdf}
    }
    }
-  \caption{Momentum solutions for a \He{5} $p_{3/2}$ wave for different contours. The resonance is located at $0.1731, -0.03558i$ for both contours. we have used $V0 =$ \SI{47}{MeV} with $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
+  \caption{\He{5} $p_{3/2}$ wave solutions in the complex momentum plane for different contours. The resonance is located at $0.1731, -0.03558i$ for both contours. we have used $V0 =$ \SI{47}{MeV} with $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
 
   \label{fig:pole(cont)}  
 \end{figure}
