@@ -67,6 +67,14 @@ Den befinner sig i kontinuumet, liksom resten av lösningarna, men dess vågfunk
 Vi kunde dock inte kvantifiera resonansens egenskaper, utan bara göra kvalitativa bedömningar.
 
 \begin{figure}[h]
+  \centering
+  	\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
+
+  \caption{\He{5} momentum probability distributions. The resonance is significantly wider than the surrounding states. We can see a trend toward lower and wider states around \SI{1}{fm^{-1}}, but it is merely a numerical pecularity stemming from the normalization.} 
+  \label{fig:resonance_wavfunction}
+\end{figure}
+
+\begin{figure}[h]
 \centering{
   \subfloat[$V_0=\SI{70}{MeV}$]{
     \includegraphics[page=1]{../figures/wavefunctions/wavefunctions.pdf}
@@ -84,13 +92,64 @@ Vi kunde dock inte kvantifiera resonansens egenskaper, utan bara göra kvalitati
   
 \section{Den komplexa rörelsemängdsbasen}
 
-För att bättre beskriva resonansen introducerar vi det komplexa rörelsemängdsplanet, \cref{fig:simple_contour}, där energiegenlösningar svarar mot en rörelsemängd $k = \sqrt{2mE}{\hbar}$.
+%\tikzset{external/remake next}
+\tikzsetnextfilename{triangle_contour}
+\begin{figure}[t]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = \textwidth,
+      height = 7cm,
+      xlabel=Re $k$,
+      ylabel=Im $k$,
+		  axis lines = middle,
+      ymax = 0.1,
+      enlargelimits,
+      only marks,
+      ticks = none,
+      every axis x label/.style={
+        at = {(current axis.right of origin)},
+        anchor = north,
+      },
+      ]
+      \addplot[color=darkgray] table {../figures/numerical_contour/numerical_contour.data};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{A schematic picture of the discretized complex contour. The points are distributed on each segment according to the Gauss-Legendre quadrature rule.}
+  \label{fig:simple_contour}
+\end{figure}
+
+För att bättre beskriva resonansen introducerar vi det komplexa rörelsemängdsplanet, \cref{fig:simple_contour}, där energiegenlösningar svarar mot en rörelsemängd $k = \frac{\sqrt{2mE}}{\hbar}$.
 Bundna lösningar representeras av diskreta poler på positiva imaginäraxeln, obundna lösningar ligger kontinuerligt längs positiva realaxeln och resonanser är poler i fjärde kvadranten.
 Vi ser kontinuumlösningarna som en kontur, och deformerar denna till att omsluta resonanspolen \cref{fig:berggren_contour}. 
 Resonansen blir då en av lösningarna till Schrödingerekvationen, tillsammans med kontinuumtillstånden längs konturen och eventuella bundna tillstånd.
 Enligt Berggrens teori \cite{berggren} bildar lösningarna en fullständig bas, ett viktigt resultat som låter oss använda lösningarna för att bygga flerpartikeltillstånd.
 
+\begin{figure}[h]
+  \centering{
+    \subfloat[Triangle Contour]{
+      \label{fig:triangle_contour}
+      \includegraphics[page=2]{../figures/poles(contour)/poles.pdf}
+    }
+  }
+   \caption{Momentum solutions for a \He{5} $p_{3/2}$ wave for different contours. The resonance is located at $0.173, -0.0356i$ for both contours. we have used $V0 =$ \SI{47}{MeV} with $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
+\label{fig:berggren_contour}  
+\end{figure}
+
 Innan vi utnyttjar detta återgår vi till att studera \He{5}, nu i den komplexa rörelsemängdsbasen. Med den nya metoden lyckas vi återskapa experimentella värden, och vi kan anpassa Woods-Saxonpotentialens parametrar utifrån observerad data. \Cref{tab:resonances} visar resultatet av denna anpassning.
+
+\begin{table}[b]
+\caption{Experimentella och anpassade värnen på resonanserna hos \He{5}.}
+\begin{center}
+  \label{tab:resonances}
+   \begin{tabular}{c|c|c|c}
+    Våg      & Experimentellt värde på $k_r$ & Anpassat värde på $k_r$  \\
+    \hline
+    $p_{3/2}$ & 0.1788 -  0.0349i & 0.1778 - 0.0376i \\
+    $p_{1/2}$ & 0.3267 - 0.1643i & 0.3286 - 0.1630i \\
+  \end{tabular}
+  \end{center}
+\end{table}
 
 \section{Flerkropparsproblem och \He{6}}
 En naturlig utveckling av \He{5} är att lägga till ytterligare en neutron och på så sätt nå \He{6}. 
