@@ -6,17 +6,22 @@
 
 The combination of matrix diagonalisation and vast matrices is not advantageous.
 A way to deal with this manner is through \emph{Monte Carlo Simulations}.
-Instead of a rigorous examination of how all particle states interact with each other, we chose only some at random and calculate the energies they give rise to.
-This procedure is then repeated until we can determine the ground state energy with confidence.
+Instead of a rigorous examination of how all particle states interact with each other, we chose some at random and calculate the energies they give rise to.
+This procedure is then repeated until we can determine the ground-state energy with confidence.
 
 We tried this Monte Carlo method to calculate the energies for the \He{6} problem.
 The procedure starts with the computation of the energies and wavefunctions for \He{5}, since these pose the basis for \He{6}.
 Then we take one state from each of the contour segments at random, which in principle is one point from each third of the contour points.
-The resonance state is also included in the basis because this is the state that contributes the most towards the final solution.
+The resonance state is also included in the basis since this is the state that contributes the most towards the final solution.
+These states is then used to calculate the energy eigenvalues in the same manner as before.
 
-This basis is then used to calculate the energy eigenvalues in the same manner as before.
+By plotting all the energies we get, we see in \cref{fig:m_carlo_J0} that there is a region in the first quadrant with many points that seem to correspond to the  bound state of He{6}, but it has a way too large imaginary part.
+Consecutively we see in \cref{fig:m_carlo_J2} that we have also here have a region of gathered points, but this time in the fourth quadrant making us believe that this is the resonance state.
+It is indeed the sought after resonance, but it has not converged towards the right value.
 
-By plotting all the energies we get we see that there is a region in the first quadrant with many points that seem to correspond to the  bound state of He{6}, but it has a way too large imaginary part.
+By theese facts we deem our implementation of the Monte-Carlo method unusable.
+It does not converge towards the right value and adding more randomized points per segment only made it worse, making us believe that we have a bug somewhere in our program when we choose more than one point per segment.
+This said, it could still prove to work, but we would recommend other solutions for reducing the matrix dimensions.
 
 \todo[inline]{Interpret the results in a better way.}
 

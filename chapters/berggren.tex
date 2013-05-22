@@ -6,7 +6,7 @@
 \todo{read through OLA SPILL}
 
 In \cref{cha:two-body} we studied the \He{5} system and found a special state in the continuum, the resonance.
-We will in this chapter detail a method of extending the momentum basis to the complex plane, which gives a more complete description of resonances.
+We will in this chapter detail a method of extending the momentum basis to the complex momentum plane, which gives a more complete description of resonances.
 We also state the important the important Berggren completeness relation.
 The \He{5} problem is examined once more using the complex-momentum basis and we fit the model parameters to experimental resonance data.
 
@@ -103,7 +103,7 @@ The details of this is treated in scattering theory, and is beyond the scope of 
 We interpret the bound and resonant $k$ as complex poles and treat the unbound continuum as a contour, mirrored in the imaginary axis, encircling the upper half plane (\cref{fig:simple_contour}).
 
 
-The integral to be evaluated along the contour is the one in the radial momentum space Schrödinger equation
+The integral to be evaluated along the contour is the radial momentum space Schrödinger equation
 \begin{eq}
   \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k') 
   &=
@@ -122,6 +122,7 @@ This result can be stated succinctly with the \emph{Berggren completeness relati
 \begin{eq}
   \sum_{\substack{\text{bound} \\ \text{resonant}}} \ket{E_n}\bra{E_n} 
   + \fint[L_+]{k} k^2 \ket{E_k}\bra{E_k} = 1.
+  \label{eq:berggren_completeness_relation}
 \end{eq}
 This is an important result, because of the inclusion of the resonances in the basis.
 The Berggren basis is what allows us to find resonances in systems with more particles.

@@ -17,7 +17,7 @@ commonly written in the position basis as
   \p{-\frac{\hbar^2}{2m}\nabla^2 + V(\vec{r})}\psi(\vec{r}) = E\psi(\vec{r}).
 \end{eq}
 For the nuclear systems to be treated, the TISE has no known analytical solutions, and we need to use numerical methods to solve it.
-We will use the basis expansion method, writing the equation an eigenvalue problem
+We will use the basis expansion method, writing the equation as an eigenvalue problem
 \begin{eq}
   \label{eq:matrix equation}
   \sum_j H_{ij}\psi_j = E \psi_i
@@ -275,7 +275,7 @@ The momentum basis is continuous and thus requires special treatment.
 
 The $\ket{nlm}$ and $\ket{k}$ bases are infinite, so we truncate them by only including a finite number $N$ of states in the basis. 
 For an orthonormal basis, the best approximation is to include the $N$ first states.
-The more states we include in the basis, the more accurate results we get. This is illustrated in \cref{fig:hydrogen_convergence}.
+The more states we include in the basis, the more accurate results we get.
 
 The truncation gives us an $N \times N$ Hamiltonian matrix $H$ and the TISE can be written in matrix notation as
 \begin{eq}
