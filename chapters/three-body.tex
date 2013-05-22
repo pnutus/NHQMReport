@@ -72,40 +72,19 @@ The coupled matrix elements are
 
 \section{Neutron-Neutron Interaction}
 
-The interaction between nucleons is complex and there is no known analytical expression for the potential \cite{suhonen}. It arises from the strong force between the quarks that make up the nucleons, which is well known at high energies (\si{TeV}),
-\todo{how high energies? OLA}
-but less so at nuclear energy levels (\si{MeV}).
-The study of this interaction is an active field of research \cite{living_on_the_edge}.
+The interaction between nucleons is complex and there is no known analytical expression for the potential. It arises from the strong force between the quarks that make up the nucleons. The strong force is well known at high energies but less so at nuclear energy levels.
+The study of this interaction at the nuclear level is therefore an active field of research \cite{living_on_the_edge}.
 
-A commonly used approximation is a \emph{separable} interaction 
+A convenient approximation is a \emph{separable} interaction,
 \begin{eq}
-  V = V(|\vec{r}_1 - \vec{r}_2|),
+  V(r_1, r_2) = v(r_1)v(r_2),
 \end{eq}
-depending only on the distance between the nucleons. Using the symmetry around the axis connecting the two particles, the interaction can be expanded in a \emph{multipole expansion},
-\todo[inline]{what conj?}
-\begin{eq}
-  V(|\vec{r}_1 - \vec{r}_2|) 
-  & = 
-  \sum_{lm} V_l(r_1, r_2) 
-  Y_l^m(\Omega_{r_1})\conj{Y_l^m(\Omega_{r_2})}
-  \\
-  V_l(r_1, r_2) 
-  & = 
-  2\pi \fint[-1][1]{(\cos{\theta_{12}})} 
-  P_l(\cos{\theta_{12}}) V(|\vec{r}_1 - \vec{r}_2|)
-\end{eq}
-where $\theta_{12}$ is the angle between $\vec{r}_1$ and $\vec{r}_2$. To make calculations even more managable, one can use a \emph{separable} interaction that can be expressed as a product of functions of $r_1$ and $r_2$, either before or after the multipole expansion
-\begin{eq}
-  V(r_1, r_2) = v(r_1)v(r_2)
-  \quad\textup{or}\quad
-  V_l(r_1, r_2) = v_l(r_1) v_l(r_2)
-\end{eq}
-We study two different types of separable two-body interactions, a trivially separable gaussian interaction and a surface delta interaction.
-
+a product of functions of $r_1$ and $r_2$, the radii of each neutron. The interaction can be trivially separable as above or might require a \emph{multipole expansion}, covered in \cite{suhonen}. We study two different types of separable two-body interactions, a gaussian interaction and a surface delta interaction.
 
 \subsection{Gaussian Interaction}
-\todo{rewrite first sentence, separabel redan nämnt OLA}
-Initially we investigate the simplest form of separable interaction, a product of two functions of $r_1$ and $r_2$, the distance from each neutron to the core
+
+
+Initially we investigate a trivially separable gaussian interaction
 \begin{eq}
   V(r_1, r_2) 
   = 
@@ -134,7 +113,7 @@ In \cref{fig:gaussian} we see that the potential in a rough sense satisfies the 
           anchor = north west,
         },
 		after end axis/.code={
-		               \draw[anchor=west] (axis cs:0,-1) -- (axis cs:1.5,-1) 
+		               \draw[anchor=west, dashed] (axis cs:0,-1) -- (axis cs:1,-1) 
 					   node [] {$\displaystyle V\sub{GI}\exp\p{-\frac{r_2^2}{R^2}}$};
 		             },
         ]
@@ -186,13 +165,12 @@ with
   = 
   \frac{2}{\pi} \fint[0][\inf]{r} r^2 V(r) j_l(k_i r)j_l(k_j r),
 \end{eq}
-as before.
-\todo[inline]{many new terms, whitch not are explained?}
+as in \cref{cha:basis_exp}
 
 
 \subsection{Surface Delta Interaction}
 \todo{motivering först OLA}
-Another possible separable interaction is the surface delta interaction (SDI)
+Another possible interaction is the surface delta interaction (SDI)
 \begin{eq}
   V(\vec{r}_1, \vec{r}_2) 
   = 
@@ -206,7 +184,7 @@ The short-range strong force is thus approximated as a point interaction.
 The physical motivation of the $\delta(r-r_0)$ term is the experimental fact that the scattering cross-section between neutrons is inversely proportional to their kinetic energy.
 Since the kinetic energy has a minimum near the surface of the nucleus (at the range $r_0$ of the Woods-Saxon potential), we can approximate the interaction as focused entirely in that shell.
 
-The SDI has multipole radial components
+The SDI can be expanded into multipole radial components
 \begin{eq}
   v_l(r) = \frac{\delta(r-r_0)}{r},
 \end{eq}
@@ -242,9 +220,16 @@ $\psi_\alpha(r)$ being the radial wavefunction.
 
 \section{The \He{6} Solutions}
 \todo{With/without resonance in basis?}
-Now that we know the interaction matrix elements, we can proceed and solve the Schrödinger equation for the \He{6} nucleus. The parameters of our interactions will be fit to the known ground state\cite{ajzenberg? or better} of \He{6}, and a prediction for the excited $2^+$ state --- a resonance --- can be made. \Cref{tab:he6_resonance_data} summarizes the results of this investigation. 
 
-It is clearly seen that the Gaussian interaction is unsuitable to describe this system. It is degenerate in J and will thus not reproduce the excited $2^+$ state of \He{6}. It is possible to fit $V_0$ to reproduce the ground state energy. However, with the range $r_0$ set to \SI{2}{fm}, it does not produce a resonance. A wide resonance ($\Gamma > \SI{6}{MeV}$) forms when the range is decreased to \SI{1}{fm}, but doing so requires larger values of $\k$ to be included in the basis. This rapidly increases computation time, making the method uneffective.
+Now that we know the interaction matrix elements, we can proceed and solve the Schrödinger equation for the \He{6} nucleus. 
+The parameters of our interactions will be fit to the known ground state\cite{ajzenberg? or better} of \He{6}, and a prediction for the excited $2^+$ state --- a resonance --- can be made. 
+\Cref{tab:he6_resonance_data} summarizes the results of this investigation. 
+
+It is clearly seen that the Gaussian interaction is unsuitable to describe this system. 
+It is degenerate in $J$ and will thus not reproduce the excited $2^+$ state of \He{6}. 
+It is possible to fit $V_0$ to reproduce the ground state energy. However, with the range $r_0$ set to \SI{2}{fm}, it does not produce a resonance.
+A wide resonance ($\Gamma > \SI{6}{MeV}$) forms when the range is decreased to \SI{1}{fm}, but doing so requires larger values of $k$ to be included in the basis. 
+This rapidly increases computation time, making the method uneffective.
 
 On the other hand, the SDI managed to reproduce the solutions remarkably well. \todo{bla bla.. Or let the table do the talkin'?}
 
