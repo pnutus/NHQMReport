@@ -379,13 +379,14 @@ When solving problems in practice we need to form matrix elements in the coupled
 Using the notation $\ket{E_1 E_2} = \ket{E_1 j_1 E_2 j_2; JM}$ for short, we would have
 \begin{eq}
   \bra{E_1 E_2} \hat{H} \ket{E_1'E_2'} =  \N_{E_1E_2}\N_{E_1'E_2'} \sum_{m_1,m_2} \sum_{m_1',m_2'} \conj{c_{m_1 m_2}}c_{m_1' m_2'} \bra{E_1m_1 E_2m_2}\hat{H}\ket{E_1'm_1'E_2'm_2'}
+  \label{eq:coupled_matrix_element}
 \end{eq}
 meaning that the matrix elements in the new basis are given by linear combinations of the elements in uncoupled basis. 
 We only need to evaluate the elements $\bra{E_1m_1 E_2m_2}\hat{H}\ket{E_1'm_1'E_2'm_2'}$, and be done. 
 Since we do not know what the two-body interaction may look like, we cannot do a general treatment of that contribution. 
-Instead we focus on the one-body term, which was treated in \cref{eq:one-body_matrix_elements}. There is a subtle detail, however, that needs to be considered.
+Instead we focus on the one-body term, which was treated in \cref{eq:one-body_matrix_elements}. There is a subtle detail, however, that needs to be addressed.
 
-Even if both single-particles are in the same state in the coupled basis $E_1 = E_2 = E$, we will still sum over all $m_1$, $m_2$ in the ket $\ket{E m_1 E m_2}$, meaning that we will \emph{not} order our states in that calculation. Instead, for $E_1 = E_2$ \cref{eq:one-body_matrix_elements} will read
+Even if both single-particle states are the same in the coupled basis $E_1 = E_2 = E$, we will still sum over all $m_1$, $m_2$ in the ket $\ket{E m_1 E m_2}$, meaning that we will \emph{not} order our states in that calculation. Instea \cref{eq:one-body_matrix_elements} will read
 \begin{eq}
   \bra{E_1m_1 E_2m_2}\hat{H}_1\ket{E_1'm_1'E_2'm_2'} 
   = 
@@ -393,15 +394,15 @@ Even if both single-particles are in the same state in the coupled basis $E_1 = 
     \delta_{m_1m_1'}\delta_{m_2 m_2'} - \delta_{E_1 E_2} \delta_{m_1 m_2'}\delta_{m_2 m_1'}
   }.
 \end{eq}    
-Inserted into the matrix element equation in the coupled basis, this will result in
+Inserted into \cref{eq:coupled_matrix_element}, this results in
 \begin{eq}
   \bra{E_1 E_2} \hat{H}_1 \ket{E_1'E_2'} 
   &=
   \N_{E_1E_2}\N_{E_1'E_2'}(E_1 + E_2)(1 + \delta_{E_1 E_2}(-1)^J) \delta_{E_1E_1'}\delta_{E_2E_2'} \\
   &= 
-  \frac{1+ (-1)^J \delta_{E_1 E_2}}{1+\delta_{E_1 E_2}} \delta_{E_1 E_1'}\delta_{E_2 E_2'} (E_1 + E_2) .
+  \frac{1+ (-1)^J \delta_{E_1 E_2}}{1+\delta_{E_1 E_2}} \delta_{E_1 E_1'}\delta_{E_2 E_2'} (E_1 + E_2),
 \end{eq}
-Remember that $E_1$ is short for all quantum numbers specifying that single-particle state.
+where the identity $\sum_{m_1, m_2} |c_{m_1m_2}|^2 = 1$ was used. Remember that $E_1$ is short for all quantum numbers specifying that single-particle state.
 
 
 \section{Second Quantization Implementation}
