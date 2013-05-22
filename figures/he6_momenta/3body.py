@@ -61,20 +61,10 @@ for j in js:
         sp_states.append(SP(id=len(sp_states), l=1, j=j, E=eigvals[i], 
                 eigvec=eigvecs[:,i], contour=contour, basis=sp_basis))
 
-# for state in sp_states:
-#     print state.id, state.j, state.E
-
-he6_spstates=[]
-for sp_state in sp_states:
-    if sp.real(sp.sqrt(2*problem.mass*sp_state.E)) < 0.7:
-        he6_spstates.append(sp_state)
-he6_spstates = sp_states
 
 interaction = two_body.gen_interaction(sp_states, J, problem=problem)
-mb_H = coupled.hamiltonian(he6_spstates, interaction, J)
+mb_H = coupled.hamiltonian(sp_states, interaction, J)
 mb_eigvals, mb_eigvecs = energies(mb_H)
-
-print "Lowest energy:" , mb_eigvals[0]
 
 def plot_shit(eigvals, mb_eigvals, mb_eigvecs):
     
@@ -88,7 +78,7 @@ def plot_shit(eigvals, mb_eigvals, mb_eigvecs):
         return maxes.index(min(maxes))
     
     sp_res = res_index(eigvecs)
-    mb_states = list(combinations_with_replacement(he6_spstates, 2))
+    mb_states = list(combinations_with_replacement(sp_states, 2))
     Es = sp.zeros((len(mb_states),2), complex)
     for i, (sp_state_1, sp_state_2) in enumerate(mb_states):
         Es[i,:] = (sp_state_1.E, sp_state_2.E)
@@ -113,34 +103,6 @@ def plot_shit(eigvals, mb_eigvals, mb_eigvecs):
     script_dir = os.path.dirname(os.path.realpath(__file__)) + "/"
     dataoladata = sp.array([sp.real(ks), sp.imag(ks)])
     sp.savetxt(script_dir + "he6_momenta"+ str(res_1)+".data", dataoladata)
-
-    k = sp.zeros((len(points), len(points)),complex)
-    for i, E1 in enumerate(eigvals):
-        for j, E2 in enumerate(eigvals):
-            k[i,j]=sp.sqrt(2*problem.mass*(E1 + E2))
-    plt.plot(sp.real(k),sp.imag(k),'or', markersize=4)
-    #plt.axis([0, 0.3, -0.02, 0])
-    
-    plt.figure(2)
-    plt.clf()
-
-    
-        #Es[i] = max(abs(eigvals[E_1]), abs(eigvals[E_2]))
-    args = sp.argsort(mb_eigvecs[:,res_1])
-    plt.plot(abs(sp.sqrt(2*problem.mass*Es[args,0])),'b')
-    plt.plot(abs(sp.sqrt(2*problem.mass*Es[args,1])),'g')
-    plt.figure(3)
-    plt.clf()
-    plt.plot(sp.sqrt(abs(2*problem.mass*Es[:,0])),abs(mb_eigvecs[:,res_1]),'b*')
-    plt.plot(sp.sqrt(abs(2*problem.mass*Es[:,1])),abs(mb_eigvecs[:,res_1]),'g*')
-    plt.figure(4)
-    plt.clf()
-    plt.plot(abs(mb_eigvecs[:,res_1]))
-    plt.figure(5)
-    plt.clf()
-    plt.plot(abs(mb_eigvecs[dbl_res,:]),'ko')
-    plt.plot(res_1, abs(mb_eigvecs[dbl_res,res_1]), 'go', markersize=8)
-    plt.plot(res_2, abs(mb_eigvecs[dbl_res,res_2]), 'bo', markersize=8)
 
 plot_shit(eigvals, mb_eigvals, mb_eigvecs)
 plt.show()
