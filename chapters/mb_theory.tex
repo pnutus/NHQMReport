@@ -120,8 +120,8 @@ The orthonormality of normalized antisymmetric states with a well-defined orderi
 \section{Second quantization}
 \label{sec:second_quantization}
 
-So far we've looked at a system with a fixed number of particles, but we want to work with a system with an arbitrary number of identical particles.
-The \emph{second quantization} formalism and is what lets us do this.
+So far we've looked at a system with a fixed number of particles, but we want to work with a system hosting an arbitrary number of identical particles.
+The \emph{second quantization} formalism is what lets us do this.
 We will be working \emph{Fock space}, a combination of spaces of $0,1,2,...$ particles.
 This means that a state in Fock space, a \emph{Fock state}, can contain any number of particles and that states with different number of particles are orthogonal to each other.
 
@@ -251,7 +251,7 @@ The factor \nicefrac{1}{2} stems from the fact that %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{eq}
   \pbra{\alpha \beta} H_2 \pket{\gamma \delta} 
   = 
-  \pbra{\beta \alpha} H_2 \pket{\delta \gamma}
+  \pbra{\beta \alpha} H_2 \pket{\delta \gamma},
 \end{eq}
 and we are counting both.
 
@@ -321,8 +321,7 @@ In previous Chapters we have studied single-particle states on the form $\ket{Ej
 that are eigenstates to the operators $\vec{J}_1 = \vec{J}\otimes\vec{1}$ and $\vec{J}_2 = \vec{1}\otimes\vec{J}$.
 
 One often studies systems where the total angular momentum $\vec{J} = \vec{J}_1 + \vec{J}_2$ is conserved, but the individual angular momenta $\vec{J}_1$ and $\vec{J}_2$ are not. Conservation of $\vec{J}$ is equivalent to the entire system being symmetric under rotation, while $\vec{J}_1$ and $\vec{J}_2$ will only be conserved if one of the particles can be rotated independently of the other, without affecting the solutions. 
-This is not possible when studying directly interacting particles
-\todo{"not possible" instead "rarely the case"?}
+This is rarely the case when studying directly interacting particles.
 It is then convenient to switch to a basis where the total angular momentum is well defined, but the individual momenta are not. 
 
 We introduce the \emph{coupled} basis with states $\pket{E_1j_1, E_2j_2; JM}$ meant to be read as: the first particle is described by the quantum numbers $E_1 j_1$, the second by $E_2 j_2$, and they together have a total angular momentum $JM$ (the $M$ is sometimes left out).
