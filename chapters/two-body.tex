@@ -4,17 +4,20 @@
 \chapter{The Two-Body Nuclear System}
 \label{cha:two-body}
 
+\todo{read through entire chapter OLA VINCENT SPILL}
+
 In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
 We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}.
 The Schrödinger equation is then solved in the HO and plane wave bases.
 The solutions are studied by looking at the energies and wavefunctions while varying parameters.	
 
 \section{The Nuclear Shell Model}
-\todo{more subsections here PONTUS}
 
+\todo{Why open? OLA}
 Typical examples of open quantum systems are encountered in nuclear physics. 
 The atomic nucleus is held together by the short-ranged strong interaction acting between all nucleons.
-Nuclei are systems that can be studied within a shell model. This is done by introducing a \emph{mean-field} potential, often done in the following way.\cite{suhonen}
+Nuclei are commonly studied within a shell model.
+This is done by introducing a \emph{mean-field} potential, often done in the following way.\cite{suhonen}
 
 Consider the Hamiltonian for a system of $A$ interacting particles,
 \begin{eq}
@@ -34,43 +37,27 @@ where $v$ is the nucleon-nucleon interaction. Now add and subtract a potential f
   &=
   H\sub{MF} + V\sub{res}
 \end{eq} 
-where we have split the Hamiltonian into a spherically symmetric mean-field Hamiltonian $H\sub{MF}$ in which particles do notinteract directly, and the \emph{residual interaction} $V\sub{res}$ that can be seen as the new interaction between particles. If the mean-field potential $V$ is chosen carefully, $V\sub{res}$ can become small enough to be treated pertubationally (if at all).
-
-This method has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
-It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ angular momentum. 
-Of special interest to us are \emph{doubly magic} nuclei, where both proton are neutron numbers are magic. These nuclei can be very tightly bound.
+where we have split the Hamiltonian into a spherically symmetric mean-field Hamiltonian $H\sub{MF}$ in which particles do not interact directly, and the \emph{residual interaction} $V\sub{res}$ that can be seen as the new interaction between particles. If the mean-field potential $V$ is chosen carefully, $V\sub{res}$ can become small enough to be treated pertubationally (if at all).
  
-Because of this, we will choose to study the \He{5} nucleus as an example of a two-body system. 
-The \He{4} nucleus is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core. 
-This core will be treated as a single particle (subsequently referred to as the $\alpha$-particle), interacting with the valence neutron through the mean-field only.\todo{Why can we see the alpha core as a particle through the mean-field approximation.}
+\subsection{The Woods-Saxon Potential}
 
-Other doubly magic light nuclei, such as \ce{^{16}O} and its isotopes, have been studied using methods similar to ours\cite{gamow_shell_model_2008}, but we will restrict ourselves to He nuclei.
-
-For mean-field potential we will use the established Woods-Saxon potential, given by
+For the mean-field potential we will use the established Woods-Saxon potential visualized in \cref{fig:woods-saxons} and given by
 \begin{eq}
 	V(r)=
-	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr} ,
+	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr},
 \end{eq}
 where 
 \begin{eq}
-	f(r)=\b{1+\exp\p{\frac{r-r_0}{d}}}^{-1} ,
+	f(r)=\b{1+\exp\p{\frac{r-r_0}{d}}}^{-1}.
 \end{eq}
-and it is visualized in \cref{fig:woods-saxons}).
+The parameters are the potential depth $V_0$, the spin-orbit coupling strength $V\sub{so}$, the range $r_0$ and the diffuseness $d$. 
+There are approximate formulas for these values, depending on the number of each kind of nucleon. 
+Alternatively, one can fit the parameters to reproduce experimental energy levels.
+We will use both approaches.
 
-We will eventually optimize the parameters to match experimentally determined energy levels for \He{5}, but to begin with we use 
-standard values given by \cite{suhonen,dickhoff} to investigate the general behavior of the solutions. These parameters are: 
-\begin{center}
-\begin{tabular}{r l}
- Potential depth               & $V_0 = \SI{47}{MeV}$   \\
- Spin-orbit coupling strength  & $V\sub{so} = \SI{-7.5}{Mev}$ \\
- Range                         & $r_0 = \SI{2}{fm}   $  \\
- Diffuseness                   & $d = \SI{0.65}{fm}$  \\ 
-\end{tabular}
-\end{center}
-\todo{beautify ordo sista minuten}
-
-Note that the spin-orbit coupling term can give either attractive or repulsive contributions, depending on how the angular momenta couples. Recall
+Note that the spin-orbit coupling term can give either attractive or repulsive contributions, depending on how the angular momenta couples. Recall that
 \begin{eq}
+  \label{eq:spin-orbit}
   \vec{l}\cdot\vec{s} 
   = 
   \frac{1}{2}
@@ -82,19 +69,24 @@ Note that the spin-orbit coupling term can give either attractive or repulsive c
     l,    &\text{ if } j = l + \frac{1}{2}\\
     -l-1, &\text{ if } j = l - \frac{1}{2}\\
   \end{cases}
-  .
+  ,
 \end{eq}
-Because the $s$-shell is already filled in \He{4}, the valence neutron of \He{5} will be a $p$-wave, with $l=1$. 
-We see that the $p_{3/2}$-wave will get a negative net contribution from the total spin-orbit term, also shown in \cref{fig:woods-saxons}. 
-This means that the ground state of \He{5} will be the $p_{3/2}$-wave, with $p_{1/2}$ an excited state.
+where we have stated the result in the case of one valence nucleon.
 
-Since we approximate the system as a spherically symmetric interaction between two particles, 
-we can by standard procedure reduce the problem to a one-dimensional equation by using the relative coordinate 
+\subsection{Magic Nuclei}
+
+The shell model has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
+It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ total angular momentum. 
+Of special interest to us are \emph{doubly magic} nuclei, where both proton are neutron numbers are magic. 
+These nuclei can be very tightly bound, and will therefore interact weakly with nucleons in outer shells.
+If we add nucleons to a doubly magic nuclei, we can thus treat it as a monolithic \emph{core}, interacting with valence neutrons through the mean-field only.
+
+We will consider the special case of core and one valence neutron, two particles with a spherically symmetric potential. We can then perform the standard procedure of reducing the problem to a one-dimensional equation by using the relative coordinate 
 $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
 \begin{eq}
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
-We can now proceed to solve the Schrödinger equation with the specified potential.
+
 \todo{search replace for backslash , SPILL}
 
 \begin{figure}
@@ -143,17 +135,29 @@ We can now proceed to solve the Schrödinger equation with the specified potenti
 \todo{ticks, xlabel. caption ok? SPILL}
 
 \section{The \He{5} Nucleus}
+Because the $s$-shell is already filled in \He{4}, the valence neutron of \He{5} will be a $p$-wave, with $l=1$. 
+We see from the the $p_{3/2}$-wave will get a negative net contribution from the total spin-orbit term, also shown in \cref{fig:woods-saxons}. 
+This means that the ground state of \He{5} will be the $p_{3/2}$ wave, with $p_{1/2}$ an excited state.
+Both the $p_{3/2}$ and $p_{1/2}$ waves contain known resonances \cite{resonance}
+\todo{table of resonances? OLA}
 
-\todo{read through SPILL}
+The Woods-Saxon paramaters will initially be set to standard values given by \cite{suhonen,dickhoff} 
+\todo{Are they given there?}
+to investigate the general behavior of the solutions. The following values are used: 
+\begin{center}
+\begin{tabular}{r l}
+ Potential depth               & $V_0 = \SI{47}{MeV}$   \\
+ Spin-orbit coupling strength  & $V\sub{so} = \SI{-7.5}{Mev}$ \\
+ Range                         & $r_0 = \SI{2}{fm}   $  \\
+ Diffuseness                   & $d = \SI{0.65}{fm}$  \\ 
+\end{tabular}
+\end{center}
+\todo{beautify ordo sista minuten}
+We later optimize the parameters to match experimentally determined energy levels for \He{5}.
 
-\todo{We want to find p3/2 resonance, and we know its parameters}
+We use the procedures described in \cref{cha:basis_expansion} to numerically solve the \He{5} Schrödinger equation for the $p_{3/2}$ wave. When examining the solutions, we are specifically looking for the ground state resonance.
 
-In \cref{cha:basis_expansion} we described the procedure for numerically solving the Schrödinger equation using basis expansion. 
-In this section we will apply those methods to solve the Schrödinger equation and subsequently study the solutions, specifically searching for the known resonance
-\begin{eq}
-  bla.
-\end{eq}
-\todo{fix eq.}
+\todo{More about resonances?}
 
 \subsection{Harmonic Oscillator Basis}
 
@@ -162,12 +166,12 @@ This affects how rapidly the solutions converge, since a basis with wavefunction
 \Cref{fig:energies(r0)} shows how the eigensolutions depend on the range of the basis functions.
 
 To further specify what we mean by range, which will be used when discussing wave functions and potentials,
-When discussing wavefunctions and potentials, we often describe them by their \emph{range}. We will say that a function that asymptotically decreases at least as $\propto e^{-ar}$ has a finite range. We will in that case define $1/a$ as the range.\todo{Added this paragraph on range, but not sure if it really belongs here? Should it not be in connection with its first use outside the introduction?}  
+When discussing wavefunctions and potentials, we often describe them by their \emph{range}. We will say that a function that asymptotically decreases at least as $\propto e^{-ar}$ has a finite range. We will in that case define $1/a$ as the range.\todo{Added this paragraph on range, but not sure if it really belongs here? Should it not be in connection with its first use outside the introduction? PONTUS SPILL}  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
 
 \tikzsetnextfilename{E(r0)}
-\begin{figure}[t]
+\begin{figure}[b]
   \centering
  	\includegraphics[]{../figures/E(r0)/E(r0).pdf}
   \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. The lowest energy state behaves differently from the others.}
@@ -191,9 +195,10 @@ We will have to switch to a basis with wavefunctions of infinite range to proper
 
 \subsection{Momentum Basis}
 
-\todo{subsub PONTUS}
+The momentum basis describes a plane wave, i.e. a free particle, with wave functions of infinite range.
+Because all \He{5} solutions appear in the continuum, this basis is better suited to the problem than the HO basis.
 
-The momentum basis describes a plane wave, i.e. a free particle. Because all solutions appear in the continuum, this basis is more suited to the problem.
+\subsubsection{Momementum Space Wavefunctions}
 
 Solving the Schrödinger equation in the momentum basis gives us momentum eigenfunctions $\phi(k)$, presented in \cref{fig:real_momentum_wavefunctions}.
 There is a background of wavefunctions peaking at different values of $k$, and, once again, one of the functions stand out as lower and wider. Let us first discuss the peaked wavefunctions.
@@ -226,11 +231,13 @@ The unique state peaks at $k = \SI{0.17}{fm^{-1}}$ and is slightly wider than th
 The Heisenberg uncertainty relation tells us that a less well-defined momentum corresponds to a more well-defined position.
 Consequently, the state should correspond to a localized wavefunction, which is what we expect from a resonance.
 
+\subsubsection{Position Space Wavefunctions}
+
 To investigate the relation between the hypothesized resonance solution and a bound solution, we increase the depth of the potential to $V_0 = \SI{70}{MeV}$, and successively decrease the depth until there is no bound state. 
 This is documented in \cref{fig:wavefunctions}, where the radial probability distributions $r^2|R(r)^2|$ are plotted for the widest momentum wavefunction together with an arbitrary unbound state. 
 With a deep potential, the bound state wavefunction quickly tends to zero outside the potential well.
 As we decrease the depth below a certain threshold, the potential well no longer supports the bound state ($E > 0$), but the wavefunction is still fairly localized.
-This is the region where we find our resonances.
+This is the region of the \He{5} depth (\SI{47}{MeV}) where we should find the resonance.
 When decreased even further the wavefunction starts to look similar to the unbound states.
 
 \todo{Short summary?}
@@ -265,8 +272,8 @@ When decreased even further the wavefunction starts to look similar to the unbou
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions END
 
-\todo{probability distributions or wavefunctions?}
 \todo{dashed/solid SPILL}
+\todo{fix figure placement SPILL}
 
 
 
