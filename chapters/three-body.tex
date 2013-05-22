@@ -47,6 +47,7 @@ The Hamiltonian takes on the form
 \end{eq}
 where $\hat{H}_1$ is the Hamiltonian of the two-body problem and $\hat{V}\sub{res}$ is the residual neutron-neutron interaction.
 To compute the Hamiltonian matrix we will use the eigensolutions $\ket{E_i}$ from the \He{5} problem as single-particle basis states. 
+We can do this because of the Berggren completeness relation \cref{eq:berggren_completeness_relation}, proving the completeness of this basis. 
 The neutron-core pairs are fermions, so we form antisymmetric two-particle Fock states $\ket{E_i, E_j}$.
 Because our basis consists of the eigenstates of $\hat{H}_1$, we can use \cref{eq:one-body_matrix_elements,eq:two-body_matrix_elements} to write the matrix elements as
 \begin{eq}
@@ -193,7 +194,7 @@ and with a complicated calculation (see \cite{suhonen}) one reaches the followin
 \begin{eq}
   \bra{ab; J} V \ket{cd; J} 
   = 
-  & - K_{abcd} \N_{ab} \N_{cd} 
+  & - K_{abcd} \N_{ab}(J) \N_{cd}(J) 
   (-1)^{l_a + l_c + j_b + j_d}
   \\ & \times
   \b{1 + (-1)^{l_a + l_b + l_c + l_d}}
@@ -223,25 +224,28 @@ $\psi_\alpha(r)$ being the radial wavefunction and the $\begin{pmatrix}
     m_1 & m_2 & m_3
   \end{pmatrix}$ are the Wigner 3j symbols.
 
+
 \section{The \He{6} Solutions}
+%TUNL's förslag på hur dom vill bli citerade: TUNL Nuclear Data Evaluation Project, "Energy Level Diagram, \He{6}". Available WWW: http://www.tunl.duke.edu/nucldata/HTML/A=6/06_01_2002.pdf 
+%\He{6} experimental:
+%0^+ E = -0.975
+%2^+ E = 0.8 - i0.55
 
-We solve the \He{6} Schrödinger equation in the coupled scheme, using \cref{eq:coupled_matrix_elements} for the matrix elements. We first consider the gaussian interaction, followed by the SDI.
-The parameters of our interactions are fitted to the known $0^+$ ground state of \He{6}. Using the fitted paramaters, we then make a prediction for the excited $2^+$ state---a resonance. To find the resonance, we have to include the resonance of \He{5} in the sp basis.
-
-\todo{Var nämner vi berggren-basen?}
+We solve the \He{6} Schrödinger equation in the coupled scheme, using \cref{eq:coupled_matrix_elements} for the matrix elements. We first consider the Gaussian interaction, followed by the SDI.
+The parameters of our interactions are fitted to the known $0^+$ ground state of \He{6}. Using the fitted paramaters, we then make a prediction for the excited $2^+$ state---a resonance. To find the resonance, we have to include the resonance of \He{5} in the sp basis. 
 
 \subsection{Identifying the Resonance}
-
-When solving the  The solutions $\ket{\psi}$ will be written on the form
+The solutions $\ket{\psi}$ will be written on the form
 \begin{eq}
 \ket{\psi} = \sum_{E_1 E_2} \Psi(E_1, E_2) \ket{E_1 E_2; J}
 \end{eq}
-where the coefficients $\Psi(E_1, E_2)$ can be considered the wavefunction. These are hard to visualize effectively. However, it is of interest to investigate the component 
+where the coefficients $\Psi(E_1, E_2)$ can be considered the wavefunction. These are not easily visualized because of the two variables,
+but they still can be used to obtain information about the solutions. 
+Consider the component 
 \begin{eq}
 \Psi(E\sub{r}, E\sub{r}) = \braket{E\sub{r}^2;J}{\psi},
 \end{eq}
-the overlap between a solution and the two-particle state corresponding to two independent \He{5} resonances (where $E\sub{r}$ denotes the energy of the \He{5} $p_{3/2}$ resonance). We 
-
+being the overlap between a solution and the two-particle state corresponding to two independent \He{5} resonances (here $E\sub{r}$ denotes the energy of the \He{5} $p_{3/2}$ resonance). It is found that  the $2^+$ resonance in \He{6} predominantly consists of this component, allowing for an effective way to single out the relevant solution from a large set of scattering states.
 \subsection{Using the Gaussian Interaction}
 
 We begin by setting the range $R$ of the gaussian potential to the same value as the Woods-Saxon range, \SI{2}{fm}. The strength $V\sub{GI}$ is fitted to reproduce the \He{6} ground state. Because the Gaussian interaction is degenerate in $J$ there is no distinction between the ground and excited states. 
@@ -256,13 +260,28 @@ We choose the smallest possible $k\sub{max}$ with which the \He{5} solutions con
 The strength is then fitted to the ground state of \He{6}, as before.
 The result is presented in \cref{tab:He6_results}.
 
-
-
-A plot showing all solutions $k=\sqrt{2\mu E}/\hbar$ obtained, plotted in the complex momentum plane, is shown in \cref{fig:he6_momenta}. Most of the solutions correspond to energies on the form
+A plot showing all solutions $k=\sqrt{2\mu E}/\hbar$ obtained, plotted in the complex momentum plane, is shown in \cref{fig:he6_momenta}.\todo[inline]{SKAPA FIGUREN -- datafiler finns i figures/he6\_momenta}  Most of the solutions correspond to energies on the form
 \begin{eq}
 E = E_1 + E_2 \quad \text{or} \quad k=\sqrt{k_1^2 + k_2^2}
 \end{eq} 
 where $E_1$, $E_2$, $k_1$ and $k_2$ are the energies of two \He{5} eigenstates or their corresponding momenta. These solutions can be interpreted as two unbound particles, barely interacting with eachother. This also explains the pattern that is seen---the momenta are all combinations of contour points that was used in the solution of \He{5} to generate the basis. 
+
+\subsection{\He{6} in the Real Momentum Basis}
+While it is required for the \He{5} resonance to be included in the basis to find the excited $2^+$ state, the ground state be found even without it. For a purely real contour, with all other parameters staying the same, a bound state with energy \SI{-0.976}{MeV} is found -- almost identical to the result obtained with the Berggren basis.
+
+\begin{table}
+\caption{Experimental \He{6} resonance data\cite{tunl} and computed values 
+         with fitted Woods-Saxon parameters $V_0 = 47.05$ and $V\sub{so}=-7.04$. For the SDI, we used interaction strength $V_0 = \SI{998}{MeV}$ and range $r_0 = 2$. 
+         The Gaussian interaction used parameters $V_0 = \SI{99}{MeV}$ and $r_0 = 2$. 24 points were used on the contour for each basis. All values are in \si{MeV}.}
+\begin{center}
+\begin{tabular}{r| r c l}
+$J^\pi$ &   Experiment &   SDI     & Gaussian \\ \hline
+ $0^+$  &   -0.975  &  -0.98    & -0.97  \\
+ $2^+$  &  0.8-0.55i & 1.47-0.47i & -0.97 
+\end{tabular}
+\end{center}
+\end{table}
+
 
 
 \end{document}

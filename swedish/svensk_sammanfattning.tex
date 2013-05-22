@@ -32,7 +32,7 @@ Men det finns en tredje typ av lösning, vilket kallas för ett kvasibundet, ell
 Dessa tillstånd delar egenskaper med både bundna och obundna tillstånd och kan beskrivas med hjälp av komplexa energier.
 
 Vi har i vår rapport undersökt olika sätt att modelera resonansfenomen i flerkropparssystem. Specifikt har vi betraktat \He{5} och \He{6}, vilka kan beskrivas som problem bestående av två respektive tre kroppar.
-För att göra detta har vi behövt använda olika redskap som basexpansion och ... .
+För att göra detta har vi löst Schrödingerekvationen på matrisform med basexpansion i en komplex berggrenbas.
 
 Det första vi vill göra är att skriva om Schrödingerekvationen på en form som är lösbar utav datorn, då den saknar analytiska lösningar för de potentialer vi kommer att använda (woods-saxon, gaussisk tvåkropparsinteraktion och ytdeltainteraktion).
 \todo{ytdeltainteraktion?}
@@ -40,9 +40,12 @@ Det första vi vill göra är att skriva om Schrödingerekvationen på en form s
 Detta görs genom att använda så kallad \emph{basexpansion}, vilket går ut på att en bas kan skrivas som en linjärkombination av en annan.
 En viktig sak att komma ihåg när man gör detta är att basen måste vara komplett.
 Genom teori förklarad i huvudrapporten kan vi skriva vårt problem på formen
+
 \begin{eq}
-	2.9 i rapporten.
+  \label{eq:expand3}
+  H\phi_n = \bra{n} H \ket{n'} = \sum_{n'} H_{nn'} \psi_{n'} = E \psi_n,
 \end{eq}
+
 Vi har alltså skrivit om Schrödingerekvationen till en matrisekvation som löses med hjälp av en egenvärdeslösare på datorn.
 
 För att göra våra beräkningar kortare och enklare inskränker vi oss till sfäriskt symmetriska problem, vilket drar ner komplexitet och därigenom beräkningstid betydligt.
