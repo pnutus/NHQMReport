@@ -35,7 +35,7 @@ A resonance can be described as a \emph{quasi-stationary} state with a complex e
       domain=-2:2,
       samples=200,
       ]
-      %\draw[->] (-3, 0) -- (3, 0) node[above] {$r$};
+      \draw[->] (-2, 2) -- (2, 2) node[above] {$r$};
       \draw[->] (0, 0) -- (0, 4) node[right] {$V$};
       \draw plot (\x, \x*\x);
       \foreach \y in {0.7, 1.4, ..., 4}
@@ -49,10 +49,10 @@ A resonance can be described as a \emph{quasi-stationary} state with a complex e
     \begin{tikzpicture}[
       scale=1.6
       ]
-      %\draw[->] (-3, 0) -- (3, 0) node[above] {$r$};
+      \draw[->] (-2, 0) -- (2, 0) node[above] {$r$};
       \draw[->] (0, -2) -- (0, 2) node[right] {$V$};
       \draw[->, decorate, decoration={snake, post length=1mm}] 
-        (-2, 0) -- (2, 0) node[above left, yshift=1mm] {Unbound};
+        (-2, 1) -- (2, 1) node[above left, yshift=1mm] {Unbound};
     \end{tikzpicture}
   }
   \\
@@ -75,7 +75,7 @@ A resonance can be described as a \emph{quasi-stationary} state with a complex e
 		 
          \draw ($ ({sqrt(-6*ln(1/\depth))}, -1)$)
             -- ($ ({-sqrt(-6*ln(1/\depth))}, -1)$)
-			        node[midway, above right] {Bound state};
+			        node[midway, above left] {Bound state};
       \draw[densely dashed] 
         (-6,0.5) -- (6,0.5)
         node[midway, above right] {Resonance state};
@@ -92,10 +92,6 @@ A resonance can be described as a \emph{quasi-stationary} state with a complex e
   \caption{Three types of quantum systems: closed, completely free and open.}
   \label{fig:potentials}
 \end{figure}
-\todo[inline]{bound state in last figure?}
-\todo[inline]{Colored energy levels (gray/red)? y-axis to the left of the potentials? add x-axis specifying position?}
-\todo[inline]{Plot colors????? Do red/gray look good printed without color?}
-\todo{fixa klart figuren, linje tjocka?}
 
 The state of a particle is described by its wavefunction $\psi$, which can be written as the product of a function of time and position
 \begin{eq}
