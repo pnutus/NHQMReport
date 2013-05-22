@@ -169,7 +169,7 @@ as in \cref{cha:basis_expansion}
 
 
 \subsection{Surface Delta Interaction}
-\todo{motivering först OLA}
+
 Another possible interaction is the surface delta interaction (SDI)
 \begin{eq}
   V(\vec{r}_1, \vec{r}_2) 
@@ -184,7 +184,7 @@ The short-range strong force is thus approximated as a point interaction.
 The physical motivation of the $\delta(r-r_0)$ term is the experimental fact that the scattering cross-section between neutrons is inversely proportional to their kinetic energy.
 Since the kinetic energy has a minimum near the surface of the nucleus (at the range $r_0$ of the Woods-Saxon potential), we can approximate the interaction as focused entirely in that shell.
 
-The SDI can be expanded into multipole radial components
+The SDI can be expanded into separable multipole radial components
 \begin{eq}
   v_l(r) = \frac{\delta(r-r_0)}{r},
 \end{eq}
@@ -207,43 +207,33 @@ and with a complicated calculation (see \cite{suhonen}) one reaches the followin
   \begin{pmatrix} 
     j_c & j_d & J \\
     \frac{1}{2} & -\frac{1}{2} & 0
-  \end{pmatrix}.
-\end{eq}
-with $\widehat{j_\alpha} = \sqrt{2j_\alpha + 1}$ and
-\begin{eq}
+  \end{pmatrix}
+  \\
+  \N_{\alpha\beta} = & \frac{\sqrt{1+(-1)^{J}\delta_{\alpha\beta}}}{1+\delta_{\alpha\beta}}
+  \\
   K_{abcd} 
-  = 
+  = &
   - \frac{V_0 r_0^2}{16\pi}
-  \psi_a(r_0) \psi_b(r_0) \psi_c(r_0) \psi_d(r_0),
+  \psi_a(r_0) \psi_b(r_0) \psi_c(r_0) \psi_d(r_0)
+  \\
+  \widehat{j_\alpha} = & \sqrt{2j_\alpha + 1}
 \end{eq}
-and
-\begin{eq}
-	\N_{ab}(J) 
-	= 
-	\frac{\sqrt{1-\delta_{ab}(-1)^J}}{1+\delta_{ab}}
-\end{eq}
-$\psi_\alpha(r)$ being the radial wavefunction.
+$\psi_\alpha(r)$ being the radial wavefunction and the $\begin{pmatrix}
+    j_1 & j_2 & j_3 \\
+    m_1 & m_2 & m_3
+  \end{pmatrix}$ are the Wigner 3j symbols.
+
 
 \section{The \He{6} Solutions}
 
 We solve the \He{6} Schrödinger equation in the coupled scheme, using \cref{eq:coupled_matrix_elements} for the matrix elements. We first consider the gaussian interaction, followed by the SDI.
-The parameters of our interactions will be fit to the known $0^+$ ground state of \He{6}. The parameters are then used to make a prediction for the excited $2^+$ state---a resonance. To find the resonance, we have to include the resonance of \He{5} in the sp basis. 
+The parameters of our interactions are fitted to the known $0^+$ ground state of \He{6}. Using the fitted paramaters, we then make a prediction for the excited $2^+$ state---a resonance. To find the resonance, we have to include the resonance of \He{5} in the sp basis.
 
-\subsection{Using a Gaussian Interaction}
+\todo{Var nämner vi berggren-basen?}
 
-We began bysetting the range $R$ of the gaussian potential to the same value as the Woods-Saxon range, \SI{2}{fm}. The strength $V\sub{GI}$ was then fitted to reproduce the \He{6} ground state.
-\cref{tab:he6_gaussian} summarizes the results of this investigation. 
+\subsection{Identifying the Resonance}
 
-It is clearly seen that the Gaussian interaction is unsuitable to describe this system. 
-It is degenerate in $J$, meaning there is no distinction between the ground and excited states.
-It is possible to fit $V_0$ to reproduce the ground state energy. However, with the range $r_0$ set to \SI{2}{fm}, it does not produce a resonance.
-A wide resonance ($\Gamma > \SI{6}{MeV}$) forms when the range is decreased to \SI{1}{fm}, but doing so requires larger values of $k$ to be included in the basis. 
-This rapidly increases computation time, making the method uneffective.
-
-On the other hand, the SDI managed to reproduce the solutions remarkably well. \todo{bla bla.. Or let the table do the talkin'?}
-
-
-It is also possible to consider the wavefunctions. The solutions $\ket{\psi}$ will be written on the form
+When solving the  The solutions $\ket{\psi}$ will be written on the form
 \begin{eq}
 \ket{\psi} = \sum_{E_1 E_2} \Psi(E_1, E_2) \ket{E_1 E_2; J}
 \end{eq}
@@ -253,12 +243,27 @@ where the coefficients $\Psi(E_1, E_2)$ can be considered the wavefunction. Thes
 \end{eq}
 the overlap between a solution and the two-particle state corresponding to two independent \He{5} resonances (where $E\sub{r}$ denotes the energy of the \He{5} $p_{3/2}$ resonance). We 
 
+\subsection{Using the Gaussian Interaction}
 
-A plot showing all solutions $k=\sqrt{2\mu E}/\hbar$ obtained, plotted in the complex momentum plane, is shown in \cref{fig:he6_momenta}. It can be verified that most of the solutions correspond to energieson the form
+We begin by setting the range $R$ of the gaussian potential to the same value as the Woods-Saxon range, \SI{2}{fm}. The strength $V\sub{GI}$ is fitted to reproduce the \He{6} ground state. Because the Gaussian interaction is degenerate in $J$ there is no distinction between the ground and excited states. 
+
+Decreasing the range to $R = \SI{1}{fm}$, we find a wide resonace ($\Gamma > \SI{6}{MeV}$), but this requires large values of $k$ to be included in the basis and thus more scattering states. Although it might be possible to vary $R$ and $V_0$ to get a resonance closer to experimental data, we do not pursue this method further.
+
+\subsection{Using the Surface Delta Interaction}
+
+The SDI has only one parameter, the strength $V\sub{SDI}$. 
+However, because of its unphysical nature, it will also depend on the truncation of the scattering states. 
+We choose the smallest possible $k\sub{max}$ with which the \He{5} solutions converge, $k\sub{max} = \SI{2.5}{fm^{-1}}$.
+The strength is then fitted to the ground state of \He{6}, as before.
+The result is presented in \cref{tab:He6_results}.
+
+
+
+A plot showing all solutions $k=\sqrt{2\mu E}/\hbar$ obtained, plotted in the complex momentum plane, is shown in \cref{fig:he6_momenta}. Most of the solutions correspond to energies on the form
 \begin{eq}
 E = E_1 + E_2 \quad \text{or} \quad k=\sqrt{k_1^2 + k_2^2}
 \end{eq} 
-where $E_1$, $E_2$, $k_1$ and $k_2$ are the energies of two \He{5} eigenstates or their corresponding momenta. These solutions can be interpreted as two unbound particles, barely interacting with eachother. This also explains the pattern that is seen -- the momenta are all combinations of contour points that was used in the solution of \He{5} to generate the basis. 
+where $E_1$, $E_2$, $k_1$ and $k_2$ are the energies of two \He{5} eigenstates or their corresponding momenta. These solutions can be interpreted as two unbound particles, barely interacting with eachother. This also explains the pattern that is seen---the momenta are all combinations of contour points that was used in the solution of \He{5} to generate the basis. 
 
 
 \end{document}
