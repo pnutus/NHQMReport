@@ -53,14 +53,14 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
         \node at (0, 0.1) [bound, pin=above left:Bound state,] {};
 		\node at (0, 0.3) [bound] {};
 		
-        \node at (0.25, -0.15) [quasibound] {};
+        \node at (-0.25, -0.15) [quasibound] {};
         \draw[very thick, mid arrows] 
         (0,0) -- (1,0);
         \draw[thick, mid arrows, dashed]
           (1,0) arc (0:90:1) arc (90:180:1) -- (0,0);
 		  
 		\node at (0, 0.1) [bound, pin=above left:Bound State,] {};
-		\node at (-0.25, -0.15) [quasibound, pin=below left:Resonance,] {};
+		\node at (0.25, -0.15) [quasibound, pin=below right:Resonance,] {};
     \end{tikzpicture}
     }
     \subfloat[]{
@@ -95,8 +95,6 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
   mirroring of the states in the imaginary axis.}
   \label{fig:complex plane}
 \end{figure}
-
-\todo{label on right resonance SPILL}
 
 \todo[inline]{this seems like a big leap of faith?. Ask Jimmy about this subsection?} We now interpret the bound and resonant $k$ as complex poles and the unbound continuum as a contour, mirrored in the imaginary axis, encircling the upper half plane (\cref{fig:simple_contour}).
 The integral to be evaluated along the contour is the one in the radial momentum space Schrödinger equation
@@ -271,16 +269,26 @@ Barring such numerical errors, we found that any contour that runs below the pol
         ytickmax = 0.3, xtickmax = 0.9,
 		xtick={0.1,0.2,...,0.4},
         enlarge y limits,
-        no markers,
 		     xtickmin = 0.1,
 		     xticklabel style={/pgf/number format/fixed,
-		     /pgf/number format/precision=3},
+		     /pgf/number format/precision=3},legend style={at={(0.8,0.65)}, anchor=north,legend columns=1},
         ]
-      	\addplot+[color = red, very thick, ->] table  {../figures/res_pole(V0)/poles.data};
+      	\addplot+[color = red, very thick, ->, no markers,] table  {../figures/res_pole(V0)/poles.data};
       	    \addlegendentry{Pole position}
-      	\addplot+[color= gray, very thick] table [x index = 0, y index = 1] {../figures/res_pole(V0)/contour.data};
-\node[coordinate,pin=above right:{$V_0=54.3$}] 
+      	\addplot+[color= gray, very thick, no markers,] table [x index = 0, y index = 1] {../figures/res_pole(V0)/contour.data};
+		
+\addplot+[color= gray, only marks] table  {../figures/res_pole(V0)/mark.data};
+\node[coordinate,pin=above right:{$V_0=54.3$}, mark=*] 
 at (axis cs:0,0.116) {};
+
+\node[coordinate,pin=below right:{$V_0=51.2$}] 
+at (axis cs:0.0817,-0.00752) {};
+
+\node[coordinate,pin=right:{$V_0=47.1$}] 
+at (axis cs:0.17,-0.0346) {};
+
+
+
           \addlegendentry{Contour}
       \end{axis}
   \end{tikzpicture}
