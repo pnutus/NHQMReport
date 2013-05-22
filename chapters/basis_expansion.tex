@@ -159,16 +159,11 @@ where $R_{nl}$ are the radial wavefunctions of the harmonic oscillator,
   \label{eq:HO_radial_wavefunction}
 	R_{nl}(r) 
 	= 
-  \sqrt{\frac{
-    2^{l+2}  (n - l)!!
-  }{
-    \sqrt\pi r_0^{2l + 3} (n + l + 1)!!
-  }}
-	r^l \exp\p{-\frac{r^2}{2r_0^2}}
+ \sqrt{\frac{2 \, (\frac{n-l}{2})! }{\Gamma(\frac{n+l}{2}+\frac{3}{2})}}
+\frac{r^l}{r_0^{l+{3\over 2}}} \exp\p{-\frac{r^2}{2r_0^2}}
 	L_{(n-l) / 2}^{(l+\frac{1}{2})}\p{\frac{r^2}{r_0^2}},
 \end{eq}
 $r_0 = \sqrt{\hbar/\mu\omega}$ is the range and $L_\nu^\lambda(x)$ are the generalized Laguerre polynomials.
-\todo{Doublecheck normalization constant.}
 The radial wavefunction $R(r)$ of a state will be expressed as a linear combination of the harmonic oscillator radial wavefunctions:
 \begin{eq}
   R(r) = \sum_n \psi_{nl} R_{nl}(r).
