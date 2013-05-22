@@ -17,7 +17,6 @@ FUFX02-13-03}
 \maketitle
 \newpage
 
-
 Beteendet hos ett kvantmekaniskt system beskrivs av dess Hamiltonian som består av en rörelsmängdsterm och en potentialterm.
 Beroende på potentialens form kan systemet ge upphov till bundna och obundna tillstånd, som svarar mot diskreta respektive kontinuerliga energispektrum.
 Partiklar i ett så kallat \emph{stängt kvantsystem} är alltid bundna och lokaliserade i en ändlig omgivning av potentialen. 
@@ -25,7 +24,7 @@ Ett \emph{öppet kvantsystem} kan ha ett spektrum som är både diskret och kont
 I det kontinuerliga spektrumet hos ett öppet kvantsystem kan uppstå något som kallas \emph{resonans}.
 Ett resonanstillstånd är obundet, men diskret och lokaliserat, och brukar kallas \emph{kvasibundet}.
 
-Syftet med detta projekt är att studera dessa resonanser, specifikt \He{5} och \He{6}, lätta atomkärnor som är obunden resp. löst bunden.
+Syftet med detta projekt är att studera dessa resonanser, specifikt hos \He{5} och \He{6}, lätta atomkärnor som är obunden respektive löst bunden.
 Vi gör detta genom att betrakta den tidsoberoende Schrödingerekvationen, ett egenvärdesproblem
 \begin{eq*}
   H \ket\psi = E \ket\psi.
@@ -38,16 +37,14 @@ Då kan egenvärdesproblemet lösas med en så kallad egenlösaralgoritm.
 Vi gör en naturlig inskränkning till sfäriskt symmetriska problem, vilket minskar komplexiteten hos problemet och leder till mindre matriser och snabbare beräkningar.
 
 Rapporten behandlar två fullständiga baser, den sfäriska harmoniska oscillatorns bas och rörelsemängdsbasen. 
-Rörelsemängdsbasen är kontinuerlig och kräver diskretisering som utförs med hjälp av Gauss-Legendrekvadratur. 
-Kvadraturen används även för att beräkna de integraler vid beräkning av matriselement.
+Rörelsemängdsbasen är kontinuerlig och kräver diskretisering som utförs med hjälp av Gauss-Legendrekvadratur. Kvadraturen används även för integralberäkningar vid matrisgenerering.
 
-\section{\He{5}-systemet}
 
-Genom en skalmodell kan \He{5}-kärnan betraktas två partiklar, en alfapartikel och en valensneutron. Detta tillåter att problemet reduceras till en dimension.
-Alfapartikeln och neutronen växelverkan approximeras i skalmodellen med Woods-Saxonpotentialen
+Genom en skalmodell kan \He{5}-kärnan betraktas som två partiklar, en alfapartikel och en valensneutron. Detta tillåter att problemet reduceras till en dimension.
+Alfapartikelns och neutronens växelverkan approximeras i skalmodellen med Woods-Saxonpotentialen
 \begin{eq*}
-  V(r) & =
-  -V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr},
+	V(r) & =
+	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr},
   \\
   f(r) & = \b{1+\exp\p{\frac{r-r_0}{d}}}^{-1},
 \end{eq*}
@@ -61,12 +58,20 @@ Parametrarna som används är
 \end{tabular}
 \end{center}.
 
-Schrödingerekvationen för \He{5}-system löses i både harmoniska oscillatorbasen och rörelsemängdsbasen. Den harmoniska oscillatorn är ett stängt system med bara bundna egenlösningar och passar därför dåligt för att analysera det öppna \He{5}-systemet. 
+Schrödingerekvationen för \He{5}-system löses i både harmoniska oscillatorns bas och rörelsemängdsbasen. Den harmoniska oscillatorn är ett stängt system med bara bundna egenlösningar och passar därför dåligt för att analysera det öppna \He{5}-systemet. 
 
 Rörelsemängdsbasens egenlösningar beskriver fria partiklar, vilket ligger mycket närmre den obundna \He{5}-kärnan. 
-I denna bas ser vi att en av lösningarna till Schrödingerekvationen sticker ut (\cref{fig:resonance_wavfunction}).
+I denna bas ser vi att en av lösningarna till Schrödingerekvationen står ut (\cref{fig:resonance_wavfunction}).
 Den befinner sig i kontinuumet, liksom resten av lösningarna, men dess vågfunktion är lokaliserad, ett tecken på att det är en resonans.
 Vi kunde dock inte kvantifiera resonansens egenskaper, utan bara göra kvalitativa bedömningar.
+
+\begin{figure}[ht]
+  \centering
+  	\includegraphics[page=1]{../figures/eigvecs_real_comp_se/eigvecs.pdf}
+
+  \caption{Rörelsemängdsrummets vågfunktioner till \He{5}. Resonensen står ut tydligt då den är lägre och bredare än de omkringliggande tillstånden.} 
+  \label{fig:resonance_wavfunction}
+\end{figure}
 
 \begin{figure}[h]
 \centering{
@@ -76,8 +81,7 @@ Vi kunde dock inte kvantifiera resonansens egenskaper, utan bara göra kvalitati
   \subfloat[$V_0 = \SI{47}{MeV}$]{
     \includegraphics[page=3]{../figures/wavefunctions/wavefunctions.pdf}
 }
-  \caption{
-    \He{5} Radiella vågfunktioner för två olika starka potentialer. Den unika lokaliserade lösningen till SE markeras i rött och en vanlig obunden tillstånd visas i grått.
+  \caption{    \He{5} Radiella vågfunktioner för två olika starka potentialer. Den unika lokaliserade lösningen till SE markeras i rött och ett vanlig obunden tillstånd visas i grått.
     Den starka potentialen i (a) ger ett starkt bundet tillstånd medan den svagare i (b) ger ett lokaliserat men obundet tillstånd -- en resonans.
   } 
   }
@@ -86,17 +90,66 @@ Vi kunde dock inte kvantifiera resonansens egenskaper, utan bara göra kvalitati
   
 \section{Den komplexa rörelsemängdsbasen}
 
-För att bättre beskriva resonansen introducerar vi det komplexa rörelsemängdsplanet, \cref{fig:simple_contour}, där energiegenlösningar svarar mot en rörelsemängd $k = \sqrt{2mE}{\hbar}$.
+%\tikzset{external/remake next}
+\tikzsetnextfilename{triangle_contour}
+\begin{figure}[t]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = \textwidth,
+      height = 5cm,
+      xlabel=Re $k$,
+      ylabel=Im $k$,
+		  axis lines = middle,
+      ymax = 0.1,
+      enlargelimits,
+      only marks,
+      ticks = none,
+      every axis x label/.style={
+        at = {(current axis.right of origin)},
+        anchor = north,
+      },
+      ]
+      \addplot[color=darkgray] table {../figures/numerical_contour/numerical_contour.data};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Den komplexa konturen som används vid bestämmandet av resonansen.}
+  \label{fig:simple_contour}
+\end{figure}
+
+För att bättre beskriva resonansen introducerar vi det komplexa rörelsemängdsplanet, \cref{fig:simple_contour}, där energiegenlösningar svarar mot en rörelsemängd $k = \frac{\sqrt{2mE}}{{\hbar}}$.
 Bundna lösningar representeras av diskreta poler på positiva imaginäraxeln, obundna lösningar ligger kontinuerligt längs positiva realaxeln och resonanser är poler i fjärde kvadranten.
 Vi ser kontinuumlösningarna som en kontur, och deformerar denna till att omsluta resonanspolen \cref{fig:berggren_contour}. 
 Resonansen blir då en av lösningarna till Schrödingerekvationen, tillsammans med kontinuumtillstånden längs konturen och eventuella bundna tillstånd.
 Enligt Berggrens teori \cite{berggren} bildar lösningarna en fullständig bas, ett viktigt resultat som låter oss använda lösningarna för att bygga flerpartikeltillstånd.
 
+\begin{figure}
+  \centering{
+      \label{fig:triangle_contour}
+      \includegraphics[page=2]{../figures/poles(contour)_se/poles.pdf}
+  }
+   \caption{Lösningar och kontur i det kompleka rörelsemängdsrummet. Notera resonansen i mitten av triangeln.} 
+\label{fig:berggren_contour}  
+\end{figure}
+
 Innan vi utnyttjar detta återgår vi till att studera \He{5}, nu i den komplexa rörelsemängdsbasen. Med den nya metoden lyckas vi återskapa experimentella värden, och vi kan anpassa Woods-Saxonpotentialens parametrar utifrån observerad data. \Cref{tab:resonances} visar resultatet av denna anpassning.
+
+\begin{table}[b]
+\caption{Experimentella och anpassade värnen på resonanserna hos \He{5}.}
+\begin{center}
+  \label{tab:resonances}
+   \begin{tabular}{c|c|c|c}
+    Våg      & Experimentellt värde på $k_r$ & Anpassat värde på $k_r$  \\
+    \hline
+    $p_{3/2}$ & 0.1788 -  0.0349i & 0.1778 - 0.0376i \\
+    $p_{1/2}$ & 0.3267 - 0.1643i & 0.3286 - 0.1630i \\
+  \end{tabular}
+  \end{center}
+\end{table}
 
 \section{Flerkropparsproblem och \He{6}}
 En naturlig utveckling av \He{5} är att lägga till ytterligare en neutron och på så sätt nå \He{6}. 
-Då kan vi inte längre kan reducera problemet till en dimension, utan behöver använda mångkropparsteori.
+Då vi kan inte längre reducera problemet till en dimension, utan behöver använda mångkropparsteori.
 Vi sammanfattar de viktigaste resultaten: antisymmetriska fermiontillstånd, ockupationstalrepresentation och rörelsemängdsmomentskoppling.
 Ett kort avsnitt ger ett förslag på en implementation av ockupationstalsrepresentationen.
 
@@ -122,6 +175,16 @@ Parametrarna för dessa anpassas till grundtillståndet $0^+$ i \He{6}, varefter
 Här behöver vi använda Berggrenbasen vi skapade från lösningarna till \He{5} för att överhuvudtaget kunna finna en resonans. 
 Det visar sig att den gaussiska interaktionen inte ger några rimliga resultat, medan ytdeltainteraktionen låter oss återskapa \He{6}-resonansen. Resultaten sammanfattas i \cref{he6_results.}
 
+\begin{table}[b]
+\caption{Experimentella värden och beräknade energinivåer i \He{6} med de olika interaktionerna.}
+\begin{center}
+\begin{tabular}{r| r c l}
+$J^\pi$ &   Experimentellt &   Ytdelta     & Gaussisk \\ \hline
+ $0^+$  &   -0.975  &  -0.98    & -0.97  \\
+ $2^+$  &  0.8-0.55i & 1.47-0.47i & -0.97 
+\end{tabular}
+\end{center}
+\end{table}
 
 
 \end{document}

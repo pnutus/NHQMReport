@@ -36,8 +36,9 @@ This poses additional challenges, since one needs to introduce a transitionally 
 With an increased number of particles, the size of the Hamiltonian matrix grows exponentially. This leads to more matrix element calculations, memory usage requirements and slower diagonalization.
 
 One way to reduce the matrix size is to select only the most important basis states in computations.
-This is possible because, as we have demonstrated, certain many-body configuration barely give any contribution to the energy of the (quasi-)bound solutions. 
-An example of this kind of method is the Density Matrix Renormalization Group (DMRG) \cite{DMRG}.
+This is possible because certain many-body configurations barely give any contribution to the energy of the (quasi-)bound solutions. 
+An example of a method doing this is the Density Matrix Renormalization Group (DMRG) \cite{DMRG}.
+
 
 Another, less systematic, approach is the Monte Carlo method of randomly sampling states to include and taking the mean.
 We made a minor study of a potential Monte-Carlo approach, but cannot present any conclusive results.
