@@ -39,7 +39,6 @@ where $v$ is the nucleon-nucleon interaction. Now add and subtract a potential f
 where we have split the Hamiltonian into a spherically symmetric mean-field Hamiltonian $H\sub{MF}$ in which particles do not interact directly, and the \emph{residual interaction} $V\sub{res}$ that can be seen as the new interaction between particles. If the mean-field potential $V$ is chosen carefully, $V\sub{res}$ can become small enough to be treated pertubationally (if at all).
  
 \subsection{The Woods-Saxon Potential}
-
 For the mean-field potential we will use the established Woods-Saxon potential, visualized in \cref{fig:woods-saxons}, given by
 \begin{eq}
 	V(r)=
@@ -139,6 +138,9 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
 \todo{ticks, xlabel. caption ok? (deep one should be p3/2).  SPILL}
 
 \section{The \He{5} Nucleus}
+We choose to study \He{5}, seen as a \He{4} nucleus and a valence neutron. 
+The \He{4} nucleus ($\alpha$ particle) is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core.  
+Other doubly magic light nuclei, such as \ce{^{16}O} and its isotopes, have been studied using methods similar to ours\cite{gamow_shell_model_2008}, but we will restrict ourselves to \He nuclei.
 
 Because the $s$-shell is already filled in \He{4}, the valence neutron of \He{5} will be a $p$-wave, with $l=1$. 
 We see from [ref?] that the $p_{3/2}$-wave will get a negative net contribution from the total spin-orbit term, also shown in \cref{fig:woods-saxons}. \todo[inline]{ref}
@@ -148,7 +150,8 @@ Both the $p_{3/2}$ and $p_{1/2}$ waves have known resonances, see \cref{tab:reso
 \todo[inline]{Forward-reffing tables. Spoiler alert?}
 
 The Woods-Saxon paramaters will initially be set to standard values given by \cite{suhonen,dickhoff} 
-\todo{Are they given there?}
+\todo{Are they given there? v0 = 51, r0 = 2, d=0.67 enl. suhonen, inga värden i dickhoff}
+\todo[inline]{Where are the equation for the Woods-Saxon potential.}
 to investigate the general behavior of the solutions. The following values are used: 
 \begin{center}
 \begin{tabular}{r l}
@@ -185,7 +188,6 @@ The range $r_0$ is a measure of the
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
-
 
 Because the harmonic oscillator consists only of bound states and we are trying to study unbound states, this method cannot take us much further.
 We will have to switch to a basis with wavefunctions of infinite range to properly describe this system.
@@ -260,8 +262,8 @@ When $V_0$ is decreased even further the resonance disappears.
     \He{5} wavefunctions for varying potential depth. 
     Plotted are the unique localized solution (thick line) and, for comparison, an arbitrary continuum solution (thin line).
     With a deep potential $V_0 = \SI{70}{MeV}$ there is a strongly bound state, which gets weaker as the potential depth is decreased.
-    At $V_0 = \SI{52}{MeV}$ the wavefunction is highly localized, yet the energy value is in the continuum, a sign of resonance.
-    There is still a clearly localized state for $V_0 = \SI{47}{MeV}$, but at $V_0 = \SI{40}{MeV}$ it is practically indistinguishable from the continuum states.
+    At $V_0 = \SI{52}{MeV}$ the wavefunction is highly localized, yet the energy lie in the continuum, a sign of resonance.
+    There is still a clearly localized state for $V_0 = \SI{47}{MeV}$, but at $V_0 = \SI{40}{MeV}$ it is practically indistinguishable from the other continuum states.
   } 
   \label{fig:wavefunctions}
   \end{figure}
