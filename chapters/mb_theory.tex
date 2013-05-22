@@ -49,12 +49,13 @@ Let us assume that the system of identical particles can be described by some li
 \begin{eq}
   \ket{\alpha_1\alpha_2\dots\alpha_N}.
 \end{eq}
-Since the particles are identical, and thus indistinguishable, we require the norm of the state to be unchanged when swapping the quantum numbers of two particles $i$ and $j$
+Since the particles are identical, and thus indistinguishable, we require the norm of the state to be unchanged when swapping the quantum numbers of two particles $\beta$ and $\gamma$
 \begin{eq}
-  \braket{\alpha_1\dots\alpha_i\dots&\alpha_j\dots\alpha_N}{\alpha_1\dots\alpha_i\dots\alpha_j\dots\alpha_N} \\
-&=\braket{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}{\alpha_1\dots\alpha_j\dots\alpha_i\dots\alpha_N}
+  \braket{\alpha_1\dots\beta\dots&\gamma\dots\alpha_N}
+    {\alpha_1\dots\beta\dots\gamma\dots\alpha_N} \\
+&=\braket{\alpha_1\dots\gamma\dots\beta\dots\alpha_N}
+    {\alpha_1\dots\gamma\dots\beta\dots\alpha_N}
 \end{eq}
-\todo[inline]{absq? use $\beta\gamma$?}
 These states can therefore only differ in phase $e^{i\varphi}$, and since another swap will bring us back to the original state, the phase has to be either $e^{i\varphi} = 1$ or $e^{i\varphi} = -1$.
 Symmetric states with no phase change describe \emph{bosons}, whereas antisymmetric states that change sign describe \emph{fermions}.
 In this thesis all sp states will be fermionic, hence we do not treat the bosonic case.
@@ -106,7 +107,7 @@ If they do not, we permute two sp states at a time until the correct ordering is
   (-1)^{i-1} 
   \ket{\alpha_1\dots\alpha_{i-1}\alpha_i\alpha_{i+1}\dots\alpha_N}.
 \end{eq}
-The orthonormality of normalized antisymmetric states with a well-defined ordering can be stated simply
+With a well-defined ordering orthonormality of the normalized antisymmetric states can be stated simply
 \begin{eq}
   \braket{\alpha_1\alpha_2\dots\alpha_N}{\alpha'_1\alpha'_2\dots\alpha'_N}
   =
@@ -121,14 +122,11 @@ The orthonormality of normalized antisymmetric states with a well-defined orderi
 \label{sec:second_quantization}
 
 So far we've looked at a system with a fixed number of particles, but we want to work with a system hosting an arbitrary number of identical particles.
-The \emph{second quantization} formalism is what lets us do this.
-We will be working \emph{Fock space}, a combination of spaces of $0,1,2,...$ particles.
-This means that a state in Fock space, a \emph{Fock state}, can contain any number of particles and that states with different number of particles are orthogonal to each other.
+The \emph{second quantization} formalism lets us do this by introducing the \emph{Fock space}, a combination of Hilbert spaces of $0,1,2,...$ particles.
+This means that a state in Fock space, a \emph{Fock state}, can contain any number of particles and that Fock states with different number of particles are orthogonal.
 
 A disclaimer is in place here: while we introduce this powerful concept, we do not make full use of it in this thesis. 
 It should instead be considered as a stepping stone for readers wishing to expand on the systems and methods we do use.
-
-\todo[inline]{paragraphs okay?}
 
 \subsection{Creation and Annihilation Operators}
 
@@ -186,7 +184,7 @@ Analogous to $a_\alpha^\dag$, when $a_\alpha$ acts on a state that does not cont
 \subsection{General Operators in Fock Space}
 
 We can now express the state of an arbitrary number of particles, but to have any use of the states we also need to express operators such as the Hamiltonian in the Fock space formalism. 
-A general operator, involving any number of particles, can be expressed using the creation and annihilation operators.
+A general operator has can in Fock space be expressed using the creation and annihilation operators.
 The Fock space equivalent of an operator is able act on a state with an arbitrary number of particles. 
 We will only treat one- and two-body operators here, as they are sufficient for our purposes.
 
@@ -311,8 +309,6 @@ In principle, coupling is not neccesary to solve many-body problems, but its an 
 We will limit the discussion to coupling of two particles, as we never work with more particles here.
 A more complete description is found in \cite{suhonen}.
 
-\todo{sp -- single particle}
-
 \subsection{The Two-Particle Coupled Basis}
 In previous Chapters we have studied single-particle states on the form $\ket{Ejm}$, where we let the quantum number $E$ represent all quantum numbers needed to uniquely specify a state. From these we would form product states
 \begin{eq}
@@ -335,8 +331,8 @@ where $c_{m_1 m_2}$ are the \emph{Clebsch-Gordan coefficients} (which also depen
 There are known expressions for these, and values can be found in standard tables or calculated in a fairly straight-forward way. 
 A more in-depth treatment of the coefficients can be found in \cite{suhonen}.
 
-If we study a system with rotational symmetry, the problem will be block diagonal in $J$ and $M$, meaning that we can study systems of different $J$ and $M$ separately.
-We have thus significantly decreased the dimension of the matrices that need to be computed and diagonalized. 
+Working with matrix elements between coupled basis states is called working in the \emph{coupled scheme} or \emph{$J$-scheme}.
+If we study a system with rotational symmetry, the Hamiltonian will be block diagonal in $J$ and $M$, meaning that working in the coupled scheme will be much more efficient.
 
 \subsection{The Antisymmetric Coupled Basis}
 

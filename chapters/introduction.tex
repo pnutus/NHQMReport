@@ -2,17 +2,12 @@
 \begin{document}
 \chapter{Introduction}
 
-The properties of a quantum mechanical system is largely determined by its potential. 
-Particles in a potential well with infinitely high walls are completely bound and cannot leave the potential well.
-Such a system is a called a \emph{closed} quantum system, since the number of particles is conserved and the particles are localized in a finite region. 
+The properties of a quantum mechanical system are determined by its Hamiltonian. 
+Particles in a potential well with infinitely high walls form localized bound states.
+Such a system is a called a \emph{closed quantum system}, since the number of particles is conserved and the particles are localized in a finite region. 
 The energy of a closed quantum system can only take on discrete values, as illustrated in \cref{fig:closed_quantum_system} with the harmonic oscillator potential.
 
-The polar opposite of a system with an infinitely high potential is no potential at all, i.e.~a free particle propagating through space (\cref{fig:free_particle}).
-This system is not restricted to discrete energy values and can, in fact, take on any energy value.
-An unbound, free state is therefore said to be \emph{in the continuum}.
-The wavefunction of an unbound state is unlocalized and has infinite range.
-
-An \emph{open} quantum system, portrayed in \cref{fig:open_quantum_system}, is neither closed nor completely free.
+An \emph{open quantum system}, on the other hand, portrayed in \cref{fig:open_quantum_system}, is neither closed nor completely free.
 Here, the potential vanishes at infinity.
 Particles can thus enter and exit the system and, consequently, there are unbound states.
 Depending on the depth of the potential well of the open system, there can be a finite number of bound states.
@@ -35,7 +30,7 @@ A resonance can be described as a \emph{quasi-stationary} state with a complex e
       domain=-2:2,
       samples=200,
       ]
-      \draw[->] (-2, 2) -- (2, 2) node[above] {$x$};
+      \draw[->] (-2, 2) -- (2, 2) node[above] {$r$};
       \draw[->] (0, 0) -- (0, 4) node[right] {$V$};
       \draw plot (\x, \x*\x);
       \foreach \y in {0.7, 1.4, ..., 4}
@@ -49,7 +44,7 @@ A resonance can be described as a \emph{quasi-stationary} state with a complex e
     \begin{tikzpicture}[
       scale=1.6
       ]
-      \draw[->] (-2, 0) -- (2, 0) node[above] {$x$};
+      \draw[->] (-2, 0) -- (2, 0) node[above] {$r$};
       \draw[->] (0, -2) -- (0, 2) node[right] {$V$};
       \draw[->, decorate, decoration={snake, post length=1mm}] 
         (-2, 1) -- (2, 1) node[above left, yshift=1mm] {Unbound};
@@ -64,7 +59,7 @@ A resonance can be described as a \emph{quasi-stationary} state with a complex e
       domain=-6:6,
       samples=200,
       ]
-      \draw[->] (-6, 0) -- (6, 0) node[above] {$x$};
+      \draw[->] (-6, 0) -- (6, 0) node[above] {$r$};
       \draw[->] (0, -3.1) -- (0, 2) node[right] {$V$};
       \draw plot (\x,{-\depth*exp(- \x*\x/6)});
       \foreach \y in {-2.3, -1}
@@ -140,9 +135,9 @@ Hermitian operators can only have real eigenvalues, and are thus insufficient fo
 The aim of this thesis is to present methods for describing resonances using the TISE and a complex energy. 
 To demonstrate the methods, we will study the simple nuclear systems \He{5} and \He{6}.
 They are relevant because the ground state of \He{5} and the first excited state of both \He{5} and \He{6} are resonances. 
-The ground state of \He{6} is bound, an example of a \emph{Borromean} system, named after the Borromean rings depicted on the cover of the thesis.
+Despite the unbound nature of \He{5}, the ground state of \He{6} is bound, an example of a \emph{Borromean} system, named after the Borromean rings depicted on the cover of this thesis.
 
-The thesis can be thought of as divided into two parts, the first covering resonances in a simple two-body problem and the second part covering the first steps toward more complicated many-body systems. 
+The thesis can conceptually be divided into two parts, the first covering resonances in a simple two-body problem and the second part covering the first steps toward more complicated many-body systems. 
 In \cref{cha:basis_expansion} the \emph{basis expansion} method for solving the Schrödinger equation is introduced.
 The basis expansion method is then used in \cref{cha:two-body} to study a loosely bound two-body nuclear system, the \He{5} nucleus.
 In \Cref{cha:berggren} we use the Berggren basis to reproduce the resonance in \He{5}.
