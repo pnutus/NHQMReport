@@ -108,37 +108,31 @@ The integral to be evaluated along the contour is the one in the radial momentum
 \end{eq}
 The result of a contour integration depends on the poles it encircles by the residue theorem. 
 The contour in \cref{fig:simple_contour} encircles the bound states, but not the resonance.
-We suspect a deformation of the contour, such that it encircles the resonance, might have an effect on the solutions.
-\todo{Encircle sounds a bit weird? 'Includes'?}
+We suspect a deformation of the contour, such that it goes below the resonance, might have an effect on the solutions.
 
 \subsection{The Berggren Completeness Relation}
 
 In fact, this is correct, and was proven in 1968 by Berggren \cite{berggren}.
 The contour, dubbed $L_+$, can be deformed to surround the resonance poles, as illustrated in \cref{fig:berggren_contour}. 
-The continuum states along $L_+$ combined with the encircled bound and resonant states form a complete basis. 
-The result can be stated succinctly in the \emph{Berggren completeness relation} (compare with \cref{eq:momentum_completeness_relation})
+The continuum states along $L_+$ combined with the encircled bound and resonant states form a complete basis, the \emph{Berggren basis}. 
+This result can be stated succinctly with the \emph{Berggren completeness relation} (compare with \cref{eq:momentum_completeness_relation})
 \todo{is this ok ref?}
 \begin{eq}
   \sum_{\substack{\text{bound} \\ \text{resonant}}} \ket{E_n}\bra{E_n} 
   + \fint[L_+]{k} k^2 \ket{E_k}\bra{E_k} = 1.
 \end{eq}
-This is an important result, because of the inclusion of the resonances in the basis.\todo[inline]{'the Berggren basis' is thus far undefined}
-As we will see in \cref{cha:three-body}, the Berggren basis is what allows us to find resonances in systems with more particles.
+This is an important result, because of the inclusion of the resonances in the basis.
+The Berggren basis is what allows us to find resonances in systems with more particles.
 
 \todo[inline]{berättande stil?}
 An observant reader may have noticed that the resonant poles in \cref{fig:contours} are mirrored in the imaginary axis and that the contour has a shadow on the left half plane.
 Berggren showed that this symmetry allows us to restrict ourselves to the contour segment from 0 to $\inf$. 
-However, doing this leads to a new scalar product (and thus norm) that must be used: \todo[inline]{kanske ha den nya först för det är det man förväntar sig innan man hinner läsa nästa mening? spill vill prata om det här}
-\begin{eq}
-  \braket{\phi}{\phi'} = \fint[0][\inf]{k} k^2 \conj{\phi(k)}\phi'(k)
-\end{eq}
-is replaced by
+However, doing this leads to a scalar product \emph{without conjugation} that must be used
 \begin{eq}
   \label{eq:berggren_product}
-  \braket{\phi}{\phi'} = \fint[0][\inf]{k} k^2 \phi(k)\phi'(k)
-\end{eq} 
-without the conjugation.
-
+  \braket{\phi}{\phi'} = \fint[0][\inf]{k} k^2 \phi(k)\phi'(k).
+\end{eq}
+Naturally, this also affects the norm.
 
 
 
@@ -147,7 +141,7 @@ without the conjugation.
 
 With the complex-momentum basis we can continue our study of the \He{5} system. 
 We use the same Woods-Saxon parameters as before, but now use a complex contour.
-The solutions will be examined in a similar fashion to \cref{cha:two-body}, using this new tool. \todo[inline]{this otydligt, tools of the berggren theory?}
+The solutions will be examined in a similar fashion to \cref{cha:two-body}.
 
 \subsection{The Discretized Complex Contour}
 
@@ -164,8 +158,7 @@ The discretized Schrödinger equation \cref{eq:plane_wave_matrix_elements} is un
   H_{ij}' = \frac{k_i^2}{2\mu}\delta_{ij} + \sqrt{w_i w_j}k_i k_j V_{ij},
 \end{eq}
 but now the $k$ and $w$ are complex. 
-However, when normalizing the obtained eigenvectors, care must be taken to use the new scalar product defined in \cref{eq:berggren_product}.
-\todo[inline]{invecklade care must... bättre att göra den lite längre men mycket simplare we must take...}
+However, when normalizing the obtained eigenvectors, one must make sure to use the new scalar product defined in \cref{eq:berggren_product}.
 
 %\tikzset{external/remake next}
 \tikzsetnextfilename{triangle_contour}
@@ -196,13 +189,13 @@ However, when normalizing the obtained eigenvectors, care must be taken to use t
 
 \subsection{The \He{5} Resonances}
 
-We expect the position of the resonance poles to be fairly close to the experimental data in \cref{tab:}. We then choose a triangular contour that extends below the expected position. \Cref{tab:contours} presents the poles and the corresponding contours. \todo[inline]{cont. used?}
+We expect the position of the resonance poles to be fairly close to the experimental data in \cref{tab:}. We then choose a triangular contour that extends below the expected position. \Cref{tab:contours} presents the poles and the contours used to identify them.
 
 \todo{use $k_r$?}
 
 \todo{different contours, discuss.}
 \begin{table}[H]
-  \begin{tabular}{l|c|c}
+  \begin{tabular}{c|c|c}
     Wave      & Experimental $k$  & Contour vertices \\
     \hline
     $p_{3/2}$ & 0.1788 -  0.0349i & 
@@ -214,15 +207,17 @@ We expect the position of the resonance poles to be fairly close to the experime
   \label{tab:contours}
 \end{table}
 
-We solve the Schrödinger equation using the contours and represent the energy solutions by their momenta $k=\sqrt{2\mu E}$. The result for the $p_{3/2}$ wave is shown in \cref{fig:triangle_contour}. We see that most solutions follow the contour, corresponding to non-resonant continuum states, similarly to the real case.
-\todo{fill in value}
+We solve the Schrödinger equation using the contours and represent the energy solutions by their momenta $k=\sqrt{2\mu E}$.
+ The result for the $p_{3/2}$ wave is shown in \cref{fig:triangle_contour}. 
+We see that most solutions follow the contour, corresponding to non-resonant continuum states, similarly to the real case.
 There is one solution that does not lie on the contour, however. 
 It has $k = \SI{0.1732-0.03567i}{fm^{-1}}$, which is reasonably close to what we expected for the resonance.
 If we have indeed found the resonance, we expect it to be unchanged when the contour is varied.
-In \cref{fig:rect_contour}, we have used a rectangular contour instead, yet the pole is completely stable. \todo[inline]{a rect. cont is instead used?}
-We also found that we could vary the depth of the contour to some extent without the resonance pole moving. 
-But with sufficiently large imaginary parts, the matrix element integrals started to diverge. \todo[inline]{gillar inte riktigt formuleringen, lite informellt. kontur djup? }
-Barring such numerical errors, we found that any contour that runs below the pole gives a stable resonance solution. \todo[inline]{halvsanning?}
+In \cref{fig:rect_contour}, a rectangular contour is used instead of the triangular, yet the pole is completely stable.
+We also found that we could vary the downward extrusion of the contour to some extent without the resonance pole moving. 
+But with sufficiently large imaginary parts, the matrix element integrals started to diverge.
+Barring such numerical errors, we found that any contour that runs below the pole and not too close gives a stable resonance solution. \todo[inline]{halvsanning? ok?}
+
 
 \todo{double legend? SPILL}
 
@@ -241,8 +236,6 @@ Barring such numerical errors, we found that any contour that runs below the pol
    \caption{Momentum solutions for a \He{5} $p_{3/2}$ wave for different contours. The resonance is located at $0.1731, -0.03558i$ for both contours. we have used $V0 =$ \SI{47}{MeV} with $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
 \label{fig:pole(cont)}  
 \end{figure}
-
- 
 
 
 %\tikzset{external/remake next}
@@ -340,13 +333,16 @@ This also allows for automatically finding the resonance among a large set of so
 \subsubsection{Varying the Potential Depth}
 \todo{spill läs}
 We repeat the procedure in \cref{sub:momentum_basis}, lowering the potential well and increasing it gradually, but we now plot the position of the bound/resonance pole.
-In \cref{fig:pole(V0)} we see how the pole starts on the imaginary axis at $V_0 = \SI{70}{MeV}$. It then moves downwards, becoming less and less bound.
+In \cref{fig:pole(V0)} we see how the pole starts on the imaginary axis at $V_0 = \SI{70}{MeV}$. 
+It then moves downwards, becoming less and less strongly bound.
 At $V_0 \approx \SI{52}{MeV}$ the pole jumps to the fourth quadrant, becoming a resonance.
 As the potential well grows even less attractive, we see that both the binding energy $E_0$ and the width $\Gamma$ of the resonance increases.
 \todo{vad händer sen?}
 
 \subsection{Fitting to Experimental Resonance Data} 
-Having studied the solutions and verified that we have found the resonances, we now proceed to fit our model of \He{5} to experimental data. \todo[inline]{indeed found?kanske informellt} The data, taken from \cite{tunl}, is presented in \cref{tab:resonance_data} along with simulated results. Fitting the Woods-Saxon parameters after the four experimental data points resulted in optimal values $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$.
+
+Having studied the solutions and verified that we have found the resonances, we now proceed to fit our model of \He{5} to experimental data. \todo[inline]{indeed found?kanske informellt} 
+The data, taken from \cite{tunl}, is presented in \cref{tab:resonance_data} along with simulated results. Fitting the Woods-Saxon parameters after the four experimental data points resulted in optimal values $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$.
 
 
 \begin{table}
