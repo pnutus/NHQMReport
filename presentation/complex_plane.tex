@@ -1,0 +1,54 @@
+\documentclass[tikz=true]{standalone}
+\usepackage{../main/NHQM}
+
+\begin{document}
+    
+    \tikzset{
+      triangle/.style={regular polygon, regular polygon sides=3},
+      nosep/.style={inner sep=0},
+      bound/.style={circle,draw,fill=white,minimum size=2mm,nosep},
+      unbound/.style={rectangle,draw,minimum size=2mm,nosep},
+      quasibound/.style={triangle,draw,minimum size=2.5mm,nosep}
+    }
+    \begin{tikzpicture}[scale = 2.7]
+      \draw[->] (-1.2, 0) -- (1.2, 0) node[below left] {$\Re k$};
+      \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
+      
+  	  \tikzstyle{every pin edge}=[shorten <=1pt,]
+      \tikzstyle{every pin}=[fill=white,]
+      \draw[decorate, decoration={brace}, yshift=0.3mm]
+        (0,0) -- (1,0) node[midway, yshift=0.3cm] {Kontinuum};
+      \draw[very thick, mid arrows] 
+        (0,0) -- (1,0);
+      \draw[thick, mid arrows, dashed]
+        (1,0) arc (0:90:1) arc (90:180:1) -- (0,0);
+		  \node at (0, 0.3) [bound] {};
+  		\node at (0, 0.1) [bound, pin=above left:Bundet tillstånd,] {};
+  		\node at (0.25, -0.15) [quasibound, pin=below right:Resonans,] {};
+      \node at (-0.25, -0.15) [quasibound] {};
+    \end{tikzpicture}
+      
+    \begin{tikzpicture}[scale = 2.7]
+      \draw[->] (-1.2, 0) -- (1.2, 0) node[below left] {$\Re k$};
+      \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
+      \foreach \y in {0.1, 0.3}
+      \node at (0, \y) [bound] {};
+      \foreach \x in {0.25, -0.25}
+      \node at (\x, -0.15) [quasibound] {};
+        
+  	  \tikzstyle{every pin edge}=[thin]
+      
+      \draw[very thick, mid arrows] (0,0) 
+      -- (0.25, -0.25) 
+      -- (0.5, 0) node[pin=below right:$L_+$] {} 
+      -- (1, 0);
+      \draw[thick, mid arrows, dashed, radius=1] (1, 0) 
+      arc [start angle=0,  end angle=90]
+      arc [start angle=90, end angle=180]
+      -- (-0.5, 0) 
+      -- (-0.25, 0.25)
+      -- (0, 0);
+      
+    \end{tikzpicture}
+    
+\end{document}
