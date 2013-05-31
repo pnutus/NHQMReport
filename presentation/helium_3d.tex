@@ -112,7 +112,7 @@
 }
 
 \newcommand\neutron[1]{%
-\shade[ball color=blue] (#1) circle(0.5);
+\shade[ball color=darkgray] (#1) circle(0.5);
 }
 
 \tikzset{%
@@ -157,18 +157,12 @@
 	\path[xzplane] (\R,0) coordinate (XE);
 	
     \DrawLatitudeCircle[\R]{0} % equator
-    \DrawOrbitCircle[\neR]{0} % equator
 	
 	
 	\neutron{$(-0.35,\offset + 0.35)$}
 	\proton{$(0.35,\offset + 0.35)$}
 	\proton{$(-0.35,\offset -0.35)$}
 	\neutron{$(0.35,\offset -0.35)$}
-
-
-	\neutron{$(-\neR,0)$}
-	\neutron{$(2,-2)$}
-
 	
 	\draw[fill = gray!10, fill opacity =0.45, ] (0,0) circle (\R);
 	    	
