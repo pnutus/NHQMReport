@@ -1,0 +1,64 @@
+\documentclass[tikz=true]{standalone}
+\usepackage{../main/NHQM}
+
+\begin{document}
+    
+    \begin{tikzpicture}[
+      domain=0:2,
+      samples=200,
+      ]
+      \draw[->] (0, 1.8) -- (2, 1.8) node[above] {$r$};
+      \draw[->] (0, 0) -- (0, 4) node[right] {$V$};
+      \draw plot (\x, \x*\x);
+      \foreach \y in {0.7, 1.4, ..., 4} {
+        \draw (0, \y) -- ($ ({ sqrt(\y)} , \y) $);
+        \draw[shorten >=0.5mm] (-1, 1.8)
+          -- (0, \y);
+      }
+      \node[left, align=center, fill=white] 
+        at (-0.2, 1.8)  {Bundna\\tillstånd};
+    \end{tikzpicture}
+
+    \newcommand{\depth}{3}
+    
+     \begin{tikzpicture}[
+       xscale=0.5, 
+       domain=0:6,
+       samples=200,
+       ]
+         
+       \draw[->] (0, 0) -- (6, 0) node[below] {$r$};
+       \draw[->] (0, -3.1) -- (0, 2) node[right] {$V$};
+       \begin{scope}
+         [->, gray]
+         \draw[decorate, decoration={snake, post length=1mm}] 
+           (0, 1) -- (6, 1);
+         \draw[decorate, decoration={snake, post length=1mm,
+                                     segment length = 2mm}] 
+           (0, 1.4) -- (5.5, 1.4);
+       \end{scope}
+       \node[left, fill=white, align=center] 
+         at (0,1.2) {Spridda\\tillstånd};
+       
+       \shade[top color=white, bottom color=black!70]
+         (0,0.5) rectangle +(6,0.05);
+       \shade[bottom color=white, top color=black!70]
+         (0,0.5) rectangle +(6,-0.05);
+       \node[left, fill=white] at (0, 0.5) {Resonans};
+         
+       \draw plot (\x,{-\depth*exp(- \x*\x/6)});
+       \foreach \y in {-2.3, -1} {
+         \draw (0, \y)
+            -- ($ ({sqrt(-6*ln(-\y/\depth))}, \y)$);
+         \draw[shorten >=0.5mm, shorten <=5mm] (-1, -1.6)
+           -- (0, \y);
+         \node[left, text width=1.5cm, align=center] 
+           at (0,-1.6)  {Bundna\\tillstånd};
+       }
+       
+       \draw[decorate, decoration={brace}] 
+         (6.1,2) -- +(0,-2) node[midway, xshift=0.4cm, rotate=-90] {Kontinuum};
+     \end{tikzpicture}
+    
+    
+\end{document}
