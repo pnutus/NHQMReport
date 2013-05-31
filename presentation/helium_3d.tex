@@ -175,7 +175,9 @@
 \end{tikzpicture}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\usetikzlibrary{fadings}
+    \tikzfading[name=fade out, inner color=transparent!0,
+         outer color=transparent!100]
 
 	\begin{tikzpicture}[scale=1,every node/.style={minimum size=1cm}]
 	%% some definitions
@@ -184,7 +186,10 @@
 	\def\offset{0.1} % sphere radius
 	\def\neR{5.25}
 	
-	\fill[fill = gray] (0,0) circle (6.5);	
+    \fill [gray, path fading=fade out] (0,0) circle (6.5);
+	
+	\fill [gray!30, fill opacity =1] (0,0) circle (4.57);
+
 	\fill[ball color=white!5] (0,0) circle (6.5); % 3D lighting effect
 
 	
