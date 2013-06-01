@@ -115,6 +115,11 @@
 \shade[ball color=darkgray] (#1) circle(0.5);
 }
 
+\newcommand\blobb[1]{%
+\shade[ball color=gray] (#1) circle(0.9);
+\shade[ball color=red, opacity =0.15] (#1) circle(0.9);
+}
+
 \tikzset{%
   >=latex,
   inner sep=0pt,%
@@ -142,6 +147,7 @@
 	\def\angPhiTwo{-35} % longitude of point Q
 	\def\angBeta{30} % latitude of point P and Q
 	
+	\draw [blue, opacity =0.1] (-2.2,2.2) rectangle (2.2,-2.2);
 	
 	%% working planes
 	
@@ -230,6 +236,9 @@
 	\def\angPhiTwo{-35} % longitude of point Q
 	\def\angBeta{30} % latitude of point P and Q
 	
+	\draw [blue, opacity =0] (-3.6,2.5) rectangle (3.2,-2.5);
+	
+	
 	\neutron{$(-0.35,\offset + 0.35)$}
 	\proton{$(0.35,\offset + 0.35)$}
 	\proton{$(-0.35,\offset -0.35)$}
@@ -242,6 +251,38 @@
 	\draw[thick, mid arrows, gray] (-1.25,1.156) -- (3,2);
 
 		
+	\neutron{$(-3,0)$}
+		
+\end{tikzpicture}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \usetikzlibrary{snakes}
+\begin{tikzpicture}
+	
+	\def\R{2} % sphere radius
+	\def\offset{0} % sphere radius
+
+	\def\angEl{25} % elevation angle
+	\def\angAz{-100} % azimuth angle
+	\def\angPhiOne{-50} % longitude of point P
+	\def\angPhiTwo{-35} % longitude of point Q
+	\def\angBeta{30} % latitude of point P and Q
+	
+	
+	\draw [blue, opacity =0] (-3.6,2.5) rectangle (3.2,-2.5);
+	
+	\blobb{0,0}
+	\begin{scope}[<->, decoration={snake, post length=3mm, pre length=3mm}, gray, thick]
+		 \draw[decorate, thick] (-2.4,0) -- (-1.05,0);
+	\end{scope}
+	
+	
+
+    \DrawArrowOrbitCircle[3]{0} % equator
+	
+	\draw[thick, mid arrows, gray] (3,-2) -- (-1.25,-1.156);
+	\draw[thick, mid arrows, gray] (-1.25,1.156) -- (3,2);
+	
 	\neutron{$(-3,0)$}
 		
 \end{tikzpicture}
