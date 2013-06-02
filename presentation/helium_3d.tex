@@ -334,8 +334,8 @@
 	\neutron{$(2,-2)$}
 	
 	\fill[fill = gray!30, fill opacity =0.45, ] (0,0) circle (4.57);
-	\node[above,right,font=\huge] (why1) at (-\neR,2) {j$_1$};
-	\node[above,right,font=\huge] (why1) at (3.5,-3) {j$_2$};
+	\node[above,right,font=\Huge] (why1) at (-\neR,2) {j$_1$};
+	\node[above,right,font=\Huge] (why1) at (3.5,-3) {j$_2$};
 \end{tikzpicture}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -385,9 +385,9 @@
 
 	\fill[fill = gray!30, fill opacity =0.45, ] (0,0) circle (4.57);
 	\draw[arrows=->,line width=3pt](2,2)--(4,4);
-	\node[above,right,font=\huge] (why1) at (4,4) {J};
-	\node[above,right,font=\huge] (why1) at (-\neR,2) {j$_1$};
-	\node[above,right,font=\huge] (why1) at (3.5,-3) {j$_2$};
+	\node[above,right,font=\Huge] (why1) at (4,4) {J};
+	\node[above,right,font=\Huge] (why1) at (-\neR,2) {j$_1$};
+	\node[above,right,font=\Huge] (why1) at (3.5,-3) {j$_2$};
 	
 %	\draw[level] at (3,3) node[none]{J};
 
@@ -489,10 +489,10 @@
 	
 	\fill[fill = gray!30, fill opacity =0.45, ] (0,0) circle (4.57);
 	
-	\node[below,font=\huge] (why1) at (-\neR,-0.5) {$|\Psi_1\rangle$};
-	\node[below,font=\huge] (why1) at (2,-2.5) {$|\Psi_2\rangle$};
+	\node[below,font=\Huge] (why1) at (-\neR,-0.5) {$|\Psi_1\rangle$};
+	\node[below,font=\Huge] (why1) at (2,-2.5) {$|\Psi_2\rangle$};
 	
-	\node[font=\huge] (why1) at (0,-5.25) {$|\Psi_1\Psi_2\rangle=\frac{1}{\sqrt{2}}(|\Psi_1\rangle|\Psi_2\rangle-|\Psi_2\rangle|\Psi_1\rangle)$};
+	\node[font=\Huge] (why1) at (0,-5.25) {$|\Psi_1\Psi_2\rangle=\frac{1}{\sqrt{2}}(|\Psi_1\rangle|\Psi_2\rangle-|\Psi_2\rangle|\Psi_1\rangle)$};
 \end{tikzpicture}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
 
@@ -584,6 +584,57 @@
 		 \draw[decorate, thick] (-4.7,0) -- (-1.05,0);
 	\end{scope}	
 	    	
+\end{tikzpicture}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{fadings}
+
+	\begin{tikzpicture}[scale=1,every node/.style={minimum size=1cm}]
+	%% some definitions
+    \tikzfading[name=fade out, inner color=transparent!0, outer color=transparent!100]
+	
+	
+	
+	\def\R{2} % sphere radius
+	\def\offset{0.1} % sphere radius
+	\def\neR{5.25}
+	
+	
+	\neutron{$(-\neR,0)$}
+		
+		
+    \fill [gray, path fading=fade out] (0,0) circle (6.5);
+	
+	\fill [gray!30, fill opacity =1] (0,0) circle (4.57);
+
+%	\fill[ball color=white!5] (0,0) circle (4.57); % 3D lighting effect
+	
+	% \fill[color = white!5, opacity = 0.7] (-1.5,1.5) circle (1.25);
+% 	\fill[color = white!4, opacity = 0.5] (-1.5,1.5) circle (1.55);
+% 	\fill[color = white!3, opacity = 0.3] (-1.5,1.5) circle (1.85);
+% 	\fill[color = white!2, opacity = 0.1] (-1.5,1.5) circle (2.25);
+	
+	\def\angEl{25} % elevation angle
+	\def\angAz{-100} % azimuth angle
+	\def\angPhiOne{-50} % longitude of point P
+	\def\angPhiTwo{-35} % longitude of point Q
+	\def\angBeta{30} % latitude of point P and Q
+	
+	
+		
+	\neutron{$(-0.35,\offset + 0.35)$}
+	\proton{$(0.35,\offset + 0.35)$}
+	\proton{$(-0.35,\offset -0.35)$}
+	\neutron{$(0.35,\offset -0.35)$}
+
+
+	\neutron{$(2,-2)$}
+	
+	\fill[fill = gray!30, fill opacity =0.45, ] (0,0) circle (4.57);
+	
+	\node[below,font=\Huge] (why1) at (-\neR,-0.5) {$|\Psi_1\rangle$};
+	\node[below,font=\Huge] (why1) at (2,-2.5) {$|\Psi_2\rangle$};
+	
 \end{tikzpicture}
 
 
