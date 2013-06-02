@@ -10,6 +10,60 @@
       unbound/.style={rectangle,draw,minimum size=2mm,nosep},
       quasibound/.style={triangle,draw,minimum size=2.5mm,nosep}
     }
+	  \tikzstyle{every pin edge}=[shorten <=1pt,]
+    \tikzstyle{every pin}=[fill=white,]
+    %%% NO LABELS
+    
+    \begin{tikzpicture}[scale = 2.7]
+      \draw[->] (-1.2, 0) -- (1.2, 0) node[below left] {$\Re k$};
+      \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
+    \end{tikzpicture}
+    
+    %%%% KONTINUUM
+    
+    \begin{tikzpicture}[scale = 2.7]
+      \draw[->] (-1.2, 0) -- (1.2, 0) node[below left] {$\Re k$};
+      \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
+      
+      \draw[decorate, decoration={brace}, yshift=0.3mm]
+        (0,0) -- (1,0) node[midway, yshift=0.3cm] {Kontinuum};
+      \draw[very thick, mid arrows] 
+        (0,0) -- (1,0);
+    \end{tikzpicture}
+    
+    %%%% BUNDEN
+    
+    \begin{tikzpicture}[scale = 2.7]
+      \draw[->] (-1.2, 0) -- (1.2, 0) node[below left] {$\Re k$};
+      \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
+      
+      \draw[decorate, decoration={brace}, yshift=0.3mm]
+        (0,0) -- (1,0) node[midway, yshift=0.3cm] {Kontinuum};
+      \draw[very thick, mid arrows] 
+        (0,0) -- (1,0);
+		  \node at (0, 0.3) [bound] {};
+  		\node at (0, 0.1) [bound, pin=above left:Bundet tillstånd,] {};
+    \end{tikzpicture}
+    
+    
+    %%%%% RESONANS
+    
+    \begin{tikzpicture}[scale = 2.7]
+      \draw[->] (-1.2, 0) -- (1.2, 0) node[below left] {$\Re k$};
+      \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
+      
+      \draw[decorate, decoration={brace}, yshift=0.3mm]
+        (0,0) -- (1,0) node[midway, yshift=0.3cm] {Kontinuum};
+      \draw[very thick, mid arrows] 
+        (0,0) -- (1,0);
+		  \node at (0, 0.3) [bound] {};
+  		\node at (0, 0.1) [bound, pin=above left:Bundet tillstånd,] {};
+  		\node at (0.25, -0.15) [quasibound, pin=below right:Resonans,] {};
+      \node at (-0.25, -0.15) [quasibound] {};
+    \end{tikzpicture}
+    
+    %%%%%% KONTUR
+    
     \begin{tikzpicture}[scale = 2.7]
       \draw[->] (-1.2, 0) -- (1.2, 0) node[below left] {$\Re k$};
       \draw[->] (0, -0.5) -- (0, 1.2) node[above] {$\Im k$};
@@ -27,6 +81,8 @@
   		\node at (0.25, -0.15) [quasibound, pin=below right:Resonans,] {};
       \node at (-0.25, -0.15) [quasibound] {};
     \end{tikzpicture}
+    
+    %%%%% BERGGREN
       
     \begin{tikzpicture}[scale = 2.7]
       \draw[->] (-1.2, 0) -- (1.2, 0) node[below left] {$\Re k$};
