@@ -492,8 +492,34 @@
 	\node[below,font=\huge] (why1) at (-\neR,-0.5) {$|\Psi_1\rangle$};
 	\node[below,font=\huge] (why1) at (2,-2.5) {$|\Psi_2\rangle$};
 	
-	    	
+	\node[font=\huge] (why1) at (0,-5.25) {$|\Psi_1\Psi_2\rangle=\frac{1}{\sqrt{2}}(|\Psi_1\rangle|\Psi_2\rangle-|\Psi_2\rangle|\Psi_1\rangle)$};
 \end{tikzpicture}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+
+    \begin{tikzpicture}
+      \begin{axis}[
+        font=\Large,
+        xlabel = $r_1$,
+        ylabel = V,
+        axis x line = middle,
+        axis y line = left,
+        xtick=\empty,
+        ytick={0},
+        yticklabels={0},
+        domain=0:3,
+        ymin=-1.2, ymax=0.5,
+        every axis y label/.style={
+          at = {(current axis.above origin)},
+          anchor = north west,
+        },
+		after end axis/.code={
+		               \draw[anchor=west, dashed] (axis cs:0,-1) -- (axis cs:1,-1) 
+					   node [font=\Large] {$\displaystyle V\sub{GI}\exp\p{-\frac{r_2^2}{R^2}}$};
+		             },
+        ]
+        \addplot[thick, black] {-e^(-x^2)};		
+      \end{axis}
+    \end{tikzpicture}
 
 
 \end{document} 
