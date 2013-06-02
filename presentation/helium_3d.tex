@@ -5,6 +5,7 @@
 \usetikzlibrary{positioning}
 %% helper macros
 
+% (fold)
 % The 3D code is based on The drawing is based on Tomas M. Trzeciak's 
 % `Stereographic and cylindrical map projections example`: 
 % http://www.texample.net/tikz/examples/map-projections/
@@ -120,6 +121,8 @@
 \shade[ball color=red, opacity =0.15] (#1) circle(0.9);
 }
 
+% (end)
+
 \tikzset{%
   >=latex,
   inner sep=0pt,%
@@ -134,6 +137,9 @@
 \usetikzlibrary{calc,fadings,decorations.pathreplacing}
 
 \begin{document}
+  
+  %%%%%%%%%%%% He4 DELTA
+  
 	\begin{tikzpicture}[scale=1,every node/.style={minimum size=1cm}]
 	%% some definitions
 	
@@ -174,7 +180,8 @@
 	    	
 \end{tikzpicture}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% He6 DIM
+
 \usetikzlibrary{fadings}
 
 	\begin{tikzpicture}[scale=1,every node/.style={minimum size=1cm}]
@@ -188,7 +195,7 @@
 	\def\neR{5.25}
 	
 	
-	\neutron{$(-\neR,0)$}
+	
 		
 		
     \fill [gray, path fading=fade out] (0,0) circle (6.5);
@@ -215,15 +222,152 @@
 	\proton{$(-0.35,\offset -0.35)$}
 	\neutron{$(0.35,\offset -0.35)$}
 
-
-	\neutron{$(2,-2)$}
+  \neutron{$(-3,0)$}
+	\neutron{$(2,-3)$}
 	
 	\fill[fill = gray!30, fill opacity =0.45, ] (0,0) circle (4.57);
 	
 	    	
 \end{tikzpicture}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% He6 NODIM
+
+\usetikzlibrary{fadings}
+
+	\begin{tikzpicture}[scale=1,every node/.style={minimum size=1cm}]
+	%% some definitions
+    \tikzfading[name=fade out, inner color=transparent!0, outer color=transparent!100]
+	
+	
+	
+	\def\R{2} % sphere radius
+	\def\offset{0.1} % sphere radius
+	\def\neR{5.25}
+	
+	
+	
+		
+		
+    \clip(0,0) circle (6.5);
+
+%	\fill[ball color=white!5] (0,0) circle (4.57); % 3D lighting effect
+	
+	% \fill[color = white!5, opacity = 0.7] (-1.5,1.5) circle (1.25);
+% 	\fill[color = white!4, opacity = 0.5] (-1.5,1.5) circle (1.55);
+% 	\fill[color = white!3, opacity = 0.3] (-1.5,1.5) circle (1.85);
+% 	\fill[color = white!2, opacity = 0.1] (-1.5,1.5) circle (2.25);
+	
+	\def\angEl{25} % elevation angle
+	\def\angAz{-100} % azimuth angle
+	\def\angPhiOne{-50} % longitude of point P
+	\def\angPhiTwo{-35} % longitude of point Q
+	\def\angBeta{30} % latitude of point P and Q
+	
+	
+		
+	\neutron{$(-0.35,\offset + 0.35)$}
+	\proton{$(0.35,\offset + 0.35)$}
+	\proton{$(-0.35,\offset -0.35)$}
+	\neutron{$(0.35,\offset -0.35)$}
+
+  \neutron{$(-3,0)$}
+	\neutron{$(2,-3)$}
+	
+	    	
+\end{tikzpicture}
+
+%%%%%%%%%%%%%%%% He5 He6
+
+\usetikzlibrary{fadings}
+
+	\begin{tikzpicture}[scale=1,every node/.style={minimum size=1cm}]
+	%% some definitions
+    \tikzfading[name=fade out, inner color=transparent!0, outer color=transparent!100]
+	
+	
+	
+	\def\R{2} % sphere radius
+	\def\offset{0.1} % sphere radius
+	\def\neR{5.25}
+	
+    \clip (0,0) circle (6.5);
+
+%	\fill[ball color=white!5] (0,0) circle (4.57); % 3D lighting effect
+	
+	% \fill[color = white!5, opacity = 0.7] (-1.5,1.5) circle (1.25);
+% 	\fill[color = white!4, opacity = 0.5] (-1.5,1.5) circle (1.55);
+% 	\fill[color = white!3, opacity = 0.3] (-1.5,1.5) circle (1.85);
+% 	\fill[color = white!2, opacity = 0.1] (-1.5,1.5) circle (2.25);
+	
+	\def\angEl{25} % elevation angle
+	\def\angAz{-100} % azimuth angle
+	\def\angPhiOne{-50} % longitude of point P
+	\def\angPhiTwo{-35} % longitude of point Q
+	\def\angBeta{30} % latitude of point P and Q
+	
+	
+		
+	\neutron{$(-0.35,\offset + 0.35)$}
+	\proton{$(0.35,\offset + 0.35)$}
+	\proton{$(-0.35,\offset -0.35)$}
+	\neutron{$(0.35,\offset -0.35)$}
+
+  \neutron{$(-3,0)$}
+	%\neutron{$(2,-3)$}
+	
+	    	
+\end{tikzpicture}
+
+%%%%%%%%%%%%%%%% He6 VXV
+
+\usetikzlibrary{fadings}
+
+	\begin{tikzpicture}[scale=1,every node/.style={minimum size=1cm}]
+	%% some definitions
+    \tikzfading[name=fade out, inner color=transparent!0, outer color=transparent!100]
+	
+	
+	
+	\def\R{2} % sphere radius
+	\def\offset{0.1} % sphere radius
+	\def\neR{5.25}
+	
+    \clip (0,0) circle (6.5);
+
+%	\fill[ball color=white!5] (0,0) circle (4.57); % 3D lighting effect
+	
+	% \fill[color = white!5, opacity = 0.7] (-1.5,1.5) circle (1.25);
+% 	\fill[color = white!4, opacity = 0.5] (-1.5,1.5) circle (1.55);
+% 	\fill[color = white!3, opacity = 0.3] (-1.5,1.5) circle (1.85);
+% 	\fill[color = white!2, opacity = 0.1] (-1.5,1.5) circle (2.25);
+	
+	\def\angEl{25} % elevation angle
+	\def\angAz{-100} % azimuth angle
+	\def\angPhiOne{-50} % longitude of point P
+	\def\angPhiTwo{-35} % longitude of point Q
+	\def\angBeta{30} % latitude of point P and Q
+	
+	
+		
+	\neutron{$(-0.35,\offset + 0.35)$}
+	\proton{$(0.35,\offset + 0.35)$}
+	\proton{$(-0.35,\offset -0.35)$}
+	\neutron{$(0.35,\offset -0.35)$}
+  \coordinate (a) at (-3,0);
+  \coordinate (b) at (2,-3);
+  \neutron{$(a)$}
+	\neutron{$(b)$}
+  \draw[decorate, decoration={snake},]
+    ($(a)!0.1!(b)$) -- ($(a)!0.9!(b)$);
+  \draw[decorate, decoration={snake},black!30]
+    ($(0,0)!0.35!(a)$) -- ($(0,0)!0.8!(a)$);
+  \draw[decorate, decoration={snake},black!30]
+    ($(0,0)!0.3!(b)$) -- ($(0,0)!0.8!(b)$);
+	
+	    	
+\end{tikzpicture}
+
+%%%%%%%%%%%%%%%%%%%%% He5 LHC
 
 \begin{tikzpicture}
 	
@@ -255,7 +399,8 @@
 		
 \end{tikzpicture}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% He5 BLOBB
+
  \usetikzlibrary{snakes}
 \begin{tikzpicture}
 	
@@ -272,16 +417,18 @@
 	\draw [blue, opacity =0] (-3.6,2.5) rectangle (3.2,-2.5);
 	
 	\blobb{0,0}
-	\begin{scope}[<->, decoration={snake, post length=3mm, pre length=3mm}, gray, thick]
-		 \draw[decorate, thick] (-2.4,0) -- (-1.05,0);
+	\begin{scope}[, decoration={snake, post length=0}, gray]
+		 \draw[decorate] (-2.4,0) -- (-1.05,0);
 	\end{scope}
 	
-	
-
+	\begin{scope}[opacity=0.1]
     \DrawArrowOrbitCircle[3]{0} % equator
 	
-	\draw[thick, mid arrows, gray] (3,-2) -- (-1.25,-1.156);
-	\draw[thick, mid arrows, gray] (-1.25,1.156) -- (3,2);
+  	\draw[thick, mid arrows, gray] (3,-2) -- (-1.25,-1.156);
+  	\draw[thick, mid arrows, gray] (-1.25,1.156) -- (3,2);
+	\end{scope}
+
+
 	
 	\neutron{$(-3,0)$}
 		
