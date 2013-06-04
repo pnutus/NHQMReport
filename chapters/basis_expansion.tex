@@ -4,7 +4,8 @@
 \chapter{The Basis Expansion Method}
 \label{cha:basis_expansion}
 
-\todo{Intro to chapter here PONTUS}
+\todo{Intro to chapter}
+\todo{Subsection: Basis of basics expansion}
 
 We want to study loosely bound quantum systems by solving the \emph{Time Independent Schrödinger Equation} (TISE)
 \begin{eq}
@@ -128,7 +129,7 @@ We now expand the TISE in the spherically symmetric Harmonic Oscillator (HO) bas
   \label{eq:HO_hamiltonian}
   H\sub{HO} = \frac{p^2}{2\mu} + \frac{\mu\omega^2 r^2}{2},
 \end{eq}
-where $\mu$ is the mass of the problem and $\omega$ is the angular frequency of the oscillator. 
+where $\mu$ is the mass and $\omega$ is the angular frequency of the oscillator. 
 The expansion procedure is the same as in \cref{eq:expand1,eq:expand2,eq:expand3} and gives us
 \begin{eq}
   \sum_{n'l'm'} \bra{nlm} H \ket{n'l'm'} \psi_{n'l'm'} = E \psi_{nlm}
@@ -137,7 +138,7 @@ and if we use the fact that $H$ is diagonal in $l$ and $m$ we get
 \begin{eq}
   \sum_{n'} \bra{nlm} H \ket{n'lm} \psi_{n'lm} = E\psi_{nlm}.
 \end{eq}
-We now have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. These require some calculation (details are in \cref{sec:HO matrix elements}) and the result is
+We now have a matrix equation, but we need to find the matrix elements $\bra{nlm} H \ket{n'lm}$. This require some calculation (details are in \cref{sec:HO matrix elements}) and the result is
 \begin{eq}
   \label{eq:HO_matrix_elements}
   &
@@ -194,6 +195,7 @@ This is shown in \cref{app:radial_mom_TISE} along with the fact that the Schröd
   & = 
   \frac{2}{\pi}\fint[0][\inf]{r} r^2 V(r) j_l(kr) j_l(k'r),
 \end{align}
+\todo[inline]{No align, where before V(k,k)?}
 where $\phi(k)$ is the radial part of the momentum space wavefunction
 and $j_l(kr)$ are the spherical bessel functions of order $l$. 
 The momentum space radial wavefunction $\phi(k)$ is related to the position space radial wavefunction by
@@ -285,6 +287,6 @@ The truncation gives us an $N \times N$ Hamiltonian matrix $H$ and the TISE can 
 where the $\psi$ are eigenvectors. We compute the matrix elements $H_{ij}$ with \cref{eq:HO_matrix_elements,eq:plane_wave_matrix_elements}, carrying out the integrals with the Gauss-Legendre quadrature rule (see \cref{app:gauss-legendre}) and setting the upper limit to a finite number.
 If the matrix is hermitian or symmetric, we only need to consider the elements in the upper triangle including the diagonal, roughly halving the number of computed elements. 
 
-When the matrix elements have been computed, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices we use a specialized, faster algorithm.
+When the matrix elements have been computed, the matrix is diagonalized using a standard eigensolver algorithm. For hermitian matrices there are specialized, faster algorithms.
 
 \end{document}
