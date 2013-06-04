@@ -9,7 +9,8 @@
 In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
 We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}.
 The Schrödinger equation is then solved in the HO and momentum bases.
-The solutions are studied by looking at the energies and wavefunctions while varying parameters.	
+The solutions are studied by looking at the energies and wavefunctions while varying parameters, looking for a resonance.
+\todo[inline]{should the ...looking for a resonance. be here?}
 
 \section{The Nuclear Shell Model}
 A typical example of an open quantum system is the atomic nucleus encountered in nuclear physics. 
@@ -39,7 +40,9 @@ If the mean-field potential $V$ is chosen carefully, $V\sub{res}$ can become sma
 
  
 \subsection{The Woods-Saxon Potential}
-For the mean-field potential we will use the established Woods-Saxon potential, visualized in \cref{fig:woods-saxons}, given by
+For the mean-field potential we will use the established Woods-Saxon potential, visualized in \cref{fig:woods-saxons}.
+The Woods-Saxon potential with a $l-s$ couplingis is a standard shell model in nuclear physics \cite[suhonen], given by
+\todo[inline]{check last sentence}
 \begin{eq}
 	V(r)=
 	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr},
@@ -58,12 +61,12 @@ Note that the spin-orbit coupling term can give either attractive or repulsive c
   \label{eq:spin-orbit}
   \vec{l}\cdot\vec{s} 
   = 
-  \frac{1}{2}
+  \frac{\hbar^2}{2}
   \bigp{
     j(j+1)-l(l+1)-s(s+1)
   }
   =
-  \frac{1}{2}
+  \frac{\hbar^2}{2}
   \begin{cases}
     l,    &\text{ if } j = l + \frac{1}{2}\\
     -l-1, &\text{ if } j = l - \frac{1}{2}\\
@@ -74,7 +77,7 @@ where we have stated the result in the case of one valence nucleon.
 
 \subsection{Magic Nuclei}
 
-The shell model has had some success in reproducing the general features of nuclides\cite{suhonen}, especially for lighter nuclei ($A<50$). 
+The shell model has had some success in reproducing the general features of nuclides \cite{suhonen}, especially for lighter nuclei ($A<50$). 
 It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ total angular momentum. 
 Of special interest to us are \emph{doubly magic} nuclei, where both proton and neutron numbers are magic. 
 These nuclei can be very tightly bound, and will therefore interact weakly with nucleons in outer shells.
@@ -141,14 +144,14 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
 \section{The \He{5} Nucleus}
 We choose to study \He{5}, seen as a \He{4} nucleus and a valence neutron. 
 The \He{4} nucleus ($\alpha$ particle) is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core.  
-Other doubly magic light nuclei, such as \ce{^{16}O} and its isotopes, have been studied using methods similar to ours\cite{gamow_shell_model_2008}, but we will restrict ourselves to \He nuclei.
+Other doubly magic light nuclei, such as \ce{^{16}O} and its isotopes, have been studied using methods similar to ours \cite{gamow_shell_model_2008}, but we will restrict ourselves to He nuclei.
 
 Because the $s$-shell is already filled in \He{4}, the valence neutron of \He{5} will be a $p$-wave, with $l=1$. 
 We see in \cref{eq:spin-orbit} that the $p_{3/2}$-wave will get a negative net contribution from the total spin-orbit term, also shown in \cref{fig:woods-saxons}.
 This means that the ground state of \He{5} will be the $p_{3/2}$ wave, with $p_{1/2}$ an excited state.
-Both the $p_{3/2}$ and $p_{1/2}$ waves have known resonances states.
+Both the $p_{3/2}$ and $p_{1/2}$ waves have known resonance states.
 
-The Woods-Saxon paramaters will initially be set to standard values to investigate the general behavior of the solutions. The following values are used \cite{gamow_shell_model_2008}: 
+The Woods-Saxon parameters will initially be set to standard values to investigate the general behavior of the solutions. The following values are used \cite{gamow_shell_model_2008}: 
 \begin{center}
 \begin{tabular}{r l}
  Potential depth               & $V_0 = \SI{47}{MeV}$   \\
@@ -197,7 +200,8 @@ Because all \He{5} solutions appear in the continuum, this basis is better suite
 \subsubsection{Momementum Space Wavefunctions}
 
 Solving the Schrödinger equation in the momentum basis gives us momentum eigenfunctions $\phi(k)$, presented in \cref{fig:real_momentum_wavefunctions}.
-There is a background of wavefunctions peaking at different values of $k$, and one wavefunction standing out as lower and wider. Let us first discuss the peak-shaped wavefunctions.
+There is a background of wavefunctions peaking at different values of $k$, and one wavefunction standing out as lower and wider.
+This is the same state that showed some odd behaviour in the HO-basis, but let us first discuss the peak-shaped wavefunctions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
@@ -205,21 +209,23 @@ There is a background of wavefunctions peaking at different values of $k$, and o
   \centering
   	\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
 
-  \caption{\He{5} momentum probability distributions. The resonance is significantly wider than the surrounding states. We can see a trend toward lower and wider states around \SI{1}{fm^{-1}}, but it is merely a numerical pecularity stemming from the normalization.} 
+  \caption{\He{5} momentum probability distributions. The resonance is significantly wider than the surrounding states. We can see a trend toward lower and wider states around \SI{1}{fm^{-1}}, but it is merely a numerical peculiarity stemming from the normalization and the fact that the unique state ´´steals" a peak that has to be shared among the other ones.} 
   \label{fig:real_momentum_wavefunctions}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
+\todo[inline]{fix plot legend.}
+\todo[inline]{check figure text if it is good.}
 
-Recall the relation between wavefunctions in position and momentum representation, \cref{eq:radial wavefunction}
+Recall the relation \cref{eq:radial wavefunction} between wavefunctions in position and momentum representation
 \begin{eq}
   R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
 \end{eq} 
 A wavefunction peaking at a single value $k_i$ corresponds to a radial wavefunction
 \begin{eq}
-  R_i(r) = i^l\sqrt{\frac{2}{\pi}} j_l(k_i r)
+  R_i(r) = i^l\sqrt{\frac{2}{\pi}} j_l(k_i r).
 \end{eq}
-The spherical bessel functions $j_l(k_i r)$ are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
+The spherical Bessel functions $j_l(k_i r)$ are eigensolutions to the Schrödinger equation for free particles with spherical symmetry. 
 We can thus conclude that the peak-shaped solutions correspond to free particles. 
 This is not unexpected as we are dealing with an open quantum system that only marginally perturbs passing particles, explaining why we find unbound solutions corresponding to each value of $k$ used in the discretized basis.
 
@@ -233,8 +239,9 @@ To investigate the relation between the hypothesized resonance solution and a bo
 This is documented in \cref{fig:wavefunctions}, where the radial probability distributions $r^2|R(r)^2|$ are plotted for the widest momentum wavefunction together with an arbitrary unbound state. 
 With a deep potential, the bound state wavefunction quickly tends to zero outside the potential well.
 As we decrease the depth below a certain threshold, the potential well no longer supports the bound state ($E > 0$), but the wavefunction remains localized.
-This is the region of the \He{5} depth (\SI{47}{MeV}) where we should find the resonance.
-When $V_0$ is decreased even further, the resonance disappears.
+This is the region of the depth (\SI{47}{MeV}) where we should find the resonance.
+When $V_0$ is decreased even further, the resonance disappears, since it is the experimental value of the depth for \He{5}.
+\todo[inline]{cite something?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions
 
