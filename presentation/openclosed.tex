@@ -62,7 +62,7 @@
        ]
       \clip (-1.7,-2.1) rectangle (3.7,2.3);
       
-       \draw[->] (0, 0) -- (3, 0) node[below] {$r$};
+       \draw[->] (0, 0) node[left] {$0$} -- (3, 0) node[below] {$r$};
        \draw[->] (0, -2.1) -- (0, 2) node[right] {$V$};
        \draw plot (\x,{-2/(1 + exp((\x-1)/0.3))});
        \foreach \x/\y in {1/-1, 1.33/-0.5} {
@@ -92,7 +92,7 @@
          \node at (0, 1.2) {Spridda\\tillstånd};
        \end{scope}
       
-       \draw[->] (0, 0) -- (3, 0) node[below] {$r$};
+       \draw[->] (0, 0) node[left] {$0$} -- (3, 0) node[below] {$r$};
        \draw[->] (0, -2.1) -- (0, 2) node[right] {$V$};
        \draw plot (\x,{-2/(1 + exp((\x-1)/0.3))});
        \foreach \x/\y in {1/-1, 1.33/-0.5} {
@@ -127,7 +127,7 @@
         \node at (0, 0.5) {Resonans};
       \end{scope}
      
-      \draw[->] (0, 0) -- (3, 0) node[below] {$r$};
+      \draw[->] (0, 0) node[left] {$0$} -- (3, 0) node[below] {$r$};
       \draw[->] (0, -2.1) -- (0, 2) node[right] {$V$};
       \draw plot (\x,{-2/(1 + exp((\x-1)/0.3))});
       \foreach \x/\y in {1/-1, 1.33/-0.5} {
