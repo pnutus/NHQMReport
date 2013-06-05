@@ -1,0 +1,32 @@
+\documentclass[tikz=true]{standalone}
+\usepackage{../../main/NHQM}
+
+\begin{document}
+
+
+   \newcommand{\circdist}{1.2}
+   \newcommand{\circrad}{2}
+   \begin{tikzpicture}[even odd rule]
+     \foreach \angle/\colour in {90/red,-30/blue,210/green}
+       \draw [fill=\colour] 
+         (\angle:\circdist) circle (\circrad) circle (\circrad+0.5);
+
+     \begin{scope}
+     \clip (-30:\circdist) circle (1);
+     \draw [fill=red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
+     \end{scope}
+
+     \begin{scope}
+     	\clip (90:\circdist) ++ (180:\circrad) circle (1);
+     	\draw [fill=red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);	 
+     \end{scope}
+     
+	  % \begin{scope}
+	  % 		 \draw [opacity = 0](1,0) -- (0,-4.5) -- (-1,0) -- (0,-4.5) -- cycle;
+	  % 			 %OBS OLA, detta är dålig lösning, gör inte det här hemma DÅÅÅLIG LÖSNING
+	  % \end{scope}
+
+	 
+   \end{tikzpicture}
+   
+   \end{document}
