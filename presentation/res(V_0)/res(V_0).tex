@@ -12,8 +12,8 @@
      axis lines = middle,
      xmin = -0.01, xmax = 0.5,
      enlargelimits,
-     ylabel=Im $k/\b{\si{fm^{-1}}}$,
-	   xlabel=Re $k/\b{\si{fm^{-1}}}$,
+     ylabel=$\Im k$,
+	   xlabel=$\Re k$,
      every axis y label/.style={
      at = {(current axis.above origin)},
      anchor = north west,
@@ -26,8 +26,9 @@
      },
      every x tick label/.append style = {anchor = south, yshift = 3pt},
 	 xtick={0.15,0.3,...,1},
-     ymin = -0.17, ymax = 0.17,
-     legend pos = north east,
+     ymin = -0.17, ymax = 0.25,
+     legend pos = south east,
+     xtick=\empty, ytick=\empty,
    }
    \foreach \i in {0,1,...,499} 
    {
@@ -36,13 +37,29 @@
      \pgfmathsetmacro\realsolutions{\i*2}
      \pgfmathsetmacro\imagsolutions{\i*2 + 1}
      
-       \addplot[darkgray, thick] table {\contour};
+       \addplot[thick, mark=*, darkgray] table {\contour};
        \addlegendentry{Contour points}
        
-       \addplot+[red, only marks, thick] 
+       \addplot[red, only marks, thick] 
          table [x index=\realsolutions, y index=\imagsolutions] {\solutions};
        \addlegendentry{Solutions}
+       
+
+       
      \end{axis}
+     \pgfmathsetmacro\Vzero{60 - (60-32)*\i/499}
+     \node[font=\Large] at (7cm, 6cm) 
+       {Potential depth $V_0 = \SI[round-mode=places,round-precision=1]{\Vzero}{MeV}$};
+     %%%% POTENTIAL
+     
+     % \begin{axis}[
+     %   xshift=9cm, yshift=6cm,
+     %   xlabel=$r$, ylabel=$V$,
+     %   width=4cm, height = 3cm, 
+     %   domain=0:3,
+     %   no markers]
+     %   \addplot {\i};
+     % \end{axis}
    \end{tikzpicture}
   }
 

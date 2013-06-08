@@ -30,10 +30,11 @@ points, weights = contour
 
 frames = 500
 
-V0s = sp.linspace(56, 30, frames)
+V0s = sp.linspace(60, 32, frames)
 
 result = sp.empty((order,2*frames))
 
+resonances = sp.empty((frames))
 
 for i, V0 in enumerate(V0s):
     problem.V0 = -V0
@@ -43,13 +44,15 @@ for i, V0 in enumerate(V0s):
     ks = sp.sqrt(2*problem.mass*eigvals).T
     idx = res_index(eigvecs)
     pole = ks[idx]
-    if sp.real(pole) < 1e-4 and abs(sp.imag(pole)) > 0.02:
+    if sp.real(pole) < 1e-4:
         ks[idx] = 1j*abs(pole)
     result[:,i*2    ] = sp.real(ks)
     result[:,i*2 + 1] = sp.imag(ks)
+    resonances[i] = sp.real(eigvals[idx])
 
 import os
 script_dir = os.path.dirname(os.path.realpath(__file__)) + "/"
 sp.savetxt(script_dir + "contour.data", 
     sp.vstack([sp.real(points), sp.imag(points)]).T)
 sp.savetxt(script_dir + "solutions.data", result)
+sp.savetxt(script_dir + "potentials.data", sp.vstack([V0s, resonances]))

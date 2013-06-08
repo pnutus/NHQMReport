@@ -27,7 +27,7 @@ k_max = 2.5
 
 peak_x = 0.17
 
-frames = 100
+frames = 500
 
 peak_ys = sp.linspace(0, 0.1, frames)
 
