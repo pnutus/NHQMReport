@@ -2,7 +2,7 @@
 \begin{document}
 \chapter{Introduction}
 
-The properties of a quantum mechanical system are determined by its Hamiltonian. 
+The properties of a quantum mechanical system are determined by its Hamiltonian, consisting of a kinetic energy term and a potential term.
 Particles in a potential well with infinitely high walls form localized bound states.
 Such a system is called a \emph{closed quantum system}, since the number of particles is conserved and the particles are localized in a finite region. 
 The energy of a closed quantum system can only take on discrete values, as illustrated in \cref{fig:closed_quantum_system} with the harmonic oscillator potential.
@@ -23,7 +23,7 @@ A resonance can be described with a complex energy, as the following argument su
 
 \begin{figure}
   \newcommand{\depth}{3}
-  \subfloat[Closed quantum system]{
+  \subfloat[A closed quantum system]{
     \label{fig:closed_quantum_system}
     \begin{tikzpicture}[
       scale=1.6,
@@ -39,7 +39,7 @@ A resonance can be described with a complex energy, as the following argument su
         \node[above] at (-0.04, 2.1) {Bound states};
     \end{tikzpicture}
   } 
-  \subfloat[Free particle]{
+  \subfloat[A free particle]{
     \label{fig:free_particle}
     \begin{tikzpicture}[
       scale=1.6
@@ -51,7 +51,7 @@ A resonance can be described with a complex energy, as the following argument su
     \end{tikzpicture}
   }
   \\
-  \subfloat[Open quantum system]{
+  \subfloat[An open quantum system]{
     \label{fig:open_quantum_system}
     \begin{tikzpicture}[
       scale=2,
@@ -84,9 +84,10 @@ A resonance can be described with a complex energy, as the following argument su
         (-6.1,0) -- +(0,2) node[midway, xshift=-0.4cm, rotate=90] {Continuum};
     \end{tikzpicture}
   }
-  \caption{Three different quantum systems: the closed harmonic oscillator, the free particle and an open gaussian well.}
+  \caption{Three different quantum systems: the closed harmonic oscillator, a free particle and an open gaussian well.}
   \label{fig:potentials}
 \end{figure}
+\todo{Update figure to post-presentation?}
 
 The state of a particle is described by its wavefunction $\psi$, which can be written as the product of a function of time and position
 \begin{eq}
@@ -133,11 +134,18 @@ We want to use the simpler formalism of the TISE, as opposed to the more general
 However, complex eigenvalues pose a problem in standard quantum mechanics, where operators are postulated to be Hermitian.
 Hermitian operators can only have real eigenvalues, and are thus insufficient for treating resonances.
 
-\todo{aim?}
-The aim of this thesis is to present methods for describing resonances using the TISE in a complex-energy framework. 
-To demonstrate the methods, we will study the simple nuclear systems \He{5} and \He{6}.
-They are relevant because the ground state of \He{5} and the first excited state of both \He{5} and \He{6} are resonances. 
+The aim of this thesis is to present methods for describing resonances using the TISE in a complex-energy framework.
+The methods will be used to study the simple nuclear systems \He{5} and \He{6}, comparing the results to experimental data.
+The He nuclei are relevant because the ground state of \He{5} and the first excited state of both \He{5} and \He{6} are resonances. 
 Despite the unbound nature of \He{5}, the ground state of \He{6} is actually bound, an example of a \emph{Borromean} system, named after the Borromean rings depicted on the cover of this thesis.
+\todo{tar vi bort ringarna?}
+
+We solve the TISE numerically, but do not focus on computational aspects, such as performance, as these have not been an issue in our work.
+Consequently, there will be no code nor pseudocode in the thesis, although the code we have written to produce the results is freely available at
+\begin{quote}
+  \url{https://github.com/pnutus/NHQM}.
+\end{quote}
+\todo{Är detta okej?}
 
 The thesis can conceptually be divided into two parts, the first covering resonances in a simple two-body problem and the second part covering the first steps toward more complicated many-body systems. 
 In \cref{cha:basis_expansion} the \emph{basis expansion} method for solving the Schrödinger equation is introduced.
