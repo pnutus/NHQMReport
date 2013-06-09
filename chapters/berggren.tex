@@ -98,26 +98,26 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
   \label{fig:complex plane}
 \end{figure}
 
-It is known that bound and resonant states indeed correspond to poles in the complex momentum plane at $k=\sqrt{2\mu E}/\hbar$.
-The details are treated in scattering theory, which is beyond the scope of this thesis. 
-We interpret the bound and resonant $k$ as complex poles and treat the unbound continuum as a contour, mirrored in the imaginary axis, encircling the upper half plane (\cref{fig:simple_contour}).
-
-
-The integral to be evaluated along the contour is the radial momentum space Schrödinger equation
+We now interpret the bound and resonant $k$ as complex poles, the details of which is treated in scattering theory and is beyond the scope of this thesis. We direct the curious reader to a QM textbook such as \cite{sakurai}. 
+Furthermore, the unbound continuum is interpreted as a contour encircling the upper half plane (\cref{fig:simple_contour}).
+The integral to be evaluated along the contour is in the radial momentum space Schrödinger equation
 \begin{eq}
+  \label{eq:rad_mom_TISE}
   \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k') 
   &=
   E\phi(k).
 \end{eq}
-The result of a contour integration depends on the poles it encircles by the residue theorem. 
-The contour in \cref{fig:simple_contour} encircles the bound states, but not the resonance.
+
+The result of a contour integration depends on the poles it encloses by the residue theorem. 
+The contour in \cref{fig:simple_contour} encloses the bound states, but not the resonance.
 We suspect a deformation of the contour, such that it goes below the resonance, might have an effect on the solutions.
 
 \subsection{The Berggren Completeness Relation}
 
 In fact, this is correct, and was proven in 1968 by Berggren \cite{berggren}.
-The contour, dubbed $L_+$, can be deformed to surround the resonance poles, as illustrated in \cref{fig:berggren_contour}. 
-The continuum states along $L_+$ combined with the encircled bound and resonant states form a complete basis, the \emph{Berggren basis}. 
+The real contour segment can be deformed into a complex one dubbed $L_+$, illustrated in \cref{fig:berggren_contour}. 
+When solving \cref{eq:rad_mom_TISE} using the complex contour, we get the resonance as a solution with a complex energy.
+All the solutions -- the continuum states along $L_+$ combined with the encircled bound and resonant states -- form a complete basis, the \emph{Berggren basis}. 
 This result can be stated succinctly with the \emph{Berggren completeness relation} (compare with \cref{eq:momentum_completeness_relation})
 \begin{eq}
   \sum_{\substack{\text{bound} \\ \text{resonant}}} \ket{E_n}\bra{E_n} 
@@ -128,8 +128,7 @@ This is an important result, because of the inclusion of the resonances in the b
 The Berggren basis is what allows us to find resonances in systems with more particles.
 
 An observant reader may have noticed that the resonant poles in \cref{fig:contours} are mirrored in the imaginary axis and that the contour has a shadow on the left half plane.
-Berggren showed that this symmetry allows us to restrict ourselves to the contour segment from 0 to $\inf$. 
-However, doing this leads to a scalar product \emph{without conjugation} that must be used
+Berggren showed that this symmetry allows us to restrict the integration to the contour segment from 0 to $\inf$ and that this leads to a scalar product \emph{without conjugation}
 \begin{eq}
   \label{eq:berggren_product}
   \braket{\phi}{\phi'} = \fint[0][\inf]{k} k^2 \phi(k)\phi'(k).
@@ -144,12 +143,13 @@ Naturally, this also affects the norm.
 With the complex-momentum basis we can continue our study of the \He{5} system. 
 We use the same Woods-Saxon parameters as before, but now use a complex contour.
 The solutions will be examined in a similar fashion to \cref{cha:two-body}.
+We will be focusing on the $p_{3/2}$ resonance, as the method is general and only differs in the choice of contour.
 
 \subsection{The Discretized Complex Contour}
 
-We deform the previously real contour by a triangle-shaped downward extrusion, as in \cref{fig:discretized_contour}. 
-The tip of the triangle is placed below the expected position of the resonance pole.
-To use the contour in computations it has to be discretized, as before in \cref{sec:discretization}.
+We deform the previously real contour by a triangle-shaped downward extrusion, as in \cref{fig:berggren_contour}. 
+The tip of the triangle is placed below the expected position of the resonance pole, using experimental data as a guide.
+To use the contour in computations it has to be discretized and truncated as before in \cref{cha:basis_expansion}.
 We use the Gauss-Legendre quadrature, but now consider each segment of the contour separately: This requires us to rescale the evaluation points and weights between each pair of complex endpoints according to \cref{app:gauss-legendre}.
 The discretized contour is seen in \cref{fig:discretized_contour}. 
 Note the concentration of points near the ends of each segment, characteristic of the Gauss-Legendre quadrature.
@@ -191,28 +191,26 @@ However, when normalizing the obtained eigenvectors, one must make sure to use t
 
 \subsection{The \He{5} Resonances}
 
-We expect the position $k_r$ of the resonance poles to be fairly close to the experimental data in \cref{tab:resonance_data}, hence we choose a triangular contour that extends below the expected position. \Cref{tab:contours} presents the poles and the contours used to identify them.
-
-\todo{fix table width, cite exp vals. tunl finns i bibtex}
+We solve the Schrödinger equation using the contours in \cref{tab:contours} and represent the energy solutions by their momenta $k=\sqrt{2\mu E}$.
+The result for the $p_{3/2}$ wave is shown in \cref{fig:triangle_contour}. 
+We see that most solutions follow the contour, corresponding to non-resonant continuum states, similarly to the real case.
+There is one solution that does not lie on the contour, however. 
+It has $k = \SI{0.173-0.0357i}{fm^{-1}}$, which is reasonably close to what we expected for the resonance.
 
 \begin{table}[b]
 \caption{Contours used to identify \He{5} resonances.}
   \label{tab:contours}
-  \hspace{-2cm}\begin{tabular}{c|c|c|c}
-    Wave      & Experimental $k_r$ & Computed $k_r$  & Contour vertices \\
-    \hline
-    $p_{3/2}$ & 0.179 -  0.0349i & 0.173 - 0.0357i &
-      $(0, 0) \to (0.17, -0.2) \to (0.34, 0) \to (2.5, 0)$ \si{fm^{-1}} \\
-    $p_{1/2}$ & 0.327 - 0.164i & 0.331 - 0.170i &
-      $(0, 0) \to (0.35, -0.4) \to (0.7, 0) \to (2.5, 0)$ \si{fm^{-1}} \\
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    Wave      & Contour vertices \\
+    \midrule
+    $p_{3/2}$ & $(0, 0) \to (0.17, -0.2) \to (0.34, 0) \to (2.5, 0)$ \si{fm^{-1}} \\
+    $p_{1/2}$ & $(0, 0) \to (0.35, -0.4) \to (0.70, 0) \to (2.5, 0)$ \si{fm^{-1}} \\
+    \bottomrule
   \end{tabular}
 \end{table}
-\todo[inline]{varför skiljer sig polerna i tabell och stycke?}
-We solve the Schrödinger equation using the contours and represent the energy solutions by their momenta $k=\sqrt{2\mu E}$.
- The result for the $p_{3/2}$ wave is shown in \cref{fig:triangle_contour}. 
-We see that most solutions follow the contour, corresponding to non-resonant continuum states, similarly to the real case.
-There is one solution that does not lie on the contour, however. 
-It has $k = \SI{0.173-0.0357i}{fm^{-1}}$, which is reasonably close to what we expected for the resonance.
+
 If we have indeed found the resonance, we expect it to be unchanged when the contour is varied.
 In \cref{fig:rect_contour}, a rectangular contour is used instead of the triangular, yet the pole is completely stable.
 We also found that we could vary the downward extrusion of the contour to some extent without the resonance pole moving. 
@@ -221,7 +219,7 @@ Barring such numerical errors, we found that any contour that runs below and not
 
 
 
-\begin{figure}[H]
+\begin{figure}[p]
   \centering{
     \subfloat[Triangle Contour]{
       \label{fig:triangle_contour}
@@ -233,12 +231,42 @@ Barring such numerical errors, we found that any contour that runs below and not
       \includegraphics[page=1]{../figures/poles(contour)/poles.pdf}
     }
   }
-   \caption{Momentum solutions for a \He{5} $p_{3/2}$ wave for different contours. The resonance is located at $0.173 -0.0356i$ for both contours. we have used $V0 =$ \SI{47}{MeV} with $k_{max} =$ \SI{5}{fm^{-1}} with 60 points on both contours.} 
+   \caption{Momentum solutions for the \He{5} $p_{3/2}$ wave for different contours. The resonance is located at $k_r = \SI{0.173 -0.0356i}{fm^{-1}}$ for both contours, truncated at the same $k\sub{max} = \SI{5}{fm^{-1}}$ and using 60 points.} 
 \label{fig:pole(cont)}  
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
-\begin{figure}[H]
+\begin{figure}[p]
+\centering{
+	\subfloat[Momentum space wavefunctions with a real contour.]{
+  		\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
+	}
+	\\
+	\subfloat[Momentum space wavefunctions with a complex contour.]{
+  		\includegraphics[page=2]{../figures/eigvecs_real_comp/eigvecs.pdf}
+	}
+  }
+\caption{\He{5} momentum probability distributions for a real and complex contour. The resonance is more prominent when solving along the complex contour but is significantly wider than the surrounding states in both cases. Both contours comprise 60 points in total, but the points in the complex contour are concentrated near the origin, stemming from the Gauss-Legendre distribution on the individual segments.} 
+\label{fig:complex_mom_wavefunctions}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
+
+\subsubsection{Momentum Wavefunctions}
+
+As in \cref{cha:two-body} we can study the momentum wavefunctions obtained in the diagonalization.
+\Cref{fig:complex_mom_wavefunctions} shows the radial momentum wavefunctions using a real and a complex contour respectively.
+Note how the resonance wavefunction is much more distinguished when using the complex basis.  
+The unbound solution still correspond to one definite (now complex) momentum. 
+On the other hand, the resonance has a wide distribution, reflecting the localized nature of the solution 
+(remember Heisenberg -- a wide momentum wavefunction allows a localized position wavefunction). 
+This also allows for automatically finding the resonance among a large set of solutions by singling out the one with the widest (or lowest) wavefunction.
+\todo{är all denna text verkligen nödvändig?}
+
+
+\todo{improve corner on this}
+\begin{figure}
   \centering
   \begin{tikzpicture}
     \begin{axis}[
@@ -275,7 +303,7 @@ Barring such numerical errors, we found that any contour that runs below and not
 \node[coordinate,pin=above right:{$V_0=54.3$}, mark=*] 
 at (axis cs:0,0.116) {};
 
-\node[coordinate,pin=below right:{$V_0=51.2$}] 
+\node[coordinate,pin=above:{$V_0=51.2$}] 
 at (axis cs:0.0817,-0.00752) {};
 
 \node[coordinate,pin=right:{$V_0=47.1$}] 
@@ -289,70 +317,46 @@ at (axis cs:0.257,-0.0860) {};
           \addlegendentry{Contour}
       \end{axis}
   \end{tikzpicture}
-  \caption{The position of the resonance pole as a function of $V_0$. The pole begins at \SI{70}{MeV} as a bound state on the imaginary axis, gradually becomes less and less bound, jumps into the fourth quadrant ($V_0 \approx \SI{52}{MeV}$), passes the \He{5} resonance and continues further down and to the right.}
+  \caption{The position of the resonance pole as a function of $V_0$ for the \He{5}-like Woods-Saxon system. The pole begins at \SI{65}{MeV} as a bound state on the imaginary axis, gradually becomes less and less bound, jumps into the fourth quadrant ($V_0 \approx \SI{52}{MeV}$), passes the \He{5} resonance and continues further down and to the right.}
   \label{fig:pole(V0)}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%% V0(CONTOUR) FIGURE
 
-\subsubsection{Momentum Space Wavefunctions}
-
-As in \cref{cha:two-body} we can study the momentum wavefunctions obtained in the diagonalization.
-\Cref{fig:complex_mom_wavefunctions} shows the momentum distribution of an arbitrary unbound solution and the resonance. We also show the corresponding situation when using the real basis, for comparison. Note how the resonance wavefunction is much more distinguished in the complex basis.  
-The unbound solution still correspond to one definite (now complex) momentum. 
-On the other hand, the resonance has a wide distribution, reflecting the localized nature of the solution 
-(remember Heisenberg---a wide momentum wavefunction allows a localized position wavefunction). 
-This also allows for automatically finding the resonance among a large set of solutions by singling out the one with the widest (or lowest) wavefunction.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
-
-\begin{figure}[H]
-\centering{
-	\subfloat[Momentum space wavefunctions with a real contour.]{
-  		\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
-	}
-	\\
-	\subfloat[Momentum space wavefunctions with a complex contour.]{
-  		\includegraphics[page=2]{../figures/eigvecs_real_comp/eigvecs.pdf}
-	}
-  }
-\caption{\He{5} momentum probability distributions for a real and complex contour. The resonance is more prominent when solving along the complex contour but is significantly wider than the surrounding states in both cases. Both contours comprise 60 points in total, but the points in the complex contour are concentrated near the origin, stemming from the Gauss-Legendre distribution on the individual segments.} 
-\label{fig:complex_mom_wavefunctions}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
-
 \subsubsection{Varying the Potential Depth}
 \todo{SPILL}
 We repeat the procedure from \cref{sub:momentum_basis}, lowering the potential well to \SI{70}{MeV} and increasing it gradually, but we now plot the position of the bound/resonance pole in the complex plane.
-\Cref{fig:pole(V0)} we see how the pole starts on the imaginary axis at $V_0 = \SI{70}{MeV}$. 
+In \Cref{fig:pole(V0)} we see how the pole starts on the imaginary axis at $V_0 = \SI{70}{MeV}$. 
 It then moves downwards, becoming less and less strongly bound.
 At $V_0 \approx \SI{52}{MeV}$ the pole jumps to the fourth quadrant, becoming a resonance.
-As the potential well grows even less attractive, we see that both the binding energy $E_0$ and the width $\Gamma$ of the resonance increases.
+As the potential well grows even less attractive, we see that both the real part $E_0$ and imaginary part $\Gamma$ of the resonance energy increases.
 \todo{vad händer sen?}
+\todo{mer tolkning?}
 
 \subsection{Fitting to Experimental Resonance Data} 
 
 Having studied the solutions and verified that we have found the resonances, we now proceed to fit our model of \He{5} to experimental data.
-The data, taken from \cite{tunl}, is presented in \cref{tab:resonance_data} along with simulated results. Fitting the Woods-Saxon parameters after the four experimental data points resulted in optimal values $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$.
-
+We use $E_0$ and $\Gamma$ for the $p_{3/2}$ and $p_{1/2}$ waves, giving us four data points to fit to.
+To simplify the fitting process, we choose to only fit the depth $V_0$ and spin-orbit coupling strength $V\sub{so}$ of the potential.
+The fitting gives us the optimal values $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$.
+The experimental data, taken from \cite{tunl}, is presented in \cref{tab:resonance_data} along with our computed values after fitting. 
 
 \hspace{-2cm}\begin{table}[H]
 \caption{Experimental \He{5} resonance data \cite{tunl} and computed values with fitted Woods-Saxon parameters $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$. All values are in \si{MeV}.}
 \label{tab:resonance_data} 
-\begin{center}
-\resizebox{10cm}{!} {
-\begin{tabular}{c c c c c}  \hline\hline
- \multicolumn{1}{c|}{ \multirow{2}{*}{Wave} }  &\multicolumn{2}{c|}{Experimental data}    & \multicolumn{2}{c}{Computed values} \\ 
-
- \multicolumn{1}{c|}{} &       $E_0$        & \multicolumn{1}{c|}{$\Gamma$} &      $E_0$      &    $\Gamma$     \\ \hline
-       $p_{3/2}$:       &       0.798        &              0.648            &      0.783      &     0.695       \\  
-       $p_{1/2}$:       &       2.068        &              5.57             &      2.111      &     5.560       \\ \hline\hline
+\centering
+\begin{tabular}{c c c c c}
+  \toprule
+    &\multicolumn{2}{c}{Experimental data}  & \multicolumn{2}{c}{Computed values} \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+    Wave & $E_0$        & $\Gamma$ &  $E_0$ & $\Gamma$ \\
+ \midrule
+       $p_{3/2}$       &       0.798        &              0.648            &      0.783      &     0.695       \\  
+       $p_{1/2}$       &       2.068        &              5.57             &      2.111      &     5.560       \\
+       \bottomrule
 \end{tabular}
-}
-\end{center}
 \end{table}
 \todo{figures where they belong. Wednesday night: fixa uppslag med figur + tillhörande text}
 
 \todo{in captions: solutions in the complex momentum plane SPILL}
+\todo{fix effing figures}
 
 \end{document}
