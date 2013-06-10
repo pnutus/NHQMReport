@@ -215,9 +215,7 @@ We also found that we could vary the downward extrusion of the contour to some e
 But with sufficiently large imaginary parts, the matrix element integrals started to diverge.
 Barring such numerical errors, we found that any contour that runs below and not too close to the pole gives a stable resonance solution.
 
-
-
-\begin{figure}[p]
+\begin{figure}[!t]
   \centering{
     \subfloat[Triangle Contour]{
       \label{fig:triangle_contour}
@@ -235,7 +233,7 @@ Barring such numerical errors, we found that any contour that runs below and not
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
-\begin{figure}[p]
+\begin{figure}[t!]
 \centering{
 	\subfloat[Momentum space wavefunctions with a real contour.]{
   		\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
@@ -262,7 +260,7 @@ On the other hand, the resonance has a wide distribution, reflecting the localiz
 This also allows for automatically finding the resonance among a large set of solutions by singling out the one with the widest (or lowest) wavefunction.
 
 \todo{improve corner on this}
-\begin{figure}
+\begin{figure}[b]
   \centering
   \begin{tikzpicture}
     \begin{axis}[
@@ -334,7 +332,7 @@ To simplify the fitting process, we choose to only fit the depth $V_0$ and spin-
 The fitting gives us the optimal values $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$.
 The experimental data, taken from \cite{tunl}, is presented in \cref{tab:resonance_data} along with our computed values after fitting. 
 
-\hspace{-2cm}\begin{table}[H]
+\hspace{-2cm}\begin{table}[b]
 \caption{Experimental \He{5} resonance data \cite{tunl} and computed values with fitted Woods-Saxon parameters $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$. All values are in \si{MeV}.}
 \label{tab:resonance_data} 
 \centering
