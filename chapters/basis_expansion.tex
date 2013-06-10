@@ -4,10 +4,14 @@
 \chapter{The Basis Expansion Method}
 \label{cha:basis_expansion}
 
-\todo{Intro to chapter}
-\todo{Subsection: Basis of basics expansion}
+The present chapter introduces the basis expansion method of solving the \emph{Time Independent Schrödinger Equation} (TISE).
+We begin by motivating the method and showing how it can be used to write the TISE as a matrix equation. 
+This is followed by two examples to be used in later chapters: the harmonic oscillator basis and the momentum basis.
+Finally we discuss the numerical aspects of basis expansion.
 
-We want to study loosely bound quantum systems by solving the \emph{Time Independent Schrödinger Equation} (TISE)
+\section{Introduction to Basis Expansion}
+
+We want to study loosely bound quantum systems by solving the TISE
 \begin{eq}
   \label{eq:TISE}
   H \ket\psi = E \ket\psi,
@@ -29,7 +33,7 @@ To write the TISE as a matrix equation we use \emph{basis expansion}.
 Basis expansion is how we make sense of the abstract Hilbert spaces, operators and state vectors of Quantum Mechanics (QM).
 By expanding these abstract objects in a basis, we can relate them to the physical world. 
 For example, \cref{eq:TISEpos} is the TISE for a single particle, expanded in the position basis. 
-We will not expand our problems in the position basis, but it will still be important, since it is the most natural basis to express the potential in.
+We will not expand our problems in the position basis, but it is important, since it is the most natural basis to express the potential in.
 
 Before we begin, we briefly recap some well known QM facts. 
 First we need a \emph{complete basis}, either discrete, $\ket{n}$, or continuous, $\ket{x}$. 
