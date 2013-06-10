@@ -14,77 +14,74 @@ For a trivial potential these are just free particle states but with a non-negli
 Depending on the depth of the potential well of the open system, there can be a finite number of bound states.
 The number of scattering states, however, is infinite and they can take on any positive value of energy, and are said to be in the energy \emph{continuum}.
 
-In addition to the bound and unbound states, some open quantum systems harbor \emph{resonances}. 
+In addition to the bound and unbound states, open quantum systems can harbor \emph{resonances}. 
 These are \emph{quasi-bound} states that are neither bound nor unbound, but exhibit properties of both. 
-
 They appear in the continuum, like unbound states, but are localized, like bound states.
 However, the wavefunction of a resonance is only localized for a finite amount of time, as opposed to a bound, \emph{stationary} state that forever stays the same.
 A resonance can be described with a complex energy, as the following argument suggests.
 
 \begin{figure}
   \newcommand{\depth}{3}
+  \pgfdeclareverticalshading{resonance}{100bp}
+   {color(0bp)=(white); color(50bp)=(black!70); color(100bp)=(white)}
   \subfloat[A closed quantum system]{
     \label{fig:closed_quantum_system}
     \begin{tikzpicture}[
-      scale=1.6,
-      domain=-2:2,
+      scale = 1.6,
+      domain=0:2,
       samples=200,
       ]
-      \draw[->] (-2, 2) -- (2, 2) node[above] {$r$};
-      \draw[->] (0, 0) -- (0, 4) node[right] {$V$};
-      \draw plot (\x, \x*\x);
-      \foreach \y in {0.7, 1.4, ..., 4}
-        \draw ($ ({-sqrt(\y)} , \y) $) 
-           -- ($ ({ sqrt(\y)} , \y) $);
-        \node[above] at (-0.04, 2.1) {Bound states};
+      \draw[->] (0, 0) -- (2, 0) node[above] {$r$};
+      \draw[->] (0, -2.1) -- (0, 2) node[right] {$V$};
+      \draw plot (\x, {\x*\x - 2});
+      \foreach \y in {-1.3, -0.6, ..., 2} {
+        \draw (0, \y) -- ($ ({ sqrt(\y + 2)} , \y) $);
+        \draw[shorten >=0.5mm] (-1, 0)
+          -- (0, \y);
+      }
+      \node[left, align=center, fill=white] 
+        at (-0.2, 0)  {Bound\\states};
     \end{tikzpicture}
+    
   } 
-  \subfloat[A free particle]{
-    \label{fig:free_particle}
-    \begin{tikzpicture}[
-      scale=1.6
-      ]
-      \draw[->] (-2, 0) -- (2, 0) node[above] {$r$};
-      \draw[->] (0, -2) -- (0, 2) node[right] {$V$};
-      \draw[->, decorate, decoration={snake, post length=1mm}] 
-        (-2, 1) -- (2, 1) node[above left, yshift=1mm] {Unbound};
-    \end{tikzpicture}
-  }
-  \\
   \subfloat[An open quantum system]{
     \label{fig:open_quantum_system}
     \begin{tikzpicture}[
-      scale=2,
-      xscale=0.5, 
-      domain=-6:6,
+      scale=1.6,
+      domain=0:2.95,
       samples=200,
-      ]  
-    \shade[top color=white, bottom color=black!70]
-    (-6,0.5) rectangle +(12,0.05);
-    \shade[bottom color=white, top color=black!70]
-    (-6,0.5) rectangle +(12,-0.05)
-	 node[midway, above right] {Resonance state};
-      \draw[->] (-6, 0) -- (6, 0) node[above] {$r$};
-      \draw[->] (0, -3.1) -- (0, 2) node[right] {$V$};
-      \draw plot (\x,{-\depth*exp(- \x*\x/6)});
-      \foreach \y in {-2.3, -1}
-      \draw ($ ({sqrt(-6*ln(-\y/\depth))}, \y)$)
-         -- ($ ({-sqrt(-6*ln(-\y/\depth))}, \y)$);
-		 
-         \draw ($ ({sqrt(-6*ln(1/\depth))}, -1)$)
-            -- ($ ({-sqrt(-6*ln(1/\depth))}, -1)$)
-			        node[midway, above left] {Bound state};
-      \begin{scope}
-        [->, decoration={snake, post length=1mm}, gray]
-        \draw[decorate] (-6, 1) -- (6, 1) 
-          node[black, above left] {Unbound scattering states};
-        \draw[decorate] (-6, 1.4) -- (5.5, 1.4);
-      \end{scope} 
+      ]
+      \begin{scope}[->]
+        \draw[decorate, decoration={snake, post length=1mm}] 
+          (0, 1) -- (3, 1);
+        \draw[decorate, decoration={snake, post length=1mm,
+                                    segment length = 2mm}] 
+          (0, 1.4) -- (2.7, 1.4);
+      \end{scope}
+      
+      \shade[shading=resonance]
+        (0,0.5) ++ (0,-0.02) rectangle +(3,0.04);
+      \begin{scope}[left, fill=white, align=right]
+        \node at (0, 1.2) {Scattering\\states};
+        \node at (0, 0.5) {Resonance};
+      \end{scope}
+     
+      \draw[->] (0, 0) node[left] {$0$} -- (3, 0) node[below] {$r$};
+      \draw[->] (0, -2.1) -- (0, 2) node[right] {$V$};
+      \draw plot (\x,{-2/(1 + exp((\x-1)/0.3))});
+      \foreach \x/\y in {1/-1, 1.33/-0.5} {
+        \draw (0, \y)-- (\x, \y);
+      }
+      \node[left, align=center] 
+        at (0,-0.75)  {Bound\\states};
+        
+        
       \draw[decorate, decoration={brace}] 
-        (-6.1,0) -- +(0,2) node[midway, xshift=-0.4cm, rotate=90] {Continuum};
+        (3.1,2) -- +(0,-2) node[midway, xshift=0.4cm, rotate=-90] {Continuum};
     \end{tikzpicture}
+    
   }
-  \caption{Three different quantum systems: the closed harmonic oscillator, a free particle and an open gaussian well.}
+  \caption{An open and a closed quantum system. The open system has an infinite number of bound, localized states, whereas the closed system has unbound scattering states and resonances in addition to a finite number of bound states.}
   \label{fig:potentials}
 \end{figure}
 \todo{Update figure to post-presentation?}
