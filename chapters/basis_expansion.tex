@@ -184,7 +184,7 @@ The expansion is done in the same way as before, giving us
   &= 
   E\Phi(\vec{k}),
 \end{eq}
-where we denote the momentum space wavefunctions with $\Phi$. 
+where we denote the momentum wavefunctions with $\Phi$. 
 As in position space, these can be separated into a radial and angular part.
 This is shown in \cref{app:radial_mom_TISE} along with the fact that the Schrödinger equation can be written as
 \begin{align}
@@ -200,9 +200,9 @@ This is shown in \cref{app:radial_mom_TISE} along with the fact that the Schröd
   \frac{2}{\pi}\fint[0][\inf]{r} r^2 V(r) j_l(kr) j_l(k'r),
 \end{align}
 \todo[inline]{No align, where before V(k,k)?}
-where $\phi(k)$ is the radial part of the momentum space wavefunction
+where $\phi(k)$ is the radial part of the momentum wavefunction
 and $j_l(kr)$ are the spherical bessel functions of order $l$. 
-The momentum space radial wavefunction $\phi(k)$ is related to the position space radial wavefunction by
+The radial-momentum wavefunction $\phi(k)$ is related to the position space radial wavefunction by
 \begin{eq}
   R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
   \label{eq:radial wavefunction}
@@ -258,7 +258,7 @@ which gives us a symmetric matrix
 \end{eq}
 The Schrödinger equation then becomes
 \begin{eq}
-  \sum_j H'_{ij}\phi'(k_j) = E\phi'(k_j),
+  \sum_j H'_{ij}\phi'(k_j) = E\phi'(k_i),
 \end{eq}
 with the same eigenvalues $E$, meaning that we can work with the symmetric $H'_{ij}$ matrix.
 Another benefit of the symmetrization is that the norm of the $\phi'(k_i)$ incorporates the weights $w_i k_i^2$.

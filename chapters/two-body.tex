@@ -4,8 +4,6 @@
 \chapter{The Two-Body Nuclear System}
 \label{cha:two-body}
 
-\todo{read through entire chapter OLA SPILL}
-
 In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
 We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}.
 The Schrödinger equation is then solved in the HO and momentum bases.
@@ -33,16 +31,14 @@ where $v$ is the nucleon-nucleon interaction. Now add and subtract a potential f
     v(\vec{r}_i,\vec{k}_i, \vec{r}_j, \vec{k}_j) - V(\vec{r_i})
   } \\
   &=
-  H\sub{MF} + V\sub{res}
+  H_1 + V\sub{res}
 \end{eq} 
-where we have split the Hamiltonian into a spherically symmetric mean-field Hamiltonian $H\sub{MF}$ in which particles do not interact directly, and the \emph{residual interaction} $V\sub{res}$ that can be seen as the new interaction between particles. 
+where we have split the Hamiltonian into a spherically symmetric mean-field Hamiltonian $H_1$ in which particles do not interact directly, and the \emph{residual interaction} $V\sub{res}$ that can be seen as the new interaction between particles. 
 If the mean-field potential $V$ is chosen carefully, $V\sub{res}$ can become small enough to be treated pertubationally (if at all). 
 
  
 \subsection{The Woods-Saxon Potential}
-For the mean-field potential we will use the established Woods-Saxon potential, visualized in \cref{fig:woods-saxons}.
-The Woods-Saxon potential with a $l-s$ couplingis is a standard shell model in nuclear physics \cite[suhonen], given by
-\todo[inline]{check last sentence}
+The mean-field potential we use is the Woods-Saxon potential with spin-orbit coupling, a standard potential used in nuclear shell models \cite{suhonen}. The potential is visualized in \cref{fig:woods-saxons} and is given by
 \begin{eq}
 	V(r)=
 	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr},
@@ -89,57 +85,54 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
 
-\todo{search replace for backslash , SPILL}
-
 \begin{figure}[t]
-	\newcommand{\diff}{0.65}
-	\newcommand{\ro}{2}
-	\newcommand{\vo}{47}
-        \newcommand{\so}{-7.5}
-	\newcommand{\func}{1/(1 + e^((x-\ro)/\diff))}
-	\newcommand{\mass}{0.019272}
-	  \centering{
+	  \newcommand{\diff}{0.65}
+	  \newcommand{\ro}{2}
+	  \newcommand{\vo}{47}
+    \newcommand{\so}{-7.5}
+	  \newcommand{\func}{1/(1 + e^((x-\ro)/\diff))}
+	  \newcommand{\mass}{0.019272}
 	  \pgfplotsset{
 	    width = 0.45\textwidth, height = 7cm,
       domain = 0.5:9.8, 
-	  xmax=10,
+	    xmax=7.9,
       ymin = -20,
 	    ymax = 9,
       xlabel = $r/\b{\si{fm}}$,
       axis x line = middle,
-      axis y line = left
-		%       every axis x label/.style={
-		%         at = {(current axis.right of origin)},
-		%         anchor = north east,
-		% }
+      axis y line = left,
+      every axis x label/.style={
+            at = {(current axis.right of origin)},
+            anchor = north,
+      }
 	  }
+	  \centering{
+    \hspace{-1cm}
+  	  \subfloat[$p_{3/2}$]{
+  	    \tikzset{external/remake next}
+  	\tikzsetnextfilename{p32}
+  	    \begin{tikzpicture}
+  	      \begin{axis}[
+          ylabel = $V/\b{\si{MeV}}$
+          ]
+  	        \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * \so * 1 * (\func -1) / (\diff * x ))};
+  	      \end{axis}
+  	    \end{tikzpicture}
+  	  }
 	    \subfloat[$p_{1/2}$]{
 	      \tikzset{external/remake next}
 	  \tikzsetnextfilename{p12}
 	      \begin{tikzpicture}
-		    \begin{axis}[
-				ylabel = $V/\b{\si{MeV}}$,
-				xmax = 7.9,]
+		    \begin{axis}
 		      \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * \so * (-2) * (\func -1) / (\diff * x )) };
 		    \end{axis}
 	      \end{tikzpicture}
 	    }
-	  \subfloat[$p_{3/2}$]{
-	    \tikzset{external/remake next}
-	\tikzsetnextfilename{p32}
-	    \begin{tikzpicture}
-	      \begin{axis}[
-			  xmax = 7.9,]
-	        \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * \so * 1 * (\func -1) / (\diff * x ))};
-	      \end{axis}
-	    \end{tikzpicture}
+
 	  }
-	  }
-  \caption{The Woods-Saxon potential with centrifugal barrier $l(l+1)/2\mu r^2$ added, for different waves. Parameters $V_0 = \SI{47}{MeV}$, $r_0 = \SI{2}{fm}$ and $d = \SI{0.65}{fm}$}
+  \caption{The effective Woods-Saxon potential with spin-orbit coupling and centrifugal barrier $l(l+1)/2\mu r^2$ added, for $p_{3/2}$ and $p_{1/2}$ waves. The parameters used are $V_0 = \SI{47}{MeV}$, $V\sub{so} = \SI{-7.5}{MeV}$, $r_0 = \SI{2}{fm}$ and $d = \SI{0.65}{fm}$.}
   \label{fig:woods-saxons}
 \end{figure}
-
-\todo{ticks, xlabel. caption ok? (deep one should be p3/2).  SPILL}
 
 \section{The \He{5} Nucleus}
 We choose to study \He{5}, seen as a \He{4} nucleus and a valence neutron. 
@@ -148,8 +141,10 @@ Other doubly magic light nuclei, such as \ce{^{16}O} and its isotopes, have been
 
 Because the $s$-shell is already filled in \He{4}, the valence neutron of \He{5} will be a $p$-wave, with $l=1$. 
 We see in \cref{eq:spin-orbit} that the $p_{3/2}$-wave will get a negative net contribution from the total spin-orbit term, also shown in \cref{fig:woods-saxons}.
-This means that the ground state of \He{5} will be the $p_{3/2}$ wave, with $p_{1/2}$ an excited state.
-Both the $p_{3/2}$ and $p_{1/2}$ waves have known resonance states.
+This means that the ground state of \He{5} will be the $p_{3/2}$-wave, with $p_{1/2}$ an excited state.
+Both the $p_{3/2}$- and $p_{1/2}$-waves have known resonance states.
+
+We use the procedures described in \cref{cha:basis_expansion} to numerically solve the \He{5} Schrödinger equation for the $p_{3/2}$-wave. When examining the solutions, we are specifically looking for the ground state resonance.
 
 The Woods-Saxon parameters will initially be set to standard values to investigate the general behavior of the solutions. The following values are used \cite{gamow_shell_model_2008}: 
 \begin{center}
@@ -162,19 +157,15 @@ The Woods-Saxon parameters will initially be set to standard values to investiga
 \end{center}
 We later optimize the parameters to match experimentally determined energy levels for \He{5}.
 
-We use the procedures described in \cref{cha:basis_expansion} to numerically solve the \He{5} Schrödinger equation for the $p_{3/2}$ wave. When examining the solutions, we are specifically looking for the ground state resonance.
-
-\todo{More about resonances?}
-
 \subsection{Harmonic Oscillator Basis}
 
 We begin by solving the \He{5} Schrödinger equation in the HO basis. 
-We plot the solutions in \cref{fig:energies(r0)} as a function of the range $r_0$ of the HO potential.
-All solutions have energies $E > 0$, meaning that they are unbound, scattering states, and thus have unlimited range.
+The solutions are shown in \cref{fig:energies(r0)} as a function of the range $r_0$ of the HO potential.
+All solutions have energies $E > 0$, meaning that they are unbound states, and thus have unlimited range and are not localized.
 However, we see a saddle point in energy for the lowest energy solution when the HO range $r_0 \approx \SI{1}{fm}$, corresponding to radii within the nucleus.
-The range $r_0$ is a measure of the 
-\todo[inline]{text??????}
-\todo{koncis tolkning, bad plot}
+The range $r_0$ is a measure of the range of the HO eigenfunctions and the saddle behavior is a sign of a localized wavefunction in that vicinity.
+However, the change in behavior is small, and we cannot draw any conclusions from it.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
 
@@ -197,19 +188,19 @@ We will have to switch to a basis with wavefunctions of infinite range to proper
 The momentum basis describes a plane wave, i.e. a free particle, with wave functions of infinite range.
 Because all \He{5} solutions appear in the continuum, this basis is better suited to the problem than the HO basis.
 
-\subsubsection{Momementum Space Wavefunctions}
+\subsubsection{Momementum Wavefunctions}
 
 Solving the Schrödinger equation in the momentum basis gives us momentum eigenfunctions $\phi(k)$, presented in \cref{fig:real_momentum_wavefunctions}.
 There is a background of wavefunctions peaking at different values of $k$, and one wavefunction standing out as lower and wider.
-This is the same state that showed some odd behaviour in the HO-basis, but let us first discuss the peak-shaped wavefunctions.
+This is the same state that showed some odd behavior in the HO-basis, but let us first discuss the peak-shaped wavefunctions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
 \begin{figure}[h]
   \centering
-  	\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
+  	\includegraphics[page=1]{../figures/eigvecs_real/eigvecs.pdf}
 
-  \caption{\He{5} momentum probability distributions. The resonance is significantly wider than the surrounding states. We can see a trend toward lower and wider states around \SI{1}{fm^{-1}}, but it is merely a numerical peculiarity stemming from the normalization and the fact that the unique state ´´steals" a peak that has to be shared among the other ones.} 
+  \caption{\He{5} momentum probability distributions. The resonance is significantly wider than the surrounding states. We can see a trend toward lower and wider states around \SI{1}{fm^{-1}}, but it is merely a numerical peculiarity stemming from the normalization and the fact that the unique state ``steals" a peak that has to be shared among the other ones.} 
   \label{fig:real_momentum_wavefunctions}
 \end{figure}
 
