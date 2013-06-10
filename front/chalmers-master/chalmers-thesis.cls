@@ -625,17 +625,34 @@
  \vspace*{\stretch{1}}
  {\noindent \@title\\
   \@ifundefined{@subtitle}{}{\@subtitle\\}
-  \renewcommand{\and}{\\}\MakeUppercase{\@author}
-  \@ifundefined{@ISBN}{}{\\ISBN \@ISBN}
+  %\renewcommand{\and}{\\}\MakeUppercase{\@author}
+  %\@ifundefined{@ISBN}{}{\\ISBN \@ISBN}
+  Jonathan Bengtsson$^a$ \and Ola Embr\'eus$^b$\and Vincent Ericsson$^c$ \and Pontus Granstr\"om$^d$ \and Nils Wireklint$^e$
   \par}
  \vskip 2em
- {\noindent \copyright\ {\renewcommand{\and}{, }\MakeUppercase{\@author}}, \@copyrightyear\par}
+ \noindent Email:\\  
+ $^a$jonbeng@student.chalmers.se\\
+ $^b$embreus@student.chalmers.se\\
+ $^c$vineri@student.chalmers.se\\
+ $^d$pongra@student.chalmers.se\\
+ $^e$nilsw@student.chalmers.se
  \vskip 2em
+ {\noindent \copyright\ {\renewcommand{\and}{, }\MakeUppercase{\@author}}, \@copyrightyear\par}
+ \vskip 2em 
+
+\noindent FUFX02 - Bachelor thesis at Fundamental Physics
+
  {\noindent% 
   \ifdefempty{\@reportno}{}{\@reportseries\ \@reportno\\}%
-  \ifdefempty{\@ISSN}{}{ISSN \@ISSN\\}%
+ % \ifdefempty{\@ISSN}{}{ISSN \@ISSN\\}%
+   \vskip 1em 
+   \noindent
+   Supervisor: Christian Forss\'en \\
+   Examiner: Daniel Persson
+     \vskip 1em 
+ \noindent
   \@department\\
-  \@ifundefined{@division}{}{\@division\\}
+  %\@ifundefined{@division}{}{\@division\\}
   \universityname\\
   \@postcode\ \cityname\\
   \countryname\\
