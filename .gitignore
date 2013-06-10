@@ -89,3 +89,6 @@ nosetests.xml
 
 # Test-code
 test/
+*.bcf
+
+*.xml
