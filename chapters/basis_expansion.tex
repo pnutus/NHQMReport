@@ -191,18 +191,19 @@ This is shown in \cref{app:radial_mom_TISE} along with the fact that the Schröd
   \label{eq:radial mom space TISE}
   H\phi(k)
   & =
-  \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k') 
+  \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k'),
   =
   E\phi(k)
-  \\
+\end{align}
+with
+\begin{align}
   V(k,k') 
   & = 
-  \frac{2}{\pi}\fint[0][\inf]{r} r^2 V(r) j_l(kr) j_l(k'r),
+  \frac{2}{\pi}\fint[0][\inf]{r} r^2 V(r) j_l(kr) j_l(k'r)
 \end{align}
-\todo[inline]{No align, where before V(k,k)?}
 where $\phi(k)$ is the radial part of the momentum wavefunction
 and $j_l(kr)$ are the spherical bessel functions of order $l$. 
-The radial-momentum wavefunction $\phi(k)$ is related to the position space radial wavefunction by
+The radial-momentum wavefunction $\phi(k)$ is related to the radial-position wavefunction by
 \begin{eq}
   R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
   \label{eq:radial wavefunction}
@@ -273,7 +274,6 @@ The real space radial wavefunction $R(r)$ is expressed in terms of $\phi'(k_j)$ 
 \end{eq}
 
 \section{Numerical Considerations}
-\todo{calculation vs computation (entire report)}
 
 In order to perform basis expansion on a computer, we need to consider the numerical aspects of the problem. 
 This includes truncation of the basis, matrix size reduction, numerical integration and eigensolver optimizations.

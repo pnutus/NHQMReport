@@ -229,7 +229,7 @@ Barring such numerical errors, we found that any contour that runs below and not
       \includegraphics[page=1]{../figures/poles(contour)/poles.pdf}
     }
   }
-   \caption{Momentum solutions for the \He{5} $p_{3/2}$ wave for different contours. The resonance is located at $k_r = \SI{0.173 -0.0356i}{fm^{-1}}$ for both contours, truncated at the same $k\sub{max} = \SI{5}{fm^{-1}}$ and using 60 points.} 
+   \caption{Complex-momentum solutions for the \He{5} $p_{3/2}$ wave for a triangle and a rectangle contour, both truncated at $k\sub{max} = \SI{5}{fm^{-1}}$ and using 60 points. The resonance is located at the same $k_r = \SI{0.173 -0.0356i}{fm^{-1}}$ in both cases.} 
 \label{fig:pole(cont)}  
 \end{figure}
 
@@ -245,7 +245,7 @@ Barring such numerical errors, we found that any contour that runs below and not
   		\includegraphics[page=2]{../figures/eigvecs_real_comp/eigvecs.pdf}
 	}
   }
-\caption{\He{5} momentum probability distributions for a real and complex contour. The resonance is more prominent when solving along the complex contour but is significantly wider than the surrounding states in both cases. Both contours comprise 60 points in total, but the points in the complex contour are concentrated near the origin, stemming from the Gauss-Legendre distribution on the individual segments.} 
+\caption{\He{5} momentum probability distributions for a real and complex contour. The resonance state is significantly lower in the complex case, and thus easier to identify. Both contours comprise 60 points in total, but the points in the complex contour are concentrated near the origin, stemming from the Gauss-Legendre point distribution on the individual segments of the contour.} 
 \label{fig:complex_mom_wavefunctions}
 \end{figure}
 
@@ -260,8 +260,6 @@ The unbound solution still correspond to one definite (now complex) momentum.
 On the other hand, the resonance has a wide distribution, reflecting the localized nature of the solution 
 (remember Heisenberg -- a wide momentum wavefunction allows a localized position wavefunction). 
 This also allows for automatically finding the resonance among a large set of solutions by singling out the one with the widest (or lowest) wavefunction.
-\todo{är all denna text verkligen nödvändig?}
-
 
 \todo{improve corner on this}
 \begin{figure}
@@ -315,7 +313,7 @@ at (axis cs:0.257,-0.0860) {};
           \addlegendentry{Contour}
       \end{axis}
   \end{tikzpicture}
-  \caption{The position of the resonance pole as a function of $V_0$ for the \He{5}-like Woods-Saxon system. The pole begins at \SI{65}{MeV} as a bound state on the imaginary axis, gradually becomes less and less bound, jumps into the fourth quadrant ($V_0 \approx \SI{52}{MeV}$), passes the \He{5} resonance and continues further down and to the right.}
+  \caption{The position of the resonance pole in the complex-momentum plane as a function of $V_0$ for the \He{5}-like Woods-Saxon system. The pole begins at \SI{65}{MeV} as a bound state on the imaginary axis, gradually becomes less and less bound, jumps into the fourth quadrant ($V_0 \approx \SI{52}{MeV}$), passes the \He{5} resonance and continues further down and to the right.}
   \label{fig:pole(V0)}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%% V0(CONTOUR) FIGURE
@@ -326,9 +324,8 @@ We repeat the procedure from \cref{sub:momentum_basis}, lowering the potential w
 In \Cref{fig:pole(V0)} we see how the pole starts on the imaginary axis at $V_0 = \SI{70}{MeV}$. 
 It then moves downwards, becoming less and less strongly bound.
 At $V_0 \approx \SI{52}{MeV}$ the pole jumps to the fourth quadrant, becoming a resonance.
-As the potential well grows even less attractive, we see that both the real part $E_0$ and imaginary part $\Gamma$ of the resonance energy increases.
-\todo{vad händer sen?}
-\todo{mer tolkning?}
+As the potential well grows even less attractive, we see that both the energy $E_0$ and width $\Gamma$ of the resonance increases.
+With an even shallower potential well the resonance is so wide that it can no longer be detected.
 
 \subsection{Fitting to Experimental Resonance Data} 
 
@@ -353,8 +350,5 @@ The experimental data, taken from \cite{tunl}, is presented in \cref{tab:resonan
 \end{tabular}
 \end{table}
 \todo{figures where they belong. Wednesday night: fixa uppslag med figur + tillhörande text}
-
-\todo{in captions: solutions in the complex momentum plane SPILL}
-\todo{fix effing figures}
 
 \end{document}

@@ -4,9 +4,7 @@
 \chapter{The Nuclear Three-Body Problem}
 \label{cha:three-body}
 
-\todo{interaction/potential potential confusion SPILL}
-\todo{potential depth, interaction strength OLA}
-
+\vspace{-5mm}
 Equipped with the many-body theory of \cref{cha:many-body} we are now ready to study an open three-body system.
 The natural way to proceed is to add another neutron to our two-body \He{5} system and form \He{6}, seen as an alpha particle core with two valence neutrons ($\alpha + n + n$).
 We now have to take into account the attractive two-body interaction between the neutrons, which allows for bound states in \He{6} where there were none in \He{5}.
@@ -16,22 +14,32 @@ The Borromean rings are three rings interlocked in such a way that, if any one r
 \begin{figure}[h]
   \newcommand{\circdist}{1.2}
   \newcommand{\circrad}{2}
-  \centering
-  \begin{tikzpicture}[even odd rule]
-    \foreach \angle/\colour in {90/red,-30/blue,210/green}
+  \centering{
+  \subfloat[The \He{6} system]{
+    \label{fig:He6}
+    \includegraphics[width=0.45\textwidth]{../front/chalmers-master/helium.pdf}
+  }
+  \subfloat[The Borromean rings]{
+  \label{fig:borromean}
+  \begin{tikzpicture}[even odd rule, scale = 0.8]
+    \foreach \angle/\colour in {90/red!50!lightgray,-30/blue!50!lightgray,210/green!50!lightgray}
       \draw [fill=\colour] 
         (\angle:\circdist) circle (\circrad) circle (\circrad+0.5);
-
+    
+    \draw[opacity=0] (0,-3.7) -- ++(0, 0.1);
     \begin{scope}
     \clip (-30:\circdist) circle (1);
-    \draw [fill=red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
+    \draw [fill=red!50!lightgray] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
     \end{scope}
 
     \clip (90:\circdist) ++ (180:\circrad) circle (1);
-    \draw [fill=red] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
+    \draw [fill=red!50!lightgray] (90:\circdist) circle (\circrad) circle (\circrad+0.5);
+    
   \end{tikzpicture}
-  \caption{The Borromean rings}
-  \label{fig:borromean}
+  }
+  }
+  \caption{A simplified illustration of the \He{6} system together with the Borromean rings. 
+  If the bond between any two parts is broken, all three fall apart.}
 \end{figure}
 
 \section{The \He{6} Nucleus}

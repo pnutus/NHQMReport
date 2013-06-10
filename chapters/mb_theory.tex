@@ -43,8 +43,6 @@ which, by the orthonormality of the $\ket\alpha$, are orthonormal as well
   \delta_{\alpha_N\alpha'_N}.
 \end{eq}
 
-\todo{orthonormality or completeness relation?}
-
 Let us assume that the system of identical particles can be described by some linear combinations of these basis states, denoted
 \begin{eq}
   \ket{\alpha_1\alpha_2\dots\alpha_N}.
@@ -416,7 +414,6 @@ The creation and annihilation operators become functions that take the Fock stat
 Furthermore, the sum in the expression of the Fock operators can be optimized by only evaluating the non-zero terms.
 
 \subsection{Single-Particle-State Objects}
-\todo{sp states}
 
 We represent a single particle state with a record, i.e. an object with named fields that can be assigned values. It is natural to let each quantum number, such as $l$ and $j$ be a field. 
 Moreover, we can include other information about the state, information that is taken for granted in the mathematical formulation.
@@ -441,8 +438,6 @@ The annihilation operator searches for a state, saves its index $k$ in the list,
 When computing matrix elements of a Fock space operator, most terms in the sum vanish. 
 This is because most states will become zero when acted on by the creation and annihilation operators (equations \cref{eq:create_zero,eq:annihilate_zero}).
 Evaluating a sum of mostly zero elements is not very efficient, but this can be 
-avoided by letting the sum run over just the single-particle states present in the bras and kets.
-
-\todo{behöver detta vara tydligare? /pontus  -nej /vincent}
+avoided by letting the sum run over just the single-particle states that appear in the bras and kets.
 
 \end{document}
