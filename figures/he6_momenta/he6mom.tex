@@ -28,11 +28,11 @@
      \begin{axis}[
        legend style={at={(0.6,0.4)}, anchor=north,legend columns=1},
 	   ]
-	   \addplot [only marks, color=red, mark=diamond*, ultra thick] table {res.data};
+     \addlegendimage{only marks, red, mark=diamond*, mark size=6}
 	   \addlegendentry{Resonance}
+     \addlegendimage{only marks, darkgray, mark size=3}
+     \addlegendentry{Continuum states}
        \addplot [only marks, color=darkgray] table {he6_momenta192.data};
-       \addlegendentry{Continuum states}
-	   	\addplot [only marks, color=white, ultra thick] table {res.data};
 	   \addplot [only marks, color=red, mark=diamond*, mark size=6] table {res.data};
 
 
