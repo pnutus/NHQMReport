@@ -119,7 +119,7 @@ With a well-defined ordering orthonormality of the normalized antisymmetric stat
 \section{Second quantization}
 \label{sec:second_quantization}
 
-So far we've looked at a system with a fixed number of particles, but we want to work with a system hosting an arbitrary number of identical particles.
+So far we have only looked at a system with a fixed number of particles, but we want to work with a system hosting an arbitrary number of identical particles.
 The \emph{second quantization} formalism lets us do this by introducing the \emph{Fock space}, a direct sum of Hilbert spaces of $0,1,2,...$ particles.
 This means that a state in Fock space, a \emph{Fock state}, can contain any number of particles and that Fock states with different number of particles are orthogonal.
 
@@ -302,7 +302,7 @@ as expected.
 We have now developed the theory we need to solve actual many-body problems.
 Before applying these methods, however, we will discuss the concept of angular momentum coupling. 
 This corresponds to making a change of basis, using the rotational symmetry of problems to make the Hamiltonian matrix block diagonal and significantly reducing its size. 
-In principle, coupling is not neccesary to solve many-body problems, but its an invaluable tool.
+In principle, coupling is not neccesary to solve many-body problems, but it is an invaluable tool.
 We will limit the discussion to coupling of two particles, as we never work with more particles here.
 A more complete description is found in \cite{suhonen}.
 
@@ -386,7 +386,7 @@ Thus, to solve an actual problem we still only need to evaluate the elements $\b
 
 Consider the case of a one-body operator, which in the uncoupled basis was treated in \cref{eq:one-body_matrix_elements}. 
 When doing the transition to the coupled basis, there is a subtle detail that needs to be addressed.
-Even when both single-particle states are the same in the coupled basis, $E_1 = E_2 = E$, we will in the transition still sum over all $m_1$, $m_2$ in the ket $\ket{E m_1 E m_2}$ of \cref{eq:coupled_matrix_element}, meaning that we will \emph{not} use ordered states in that calculation. Instead \cref{eq:one-body_matrix_elements} will read
+Even when both single-particle states are the same in the coupled basis, $E_1 = E_2 = E$, we will in the transition still sum over all $m_1$, $m_2$ in the ket $\ket{E m_1 E m_2}$ of \cref{eq:coupled_matrix_element}, meaning that we will \emph{not} use ordered states in that calculation. Instead \cref{eq:one-body_matrix_elements} will read \todo{radbryte ekv?}
 \begin{eq}
   \bra{E_1m_1 E_2m_2}\hat{H}_1\ket{E_1'm_1'E_2'm_2'} 
   = 
