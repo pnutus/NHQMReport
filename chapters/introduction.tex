@@ -127,8 +127,6 @@ we get
 \end{eq} 
 describing a resonance state decaying exponentially with half-life $t_{1/2}=\hbar\ln 2/\Gamma$. This parameter $\Gamma$ is called the \emph{width} of the resonance.
 
-\todo{width/scattering argument?}
-
 We want to use the simpler formalism of the TISE, as opposed to the more general TDSE, and we see that this is possible by letting the resonance have a complex energy.
 However, complex eigenvalues pose a problem in standard quantum mechanics, where operators are postulated to be Hermitian.
 Hermitian operators can only have real eigenvalues, and are thus insufficient for treating resonances.
@@ -136,15 +134,15 @@ Hermitian operators can only have real eigenvalues, and are thus insufficient fo
 The aim of this thesis is to present methods for describing resonances using the TISE in a complex-energy framework.
 The methods will be used to study the simple nuclear systems \He{5} and \He{6}, comparing the results to experimental data.
 The He nuclei are relevant because the ground state of \He{5} and the first excited state of both \He{5} and \He{6} are resonances. 
-Despite the unbound nature of \He{5}, the ground state of \He{6} is actually bound, an example of a \emph{Borromean} system, named after the Borromean rings depicted on the cover of this thesis.
-\todo{tar vi bort ringarna?}
+Despite the unbound nature of \He{5}, the ground state of \He{6} is actually bound, an example of a \emph{Borromean} system.
 
 We solve the TISE numerically, but have in this thesis chosen to focus on the mathematical and physical aspects as the implementation have rather straightforward in most cases.
 Consequently, there will be no code nor pseudocode in the thesis, although the code we have written to produce the results is freely available at
 \begin{quote}
   \url{https://github.com/pnutus/NHQM}.
 \end{quote}
-\todo{Är detta okej?}
+We used the \emph{Python} programming language and the libraries \emph{NumPy} and \emph{SciPy} to perform computations. 
+The figures in the thesis were made using the \emph{TikZ} and \emph{pgfplots} LaTeX libraries together with the Python code.
 
 The thesis can conceptually be divided into two parts, the first covering resonances in a simple two-body problem and the second part covering the first steps toward more complicated many-body systems. 
 In \cref{cha:basis_expansion} the \emph{basis expansion} method for solving the Schrödinger equation is introduced.

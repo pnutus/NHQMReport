@@ -11,13 +11,9 @@ An integral can be computed numerically by turning it into a sum
 where the integrand is evaluated at a discrete set of points $x_i$ and multiplied by corresponding weights $w_i$.
 The choice of points and weights is called a \emph{quadrature rule}.
 
-The Gauss-Legendre quadrature rule is efficient for computing integrals with finite limits.
+The \emph{Gauss-Legendre quadrature rule} is efficient for computing integrals with finite limits.
 The theory behind the rule is involved and can be found in e.g. \cite{gl}. 
-The idea is to pick points $x_i$ on the $[-1,1]$ interval that are roots of the Legendre polynomial of a certain degree n and approximate the integral with
-\begin{eq}
-  \int_{-1}^1 f(x)\id{x} \approx \sum_{i=1}^n w_i f(x_i).
-\end{eq}
-with the weights given by \cite{abramowitz+stegun}
+The idea is to pick points $x_i$ on the $[-1,1]$ interval that are roots of the Legendre polynomial of degree $n$ and use weights given by \cite{abramowitz+stegun}
 \begin{eq}
   w_i = \frac{2}{\left( 1-x_i^2 \right) [P'_n(x_i)]^2}
 \end{eq}
