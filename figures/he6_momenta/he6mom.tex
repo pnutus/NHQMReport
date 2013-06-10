@@ -5,7 +5,7 @@
 \tikzset{every mark/.append style={scale=0.5}}
    \pgfplotsset{
      width = 14cm,
-     height = 8cm,
+     height = 12cm,
      axis lines = middle,
      enlargelimits,
      ylabel=Im $k/\b{\si{fm^{-1}}}$,
@@ -21,13 +21,14 @@
      anchor = north,
      },
      every x tick label/.append style = {anchor = south, yshift = 3pt},
-	 xtick={1,1.5,...,3}
+	 xtick={1,1.5,...,2.5},
+	 xmax =2.6
    }
    \begin{tikzpicture}
      \begin{axis}[
        legend style={at={(0.6,0.4)}, anchor=north,legend columns=1},
 	   ]
-	   \addplot [only marks, color=red, mark=diamond*, ultra thin] table {res.data};
+	   \addplot [only marks, color=red, mark=diamond*, ultra thick] table {res.data};
 	   \addlegendentry{Resonance}
        \addplot [only marks, color=darkgray] table {he6_momenta192.data};
        \addlegendentry{Continuum states}
