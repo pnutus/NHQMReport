@@ -2,6 +2,7 @@
 \usepackage[english]{babel}
 
 \usepackage{../main/NHQM}
+\usepackage{pdfpages}
 
 \begin{document}
   
@@ -11,9 +12,13 @@
 
 \listoftodos
 
-\subfile{titlepage.tex}
+\includepdf[pages=1-4]{../front/chalmers-master/NHQMNHQMNHQM.pdf}
 
-\todo{finare färger på framsidan}
+%\subfile{titlepage.tex}
+
+
+
+%\todo{finare färger på framsidan}
 \begin{abstract}
 Resonances are important features of open quantum systems.
 We study, in particular, unbound and loosely bound nuclear systems.
@@ -35,6 +40,7 @@ The relevant parts of the second quantization formalism is summarized, and we br
 \tableofcontents
 
 \newpage
+
 
 \pagenumbering{arabic}
 
