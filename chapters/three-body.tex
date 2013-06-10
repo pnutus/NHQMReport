@@ -35,11 +35,12 @@ The Borromean rings are three rings interlocked in such a way that, if any one r
 \end{figure}
 
 \section{The \He{6} Nucleus}
-
+ 
 We treat the \He{6} system as a combination of two identical \He{5} systems of core and neutron, i.e. two ``one-particle'' systems with the same reduced mass $\mu$ as in \cref{cha:two-body}.
-The validity of this approach is not immediately obvious, but 
-if the two neutrons have like parity there will be no recoil of the core \cite{suzuki}. 
-The parity depends solely on $l$ and we only consider neutrons in the $p$ orbitals ($l=1$), so the approach is valid.
+This means that, even though we are studying a three-body system, we will use the same reduced mass for the neutrons as in the two-body case.
+
+The validity of this approach is not immediately obvious, but it has been shown \cite{suzuki} that it is valid if the neutrons have the same parity. 
+Since parity depends solely on $l$, and we only consider neutrons in the $p$ orbitals ($l=1$), the approach is valid.
 
 The Hamiltonian takes on the form
 \begin{eq}
@@ -156,19 +157,28 @@ which in the coupled scheme becomes
     \bra{b} V\sub{sep} \ket{c}
   }.
 \end{eq}
-The $\bra{a} V\sub{sep}(r) \ket{c}$ are calculated by expanding $V\sub{sep}$ in the same basis as the sp states. In the momentum basis this is
+The $\bra{a} V\sub{sep}(r) \ket{c}$ are calculated by expanding $V\sub{sep}$ in the same basis as the sp states. 
+In the momentum basis this results in
 \begin{eq}
   \bra{a} V\sub{sep} \ket{c}
-  =
-  \sum_i \sqrt{w_i}k_i \phi'_a(k_i) \sum_j \sqrt{w_j}k_j \phi'_b(k_j) V\sub{sep}(k_i, k_j),
+  &=
+  \sum_i \sqrt{w_i}k_i \phi'_a(k_i) \sum_j \sqrt{w_j}k_j \phi'_c(k_j) V\sub{sep}(k_i, k_j) 
+  \\ &=
+  \sum_i a_i \sum_j V_{ij} c_j  ,
 \end{eq}
-with
+where
 \begin{eq}
+  a_i = \sqrt{w_i}k_i\phi'_a(k_i),& 
+  \hspace{1cm}
+  c_j = \sqrt{w_j}k_j\phi'_c(k_j)
+  \\
+  V_{ij} 
+  = 
   V\sub{sep}(k_i, k_j) 
   = 
-  \frac{2}{\pi} \fint[0][\inf]{r} r^2 V(r) j_l(k_i r)j_l(k_j r),
+  \frac{2}{\pi} &\fint[0][\inf]{r} r^2 V(r) j_l(k_i r)j_l(k_j r).
 \end{eq}
-as in \cref{cha:basis_expansion}
+We see that the matrix elements $V_{ij}$ of $V\sub{sep}$ are evaluated as described in \cref{cha:basis_expansion} for the momentum Schrödinger equation.
 
 
 \subsection{Surface Delta Interaction}
@@ -191,7 +201,7 @@ The SDI can be expanded into separable multipole radial components
 \begin{eq}
   v_l(r) = \frac{\delta(r-r_0)}{r},
 \end{eq}
-and with a complicated calculation (see \cite{suhonen}) one reaches the following expression for the coupled scheme matrix elements
+and with a complicated calculation (see \cite{suhonen}) one reaches the following expression for the coupled scheme matrix elements:
 \todo{definiera $\N$ i mb theory och här, mention wigner 3j OLA}
 \begin{eq}
   \bra{ab; J} V \ket{cd; J} 
@@ -234,39 +244,41 @@ $\psi_\alpha(r)$ being the radial wavefunction and the $\begin{pmatrix}
 %2^+ E = 0.8 - i0.55
 
 We solve the \He{6} Schrödinger equation in the coupled scheme, using \cref{eq:coupled_matrix_elements} for the matrix elements. We first consider the Gaussian interaction, followed by the SDI.
-The parameters of our interactions are fitted to the known $0^+$ ground state of \He{6}. Using the fitted paramaters, we then make a prediction for the excited $2^+$ state---a resonance. To find the resonance, we have to include the resonance of \He{5} in the sp basis. 
+The parameters of our interactions are fitted to the known $0^+$ ground state of \He{6}. Using the fitted paramaters, we solve for the excited $2^+$ state---a resonance. 
+To find this resonance we have to use the Berggren basis, including the resonance of \He{5} in the sp basis. 
 
 \subsection{Identifying the Resonance}
-The solutions $\ket{\psi}$ will be written on the form
+The solutions $\ket{\psi}$ expanded in the coupled basis are written 
 \begin{eq}
 \ket{\psi} = \sum_{E_1 E_2} \Psi(E_1, E_2) \ket{E_1 E_2; J}
 \end{eq}
-where the coefficients $\Psi(E_1, E_2)$ can be considered the wavefunction. These are not easily visualized because of the two variables,
-but they still can be used to obtain information about the solutions. 
+where the coefficients $\Psi(E_1, E_2)$ can be considered the ``wavefunction''. These are not easily visualized because of the two variables,
+but they can still be used to obtain information about the solutions. 
 Consider the component 
 \begin{eq}
-\Psi(E\sub{r}, E\sub{r}) = \braket{E\sub{r}^2;J}{\psi},
+\Psi(E\sub{res}, E\sub{res}) = \braket{E\sub{res}^2;J}{\psi},
 \end{eq}
-being the overlap between a solution and the two-particle state corresponding to two independent \He{5} resonances (here $E\sub{r}$ denotes the energy of the \He{5} $p_{3/2}$ resonance). It is found that  the $2^+$ resonance in \He{6} predominantly consists of this component, allowing for an effective way to single out the relevant solution from a large set of scattering states.
+being the overlap between a solution and the two-particle state corresponding to both neutrons being in the \He{5} resonance state (here $E\sub{res}$ denotes the energy of the \He{5} $p_{3/2}$ resonance). 
+It was found that the $2^+$ resonance in \He{6} predominantly consists of this component, allowing for an effective way to single out the relevant solution from a large set of scattering states.
+
 \subsection{Using the Gaussian Interaction}
+We begin by setting the range $R$ of the Gaussian potential to the same value as the Woods-Saxon range, \SI{2}{fm}. The strength $V\sub{GI}$ is fitted to reproduce the \He{6} ground state. Because the Gaussian interaction is spherically symmetric it is degenerate in $J$, and there will be no distinction between the ground and excited states. 
 
-We begin by setting the range $R$ of the gaussian potential to the same value as the Woods-Saxon range, \SI{2}{fm}. The strength $V\sub{GI}$ is fitted to reproduce the \He{6} ground state. Because the Gaussian interaction is degenerate in $J$ there is no distinction between the ground and excited states. 
-
-Decreasing the range to $R = \SI{1}{fm}$, we find a wide resonace ($\Gamma > \SI{6}{MeV}$), but this requires large values of $k$ to be included in the basis and thus more scattering states. Although it might be possible to vary $R$ and $V_0$ to get a resonance closer to experimental data, we do not pursue this method further.
+Decreasing the range to $R = \SI{1}{fm}$, we find a wide resonace ($\Gamma > \SI{6}{MeV}$), but this requires large values of $k$ to be included in the basis and thus more scattering states are required to reach convergence. Although it might be possible to vary $R$ and $V_0$ to obtain a resonance closer to experimental data, we do not pursue this method further because of computation times quickly getting out of hand.
 
 \subsection{Using the Surface Delta Interaction}
 The SDI has only one parameter, the strength $V\sub{SDI}$. 
-However, because of its unphysical nature, it will also always depend on the truncation of the scattering states. 
+However, the solutions will also always depend on the truncation parameter $k\sub{max}$ of the momentum basis (an artifact of the delta functions). 
 We choose the smallest possible $k\sub{max}$ for which the \He{5} solutions converge, $k\sub{max} = \SI{2.5}{fm^{-1}}$.
 The strength is then fitted to the ground state of \He{6} as before.
 The result is presented in \cref{tab:He6_results}.
 
-\Cref{fig:he6_momenta} shows all solutions $k=\sqrt{2\mu E}/\hbar$ obtained, plotted in the complex momentum plane.
+\Cref{fig:he6_momenta} shows all $2^+$ solutions $k=\sqrt{2\mu E}/\hbar$ obtained, plotted in the complex momentum plane.
 Most of the solutions correspond to energies on the form
 \begin{eq}
 E = E_1 + E_2 \quad \text{or} \quad k=\sqrt{k_1^2 + k_2^2}
 \end{eq} 
-where $E_1$, $E_2$, $k_1$ and $k_2$ are the energies of two \He{5} eigenstates or their corresponding momenta. These solutions can be interpreted as two unbound particles, barely interacting with each other. This also explains the pattern that is seen---the momenta are all combinations of contour points that was used in the solution of \He{5} to generate the basis. 
+where $E_1$, $E_2$ (and thus $k_1$, $k_2$) are the energies of two \He{5} eigenstates. These solutions can be interpreted as two unbound particles, barely interacting with each other. This also explains the pattern that is seen---the solutions are all combinations of contour points that was used in the solution of \He{5} to generate the sp basis. 
 
 \begin{figure}[H]
 	\centering
@@ -286,7 +298,7 @@ While it is required for the \He{5} resonance to be included in the basis to fin
          The Gaussian interaction used parameters $V_0 = \SI{99}{MeV}$ and $r_0 = 2$. 24 points were used on the contour for each basis. All values are in \si{MeV}.}
 \label{tab:He6_results}
 \begin{center}
-\begin{tabular}{r| S S S}
+\begin{tabular}{r S S S}
   \toprule
 $J^\pi$ & {Experiment} & {SDI} & {Gaussian} \\ 
 \midrule

@@ -184,8 +184,8 @@ Analogous to $a_\alpha^\dag$, when $a_\alpha$ acts on a state that does not cont
 \subsection{General Operators in Fock Space}
 
 We can now express the state of an arbitrary number of particles, but to have any use of the states we also need to express operators such as the Hamiltonian in the Fock space formalism. 
-A general operator has can in Fock space be expressed using the creation and annihilation operators.
-The Fock space equivalent of an operator is able act on a state with an arbitrary number of particles. 
+A general operator can in Fock space be expressed using the creation and annihilation operators.
+The Fock space equivalent of an operator is able to act on a state with an arbitrary number of particles. 
 We will only treat one- and two-body operators here, as they are sufficient for our purposes.
 
 \subsubsection{One-Body Operators}
@@ -204,7 +204,7 @@ If the sp-states are eigenstates to the one-body operator
 \begin{eq}
   H_1 \ket{\alpha} = h_\alpha \ket{\alpha}
 \end{eq}
-the matrix elements only exist on the diagonal, when $\alpha = \beta$, and we get
+the matrix elements will only be non-zero on the diagonal, when $\alpha = \beta$, and we get
 \begin{eq}
   \hat{H}_1
   =
@@ -353,8 +353,8 @@ Hence it is possible to form the antisymmetric basis vector
   &= \sum_{m_1, m_2} c_{m_1 m_2} \ket{E_1 j_1 m_1, E_2 j_2 m_2}.
 \end{eq}
 
-Consider the case where both particles occupy the same orbital, $E_1 j_1 = E_2 j_2 = E j$. 
-Since, for fermions, $j$ is a half-integer we have $(-1)^{j_1+j_2 - J} = - (-1)^J$ and the result is
+Consider the special case where both particles occupy the same orbital: $E_1 j_1 = E_2 j_2 = E j$. 
+Since $j$ is half-integer for fermions we have $(-1)^{j_1+j_2 - J} = - (-1)^J$, and the result is
 \begin{eq}
   \ket{(Ej)^2; JM} = \frac{1+(-1)^J}{\sqrt{2}}\pket{(Ej)^2; JM} .
 \end{eq}
@@ -381,12 +381,14 @@ Using the notation $\ket{E_1 E_2} = \ket{E_1 j_1 E_2 j_2; JM}$ for short, we wou
   \bra{E_1 E_2} \hat{H} \ket{E_1'E_2'} =  \N_{E_1E_2}\N_{E_1'E_2'} \sum_{m_1,m_2} \sum_{m_1',m_2'} \conj{c_{m_1 m_2}}c_{m_1' m_2'} \bra{E_1m_1 E_2m_2}\hat{H}\ket{E_1'm_1'E_2'm_2'}
   \label{eq:coupled_matrix_element}
 \end{eq}
-meaning that the matrix elements in the new basis are given by linear combinations of the elements in uncoupled basis. 
-We only need to evaluate the elements $\bra{E_1m_1 E_2m_2}\hat{H}\ket{E_1'm_1'E_2'm_2'}$, and be done. 
-Since we do not know what the two-body interaction may look like, we cannot do a general treatment of that contribution. 
-Instead we focus on the one-body term, which was treated in \cref{eq:one-body_matrix_elements}. There is a subtle detail, however, that needs to be addressed.
+where $\hat{H}$ is a general Fock space operator.
+This means that the matrix elements in the new basis are given by linear combinations of the elements in the uncoupled basis. 
+Thus, to solve an actual problem we still only need to evaluate the elements $\bra{E_1m_1 E_2m_2}\hat{H}\ket{E_1'm_1'E_2'm_2'}$. 
+%Since we do not know what the two-body interaction may look like, we cannot do a general treatment of that contribution. 
 
-Even if both single-particle states are the same in the coupled basis $E_1 = E_2 = E$, we will still sum over all $m_1$, $m_2$ in the ket $\ket{E m_1 E m_2}$, meaning that we will \emph{not} order our states in that calculation. Instead \cref{eq:one-body_matrix_elements} will read
+Consider the case of a one-body operator, which in the uncoupled basis was treated in \cref{eq:one-body_matrix_elements}. 
+When doing the transition to the coupled basis, there is a subtle detail that needs to be addressed.
+Even when both single-particle states are the same in the coupled basis, $E_1 = E_2 = E$, we will in the transition still sum over all $m_1$, $m_2$ in the ket $\ket{E m_1 E m_2}$ of \cref{eq:coupled_matrix_element}, meaning that we will \emph{not} use ordered states in that calculation. Instead \cref{eq:one-body_matrix_elements} will read
 \begin{eq}
   \bra{E_1m_1 E_2m_2}\hat{H}_1\ket{E_1'm_1'E_2'm_2'} 
   = 
@@ -432,7 +434,7 @@ The creation and annihilation operators are implemented as functions on the Fock
 \cref{eq:create,eq:create_ordered,eq:create_zero,eq:annihilate,eq:annihilate_ordered,eq:annihilate_zero}.
 The creation operator function steps through the list, flipping the sign at each step, until the correct place for the new particle is found. 
 If the particle is already part of the Fock state, the sign is set to 0.
-The annihilation operator searches for a state, saves its index $k$ in the list, annihilates it and set the sign to $(-1)^k$. If the state not exists, the sign is set to 0.
+The annihilation operator searches for a state, saves its index $k$ in the list, annihilates it and set the sign to $(-1)^k$. If the state does not exist, the sign is set to 0.
 
 \subsection{Fock Operator Matrix Elements}
 
