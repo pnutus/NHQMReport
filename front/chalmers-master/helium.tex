@@ -145,8 +145,13 @@
 
 	\begin{tikzpicture}
 	%% some definitions
-   
+
+
 	
+	
+	\shade[draw,shading=radial, inner color=gray, color = white] (-6,-6) rectangle (6,6);	
+	
+	\fill [gray!30, fill opacity =1] (0,0) circle (4.17);
 	
 	
 	\def\R{2} % sphere radius
@@ -178,12 +183,12 @@
 	\neutron{$(b)$}
   \draw[decorate, decoration={snake},]
     ($(a)!0.1!(b)$) -- ($(a)!0.9!(b)$);
-  \draw[decorate, decoration={snake},black!30]
+  \draw[decorate, decoration={snake},black!80]
     ($(0,0)!0.35!(a)$) -- ($(0,0)!0.8!(a)$);
-  \draw[decorate, decoration={snake},black!30]
+  \draw[decorate, decoration={snake},black!80]
     ($(0,0)!0.3!(b)$) -- ($(0,0)!0.8!(b)$);
 	
-	    	
+	\fill [gray!30, fill opacity =0.2] (0,0) circle (4.17);
 \end{tikzpicture}
 
 \end{document}
