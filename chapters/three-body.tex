@@ -39,7 +39,7 @@ The Borromean rings are three rings interlocked in such a way that, if any one r
   }
   }
   \caption{A simplified illustration of the \He{6} system together with the Borromean rings. 
-  If the bond between any two parts is broken, all three fall apart.}
+  In both figures: If the bond between any two parts is broken, all three fall apart.}
 \end{figure}
 
 \section{The \He{6} Nucleus}
@@ -107,34 +107,6 @@ The range $R$ and strength $V\sub{GI}$ are fitting parameters.
 In \cref{fig:gaussian} we see that the potential in a rough sense satisfies the expected properties of the interaction. If at least one neutron is far from the core, the other will experience little attraction. If both neutrons are in the vicinity of the core, they will experience a stronger attraction.
 
 
-\begin{figure}[t]
-  \centering
-    \begin{tikzpicture}
-      \begin{axis}[
-        xlabel = $r_1$,
-        ylabel = V,
-        axis x line = middle,
-        axis y line = left,
-        xtick=\empty,
-        ytick={0},
-        yticklabels={0},
-        domain=0:3,
-        ymin=-1.2, ymax=0.5,
-        every axis y label/.style={
-          at = {(current axis.above origin)},
-          anchor = north west,
-        },
-		after end axis/.code={
-		               \draw[anchor=west, dashed] (axis cs:0,-1) -- (axis cs:1,-1) 
-					   node [] {$\displaystyle V\sub{GI}\exp\p{-\frac{r_2^2}{R^2}}$};
-		             },
-        ]
-        \addplot[thick, black] {-e^(-x^2)};		
-      \end{axis}
-    \end{tikzpicture}
-  \caption{The Gaussian interaction potential as seen by one of the neutrons. The position of the other neutron determines the depth of the potential well.}
-  \label{fig:gaussian}
-\end{figure}
 Because the potential is separable
 \begin{eq}
   V(r_1, r_2) 
@@ -188,6 +160,35 @@ where
 \end{eq}
 We see that the matrix elements $V_{ij}$ of $V\sub{sep}$ are evaluated as described in \cref{cha:basis_expansion} for the momentum Schrödinger equation.
 
+
+\begin{figure}[t!]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        xlabel = $r_1$,
+        ylabel = V,
+        axis x line = middle,
+        axis y line = left,
+        xtick=\empty,
+        ytick={0},
+        yticklabels={0},
+        domain=0:3,
+        ymin=-1.2, ymax=0.5,
+        every axis y label/.style={
+          at = {(current axis.above origin)},
+          anchor = north west,
+        },
+		after end axis/.code={
+		               \draw[anchor=west, dashed] (axis cs:0,-1) -- (axis cs:1,-1) 
+					   node [] {$\displaystyle V\sub{GI}\exp\p{-\frac{r_2^2}{R^2}}$};
+		             },
+        ]
+        \addplot[thick, black] {-e^(-x^2)};		
+      \end{axis}
+    \end{tikzpicture}
+  \caption{The Gaussian interaction potential as seen by one of the neutrons. The position of the other neutron determines the depth of the potential well.}
+  \label{fig:gaussian}
+\end{figure}
 
 \subsection{Surface Delta Interaction}
 
@@ -270,8 +271,10 @@ It was found that the $2^+$ resonance in \He{6} predominantly consists of this c
 
 \subsection{Using the Gaussian Interaction}
 We begin by setting the range $R$ of the Gaussian potential to the same value as the Woods-Saxon range, \SI{2}{fm}. The strength $V\sub{GI}$ is fitted to reproduce the \He{6} ground state. Because the Gaussian interaction is spherically symmetric it is degenerate in $J$, and there will be no distinction between the ground and excited states. 
+Using these parameters, we do not find a resonance.
 
-Decreasing the range to $R = \SI{1}{fm}$, we find a wide resonace ($\Gamma > \SI{6}{MeV}$), but this requires large values of $k$ to be included in the basis and thus more scattering states are required to reach convergence. Although it might be possible to vary $R$ and $V_0$ to obtain a resonance closer to experimental data, we do not pursue this method further because of computation times quickly getting out of hand.
+Decreasing the range to $R = \SI{1}{fm}$, we find a wide resonace ($\Gamma > \SI{6}{MeV}$), but this requires large values of $k$ to be included in the basis and thus more scattering states are required to reach convergence. Although it might be possible to vary $R$ and $V_0$ to obtain a resonance closer to experimental data, we do not pursue this method further because of two reasons:
+the resonance found is far from the expected value and the slow convergence means we need many basis states which dramatically increases computation time.
 
 \subsection{Using the Surface Delta Interaction}
 The SDI has only one parameter, the strength $V\sub{SDI}$. 
@@ -280,6 +283,22 @@ We choose the smallest possible $k\sub{max}$ for which the \He{5} solutions conv
 The strength is then fitted to the ground state of \He{6} as before.
 The result is presented in \cref{tab:He6_results}.
 
+\begin{table}[b!]
+\caption{Experimental \He{6} resonance data from \cite{tunl} and computed values with fitted Woods-Saxon parameters $V_0 = 47.05$ and $V\sub{so}=-7.04$. For the SDI, the optimal interaction strength was $V_0 = \SI{998}{MeV}$ and the contour truncation $k\sub{max} = \SI{2.5}{fm^{-1}}$. All values are in \si{MeV}.}
+\label{tab:He6_results}
+\begin{center}
+\begin{tabular}{r S S S}
+  \toprule
+$J^\pi$ & {Experiment} & {SDI}  \\ 
+\midrule
+ $0^+$  &   -0.975  &  -0.98     \\
+ $2^+$  &  0.8-0.55i & 1.47-0.47i \\
+ \bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+\newpage
+
 \Cref{fig:he6_momenta} shows all $2^+$ solutions $k=\sqrt{2\mu E}/\hbar$ obtained, plotted in the complex momentum plane.
 Most of the solutions correspond to energies on the form
 \begin{eq}
@@ -287,35 +306,16 @@ E = E_1 + E_2 \quad \text{or} \quad k=\sqrt{k_1^2 + k_2^2}
 \end{eq} 
 where $E_1$, $E_2$ (and thus $k_1$, $k_2$) are the energies of two \He{5} eigenstates. These solutions can be interpreted as two unbound particles, barely interacting with each other. This also explains the pattern that is seen -- the solutions are combinations of contour points that was used in the solution of \He{5} to generate the sp basis. 
 
-\begin{figure}[t]
+\begin{figure}[H]
 	\centering
 
       \includegraphics[]{../figures/he6_momenta/he6mom.pdf}
 
-   \caption{Momentum solutions for \He{6}, $2^+$. The resonance is located at $k=\SI{0.241-0.037i}{fm^{-1}}$. We have used the fitted Woods-Saxon parameters $V_0 = \SI{47.05}{MeV}$, $V\sub{so} = \SI{-7.04}{MeV}$ and $k\sub{max} = \SI{2.5}{fm^{-1}}$. The SDI interaction was used with $V_0=\SI{998}{MeV}$. }
+   \caption{Momentum solutions for \He{6}, $2^+$. The resonance is located at $k=\SI{0.241-0.037i}{fm^{-1}}$. We use the fitted Woods-Saxon parameters $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$. The SDI interaction was used with $V_0=\SI{998}{MeV}$ and the truncation $k\sub{max} = \SI{2.5}{fm^{-1}}$. }
 \label{fig:he6_momenta}  
 \end{figure}
 
-\newpage
-\subsection{\He{6} in the Real Momentum Basis}
-While it is required for the \He{5} resonance to be included in the basis to find the excited $2^+$ state, the ground state can be found without it. For a purely real contour, with all other parameters staying the same, a bound state with energy \SI{-0.976}{MeV} is found -- almost identical to the result obtained with the Berggren basis.
 
-\begin{table}[t!]
-\caption{Experimental \He{6} resonance data\cite{tunl} and computed values 
-         with fitted Woods-Saxon parameters $V_0 = 47.05$ and $V\sub{so}=-7.04$. For the SDI, we used interaction strength $V_0 = \SI{998}{MeV}$ and range $r_0 = 2$. 
-         The Gaussian interaction used parameters $V_0 = \SI{99}{MeV}$ and $r_0 = 2$. 24 points were used on the contour for each basis. All values are in \si{MeV}.}
-\label{tab:He6_results}
-\begin{center}
-\begin{tabular}{r S S S}
-  \toprule
-$J^\pi$ & {Experiment} & {SDI} & {Gaussian} \\ 
-\midrule
- $0^+$  &   -0.975  &  -0.98    & -0.97  \\
- $2^+$  &  0.8-0.55i & 1.47-0.47i & -0.97 \\
- \bottomrule
-\end{tabular}
-\end{center}
-\end{table}
 
 
 
