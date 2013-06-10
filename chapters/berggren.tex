@@ -37,7 +37,7 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
   \tikzset{
     triangle/.style={regular polygon, regular polygon sides=3},
     nosep/.style={inner sep=0},
-    bound/.style={circle,draw,minimum size=2mm,nosep},
+    bound/.style={fill=white,circle,draw,minimum size=2mm,nosep},
     unbound/.style={rectangle,draw,minimum size=2mm,nosep},
     quasibound/.style={triangle,draw,minimum size=2.5mm,nosep}
   }
@@ -56,6 +56,8 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
       \node at (0, 0.3) [bound] {};
 		
         \node at (-0.25, -0.15) [quasibound] {};
+        \draw[decorate, decoration={brace}, yshift=0.3mm]
+          (0,0) -- (1,0) node[midway, yshift=0.3cm] {Continuum};
         \draw[very thick, mid arrows] 
         (0,0) -- (1,0);
         \draw[thick, mid arrows, dashed]
@@ -76,7 +78,7 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
         \node at (0, \y) [bound] {};
       \foreach \x in {0.25, -0.25}
         \node at (\x, -0.15) [quasibound] {};
-        
+        \tikzstyle{every pin edge}=[thin]
       \draw[very thick, mid arrows] (0,0) 
          -- (0.25, -0.25) 
          -- (0.5, 0) node[semithick, pos=0.25, pin=below right:$L_+$] {} 
@@ -97,7 +99,6 @@ Resonance states, with complex $E = E_0 - i \Gamma /2$, would by this argument a
   mirroring of the states in the imaginary axis.}
   \label{fig:complex plane}
 \end{figure}
-\todo{fixa post pres}
 
 We now interpret the bound and resonant $k$ as complex poles, the details of which is treated in scattering theory and is beyond the scope of this thesis. We direct the curious reader to a QM textbook such as \cite{sakurai}. 
 Furthermore, the unbound continuum is interpreted as a contour encircling the upper half plane (\cref{fig:simple_contour}).
