@@ -336,7 +336,7 @@
   \def\titlepage@edge{draw}
   \def\titlepage@chalmerscolor{black}
   \def\titlepage@bg{}
-  \def\titlepage@logotype{Avancez_invert}
+  \def\titlepage@logotype{Avancez.pdf}
   \def\titlepage@chagu{Cha_GU_blue_eng}
   \def\thesisname{\bachelorsthesisname}
   \def\@reportseries{\thesisname}
@@ -543,12 +543,12 @@
       \node[anchor=west,xshift=0.1\paperwidth,yshift=0.55\headerheight,inner sep=0]{\includegraphics[width=0.8\paperwidth]{figures/\titlepage@chagu}};
      \else
       \node[anchor=west,xshift=0.1\paperwidth,yshift=0.511\headerheight]{\chalmerslogo{\titlepage@chalmerscolor}{0.63\paperwidth}}; % 13.2cm for A4 paper
-      \node[anchor=west,xshift=0.745\paperwidth,yshift=0.516\headerheight]{\includegraphics[width=0.171\paperwidth]{figures/\titlepage@logotype}};
+      \node[anchor=west,xshift=0.745\paperwidth,yshift=0.516\headerheight]{\includegraphics[width=0.171\paperwidth]{\titlepage@logotype}};
      \fi
    \end{tikzpicture}};
    \if@university
     \node[anchor=south east,xshift=-0.1\paperwidth,yshift=0.1\paperheight,inner sep=0] at (current page.south east)
-     {\includegraphics[width=0.171\paperwidth]{figures/\titlepage@logotype}};
+     {\includegraphics[width=0.171\paperwidth]{\titlepage@logotype}};
    \fi
  \end{tikzpicture}
  \ \vfill
