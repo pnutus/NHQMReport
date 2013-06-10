@@ -558,7 +558,7 @@
  {\huge\noindent\@title\par} % title, 21
  \@ifundefined{@subtitle}{}{{\Large\noindent\@subtitle\par}} % subtitle, 16
  \if@bachelorsormasters
- {\normalsize\noindent\textit{Bachelor of \@thesisin}\par} % 14 thesis in programmename (only bachelor's and master's)
+ {\normalsize\noindent\textit{\@thesisin}\par} % 14 thesis in programmename (only bachelor's and master's)
  \fi
  \vskip 1.5em
  {\renewcommand{\and}{\\}\Large\noindent \@author\par}% 18
@@ -592,7 +592,7 @@
 
  \newpage\thispagestyle{empty}
  \begin{center}
-  {\MakeUppercase{Bachelor of \@thesisin}\par}
+  {\MakeUppercase{\@thesisin}\par}
   \vspace*{\stretch{1}}
   {\Large \@title\par}
   \vskip 1em
