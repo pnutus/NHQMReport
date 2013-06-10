@@ -561,7 +561,7 @@
  {\normalsize\noindent\textit{\thesisname\ \inname\ \@thesisin}\par} % 14 thesis in programmename (only bachelor's and master's)
  \fi
  \vskip 1.5em
- {\renewcommand{\and}{\\}\Large\noindent \MakeUppercase{\@author}\par}% 18
+ {\renewcommand{\and}{\\}\Large\noindent \@author\par}% 18
  \vskip 1.5em
  {\small\noindent\@department\\
   \@ifundefined{@division}{}{\textit{\@division}\\}
@@ -598,7 +598,7 @@
   \vskip 1em
   \@ifundefined{@subtitle}{}{{\@subtitle\par}}
   \vskip 1em
-  {\renewcommand{\and}{\NoCaseChange{\\}}\MakeTextUppercase{\@author}\par}
+  {\renewcommand{\and}{\NoCaseChange{\\}}\@author\par}
   \vspace*{\stretch{3}}
   {\@department\par}
   \@ifundefined{@division}{}{{\textit{\@division}\par}}
@@ -637,7 +637,7 @@
  $^d$pongra@student.chalmers.se\\
  $^e$nilsw@student.chalmers.se
  \vskip 2em
- {\noindent \copyright\ {\renewcommand{\and}{, }\MakeUppercase{\@author}}, \@copyrightyear\par}
+ {\noindent \copyright\ {\renewcommand{\and}{, }\@author}, \@copyrightyear\par}
  \vskip 2em 
 
 \noindent FUFX02 - Bachelor thesis at Fundamental Physics
