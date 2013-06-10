@@ -558,10 +558,10 @@
  {\huge\noindent\@title\par} % title, 21
  \@ifundefined{@subtitle}{}{{\Large\noindent\@subtitle\par}} % subtitle, 16
  \if@bachelorsormasters
- {\normalsize\noindent\textit{\thesisname\ \inname\ \@thesisin}\par} % 14 thesis in programmename (only bachelor's and master's)
+ {\normalsize\noindent\textit{\@thesisin}\par} % 14 thesis in programmename (only bachelor's and master's)
  \fi
  \vskip 1.5em
- {\renewcommand{\and}{\\}\Large\noindent \MakeUppercase{\@author}\par}% 18
+ {\renewcommand{\and}{\\}\Large\noindent \@author\par}% 18
  \vskip 1.5em
  {\small\noindent\@department\\
   \@ifundefined{@division}{}{\textit{\@division}\\}
@@ -592,13 +592,13 @@
 
  \newpage\thispagestyle{empty}
  \begin{center}
-  {\MakeUppercase{\thesisname\ \inname\ \@thesisin}\par}
+  {\MakeUppercase{\@thesisin}\par}
   \vspace*{\stretch{1}}
   {\Large \@title\par}
   \vskip 1em
   \@ifundefined{@subtitle}{}{{\@subtitle\par}}
   \vskip 1em
-  {\renewcommand{\and}{\NoCaseChange{\\}}\MakeTextUppercase{\@author}\par}
+  {\renewcommand{\and}{\NoCaseChange{\\}}\@author\par}
   \vspace*{\stretch{3}}
   {\@department\par}
   \@ifundefined{@division}{}{{\textit{\@division}\par}}
@@ -625,17 +625,34 @@
  \vspace*{\stretch{1}}
  {\noindent \@title\\
   \@ifundefined{@subtitle}{}{\@subtitle\\}
-  \renewcommand{\and}{\\}\MakeUppercase{\@author}
-  \@ifundefined{@ISBN}{}{\\ISBN \@ISBN}
+  %\renewcommand{\and}{\\}\MakeUppercase{\@author}
+  %\@ifundefined{@ISBN}{}{\\ISBN \@ISBN}
+  Jonathan Bengtsson$^a$ \and Ola Embr\'eus$^b$\and Vincent Ericsson$^c$ \and Pontus Granstr\"om$^d$ \and Nils Wireklint$^e$
   \par}
  \vskip 2em
- {\noindent \copyright\ {\renewcommand{\and}{, }\MakeUppercase{\@author}}, \@copyrightyear\par}
+ \noindent Email:\\  
+ $^a$jonbeng@student.chalmers.se\\
+ $^b$embreus@student.chalmers.se\\
+ $^c$vineri@student.chalmers.se\\
+ $^d$pongra@student.chalmers.se\\
+ $^e$nilsw@student.chalmers.se
  \vskip 2em
+ {\noindent \copyright\ {\renewcommand{\and}{, }\@author}, \@copyrightyear\par}
+ \vskip 2em 
+
+\noindent FUFX02 - Bachelor thesis at Fundamental Physics
+
  {\noindent% 
   \ifdefempty{\@reportno}{}{\@reportseries\ \@reportno\\}%
-  \ifdefempty{\@ISSN}{}{ISSN \@ISSN\\}%
+ % \ifdefempty{\@ISSN}{}{ISSN \@ISSN\\}%
+   \vskip 1em 
+   \noindent
+   Supervisor: Christian Forss\'en, Jimmy Rotureau\\
+   Examiner: Daniel Persson
+     \vskip 1em 
+ \noindent
   \@department\\
-  \@ifundefined{@division}{}{\@division\\}
+  %\@ifundefined{@division}{}{\@division\\}
   \universityname\\
   \@postcode\ \cityname\\
   \countryname\\

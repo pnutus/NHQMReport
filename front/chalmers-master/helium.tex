@@ -1,0 +1,194 @@
+\documentclass[tikz=true]{standalone}
+\usepackage{tikz}
+\usepackage{../../main/NHQM}
+
+\usetikzlibrary{positioning}
+%% helper macros
+
+% (fold)
+% The 3D code is based on The drawing is based on Tomas M. Trzeciak's 
+% `Stereographic and cylindrical map projections example`: 
+% http://www.texample.net/tikz/examples/map-projections/
+\newcommand\pgfmathsinandcos[3]{%
+  \pgfmathsetmacro#1{sin(#3)}%
+  \pgfmathsetmacro#2{cos(#3)}%
+}
+\newcommand\LongitudePlane[3][current plane]{%
+  \pgfmathsinandcos\sinEl\cosEl{#2} % elevation
+  \pgfmathsinandcos\sint\cost{#3} % azimuth
+  \tikzset{#1/.estyle={cm={\cost,\sint*\sinEl,0,\cosEl,(0,0)}}}
+}
+\newcommand\LatitudePlane[3][current plane]{%
+  \pgfmathsinandcos\sinEl\cosEl{#2} % elevation
+  \pgfmathsinandcos\sint\cost{#3} % latitude
+  \pgfmathsetmacro\yshift{\cosEl*\sint}
+  \tikzset{#1/.estyle={cm={\cost,0,0,\cost*\sinEl,(0,\yshift)}}} %
+}
+\newcommand\DrawLongitudeCircle[2][1]{
+  \LongitudePlane{\angEl}{#2}
+  \tikzset{current plane/.prefix style={scale=#1}}
+   % angle of "visibility"
+  \pgfmathsetmacro\angVis{atan(sin(#2)*cos(\angEl)/sin(\angEl))} %
+  \draw[current plane,thin,black] (\angVis:1) arc (\angVis:\angVis+180:1);
+  \draw[current plane,thin,dashed] (\angVis-180:1) arc (\angVis-180:\angVis:1);
+}%this is fake: for drawing the grid
+\newcommand\DrawLongitudeCirclered[2][1]{
+  \LongitudePlane{\angEl}{#2}
+  \tikzset{current plane/.prefix style={scale=#1}}
+   % angle of "visibility"
+  \pgfmathsetmacro\angVis{atan(sin(#2)*cos(\angEl)/sin(\angEl))} %
+  \draw[current plane,red,thick] (150:1) arc (150:180:1);
+  %\draw[current plane,dashed] (-50:1) arc (-50:-35:1);
+}%for drawing the grid
+\newcommand\DLongredd[2][1]{
+  \LongitudePlane{\angEl}{#2}
+  \tikzset{current plane/.prefix style={scale=#1}}
+   % angle of "visibility"
+  \pgfmathsetmacro\angVis{atan(sin(#2)*cos(\angEl)/sin(\angEl))} %
+  \draw[current plane,black,dashed, ultra thick] (150:1) arc (150:180:1);
+}
+\newcommand\DLatred[2][1]{
+  \LatitudePlane{\angEl}{#2}
+  \tikzset{current plane/.prefix style={scale=#1}}
+  \pgfmathsetmacro\sinVis{sin(#2)/cos(#2)*sin(\angEl)/cos(\angEl)}
+  % angle of "visibility"
+  \pgfmathsetmacro\angVis{asin(min(1,max(\sinVis,-1)))}
+  \draw[current plane,dashed,black,ultra thick] (-50:1) arc (-50:-35:1);
+
+}
+\newcommand\fillred[2][1]{
+  \LongitudePlane{\angEl}{#2}
+  \tikzset{current plane/.prefix style={scale=#1}}
+   % angle of "visibility"
+  \pgfmathsetmacro\angVis{atan(sin(#2)*cos(\angEl)/sin(\angEl))} %
+  \draw[current plane,red,thin] (\angVis:1) arc (\angVis:\angVis+180:1);
+
+}
+
+\newcommand\DrawLatitudeCircle[2][1]{
+  \LatitudePlane{\angEl}{#2}
+  \tikzset{current plane/.prefix style={scale=#1}}
+  \pgfmathsetmacro\sinVis{sin(#2)/cos(#2)*sin(\angEl)/cos(\angEl)}
+  % angle of "visibility"
+  \pgfmathsetmacro\angVis{asin(min(1,max(\sinVis,-1)))}
+  \draw[current plane,thin,black] (\angVis:1) arc (\angVis:-\angVis-180:1);
+  \draw[current plane,thin,dashed] (180-\angVis:1) arc (180-\angVis:\angVis:1);
+}%Defining functions to draw limited latitude circles (for the red mesh)
+\newcommand\DrawLatitudeCirclered[2][1]{
+  \LatitudePlane{\angEl}{#2}
+  \tikzset{current plane/.prefix style={scale=#1}}
+  \pgfmathsetmacro\sinVis{sin(#2)/cos(#2)*sin(\angEl)/cos(\angEl)}
+  % angle of "visibility"
+  \pgfmathsetmacro\angVis{asin(min(1,max(\sinVis,-1)))}
+  %\draw[current plane,red,thick] (-\angVis-50:1) arc (-\angVis-50:-\angVis-20:1);
+\draw[current plane,red,thick] (-50:1) arc (-50:-35:1);
+
+}
+
+
+\newcommand\DrawOrbitCircle[2][1]{
+  \LatitudePlane{\angEl}{#2}
+  \tikzset{current plane/.prefix style={scale=#1}}
+  \pgfmathsetmacro\sinVis{sin(#2)/cos(#2)*sin(\angEl)/cos(\angEl)}
+  % angle of "visibility"
+  \pgfmathsetmacro\angVis{asin(min(1,max(\sinVis,-1)))}
+  \draw[current plane,thin,gray] (\angVis:1) arc (\angVis:-\angVis-180:1);
+  \draw[current plane,thin,gray] (180-\angVis:1) arc (180-\angVis:\angVis:1);
+}
+
+
+\newcommand\DrawArrowOrbitCircle[2][1]{
+  \LatitudePlane{\angEl}{#2}
+  \tikzset{current plane/.prefix style={scale=#1}}
+  \pgfmathsetmacro\sinVis{sin(#2)/cos(#2)*sin(\angEl)/cos(\angEl)}
+  % angle of "visibility"
+  \pgfmathsetmacro\angVis{asin(min(1,max(\sinVis,-1)))}
+  \draw[current plane,thick,gray, mid arrows] (\angVis:1) arc (\angVis:-\angVis-180:1);
+  \draw[current plane,thick,gray, mid arrows] (180-\angVis:1) arc (180-\angVis:\angVis:1);
+}
+
+
+\newcommand\proton[1]{%
+\shade[ball color=red] (#1) circle(0.5);
+}
+
+\newcommand\neutron[1]{%
+\shade[ball color=darkgray] (#1) circle(0.5);
+}
+
+\newcommand\blobb[1]{%
+\shade[ball color=gray] (#1) circle(0.9);
+\shade[ball color=red, opacity =0.15] (#1) circle(0.9);
+}
+
+% (end)
+
+\tikzset{%
+  >=latex,
+  inner sep=0pt,%
+  outer sep=2pt,%
+  mark coordinate/.style={inner sep=0pt,outer sep=0pt,minimum size=3pt,
+    fill=black,circle}%
+}
+\usepackage{amsmath}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\usepackage{pgfplots}
+\usetikzlibrary{calc,fadings,decorations.pathreplacing}
+
+\begin{document}
+
+
+
+%%%%%%%%%%%%%%%% He6 VXV
+
+
+	\begin{tikzpicture}
+	%% some definitions
+
+
+	
+	
+	\shade[draw,shading=radial, inner color=gray, color = white] (-6,-6) rectangle (6,6);	
+	
+	\fill [gray!30, fill opacity =1] (0,0) circle (4.17);
+	
+	
+	\def\R{2} % sphere radius
+	\def\offset{0.1} % sphere radius
+	\def\neR{5.25}
+
+%	\fill[ball color=white!5] (0,0) circle (4.57); % 3D lighting effect
+	
+	% \fill[color = white!5, opacity = 0.7] (-1.5,1.5) circle (1.25);
+% 	\fill[color = white!4, opacity = 0.5] (-1.5,1.5) circle (1.55);
+% 	\fill[color = white!3, opacity = 0.3] (-1.5,1.5) circle (1.85);
+% 	\fill[color = white!2, opacity = 0.1] (-1.5,1.5) circle (2.25);
+	
+	\def\angEl{25} % elevation angle
+	\def\angAz{-100} % azimuth angle
+	\def\angPhiOne{-50} % longitude of point P
+	\def\angPhiTwo{-35} % longitude of point Q
+	\def\angBeta{30} % latitude of point P and Q
+	
+	
+		
+	\neutron{$(-0.35,\offset + 0.35)$}
+	\proton{$(0.35,\offset + 0.35)$}
+	\proton{$(-0.35,\offset -0.35)$}
+	\neutron{$(0.35,\offset -0.35)$}
+  \coordinate (a) at (-3,0);
+  \coordinate (b) at (2,-3);
+  \neutron{$(a)$}
+	\neutron{$(b)$}
+  \draw[decorate, decoration={snake},]
+    ($(a)!0.1!(b)$) -- ($(a)!0.9!(b)$);
+  \draw[decorate, decoration={snake},black!80]
+    ($(0,0)!0.35!(a)$) -- ($(0,0)!0.8!(a)$);
+  \draw[decorate, decoration={snake},black!80]
+    ($(0,0)!0.3!(b)$) -- ($(0,0)!0.8!(b)$);
+	
+	\fill [gray!30, fill opacity =0.2] (0,0) circle (4.17);
+\end{tikzpicture}
+
+\end{document}

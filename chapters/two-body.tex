@@ -4,13 +4,10 @@
 \chapter{The Two-Body Nuclear System}
 \label{cha:two-body}
 
-\todo{read through entire chapter OLA SPILL}
-
 In this chapter we investigate a simple two-body nuclear system using the basis expansion methods from the previous chapter.
 We begin by discussing the shell model, the Woods-Saxon potential and our model system, \He{5}.
 The Schrödinger equation is then solved in the HO and momentum bases.
-The solutions are studied by looking at the energies and wavefunctions while varying parameters, looking for a resonance.
-\todo[inline]{should the ...looking for a resonance. be here?}
+The solutions are studied by looking at the energies and wavefunctions while varying parameters, aiming to identify a resonance.
 
 \section{The Nuclear Shell Model}
 A typical example of an open quantum system is the atomic nucleus encountered in nuclear physics. 
@@ -33,16 +30,14 @@ where $v$ is the nucleon-nucleon interaction. Now add and subtract a potential f
     v(\vec{r}_i,\vec{k}_i, \vec{r}_j, \vec{k}_j) - V(\vec{r_i})
   } \\
   &=
-  H\sub{MF} + V\sub{res}
+  H_1 + V\sub{res}
 \end{eq} 
-where we have split the Hamiltonian into a spherically symmetric mean-field Hamiltonian $H\sub{MF}$ in which particles do not interact directly, and the \emph{residual interaction} $V\sub{res}$ that can be seen as the new interaction between particles. 
+where we have split the Hamiltonian into a spherically symmetric mean-field Hamiltonian $H_1$ in which particles do not interact directly, and the \emph{residual interaction} $V\sub{res}$ that can be seen as the new interaction between particles. 
 If the mean-field potential $V$ is chosen carefully, $V\sub{res}$ can become small enough to be treated pertubationally (if at all). 
 
  
 \subsection{The Woods-Saxon Potential}
-For the mean-field potential we will use the established Woods-Saxon potential, visualized in \cref{fig:woods-saxons}.
-The Woods-Saxon potential with a $l-s$ couplingis is a standard shell model in nuclear physics \cite[suhonen], given by
-\todo[inline]{check last sentence}
+The mean-field potential we use is the Woods-Saxon potential with spin-orbit coupling, a standard potential used in nuclear shell models \cite{suhonen}. The potential is visualized in \cref{fig:woods-saxons} and is given by
 \begin{eq}
 	V(r)=
 	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr},
@@ -89,57 +84,54 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
   \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
 \end{eq}
 
-\todo{search replace for backslash , SPILL}
-
 \begin{figure}[t]
-	\newcommand{\diff}{0.65}
-	\newcommand{\ro}{2}
-	\newcommand{\vo}{47}
-        \newcommand{\so}{-7.5}
-	\newcommand{\func}{1/(1 + e^((x-\ro)/\diff))}
-	\newcommand{\mass}{0.019272}
-	  \centering{
+	  \newcommand{\diff}{0.65}
+	  \newcommand{\ro}{2}
+	  \newcommand{\vo}{47}
+    \newcommand{\so}{-7.5}
+	  \newcommand{\func}{1/(1 + e^((x-\ro)/\diff))}
+	  \newcommand{\mass}{0.019272}
 	  \pgfplotsset{
 	    width = 0.45\textwidth, height = 7cm,
       domain = 0.5:9.8, 
-	  xmax=10,
+	    xmax=7.9,
       ymin = -20,
 	    ymax = 9,
       xlabel = $r/\b{\si{fm}}$,
       axis x line = middle,
-      axis y line = left
-		%       every axis x label/.style={
-		%         at = {(current axis.right of origin)},
-		%         anchor = north east,
-		% }
+      axis y line = left,
+      every axis x label/.style={
+            at = {(current axis.right of origin)},
+            anchor = north,
+      }
 	  }
+	  \centering{
+    \hspace{-1cm}
+  	  \subfloat[$p_{3/2}$]{
+  	    \tikzset{external/remake next}
+  	\tikzsetnextfilename{p32}
+  	    \begin{tikzpicture}
+  	      \begin{axis}[
+          ylabel = $V/\b{\si{MeV}}$
+          ]
+  	        \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * \so * 1 * (\func -1) / (\diff * x ))};
+  	      \end{axis}
+  	    \end{tikzpicture}
+  	  }
 	    \subfloat[$p_{1/2}$]{
 	      \tikzset{external/remake next}
 	  \tikzsetnextfilename{p12}
 	      \begin{tikzpicture}
-		    \begin{axis}[
-				ylabel = $V/\b{\si{MeV}}$,
-				xmax = 7.9,]
+		    \begin{axis}
 		      \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * \so * (-2) * (\func -1) / (\diff * x )) };
 		    \end{axis}
 	      \end{tikzpicture}
 	    }
-	  \subfloat[$p_{3/2}$]{
-	    \tikzset{external/remake next}
-	\tikzsetnextfilename{p32}
-	    \begin{tikzpicture}
-	      \begin{axis}[
-			  xmax = 7.9,]
-	        \addplot[black] {2/ (2 * \mass * x^2) + \func * (-\vo - 4 * \so * 1 * (\func -1) / (\diff * x ))};
-	      \end{axis}
-	    \end{tikzpicture}
+
 	  }
-	  }
-  \caption{The Woods-Saxon potential with centrifugal barrier $l(l+1)/2\mu r^2$ added, for different waves. Parameters $V_0 = \SI{47}{MeV}$, $r_0 = \SI{2}{fm}$ and $d = \SI{0.65}{fm}$}
+  \caption{The effective Woods-Saxon potential with spin-orbit coupling and centrifugal barrier $l(l+1)/2\mu r^2$ added, for $p_{3/2}$ and $p_{1/2}$ waves. The parameters are $V_0 = \SI{47}{MeV}$, $V\sub{so} = \SI{-7.5}{MeV}$, $r_0 = \SI{2}{fm}$ and $d = \SI{0.65}{fm}$.}
   \label{fig:woods-saxons}
 \end{figure}
-
-\todo{ticks, xlabel. caption ok? (deep one should be p3/2).  SPILL}
 
 \section{The \He{5} Nucleus}
 We choose to study \He{5}, seen as a \He{4} nucleus and a valence neutron. 
@@ -148,8 +140,10 @@ Other doubly magic light nuclei, such as \ce{^{16}O} and its isotopes, have been
 
 Because the $s$-shell is already filled in \He{4}, the valence neutron of \He{5} will be a $p$-wave, with $l=1$. 
 We see in \cref{eq:spin-orbit} that the $p_{3/2}$-wave will get a negative net contribution from the total spin-orbit term, also shown in \cref{fig:woods-saxons}.
-This means that the ground state of \He{5} will be the $p_{3/2}$ wave, with $p_{1/2}$ an excited state.
-Both the $p_{3/2}$ and $p_{1/2}$ waves have known resonance states.
+This means that the ground state of \He{5} will be the $p_{3/2}$-wave, with $p_{1/2}$ an excited state.
+Both the $p_{3/2}$- and $p_{1/2}$-waves have known resonance states.
+
+We use the procedures described in \cref{cha:basis_expansion} to numerically solve the \He{5} Schrödinger equation for the $p_{3/2}$-wave. When examining the solutions, we are specifically looking for the ground state resonance.
 
 The Woods-Saxon parameters will initially be set to standard values to investigate the general behavior of the solutions. The following values are used \cite{gamow_shell_model_2008}: 
 \begin{center}
@@ -162,24 +156,19 @@ The Woods-Saxon parameters will initially be set to standard values to investiga
 \end{center}
 We later optimize the parameters to match experimentally determined energy levels for \He{5}.
 
-We use the procedures described in \cref{cha:basis_expansion} to numerically solve the \He{5} Schrödinger equation for the $p_{3/2}$ wave. When examining the solutions, we are specifically looking for the ground state resonance.
-
-\todo{More about resonances?}
-
 \subsection{Harmonic Oscillator Basis}
 
 We begin by solving the \He{5} Schrödinger equation in the HO basis. 
-We plot the solutions in \cref{fig:energies(r0)} as a function of the range $r_0$ of the HO potential.
-All solutions have energies $E > 0$, meaning that they are unbound, scattering states, and thus have unlimited range.
+The solutions are shown in \cref{fig:energies(r0)} as a function of the range $r_0$ of the HO potential.
+All solutions have energies $E > 0$, meaning that they are unbound states, and thus have unlimited range and are not localized.
 However, we see a saddle point in energy for the lowest energy solution when the HO range $r_0 \approx \SI{1}{fm}$, corresponding to radii within the nucleus.
-The range $r_0$ is a measure of the 
-\todo[inline]{text??????}
-\todo{koncis tolkning, bad plot}
+The range $r_0$ is a measure of the range of the HO eigenfunctions and the saddle behavior is a sign of a localized wavefunction in that vicinity.
+However, the change in behavior is small, and we cannot draw any conclusions from it.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
 
 \tikzsetnextfilename{E(r0)}
-\begin{figure}[hb]
+\begin{figure}[h]
   \centering
  	\includegraphics[]{../figures/E(r0)/E(r0).pdf}
   \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. The lowest energy state behaves differently from the others.}
@@ -187,6 +176,7 @@ The range $r_0$ is a measure of the
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
+
 
 Because the harmonic oscillator consists only of bound states and we are trying to study unbound states, this method cannot take us much further.
 We will have to switch to a basis with wavefunctions of infinite range to properly describe this system.
@@ -197,25 +187,25 @@ We will have to switch to a basis with wavefunctions of infinite range to proper
 The momentum basis describes a plane wave, i.e. a free particle, with wave functions of infinite range.
 Because all \He{5} solutions appear in the continuum, this basis is better suited to the problem than the HO basis.
 
-\subsubsection{Momementum Space Wavefunctions}
+\subsubsection{Momementum Wavefunctions}
 
 Solving the Schrödinger equation in the momentum basis gives us momentum eigenfunctions $\phi(k)$, presented in \cref{fig:real_momentum_wavefunctions}.
 There is a background of wavefunctions peaking at different values of $k$, and one wavefunction standing out as lower and wider.
-This is the same state that showed some odd behaviour in the HO-basis, but let us first discuss the peak-shaped wavefunctions.
+This is the same state that showed some odd behavior in the HO-basis, but let us first discuss the peak-shaped wavefunctions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
-\begin{figure}[h]
+\begin{figure}[hb]
   \centering
-  	\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
-
-  \caption{\He{5} momentum probability distributions. The resonance is significantly wider than the surrounding states. We can see a trend toward lower and wider states around \SI{1}{fm^{-1}}, but it is merely a numerical peculiarity stemming from the normalization and the fact that the unique state ´´steals" a peak that has to be shared among the other ones.} 
+  	\includegraphics[page=1]{../figures/eigvecs_real/eigvecs.pdf}
+  \caption{\He{5} radial-momentum probability distributions. There is one solution that stands out as wider than the surrounding states. We can also see a trend toward lower and wider states around $k = \SI{1}{fm^{-1}}$, but it has no physical significance. 
+  Instead, it is a consequence of the discretized, truncated basis that gives us a finite number of continuum states, one of which is ``stolen'' by the unique state.
+  This means that is impossible for each discretized momentum to correspond to a solution of well-defined $k$, resulting in lower and wider peaks.
+  }
   \label{fig:real_momentum_wavefunctions}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
-\todo[inline]{fix plot legend.}
-\todo[inline]{check figure text if it is good.}
 
 Recall the relation \cref{eq:radial wavefunction} between wavefunctions in position and momentum representation
 \begin{eq}
@@ -232,17 +222,19 @@ This is not unexpected as we are dealing with an open quantum system that only m
 The unique state peaks at $k = \SI{0.17}{fm^{-1}}$ and is  wider than the surrounding states. 
 The Heisenberg uncertainty relation tells us that a less well-defined momentum corresponds to a more well-defined position.
 Consequently, this state should correspond to a localized wavefunction, which is what we expect from a resonance.
+The unique state is the same as the one obtained using the HO basis, sugges
 
 \subsubsection{Position Space Wavefunctions}
-
-\todo{Make it clear the unique state is the same in all these cases!}
 
 To investigate the relation between the hypothesized resonance solution and a bound solution, we increase the depth of the potential to $V_0 = \SI{70}{MeV}$, and successively decrease the depth until there is no bound state. 
 This is documented in \cref{fig:wavefunctions}, where the radial probability distributions $r^2|R(r)^2|$ are plotted for the widest momentum wavefunction together with an arbitrary unbound state. 
 With a deep potential, the bound state wavefunction quickly tends to zero outside the potential well.
 As we decrease the depth below a certain threshold, the potential well no longer supports a bound state ($E > 0$), but there remains a localized wavefunction.
-At \SI{47}{MeV}, which roughly corresponds to \He{5}, we can still identify a unique state. 
+At \SI{47}{MeV}, which roughly corresponds to \He{5}, we can still identify a unique state and it is, in fact, the same state as the one standing out in
+\cref{fig:real_momentum_wavefunctions}.
 If we decrease the depth further, the unique state becomes less and less distinguishable from the others.
+
+\todo{unique state same in all three figures?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions
 
@@ -263,11 +255,11 @@ If we decrease the depth further, the unique state becomes less and less disting
 	}
 }
   \caption{
-    Woods-Saxon wavefunctions for varying potential depth. 
+    Radial probability distributions for different potential depth $V_0$, using the \He{5} values for the other parameters. 
     Plotted are the unique localized solution (thick line) and, for comparison, an arbitrary continuum solution (thin line).
     With a deep potential $V_0 = \SI{70}{MeV}$ there is a strongly bound state, which gets weaker as the potential depth is decreased.
     At $V_0 = \SI{52}{MeV}$ the wavefunction is highly localized, yet the energy lie in the continuum, a sign of resonance.
-    There is still a clearly localized state for $V_0 = \SI{47}{MeV}$, the depth of \He{5}. At $V_0 = \SI{40}{MeV}$ the unique state is almost indistinguishable from the other continuum states.
+    There is still a clearly localized state for $V_0 = \SI{47}{MeV}$, the depth corresponding to \He{5}. At $V_0 = \SI{40}{MeV}$ the unique state is almost indistinguishable from the other continuum states.
   } 
   \label{fig:wavefunctions}
   \end{figure}
