@@ -376,7 +376,10 @@ where we have used the notation $(a, b)$ for $(E_1j_1, E_2j_2)$.
 When solving problems in practice we need to form matrix elements in the coupled basis. 
 Using the notation $\ket{E_1 E_2} = \ket{E_1 j_1 E_2 j_2; JM}$ for short, we would have
 \begin{eq}
-  \bra{E_1 E_2} \hat{H} \ket{E_1'E_2'} =  \N_{E_1E_2}\N_{E_1'E_2'} \sum_{m_1,m_2} \sum_{m_1',m_2'} \conj{c_{m_1 m_2}}c_{m_1' m_2'} \bra{E_1m_1 E_2m_2}\hat{H}\ket{E_1'm_1'E_2'm_2'}
+  &\bra{E_1 E_2} \hat{H} \ket{E_1'E_2'} 
+  \\
+  &=  
+  \N_{E_1E_2}\N_{E_1'E_2'} \sum_{m_1,m_2} \sum_{m_1',m_2'} \conj{c_{m_1 m_2}}c_{m_1' m_2'} \bra{E_1m_1 E_2m_2}\hat{H}\ket{E_1'm_1'E_2'm_2'}
   \label{eq:coupled_matrix_element}
 \end{eq}
 where $\hat{H}$ is a general Fock space operator.
@@ -388,8 +391,9 @@ Consider the case of a one-body operator to which the sp states are eigenstates,
 When doing the transition to the coupled basis, there is a subtle detail that needs to be addressed.
 Even when both single-particle states are the same in the coupled basis, $E_1 = E_2 = E$, we will in the transition still sum over all $m_1$, $m_2$ in the ket $\ket{E m_1 E m_2}$ of \cref{eq:coupled_matrix_element}, meaning that we will \emph{not} use ordered states in that calculation. Instead \cref{eq:one-body_matrix_elements} will read \todo{radbryte ekv?}
 \begin{eq}
-  \bra{E_1m_1 E_2m_2}\hat{H}_1\ket{E_1'm_1'E_2'm_2'} 
-  = 
+  &\bra{E_1m_1 E_2m_2}\hat{H}_1\ket{E_1'm_1'E_2'm_2'} 
+  \\
+  &= 
   (E_1 + E_2)\delta_{E_1 E_1'}\delta_{E_2 E_2'}\p{
     \delta_{m_1m_1'}\delta_{m_2 m_2'} - \delta_{E_1 E_2} \delta_{m_1 m_2'}\delta_{m_2 m_1'}
   }.
@@ -398,7 +402,7 @@ Inserted into \cref{eq:coupled_matrix_element}, this results in
 \begin{eq}
   \bra{E_1 E_2} \hat{H}_1 \ket{E_1'E_2'} 
   &=
-  \N_{E_1E_2}\N_{E_1'E_2'}(E_1 + E_2)(1 + \delta_{E_1 E_2}(-1)^J) \delta_{E_1E_1'}\delta_{E_2E_2'} \\
+  \N_{E_1E_2}\N_{E_1'E_2'}(1 + \delta_{E_1 E_2}(-1)^J) \delta_{E_1E_1'}\delta_{E_2E_2'} (E_1 + E_2)\\
   &= 
   \frac{1+ (-1)^J \delta_{E_1 E_2}}{1+\delta_{E_1 E_2}} \delta_{E_1 E_1'}\delta_{E_2 E_2'} (E_1 + E_2),
 \end{eq}
