@@ -45,13 +45,13 @@ In a similar manner, we evaluate
   \frac{1}{(2\pi)^3} \int \rd^3 \vec{r} V(r)  e^{i\vec{k}'\cdot\vec{r}} e^{-i\vec{k} \cdot \vec{r}} \\
   &=
   \frac{1}{(2\pi)^3} (4\pi)^2 \sum_{l,l'}\sum_{m,m'} 
-  (-1)^l i^{(l+l')} Y_{l'}^{{m'}^*}(\Omega_{k'}) Y_l^m(\Omega_k)
+  (-1)^l i^{(l+l')} \conj{Y_{l'}^{m'}}(\Omega_{k'}) Y_l^m(\Omega_k)
   \\
   &\times
   \int \rd r \, 
     r^2 V(r) j_l(kr)j_{l'}(k'r)
   \int \rd \Omega_r \, 
-    Y_{l'}^{m'}(\Omega_r)Y_l^{m^*}(\Omega_r)
+    Y_{l'}^{m'}(\Omega_r)\conj{Y_l^m}(\Omega_r)
 \end{eq}
 Here a factor $(-1)^l$ was introduced because of the parity of the spherical harmonics: $Y_l^m(-\Omega_k)=(-1)^lY_l^m(\Omega_k)$. 
 
