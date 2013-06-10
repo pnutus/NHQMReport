@@ -58,8 +58,7 @@ In a similar manner, we evaluate
 \end{eq}
 Here, a factor $(-1)^l$ was introduced because of the parity of the spherical harmonics: $Y_l^m(-\Omega_k)=(-1)^lY_l^m(\Omega_k)$. 
 
-Inserting all of this into the Schrödinger equation and again simplifying by using the orthogonality of the spherical harmonics twice, you immediatly obtain the sought after equation
-
+Inserting all of this into the Schrödinger equation and again simplifying by using the orthogonality of the spherical harmonics twice, you obtain 
 \begin{eq}
   \int \rd^3 \vec{k}' \bra{\vec{k}} H \ket{\vec{k}'} \Phi(\vec{k}') 
   &= 
@@ -76,4 +75,10 @@ Inserting all of this into the Schrödinger equation and again simplifying by us
 where
 \begin{eq}
   V(k,k') = \frac{2}{\pi}\int \rd r \, r^2 V(r)j_l(kr)j_l(k'r).
+\end{eq}
+We now have a factor $Y_l^m(\Omega_k)$ on both sides, meaning that we can divide and finally arrive at \cref{eq:radial mom space TISE},
+\begin{eq}
+  \frac{k^2}{2\mu}\phi(k) + \fint[0][\inf]{k'} k'^2 V(k,k') \phi(k') 
+  =
+  E\phi(k).
 \end{eq}
