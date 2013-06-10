@@ -98,7 +98,7 @@ the basic method of expanding the TISE in a basis.
 \label{sec:spherical symmetry}
 
 We limit ourselves to spherically symmetric systems, i.e. systems with a potential $V(r)$ that only depends on the radial distance $r$.
-If we considered three-dimensional systems with arbitrary potentials, the matrices would be very large and solving the problem would become infeasible.
+If we considered three-dimensional systems with arbitrary potentials, the matrices would be very large and solving the problem numerically would become infeasible.
 
 Spherical symmetry allows us to write the wavefunction $\psi(\vec{r})$ as a product of a radial wavefunction $R(r)$ and a spherical harmonic $Y_l^m(\Omega_r)$
 \begin{eq}
@@ -120,7 +120,7 @@ meaning that the matrix will be \emph{block diagonal}, illustrated in \cref{fig:
 
 \begin{figure}
 \center
-\includegraphics{../figures/block_matrix/matrix.pdf}	
+\includegraphics{../figures/block_matrix/matrix.pdf}
 \caption{An illustration of a block diagonal matrix. The eigenvalues of different blocks are independent of each other. Thus the blocks can be diagonalized separately.}
 \label{fig:bmatrix}
 \end{figure}
@@ -168,7 +168,7 @@ where $R_{nl}$ are the radial wavefunctions of the harmonic oscillator,
 \frac{r^l}{r_0^{l+{3\over 2}}} \exp\p{-\frac{r^2}{2r_0^2}}
 	L_{(n-l) / 2}^{(l+\frac{1}{2})}\p{\frac{r^2}{r_0^2}},
 \end{eq}
-$r_0 = \sqrt{\hbar/\mu\omega}$ is the range and $L_\nu^\lambda(x)$ are the generalized Laguerre polynomials.
+$r_0 = \sqrt{\hbar/\mu\omega}$ can be considered a range of the harmonic oscillator, and $L_\nu^\lambda(x)$ are the generalized Laguerre polynomials.
 The radial wavefunction $R(r)$ of a state will be expressed as a linear combination of the harmonic oscillator radial wavefunctions:
 \begin{eq}
   R(r) = \sum_n \psi_{nl} R_{nl}(r).
