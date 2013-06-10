@@ -35,56 +35,8 @@ where $v$ is the nucleon-nucleon interaction. Now add and subtract a potential f
 where we have split the Hamiltonian into a spherically symmetric mean-field Hamiltonian $H_1$ in which particles do not interact directly, and the \emph{residual interaction} $V\sub{res}$ that can be seen as the new interaction between particles. 
 If the mean-field potential $V$ is chosen carefully, $V\sub{res}$ can become small enough to be treated pertubationally (if at all). 
 
- 
-\subsection{The Woods-Saxon Potential}
-The mean-field potential we use is the Woods-Saxon potential with spin-orbit coupling, a standard potential used in nuclear shell models \cite{suhonen}. The potential is visualized in \cref{fig:woods-saxons} and is given by
-\begin{eq}
-	V(r)=
-	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr},
-\end{eq}
-where 
-\begin{eq}
-	f(r)=\b{1+\exp\p{\frac{r-r_0}{d}}}^{-1}.
-\end{eq}
-The parameters are the potential depth $V_0$, the spin-orbit coupling strength $V\sub{so}$, the range $r_0$ and the diffuseness $d$. 
-There are approximate formulas for these values, depending on the number of each kind of nucleon. 
-Alternatively, one can fit the parameters to reproduce experimental energy levels.
-We will use both approaches.
 
-Note that the spin-orbit coupling term can give either attractive or repulsive contributions, depending on how the angular momenta couples. Recall that
-\begin{eq}
-  \label{eq:spin-orbit}
-  \vec{l}\cdot\vec{s} 
-  = 
-  \frac{\hbar^2}{2}
-  \bigp{
-    j(j+1)-l(l+1)-s(s+1)
-  }
-  =
-  \frac{\hbar^2}{2}
-  \begin{cases}
-    l,    &\text{ if } j = l + \frac{1}{2}\\
-    -l-1, &\text{ if } j = l - \frac{1}{2}\\
-  \end{cases}
-  ,
-\end{eq}
-where we have stated the result in the case of one valence nucleon.
-
-\subsection{Magic Nuclei}
-
-The shell model has had some success in reproducing the general features of nuclides \cite{suhonen}, especially for lighter nuclei ($A<50$). 
-It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ total angular momentum. 
-Of special interest to us are \emph{doubly magic} nuclei, where both proton and neutron numbers are magic. 
-These nuclei can be very tightly bound, and will therefore interact weakly with nucleons in outer shells.
-If we add nucleons to a doubly magic nuclei, we can thus treat it as a rigid \emph{core}, interacting with valence neutrons through the mean-field only.
-
-We will consider the special case of core and one valence neutron, two particles with a spherically symmetric potential. We can then perform the standard procedure of reducing the problem to a one-dimensional equation by using the relative coordinate 
-$r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
-\begin{eq}
-  \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
-\end{eq}
-
-\begin{figure}[t]
+\begin{figure}[b!]
 	  \newcommand{\diff}{0.65}
 	  \newcommand{\ro}{2}
 	  \newcommand{\vo}{47}
@@ -132,10 +84,61 @@ $r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
   \caption{The effective Woods-Saxon potential with spin-orbit coupling and centrifugal barrier $l(l+1)/2\mu r^2$ added, for $p_{3/2}$ and $p_{1/2}$ waves. The parameters are $V_0 = \SI{47}{MeV}$, $V\sub{so} = \SI{-7.5}{MeV}$, $r_0 = \SI{2}{fm}$ and $d = \SI{0.65}{fm}$.}
   \label{fig:woods-saxons}
 \end{figure}
+ 
+\subsection{The Woods-Saxon Potential}
+The mean-field potential we use is the Woods-Saxon potential with spin-orbit coupling, a standard potential used in nuclear shell models \cite{suhonen}. The potential is visualized in \cref{fig:woods-saxons} and is given by
+\begin{eq}
+	V(r)=
+	-V_0f(r) - 4V\sub{so}\vec{l}\cdot\vec{s}\frac{1}{r}\frac{df}{dr},
+\end{eq}
+where 
+\begin{eq}
+	f(r)=\b{1+\exp\p{\frac{r-r_0}{d}}}^{-1}.
+\end{eq}
+The parameters are the potential depth $V_0$, the spin-orbit coupling strength $V\sub{so}$, the range $r_0$ and the diffuseness $d$. 
+There are approximate formulas for these values, depending on the number of each kind of nucleon. 
+Alternatively, one can fit the parameters to reproduce experimental energy levels.
+We will use both approaches.
+
+Note that the spin-orbit coupling term can give either attractive or repulsive contributions, depending on how the angular momenta couples. Recall that
+\begin{eq}
+  \label{eq:spin-orbit}
+  \vec{l}\cdot\vec{s} 
+  = 
+  \frac{\hbar^2}{2}
+  \bigp{
+    j(j+1)-l(l+1)-s(s+1)
+  }
+  =
+  \frac{\hbar^2}{2}
+  \begin{cases}
+    l,    &\text{ if } j = l + \frac{1}{2}\\
+    -l-1, &\text{ if } j = l - \frac{1}{2}\\
+  \end{cases}
+  ,
+\end{eq}
+where we have stated the result in the case of one valence nucleon.
+
+
+
+\subsection{Magic Nuclei}
+
+The shell model has had some success in reproducing the general features of nuclides \cite{suhonen}, especially for lighter nuclei ($A<50$). 
+It is found that there are magic numbers of nucleons, where the protons or neutrons form complete shells with $0$ total angular momentum. 
+Of special interest to us are \emph{doubly magic} nuclei, where both proton and neutron numbers are magic. 
+These nuclei can be very tightly bound, and will therefore interact weakly with nucleons in outer shells.
+If we add nucleons to a doubly magic nuclei, we can thus treat it as a rigid \emph{core}, interacting with valence neutrons through the mean-field only.
+
+We will consider the special case of core and one valence neutron, two particles with a spherically symmetric potential. We can then perform the standard procedure of reducing the problem to a one-dimensional equation by using the relative coordinate 
+$r = |\vec{r}_\alpha - \vec{r}_n|$ and the reduced mass
+\begin{eq}
+  \mu = \frac{m_\alpha m_n}{m_\alpha + m_n}.
+\end{eq}
+
 
 \section{The \He{5} Nucleus}
 We choose to study \He{5}, seen as a \He{4} nucleus and a valence neutron. 
-The \He{4} nucleus ($\alpha$ particle) is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core.  
+The \He{4} nucleus ($\alpha$-particle) is doubly magic, with two $s_{1/2}$-neutrons and two $s_{1/2}$-protons forming full shells, creating a stable core.  
 Other doubly magic light nuclei, such as \ce{^{16}O} and its isotopes, have been studied using methods similar to ours \cite{gamow_shell_model_2008}, but we will restrict ourselves to He nuclei.
 
 Because the $s$-shell is already filled in \He{4}, the valence neutron of \He{5} will be a $p$-wave, with $l=1$. 
@@ -156,6 +159,18 @@ The Woods-Saxon parameters will initially be set to standard values to investiga
 \end{center}
 We later optimize the parameters to match experimentally determined energy levels for \He{5}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
+
+\tikzsetnextfilename{E(r0)}
+\begin{figure}[b!]
+  \centering
+ 	\includegraphics[]{../figures/E(r0)/E(r0).pdf}
+  \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. The lowest energy state behaves differently from the others.}
+  \label{fig:energies(r0)}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
+
 \subsection{Harmonic Oscillator Basis}
 
 We begin by solving the \He{5} Schrödinger equation in the HO basis. 
@@ -165,17 +180,7 @@ However, we see a saddle point in energy for the lowest energy solution when the
 The range $r_0$ is a measure of the range of the HO eigenfunctions and the saddle behavior is a sign of a localized wavefunction in that vicinity.
 However, the change in behavior is small, and we cannot draw any conclusions from it.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) FIGURE
 
-\tikzsetnextfilename{E(r0)}
-\begin{figure}[h]
-  \centering
- 	\includegraphics[]{../figures/E(r0)/E(r0).pdf}
-  \caption{The lowest energy eigenvalues of the \He{5} problem as a function of the HO range $r_0$. The lowest energy state behaves differently from the others.}
-  \label{fig:energies(r0)}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E(r0) end
 
 
 Because the harmonic oscillator consists only of bound states and we are trying to study unbound states, this method cannot take us much further.
@@ -195,7 +200,7 @@ This is the same state that showed some odd behavior in the HO-basis, but let us
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
-\begin{figure}[hb]
+\begin{figure}[b!]
   \centering
   	\includegraphics[page=1]{../figures/eigvecs_real/eigvecs.pdf}
   \caption{\He{5} radial-momentum probability distributions. There is one solution that stands out as wider than the surrounding states. We can also see a trend toward lower and wider states around $k = \SI{1}{fm^{-1}}$, but it has no physical significance. 
@@ -206,7 +211,7 @@ This is the same state that showed some odd behavior in the HO-basis, but let us
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex end
-
+\newpage
 Recall the relation \cref{eq:radial wavefunction} between wavefunctions in position and momentum representation
 \begin{eq}
   R(r)=i^l\sqrt{\frac{2}{\pi}} \fint[0][\inf]{k} k^2 \phi(k)j_l(kr).
@@ -266,6 +271,6 @@ If we decrease the depth further, the unique state becomes less and less disting
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Wavefunctions END
 
-
+\newpage\mbox{}
 
 \end{document}

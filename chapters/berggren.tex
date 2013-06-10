@@ -210,13 +210,7 @@ It has $k = \SI{0.173-0.0357i}{fm^{-1}}$, which is reasonably close to what we e
   \end{tabular}
 \end{table}
 
-If we have indeed found the resonance, we expect it to be unchanged when the contour is varied.
-In \cref{fig:rect_contour}, a rectangular contour is used instead of the triangular, yet the pole is completely stable.
-We also found that we could vary the downward extrusion of the contour to some extent without the resonance pole moving. 
-But with sufficiently large imaginary parts, the matrix element integrals started to diverge.
-Barring such numerical errors, we found that any contour that runs below and not too close to the pole gives a stable resonance solution.
-
-\begin{figure}[!t]
+\begin{figure}[b!]
   \centering{
     \subfloat[Triangle Contour]{
       \label{fig:triangle_contour}
@@ -232,9 +226,17 @@ Barring such numerical errors, we found that any contour that runs below and not
 \label{fig:pole(cont)}  
 \end{figure}
 
+If we have indeed found the resonance, we expect it to be unchanged when the contour is varied.
+In \cref{fig:rect_contour}, a rectangular contour is used instead of the triangular, yet the pole is completely stable.
+We also found that we could vary the downward extrusion of the contour to some extent without the resonance pole moving. 
+But with sufficiently large imaginary parts, the matrix element integrals started to diverge.
+Barring such numerical errors, we found that any contour that runs below and not too close to the pole gives a stable resonance solution.
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%WF real/complex FIGURE
 
-\begin{figure}[t!]
+\begin{figure}[p!]
 \centering{
 	\subfloat[Momentum space wavefunctions with a real contour.]{
   		\includegraphics[page=1]{../figures/eigvecs_real_comp/eigvecs.pdf}
@@ -260,8 +262,43 @@ On the other hand, the resonance has a wide distribution, reflecting the localiz
 (remember Heisenberg -- a wide momentum wavefunction allows a localized position wavefunction). 
 This also allows for automatically finding the resonance among a large set of solutions by singling out the one with the widest (or lowest) wavefunction.
 
-\todo{improve corner on this}
-\begin{figure}[b]
+
+\todo{lägg till data punkten "0	0	-5.25" i res_pole(v0)/poles.data så att den går in till origo som den ska}
+%%%%%%%%%%%%%%%%%%%%%%%%% V0(CONTOUR) FIGURE
+
+\subsubsection{Varying the Potential Depth}
+We repeat the procedure from \cref{sub:momentum_basis}, lowering the potential well to \SI{70}{MeV} and increasing it gradually, but we now plot the position of the bound/resonance pole in the complex plane.
+In \Cref{fig:pole(V0)} we see how the pole starts on the imaginary axis at $V_0 = \SI{70}{MeV}$. 
+It then moves downwards, becoming less and less strongly bound.
+At $V_0 \approx \SI{52}{MeV}$ the pole jumps to the fourth quadrant, becoming a resonance.
+As the potential well grows even less attractive, we see that both the energy $E_0$ and width $\Gamma$ of the resonance increases.
+With an even shallower potential well the resonance is so wide that it can no longer be detected.
+
+\subsection{Fitting to Experimental Resonance Data} 
+
+Having studied the solutions and verified that we have found the resonances, we now proceed to fit our model of \He{5} to experimental data.
+We use $E_0$ and $\Gamma$ for the $p_{3/2}$ and $p_{1/2}$ waves, giving us four data points to fit to.
+To simplify the fitting process, we choose to only fit the depth $V_0$ and spin-orbit coupling strength $V\sub{so}$ of the potential.
+The fitting gives us the optimal values $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$.
+The experimental data, taken from \cite{tunl}, is presented in \cref{tab:resonance_data} along with our computed values after fitting. 
+
+
+\begin{table}[t!]
+\caption{Experimental \He{5} resonance data \cite{tunl} and computed values with fitted Woods-Saxon parameters $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$. All values are in \si{MeV}.}
+\label{tab:resonance_data} 
+\centering
+\begin{tabular}{c c c c c}
+  \toprule
+    &\multicolumn{2}{c}{Experimental data}  & \multicolumn{2}{c}{Computed values} \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+    Wave & $E_0$        & $\Gamma$ &  $E_0$ & $\Gamma$ \\
+ \midrule
+       $p_{3/2}$       &       0.798        &              0.648            &      0.783      &     0.695       \\  
+       $p_{1/2}$       &       2.068        &              5.57             &      2.111      &     5.560       \\
+       \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[b!]
   \centering
   \begin{tikzpicture}
     \begin{axis}[
@@ -315,39 +352,6 @@ at (axis cs:0.257,-0.0860) {};
   \caption{The position of the resonance pole in the complex-momentum plane as a function of $V_0$ for the \He{5}-like Woods-Saxon system. The pole begins at \SI{65}{MeV} as a bound state on the imaginary axis, gradually becomes less and less bound, jumps into the fourth quadrant ($V_0 \approx \SI{52}{MeV}$), passes the \He{5} resonance and continues further down and to the right.}
   \label{fig:pole(V0)}
 \end{figure}
-\todo{lägg till data punkten "0	0	-5.25" i res_pole(v0)/poles.data så att den går in till origo som den ska}
-%%%%%%%%%%%%%%%%%%%%%%%%% V0(CONTOUR) FIGURE
 
-\subsubsection{Varying the Potential Depth}
-We repeat the procedure from \cref{sub:momentum_basis}, lowering the potential well to \SI{70}{MeV} and increasing it gradually, but we now plot the position of the bound/resonance pole in the complex plane.
-In \Cref{fig:pole(V0)} we see how the pole starts on the imaginary axis at $V_0 = \SI{70}{MeV}$. 
-It then moves downwards, becoming less and less strongly bound.
-At $V_0 \approx \SI{52}{MeV}$ the pole jumps to the fourth quadrant, becoming a resonance.
-As the potential well grows even less attractive, we see that both the energy $E_0$ and width $\Gamma$ of the resonance increases.
-With an even shallower potential well the resonance is so wide that it can no longer be detected.
-
-\subsection{Fitting to Experimental Resonance Data} 
-
-Having studied the solutions and verified that we have found the resonances, we now proceed to fit our model of \He{5} to experimental data.
-We use $E_0$ and $\Gamma$ for the $p_{3/2}$ and $p_{1/2}$ waves, giving us four data points to fit to.
-To simplify the fitting process, we choose to only fit the depth $V_0$ and spin-orbit coupling strength $V\sub{so}$ of the potential.
-The fitting gives us the optimal values $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$.
-The experimental data, taken from \cite{tunl}, is presented in \cref{tab:resonance_data} along with our computed values after fitting. 
-
-\hspace{-2cm}\begin{table}[b]
-\caption{Experimental \He{5} resonance data \cite{tunl} and computed values with fitted Woods-Saxon parameters $V_0 = \SI{47.05}{MeV}$ and $V\sub{so} = \SI{-7.04}{MeV}$. All values are in \si{MeV}.}
-\label{tab:resonance_data} 
-\centering
-\begin{tabular}{c c c c c}
-  \toprule
-    &\multicolumn{2}{c}{Experimental data}  & \multicolumn{2}{c}{Computed values} \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5}
-    Wave & $E_0$        & $\Gamma$ &  $E_0$ & $\Gamma$ \\
- \midrule
-       $p_{3/2}$       &       0.798        &              0.648            &      0.783      &     0.695       \\  
-       $p_{1/2}$       &       2.068        &              5.57             &      2.111      &     5.560       \\
-       \bottomrule
-\end{tabular}
-\end{table}
-\todo{figures where they belong. Wednesday night: fixa uppslag med figur + tillhörande text}
 
 \end{document}
