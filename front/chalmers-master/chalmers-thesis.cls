@@ -558,7 +558,7 @@
  {\huge\noindent\@title\par} % title, 21
  \@ifundefined{@subtitle}{}{{\Large\noindent\@subtitle\par}} % subtitle, 16
  \if@bachelorsormasters
- {\normalsize\noindent\textit{\thesisname\ \inname\ \@thesisin}\par} % 14 thesis in programmename (only bachelor's and master's)
+ {\normalsize\noindent\textit{Bachelor of \@thesisin}\par} % 14 thesis in programmename (only bachelor's and master's)
  \fi
  \vskip 1.5em
  {\renewcommand{\and}{\\}\Large\noindent \@author\par}% 18
@@ -592,7 +592,7 @@
 
  \newpage\thispagestyle{empty}
  \begin{center}
-  {\MakeUppercase{\thesisname\ \inname\ \@thesisin}\par}
+  {\MakeUppercase{Bachelor of \@thesisin}\par}
   \vspace*{\stretch{1}}
   {\Large \@title\par}
   \vskip 1em
@@ -647,7 +647,7 @@
  % \ifdefempty{\@ISSN}{}{ISSN \@ISSN\\}%
    \vskip 1em 
    \noindent
-   Supervisor: Christian Forss\'en \\
+   Supervisor: Christian Forss\'en, Jimmy Rotureau\\
    Examiner: Daniel Persson
      \vskip 1em 
  \noindent
